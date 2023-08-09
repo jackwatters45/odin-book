@@ -1,16 +1,19 @@
 # vite-react-ts-linting
 
-## Install
+debug on frontend
 
-degit jackwatters45/vite-react-ts-linting
-npm install
+- finish login/signup
+  - test
+  - turn into custom hook
+- check that user is working
 
-## Getting Started
+- useReducer
 
-- replaced title and icon in index.html
-- replace name in package.json
+## next
 
-## Todo
+- login/signup + reactQuery
+- protected routes setup
 
-- look into rome eventually (not sure if it's ready yet)
-- add some details to package.json
+## eventually
+
+- icon
