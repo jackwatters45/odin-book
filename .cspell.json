@@ -1,0 +1,4 @@
+{
+	"language": "en",
+	"ignorePaths": ["__snapshots__", "node_modules", "dist"]
+}

@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Loading Component > matches the snapshot 1`] = `
+<DocumentFragment>
+  .c0 {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 12.5px solid #f3f3f3;
+  border-top: 12.5px solid rgba(55, 55, 55, 0.5);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: dGOzbh 1.5s linear infinite;
+}
+
+<div
+    class="c0"
+    size="50"
+  />
+</DocumentFragment>
+`;

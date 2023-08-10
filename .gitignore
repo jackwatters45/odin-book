@@ -9,6 +9,8 @@ lerna-debug.log*
 
 node_modules
 dist
+coverage
+env
 dist-ssr
 *.local
 
@@ -22,5 +24,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-env

@@ -2,13 +2,8 @@
 
 ## next
 
-- shit imports
-
 - update backend tests
 - update create-user route
-
-- loading
-- 404
 
 - if user logged in redirect from login and register
 

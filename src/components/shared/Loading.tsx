@@ -30,8 +30,8 @@ interface Props {
 	size?: number;
 }
 
-function Loading({ className, size = 50 }: Props) {
+const Loading = ({ className, size = 50 }: Props) => {
 	return <Spinner className={className} size={size} />;
-}
+};
 
 export default Loading;
