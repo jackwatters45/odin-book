@@ -1,19 +1,25 @@
 # vite-react-ts-linting
 
-debug on frontend
-
-- finish login/signup
-  - test
-  - turn into custom hook
-- check that user is working
-
-- useReducer
-
 ## next
 
-- login/signup + reactQuery
-- protected routes setup
+- shit imports
+
+- update backend tests
+- update create-user route
+
+- loading
+- 404
+
+- if user logged in redirect from login and register
+
+## want to implement
+
+- useReducer
 
 ## eventually
 
 - icon
+
+## keep eye on
+
+- user birthday (age) make sure good

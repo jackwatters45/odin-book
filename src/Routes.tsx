@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./components/auth/Login";
-import CreateAccount from "./components/auth/CreateAccount";
-import UnauthorizedPage from "./components/shared/util/UnauthorizedPage";
+import LoginForm from "./components/auth/Login/LoginForm";
+import CreateAccountForm from "./components/auth/CreateAccount/CreateAccountForm";
+import UnauthorizedPage from "./components/auth/UnauthorizedPage";
 import Loading from "./components/shared/util/Loading";
 import { useQuery } from "@tanstack/react-query";
 import Dashboard from "./components/Dashboard";
@@ -25,8 +25,8 @@ const RoutesComponent = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/login" element={<Login />} />
-				<Route path="/create-account" element={<CreateAccount />} />
+				<Route path="/login" element={<LoginForm />} />
+				<Route path="/create-account" element={<CreateAccountForm />} />
 				<Route path="/unauthorized" element={<UnauthorizedPage />} />
 
 				<Route index element={<Dashboard />} />
