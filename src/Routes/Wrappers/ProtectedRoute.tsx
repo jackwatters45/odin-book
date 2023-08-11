@@ -3,15 +3,11 @@ import { ReactElement } from "react";
 
 interface Props {
 	isAllowed: boolean;
-	redirectPath?: string;
+	redirectPath: string;
 	children?: ReactElement;
 }
 
-const ProtectedRoute = ({
-	isAllowed,
-	redirectPath = "/unauthorized",
-	children,
-}: Props) => {
+const ProtectedRoute = ({ isAllowed, redirectPath, children }: Props) => {
 	const { pathname } = useLocation();
 
 	if (!isAllowed)

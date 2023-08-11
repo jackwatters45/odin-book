@@ -1,6 +1,6 @@
 import useCurrentUser from "./hooks/useCurrentUser";
 import Loading from "./components/shared/Loading";
-import RoutesComponent from "./Routes";
+import RoutesComponent from "./Routes/Routes";
 
 const AppInitializer = () => {
 	const { isLoading } = useCurrentUser();

@@ -1,9 +1,6 @@
 const checkEnvVariableString = (name: string) => {
 	const variable = import.meta.env[name];
-	if (!variable) {
-		console.log(`${name} not defined`);
-		throw new Error(`${name} not defined`);
-	}
+	if (!variable) throw new Error(`${name} not defined`);
 	return variable;
 };
 

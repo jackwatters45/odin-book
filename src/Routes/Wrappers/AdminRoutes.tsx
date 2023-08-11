@@ -1,7 +1,7 @@
 import ProtectedRoute from "./ProtectedRoute";
-import useCurrentUser from "../hooks/useCurrentUser";
+import useCurrentUser from "../../hooks/useCurrentUser";
 
-const AdminRoute = () => {
+const AdminRoutes = () => {
 	const { user } = useCurrentUser();
 
 	return (
@@ -9,4 +9,4 @@ const AdminRoute = () => {
 	);
 };
 
-export default AdminRoute;
+export default AdminRoutes;

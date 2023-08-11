@@ -2,12 +2,23 @@
 
 ## next
 
+- folder capitalize consistency
+
 - forgot password
+  - tests
+  - implement
+- alt login methods
+
+- test what error looks like
+- look at facebook
+
 - nav
 
 - add user profile page
 - add user profile edit page
-- test what error looks like
+
+- dashboard
+- post
 
 ## want to implement
 
@@ -15,9 +26,10 @@
 
 ## eventually
 
+- user can only view login etc but can login as guest
+- business accounts
 - icon
 - figure out better way to share types
-- business accounts
 
 ## keep eye on
 
