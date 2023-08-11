@@ -101,12 +101,11 @@
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */,
 		"typeRoots": ["./node_modules/@types", "types"]
 	},
-	"include": ["src", "tests"],
+	"include": ["src", "tests", "types"],
 	"exclude": [
 		"node_modules",
 		"tools",
 		"dist",
-		"types",
 		"coverage",
 		"tests/__snapshots__",
 		"tests/setup"

@@ -14,8 +14,6 @@ const CreateAccountForm = () => {
 		selectedYear,
 	} = useCreateAccountForm();
 
-	const currentDate = new Date().getDate() - 1;
-	const currentMonth = new Date().getMonth();
 	const currentYear = new Date().getFullYear();
 
 	return (
@@ -105,7 +103,7 @@ const CreateAccountForm = () => {
 						</label>
 						<select
 							id="month"
-							defaultValue={currentMonth}
+							defaultValue={new Date().getMonth()}
 							aria-invalid={!!errors.month}
 							{...register("month", {
 								setValueAs: (value) => parseInt(value),
@@ -134,7 +132,7 @@ const CreateAccountForm = () => {
 						</label>
 						<select
 							id="day"
-							defaultValue={currentDate}
+							defaultValue={new Date().getDate() - 1}
 							aria-invalid={!!errors.day}
 							{...register("day", {
 								setValueAs: (value) => parseInt(value),
@@ -151,7 +149,7 @@ const CreateAccountForm = () => {
 						>
 							{[...Array(getDaysInMonth(selectedMonth, selectedYear))].map((_, i) => (
 								<option key={i} value={i}>
-									{i + 1}
+									{i}
 								</option>
 							))}
 						</select>

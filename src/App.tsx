@@ -3,7 +3,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import RoutesComponent from "./Routes";
 
 function App() {
-	// Access the client
 	const queryClient = new QueryClient();
 
 	return (

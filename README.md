@@ -2,10 +2,12 @@
 
 ## next
 
-- update backend tests
-- update create-user route
+- forgot password
+- nav
 
-- if user logged in redirect from login and register
+- add user profile page
+- add user profile edit page
+- test what error looks like
 
 ## want to implement
 
@@ -14,6 +16,8 @@
 ## eventually
 
 - icon
+- figure out better way to share types
+- business accounts
 
 ## keep eye on
 
