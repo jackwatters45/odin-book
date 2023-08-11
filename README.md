@@ -34,3 +34,18 @@
 ## keep eye on
 
 - user birthday (age) make sure good
+
+/MyComponent
+MyComponent.js (or .jsx, .tsx)
+MyComponent.test.js
+index.js
+The index.js often re-exports the main component to simplify imports:
+
+// inside index.js
+export { default } from './MyComponent';
+This allows for cleaner imports:
+
+import MyComponent from './MyComponent';
+Instead of:
+
+import MyComponent from './MyComponent/MyComponent';

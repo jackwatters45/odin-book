@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { Route } from "react-router";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
-import TestEnvironmentWrapper from "../utils/setupRender";
-import Layout from "../../src/Routes/Wrappers/Layout";
+import TestEnvironmentWrapper from "../Utils/setupRender";
+import Layout from "../../src/routes/wrappers/Layout";
 
 describe("Layout", () => {
 	beforeEach(() => {

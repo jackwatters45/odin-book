@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import LoginForm from "../components/auth/Login/LoginForm";
-import CreateAccountForm from "../components/auth/CreateAccount/CreateAccountForm";
-import UnauthorizedPage from "../components/errors/UnauthorizedPage";
+import LoginForm from "../components/Auth/Login/LoginForm";
+import CreateAccountForm from "../components/Auth/CreateAccount/CreateAccountForm";
+import UnauthorizedPage from "../components/Errors/UnauthorizedPage";
 import Dashboard from "../components/Dashboard";
-import NotFoundPage from "../components/errors/NotFoundPage";
-import AdminRoute from "./Wrappers/AdminRoutes";
-import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
-import AuthRoute from "./Wrappers/AuthRoutes";
-import Layout from "./Wrappers/Layout";
-import LoggedInRoute from "./Wrappers/LoggedInRoute";
+import NotFoundPage from "../components/Errors/NotFoundPage";
+import AdminRoute from "./wrappers/AdminRoutes";
+import ForgotPassword from "../components/Auth/ForgotPassword/ForgotPassword";
+import AuthRoute from "./wrappers/AuthRoutes";
+import Layout from "./wrappers/Layout";
+import LoggedInRoute from "./wrappers/LoggedInRoute";
 
 const RoutesComponent = () => {
 	return (

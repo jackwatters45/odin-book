@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { Route } from "react-router";
 import { describe, it, expect } from "vitest";
 
-import TestEnvironmentWrapper from "../utils/setupRender";
-import ProtectedRoute from "../../src/Routes/Wrappers/ProtectedRoute";
+import TestEnvironmentWrapper from "../Utils/setupRender";
+import ProtectedRoute from "../../src/routes/wrappers/ProtectedRoute";
 
 const renderProtectedRouteWithProps = (
 	Props = { isAllowed: true, redirectPath: "/" },

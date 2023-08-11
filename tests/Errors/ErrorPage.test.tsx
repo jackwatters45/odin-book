@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 import { describe, it, expect } from "vitest";
 
-import TestEnvironmentWrapper from "../utils/setupRender";
-import ErrorPage from "../../src/components/errors/ErrorPage";
+import TestEnvironmentWrapper from "../Utils/setupRender";
+import ErrorPage from "../../src/components/Errors/ErrorPage";
 
 const renderErrorPageWithProps = (errorProps = {}) => {
 	return render(

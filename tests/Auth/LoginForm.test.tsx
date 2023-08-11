@@ -4,9 +4,9 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
-import LoginForm from "../../src/components/auth/Login/LoginForm";
+import LoginForm from "../../src/components/Auth/Login/LoginForm";
 import { apiBaseUrl } from "../../src/config/envVariables";
-import TestEnvironmentWrapper from "../../tests/utils/setupRender";
+import TestEnvironmentWrapper from "../Utils/setupRender";
 
 describe("LoginForm", () => {
 	beforeEach(() => {

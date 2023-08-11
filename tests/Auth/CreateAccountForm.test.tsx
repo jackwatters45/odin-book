@@ -4,8 +4,8 @@ import { beforeEach, describe, it, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { faker } from "@faker-js/faker";
 
-import CreateAccountForm from "../../src/components/auth/CreateAccount/CreateAccountForm";
-import TestEnvironmentWrapper from "../../tests/utils/setupRender";
+import CreateAccountForm from "../../src/components/Auth/CreateAccount/CreateAccountForm";
+import TestEnvironmentWrapper from "../Utils/setupRender";
 
 describe("CreateAccountForm", () => {
 	let user: ReturnType<typeof userEvent.setup>;

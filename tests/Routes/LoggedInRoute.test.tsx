@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { Route } from "react-router";
 import { describe, it, expect, vi } from "vitest";
 
-import TestEnvironmentWrapper from "../utils/setupRender";
-import LoggedInRoute from "../../src/Routes/Wrappers/LoggedInRoute";
+import TestEnvironmentWrapper from "../Utils/setupRender";
+import LoggedInRoute from "../../src/routes/wrappers/LoggedInRoute";
 import * as exports from "../../src/hooks/useCurrentUser";
 
 const renderProtectedRouteWithProps = () => {

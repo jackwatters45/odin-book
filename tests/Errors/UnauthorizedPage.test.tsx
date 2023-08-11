@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Route } from "react-router-dom";
 
-import UnauthorizedPage from "../../src/components/errors/UnauthorizedPage";
-import TestEnvironmentWrapper from "../utils/setupRender";
+import UnauthorizedPage from "../../src/components/Errors/UnauthorizedPage";
+import TestEnvironmentWrapper from "../Utils/setupRender";
 
 describe("UnauthorizedPage", () => {
 	beforeEach(() => {

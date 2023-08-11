@@ -1,5 +1,5 @@
-import ProtectedRoute from "./ProtectedRoute";
 import useCurrentUser from "../../hooks/useCurrentUser";
+import ProtectedRoute from "./ProtectedRoute";
 
 const AdminRoutes = () => {
 	const { user } = useCurrentUser();

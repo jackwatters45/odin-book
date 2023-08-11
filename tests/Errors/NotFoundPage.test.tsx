@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 
-import NotFoundPage from "../../src/components/errors/NotFoundPage";
-import TestEnvironmentWrapper from "../utils/setupRender";
+import NotFoundPage from "../../src/components/Errors/NotFoundPage";
+import TestEnvironmentWrapper from "../Utils/setupRender";
 
 describe("NotFoundPage", () => {
 	beforeEach(() => {

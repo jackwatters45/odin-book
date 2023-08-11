@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import "jest-styled-components";
 
-import Loading from "../../src/components/shared/Loading";
+import Loading from "../../src/components/Shared/Loading";
 
 describe("Loading Component", () => {
 	it("renders without crashing", () => {
