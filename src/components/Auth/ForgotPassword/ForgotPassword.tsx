@@ -1,5 +1,5 @@
-import ForgotPasswordForm from "./ForgotPasswordForm";
-import ForgotPasswordNav from "./ForgotPasswordNav";
+import ForgotPasswordForm from "./Form";
+import ForgotPasswordNav from "./Nav";
 
 const ForgotPassword = () => {
 	return (

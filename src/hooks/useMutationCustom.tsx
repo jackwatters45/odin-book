@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { apiBaseUrl } from "../config/envVariables";
+import { apiBaseUrl } from "../../config/envVariables";
 import { useNavigate } from "react-router";
 
 export interface ValidationError {

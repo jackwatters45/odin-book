@@ -1,5 +1,5 @@
 import useCurrentUser from "./hooks/useCurrentUser";
-import Loading from "./components/Shared/Loading";
+import Loading from "./components/Shared/Loading/Loading";
 import RoutesComponent from "./routes/Routes";
 
 const AppInitializer = () => {

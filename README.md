@@ -2,11 +2,10 @@
 
 ## next
 
-- folder capitalize consistency
-
 - forgot password
   - tests
   - implement
+  - move tests to inside file
 - alt login methods
 
 - test what error looks like
