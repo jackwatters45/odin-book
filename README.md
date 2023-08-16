@@ -2,22 +2,57 @@
 
 ## next
 
-- forgot password
-  - tests
-  - implement
-  - move tests to inside file
-- alt login methods
+- forgot password stuff
 
-- test what error looks like
-- look at facebook
+  - how to prevent people from randomly going to this these pages
 
+  - go through motions -> make pages work
+
+  - make sure link reset works
+  - routing wrong rn
+  - rename routes + pages
+
+  - tests + check actually works
+  - add nav to ones that meed it
+
+  - check todos + readmes backend + frontend
+
+- login page
+
+  - cache userHistory
+  - recent logins part
+  - alt login methods
+  - guest login
+
+- look at facebook (add more shit below)
 - nav
-
-- add user profile page
-- add user profile edit page
-
+  - logged out
+  - logged in
+    - logo
+    - search
+    - navigate
+    - notifications
+    - profile
+- user
+  - profile
+  - settings
 - dashboard
 - post
+
+  - create
+  - edit
+  - delete
+  - view
+
+- businesses
+- notifications
+- sidebar
+  - left
+  - right
+
+## notes
+
+- useQuery error is just a string because i am throwing res.json.message
 
 ## want to implement
 

@@ -24,12 +24,14 @@ export interface UserVerificationData {
 	type: "email" | "phoneNumber";
 	token?: string;
 	tokenExpires?: number;
+	code?: string;
 }
 
 export interface UserResetPasswordData {
 	type: "email" | "phoneNumber";
 	token?: string;
 	tokenExpires?: number;
+	code?: string;
 }
 
 // User Activity Data (all were objectIds)
@@ -118,4 +120,6 @@ export interface IUser
 		UserLoginData,
 		UserActivityData,
 		UserSystemData,
-		UserAboutData {}
+		UserAboutData {
+	_id: string;
+}

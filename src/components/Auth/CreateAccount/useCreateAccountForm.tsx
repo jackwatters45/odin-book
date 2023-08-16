@@ -1,6 +1,6 @@
 import { SubmitHandler } from "react-hook-form";
 
-import useMutateCustom from "../../../hooks/useMutationCustom";
+import useMutateForm from "../../../hooks/useMutationForm";
 import useFormCustom from "../../../hooks/useFormCustom";
 
 interface CreateAccountBase {
@@ -25,7 +25,7 @@ interface CreateAccountUserFields extends CreateAccountBase {
 
 const useCreateAccountForm = () => {
 	const { mutate, formServerError, setFormServerError } =
-		useMutateCustom<CreateAccountUserFields>({
+		useMutateForm<CreateAccountUserFields>({
 			queryKey: "user",
 			queryUrl: "auth/signup",
 			method: "POST",
@@ -41,11 +41,14 @@ const useCreateAccountForm = () => {
 
 		const userWithBirthday = { ...rest, birthday };
 
-		if (data.gender !== "custom" || !data.genderCustom) return mutate(userWithBirthday);
+		if (data.gender !== "custom" || !data.genderCustom)
+			return mutate({ data: userWithBirthday });
 		mutate({
-			...userWithBirthday,
-			gender: genderCustom || "custom",
-			pronouns: pronouns || undefined,
+			data: {
+				...userWithBirthday,
+				gender: genderCustom || "custom",
+				pronouns: pronouns || undefined,
+			},
 		});
 	};
 

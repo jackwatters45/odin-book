@@ -1,5 +1,8 @@
 import useCreateAccountForm from "./useCreateAccountForm";
-import { validateLength, validatePassword } from "../utils/validationHelpers";
+import {
+	validateUsernameForReactHookForm,
+	validatePassword,
+} from "../utils/validationHelpers";
 import { monthOptions, getDaysInMonth } from "../../../utils/dateHelpers";
 import renderFormErrors from "../../../utils/renderFormErrors";
 
@@ -73,7 +76,7 @@ const CreateAccount = () => {
 						aria-invalid={!!errors.username}
 						{...register("username", {
 							required: "Mobile number or email is required",
-							validate: validateLength,
+							validate: validateUsernameForReactHookForm,
 						})}
 					/>
 					{errors.username && <div>{errors.username.message}</div>}

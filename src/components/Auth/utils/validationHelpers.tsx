@@ -1,6 +1,17 @@
-const isEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
-export const validateLength = (value: string) => {
+export const isValidPhoneNumber = (phoneNumber: string) => {
+	const parsedNumber = parsePhoneNumberFromString(phoneNumber, "US");
+	return parsedNumber?.isValid();
+};
+
+export const isEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
+
+export const isValidUsername = (value: string) => {
+	return isEmail(value) || isValidPhoneNumber(value);
+};
+
+const validateLength = (value: string) => {
 	// If the value is an email, check against email length constraints
 	if (isEmail(value)) {
 		if (value.length < 5) {
@@ -25,6 +36,19 @@ export const validateLength = (value: string) => {
 	}
 
 	return true; // If all validations pass
+};
+
+export const validateUsernameForReactHookForm = (value: string) => {
+	if (!isValidUsername(value)) {
+		return "Please enter a valid email or phone number.";
+	}
+
+	const lengthValidation = validateLength(value);
+	if (lengthValidation !== true) {
+		return lengthValidation;
+	}
+
+	return true;
 };
 
 export const passwordPattern =

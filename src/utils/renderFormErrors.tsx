@@ -1,4 +1,4 @@
-import { ValidationError } from "../hooks/useMutationCustom";
+import { ValidationError } from "../hooks/useMutationForm";
 
 const renderFormErrors = (formServerError: string | ValidationError[]) => {
 	return Array.isArray(formServerError)

@@ -9,7 +9,8 @@ function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<AppInitializer />
-			<ReactQueryDevtools initialIsOpen={true} />
+			{/* TODO uncomment when dealing more with fetches */}
+			{/* <ReactQueryDevtools initialIsOpen={true} /> */}
 		</QueryClientProvider>
 	);
 }
