@@ -13,10 +13,10 @@ import Layout from "./wrappers/Layout/Layout";
 
 import Dashboard from "../components/Dashboard";
 
-import ResetPasswordMethod from "../components/Auth/ResetPassword/ResetPasswordMethod";
-import EnterSecurityCode from "../components/Auth/ResetPassword/EnterSecurityCode";
-import ForgotPasswordForm from "../components/Auth/ResetPassword/ForgotPasswordForm/ForgotPasswordForm";
-import ChooseNewPassword from "../components/Auth/ResetPassword/ChooseNewPassword";
+import ResetPasswordMethod from "../components/Auth/ForgotPassword/ResetPasswordMethod";
+import EnterSecurityCode from "../components/Auth/ForgotPassword/EnterSecurityCode";
+import FindYourAccount from "../components/Auth/ForgotPassword/FindYourAccount/FindYourAccount";
+import ChooseNewPassword from "../components/Auth/ForgotPassword/ChooseNewPassword";
 
 const RoutesComponent = () => {
 	return (
@@ -26,7 +26,7 @@ const RoutesComponent = () => {
 					<Route path="/login" element={<Login />} />
 					<Route path="/create-account" element={<CreateAccount />} />
 					<Route path="/recover">
-						<Route index element={<ForgotPasswordForm />} />
+						<Route index element={<FindYourAccount />} />
 						<Route path="method" element={<ResetPasswordMethod />} />
 						<Route path="code" element={<EnterSecurityCode />} />
 						<Route path="password" element={<ChooseNewPassword />} />

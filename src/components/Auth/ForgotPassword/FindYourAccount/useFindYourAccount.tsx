@@ -2,20 +2,20 @@ import { SubmitHandler } from "react-hook-form";
 import useMutateForm from "../../../../hooks/useMutationForm";
 import useFormCustom from "../../../../hooks/useFormCustom";
 
-interface ForgotPasswordInputs {
+interface FindYourAccountInputs {
 	username: string;
 }
 
-const useForgotPasswordForm = () => {
-	const { mutate, formServerError } = useMutateForm<ForgotPasswordInputs>({
+const useFindYourAccount = () => {
+	const { mutate, formServerError } = useMutateForm<FindYourAccountInputs>({
 		queryUrl: "auth/find-account",
 		method: "POST",
 		successNavigate: "/recover/method",
 	});
 
-	const onSubmit: SubmitHandler<ForgotPasswordInputs> = (data) => mutate({ data });
+	const onSubmit: SubmitHandler<FindYourAccountInputs> = (data) => mutate({ data });
 
-	const { register, submitForm, errors } = useFormCustom<ForgotPasswordInputs>({
+	const { register, submitForm, errors } = useFormCustom<FindYourAccountInputs>({
 		onSubmit,
 	});
 
@@ -27,4 +27,4 @@ const useForgotPasswordForm = () => {
 	};
 };
 
-export default useForgotPasswordForm;
+export default useFindYourAccount;

@@ -6,9 +6,10 @@ import { validateUsernameForReactHookForm } from "../../utils/validationHelpers"
 
 interface LoginProps {
 	className?: string;
+	forgotText?: "password" | "Account";
 }
 
-const LoginForm = ({ className }: LoginProps) => {
+const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 	const { formServerError, register, submitForm, errors } = useLoginForm();
 
 	return (
@@ -57,7 +58,7 @@ const LoginForm = ({ className }: LoginProps) => {
 				<div className="formErrors">{renderFormErrors(formServerError)}</div>
 			)}
 			<Link to={"recover"} className="forgotLink">
-				Forgot password
+				Forgot {forgotText}
 			</Link>
 			<Link to={"/create-account"}>Create new account</Link>
 		</form>

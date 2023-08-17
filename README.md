@@ -4,8 +4,6 @@
 
 - problems + still need to do
 
-  - add nav to ones that meed it
-  - rename routes + pages
   - autocomplete bs
 
   - make sure link reset works

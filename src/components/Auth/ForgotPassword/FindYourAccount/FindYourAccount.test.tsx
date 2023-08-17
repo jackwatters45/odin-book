@@ -4,13 +4,13 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router-dom";
 
 import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
-import ForgotPasswordForm from "./ForgotPasswordForm";
+import FindYourAccount from "./FindYourAccount";
 
-describe("<ForgotPasswordForm />", () => {
+describe("<FindYourAccount />", () => {
 	beforeEach(() => {
 		render(
 			<TestEnvironmentWrapper initialRoute={["/login/recover"]}>
-				<Route path="/login/recover" element={<ForgotPasswordForm />} />
+				<Route path="/login/recover" element={<FindYourAccount />} />
 			</TestEnvironmentWrapper>,
 		);
 	});
