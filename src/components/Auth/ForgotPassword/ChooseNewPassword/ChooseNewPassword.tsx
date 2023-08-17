@@ -17,6 +17,9 @@ const ChooseNewPassword = () => {
 		<div>
 			<ForgotPasswordNav />
 			<form onSubmit={submitForm}>
+				<div>
+					<input type="text" id="username" autoComplete="username" hidden />
+				</div>
 				<h1>Choose a new password</h1>
 				<div>
 					<label htmlFor="newPassword">
@@ -28,7 +31,8 @@ const ChooseNewPassword = () => {
 						id="newPassword"
 						placeholder="Enter password"
 						aria-invalid={!!errors.newPassword}
-						{...register("newPassword", {})}
+						autoComplete="new-password"
+						{...register("newPassword")}
 					/>
 					{errors && <div>{errors.newPassword?.message}</div>}
 					<button type="button" onClick={toggleShowPassword}>

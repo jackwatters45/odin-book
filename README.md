@@ -4,8 +4,6 @@
 
 - problems + still need to do
 
-  - autocomplete bs
-
   - make sure link reset works
   - how to prevent people from randomly going to this these pages
 

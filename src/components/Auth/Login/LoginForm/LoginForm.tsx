@@ -23,6 +23,7 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 					id="username"
 					placeholder="Email or phone number"
 					aria-invalid={!!errors.username}
+					autoComplete="username"
 					{...register("username", {
 						required: "Email or phone number is required",
 						validate: (value) => validateUsernameForReactHookForm(value),
@@ -39,6 +40,7 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 					id="password"
 					placeholder="Password"
 					aria-invalid={!!errors.password}
+					autoComplete="current-password"
 					{...register("password", {
 						required: "Password is required",
 						minLength: {
@@ -57,7 +59,7 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 			{formServerError && (
 				<div className="formErrors">{renderFormErrors(formServerError)}</div>
 			)}
-			<Link to={"recover"} className="forgotLink">
+			<Link to={"/recover"} className="forgotLink">
 				Forgot {forgotText}
 			</Link>
 			<Link to={"/create-account"}>Create new account</Link>

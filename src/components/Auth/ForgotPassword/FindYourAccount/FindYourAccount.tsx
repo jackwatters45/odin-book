@@ -13,18 +13,16 @@ const FindYourAccount = () => {
 			<form method="POST" onSubmit={submitForm}>
 				<h1>Find your account</h1>
 				<p>Please enter your email or mobile number to search for your account.</p>
-				<label htmlFor="username" hidden>
-					Email or phone number:
-				</label>
 				<div className="formSection">
-					<label htmlFor="username" hidden>
+					<label htmlFor="usernameFind" hidden>
 						Email or phone number:
 					</label>
 					<input
 						type="text"
-						id="username"
+						id="usernameFind"
 						placeholder="Email or phone number"
 						aria-invalid={!!errors.username}
+						autoComplete="username"
 						{...register("username", {
 							required: "Email or phone number is required",
 							validate: (value) => validateUsernameForReactHookForm(value),
