@@ -2,27 +2,26 @@
 
 ## next
 
-- forgot password stuff
+- problems + still need to do
 
-  - how to prevent people from randomly going to this these pages
-
-  - go through motions -> make pages work
+  - add nav to ones that meed it
+  - rename routes + pages
+  - autocomplete bs
 
   - make sure link reset works
-  - routing wrong rn
-  - rename routes + pages
+  - how to prevent people from randomly going to this these pages
 
-  - tests + check actually works
-  - add nav to ones that meed it
+- tests
+- check todos + readmes backend + frontend
 
-  - check todos + readmes backend + frontend
+- commit
 
-- login page
+- protect routes redirect
+- current user
+  - get working
+  - make sure everything that sets it is working
 
-  - cache userHistory
-  - recent logins part
-  - alt login methods
-  - guest login
+### after
 
 - look at facebook (add more shit below)
 - nav
@@ -68,18 +67,3 @@
 ## keep eye on
 
 - user birthday (age) make sure good
-
-/MyComponent
-MyComponent.js (or .jsx, .tsx)
-MyComponent.test.js
-index.js
-The index.js often re-exports the main component to simplify imports:
-
-// inside index.js
-export { default } from './MyComponent';
-This allows for cleaner imports:
-
-import MyComponent from './MyComponent';
-Instead of:
-
-import MyComponent from './MyComponent/MyComponent';

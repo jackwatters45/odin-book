@@ -57,7 +57,7 @@ const ResetPasswordMethod = () => {
 			<RecoverUserPreview user={user} includeNotYou={false} />
 			{formServerError && <p>{renderFormErrors(formServerError)}</p>}
 			<button type="button">
-				<Link to="/login/identify">Not you?</Link>
+				<Link to="/recover">Not you?</Link>
 			</button>
 			<button type="submit">Continue</button>
 		</form>

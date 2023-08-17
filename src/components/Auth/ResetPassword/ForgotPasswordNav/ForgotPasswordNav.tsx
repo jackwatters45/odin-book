@@ -1,4 +1,4 @@
-import Login from "../Login";
+import Login from "../../Login/LoginForm";
 
 const ForgotPasswordNav = () => {
 	return (

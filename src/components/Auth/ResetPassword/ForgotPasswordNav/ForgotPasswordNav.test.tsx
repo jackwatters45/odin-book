@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Route } from "react-router-dom";
 
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
 import ForgotPasswordNav from "./ForgotPasswordNav";
 
 describe("<ForgotPasswordNav />", () => {
