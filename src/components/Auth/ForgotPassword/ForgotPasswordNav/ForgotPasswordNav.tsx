@@ -5,7 +5,7 @@ interface ForgotPasswordNavProps {
 }
 const ForgotPasswordNav = ({ includeLogin = false }: ForgotPasswordNavProps) => {
 	return (
-		<div>
+		<div style={{ display: "flex", borderBottom: "1px solid white" }}>
 			<img src="https://via.placeholder.com/150" alt="Odin Book" />
 			{includeLogin && <Login forgotText="Account" />}
 		</div>

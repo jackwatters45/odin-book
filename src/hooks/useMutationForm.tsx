@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { SetStateAction, useState } from "react";
 import { apiBaseUrl } from "../../config/envVariables";
 import { useNavigate } from "react-router";
-import { FormError, ValidationError } from "../../types/ErrorInterfaces";
+import { ResponseError, ValidationError } from "../../types/ErrorInterfaces";
 
 interface useMutateForm {
 	queryUrl: string;
@@ -50,7 +50,7 @@ const useMutateForm = <T,>({
 			if (queryKey) queryClient.setQueryData([queryKey], data);
 			navigate(successNavigate, { state: { data } });
 		},
-		onError: (err: FormError) => {
+		onError: (err: ResponseError) => {
 			// TODO might need some work depending on the error
 			if (onError) return onError(err.errors || err.message || "");
 			setFormServerError(err.message || err.errors || "");

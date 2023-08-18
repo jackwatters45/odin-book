@@ -1,9 +1,12 @@
+import { Navigate } from "react-router";
 import renderFormErrors from "../../../../utils/renderFormErrors";
+import { validatePassword } from "../../utils/validationHelpers";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 import useChooseNewPassword from "./useChooseNewPassword";
 
 const ChooseNewPassword = () => {
 	const {
+		token,
 		formServerError,
 		register,
 		submitForm,
@@ -13,6 +16,7 @@ const ChooseNewPassword = () => {
 		toggleShowPassword,
 	} = useChooseNewPassword();
 
+	if (!token) return <Navigate to={"/recover"} />;
 	return (
 		<div>
 			<ForgotPasswordNav />
@@ -23,7 +27,7 @@ const ChooseNewPassword = () => {
 				<h1>Choose a new password</h1>
 				<div>
 					<label htmlFor="newPassword">
-						Create a new password that is at least 6 characters long. A strong password is
+						Create a new password that is at least 8 characters long. A strong password is
 						combination of letters, numbers, and punctuation marks.
 					</label>
 					<input
@@ -32,7 +36,10 @@ const ChooseNewPassword = () => {
 						placeholder="Enter password"
 						aria-invalid={!!errors.newPassword}
 						autoComplete="new-password"
-						{...register("newPassword")}
+						{...register("newPassword", {
+							required: "Password is required",
+							validate: validatePassword,
+						})}
 					/>
 					{errors && <div>{errors.newPassword?.message}</div>}
 					<button type="button" onClick={toggleShowPassword}>

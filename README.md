@@ -2,17 +2,10 @@
 
 ## next
 
-- problems + still need to do
-
-  - make sure link reset works
-  - how to prevent people from randomly going to this these pages
-
 - tests
-- check todos + readmes backend + frontend
 
 - commit
 
-- protect routes redirect
 - current user
   - get working
   - make sure everything that sets it is working

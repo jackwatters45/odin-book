@@ -11,7 +11,7 @@ interface ChooseNewPasswordInputs {
 const useChooseNewPassword = () => {
 	const location = useLocation();
 	const data = location.state?.data;
-	const token = data?.token || false;
+	const token = data?.token;
 
 	const { mutate, formServerError, setFormServerError } =
 		useMutateForm<ChooseNewPasswordInputs>({
@@ -43,6 +43,7 @@ const useChooseNewPassword = () => {
 	const toggleShowPassword = () => setShowPassword((prev) => !prev);
 
 	return {
+		token,
 		formServerError,
 		register,
 		submitForm,

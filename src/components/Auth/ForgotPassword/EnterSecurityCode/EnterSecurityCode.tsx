@@ -1,21 +1,13 @@
 import { Link, Navigate } from "react-router-dom";
 import useEnterSecurityCode from "./useEnterSecurityCode";
 import renderFormErrors from "../../../../utils/renderFormErrors";
-import Loading from "../../../Shared/Loading";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 
 const EnterSecurityCode = () => {
 	const { formServerError, register, submitForm, errors, recoverValue } =
 		useEnterSecurityCode();
 
-	if (recoverValue === false) {
-		return <Navigate to="/recover/initiate" />;
-	}
-
-	if (recoverValue === undefined) {
-		return <Loading />;
-	}
-
+	if (!recoverValue) return <Navigate to="/recover" />;
 	return (
 		<div>
 			<ForgotPasswordNav />
@@ -50,7 +42,7 @@ const EnterSecurityCode = () => {
 				<p>We sent your code to:</p>
 				<p>{recoverValue}</p>
 				{formServerError && <div>{renderFormErrors(formServerError)}</div>}
-				<Link to="/recover/initiate">{"Didn't get a code"}</Link>
+				<Link to="/recover">{"Didn't get a code"}</Link>
 				<button type="button">
 					<Link to="/login">Cancel</Link>
 				</button>

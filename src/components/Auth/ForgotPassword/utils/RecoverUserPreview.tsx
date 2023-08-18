@@ -9,8 +9,7 @@ interface Props {
 const RecoverUserPreview = ({ user, includeNotYou = true }: Props) => {
 	return (
 		<div>
-			{/* TODO alt */}
-			{user.avatarUrl && <img src={user.avatarUrl} alt="User" />}
+			{user.avatarUrl && <img src={user.avatarUrl} alt="User avatar" />}
 			<p>{user.fullName}</p>
 			<p>Odin book {user.userType}</p>
 			{includeNotYou && (

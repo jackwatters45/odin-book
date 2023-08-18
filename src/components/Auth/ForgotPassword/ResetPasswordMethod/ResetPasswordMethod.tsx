@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
 import useResetPasswordMethod from "./useResetPasswordMethod";
 import renderFormErrors from "../../../../utils/renderFormErrors";
 import RecoverUserPreview from "../utils/RecoverUserPreview";
@@ -9,6 +10,7 @@ const ResetPasswordMethod = () => {
 	const { user, formServerError, register, submitForm, errors } =
 		useResetPasswordMethod();
 
+	if (!user) return <Navigate to={"/recover"} />;
 	return (
 		<div>
 			<ForgotPasswordNav />
@@ -18,16 +20,16 @@ const ResetPasswordMethod = () => {
 					<label htmlFor="userId">
 						How do you want to get the code to reset your password?
 					</label>
-					{user.email && (
+					{user?.email && (
 						<div>
 							<label htmlFor="email">
 								<p>Send code vie email</p>
-								<p>{blurEmail(user.email)}</p>
+								<p>{blurEmail(user?.email)}</p>
 							</label>
 							<input
 								type="radio"
 								id="email"
-								value={user.email}
+								value={user?.email}
 								{...register("userId", { required: "Please select a method" })}
 							/>
 						</div>
@@ -36,12 +38,12 @@ const ResetPasswordMethod = () => {
 						<div>
 							<label htmlFor="sms">
 								<p>Send code via SMS</p>
-								<p>{user.phoneNumber}</p>
+								<p>{user?.phoneNumber}</p>
 							</label>
 							<input
 								type="radio"
 								id="sms"
-								value={user.phoneNumber}
+								value={user?.phoneNumber}
 								{...register("userId", { required: "Please select a method" })}
 							/>
 						</div>

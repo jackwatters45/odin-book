@@ -6,7 +6,7 @@ export interface ValidationError {
 	location: string;
 }
 
-export interface FormError {
+export interface ResponseError {
 	message?: string;
 	errors?: ValidationError[];
 }

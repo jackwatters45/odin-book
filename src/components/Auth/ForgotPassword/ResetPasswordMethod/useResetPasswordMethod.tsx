@@ -1,8 +1,8 @@
 import { SubmitHandler } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router";
 
 import useMutateForm from "../../../../hooks/useMutationForm";
 import useFormCustom from "../../../../hooks/useFormCustom";
-import { useLocation, useNavigate } from "react-router";
 import { IUser } from "../../../../../types/IUser";
 
 interface ResetPasswordProps {
@@ -11,10 +11,10 @@ interface ResetPasswordProps {
 
 const useResetPasswordMethod = () => {
 	const navigate = useNavigate();
-	// gets user from previous page
+
 	const location = useLocation();
 	const data = location.state?.data;
-	const user = (data?.user as Partial<IUser>) || false;
+	const user = data?.user as Partial<IUser>;
 
 	const { mutate, formServerError } = useMutateForm<ResetPasswordProps>({
 		queryUrl: "auth/forgot-password",

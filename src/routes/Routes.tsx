@@ -17,6 +17,7 @@ import ResetPasswordMethod from "../components/Auth/ForgotPassword/ResetPassword
 import EnterSecurityCode from "../components/Auth/ForgotPassword/EnterSecurityCode";
 import FindYourAccount from "../components/Auth/ForgotPassword/FindYourAccount/FindYourAccount";
 import ChooseNewPassword from "../components/Auth/ForgotPassword/ChooseNewPassword";
+import ValidateResetLink from "../components/Auth/ForgotPassword/ValidateResetLink/ValidateResetLink";
 
 const RoutesComponent = () => {
 	return (
@@ -30,6 +31,7 @@ const RoutesComponent = () => {
 						<Route path="method" element={<ResetPasswordMethod />} />
 						<Route path="code" element={<EnterSecurityCode />} />
 						<Route path="password" element={<ChooseNewPassword />} />
+						<Route path="validate-link/:token" element={<ValidateResetLink />} />
 					</Route>
 				</Route>
 

@@ -5,7 +5,8 @@ import ForgotPasswordNav from "../ForgotPasswordNav";
 import useFindYourAccount from "./useFindYourAccount";
 
 const FindYourAccount = () => {
-	const { formServerError, register, submitForm, errors } = useFindYourAccount();
+	const { formServerError, register, submitForm, errors, linkError } =
+		useFindYourAccount();
 
 	return (
 		<div>
@@ -31,6 +32,7 @@ const FindYourAccount = () => {
 					{errors.username && (
 						<div className="inputErrors">{errors.username.message}</div>
 					)}
+					{linkError && <div className="inputErrors">{linkError}</div>}
 				</div>
 				<button type="button">
 					<Link to={"/login"}>Cancel</Link>
