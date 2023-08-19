@@ -24,7 +24,6 @@ const LoginAlternativeMethods = () => {
 							alt="login with facebook"
 						/>
 					</a>
-					Facebook
 				</button>
 				<button>
 					<a href={`${apiBaseUrl}/auth/login/google`}>
@@ -33,7 +32,6 @@ const LoginAlternativeMethods = () => {
 							alt="login with google"
 						/>
 					</a>
-					Google
 				</button>
 				<button>
 					<a href={`${apiBaseUrl}/auth/login/github`}>
@@ -42,7 +40,6 @@ const LoginAlternativeMethods = () => {
 							alt="login with github"
 						/>
 					</a>
-					Github
 				</button>
 			</div>
 			{errorMessage && <div className="formErrors">{errorMessage}</div>}

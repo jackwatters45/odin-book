@@ -56,3 +56,4 @@
 ## keep eye on
 
 - user birthday (age) make sure good
+- all forms involving email should be case insensitive/convert to lowercase

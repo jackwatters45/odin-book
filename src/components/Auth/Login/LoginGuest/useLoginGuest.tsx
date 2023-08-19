@@ -9,9 +9,7 @@ const useLoginGuest = () => {
 
 	const onClick = () => mutate({});
 
-	return {
-		onClick,
-	};
+	return { onClick };
 };
 
 export default useLoginGuest;

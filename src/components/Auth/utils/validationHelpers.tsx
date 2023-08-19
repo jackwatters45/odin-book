@@ -1,58 +1,54 @@
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
-export const isValidPhoneNumber = (phoneNumber: string) => {
-	const parsedNumber = parsePhoneNumberFromString(phoneNumber, "US");
-	return parsedNumber?.isValid();
-};
-
-export const isEmail = (value: string) => /\S+@\S+\.\S+/.test(value);
-
-export const isValidUsername = (value: string) => {
-	return isEmail(value) || isValidPhoneNumber(value);
-};
-
-const validateLength = (value: string) => {
-	// If the value is an email, check against email length constraints
-	if (isEmail(value)) {
-		if (value.length < 5) {
-			return "Email should be at least 5 characters long.";
-		}
-		if (value.length > 100) {
-			return "Email should be less than 100 characters long.";
-		}
-	}
-	// If the value is a number, check against number length constraints
-	else if (!isNaN(Number(value))) {
-		if (value.length < 10) {
-			return "Number should be at least 10 digits long.";
-		}
-		if (value.length > 15) {
-			return "Number should be less than 15 digits long.";
-		}
-	}
-	// If neither an email nor a number
-	else {
-		return "Please enter a valid email or number.";
+export const validateEmail = (email: string) => {
+	if (!email) {
+		return "Email address is required.";
 	}
 
-	return true; // If all validations pass
-};
-
-export const validateUsernameForReactHookForm = (value: string) => {
-	if (!isValidUsername(value)) {
-		return "Please enter a valid email or phone number.";
+	if (email.length > 255) {
+		return "Email address should be less than 255 characters.";
 	}
 
-	const lengthValidation = validateLength(value);
-	if (lengthValidation !== true) {
-		return lengthValidation;
+	if (email.length < 5) {
+		return "Email address should be at least 5 characters.";
+	}
+
+	if (email.startsWith(".") || email.endsWith(".")) {
+		return "Email address should not start or end with a dot.";
+	}
+
+	if (email.includes("..")) {
+		return "Email address should not have consecutive dots.";
+	}
+
+	const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+	if (!emailPattern.test(email)) {
+		return "Invalid email format.";
 	}
 
 	return true;
 };
 
-export const passwordPattern =
-	/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*?()])[A-Za-z\d!@#$%^&*?()]{8,}$/;
+export const validatePhoneNumber = (phoneNumber: string) => {
+	if (!phoneNumber) {
+		return "Phone number is required.";
+	}
+
+	const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber);
+
+	if (!parsedPhoneNumber || !parsedPhoneNumber.isValid()) {
+		return "Phone number is not valid.";
+	}
+
+	return true;
+};
+
+export const validateUsernameForReactHookForm = (value: string) => {
+	const type = value.includes("@") ? "email" : "phoneNumber";
+
+	return type === "email" ? validateEmail(value) : validatePhoneNumber(value);
+};
 
 export const validatePassword = (value: string) => {
 	// Check for minimum length
@@ -60,14 +56,29 @@ export const validatePassword = (value: string) => {
 		return "Password should be at least 8 characters long.";
 	}
 
-	// check for maximum length
+	// Check for maximum length
 	if (value.length > 50) {
-		return "Password should be at most 50 characters long.";
+		return "Password should be at most 100 characters long.";
 	}
 
-	// Check for the required pattern
-	if (!passwordPattern.test(value)) {
-		return "Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long";
+	// Check for at least one lowercase letter
+	if (!/[a-z]/.test(value)) {
+		return "Password must contain at least one lowercase letter.";
+	}
+
+	// Check for at least one uppercase letter
+	if (!/[A-Z]/.test(value)) {
+		return "Password must contain at least one uppercase letter.";
+	}
+
+	// Check for at least one number
+	if (!/\d/.test(value)) {
+		return "Password must contain at least one number.";
+	}
+
+	// Check for at least one special character
+	if (!/[!@#$%^&*?()]/.test(value)) {
+		return "Password must contain at least one special character (e.g. !@#$%^&*?()).";
 	}
 
 	return true; // If all validations pass

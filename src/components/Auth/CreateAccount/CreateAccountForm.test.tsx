@@ -60,7 +60,7 @@ describe("CreateAccountForm", () => {
 		const shortPassword = faker.internet.password({ length: 7 });
 
 		await user.type(screen.getByLabelText(/new password/i), shortPassword);
-		user.click(screen.getByRole("button", { name: /sign up/i }));
+		await user.click(screen.getByRole("button", { name: /sign up/i }));
 
 		expect(
 			await screen.findByText(/password should be at least 8 characters long/i),
@@ -68,14 +68,14 @@ describe("CreateAccountForm", () => {
 	});
 
 	it("shows error when input value(s) are too long", async () => {
-		const longPassword = faker.internet.password({ length: 51 });
+		const longPassword = faker.internet.password({ length: 101 });
 
 		await user.type(screen.getByLabelText(/new password/i), longPassword);
 
 		await user.click(screen.getByRole("button", { name: /sign up/i }));
 
 		expect(
-			await screen.findByText(/password should be at most 50 characters long/i),
+			await screen.findByText(/password should be at most 100 characters long/i),
 		).toBeInTheDocument();
 	});
 

@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 import renderFormErrors from "../../../../utils/renderFormErrors";
 import useLoginForm from "./useLoginForm";
-import { validateUsernameForReactHookForm } from "../../utils/validationHelpers";
+import {
+	validatePassword,
+	validateUsernameForReactHookForm,
+} from "../../utils/validationHelpers";
 
 interface LoginProps {
 	className?: string;
@@ -25,8 +28,8 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 					aria-invalid={!!errors.username}
 					autoComplete="username"
 					{...register("username", {
-						required: "Email or phone number is required",
-						validate: (value) => validateUsernameForReactHookForm(value),
+						required: "Email or phone number is required.",
+						validate: validateUsernameForReactHookForm,
 					})}
 				/>
 				{errors.username && <div className="inputErrors">{errors.username.message}</div>}
@@ -42,15 +45,8 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 					aria-invalid={!!errors.password}
 					autoComplete="current-password"
 					{...register("password", {
-						required: "Password is required",
-						minLength: {
-							value: 8,
-							message: "Password must be at least 8 characters",
-						},
-						maxLength: {
-							value: 50,
-							message: "Password can't exceed 50 characters",
-						},
+						required: "Password is required.",
+						validate: validatePassword,
 					})}
 				/>
 				{errors.password && <div className="inputErrors">{errors.password.message}</div>}
