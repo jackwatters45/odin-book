@@ -42,7 +42,7 @@ const EnterSecurityCode = () => {
 				<p>We sent your code to:</p>
 				<p>{recoverValue}</p>
 				{formServerError && <div>{renderFormErrors(formServerError)}</div>}
-				<Link to="/recover">{"Didn't get a code"}</Link>
+				<Link to="/recover/method">{"Didn't get a code"}</Link>
 				<button type="button">
 					<Link to="/login">Cancel</Link>
 				</button>

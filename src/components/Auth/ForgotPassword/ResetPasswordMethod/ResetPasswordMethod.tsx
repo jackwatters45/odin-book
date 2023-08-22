@@ -22,10 +22,7 @@ const ResetPasswordMethod = () => {
 					</label>
 					{user?.email && (
 						<div>
-							<label htmlFor="email">
-								<p>Send code vie email</p>
-								<p>{blurEmail(user?.email)}</p>
-							</label>
+							<label htmlFor="email">Send code via email {blurEmail(user?.email)}</label>
 							<input
 								type="radio"
 								id="email"
@@ -36,10 +33,7 @@ const ResetPasswordMethod = () => {
 					)}
 					{user.phoneNumber && (
 						<div>
-							<label htmlFor="sms">
-								<p>Send code via SMS</p>
-								<p>{user?.phoneNumber}</p>
-							</label>
+							<label htmlFor="sms">Send code via SMS {user?.phoneNumber}</label>
 							<input
 								type="radio"
 								id="sms"

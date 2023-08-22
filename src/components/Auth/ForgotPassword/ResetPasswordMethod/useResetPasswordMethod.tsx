@@ -25,7 +25,7 @@ const useResetPasswordMethod = () => {
 	const onSubmit: SubmitHandler<ResetPasswordProps> = (data) => {
 		if (data.userId === "password")
 			return navigate("/login", { state: { userId: user._id } });
-		mutate({ data: { ...data } });
+		mutate({ data });
 	};
 
 	const { register, submitForm, errors } = useFormCustom<ResetPasswordProps>({
