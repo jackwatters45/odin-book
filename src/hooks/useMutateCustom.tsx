@@ -1,40 +1,40 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { SetStateAction, useState } from "react";
-import { apiBaseUrl } from "../../config/envVariables";
+import { SetStateAction } from "react";
 import { useNavigate } from "react-router";
+
+import { apiBaseUrl } from "../../config/envVariables";
 import { ResponseError, ValidationError } from "../../types/ErrorInterfaces";
 
-interface useMutateForm {
+export interface useMutateFormProps {
 	queryUrl: string;
 	method: "POST" | "PUT" | "DELETE" | "GET";
 	successNavigate?: string;
 	queryKey?: string;
+	excludeData?: boolean;
 	includeCredentials?: boolean;
 	onError?: (err: SetStateAction<string | ValidationError[]>) => void;
 }
 
-interface MutationFnInputs<T> {
+export interface MutationFnInputs<T> {
 	data?: T;
 	params?: string;
 }
 
-const useMutateForm = <T,>({
+const useMutateCustom = <T,>({
 	queryUrl,
 	method,
 	successNavigate = "/",
 	queryKey,
-	includeCredentials = false,
+	excludeData = false,
+	includeCredentials = true,
 	onError,
-}: useMutateForm) => {
+}: useMutateFormProps) => {
 	const navigate = useNavigate();
 	const queryClient = useQueryClient();
-
-	const [formServerError, setFormServerError] = useState<string | ValidationError[]>("");
 
 	const { mutate } = useMutation({
 		mutationFn: async ({ data, params }: MutationFnInputs<T>) => {
 			const fullQuery = params ? `${queryUrl}/${params}` : queryUrl;
-
 			const res = await fetch(`${apiBaseUrl}/${fullQuery}`, {
 				method,
 				headers: { "Content-Type": "application/json" },
@@ -47,17 +47,20 @@ const useMutateForm = <T,>({
 			return json;
 		},
 		onSuccess: (data) => {
-			if (queryKey) queryClient.setQueryData([queryKey], data);
-			navigate(successNavigate, { state: { data } });
+			if (queryKey) {
+				if (excludeData) queryClient.resetQueries([queryKey]);
+				else queryClient.setQueryData([queryKey], data[queryKey]);
+			}
+
+			navigate(successNavigate, { state: { data } }); // TODO might need change
 		},
 		onError: (err: ResponseError) => {
 			// TODO might need some work depending on the error
 			if (onError) return onError(err.errors || err.message || "");
-			setFormServerError(err.message || err.errors || "");
 		},
 	});
 
-	return { mutate, formServerError, setFormServerError };
+	return { mutate };
 };
 
-export default useMutateForm;
+export default useMutateCustom;
