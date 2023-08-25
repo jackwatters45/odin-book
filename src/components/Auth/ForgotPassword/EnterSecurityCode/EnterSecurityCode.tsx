@@ -4,7 +4,7 @@ import renderFormErrors from "../../../../utils/renderFormErrors";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 
 const EnterSecurityCode = () => {
-	const { formServerError, register, submitForm, errors, recoverValue } =
+	const { formError, register, submitForm, errors, recoverValue } =
 		useEnterSecurityCode();
 
 	if (!recoverValue) return <Navigate to="/recover" />;
@@ -41,7 +41,7 @@ const EnterSecurityCode = () => {
 				{errors && <div>{errors.code?.message}</div>}
 				<p>We sent your code to:</p>
 				<p>{recoverValue}</p>
-				{formServerError && <div>{renderFormErrors(formServerError)}</div>}
+				{formError && <div>{renderFormErrors(formError)}</div>}
 				<Link to="/recover/method">{"Didn't get a code"}</Link>
 				<button type="button">
 					<Link to="/login">Cancel</Link>

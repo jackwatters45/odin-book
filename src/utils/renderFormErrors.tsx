@@ -1,9 +1,9 @@
-import { ValidationError } from "../hooks/useMutationForm";
+import { ValidationError } from "../../types/ErrorInterfaces";
 
-const renderFormErrors = (formServerError: string | ValidationError[]) => {
-	return Array.isArray(formServerError)
-		? formServerError.map((error) => <div key={error.msg}>{error.msg}</div>)
-		: formServerError;
+const renderFormErrors = (formError: string | ValidationError[]) => {
+	return Array.isArray(formError)
+		? formError.map((error) => <div key={error.msg}>{error.msg}</div>)
+		: formError;
 };
 
 export default renderFormErrors;

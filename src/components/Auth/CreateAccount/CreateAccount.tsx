@@ -8,7 +8,7 @@ import renderFormErrors from "../../../utils/renderFormErrors";
 
 const CreateAccount = () => {
 	const {
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,
@@ -249,7 +249,7 @@ const CreateAccount = () => {
 					</div>
 				)}
 				<button type="submit">Sign Up</button>
-				{formServerError && <div>{renderFormErrors(formServerError)}</div>}
+				{formError && <div>{renderFormErrors(formError)}</div>}
 			</form>
 		</div>
 	);

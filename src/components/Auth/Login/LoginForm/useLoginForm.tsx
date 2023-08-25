@@ -1,6 +1,4 @@
-import { SubmitHandler } from "react-hook-form";
-import useFormCustom from "../../../../hooks/useFormCustom";
-import useMutateForm from "../../../../hooks/useMutationForm";
+import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
 
 interface LoginFormInputs {
 	username: string;
@@ -8,20 +6,19 @@ interface LoginFormInputs {
 }
 
 const useLoginForm = () => {
-	const { mutate, formServerError } = useMutateForm<LoginFormInputs>({
-		queryKey: "user",
-		queryUrl: "auth/login",
-		method: "POST",
-	});
+	const dataMapper: DataMapper<LoginFormInputs> = (data) => ({ data });
 
-	const onSubmit: SubmitHandler<LoginFormInputs> = (data) => mutate({ data });
-
-	const { register, submitForm, errors } = useFormCustom<LoginFormInputs>({
-		onSubmit,
+	const { register, submitForm, errors, formError } = useFormCustom<LoginFormInputs>({
+		dataMapper,
+		mutateOptions: {
+			queryKey: "currentUser",
+			queryUrl: "auth/login",
+			method: "POST",
+		},
 	});
 
 	return {
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,

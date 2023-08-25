@@ -1,4 +1,7 @@
-export const getDaysInMonth = (month: number, year: number) => {
+export const getDaysInMonth = (month?: number, year?: number) => {
+	if (month === undefined || year === undefined)
+		throw new Error("Month and year are required");
+
 	const nextMonth = new Date(year, month + 1, 1);
 	nextMonth.setDate(nextMonth.getDate() - 1);
 	return nextMonth.getDate();

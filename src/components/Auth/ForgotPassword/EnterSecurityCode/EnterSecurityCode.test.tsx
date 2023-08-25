@@ -31,6 +31,7 @@ describe("<ResetPasswordMethod />", () => {
 				<Route path="/recover">
 					<Route path="method" element={<>reset password method</>} />
 					<Route path="code" element={<EnterSecurityCode />} />
+					<Route path="password" element={<>reset password</>} />
 				</Route>
 			</TestEnvironmentWrapper>,
 		);
@@ -138,6 +139,8 @@ describe("<ResetPasswordMethod />", () => {
 		await user.type(input, "123456");
 
 		await user.click(screen.getByText("Continue"));
+
+		expect(screen.getByText("reset password")).toBeInTheDocument();
 	});
 
 	it("shows error when code is empty", async () => {

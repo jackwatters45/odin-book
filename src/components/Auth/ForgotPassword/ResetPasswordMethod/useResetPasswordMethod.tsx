@@ -1,8 +1,6 @@
-import { SubmitHandler } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
 
-import useMutateForm from "../../../../hooks/useMutationForm";
-import useFormCustom from "../../../../hooks/useFormCustom";
+import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
 import { IUser } from "../../../../../types/IUser";
 
 interface ResetPasswordProps {
@@ -16,25 +14,28 @@ const useResetPasswordMethod = () => {
 	const data = location.state?.data;
 	const user = data?.user as Partial<IUser>;
 
-	const { mutate, formServerError } = useMutateForm<ResetPasswordProps>({
-		queryUrl: "auth/forgot-password",
-		method: "POST",
-		successNavigate: "/recover/code",
-	});
-
-	const onSubmit: SubmitHandler<ResetPasswordProps> = (data) => {
+	const onSubmit = (data: ResetPasswordProps): ResetPasswordProps | void => {
 		if (data.userId === "password")
 			return navigate("/login", { state: { userId: user._id } });
-		mutate({ data });
+
+		return data;
 	};
 
-	const { register, submitForm, errors } = useFormCustom<ResetPasswordProps>({
+	const dataMapper: DataMapper<ResetPasswordProps> = (data) => ({ data });
+
+	const { register, submitForm, errors, formError } = useFormCustom<ResetPasswordProps>({
+		dataMapper,
 		onSubmit,
+		mutateOptions: {
+			queryUrl: "auth/forgot-password",
+			method: "POST",
+			successNavigate: "/recover/code",
+		},
 	});
 
 	return {
 		user,
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,

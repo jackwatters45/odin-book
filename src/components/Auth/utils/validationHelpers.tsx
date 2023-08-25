@@ -35,7 +35,7 @@ export const validatePhoneNumber = (phoneNumber: string) => {
 		return "Phone number is required.";
 	}
 
-	const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber);
+	const parsedPhoneNumber = parsePhoneNumberFromString(phoneNumber, "US");
 
 	if (!parsedPhoneNumber || !parsedPhoneNumber.isValid()) {
 		return "Phone number is not valid.";
@@ -45,6 +45,10 @@ export const validatePhoneNumber = (phoneNumber: string) => {
 };
 
 export const validateUsernameForReactHookForm = (value: string) => {
+	if (!value) {
+		return "Email or phone number is required.";
+	}
+
 	const type = value.includes("@") ? "email" : "phoneNumber";
 
 	return type === "email" ? validateEmail(value) : validatePhoneNumber(value);

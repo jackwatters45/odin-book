@@ -1,7 +1,5 @@
-import { SubmitHandler } from "react-hook-form";
 import { useLocation } from "react-router";
 
-import useMutateForm from "../../../../hooks/useMutationForm";
 import useFormCustom from "../../../../hooks/useFormCustom";
 
 interface FindYourAccountInputs {
@@ -13,20 +11,20 @@ const useFindYourAccount = () => {
 	const data = location.state?.data;
 	const linkError = data?.linkError || false;
 
-	const { mutate, formServerError } = useMutateForm<FindYourAccountInputs>({
-		queryUrl: "auth/find-account",
-		method: "POST",
-		successNavigate: "/recover/method",
-	});
+	const dataMapper = (data: FindYourAccountInputs) => ({ data });
 
-	const onSubmit: SubmitHandler<FindYourAccountInputs> = (data) => mutate({ data });
-
-	const { register, submitForm, errors } = useFormCustom<FindYourAccountInputs>({
-		onSubmit,
-	});
+	const { register, submitForm, errors, formError } =
+		useFormCustom<FindYourAccountInputs>({
+			dataMapper,
+			mutateOptions: {
+				queryUrl: "auth/find-account",
+				method: "POST",
+				successNavigate: "/recover/method",
+			},
+		});
 
 	return {
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,

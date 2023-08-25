@@ -1,8 +1,8 @@
-import useMutateForm from "../../../../hooks/useMutationForm";
+import useMutateCustom from "../../../../hooks/useMutateCustom";
 
 const useLoginGuest = () => {
-	const { mutate } = useMutateForm({
-		queryKey: "user",
+	const { mutate } = useMutateCustom({
+		queryKey: "currentUser",
 		queryUrl: "auth/login-guest",
 		method: "POST",
 	});

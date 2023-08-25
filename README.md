@@ -1,29 +1,13 @@
 # vite-react-ts-linting
 
-## next
-
-- tests
-
-- commit
-
-- current user
-  - get working
-  - make sure everything that sets it is working
-
-### after
+## after
 
 - look at facebook (add more shit below)
-- nav
-  - logged out
-  - logged in
-    - logo
-    - search
-    - navigate
-    - notifications
-    - profile
 - user
+
   - profile
   - settings
+
 - dashboard
 - post
 
@@ -48,10 +32,15 @@
 
 ## eventually
 
+- actual search
+- actual theme for all the grey stuff
 - user can only view login etc but can login as guest
 - business accounts
 - icon
 - figure out better way to share types
+- make phone number better (not just american numbers)
+- right: 0 -> 16 for modal
+- best way to upload shit to npm and build for prod
 
 ## keep eye on
 

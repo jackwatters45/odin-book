@@ -7,7 +7,7 @@ import useChooseNewPassword from "./useChooseNewPassword";
 const ChooseNewPassword = () => {
 	const {
 		token,
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,
@@ -52,7 +52,7 @@ const ChooseNewPassword = () => {
 					</button>
 					<button type="submit">Continue</button>
 				</div>
-				{formServerError && <div>{renderFormErrors(formServerError)}</div>}
+				{formError && <div>{renderFormErrors(formError)}</div>}
 			</form>
 		</div>
 	);

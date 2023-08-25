@@ -39,11 +39,8 @@ describe("LoginForm", () => {
 	it("shows error when phone number is not valid", async () => {
 		const user = userEvent.setup();
 
-		const fakePhoneNumber = faker.phone.number();
-		await user.type(
-			screen.getByLabelText(/email or phone number/i),
-			fakePhoneNumber + "1",
-		);
+		const fakePhoneNumber = faker.phone.number("##########") + "123";
+		await user.type(screen.getByLabelText(/email or phone number/i), fakePhoneNumber);
 
 		const fakePassword = "Password1$";
 		await user.type(screen.getByLabelText(/password/i), fakePassword);

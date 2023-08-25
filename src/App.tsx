@@ -1,16 +1,24 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "styled-components";
 
+import GlobalStyle from "./styles/GlobalStyle";
 import AppInitializer from "./AppInitializer";
+import { useColorTheme } from "./styles/useColorTheme";
+import "./styles/reset.css";
 
 function App() {
 	const queryClient = new QueryClient();
 
+	const colorTheme = useColorTheme();
+
 	return (
 		<QueryClientProvider client={queryClient}>
-			<AppInitializer />
-			{/* TODO uncomment when dealing more with fetches */}
-			{/* <ReactQueryDevtools initialIsOpen={true} /> */}
+			<ThemeProvider theme={colorTheme}>
+				<AppInitializer />
+				<GlobalStyle />
+				<ReactQueryDevtools initialIsOpen={true} />
+			</ThemeProvider>
 		</QueryClientProvider>
 	);
 }

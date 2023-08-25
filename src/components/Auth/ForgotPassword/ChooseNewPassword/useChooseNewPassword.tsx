@@ -1,6 +1,5 @@
-import { SubmitHandler } from "react-hook-form";
-import useFormCustom from "../../../../hooks/useFormCustom";
-import useMutateForm from "../../../../hooks/useMutationForm";
+import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
+import useMutateCustom from "../../../../hooks/useMutateCustom";
 import { useLocation } from "react-router";
 import { useState } from "react";
 
@@ -13,29 +12,26 @@ const useChooseNewPassword = () => {
 	const data = location.state?.data;
 	const token = data?.token;
 
-	const { mutate, formServerError, setFormServerError } =
-		useMutateForm<ChooseNewPasswordInputs>({
-			queryUrl: "auth/update-password",
-			method: "POST",
-		});
-
-	const onSubmit: SubmitHandler<ChooseNewPasswordInputs> = (data) => {
-		mutate({ data, params: token });
-	};
-
-	const { register, submitForm, errors } = useFormCustom<ChooseNewPasswordInputs>({
-		onSubmit,
+	const dataMapper: DataMapper<ChooseNewPasswordInputs> = (data) => ({
+		data,
+		params: token,
 	});
 
-	const { mutate: mutateUser } = useMutateForm({
+	const { register, submitForm, errors, formError, setFormError } =
+		useFormCustom<ChooseNewPasswordInputs>({
+			dataMapper,
+			mutateOptions: { queryUrl: "auth/update-password", method: "POST" },
+		});
+
+	const { mutate: mutateUser } = useMutateCustom({
 		queryUrl: "auth/login/forgot-password",
 		method: "POST",
-		queryKey: "user",
-		onError: setFormServerError,
+		queryKey: "currentUser",
+		onError: setFormError,
 	});
 
 	const handleSkip = () => {
-		if (!token) return setFormServerError("No token found");
+		if (!token) return setFormError("No token found");
 		mutateUser({ data: { token } });
 	};
 
@@ -44,7 +40,7 @@ const useChooseNewPassword = () => {
 
 	return {
 		token,
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,

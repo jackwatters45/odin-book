@@ -1,70 +1,62 @@
-import { SubmitHandler } from "react-hook-form";
+import useFormCustom, { DataMapper } from "../../../hooks/useFormCustom";
 
-import useMutateForm from "../../../hooks/useMutationForm";
-import useFormCustom from "../../../hooks/useFormCustom";
-
-interface CreateAccountBase {
+interface CreateAccountInputs {
 	firstName: string;
 	lastName: string;
 	username: string;
 	password: string;
 	gender: string;
 	pronouns?: string;
-}
-
-export interface CreateAccountInputs extends CreateAccountBase {
-	month: number;
-	day: number;
-	year: number;
+	month?: number;
+	day?: number;
+	year?: number;
 	genderCustom?: string;
-}
-
-interface CreateAccountUserFields extends CreateAccountBase {
-	birthday: Date;
+	birthday?: Date;
 }
 
 const useCreateAccountForm = () => {
-	const { mutate, formServerError, setFormServerError } =
-		useMutateForm<CreateAccountUserFields>({
-			queryKey: "user",
-			queryUrl: "auth/signup",
-			method: "POST",
-		});
-
-	const onSubmit: SubmitHandler<CreateAccountInputs> = (data) => {
+	const onSubmit = (data: CreateAccountInputs): CreateAccountInputs | string => {
 		const { genderCustom, day, month, year, pronouns, ...rest } = data;
 
+		if (!day || !month || !year) return "Invalid birthday";
 		const birthday = new Date(year, month, day);
-		if (isNaN(birthday.getTime())) {
-			setFormServerError("Invalid birthday");
-		}
+		if (isNaN(birthday.getTime())) return "Invalid birthday";
 
 		const userWithBirthday = { ...rest, birthday };
 
-		if (data.gender !== "custom" || !data.genderCustom)
-			return mutate({ data: userWithBirthday });
-		mutate({
-			data: {
-				...userWithBirthday,
-				gender: genderCustom || "custom",
-				pronouns: pronouns || undefined,
-			},
-		});
+		if (data.gender !== "custom" || !data.genderCustom) {
+			return userWithBirthday;
+		}
+
+		return {
+			...userWithBirthday,
+			gender: genderCustom || "custom",
+			pronouns: pronouns || undefined,
+		};
 	};
 
-	const { register, submitForm, errors, watch } = useFormCustom<CreateAccountInputs>({
-		onSubmit,
-		options: {
-			mode: "onBlur",
-		},
-	});
+	const dataMapper: DataMapper<CreateAccountInputs> = (data) => ({ data });
+
+	const { register, submitForm, errors, watch, formError } =
+		useFormCustom<CreateAccountInputs>({
+			dataMapper,
+			onSubmit,
+			formOptions: {
+				mode: "onBlur",
+			},
+			mutateOptions: {
+				queryKey: "currentUser",
+				queryUrl: "auth/signup",
+				method: "POST",
+			},
+		});
 
 	const selectedGenderOption = watch("gender");
 	const selectedYear = watch("year", new Date().getFullYear());
 	const selectedMonth = watch("month", new Date().getMonth() + 1);
 
 	return {
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,

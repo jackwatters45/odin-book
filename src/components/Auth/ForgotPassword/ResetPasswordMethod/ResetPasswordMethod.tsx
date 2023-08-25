@@ -7,8 +7,7 @@ import blurEmail from "./utils/blurEmail";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 
 const ResetPasswordMethod = () => {
-	const { user, formServerError, register, submitForm, errors } =
-		useResetPasswordMethod();
+	const { user, formError, register, submitForm, errors } = useResetPasswordMethod();
 
 	if (!user) return <Navigate to={"/recover"} />;
 	return (
@@ -54,7 +53,7 @@ const ResetPasswordMethod = () => {
 					{errors.userId && <div>{errors.userId.message}</div>}
 				</div>
 				<RecoverUserPreview user={user} includeNotYou={false} />
-				{formServerError && <p>{renderFormErrors(formServerError)}</p>}
+				{formError && <p>{renderFormErrors(formError)}</p>}
 				<button type="button">
 					<Link to="/recover">Not you?</Link>
 				</button>

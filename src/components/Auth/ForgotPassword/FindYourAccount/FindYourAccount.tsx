@@ -5,8 +5,7 @@ import ForgotPasswordNav from "../ForgotPasswordNav";
 import useFindYourAccount from "./useFindYourAccount";
 
 const FindYourAccount = () => {
-	const { formServerError, register, submitForm, errors, linkError } =
-		useFindYourAccount();
+	const { formError, register, submitForm, errors, linkError } = useFindYourAccount();
 
 	return (
 		<div>
@@ -38,9 +37,7 @@ const FindYourAccount = () => {
 					<Link to={"/login"}>Cancel</Link>
 				</button>
 				<button type="submit">Search</button>
-				{formServerError && (
-					<div className="formErrors">{renderFormErrors(formServerError)}</div>
-				)}
+				{formError && <div className="formErrors">{renderFormErrors(formError)}</div>}
 			</form>
 		</div>
 	);

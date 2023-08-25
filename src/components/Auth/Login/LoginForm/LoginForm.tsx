@@ -13,7 +13,7 @@ interface LoginProps {
 }
 
 const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
-	const { formServerError, register, submitForm, errors } = useLoginForm();
+	const { formError, register, submitForm, errors } = useLoginForm();
 
 	return (
 		<form method="POST" onSubmit={submitForm} className={className}>
@@ -28,7 +28,6 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 					aria-invalid={!!errors.username}
 					autoComplete="username"
 					{...register("username", {
-						required: "Email or phone number is required.",
 						validate: validateUsernameForReactHookForm,
 					})}
 				/>
@@ -52,9 +51,7 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 				{errors.password && <div className="inputErrors">{errors.password.message}</div>}
 			</div>
 			<button type="submit">Login</button>
-			{formServerError && (
-				<div className="formErrors">{renderFormErrors(formServerError)}</div>
-			)}
+			{formError && <div className="formErrors">{renderFormErrors(formError)}</div>}
 			<Link to={"/recover"} className="forgotLink">
 				Forgot {forgotText}
 			</Link>

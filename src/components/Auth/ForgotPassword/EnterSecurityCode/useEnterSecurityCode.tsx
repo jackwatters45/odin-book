@@ -1,6 +1,4 @@
-import { SubmitHandler } from "react-hook-form";
 import useFormCustom from "../../../../hooks/useFormCustom";
-import useMutateForm from "../../../../hooks/useMutationForm";
 import { useLocation } from "react-router";
 
 interface SecurityCodeInputs {
@@ -12,22 +10,19 @@ const useEnterSecurityCode = () => {
 	const data = location.state?.data;
 	const recoverValue = data?.userId;
 
-	const { mutate, formServerError } = useMutateForm<SecurityCodeInputs>({
-		queryUrl: "auth/reset-password/code",
-		method: "GET",
-		successNavigate: "/recover/password",
-	});
+	const dataMapper = (data: SecurityCodeInputs) => ({ params: data.code });
 
-	const onSubmit: SubmitHandler<SecurityCodeInputs> = (data) => {
-		mutate({ params: data.code });
-	};
-
-	const { register, submitForm, errors } = useFormCustom<SecurityCodeInputs>({
-		onSubmit,
+	const { register, submitForm, errors, formError } = useFormCustom<SecurityCodeInputs>({
+		dataMapper,
+		mutateOptions: {
+			queryUrl: "auth/reset-password/code",
+			method: "GET",
+			successNavigate: "/recover/password",
+		},
 	});
 
 	return {
-		formServerError,
+		formError,
 		register,
 		submitForm,
 		errors,
