@@ -77,6 +77,11 @@ const GlobalStyle = createGlobalStyle`
   input[type='submit'] {
     cursor: pointer;
   }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
 `;
 
 export default GlobalStyle;

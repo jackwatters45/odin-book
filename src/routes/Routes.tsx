@@ -15,9 +15,10 @@ import Dashboard from "../components/Dashboard";
 
 import ResetPasswordMethod from "../components/Auth/ForgotPassword/ResetPasswordMethod";
 import EnterSecurityCode from "../components/Auth/ForgotPassword/EnterSecurityCode";
-import FindYourAccount from "../components/Auth/ForgotPassword/FindYourAccount/FindYourAccount";
+import FindYourAccount from "../components/Auth/ForgotPassword/FindYourAccount";
 import ChooseNewPassword from "../components/Auth/ForgotPassword/ChooseNewPassword";
 import ValidateResetLink from "../components/Auth/ForgotPassword/ValidateResetLink/ValidateResetLink";
+import UserProfile from "../components/User/UserProfile";
 
 const RoutesComponent = () => {
 	return (
@@ -35,12 +36,21 @@ const RoutesComponent = () => {
 					</Route>
 				</Route>
 
-				<Route path="/" element={<Layout />}>
-					<Route index element={<Dashboard />} />
+				<Route element={<LoggedInRoute />}>
+					<Route path="/" element={<Layout />}>
+						<Route index element={<Dashboard />} />
+						<Route path="/user/:id" element={<UserProfile />}>
+							<Route index element={<>Posts</>} />
+							<Route path="about" element={<>About</>} />
+							<Route path="friends" element={<>Friends</>} />
+							<Route path="photos" element={<h1>Photos</h1>} />
+							<Route path="videos" element={<>Videos</>} />
+							<Route path="check-ins" element={<>Check-ins</>} />
+							<Route path="more" element={<>more</>} />
+						</Route>
 
-					<Route element={<LoggedInRoute />}></Route>
-
-					<Route element={<AdminRoute />}></Route>
+						<Route element={<AdminRoute />}></Route>
+					</Route>
 				</Route>
 
 				<Route path="/unauthorized" element={<Unauthorized />} />

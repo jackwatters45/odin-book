@@ -1,12 +1,10 @@
 # vite-react-ts-linting
 
-## after
-
-- look at facebook (add more shit below)
 - user
-
   - profile
   - settings
+
+## after
 
 - dashboard
 - post

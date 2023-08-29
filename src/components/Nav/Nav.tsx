@@ -1,4 +1,4 @@
-import { NavButton, NavLink } from "@jackwatters/simple-nav";
+import { NavLink } from "@jackwatters/simple-nav";
 import Icon from "@mdi/react";
 import {
 	mdiMagnify,
@@ -21,6 +21,8 @@ import {
 	NavLinkCenterColumn,
 	IconCircleBackground,
 	StyledDropdown,
+	StyledDropdownLink,
+	StyledDropdownButton,
 } from "./Nav.styles";
 import { Navigate } from "react-router";
 
@@ -96,19 +98,19 @@ const NavComponent = () => {
 					dataTestid="profile-dropdown"
 				>
 					{/* TODO fancy profile thing */}
-					<NavLink
-						to="/profile"
+					<StyledDropdownLink
+						to={`/user/${user?._id}/`}
 						text="Profile"
 						icon={<IconCircleBackground path={mdiAccount} size={1.5} />}
 						dataTestid="profile-button"
 					/>
-					<NavLink
+					<StyledDropdownLink
 						to="/settings"
 						text="Settings"
 						icon={<IconCircleBackground path={mdiCog} size={1.5} />}
 						dataTestid="settings-button"
 					/>
-					<NavButton
+					<StyledDropdownButton
 						onClick={handleClickLogout}
 						text="Log out"
 						icon={<IconCircleBackground path={mdiLogoutVariant} size={1.5} />}

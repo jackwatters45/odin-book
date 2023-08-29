@@ -14,6 +14,7 @@ const Search = () => {
 	// TODO actual fetch
 	const { register, data, searchQuery } = useSearch();
 
+	// TODO when empty no search for instead "No recent searches" text
 	return (
 		<div>
 			<SearchInputContainer>

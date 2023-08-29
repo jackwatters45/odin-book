@@ -48,6 +48,7 @@ const useCreateAccountForm = () => {
 				queryKey: "currentUser",
 				queryUrl: "auth/signup",
 				method: "POST",
+				successNavigate: "/",
 			},
 		});
 

@@ -5,6 +5,7 @@ const useLoginGuest = () => {
 		queryKey: "currentUser",
 		queryUrl: "auth/login-guest",
 		method: "POST",
+		successNavigate: "/",
 	});
 
 	const onClick = () => mutate({});

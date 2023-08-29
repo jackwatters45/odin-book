@@ -10,6 +10,7 @@ const useLogout = () => {
 		queryUrl: "auth/logout",
 		method: "POST",
 		excludeData: true,
+		successNavigate: "/login",
 	});
 
 	const logout = () => mutate({});

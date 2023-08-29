@@ -7,7 +7,7 @@ import useMutateCustom, { MutationFnInputs, useMutateFormProps } from "./useMuta
 /**
  * The Mapper function takers in data of type T and return it formatted as MutationFnInputs<T> for use in the mutate function
  */
-export type DataMapper<T> = (data: T) => MutationFnInputs<T>;
+export type DataMapper<T = undefined> = (data: T) => MutationFnInputs<T>;
 
 /**
  * The Validator function takes in data of type T and returns a string or updated data of type T
@@ -28,6 +28,8 @@ export const formatData = <T,>(
  * @param formOptions The options for the useForm hook
  * @param mutateOptions The options for the useMutateForm hook
  */
+
+export type FormError = string | ValidationError[];
 interface useFormCustomProps<T extends FieldValues> {
 	dataMapper: DataMapper<T>;
 	onSubmit?: DataValidator<T>;
@@ -47,10 +49,7 @@ const useFormCustom = <T extends FieldValues>({
 }: useFormCustomProps<T>) => {
 	const [formError, setFormError] = useState<string | ValidationError[]>("");
 
-	const { mutate } = useMutateCustom<T>({
-		onError: setFormError,
-		...mutateOptions,
-	});
+	const { mutate } = useMutateCustom<T>({ ...mutateOptions });
 
 	const {
 		register,

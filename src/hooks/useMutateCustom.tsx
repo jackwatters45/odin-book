@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router";
 
 import { apiBaseUrl } from "../../config/envVariables";
@@ -12,7 +12,7 @@ export interface useMutateFormProps {
 	queryKey?: string;
 	excludeData?: boolean;
 	includeCredentials?: boolean;
-	onError?: (err: SetStateAction<string | ValidationError[]>) => void;
+	onError?: Dispatch<SetStateAction<string | ValidationError[]>>;
 }
 
 export interface MutationFnInputs<T> {
@@ -23,7 +23,7 @@ export interface MutationFnInputs<T> {
 const useMutateCustom = <T,>({
 	queryUrl,
 	method,
-	successNavigate = "/",
+	successNavigate,
 	queryKey,
 	excludeData = false,
 	includeCredentials = true,
@@ -32,7 +32,7 @@ const useMutateCustom = <T,>({
 	const navigate = useNavigate();
 	const queryClient = useQueryClient();
 
-	const { mutate } = useMutation({
+	const { mutate, error } = useMutation({
 		mutationFn: async ({ data, params }: MutationFnInputs<T>) => {
 			const fullQuery = params ? `${queryUrl}/${params}` : queryUrl;
 			const res = await fetch(`${apiBaseUrl}/${fullQuery}`, {
@@ -52,15 +52,18 @@ const useMutateCustom = <T,>({
 				else queryClient.setQueryData([queryKey], data[queryKey]);
 			}
 
-			navigate(successNavigate, { state: { data } }); // TODO might need change
+			if (successNavigate) navigate(successNavigate, { state: { data } });
 		},
 		onError: (err: ResponseError) => {
-			// TODO might need some work depending on the error
-			if (onError) return onError(err.errors || err.message || "");
+			if (!onError) return;
+
+			if (err?.message) return onError(err.message);
+			else if (err?.errors) return onError(err.errors);
+			else return onError("An unexpected error occurred");
 		},
 	});
 
-	return { mutate };
+	return { mutate, error };
 };
 
 export default useMutateCustom;

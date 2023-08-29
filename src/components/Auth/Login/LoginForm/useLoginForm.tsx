@@ -14,6 +14,7 @@ const useLoginForm = () => {
 			queryKey: "currentUser",
 			queryUrl: "auth/login",
 			method: "POST",
+			successNavigate: "/",
 		},
 	});
 

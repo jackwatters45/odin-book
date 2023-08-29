@@ -28,7 +28,7 @@
 		"*.{md,html,css,json,yml}": "prettier --write"
 	},
 	"dependencies": {
-		"@jackwatters/simple-nav": "^1.2.16",
+		"@jackwatters/simple-nav": "^1.2.17",
 		"@mdi/js": "^7.2.96",
 		"@mdi/react": "^1.6.1",
 		"@tanstack/react-query": "^4.29.15",

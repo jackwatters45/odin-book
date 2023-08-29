@@ -10,3 +10,5 @@ export interface ResponseError {
 	message?: string;
 	errors?: ValidationError[];
 }
+
+export type FormError = string | ValidationError[];

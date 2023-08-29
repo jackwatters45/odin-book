@@ -20,7 +20,12 @@ const useChooseNewPassword = () => {
 	const { register, submitForm, errors, formError, setFormError } =
 		useFormCustom<ChooseNewPasswordInputs>({
 			dataMapper,
-			mutateOptions: { queryUrl: "auth/update-password", method: "POST" },
+			mutateOptions: {
+				queryUrl: "auth/update-password",
+				method: "POST",
+				queryKey: "currentUser",
+				successNavigate: "/",
+			},
 		});
 
 	const { mutate: mutateUser } = useMutateCustom({
@@ -28,6 +33,7 @@ const useChooseNewPassword = () => {
 		method: "POST",
 		queryKey: "currentUser",
 		onError: setFormError,
+		successNavigate: "/",
 	});
 
 	const handleSkip = () => {
