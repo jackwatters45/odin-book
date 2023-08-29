@@ -6,6 +6,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import AppInitializer from "./AppInitializer";
 import { useColorTheme } from "./styles/useColorTheme";
 import "./styles/reset.css";
+import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 
 function App() {
 	const queryClient = new QueryClient();
@@ -15,9 +16,11 @@ function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ThemeProvider theme={colorTheme}>
-				<AppInitializer />
-				<GlobalStyle />
-				<ReactQueryDevtools initialIsOpen={true} />
+				<ErrorProvider>
+					<AppInitializer />
+					<GlobalStyle />
+					<ReactQueryDevtools initialIsOpen={true} />
+				</ErrorProvider>
 			</ThemeProvider>
 		</QueryClientProvider>
 	);

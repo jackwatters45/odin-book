@@ -36,3 +36,12 @@ export const StyledAvatarEditButton = styled.button`
 	right: 27px;
 	transform: translate(50%, 50%);
 `;
+
+export const StyledAvatarError = styled.span`
+	position: absolute;
+	color: red;
+	font-weight: 600;
+	font-size: 0.9rem;
+	bottom: 0;
+	margin-bottom: -1rem;
+`;

@@ -1,7 +1,8 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef } from "react";
 import { useParams } from "react-router";
+
 import useMutateCustom from "../../../../../hooks/useMutateCustom";
-import { ValidationError } from "../../../../../../types/ErrorInterfaces";
+import useError from "../../../../Errors/useError";
 
 const useProfileAvatar = () => {
 	const { id } = useParams();
@@ -9,7 +10,7 @@ const useProfileAvatar = () => {
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const handleUploadClick = () => fileInputRef.current?.click();
 
-	const [error, setError] = useState<string | ValidationError[]>("");
+	const { setError } = useError();
 
 	const { mutate } = useMutateCustom({
 		queryUrl: `users/updateUser/${id}/profile-photo`,
@@ -27,7 +28,6 @@ const useProfileAvatar = () => {
 		fileInputRef,
 		handleUploadClick,
 		handleFileChange,
-		error,
 	};
 };
 

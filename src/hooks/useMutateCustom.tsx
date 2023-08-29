@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router";
 
 import { apiBaseUrl } from "../../config/envVariables";
-import { ResponseError, ValidationError } from "../../types/ErrorInterfaces";
+import { FormError, ResponseError } from "../../types/ErrorInterfaces";
 
 export interface useMutateFormProps {
 	queryUrl: string;
@@ -12,7 +12,7 @@ export interface useMutateFormProps {
 	queryKey?: string;
 	excludeData?: boolean;
 	includeCredentials?: boolean;
-	onError?: Dispatch<SetStateAction<string | ValidationError[]>>;
+	onError?: Dispatch<SetStateAction<FormError | undefined>>;
 }
 
 export interface MutationFnInputs<T> {

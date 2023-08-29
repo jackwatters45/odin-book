@@ -9,14 +9,13 @@ import {
 	StyledAvatarImage,
 	StyledAvatarEditButton,
 } from "./ProfileAvatar.styles";
-import renderFormErrors from "../../../../../utils/renderFormErrors";
 
 interface ProfileAvatarProps {
 	avatarUrl?: string;
 }
 
 const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
-	const { fileInputRef, handleUploadClick, handleFileChange, error } = useProfileAvatar();
+	const { fileInputRef, handleUploadClick, handleFileChange } = useProfileAvatar();
 
 	return (
 		<StyledAvatarContainer>
@@ -41,7 +40,6 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 					/>
 				</StyledAvatarEditButton>
 			</StyledAvatarImageBackground>
-			{error && <span>{renderFormErrors(error)}</span>}
 		</StyledAvatarContainer>
 	);
 };

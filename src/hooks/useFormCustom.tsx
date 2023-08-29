@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DefaultValues, FieldValues, useForm } from "react-hook-form";
 
-import { ValidationError } from "../../types/ErrorInterfaces";
+import { FormError } from "../../types/ErrorInterfaces";
 import useMutateCustom, { MutationFnInputs, useMutateFormProps } from "./useMutateCustom";
 
 /**
@@ -29,7 +29,6 @@ export const formatData = <T,>(
  * @param mutateOptions The options for the useMutateForm hook
  */
 
-export type FormError = string | ValidationError[];
 interface useFormCustomProps<T extends FieldValues> {
 	dataMapper: DataMapper<T>;
 	onSubmit?: DataValidator<T>;
@@ -47,7 +46,7 @@ const useFormCustom = <T extends FieldValues>({
 	formOptions,
 	mutateOptions,
 }: useFormCustomProps<T>) => {
-	const [formError, setFormError] = useState<string | ValidationError[]>("");
+	const [formError, setFormError] = useState<FormError>("");
 
 	const { mutate } = useMutateCustom<T>({ ...mutateOptions });
 

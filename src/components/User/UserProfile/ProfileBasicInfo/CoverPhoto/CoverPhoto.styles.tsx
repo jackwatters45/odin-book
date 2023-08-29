@@ -22,6 +22,16 @@ export const StyledDiv = styled.div`
 	width: 100%;
 	height: 112px;
 	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+	display: flex;
+	align-items: flex-end;
+`;
+
+export const StyledCoverError = styled.span`
+	position: absolute;
+	color: red;
+	font-weight: 600;
+	right: 1rem;
+	top: 2rem;
 `;
 
 export const StyledEditCoverPhotoButton = styled.button`

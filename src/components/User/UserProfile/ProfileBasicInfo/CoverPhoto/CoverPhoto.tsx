@@ -8,15 +8,13 @@ import {
 	StyledDiv,
 	StyledEditCoverPhotoButton,
 } from "./CoverPhoto.styles";
-import renderFormErrors from "../../../../../utils/renderFormErrors";
 
 interface CoverPhotoProps {
 	userCoverUrl?: string;
 }
 
 const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
-	const { showText, fileInputRef, handleFileChange, handleUploadClick, error } =
-		useCoverPhoto();
+	const { showText, fileInputRef, handleFileChange, handleUploadClick } = useCoverPhoto();
 
 	return (
 		<StyledContainer>
@@ -34,7 +32,6 @@ const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
 					<Icon path={mdiCamera} size={0.8} />
 					{showText && "Add Cover Photo"}
 				</StyledEditCoverPhotoButton>
-				{error && <span>{renderFormErrors(error)}</span>}
 			</StyledDiv>
 		</StyledContainer>
 	);
