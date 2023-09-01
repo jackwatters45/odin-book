@@ -28,8 +28,6 @@ const useResetPasswordMethod = () => {
 		onSubmit,
 		mutateOptions: {
 			queryUrl: "auth/forgot-password",
-			queryKey: ["forgotPassword"],
-			updateDataKey: "userId",
 			method: "POST",
 			successNavigate: "/recover/code",
 		},

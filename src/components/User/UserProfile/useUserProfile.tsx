@@ -1,29 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+
 import { IUser } from "../../../types/IUser";
-import { apiBaseUrl } from "../../../config/envVariables";
+import useQueryCustom from "@/hooks/useQueryCustom";
 
-const fetchUser = async (id: string | undefined): Promise<IUser | null> => {
-	if (!id) return null; // TODO
-
-	const res = await fetch(`${apiBaseUrl}/users/${id}`, {
-		method: "GET",
-		credentials: "include",
-	});
-	const json = await res.json();
-	if (!res.ok) throw json.message;
-
-	const { user } = json;
-
-	return user;
+type JsonResponse = {
+	user: IUser | null;
 };
 
 const useUserProfile = () => {
-	const { id } = useParams();
+	const { id } = useParams<{ id: string }>();
 
-	const { data, error, isLoading, isError, isSuccess } = useQuery({
+	const navigate = useNavigate();
+	if (!id) navigate("/404");
+
+	const { data, error, isLoading, isError, isSuccess } = useQueryCustom<
+		JsonResponse,
+		IUser | null
+	>({
 		queryKey: ["user", id],
-		queryFn: () => fetchUser(id),
+		queryUrl: `users/${id}`,
+		transformData: ({ user }) => user,
 	});
 
 	return { user: data, error, isLoading, isError, isSuccess };

@@ -17,8 +17,6 @@ const useEnterSecurityCode = () => {
 		dataMapper,
 		mutateOptions: {
 			queryUrl: "auth/reset-password/code",
-			queryKey: ["forgotPassword"],
-			updateDataKey: "token",
 			method: "GET",
 			successNavigate: "/recover/password",
 		},
@@ -34,3 +32,12 @@ const useEnterSecurityCode = () => {
 };
 
 export default useEnterSecurityCode;
+
+// queryUrl,
+// method,
+// successNavigate,
+// queryKey,
+// updateDataKey,
+// includeCredentials = true,
+// headers,
+// onError,

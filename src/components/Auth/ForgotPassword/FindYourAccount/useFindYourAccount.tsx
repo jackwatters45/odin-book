@@ -18,8 +18,6 @@ const useFindYourAccount = () => {
 			dataMapper,
 			mutateOptions: {
 				queryUrl: "auth/find-account",
-				queryKey: ["forgotPassword"],
-				updateDataKey: "user",
 				method: "POST",
 				successNavigate: "/recover/method",
 			},

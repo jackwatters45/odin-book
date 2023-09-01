@@ -53,3 +53,21 @@
 ## possible improvements
 
 - for edit profile -> implement featured
+
+const fetchCurrentUser = async (): Promise<IUser | null> => {
+const res = await fetch(`${apiBaseUrl}/auth/current-user`, {
+method: "GET",
+credentials: "include",
+});
+const json = await res.json();
+if (!res.ok) throw json.message;
+
+    const { isAuthenticated, user } = json;
+
+    return isAuthenticated ? user : null;
+
+};
+// const { data, error, isLoading, isError, isSuccess } = useQuery({
+// queryKey: ["currentUser"],
+// queryFn: fetchCurrentUser,
+// });

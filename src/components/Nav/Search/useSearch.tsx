@@ -1,25 +1,29 @@
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-type SearchResult = {
-	fullName: string;
-	avatarUrl: string;
-	isFriend: boolean;
-};
+import useQueryCustom from "@/hooks/useQueryCustom";
 
 // TODO
-const fetchSearchResults = (query: string): Promise<SearchResult[]> =>
-	fetch(`https://api.example.com/search?q=${query}`).then((response) => response.json());
+type IResult = { id: string };
 
+type JsonResponse = {
+	results: IResult[];
+};
+
+type FnReturnType = IResult[];
+
+// TODO implement search route
 const useSearch = () => {
 	const { register, watch } = useForm();
 	const searchQuery = watch("search");
 
-	const { data, refetch } = useQuery({
+	const { data, refetch } = useQueryCustom<JsonResponse, FnReturnType>({
 		queryKey: ["searchResults", searchQuery],
-		queryFn: () => fetchSearchResults(searchQuery),
-		enabled: false,
+		queryUrl: `search?q=${searchQuery}`,
+		transformData: (data) => data.results,
+		options: {
+			enabled: false,
+		},
 	});
 
 	const debounce = setTimeout(() => {

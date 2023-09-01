@@ -1,27 +1,20 @@
 import { useNavigate, useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 import Loading from "../../../Shared/Loading";
-import { apiBaseUrl } from "@/config/envVariables";
-
-const fetchToken = async (token?: string) => {
-	if (!token) throw new Error("Invalid link");
-
-	const res = await fetch(`${apiBaseUrl}/auth/reset-password/link/${token}`);
-	if (res.status === 302) return res.json();
-
-	const { message } = await res.json();
-	throw new Error(message);
-};
+import useQueryCustom from "@/hooks/useQueryCustom";
 
 const ValidateResetLink = () => {
-	const { token } = useParams();
-	const navigate = useNavigate();
+	const { token } = useParams<{ token: string }>();
 
-	const { data, error } = useQuery({
+	const navigate = useNavigate();
+	if (!token) {
+		navigate("/recover", { state: { data: { linkError: "Invalid link" } } });
+	}
+
+	const { data, error } = useQueryCustom({
 		queryKey: ["validateToken", token],
-		queryFn: () => fetchToken(token),
+		queryUrl: `auth/reset-password/link/${token}`,
 	});
 
 	useEffect(() => {

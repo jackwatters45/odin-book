@@ -1,24 +1,26 @@
-import { useQuery } from "@tanstack/react-query";
+import useQueryCustom from "./useQueryCustom";
 import { IUser } from "../types/IUser";
-import { apiBaseUrl } from "../config/envVariables";
 
-const fetchCurrentUser = async (): Promise<IUser | null> => {
-	const res = await fetch(`${apiBaseUrl}/auth/current-user`, {
-		method: "GET",
-		credentials: "include",
-	});
-	const json = await res.json();
-	if (!res.ok) throw json.message;
-
-	const { isAuthenticated, user } = json;
-
-	return isAuthenticated ? user : null;
+type JsonResponse = {
+	isAuthenticated: boolean;
+	user: IUser | null;
 };
 
+type FnReturnType = IUser | null;
+
 const useCurrentUser = () => {
-	const { data, error, isLoading, isError, isSuccess } = useQuery({
+	const { data, error, isLoading, isError, isSuccess } = useQueryCustom<
+		JsonResponse,
+		FnReturnType
+	>({
 		queryKey: ["currentUser"],
-		queryFn: fetchCurrentUser,
+		queryUrl: "auth/current-user",
+		transformData: (res) => {
+			const { isAuthenticated, user } = res;
+
+			console.log(res);
+			return isAuthenticated ? user : null;
+		},
 	});
 
 	return { user: data, error, isLoading, isError, isSuccess };

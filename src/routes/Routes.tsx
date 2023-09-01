@@ -54,6 +54,7 @@ const RoutesComponent = () => {
 				</Route>
 
 				<Route path="/unauthorized" element={<Unauthorized />} />
+				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</BrowserRouter>

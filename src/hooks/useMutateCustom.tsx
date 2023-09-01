@@ -10,7 +10,7 @@ export interface useMutateFormProps {
 	queryUrl: string;
 	method: "POST" | "PUT" | "DELETE" | "GET" | "PATCH";
 	successNavigate?: string;
-	queryKey: string[];
+	queryKey?: string[];
 	updateDataKey?: string;
 	includeCredentials?: boolean;
 	headers?: HeadersInit;
@@ -55,7 +55,9 @@ const useMutateCustom = <T,>({
 		},
 		onSuccess: (data) => {
 			if (queryKey) {
+				console.log("queryKey", queryKey, "updateDataKey", updateDataKey);
 				if (!updateDataKey) return queryClient.resetQueries(queryKey);
+				console.log("data", data, "data[updateDataKey]", data[updateDataKey]);
 				queryClient.setQueryData(queryKey, data[updateDataKey]);
 			}
 
