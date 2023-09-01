@@ -23,34 +23,11 @@ export const ContentDiv = styled.div`
 		margin-bottom: 1rem;
 	}
 
-	> div:first-child {
-		display: flex;
-		justify-content: space-between;
-	}
-
 	> div:last-child {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-
-	> div > button {
-		padding: 0.5rem;
-		border-radius: 0.25rem;
-		font-size: 0.95rem;
-		color: #216fdb;
-	}
-
-	> div > button:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-`;
-
-export const StyledCoverPhoto = styled.img`
-	width: calc(5 / 7 * 100%);
-	max-height: 200px;
-	border-radius: 0.5rem;
-	object-fit: cover;
 `;
 
 export const BottomDiv = styled.div<{ $border?: boolean }>`
@@ -59,10 +36,6 @@ export const BottomDiv = styled.div<{ $border?: boolean }>`
 	align-items: center;
 	padding: 0.75rem 1rem;
 	border-top: ${({ $border }) => ($border ? "1px solid #dddfe2" : "none")};
-
-	> button:hover {
-		background: #d9eaf9;
-	}
 `;
 
 export const StyledButton = styled.button`
@@ -74,4 +47,8 @@ export const StyledButton = styled.button`
 	font-weight: 700;
 	background: #e7f3ff;
 	margin: 0.25rem;
+
+	&:hover {
+		background: #d9eaf9;
+	}
 `;

@@ -2,6 +2,7 @@ import { defaultUserAvatar } from "@/config/globals";
 import { StyledAvatarImage } from "../../../ProfileAvatar/ProfileAvatar.styles";
 import { ContentDiv } from "../../EditProfile.styles";
 import useProfileAvatar from "../../../ProfileAvatar/useProfileAvatar";
+import EditProfileSectionHeader from "../../EditProfileSectionHeader";
 
 interface AvatarEditProfileSectionProps {
 	avatarUrl?: string;
@@ -16,9 +17,11 @@ const AvatarEditProfileSection = ({ avatarUrl }: AvatarEditProfileSectionProps) 
 
 	return (
 		<ContentDiv>
-			<div>
-				<h2>Profile picture</h2>
-				<button onClick={handleAvatarUploadClick}>{avatarUrl ? "Edit" : "Add"}</button>
+			<EditProfileSectionHeader
+				title="Profile photo"
+				isData={!!avatarUrl}
+				openDialog={handleAvatarUploadClick}
+			>
 				<input
 					type="file"
 					accept="image/*"
@@ -27,7 +30,7 @@ const AvatarEditProfileSection = ({ avatarUrl }: AvatarEditProfileSectionProps) 
 					onChange={handleAvatarFileChange}
 					hidden
 				/>
-			</div>
+			</EditProfileSectionHeader>
 			<div>
 				<StyledAvatarImage src={avatarUrl || defaultUserAvatar} alt="Profile" />
 			</div>

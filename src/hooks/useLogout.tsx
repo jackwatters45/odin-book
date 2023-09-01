@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useMutateCustom from "./useMutateCustom";
 
-// TODO move this to a more appropriate location
 const useLogout = () => {
 	const navigate = useNavigate();
 

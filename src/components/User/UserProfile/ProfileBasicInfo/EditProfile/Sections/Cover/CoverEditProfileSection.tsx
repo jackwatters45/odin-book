@@ -1,5 +1,7 @@
 import useCoverPhoto from "../../../CoverPhoto/useCoverPhoto";
-import { ContentDiv, StyledCoverPhoto } from "../../EditProfile.styles";
+import { ContentDiv } from "../../EditProfile.styles";
+import EditProfileSectionHeader from "../../EditProfileSectionHeader";
+import { StyledCoverPhoto } from "./CoverEditProfileSection.styles";
 
 interface CoverEditProfileSectionProps {
 	coverPhotoUrl?: string;
@@ -14,11 +16,11 @@ const CoverEditProfileSection = ({ coverPhotoUrl }: CoverEditProfileSectionProps
 
 	return (
 		<ContentDiv>
-			<div>
-				<h2>Cover photo</h2>
-				<button onClick={handleCoverPhotoUploadClick}>
-					{coverPhotoUrl ? "Edit" : "Add"}
-				</button>
+			<EditProfileSectionHeader
+				title="Cover photo"
+				isData={!!coverPhotoUrl}
+				openDialog={handleCoverPhotoUploadClick}
+			>
 				<input
 					type="file"
 					accept="image/*"
@@ -27,7 +29,8 @@ const CoverEditProfileSection = ({ coverPhotoUrl }: CoverEditProfileSectionProps
 					onChange={handleCoverPhotoFileChange}
 					hidden
 				/>
-			</div>
+			</EditProfileSectionHeader>
+
 			<div>
 				<StyledCoverPhoto
 					src={coverPhotoUrl || "https://placehold.co/500x200?text=Add a cover photo..."}

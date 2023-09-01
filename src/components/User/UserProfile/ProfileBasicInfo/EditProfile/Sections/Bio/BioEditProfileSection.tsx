@@ -9,6 +9,7 @@ import {
 	StyledTextArea,
 	StyledTextAreaContainer,
 } from "./BioEditProfileSection.styles";
+import EditProfileSectionHeader from "../../EditProfileSectionHeader";
 
 interface BioEditProfileSectionProps {
 	bio?: string;
@@ -26,12 +27,11 @@ const BioEditProfileSection = ({ bio }: BioEditProfileSectionProps) => {
 
 	return (
 		<ContentDiv>
-			<div>
-				<h2>Bio</h2>
-				<button onClick={handleClickButton}>
-					{isEditing ? "Cancel" : bio ? "Edit" : "Add"}
-				</button>
-			</div>
+			<EditProfileSectionHeader
+				title="Bio"
+				isData={!!bio}
+				openDialog={handleClickButton}
+			/>
 			<div>
 				{isEditing ? (
 					<StyledTextAreaContainer>

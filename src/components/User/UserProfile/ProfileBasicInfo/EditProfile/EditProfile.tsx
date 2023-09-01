@@ -59,15 +59,7 @@ export const StyledDialog = styled.dialog`
 const EditProfile = ({ user }: EditProfileProps) => {
 	const { ref, openDialog, closeDialog } = useDialog();
 
-	const { avatarUrl, coverPhotoUrl, bio, hobbies } = user; // destructure above
-
-	// hobbies
-
-	// Setup frontend part
-
-	// backend -> change user + actual mutation
-
-	// TODO modal
+	const { avatarUrl, coverPhotoUrl, bio, hobbies } = user;
 
 	// TODO tests for all of this
 

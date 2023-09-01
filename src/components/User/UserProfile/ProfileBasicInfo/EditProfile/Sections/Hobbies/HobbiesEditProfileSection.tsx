@@ -1,5 +1,5 @@
 import HobbiesDisplay from "./HobbiesDisplay";
-import HobbiesHeader from "./HobbiesHeader";
+import HobbiesHeader from "../../EditProfileSectionHeader";
 import HobbiesSearch from "./HobbiesSearch";
 import SelectedHobbies from "./SelectedHobbies";
 import HobbiesSearchResults from "./HobbiesSearchResults";
@@ -37,7 +37,7 @@ const HobbiesEditProfileSection = ({ hobbies }: HobbiesEditProfileSectionProps) 
 
 	return (
 		<ContentDiv>
-			<HobbiesHeader openDialog={openDialog} isHobbies={isHobbies} />
+			<HobbiesHeader title={"Hobbies"} openDialog={openDialog} isData={isHobbies} />
 			<HobbiesDisplay
 				isHobbies={isHobbies}
 				hobbiesValue={hobbiesValue}
