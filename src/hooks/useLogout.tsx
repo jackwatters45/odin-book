@@ -6,10 +6,9 @@ const useLogout = () => {
 	const navigate = useNavigate();
 
 	const { mutate } = useMutateCustom({
-		queryKey: "currentUser",
+		queryKey: ["currentUser"],
 		queryUrl: "auth/logout",
 		method: "POST",
-		excludeData: true,
 		successNavigate: "/login",
 	});
 

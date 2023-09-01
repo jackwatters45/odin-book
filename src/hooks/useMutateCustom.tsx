@@ -2,17 +2,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router";
 
-import { apiBaseUrl } from "../../config/envVariables";
-import { FormError, ResponseError } from "../../types/ErrorInterfaces";
+import { apiBaseUrl } from "../config/envVariables";
+import { FormError, ResponseError } from "../types/ErrorInterfaces";
+import useError from "@/components/Errors/useError";
 
 export interface useMutateFormProps {
 	queryUrl: string;
-	method: "POST" | "PUT" | "DELETE" | "GET";
+	method: "POST" | "PUT" | "DELETE" | "GET" | "PATCH";
 	successNavigate?: string;
-	queryKey?: string;
-	excludeData?: boolean;
+	queryKey: string[];
+	updateDataKey?: string;
 	includeCredentials?: boolean;
-	onError?: Dispatch<SetStateAction<FormError | undefined>>;
+	headers?: HeadersInit;
+	onError?: Dispatch<SetStateAction<FormError>>;
 }
 
 export interface MutationFnInputs<T> {
@@ -25,20 +27,25 @@ const useMutateCustom = <T,>({
 	method,
 	successNavigate,
 	queryKey,
-	excludeData = false,
+	updateDataKey,
 	includeCredentials = true,
+	headers,
 	onError,
 }: useMutateFormProps) => {
 	const navigate = useNavigate();
 	const queryClient = useQueryClient();
+	const { setError } = useError();
 
-	const { mutate, error } = useMutation({
+	const { mutate, error, isSuccess, isLoading, isError } = useMutation({
 		mutationFn: async ({ data, params }: MutationFnInputs<T>) => {
 			const fullQuery = params ? `${queryUrl}/${params}` : queryUrl;
 			const res = await fetch(`${apiBaseUrl}/${fullQuery}`, {
 				method,
-				headers: { "Content-Type": "application/json" },
-				body: data ? JSON.stringify(data) : undefined,
+				headers:
+					data instanceof FormData
+						? {}
+						: { "Content-Type": "application/json", ...headers },
+				body: data instanceof FormData ? data : JSON.stringify(data),
 				credentials: includeCredentials ? "include" : "omit",
 			});
 
@@ -48,22 +55,24 @@ const useMutateCustom = <T,>({
 		},
 		onSuccess: (data) => {
 			if (queryKey) {
-				if (excludeData) queryClient.resetQueries([queryKey]);
-				else queryClient.setQueryData([queryKey], data[queryKey]);
+				if (!updateDataKey) return queryClient.resetQueries(queryKey);
+				queryClient.setQueryData(queryKey, data[updateDataKey]);
 			}
 
 			if (successNavigate) navigate(successNavigate, { state: { data } });
 		},
 		onError: (err: ResponseError) => {
-			if (!onError) return;
+			let error: FormError | string = "";
 
-			if (err?.message) return onError(err.message);
-			else if (err?.errors) return onError(err.errors);
-			else return onError("An unexpected error occurred");
+			if (err?.message) error = err.message;
+			else if (err?.errors) error = err.errors;
+			else error = "An unexpected error has occurred.";
+
+			return onError ? onError(error) : setError(error);
 		},
 	});
 
-	return { mutate, error };
+	return { mutate, error, isSuccess, isLoading, isError };
 };
 
 export default useMutateCustom;

@@ -1,14 +1,15 @@
 import { keyframes, styled } from "styled-components";
 
 export const StyledDialog = styled.dialog`
-	position: fixed;
-	height: 120px;
+	position: absolute;
+	height: 100px;
 	width: 300px;
 	bottom: 1rem;
-	right: 1rem;
+	left: calc(100% - 1rem - 300px);
+	border: 1px solid white;
+
 	background-color: white;
 	border-radius: 0.25rem;
-	padding: 0;
 	z-index: 1000;
 `;
 

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
-import { IUser } from "../../../../types/IUser";
-import { apiBaseUrl } from "../../../../config/envVariables";
+import { IUser } from "../../../types/IUser";
+import { apiBaseUrl } from "../../../config/envVariables";
 
 const fetchUser = async (id: string | undefined): Promise<IUser | null> => {
 	if (!id) return null; // TODO

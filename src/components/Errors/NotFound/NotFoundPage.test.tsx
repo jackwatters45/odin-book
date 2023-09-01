@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 
 import NotFound from "./NotFound";
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 
 describe("NotFound", () => {
 	beforeEach(() => {

@@ -14,7 +14,7 @@ import { Route } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 import * as ReactRouter from "react-router";
 
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 import ResetPasswordMethod from ".";
 
 // mock successful fetch

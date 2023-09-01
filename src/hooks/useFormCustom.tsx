@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { DefaultValues, FieldValues, useForm } from "react-hook-form";
 
-import { FormError } from "../../types/ErrorInterfaces";
+import { FormError } from "../types/ErrorInterfaces";
 import useMutateCustom, { MutationFnInputs, useMutateFormProps } from "./useMutateCustom";
 
 /**

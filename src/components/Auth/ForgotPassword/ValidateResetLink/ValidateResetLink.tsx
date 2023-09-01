@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 import Loading from "../../../Shared/Loading";
-import { apiBaseUrl } from "../../../../../config/envVariables";
+import { apiBaseUrl } from "@/config/envVariables";
 
 const fetchToken = async (token?: string) => {
 	if (!token) throw new Error("Invalid link");

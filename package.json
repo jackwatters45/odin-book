@@ -28,6 +28,7 @@
 		"*.{md,html,css,json,yml}": "prettier --write"
 	},
 	"dependencies": {
+		"@fingerprintjs/fingerprintjs": "^4.0.1",
 		"@jackwatters/simple-nav": "^1.2.17",
 		"@mdi/js": "^7.2.96",
 		"@mdi/react": "^1.6.1",

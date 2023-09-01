@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { StandardButtonStyles } from "../../../../styles/SharedStyles";
 
 export const StyledProfileBasicInfo = styled.div`
 	display: flex;
@@ -32,10 +31,4 @@ export const StyledNameFriendsContainer = styled.div`
 
 export const StyledFriends = styled.div`
 	padding: 0.75rem 0 1rem;
-`;
-
-export const StyledEditProfileButton = styled.button`
-	${StandardButtonStyles}
-	background-color: grey;
-	font-size: 0.95rem;
 `;

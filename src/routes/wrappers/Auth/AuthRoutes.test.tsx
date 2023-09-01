@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Route } from "react-router";
 import { describe, it, expect, vi } from "vitest";
 
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 import AuthRoutes from "./AuthRoutes";
 import * as exports from "../../../hooks/useCurrentUser";
 

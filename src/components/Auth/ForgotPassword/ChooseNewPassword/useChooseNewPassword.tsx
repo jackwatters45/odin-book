@@ -1,7 +1,8 @@
-import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
-import useMutateCustom from "../../../../hooks/useMutateCustom";
 import { useLocation } from "react-router";
 import { useState } from "react";
+
+import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
+import useMutateCustom from "@/hooks/useMutateCustom";
 
 interface ChooseNewPasswordInputs {
 	newPassword: string;
@@ -23,7 +24,8 @@ const useChooseNewPassword = () => {
 			mutateOptions: {
 				queryUrl: "auth/update-password",
 				method: "POST",
-				queryKey: "currentUser",
+				queryKey: ["currentUser"],
+				updateDataKey: "user",
 				successNavigate: "/",
 			},
 		});
@@ -31,7 +33,8 @@ const useChooseNewPassword = () => {
 	const { mutate: mutateUser } = useMutateCustom({
 		queryUrl: "auth/login/forgot-password",
 		method: "POST",
-		queryKey: "currentUser",
+		queryKey: ["currentUser"],
+		updateDataKey: "user",
 		onError: setFormError,
 		successNavigate: "/",
 	});

@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router-dom";
 import * as ReactRouter from "react-router";
 
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 import EnterSecurityCode from ".";
 
 // mock successful fetch

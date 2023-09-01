@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Route } from "react-router";
 import { describe, it, expect } from "vitest";
 
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 const renderProtectedRouteWithProps = (

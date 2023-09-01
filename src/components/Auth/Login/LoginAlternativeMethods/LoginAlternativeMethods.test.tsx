@@ -2,8 +2,8 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Route } from "react-router-dom";
 
-import { apiBaseUrl } from "../../../../../config/envVariables";
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import { apiBaseUrl } from "@/config/envVariables";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 import LoginAlternativeMethods from ".";
 
 describe("LoginAlternativeMethods", () => {

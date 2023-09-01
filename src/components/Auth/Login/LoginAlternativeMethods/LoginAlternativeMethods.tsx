@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "../../../../../config/envVariables";
+import { apiBaseUrl } from "@/config/envVariables";
 import useLoginAlternativeMethods from "./useLoginAlternativeMethods";
 
 const LoginAlternativeMethods = () => {

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { IUser } from "../../types/IUser";
-import { apiBaseUrl } from "../../config/envVariables";
+import { IUser } from "../types/IUser";
+import { apiBaseUrl } from "../config/envVariables";
 
 const fetchCurrentUser = async (): Promise<IUser | null> => {
 	const res = await fetch(`${apiBaseUrl}/auth/current-user`, {

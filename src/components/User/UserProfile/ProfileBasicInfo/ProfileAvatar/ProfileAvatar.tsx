@@ -1,6 +1,6 @@
 import { mdiCamera } from "@mdi/js";
 
-import { IconCircleBackground } from "../../../../Nav/Nav.styles";
+import { IconCircleBackground } from "@/components/Nav/Nav.styles";
 import useProfileAvatar from "./useProfileAvatar";
 import {
 	StyledAvatarContainer,
@@ -9,6 +9,7 @@ import {
 	StyledAvatarImage,
 	StyledAvatarEditButton,
 } from "./ProfileAvatar.styles";
+import { defaultUserAvatar } from "@/config/globals";
 
 interface ProfileAvatarProps {
 	avatarUrl?: string;
@@ -21,7 +22,7 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 		<StyledAvatarContainer>
 			<StyledAvatarImageBackground>
 				<StyledHoverableDiv>
-					<StyledAvatarImage src={avatarUrl} alt="User Profile" />
+					<StyledAvatarImage src={avatarUrl || defaultUserAvatar} alt="User Profile" />
 				</StyledHoverableDiv>
 				<StyledAvatarEditButton onClick={handleUploadClick}>
 					<input

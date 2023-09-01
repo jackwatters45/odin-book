@@ -8,13 +8,13 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-
+  
   :root {
     font-family:
-      inter-var,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
+    inter-var,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
       Helvetica,
       "Apple Color Emoji",
       Arial,
@@ -22,15 +22,16 @@ const GlobalStyle = createGlobalStyle`
       "Segoe UI Emoji",
       "Segoe UI Symbol";
     line-height: 1.5;
-
+    
     color-scheme: light dark;
-
+    
     user-select: none;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+    min-height: 100vh;
   }
 
   html {
@@ -68,11 +69,12 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  button {
+  button, input[type='text'] {
     border: none;
     background: transparent;
     cursor: pointer;
   }
+
 
   input[type='submit'] {
     cursor: pointer;

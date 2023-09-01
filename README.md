@@ -1,8 +1,12 @@
 # vite-react-ts-linting
 
 - user
+
   - profile
   - settings
+
+- style auth pages
+- check that login guest is working well
 
 ## after
 
@@ -20,27 +24,32 @@
   - left
   - right
 
-## notes
-
-- useQuery error is just a string because i am throwing res.json.message
-
-## want to implement
-
-- useReducer
-
 ## eventually
 
+- modal
+  - click off closes
+  - backdrop color
 - actual search
-- actual theme for all the grey stuff
-- user can only view login etc but can login as guest
+- actual theme
+  - grey stuff
+  - shadow
+  - dark mode
 - business accounts
 - icon
-- figure out better way to share types
 - make phone number better (not just american numbers)
-- right: 0 -> 16 for modal
+
 - best way to upload shit to npm and build for prod
 
 ## keep eye on
 
 - user birthday (age) make sure good
 - all forms involving email should be case insensitive/convert to lowercase
+
+- removed from eslint settings:import/resolver: {"node": {
+  "paths": ["src"],
+  "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  }}
+
+## possible improvements
+
+- for edit profile -> implement featured

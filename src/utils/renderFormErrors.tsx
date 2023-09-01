@@ -1,8 +1,8 @@
-import { FormError } from "../../types/ErrorInterfaces";
+import { FormError } from "../types/ErrorInterfaces";
 
 const renderFormErrors = (formError: FormError) => {
 	return Array.isArray(formError)
-		? formError.map((error) => <div key={error.msg}>{error.msg}</div>)
+		? formError.map((error) => <span key={error.msg}>{error.msg}</span>)
 		: formError;
 };
 

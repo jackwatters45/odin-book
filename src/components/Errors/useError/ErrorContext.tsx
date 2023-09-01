@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, createContext } from "react";
-import { FormError } from "../../../../types/ErrorInterfaces";
+import { FormError } from "../../../types/ErrorInterfaces";
 
 interface ErrorContextProps {
 	error: FormError | undefined;
-	setError: Dispatch<SetStateAction<FormError | undefined>>;
+	setError: Dispatch<SetStateAction<FormError>>;
 }
 
 const ErrorContext = createContext<ErrorContextProps | undefined>(undefined);

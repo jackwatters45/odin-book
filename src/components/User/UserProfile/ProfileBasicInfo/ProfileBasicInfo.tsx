@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import Icon from "@mdi/react";
-import { mdiPencil } from "@mdi/js";
 
-import { IUser } from "../../../../../types/IUser";
+import { IUser } from "@/types/IUser";
 import CoverPhoto from "./CoverPhoto";
 import ProfileAvatar from "./ProfileAvatar";
+import EditProfile from "./EditProfile";
 import {
-	StyledEditProfileButton,
 	StyledFriends,
 	StyledNameFriendsContainer,
 	StyledProfileBasicInfo,
@@ -17,24 +15,20 @@ interface ProfileBasicInfoProps {
 }
 
 const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const { avatarUrl, coverUrl } = user;
+	const { avatarUrl, coverPhotoUrl, fullName, friends } = user;
 
 	return (
 		<>
-			<CoverPhoto userCoverUrl={coverUrl} />
+			<CoverPhoto userCoverUrl={coverPhotoUrl} />
 			<StyledProfileBasicInfo>
 				<ProfileAvatar avatarUrl={avatarUrl} />
 				<StyledNameFriendsContainer>
-					<h1>{user.fullName}</h1>
+					<h1>{fullName}</h1>
 					<StyledFriends>
-						<Link to="friends">{user.friends.length} friends</Link>
+						<Link to="friends">{friends.length} friends</Link>
 					</StyledFriends>
 				</StyledNameFriendsContainer>
-				<StyledEditProfileButton>
-					<Icon path={mdiPencil} size={0.75} />
-					Edit profile
-				</StyledEditProfileButton>
-				{/* TODO edit profile modal */}
+				<EditProfile user={user} />
 			</StyledProfileBasicInfo>
 		</>
 	);

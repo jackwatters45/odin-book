@@ -1,4 +1,4 @@
-import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
+import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
 
 interface LoginFormInputs {
 	username: string;
@@ -11,7 +11,8 @@ const useLoginForm = () => {
 	const { register, submitForm, errors, formError } = useFormCustom<LoginFormInputs>({
 		dataMapper,
 		mutateOptions: {
-			queryKey: "currentUser",
+			queryKey: ["currentUser"],
+			updateDataKey: "user",
 			queryUrl: "auth/login",
 			method: "POST",
 			successNavigate: "/",

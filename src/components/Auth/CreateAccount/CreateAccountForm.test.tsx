@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { faker } from "@faker-js/faker";
 
 import CreateAccount from "./CreateAccount";
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 
 describe("CreateAccountForm", () => {
 	let user: ReturnType<typeof userEvent.setup>;

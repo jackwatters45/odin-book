@@ -3,7 +3,7 @@ import { Route } from "react-router";
 import { describe, it, expect, beforeEach } from "vitest";
 
 import Layout from "./Layout";
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 
 describe("Layout", () => {
 	beforeEach(() => {

@@ -1,8 +1,9 @@
-import useMutateCustom from "../../../../hooks/useMutateCustom";
+import useMutateCustom from "@/hooks/useMutateCustom";
 
 const useLoginGuest = () => {
 	const { mutate } = useMutateCustom({
-		queryKey: "currentUser",
+		queryKey: ["currentUser"],
+		updateDataKey: "user",
 		queryUrl: "auth/login-guest",
 		method: "POST",
 		successNavigate: "/",

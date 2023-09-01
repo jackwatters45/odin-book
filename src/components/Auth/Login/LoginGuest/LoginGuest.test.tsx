@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, vi, afterAll } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Route } from "react-router-dom";
 
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 import LoginGuest from ".";
 import userEvent from "@testing-library/user-event";
 

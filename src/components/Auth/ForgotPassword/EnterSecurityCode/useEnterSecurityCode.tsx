@@ -1,5 +1,6 @@
-import useFormCustom from "../../../../hooks/useFormCustom";
 import { useLocation } from "react-router";
+
+import useFormCustom from "@/hooks/useFormCustom";
 
 interface SecurityCodeInputs {
 	code: string;
@@ -16,6 +17,8 @@ const useEnterSecurityCode = () => {
 		dataMapper,
 		mutateOptions: {
 			queryUrl: "auth/reset-password/code",
+			queryKey: ["forgotPassword"],
+			updateDataKey: "token",
 			method: "GET",
 			successNavigate: "/recover/password",
 		},

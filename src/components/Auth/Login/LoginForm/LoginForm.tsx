@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import renderFormErrors from "../../../../utils/renderFormErrors";
+import renderFormErrors from "@/utils/renderFormErrors";
 import useLoginForm from "./useLoginForm";
 import {
 	validatePassword,

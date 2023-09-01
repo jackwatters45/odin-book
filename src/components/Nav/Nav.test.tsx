@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 
 import Nav from ".";
-import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../config/tests/Utils/setupRender";
 import * as useCurrentUser from "../../hooks/useCurrentUser";
 
 window.fetch = vi

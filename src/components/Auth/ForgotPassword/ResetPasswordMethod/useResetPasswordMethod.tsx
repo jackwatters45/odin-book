@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router";
 
-import useFormCustom, { DataMapper } from "../../../../hooks/useFormCustom";
-import { IUser } from "../../../../../types/IUser";
+import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
+import { IUser } from "@/types/IUser";
 
 interface ResetPasswordProps {
 	userId: string;
@@ -28,6 +28,8 @@ const useResetPasswordMethod = () => {
 		onSubmit,
 		mutateOptions: {
 			queryUrl: "auth/forgot-password",
+			queryKey: ["forgotPassword"],
+			updateDataKey: "userId",
 			method: "POST",
 			successNavigate: "/recover/code",
 		},

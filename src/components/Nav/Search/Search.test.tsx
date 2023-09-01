@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 
 import Search from "./Search";
-import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 
 const mockSearchData = [
 	{ fullName: "Test", avatarUrl: "url1", isFriend: true },

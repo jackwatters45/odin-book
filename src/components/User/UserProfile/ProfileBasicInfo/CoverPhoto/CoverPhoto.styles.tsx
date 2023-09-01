@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { StandardButtonStyles } from "../../../../../styles/SharedStyles";
+import { StandardButtonStyles } from "@/styles/SharedStyles";
 
 export const StyledContainer = styled.div`
 	width: 100%;

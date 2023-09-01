@@ -8,7 +8,7 @@ export interface BasicUserInfo {
 	birthday: Date;
 	pronouns?: "he/him" | "she/her" | "they/them";
 	avatarUrl?: string;
-	coverUrl?: string;
+	coverPhotoUrl?: string;
 	description?: string;
 	phoneNumber?: string;
 }
@@ -110,9 +110,13 @@ export interface UserAboutData {
 	placesLived?: PlaceLivedData[];
 	website?: string;
 	socialLinks?: SocialLinksData[];
-	aboutYou?: string;
 	nicknames?: string[];
 	lifeEvents?: LifeEventData[];
+
+	intro?: string[]; // allow user to choose what to display out of the following: work, education, current city, hometown, relationship, name pron, joined, websites, social links
+
+	bio?: string;
+	hobbies?: string[];
 }
 
 export interface IUser

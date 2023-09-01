@@ -45,7 +45,8 @@ const useCreateAccountForm = () => {
 				mode: "onBlur",
 			},
 			mutateOptions: {
-				queryKey: "currentUser",
+				queryKey: ["currentUser"],
+				updateDataKey: "user",
 				queryUrl: "auth/signup",
 				method: "POST",
 				successNavigate: "/",

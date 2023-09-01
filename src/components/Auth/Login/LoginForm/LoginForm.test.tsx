@@ -5,8 +5,8 @@ import { Route } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
 import LoginForm from "./LoginForm";
-import { apiBaseUrl } from "../../../../../config/envVariables";
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import { apiBaseUrl } from "@/config/envVariables";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 
 describe("LoginForm", () => {
 	beforeEach(() => {

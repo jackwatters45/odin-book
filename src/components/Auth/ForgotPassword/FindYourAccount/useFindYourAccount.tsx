@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 
-import useFormCustom from "../../../../hooks/useFormCustom";
+import useFormCustom from "@/hooks/useFormCustom";
 
 interface FindYourAccountInputs {
 	username: string;
@@ -18,6 +18,8 @@ const useFindYourAccount = () => {
 			dataMapper,
 			mutateOptions: {
 				queryUrl: "auth/find-account",
+				queryKey: ["forgotPassword"],
+				updateDataKey: "user",
 				method: "POST",
 				successNavigate: "/recover/method",
 			},

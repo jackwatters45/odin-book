@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { Route } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
-import TestEnvironmentWrapper from "../../../../../config/tests/Utils/setupRender";
+import TestEnvironmentWrapper from "@/config/tests/Utils/setupRender";
 import FindYourAccount from "./FindYourAccount";
 
 // mock fetch
