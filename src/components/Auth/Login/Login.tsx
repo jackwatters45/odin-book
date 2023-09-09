@@ -6,8 +6,8 @@ const Login = () => {
 	return (
 		<div>
 			<div>
-				<h1>Odin Book</h1>
-				<p>Connect with friends and the world around you on Odin Book.</p>
+				<h1>Odinbook</h1>
+				<p>Connect with friends and the world around you on Odinbook.</p>
 			</div>
 			<div>
 				<LoginForm />

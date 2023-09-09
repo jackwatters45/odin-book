@@ -30,7 +30,7 @@ export const formatData = <T,>(
  */
 
 interface useFormCustomProps<T extends FieldValues> {
-	dataMapper: DataMapper<T>;
+	dataMapper?: DataMapper<T>;
 	onSubmit?: DataValidator<T>;
 	formOptions?: {
 		mode?: "onBlur" | "onChange" | "onSubmit" | "onTouched" | undefined;
@@ -50,24 +50,22 @@ const useFormCustom = <T extends FieldValues>({
 
 	const { mutate } = useMutateCustom<T>({ ...mutateOptions });
 
+	const formMethods = useForm<T>(formOptions);
 	const {
-		register,
 		handleSubmit,
 		formState: { errors },
-		watch,
-	} = useForm<T>(formOptions);
+	} = formMethods;
 
 	const submitForm = handleSubmit((data) => {
 		const submitData = onSubmit ? onSubmit(data) : data;
 
 		if (!submitData) return;
+		else if (typeof submitData === "string") return setFormError(submitData);
 
-		if (typeof submitData === "string") return setFormError(submitData);
-
-		mutate(dataMapper(submitData));
+		mutate(dataMapper ? dataMapper(submitData) : { data: submitData });
 	});
 
-	return { register, submitForm, errors, watch, formError, setFormError };
+	return { submitForm, errors, formError, setFormError, ...formMethods };
 };
 
 export default useFormCustom;

@@ -1,9 +1,15 @@
 import { useRef } from "react";
 
-const useDialog = (isModal = true) => {
+interface UseDialogProps {
+	isModal?: boolean;
+	reset?: () => void;
+}
+
+const useDialog = ({ isModal = true, reset }: UseDialogProps) => {
 	const ref = useRef<HTMLDialogElement>(null);
 
 	const openDialog = () => {
+		if (reset) reset();
 		return isModal ? ref.current?.showModal() : ref.current?.show();
 	};
 

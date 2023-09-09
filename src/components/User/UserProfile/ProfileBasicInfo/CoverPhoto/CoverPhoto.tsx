@@ -29,8 +29,8 @@ const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
 					hidden
 				/>
 				<StyledEditCoverPhotoButton onClick={handleUploadClick}>
-					<Icon path={mdiCamera} size={0.8} />
-					{showText && "Add Cover Photo"}
+					<Icon path={mdiCamera} size={0.8} color={"white"} />
+					{showText && <span>Add Cover Photo</span>}
 				</StyledEditCoverPhotoButton>
 			</StyledDiv>
 		</StyledContainer>

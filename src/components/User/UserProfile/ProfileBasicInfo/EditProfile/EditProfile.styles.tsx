@@ -1,9 +1,14 @@
 import { styled } from "styled-components";
-import { StandardButtonStyles } from "@/styles/SharedStyles";
+import { StandardButtonStyles, StyledDialog } from "@/styles/SharedStyles";
+
+export const StyledEditProfileDialog = styled(StyledDialog)`
+	z-index: 1001;
+`;
 
 export const StyledEditProfileButton = styled.button`
 	${StandardButtonStyles}
-	background-color: grey;
+	color: ${({ theme }) => theme.colors.textPrimary};
+	background-color: ${({ theme }) => theme.colors.primaryButton};
 	font-size: 0.95rem;
 
 	@media (min-width: 900px) {
@@ -19,7 +24,6 @@ export const ContentDiv = styled.div`
 	overflow: hidden;
 
 	> div {
-		align-items: center;
 		margin-bottom: 1rem;
 	}
 
@@ -28,14 +32,6 @@ export const ContentDiv = styled.div`
 		justify-content: center;
 		align-items: center;
 	}
-`;
-
-export const BottomDiv = styled.div<{ $border?: boolean }>`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.75rem 1rem;
-	border-top: ${({ $border }) => ($border ? "1px solid #dddfe2" : "none")};
 `;
 
 export const StyledButton = styled.button`

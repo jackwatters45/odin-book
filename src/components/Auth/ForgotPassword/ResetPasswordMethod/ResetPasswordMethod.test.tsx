@@ -80,7 +80,7 @@ describe("ResetPasswordMethod", () => {
 		const userAvatarUrl = screen.getByAltText("User avatar");
 		expect(userAvatarUrl).toBeInTheDocument();
 
-		const userType = screen.getByText(`Odin book ${user.userType}`);
+		const userType = screen.getByText(`Odinbook ${user.userType}`);
 		expect(userType).toBeInTheDocument();
 	});
 

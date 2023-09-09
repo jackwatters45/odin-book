@@ -12,7 +12,7 @@ const RecoverUserPreview = ({ user, includeNotYou = true }: Props) => {
 		<div>
 			{user.avatarUrl && <img src={user.avatarUrl} alt="User avatar" />}
 			<p>{user.fullName}</p>
-			<p>Odin book {user.userType}</p>
+			<p>Odinbook {user.userType}</p>
 			{includeNotYou && (
 				<p>
 					{user.email || user.phoneNumber} • <Link to="/login">Not you?</Link>

@@ -31,13 +31,13 @@ describe("Search Component", () => {
 	});
 
 	it("renders without crashing", () => {
-		expect(screen.getByPlaceholderText("Search Odin Book")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Search Odinbook")).toBeInTheDocument();
 	});
 
 	it("displays search query correctly", async () => {
 		const user = userEvent.setup();
 
-		const input = screen.getByPlaceholderText("Search Odin Book");
+		const input = screen.getByPlaceholderText("Search Odinbook");
 
 		await user.click(input);
 		await user.type(input, "Test");
@@ -47,7 +47,7 @@ describe("Search Component", () => {
 	it("displays search results correctly", async () => {
 		const user = userEvent.setup();
 
-		const input = screen.getByPlaceholderText("Search Odin Book");
+		const input = screen.getByPlaceholderText("Search Odinbook");
 
 		await user.type(input, "Test");
 
@@ -59,7 +59,7 @@ describe("Search Component", () => {
 	it("displays friend label for friends", async () => {
 		const user = userEvent.setup();
 
-		const input = screen.getByPlaceholderText("Search Odin Book");
+		const input = screen.getByPlaceholderText("Search Odinbook");
 		await user.type(input, "Test");
 
 		const friendLabel = screen.getAllByText("Friend")[0];

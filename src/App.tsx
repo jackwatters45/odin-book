@@ -2,9 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "styled-components";
 
-import GlobalStyle from "./styles/GlobalStyle";
+import GlobalStyle from "./styles/theme/GlobalStyle";
 import AppInitializer from "./AppInitializer";
-import { useColorTheme } from "./styles/useColorTheme";
+import { useColorTheme } from "./styles/theme/useColorTheme";
 import "./styles/reset.css";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 

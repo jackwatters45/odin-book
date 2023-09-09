@@ -46,12 +46,12 @@ const OptionBadge = ({
 			/>
 			{isLink ? (
 				<Link to={`/search/top/?q=${name}`}>
-					<StyledBadge htmlFor={name} showDelete={showDelete}>
+					<StyledBadge htmlFor={name} $showDelete={showDelete}>
 						{badgeContent}
 					</StyledBadge>
 				</Link>
 			) : (
-				<StyledBadge htmlFor={name} showDelete={showDelete}>
+				<StyledBadge htmlFor={name} $showDelete={showDelete}>
 					{badgeContent}
 				</StyledBadge>
 			)}

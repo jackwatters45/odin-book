@@ -12,9 +12,9 @@ export interface useMutateFormProps {
 	successNavigate?: string;
 	queryKey?: string[];
 	updateDataKey?: string;
-	includeCredentials?: boolean;
 	headers?: HeadersInit;
 	onError?: Dispatch<SetStateAction<FormError>>;
+	includeCredentials?: boolean;
 }
 
 export interface MutationFnInputs<T> {
@@ -28,9 +28,9 @@ const useMutateCustom = <T,>({
 	successNavigate,
 	queryKey,
 	updateDataKey,
-	includeCredentials = true,
 	headers,
 	onError,
+	includeCredentials = true,
 }: useMutateFormProps) => {
 	const navigate = useNavigate();
 	const queryClient = useQueryClient();
@@ -55,9 +55,7 @@ const useMutateCustom = <T,>({
 		},
 		onSuccess: (data) => {
 			if (queryKey) {
-				console.log("queryKey", queryKey, "updateDataKey", updateDataKey);
 				if (!updateDataKey) return queryClient.resetQueries(queryKey);
-				console.log("data", data, "data[updateDataKey]", data[updateDataKey]);
 				queryClient.setQueryData(queryKey, data[updateDataKey]);
 			}
 

@@ -1,5 +1,7 @@
 # vite-react-ts-linting
 
+- use suspense
+
 - user
 
   - profile
@@ -27,7 +29,7 @@
 ## eventually
 
 - modal
-  - click off closes
+  - scroll animation
   - backdrop color
 - actual search
 - actual theme

@@ -1,89 +1,32 @@
-import HobbiesDisplay from "./HobbiesDisplay";
 import HobbiesHeader from "../../EditProfileSectionHeader";
-import HobbiesSearch from "./HobbiesSearch";
-import SelectedHobbies from "./SelectedHobbies";
-import HobbiesSearchResults from "./HobbiesSearchResults";
-import RecommendedHobbies from "./RecommendedHobbies";
-import BottomControls from "./BottomControls";
-import useHobbiesEditProfileSection from "./useHobbiesEditProfileSection";
 
-import ModalHeader from "@/components/Shared/ModalHeader";
 import { ContentDiv } from "../../EditProfile.styles";
-import {
-	StyledDialogHobbies,
-	StyledHobbiesContainer,
-	StyledViewMoreContainer,
-	StyledContentDiv,
-	StyledHobbiesSelectedAndResultsContainer,
-} from "./HobbiesEditProfileSection.styles";
+
+import EditHobbiesForm from "@/components/User/UserFields/Hobbies/EditHobbiesForm/EditHobbiesForm";
+import HobbiesDisplay from "@/components/User/UserFields/Hobbies/HobbiesDisplay";
+import useHobbies from "@/components/User/UserFields/Hobbies/useHobbies";
 
 interface HobbiesEditProfileSectionProps {
 	hobbies?: string[];
 }
 
 const HobbiesEditProfileSection = ({ hobbies }: HobbiesEditProfileSectionProps) => {
-	const {
-		ref,
-		openDialog,
-		handleCancel,
-		closeDialog,
-		register,
-		hobbiesValue,
-		isHobbies,
-		isViewMore,
-		handleClickViewMore,
-		searchValue,
-	} = useHobbiesEditProfileSection(hobbies);
+	const { ref, openDialog, closeDialog, register, hobbiesValue, searchValue } =
+		useHobbies(hobbies);
 
 	return (
 		<ContentDiv>
-			<HobbiesHeader title={"Hobbies"} openDialog={openDialog} isData={isHobbies} />
-			<HobbiesDisplay
-				isHobbies={isHobbies}
+			<HobbiesHeader title={"Hobbies"} openDialog={openDialog} isData={!!hobbies} />
+			<HobbiesDisplay hobbiesValue={hobbiesValue} register={register("hobbies")} />
+			<EditHobbiesForm
+				ref={ref}
+				hobbies={hobbies}
 				hobbiesValue={hobbiesValue}
-				register={register("hobbies")}
+				hobbiesRegister={register("hobbies")}
+				searchRegister={register("search")}
+				searchValue={searchValue}
+				closeDialog={closeDialog}
 			/>
-			<StyledDialogHobbies ref={ref}>
-				<StyledHobbiesContainer>
-					<ModalHeader
-						title={isHobbies || isViewMore ? "Hobbies" : "Add hobbies"}
-						closeDialog={handleCancel}
-					/>
-					<StyledContentDiv>
-						{isViewMore || isHobbies ? (
-							<StyledViewMoreContainer>
-								<HobbiesSearch register={register("search")} />
-								<StyledHobbiesSelectedAndResultsContainer>
-									{!!isHobbies && (
-										<SelectedHobbies
-											hobbiesValue={hobbiesValue}
-											register={register("hobbies")}
-										/>
-									)}
-									{searchValue && (
-										<HobbiesSearchResults
-											searchValue={searchValue}
-											hobbiesValue={hobbiesValue}
-											register={register("hobbies")}
-										/>
-									)}
-								</StyledHobbiesSelectedAndResultsContainer>
-							</StyledViewMoreContainer>
-						) : (
-							<RecommendedHobbies
-								register={register("hobbies")}
-								handleClickViewMore={handleClickViewMore}
-							/>
-						)}
-					</StyledContentDiv>
-					<BottomControls
-						initialHobbies={hobbies}
-						handleCancel={handleCancel}
-						hobbiesValue={hobbiesValue}
-						closeDialog={closeDialog}
-					/>
-				</StyledHobbiesContainer>
-			</StyledDialogHobbies>
 		</ContentDiv>
 	);
 };

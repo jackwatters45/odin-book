@@ -17,7 +17,7 @@ describe("Layout", () => {
 	});
 
 	it("should render the nav", () => {
-		expect(screen.getByAltText("Odin Book")).toBeInTheDocument();
+		expect(screen.getByAltText("Odinbook")).toBeInTheDocument();
 	});
 
 	it("should render the outlet", () => {

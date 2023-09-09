@@ -2,13 +2,17 @@ import { css, styled } from "styled-components";
 import { Nav, NavLink, NavDropdown, NavButton } from "@jackwatters/simple-nav";
 import Icon from "@mdi/react";
 
+export const StyledNavContainer = styled.div`
+	position: relative;
+`;
+
 export const StyledNav = styled(Nav)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 1.5rem;
-	border-bottom: 1px solid ${({ theme }) => theme.border};
 	z-index: 3;
+	position: relative;
 `;
 
 export const StyledSideNav = styled.div`
@@ -24,7 +28,7 @@ export const StyledCenterNav = styled.div`
 	justify-content: center;
 	flex-grow: 1;
 	padding: 0 10vw;
-	height: 60px;
+	height: 56px;
 `;
 
 const BeforeStyling = css`
@@ -48,7 +52,7 @@ export const StyledDropdownLink = styled(NavLink)`
 		}
 
 		> a:hover::before {
-			background: grey;
+			background: ${({ theme }) => theme.colors.hoverOverlay};
 		}
 	}
 
@@ -57,6 +61,10 @@ export const StyledDropdownLink = styled(NavLink)`
 		font-size: 0.95rem;
 		display: flex;
 		gap: 1rem;
+
+		span {
+			color: ${({ theme }) => theme.colors.textPrimary};
+		}
 
 		svg,
 		span {
@@ -79,7 +87,11 @@ export const StyledDropdownButton = styled(NavButton)`
 	}
 
 	&:hover::before {
-		background: grey;
+		background: ${({ theme }) => theme.colors.hoverOverlay};
+	}
+
+	span {
+		color: ${({ theme }) => theme.colors.textPrimary};
 	}
 
 	svg,
@@ -92,7 +104,6 @@ export const StyledDropdown = styled(NavDropdown)`
 	.normal-dropdown-button {
 		height: 2.5rem;
 		width: 2.5rem;
-		background-color: grey;
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
@@ -100,30 +111,10 @@ export const StyledDropdown = styled(NavDropdown)`
 	}
 
 	.normal-dropdown-content {
+		background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 		display: flex;
 		min-width: 300px;
-	}
-`;
-
-export const SearchResult = styled.div`
-	padding: 0.5rem 0;
-	position: relative;
-
-	> ::before {
-		${BeforeStyling}
-	}
-
-	> :hover::before {
-		background: grey;
-	}
-
-	* {
-		z-index: 2;
-	}
-
-	button {
-		display: flex;
-		align-items: center;
+		${({ theme }) => theme.cardShadow};
 	}
 `;
 
@@ -147,7 +138,8 @@ export const NavLinkCenterColumn = styled(NavLink)`
 		}
 
 		> a.active {
-			border-bottom: 2px solid white;
+			border-bottom: 3px solid ${({ theme }) => theme.colors.blueButton};
+			margin-bottom: -3px;
 		}
 
 		> a::before {
@@ -163,7 +155,7 @@ export const NavLinkCenterColumn = styled(NavLink)`
 		}
 
 		> a:hover::before {
-			background-color: grey;
+			background: ${({ theme }) => theme.colors.hoverOverlay};
 		}
 	}
 `;
@@ -176,9 +168,22 @@ export const ImageCircle = styled.img<{ size?: number }>`
 
 export const IconCircleBackground = styled(Icon)<{ background?: string }>`
 	border-radius: 50%;
-	background: ${({ background }) => background || "grey"}; // TODO theme
-	padding: 0.5rem 0.4rem 0.35rem 0.5rem;
+	background: ${({ background, theme }) =>
+		background || theme.colors.primaryButton}; // TODO theme
+	padding: 0.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`;
+
+export const StyledNavShadow = styled.div`
+	position: absolute;
+	bottom: -7px;
+	height: 7px;
+	width: 100%;
+	background-image: url("https://res.cloudinary.com/drheg5d7j/image/upload/v1693706871/odin-book/nav-shadow_hbspmi.png");
+	background-size: 1px 7px;
+	background-repeat: repeat-x;
+	z-index: 1;
+	pointer-events: none;
 `;

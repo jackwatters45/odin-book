@@ -1,10 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import { ReactNode } from "react";
 import { MemoryRouter, Routes } from "react-router-dom";
 
 interface TestEnvironmentWrapperProps {
 	initialRoute?: string[];
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 const TestEnvironmentWrapper = ({

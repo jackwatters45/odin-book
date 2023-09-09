@@ -1,58 +1,25 @@
 import { ContentDiv } from "../../EditProfile.styles";
-import useBioEditProfileSection from "./useBioEditProfileSection";
-import PrivacyStatus from "@/components/Shared/PrivacyStatus";
-import { StyledButtonDiv } from "@/styles/SharedStyles";
-import {
-	StyledBottomRow,
-	StyledButton,
-	StyledCharCount,
-	StyledTextArea,
-	StyledTextAreaContainer,
-} from "./BioEditProfileSection.styles";
 import EditProfileSectionHeader from "../../EditProfileSectionHeader";
+import EditFormBio from "../../../../../UserFields/Bio/EditBioForm";
+import useToggledState from "@/hooks/useToggledState";
 
 interface BioEditProfileSectionProps {
-	bio?: string;
+	bio: string | undefined;
 }
 
 const BioEditProfileSection = ({ bio }: BioEditProfileSectionProps) => {
-	const {
-		isEditing,
-		handleClickButton,
-		handleSaveBio,
-		register,
-		bioLengthRemaining,
-		bioInput,
-	} = useBioEditProfileSection();
+	const [isEditing, handleToggleForm] = useToggledState();
 
 	return (
 		<ContentDiv>
 			<EditProfileSectionHeader
 				title="Bio"
 				isData={!!bio}
-				openDialog={handleClickButton}
+				openDialog={handleToggleForm}
 			/>
 			<div>
 				{isEditing ? (
-					<StyledTextAreaContainer>
-						<div>
-							<StyledTextArea
-								{...register("bio", { required: true })}
-								placeholder="Describe who you are"
-								defaultValue={bio}
-							/>
-						</div>
-						<StyledCharCount>{bioLengthRemaining} characters remaining</StyledCharCount>
-						<StyledBottomRow>
-							<PrivacyStatus status="Public" />
-							<StyledButtonDiv>
-								<StyledButton onClick={handleClickButton}>Cancel</StyledButton>
-								<StyledButton onClick={handleSaveBio} disabled={!bioInput}>
-									Save
-								</StyledButton>
-							</StyledButtonDiv>
-						</StyledBottomRow>
-					</StyledTextAreaContainer>
+					<EditFormBio data={bio} handleCloseForm={handleToggleForm} />
 				) : (
 					<p>{bio || "Describe yourself..."}</p>
 				)}

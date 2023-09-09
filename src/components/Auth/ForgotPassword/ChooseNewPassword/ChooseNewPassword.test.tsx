@@ -53,7 +53,7 @@ describe("<ChooseNewPassword />", () => {
 	});
 
 	it("renders navigation", async () => {
-		expect(await screen.getByAltText("Odin Book")).toBeInTheDocument();
+		expect(await screen.getByAltText("Odinbook")).toBeInTheDocument();
 	});
 
 	it("renders hidden input for username", async () => {

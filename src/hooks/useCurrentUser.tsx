@@ -15,10 +15,7 @@ const useCurrentUser = () => {
 	>({
 		queryKey: ["currentUser"],
 		queryUrl: "auth/current-user",
-		transformData: (res) => {
-			const { isAuthenticated, user } = res;
-
-			console.log(res);
+		transformData: ({ isAuthenticated, user }) => {
 			return isAuthenticated ? user : null;
 		},
 	});

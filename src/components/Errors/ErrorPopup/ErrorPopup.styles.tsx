@@ -10,7 +10,7 @@ export const StyledDialog = styled.dialog`
 
 	background-color: white;
 	border-radius: 0.25rem;
-	z-index: 1000;
+	z-index: 1100;
 `;
 
 export const StyledButton = styled.button`

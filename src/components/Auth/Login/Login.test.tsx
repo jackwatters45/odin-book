@@ -15,13 +15,13 @@ describe("<Login />", () => {
 	});
 
 	it("renders the main title", () => {
-		const title = screen.getByText("Odin Book");
+		const title = screen.getByText("Odinbook");
 		expect(title).toBeInTheDocument();
 	});
 
 	it("renders the description", () => {
 		const description = screen.getByText(
-			/Connect with friends and the world around you on Odin Book\./i,
+			/Connect with friends and the world around you on Odinbook\./i,
 		);
 		expect(description).toBeInTheDocument();
 	});

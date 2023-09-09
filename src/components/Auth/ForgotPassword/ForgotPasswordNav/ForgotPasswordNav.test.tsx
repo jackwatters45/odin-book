@@ -15,7 +15,7 @@ describe("<ForgotPasswordNav />", () => {
 	});
 
 	it("renders the image", () => {
-		const image = screen.getByAltText("Odin Book");
+		const image = screen.getByAltText("Odinbook");
 		expect(image).toBeInTheDocument();
 	});
 

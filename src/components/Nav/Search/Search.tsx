@@ -21,7 +21,7 @@ const Search = () => {
 				<button>
 					<Icon path={mdiArrowLeftThin} size={1} />
 				</button>
-				<StyledInput type="text" placeholder="Search Odin Book" {...register("search")} />
+				<StyledInput type="text" placeholder="Search Odinbook" {...register("search")} />
 			</SearchInputContainer>
 			<div>
 				{/* TODO make all results clickable */}

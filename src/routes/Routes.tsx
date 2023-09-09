@@ -18,7 +18,9 @@ import EnterSecurityCode from "../components/Auth/ForgotPassword/EnterSecurityCo
 import FindYourAccount from "../components/Auth/ForgotPassword/FindYourAccount";
 import ChooseNewPassword from "../components/Auth/ForgotPassword/ChooseNewPassword";
 import ValidateResetLink from "../components/Auth/ForgotPassword/ValidateResetLink/ValidateResetLink";
+
 import UserProfile from "../components/User/UserProfile";
+import UserPosts from "../components/User/UserProfile/Pages/UserPosts";
 
 const RoutesComponent = () => {
 	return (
@@ -40,7 +42,7 @@ const RoutesComponent = () => {
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Dashboard />} />
 						<Route path="/user/:id" element={<UserProfile />}>
-							<Route index element={<>Posts</>} />
+							<Route index element={<UserPosts />} />
 							<Route path="about" element={<>About</>} />
 							<Route path="friends" element={<>Friends</>} />
 							<Route path="photos" element={<h1>Photos</h1>} />

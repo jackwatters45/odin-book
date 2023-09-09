@@ -21,6 +21,7 @@ export const StyledDiv = styled.div`
 	bottom: 0;
 	width: 100%;
 	height: 112px;
+	border-radius: 0 0 0.5rem 0.5rem;
 	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 	display: flex;
 	align-items: flex-end;
@@ -42,4 +43,5 @@ export const StyledEditCoverPhotoButton = styled.button`
 	position: absolute;
 	bottom: 1rem;
 	right: 1rem;
+	color: white;
 `;

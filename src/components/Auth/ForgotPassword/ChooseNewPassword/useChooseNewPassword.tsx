@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
 import useMutateCustom from "@/hooks/useMutateCustom";
+import useToggledState from "@/hooks/useToggledState";
 
 interface ChooseNewPasswordInputs {
 	newPassword: string;
@@ -44,8 +45,7 @@ const useChooseNewPassword = () => {
 		mutateUser({ data: { token } });
 	};
 
-	const [showPassword, setShowPassword] = useState(false);
-	const toggleShowPassword = () => setShowPassword((prev) => !prev);
+	const [showPassword, toggleShowPassword] = useToggledState();
 
 	return {
 		token,

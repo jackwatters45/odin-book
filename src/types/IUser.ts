@@ -1,3 +1,5 @@
+import AudienceStatusOptions from "./AudienceStatusOptions";
+
 // Basic User Info
 export interface BasicUserInfo {
 	firstName: string;
@@ -53,8 +55,8 @@ interface DeletedData {
 
 // User System Data
 export interface UserSystemData {
-	createdAt?: Date;
-	updatedAt?: Date;
+	createdAt: string;
+	updatedAt: string;
 	userType: "user" | "admin" | "guest";
 	isDeleted: boolean;
 	deletedData?: DeletedData;
@@ -63,6 +65,7 @@ export interface UserSystemData {
 }
 
 export interface WorkData {
+	_id: string;
 	company: string;
 	position?: string;
 	city?: string;
@@ -72,6 +75,8 @@ export interface WorkData {
 }
 
 export interface EducationData {
+	_id: string;
+	type: "university" | "high school";
 	school: string;
 	degree?: string;
 	fieldOfStudy?: string;
@@ -85,16 +90,30 @@ export interface EducationData {
 }
 
 export interface PlaceLivedData {
+	_id: string;
+	type: "current" | "hometown" | "default";
 	city: string;
+	state: string;
 	country: string;
-	dateMovedIn?: Date;
-	dateMovedOut?: Date | null;
+	startDate?: Date;
+	endDate?: Date | null;
 }
 
+export const VALID_SOCIAL_PLATFORMS_ARRAY = [
+	"twitter",
+	"instagram",
+	"linkedin",
+	"youtube",
+	"github",
+	"snapchat",
+	"spotify",
+	"whatsapp",
+] as const;
+
+export type ValidSocialPlatformsType = (typeof VALID_SOCIAL_PLATFORMS_ARRAY)[number];
 export interface SocialLinksData {
-	platform: string;
+	platform: ValidSocialPlatformsType;
 	username: string;
-	url: string;
 }
 
 export interface LifeEventData {
@@ -103,17 +122,66 @@ export interface LifeEventData {
 	date: Date;
 }
 
+export interface INamePronunciation {
+	firstName: string;
+	lastName: string;
+	fullName: string;
+}
+
+const VALID_RELATIONSHIP_STATUSES_ARRAY = [
+	{ status: "single", partner: null },
+	{ status: "in a relationship", partner: "string" },
+	{ status: "engaged", partner: "string" },
+	{ status: "married", partner: "string" },
+	{ status: "in a civil union", partner: "string" },
+	{ status: "in a domestic partnership", partner: "string" },
+	{ status: "in an open relationship", partner: "string" },
+	{ status: "it's complicated", partner: "string" },
+	{ status: "separated", partner: "string" },
+	{ status: "divorced", partner: "string" },
+	{ status: "widowed", partner: "string" },
+] as const;
+
+export type ValidRelationshipStatusesType =
+	(typeof VALID_RELATIONSHIP_STATUSES_ARRAY)[number];
+
+export interface IRelationshipStatus {
+	status: ValidRelationshipStatusesType["status"];
+	partner: ValidRelationshipStatusesType["partner"];
+}
+
+export interface UserDetails {
+	namePronunciation?: INamePronunciation;
+	relationshipStatus?: IRelationshipStatus;
+}
+
+export type IntroField = Record<string, boolean>;
+export type IntroFieldAudience = Record<string, AudienceStatusOptions>;
+
+export interface IntroData {
+	pronouns?: IntroField;
+	work?: IntroField;
+	education?: IntroField;
+	currentCity?: IntroField;
+	hometown?: IntroField;
+	relationshipStatus?: IntroField;
+	namePronunciation?: IntroField;
+	joined: IntroField;
+	websites?: IntroFieldAudience;
+	socialLinks?: IntroFieldAudience;
+}
+
 // User About Data
 export interface UserAboutData {
 	work?: WorkData[];
 	education?: EducationData[];
 	placesLived?: PlaceLivedData[];
-	website?: string;
+	websites?: string[];
 	socialLinks?: SocialLinksData[];
 	nicknames?: string[];
 	lifeEvents?: LifeEventData[];
 
-	intro?: string[]; // allow user to choose what to display out of the following: work, education, current city, hometown, relationship, name pron, joined, websites, social links
+	intro: IntroData; // allow user to choose what to display out of the following: work, education, current city, hometown, relationship, name pron, joined, websites, social links
 
 	bio?: string;
 	hobbies?: string[];
@@ -125,6 +193,7 @@ export interface IUser
 		UserLoginData,
 		UserActivityData,
 		UserSystemData,
+		UserDetails,
 		UserAboutData {
 	_id: string;
 }

@@ -4,7 +4,12 @@ import ProfileBasicInfo from "./ProfileBasicInfo";
 import useUserProfile from "./useUserProfile";
 import Loading from "../../Shared/Loading";
 import ProfileNav from "./ProfileNav/ProfileNav";
-import { MaxWidthContainer, ProfileBottomBorder } from "./UserProfile.styles";
+import {
+	MaxWidthContainer,
+	OutletWrapper,
+	ProfileBottomBorder,
+	ProfileContainer,
+} from "./UserProfile.styles";
 
 const UserProfile = () => {
 	const { user, isLoading } = useUserProfile();
@@ -12,18 +17,21 @@ const UserProfile = () => {
 	if (isLoading) return <Loading />;
 
 	if (!user) return <Navigate to="/login" />;
+
 	return (
-		<div className="user-profile-container">
+		<ProfileContainer className="user-profile-container">
 			<ProfileBottomBorder>
 				<MaxWidthContainer>
 					<ProfileBasicInfo user={user} />
 					<ProfileNav />
 				</MaxWidthContainer>
 			</ProfileBottomBorder>
-			<MaxWidthContainer>
-				<Outlet />
-			</MaxWidthContainer>
-		</div>
+			<OutletWrapper>
+				<MaxWidthContainer>
+					<Outlet context={{ user }} />
+				</MaxWidthContainer>
+			</OutletWrapper>
+		</ProfileContainer>
 	);
 };
 
