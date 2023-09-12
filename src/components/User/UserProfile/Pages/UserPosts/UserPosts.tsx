@@ -1,41 +1,31 @@
+import { lazy } from "react";
+
 import UserIntro from "./UserIntro";
-import styled from "styled-components";
 import useUserPosts from "./useUserPosts";
-import UserFriends from "./UserFriends/UserFriends";
-import UserPhotos from "./UserPhotos/UserPhotos";
-import UserLifeEvents from "./UserLifeEvents/UserLifeEvents";
+import CreatePostButton from "./CreatePostButton";
+import PostViewOptions from "./PostViewOptions";
+import { UserPostsContainer } from "./UserPosts.styles";
+import UserPhotos from "./UserPhotos";
 
-export const UserPostsContainer = styled.div`
-	display: gird;
-
-	align-items: center;
-	justify-content: center;
-	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-	padding: 1rem 2rem;
-
-	@media (max-width: 899px) {
-		flex-direction: column;
-		padding: 1rem;
-		gap: 1rem;
-	}
-`;
+const UserFriends = lazy(() => import("./UserFriends/UserFriends"));
+const UserLifeEvents = lazy(() => import("./UserLifeEvents/UserLifeEvents"));
 
 const UserPosts = () => {
-	const { user } = useUserPosts();
+	const { user, LazyWrapper } = useUserPosts();
 
 	return (
 		<UserPostsContainer>
-			<div>
-				<UserIntro user={user} />
-				<UserPhotos />
+			<UserIntro user={user} />
+			<UserPhotos />
+
+			<LazyWrapper>
 				<UserFriends />
 				<UserLifeEvents />
-			</div>
-			<div>
-				<div>user create post</div>
-				<div>post filter view</div>
-				<div>posts</div>
-			</div>
+			</LazyWrapper>
+
+			<CreatePostButton userIcon={user?.avatarUrl} />
+			<PostViewOptions />
+			<div>posts</div>
 		</UserPostsContainer>
 	);
 };

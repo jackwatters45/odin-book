@@ -7,7 +7,7 @@ const useHobbies = (hobbies: string[] | undefined) => {
 		defaultValues: { hobbies: hobbies || [], search: "" },
 	});
 
-	const { ref, openDialog, closeDialog } = useDialog({ reset });
+	const { ref, openDialog, closeDialog, LazyWrapper } = useDialog({ reset });
 
 	const hobbiesValue = watch("hobbies");
 	const searchValue = watch("search");
@@ -22,6 +22,7 @@ const useHobbies = (hobbies: string[] | undefined) => {
 		hobbiesValue,
 		isHobbies,
 		searchValue,
+		LazyWrapper,
 	};
 };
 

@@ -1,8 +1,13 @@
+import { lazy } from "react";
+
 import { IUser } from "@/types/IUser";
 import IntroSection from "../IntroSection";
-import EditDetailsForm from "@/components/User/UserFields/Details/EditDetailsForm";
 import DetailsDisplay from "@/components/User/UserFields/Details/DetailsDisplay";
 import useDetails from "@/components/User/UserFields/Details/useDetails";
+
+const EditDetailsForm = lazy(
+	() => import("@/components/User/UserFields/Details/EditDetailsForm"),
+);
 
 interface DetailsUserIntroProps {
 	user: IUser;
@@ -18,6 +23,7 @@ const DetailsUserIntro = ({ user }: DetailsUserIntroProps) => {
 		setValue,
 		control,
 		isValues,
+		LazyWrapper,
 	} = useDetails({
 		user,
 	});
@@ -25,15 +31,17 @@ const DetailsUserIntro = ({ user }: DetailsUserIntroProps) => {
 	return (
 		<IntroSection dataExists={isValues} dataName="Details" handleClickButton={openDialog}>
 			<DetailsDisplay user={user} isValues={isValues} />
-			<EditDetailsForm
-				ref={ref}
-				user={user}
-				register={register}
-				onSubmit={handleSubmit}
-				setValue={setValue}
-				control={control}
-				closeDialog={closeDialog}
-			/>
+			<LazyWrapper>
+				<EditDetailsForm
+					ref={ref}
+					user={user}
+					register={register}
+					onSubmit={handleSubmit}
+					setValue={setValue}
+					control={control}
+					closeDialog={closeDialog}
+				/>
+			</LazyWrapper>
 		</IntroSection>
 	);
 };

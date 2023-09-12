@@ -1,9 +1,14 @@
+import { lazy } from "react";
+
 import EditProfileSectionHeader from "../../EditProfileSectionHeader";
 import { ContentDiv } from "../../EditProfile.styles";
 import { IUser } from "@/types/IUser";
-import EditDetailsForm from "@/components/User/UserFields/Details/EditDetailsForm";
 import useDetails from "@/components/User/UserFields/Details/useDetails";
 import DetailsDisplay from "@/components/User/UserFields/Details/DetailsDisplay";
+
+const LazyEditDetailsForm = lazy(
+	() => import("@/components/User/UserFields/Details/EditDetailsForm"),
+);
 
 interface DetailsEditProfileSectionProps {
 	user: IUser;
@@ -19,6 +24,7 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 		setValue,
 		control,
 		isValues,
+		LazyWrapper,
 	} = useDetails({
 		user,
 	});
@@ -31,15 +37,17 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 				openDialog={openDialog}
 			/>
 			<DetailsDisplay user={user} isValues={isValues} />
-			<EditDetailsForm
-				user={user}
-				ref={ref}
-				closeDialog={closeDialog}
-				register={register}
-				setValue={setValue}
-				control={control}
-				onSubmit={handleSubmit}
-			/>
+			<LazyWrapper>
+				<LazyEditDetailsForm
+					user={user}
+					ref={ref}
+					closeDialog={closeDialog}
+					register={register}
+					setValue={setValue}
+					control={control}
+					onSubmit={handleSubmit}
+				/>
+			</LazyWrapper>
 		</ContentDiv>
 	);
 };

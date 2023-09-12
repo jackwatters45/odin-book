@@ -66,6 +66,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     text-decoration: none;
     line-height: 0;
+    border-radius: inherit;
   }
 
   li {
@@ -98,6 +99,10 @@ const GlobalStyle = createGlobalStyle`
 
   button  {
     color: ${({ theme }) => theme.colors.textPrimary};
+  }
+
+  img {
+    border-radius: inherit;
   }
 
 

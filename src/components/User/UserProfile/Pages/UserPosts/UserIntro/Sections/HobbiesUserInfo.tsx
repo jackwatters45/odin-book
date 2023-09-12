@@ -1,15 +1,27 @@
-import EditHobbiesForm from "@/components/User/UserFields/Hobbies/EditHobbiesForm/EditHobbiesForm";
+import { lazy } from "react";
+
 import IntroSection from "../IntroSection";
 import HobbiesDisplay from "@/components/User/UserFields/Hobbies/HobbiesDisplay";
 import useHobbies from "@/components/User/UserFields/Hobbies/useHobbies";
+
+const EditHobbiesForm = lazy(
+	() => import("@/components/User/UserFields/Hobbies/EditHobbiesForm"),
+);
 
 interface HobbiesUserIntroProps {
 	hobbies: string[] | undefined;
 }
 
 const HobbiesUserIntro = ({ hobbies }: HobbiesUserIntroProps) => {
-	const { ref, openDialog, closeDialog, register, hobbiesValue, searchValue } =
-		useHobbies(hobbies);
+	const {
+		ref,
+		openDialog,
+		closeDialog,
+		register,
+		hobbiesValue,
+		searchValue,
+		LazyWrapper,
+	} = useHobbies(hobbies);
 
 	return (
 		<IntroSection
@@ -18,15 +30,17 @@ const HobbiesUserIntro = ({ hobbies }: HobbiesUserIntroProps) => {
 			handleClickButton={openDialog}
 		>
 			<HobbiesDisplay hobbiesValue={hobbiesValue} register={register("hobbies")} />
-			<EditHobbiesForm
-				ref={ref}
-				hobbies={hobbies}
-				hobbiesValue={hobbiesValue}
-				hobbiesRegister={register("hobbies")}
-				searchRegister={register("search")}
-				searchValue={searchValue}
-				closeDialog={closeDialog}
-			/>
+			<LazyWrapper>
+				<EditHobbiesForm
+					ref={ref}
+					hobbies={hobbies}
+					hobbiesValue={hobbiesValue}
+					hobbiesRegister={register("hobbies")}
+					searchRegister={register("search")}
+					searchValue={searchValue}
+					closeDialog={closeDialog}
+				/>
+			</LazyWrapper>
 		</IntroSection>
 	);
 };

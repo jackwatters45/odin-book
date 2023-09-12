@@ -13,7 +13,7 @@ const useRadioForm = <T extends FieldValues>({
 	initial,
 	setValue,
 }: UseRadioFormProps<T>) => {
-	const { ref, openDialog, closeDialog } = useDialog({});
+	const { ref, openDialog, closeDialog, LazyWrapper } = useDialog({});
 
 	const [popupValue, setPopupValue] = useState<PathValue<T, Path<T>>>(initial);
 
@@ -26,6 +26,7 @@ const useRadioForm = <T extends FieldValues>({
 		ref,
 		openDialog,
 		closeDialog,
+		LazyWrapper,
 		popupValue,
 		setPopupValue,
 		handleConfirm,

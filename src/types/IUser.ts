@@ -181,10 +181,12 @@ export interface UserAboutData {
 	nicknames?: string[];
 	lifeEvents?: LifeEventData[];
 
-	intro: IntroData; // allow user to choose what to display out of the following: work, education, current city, hometown, relationship, name pron, joined, websites, social links
+	intro: IntroData;
 
 	bio?: string;
 	hobbies?: string[];
+
+	taggedPosts?: string[];
 }
 
 export interface IUser

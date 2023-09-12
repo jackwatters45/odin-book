@@ -13,7 +13,7 @@ interface IQueryCustomProps<T, U> {
 	options?: IUseQueryOptions;
 }
 
-const useQueryCustom = <T = unknown, U = unknown>({
+const useQueryCustom = <T = unknown, U = T>({
 	queryKey,
 	queryUrl,
 	transformData,
@@ -34,7 +34,7 @@ const useQueryCustom = <T = unknown, U = unknown>({
 		return transformData ? transformData(json) : json;
 	};
 
-	const { data, error, isLoading, isError, isSuccess, refetch } = useQuery({
+	const { data, error, isLoading, isError, isSuccess, refetch } = useQuery<U>({
 		queryKey,
 		queryFn,
 		...options,

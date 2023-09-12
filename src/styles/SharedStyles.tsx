@@ -104,3 +104,25 @@ export const StyledDialog = styled.dialog`
 		font-weight: 700;
 	}
 `;
+
+export const StyledSearchInput = styled.label`
+	width: 100%;
+	height: 42px;
+	border-radius: 1.5rem;
+	background-color: #f0f2f5;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	> input {
+		font-size: 0.95rem;
+		height: 100%;
+		width: 100%;
+		padding: 0 1rem;
+		color: #65676b;
+		outline: none;
+		border-radius: 1.5rem;
+		cursor: auto;
+	}
+`;

@@ -1,9 +1,14 @@
 import { useOutletContext } from "react-router";
 
 import { IUser } from "@/types/IUser";
+import useLazyLoad from "@/hooks/useLazyLoad";
 
 const useUserPosts = () => {
-	return useOutletContext<{ user: IUser }>();
+	const { user } = useOutletContext<{ user: IUser }>();
+
+	const { LazyWrapper } = useLazyLoad({});
+
+	return { user, LazyWrapper };
 };
 
 export default useUserPosts;

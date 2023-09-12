@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import useLazyLoad from "./useLazyLoad";
+import Loading from "@/components/Shared/Loading";
 
 interface UseDialogProps {
 	isModal?: boolean;
@@ -17,7 +19,11 @@ const useDialog = ({ isModal = true, reset }: UseDialogProps) => {
 		ref.current?.close();
 	};
 
-	return { ref, openDialog, closeDialog };
+	const { LazyWrapper } = useLazyLoad({
+		fallback: ref.current?.open ? <Loading /> : null,
+	});
+
+	return { ref, openDialog, closeDialog, LazyWrapper };
 };
 
 export default useDialog;
