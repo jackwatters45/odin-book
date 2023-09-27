@@ -1,6 +1,5 @@
-import { PlaceLivedData } from "@/types/IUser";
-
-const formatCity = (location: PlaceLivedData | undefined) =>
-	`${location?.city}, ${location?.state}`;
+const formatCity = (city: string, state: string) => {
+	return `${city}, ${state}`;
+};
 
 export default formatCity;

@@ -1,10 +1,12 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { StyledBadge, StyledBadgeContainer } from "./OptionBadge.styles";
+import { Link } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiClose } from "@mdi/js";
-import { Link } from "react-router-dom";
+
+import { StyledBadge, StyledBadgeContainer } from "./OptionBadge.styles";
 
 interface OptionBadgeProps {
+	id: string;
 	name: string;
 	register: ReturnType<UseFormRegister<FieldValues>>;
 	emoji?: string;
@@ -14,6 +16,7 @@ interface OptionBadgeProps {
 }
 
 const OptionBadge = ({
+	id,
 	name,
 	register,
 	emoji,
@@ -26,9 +29,9 @@ const OptionBadge = ({
 			{emoji && <span className="emoji">{emoji}</span>}
 			{!hideName && <span>{name}</span>}
 			{showDelete && (
-				<button>
+				<span className="remove-badge">
 					<Icon path={mdiClose} size={0.65} color={"#1877f2"} />
-				</button>
+				</span>
 			)}
 		</>
 	);
@@ -38,7 +41,7 @@ const OptionBadge = ({
 			<input
 				className="hidden-checkbox"
 				type="checkbox"
-				id={name}
+				id={id}
 				value={name}
 				{...register}
 				disabled={isLink}
@@ -46,12 +49,12 @@ const OptionBadge = ({
 			/>
 			{isLink ? (
 				<Link to={`/search/top/?q=${name}`}>
-					<StyledBadge htmlFor={name} $showDelete={showDelete}>
+					<StyledBadge htmlFor={id} $showDelete={showDelete}>
 						{badgeContent}
 					</StyledBadge>
 				</Link>
 			) : (
-				<StyledBadge htmlFor={name} $showDelete={showDelete}>
+				<StyledBadge htmlFor={id} $showDelete={showDelete}>
 					{badgeContent}
 				</StyledBadge>
 			)}

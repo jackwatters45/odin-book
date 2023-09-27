@@ -25,14 +25,16 @@ const GlobalStyle = createGlobalStyle`
     
     color-scheme: light dark;
     
-    user-select: none;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     min-height: 100vh;
+
+    user-select: none;
   }
+
 
   html {
     font-family:
@@ -55,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 
      color: ${({ theme }) => theme.colors.textPrimary};
     background-color: ${({ theme }) => theme.colors.backgroundPrimary};
@@ -73,10 +75,14 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  button, input[type='text'] {
+  button, input[type='text'], textarea, select, option {
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+
+  textarea {
+    font-family: inherit;
   }
 
   strong {
@@ -105,7 +111,14 @@ const GlobalStyle = createGlobalStyle`
     border-radius: inherit;
   }
 
+  :hover {
+    // transition: background-color 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
 
+  :has(dialog[open]) {
+    overflow: hidden;
+  }
 `;
 
 export default GlobalStyle;

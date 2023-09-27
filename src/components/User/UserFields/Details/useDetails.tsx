@@ -27,7 +27,7 @@ const useDetails = ({ user }: UseDetailsProps) => {
 
 	const formValue = watch();
 
-	const { ref, openDialog, closeDialog, LazyWrapper } = useDialog({ reset });
+	const { ref, openDialog, closeDialog } = useDialog({ reset });
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -49,7 +49,6 @@ const useDetails = ({ user }: UseDetailsProps) => {
 		setValue,
 		control,
 		isValues,
-		LazyWrapper,
 	};
 };
 

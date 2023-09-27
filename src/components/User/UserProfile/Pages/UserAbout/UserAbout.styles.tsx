@@ -1,0 +1,51 @@
+import styled from "styled-components";
+
+export const StyledUserProfileContentContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 1rem;
+	align-items: center;
+	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+	width: 100%;
+`;
+
+export const StyledUserAboutSectionContainer = styled.div`
+	width: 100%;
+	background-color: #ffffff;
+	border-radius: 0.25rem;
+	${(props) => props.theme.sectionShadow}
+	display: flex;
+
+	> div {
+		padding: 1rem;
+	}
+
+	> div:first-child {
+		border-right: 1px solid #dddfe2;
+		width: 38%;
+	}
+
+	> div:last-child {
+		width: 62%;
+	}
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+
+		> div:first-child {
+			width: 100%;
+			border-right: none;
+			border-bottom: 1px solid #dddfe2;
+		}
+
+		> div:last-child {
+			width: 100%;
+			padding-bottom: 0;
+		}
+	}
+`;
+
+export const StyledUserAboutRightColumn = styled.div`
+	position: relative;
+`;

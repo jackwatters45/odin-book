@@ -1,5 +1,4 @@
 import { mdiAccount, mdiFlag, mdiImageMultiple } from "@mdi/js";
-import Icon from "@mdi/react";
 
 import { IconCircleBackground, ImageCircle } from "@/components/Nav/Nav.styles";
 import {
@@ -29,14 +28,28 @@ const CreatePostButton = ({ userIcon }: CreatePostButtonProps) => {
 				</StyledSearchInputCreatePost>
 			</StyledFirstRowCreatePost>
 			<StyledLastRowCreatePost>
-				<StyledCreateTypeButton>
-					<Icon path={mdiImageMultiple} size={1.2} color={"#22c55e"} />
-					<span>Photo/Video</span>
-				</StyledCreateTypeButton>
-				<StyledCreateTypeButton>
-					<Icon path={mdiFlag} size={1.2} color={"#3b82f6"} />
-					<span>Life event</span>
-				</StyledCreateTypeButton>
+				<StyledCreateTypeButton
+					text="Photo/Video"
+					icon={mdiImageMultiple}
+					iconSize={1.2}
+					iconColor="#22c55e"
+					colorClass="transparent"
+					onClick={() => {
+						// TODO
+						console.log("Photo/Video");
+					}}
+				/>
+				<StyledCreateTypeButton
+					text="Life event"
+					icon={mdiFlag}
+					iconSize={1.2}
+					iconColor="#3b82f6"
+					colorClass="transparent"
+					onClick={() => {
+						// TODO
+						console.log("Life event");
+					}}
+				/>
 			</StyledLastRowCreatePost>
 		</StyledCreatePostButton>
 	);

@@ -1,20 +1,21 @@
 import { mdiPlusCircleOutline } from "@mdi/js";
-import Icon from "@mdi/react";
 import { StyledAddDetailLink } from "./AddDetailLink.styles";
 
 interface AddDetailLinkProps {
-	text: string;
-	to: string;
+	text: string | undefined;
+	onClick: () => void;
 }
 
-const AddDetailLink = ({ text, to }: AddDetailLinkProps) => {
+const AddDetailLink = ({ text, onClick }: AddDetailLinkProps) => {
 	return (
-		<StyledAddDetailLink to={to}>
-			<span>
-				<Icon path={mdiPlusCircleOutline} size={1.4} />
-			</span>
-			<span>{text}</span>
-		</StyledAddDetailLink>
+		<StyledAddDetailLink
+			colorClass="transparent"
+			onClick={onClick}
+			text={text}
+			icon={mdiPlusCircleOutline}
+			iconSize={1.1}
+			className="underline-hover"
+		/>
 	);
 };
 

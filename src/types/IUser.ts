@@ -1,4 +1,6 @@
+import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/RelationshipStatus/validRelationshipStatuses";
 import AudienceStatusOptions from "./AudienceStatusOptions";
+import { IRelationshipStatus } from "./IRelationshipStatus";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -47,7 +49,7 @@ export interface UserActivityData {
 
 // User Deleted Data
 interface DeletedData {
-	deletedBy: string | null; // objectId
+	deletedBy: string | undefined; // objectId
 	deletedAt: Date;
 	email: string;
 	followerCount: number;
@@ -64,39 +66,41 @@ export interface UserSystemData {
 	refreshTokens: string[];
 }
 
-export interface WorkData {
+type IncludesStartEndDates = {
+	startYear: string | undefined;
+	startMonth: string | undefined;
+	startDay: string | undefined;
+	endYear: string | undefined;
+	endMonth: string | undefined;
+	endDay: string | undefined;
+};
+export interface WorkData extends IncludesStartEndDates {
 	_id: string;
 	company: string;
+	current: boolean;
 	position?: string;
 	city?: string;
 	description?: string;
-	startDate?: Date;
-	endDate?: Date | null;
 }
 
-export interface EducationData {
+export interface EducationData extends IncludesStartEndDates {
 	_id: string;
-	type: "university" | "high school";
+	type: "college" | "high school";
 	school: string;
+	graduated: boolean;
 	degree?: string;
-	fieldOfStudy?: string;
-	city?: string;
+	attendedFor?: "undergraduate" | "graduate school";
+	concentrations?: string[];
 	description?: string;
-	startDate?: Date;
-	endDate?: Date | null;
-	concentration?: string;
-	secondaryConcentrations?: string[];
-	activities?: string[];
 }
 
-export interface PlaceLivedData {
+export type PlaceLivedType = "current" | "hometown" | "default";
+export interface PlaceLivedData extends IncludesStartEndDates {
 	_id: string;
-	type: "current" | "hometown" | "default";
+	type: PlaceLivedType;
 	city: string;
 	state: string;
 	country: string;
-	startDate?: Date;
-	endDate?: Date | null;
 }
 
 export const VALID_SOCIAL_PLATFORMS_ARRAY = [
@@ -117,9 +121,9 @@ export interface SocialLinksData {
 }
 
 export interface LifeEventData {
+	_id: string;
 	title: string;
-	description?: string;
-	date: Date;
+	date: string;
 }
 
 export interface INamePronunciation {
@@ -128,27 +132,8 @@ export interface INamePronunciation {
 	fullName: string;
 }
 
-const VALID_RELATIONSHIP_STATUSES_ARRAY = [
-	{ status: "single", partner: null },
-	{ status: "in a relationship", partner: "string" },
-	{ status: "engaged", partner: "string" },
-	{ status: "married", partner: "string" },
-	{ status: "in a civil union", partner: "string" },
-	{ status: "in a domestic partnership", partner: "string" },
-	{ status: "in an open relationship", partner: "string" },
-	{ status: "it's complicated", partner: "string" },
-	{ status: "separated", partner: "string" },
-	{ status: "divorced", partner: "string" },
-	{ status: "widowed", partner: "string" },
-] as const;
-
 export type ValidRelationshipStatusesType =
 	(typeof VALID_RELATIONSHIP_STATUSES_ARRAY)[number];
-
-export interface IRelationshipStatus {
-	status: ValidRelationshipStatusesType["status"];
-	partner: ValidRelationshipStatusesType["partner"];
-}
 
 export interface UserDetails {
 	namePronunciation?: INamePronunciation;
@@ -159,17 +144,33 @@ export type IntroField = Record<string, boolean>;
 export type IntroFieldAudience = Record<string, AudienceStatusOptions>;
 
 export interface IntroData {
-	pronouns?: IntroField;
-	work?: IntroField;
-	education?: IntroField;
-	currentCity?: IntroField;
-	hometown?: IntroField;
-	relationshipStatus?: IntroField;
-	namePronunciation?: IntroField;
+	pronouns: IntroField;
+	work: IntroField;
+	education: IntroField;
+	currentCity: IntroField;
+	hometown: IntroField;
+	relationshipStatus: IntroField;
+	namePronunciation: IntroField;
 	joined: IntroField;
-	websites?: IntroFieldAudience;
-	socialLinks?: IntroFieldAudience;
+	websites: IntroFieldAudience;
+	socialLinks: IntroFieldAudience;
 }
+
+export type AudienceSettingsField = "Public" | "Friends" | "Only Me";
+
+export interface AudienceSettings {
+	currentCity: AudienceSettingsField;
+	hometown: AudienceSettingsField;
+	relationshipStatus: AudienceSettingsField;
+	phoneNumber: AudienceSettingsField;
+
+	work: { [key: string]: AudienceSettingsField };
+	education: { [key: string]: AudienceSettingsField };
+}
+
+type AllKeys<T> = keyof T | `${Extract<keyof T, string>}.${string}`;
+
+export type UserAboutAudienceFormFields = AllKeys<AudienceSettings>;
 
 // User About Data
 export interface UserAboutData {
@@ -179,9 +180,10 @@ export interface UserAboutData {
 	websites?: string[];
 	socialLinks?: SocialLinksData[];
 	nicknames?: string[];
-	lifeEvents?: LifeEventData[];
 
 	intro: IntroData;
+
+	audienceSettings: AudienceSettings;
 
 	bio?: string;
 	hobbies?: string[];

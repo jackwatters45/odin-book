@@ -1,19 +1,9 @@
 import { styled } from "styled-components";
-import { StandardButtonStyles, StyledDialog } from "@/styles/SharedStyles";
+import { StyledDialog } from "@/styles/SharedStyles";
+import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledEditProfileDialog = styled(StyledDialog)`
 	z-index: 1001;
-`;
-
-export const StyledEditProfileButton = styled.button`
-	${StandardButtonStyles}
-	color: ${({ theme }) => theme.colors.textPrimary};
-	background-color: ${({ theme }) => theme.colors.primaryButton};
-	font-size: 0.95rem;
-
-	@media (min-width: 900px) {
-		margin-bottom: 1rem;
-	}
 `;
 
 export const ContentDiv = styled.div`
@@ -34,6 +24,16 @@ export const ContentDiv = styled.div`
 	}
 `;
 
+export const StyledStandardButton = styled(StandardButton)`
+	font-size: 0.95rem;
+	padding: 0 1rem;
+	height: 34px;
+
+	@media (min-width: 900px) {
+		margin-bottom: 1rem;
+	}
+`;
+
 export const StyledButton = styled.button`
 	height: 2.5rem;
 	border-radius: 0.25rem;
@@ -42,6 +42,17 @@ export const StyledButton = styled.button`
 	font-size: 1rem;
 	font-weight: 700;
 	background: #e7f3ff;
+	margin: 0.25rem;
+
+	&:hover {
+		background: #d9eaf9;
+	}
+`;
+
+export const StyledStandardButtonFullWidth = styled(StandardButton)`
+	width: 100%;
+	font-size: 1rem;
+	font-weight: 700;
 	margin: 0.25rem;
 
 	&:hover {

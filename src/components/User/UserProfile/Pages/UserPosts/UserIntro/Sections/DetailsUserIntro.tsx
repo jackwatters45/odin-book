@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 import { IUser } from "@/types/IUser";
 import IntroSection from "../IntroSection";
@@ -23,7 +23,6 @@ const DetailsUserIntro = ({ user }: DetailsUserIntroProps) => {
 		setValue,
 		control,
 		isValues,
-		LazyWrapper,
 	} = useDetails({
 		user,
 	});
@@ -31,7 +30,7 @@ const DetailsUserIntro = ({ user }: DetailsUserIntroProps) => {
 	return (
 		<IntroSection dataExists={isValues} dataName="Details" handleClickButton={openDialog}>
 			<DetailsDisplay user={user} isValues={isValues} />
-			<LazyWrapper>
+			<Suspense>
 				<EditDetailsForm
 					ref={ref}
 					user={user}
@@ -41,7 +40,7 @@ const DetailsUserIntro = ({ user }: DetailsUserIntroProps) => {
 					control={control}
 					closeDialog={closeDialog}
 				/>
-			</LazyWrapper>
+			</Suspense>
 		</IntroSection>
 	);
 };

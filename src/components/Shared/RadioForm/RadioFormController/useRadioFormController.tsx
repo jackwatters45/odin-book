@@ -1,22 +1,18 @@
-import { FieldValues, Path, PathValue } from "react-hook-form";
 import { RadioFormOption } from "../RadioForm";
 
-interface UseRadioFormControllerProps<T extends FieldValues> {
-	formField: string;
+interface UseRadioFormControllerProps {
 	options: RadioFormOption[];
-	initial: PathValue<T, Path<T>> & string;
 }
 
-const useRadioFormController = <T extends FieldValues>({
-	formField,
-	options,
-	initial,
-}: UseRadioFormControllerProps<T>) => {
-	const selectedOptionIcon = options.find(({ title }) => {
-		return title === initial[formField];
-	})?.icon;
+const useRadioFormController = ({ options }: UseRadioFormControllerProps) => {
+	const getSelectedOptionIcon = (currentTitle: string) => {
+		return options?.find(({ title }) => {
+			return currentTitle === title;
+		})?.icon;
+	};
+
 	return {
-		selectedOptionIcon,
+		getSelectedOptionIcon,
 	};
 };
 

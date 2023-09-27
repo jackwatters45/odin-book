@@ -1,14 +1,20 @@
 import { useOutletContext } from "react-router";
+import { useRef } from "react";
 
 import { IUser } from "@/types/IUser";
-import useLazyLoad from "@/hooks/useLazyLoad";
 
 const useUserPosts = () => {
 	const { user } = useOutletContext<{ user: IUser }>();
 
-	const { LazyWrapper } = useLazyLoad({});
+	const leftSidebarRef = useRef<HTMLDivElement>(null);
+	const getTop = () => {
+		const viewportHeight = window.innerHeight;
+		const leftColumnHeight = leftSidebarRef.current?.offsetHeight ?? viewportHeight;
+		return `calc(${viewportHeight - leftColumnHeight}px - 1rem)`;
+	};
+	const top = getTop();
 
-	return { user, LazyWrapper };
+	return { user, leftSidebarRef, top };
 };
 
 export default useUserPosts;

@@ -24,9 +24,9 @@ import {
 	StyledDropdown,
 	StyledDropdownLink,
 	StyledDropdownButton,
-	StyledNavShadow,
 } from "./Nav.styles";
 import { Navigate } from "react-router";
+import { StyledNavShadow } from "@/styles/SharedStyles";
 
 // TODO responsive will need a lot of work (facebook's is just complicated)
 // TODO search
@@ -133,7 +133,7 @@ const NavComponent = () => {
 					</StyledDropdown>
 				</StyledSideNav>
 			</StyledNav>
-			<StyledNavShadow></StyledNavShadow>
+			<StyledNavShadow />
 		</StyledNavContainer>
 	);
 };

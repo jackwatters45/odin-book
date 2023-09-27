@@ -175,15 +175,3 @@ export const IconCircleBackground = styled(Icon)<{ background?: string }>`
 	align-items: center;
 	justify-content: center;
 `;
-
-export const StyledNavShadow = styled.div`
-	position: absolute;
-	bottom: -7px;
-	height: 7px;
-	width: 100%;
-	background-image: url("https://res.cloudinary.com/drheg5d7j/image/upload/v1693706871/odin-book/nav-shadow_hbspmi.png");
-	background-size: 1px 7px;
-	background-repeat: repeat-x;
-	z-index: 1;
-	pointer-events: none;
-`;

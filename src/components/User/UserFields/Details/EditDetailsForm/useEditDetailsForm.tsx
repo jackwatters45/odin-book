@@ -2,14 +2,14 @@ import { IUser } from "@/types/IUser";
 import getDefaultFormStateDetails from "./getDefaultFormFieldsDetails";
 import getCurrentCity from "../../PlacesLived/getCurrentCity";
 import getHometown from "../../PlacesLived/getHometown";
-import formatDateMonthYear from "@/utils/formatDateMonthYear";
+import formatDateMonthYear from "@/utils/dateHelpers/formatDateMonthYear";
 
 interface IUseEditDetailsForm {
 	user: IUser;
 }
 
 const useEditDetailsForm = ({ user }: IUseEditDetailsForm) => {
-	const formattedJoined = formatDateMonthYear(user?.createdAt);
+	const formattedJoined = `Joined ${formatDateMonthYear(user?.createdAt)}`;
 
 	const currentCity = getCurrentCity(user?.placesLived);
 	const hometown = getHometown(user?.placesLived);

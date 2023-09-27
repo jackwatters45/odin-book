@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import StandardFullWidthButton from "../../../../../../Shared/StandardFullWidthButton/StandardFullWidthButton";
 import { IntroCategoryContainer } from "./IntroSection.styles";
+import StandardFullWidthButton from "@/components/Shared/StandardFullWidthButton";
 
 interface IntroSectionProps {
 	dataExists: boolean;

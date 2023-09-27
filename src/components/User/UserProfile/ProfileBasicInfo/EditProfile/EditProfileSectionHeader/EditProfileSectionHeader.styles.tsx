@@ -1,3 +1,4 @@
+import StandardLink from "@/components/Shared/StandardLink";
 import styled from "styled-components";
 
 export const EditProfileSectionHeaderContainer = styled.div`
@@ -6,13 +7,8 @@ export const EditProfileSectionHeaderContainer = styled.div`
 	align-items: center;
 `;
 
-export const StyledEditButton = styled.button`
-	padding: 0.5rem;
-	border-radius: 0.25rem;
+export const StyledEditLink = styled(StandardLink)`
 	font-size: 0.95rem;
-	color: #216fdb;
-
-	&:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
+	padding: 0.5rem;
+	color: ${({ theme }) => theme.colors.blueButton};
 `;

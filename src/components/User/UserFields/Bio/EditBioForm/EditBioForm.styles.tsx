@@ -3,6 +3,12 @@ import { styled } from "styled-components";
 export const StyledTextAreaContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	&.full-width {
+		textarea {
+			width: 100%;
+		}
+	}
 `;
 
 export const StyledTextArea = styled.textarea`
@@ -34,9 +40,4 @@ export const StyledBottomRow = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 0.25rem;
-`;
-
-export const StyledButton = styled.button`
-	color: black;
-	background-color: #e4e6eb;
 `;

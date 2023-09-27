@@ -1,10 +1,13 @@
-import ModalHeader from "@/components/Shared/DialogHeader";
+import Icon from "@mdi/react";
+import { mdiWeb } from "@mdi/js";
+
+import ModalHeader from "@/components/Shared/Dialog/DialogHeader";
 import { IUser } from "@/types/IUser";
 import { FormEvent, forwardRef } from "react";
 import ExistingDetailSwitch from "./ExistingDetailSwitch";
 import { UseFormReturn } from "react-hook-form";
-import DialogActions from "../../../../Shared/DialogActions";
-import AddDetailButton from "./AddDetailLink";
+import DialogActions from "../../../../Shared/Dialog/DialogActions";
+import AddDetailLink from "./AddDetailLink";
 import {
 	FormContentContainer,
 	SectionContainer,
@@ -13,13 +16,11 @@ import {
 } from "./EditDetailsForm.styles";
 import useEditDetailsForm from "./useEditDetailsForm";
 import SectionTitle from "./SectionTitle";
-import Icon from "@mdi/react";
-import { mdiWeb } from "@mdi/js";
 import getSocialLinkImage from "../../SocialLinks/socialLinkImages";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
 import DetailsFormFields from "@/types/DetailsFormFields";
 import formatWorkData from "../../Work/formatWorkValue";
-import formatEducationData from "../../Education/formatEducationData";
+import { formatEducationTitle } from "../../Education/formatEducationData";
 import formatRelationshipStatus from "../../RelationshipStatus/formatRelationshipStatus";
 
 interface EditDetailsFormProps {
@@ -56,7 +57,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									to={"about_contact_and_basic_info"}
 								/>
 							) : (
-								<AddDetailButton
+								<AddDetailLink
 									text={"Add pronouns to your profile"}
 									to={"about_contact_and_basic_info"}
 								/>
@@ -70,13 +71,13 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										<ExistingDetailSwitch
 											key={workRecord._id}
 											id={`work.${workRecord._id}`}
-											value={formatWorkData(workRecord)}
+											value={formatWorkData({ work: workRecord })}
 											register={register(`work.${workRecord._id}`)}
 											to={"about_work_and_education"}
 										/>
 									);
 								})}
-							<AddDetailButton text={"Add a workplace"} to={"about_work_and_education"} />
+							<AddDetailLink text={"Add a workplace"} to={"about_work_and_education"} />
 						</SectionContainer>
 						<SectionContainer>
 							<SectionTitle title="Education" />
@@ -86,17 +87,18 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										<ExistingDetailSwitch
 											key={educationRecord._id}
 											id={`education.${educationRecord._id}`}
-											value={formatEducationData(educationRecord)}
+											value={formatEducationTitle({ education: educationRecord })}
 											register={register(`education.${educationRecord._id}`)}
 											to={"about_work_and_education"}
 										/>
 									);
 								})}
-							<AddDetailButton
+							<AddDetailLink
 								text={"Add high school or college"}
 								to={"about_work_and_education"}
 							/>
 						</SectionContainer>
+
 						<SectionContainer>
 							<SectionTitle title="Current city" />
 							{currentCity ? (
@@ -109,7 +111,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									to={"about_places"}
 								/>
 							) : (
-								<AddDetailButton text={"Add a current city"} to={"about_places"} />
+								<AddDetailLink text={"Add a current city"} to={"about_places"} />
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -124,20 +126,23 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									to={"about_places"}
 								/>
 							) : (
-								<AddDetailButton text={"Add a hometown"} to={"about_places"} />
+								<AddDetailLink text={"Add a hometown"} to={"about_places"} />
 							)}
 						</SectionContainer>
 						<SectionContainer>
 							<SectionTitle title="Relationship" />
-							{user.relationshipStatus ? (
+							{user.relationshipStatus?.status ? (
 								<ExistingDetailSwitch
 									id="relationshipStatus"
-									value={formatRelationshipStatus(user.relationshipStatus)}
+									value={formatRelationshipStatus({
+										partner: user.relationshipStatus.partner as IUser,
+										status: user.relationshipStatus.status,
+									})}
 									register={register("relationshipStatus.relationshipStatus")}
 									to={"about_family_and_relationships"}
 								/>
 							) : (
-								<AddDetailButton
+								<AddDetailLink
 									text={"Add a relationship"}
 									to={"about_family_and_relationships"}
 								/>
@@ -153,7 +158,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									to={"about_details"}
 								/>
 							) : (
-								<AddDetailButton text={"Add a name pronunciation"} to={"about_details"} />
+								<AddDetailLink text={"Add a name pronunciation"} to={"about_details"} />
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -176,12 +181,17 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									".",
 								]}
 								rightColumn={
-									<AudienceRadio<DetailsFormFields>
-										formField="websites"
-										initial={defaultValues.websites}
-										control={control}
-										setValue={setValue}
-									/>
+									user.websites &&
+									user.websites.length > 0 && (
+										<AudienceRadio<DetailsFormFields>
+											formField="websites"
+											initial={defaultValues.websites}
+											control={control}
+											setValue={setValue}
+											submitsForm={false}
+											submitButtonText="Done"
+										/>
+									)
 								}
 							/>
 							{user.websites?.length ? (
@@ -196,7 +206,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									/>
 								))
 							) : (
-								<AddDetailButton text={"Add a website"} to={"about_details"} />
+								<AddDetailLink text={"Add a website"} to={"about_details"} />
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -208,12 +218,17 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									".",
 								]}
 								rightColumn={
-									<AudienceRadio<DetailsFormFields>
-										formField="socialLinks"
-										initial={defaultValues.socialLinks}
-										control={control}
-										setValue={setValue}
-									/>
+									user.socialLinks &&
+									user.socialLinks.length > 0 && (
+										<AudienceRadio<DetailsFormFields>
+											formField="socialLinks"
+											initial={defaultValues.socialLinks}
+											control={control}
+											setValue={setValue}
+											submitsForm={false}
+											submitButtonText="Done"
+										/>
+									)
 								}
 							/>
 							{user.socialLinks?.length ? (
@@ -236,12 +251,12 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									);
 								})
 							) : (
-								<AddDetailButton text={"Add a social link"} to={"about_details"} />
+								<AddDetailLink text={"Add a social link"} to={"about_details"} />
 							)}
 						</SectionContainer>
 					</FormContentContainer>
 					<DialogActions<DetailsFormFields>
-						closeDialog={closeDialog}
+						handleCancel={closeDialog}
 						unsavedValue={undefined}
 						initial={undefined}
 						handleSave={undefined}

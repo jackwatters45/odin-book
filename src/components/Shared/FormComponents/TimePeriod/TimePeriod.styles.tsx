@@ -1,0 +1,41 @@
+import styled from "styled-components";
+import StandardCheckbox from "../../StandardCheckbox";
+
+export const StyledTimePeriodContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.5rem 0;
+`;
+
+export const StyledTimePeriodText = styled.span<{ $isPadding?: boolean }>`
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding-bottom: ${({ $isPadding }) => ($isPadding ? "0.5rem" : "0")};
+`;
+
+export const StyledStandardCheckbox = styled(StandardCheckbox)`
+	margin-bottom: 0.5rem;
+`;
+
+export const StyledStandardCheckboxMarginTop = styled(StandardCheckbox)`
+	margin: 0.5rem 0 0.75rem;
+`;
+
+export const StyledTimePeriodDatesDiv = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+
+	flex-wrap: wrap;
+
+	> div {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	> span {
+		font-size: 0.95rem;
+	}
+`;

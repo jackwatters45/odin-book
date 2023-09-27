@@ -1,15 +1,16 @@
-import { Control, Controller, FieldValues, Path, PathValue } from "react-hook-form";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-import ButtonRadioForm from "../ButtonRadioForm";
 import { RadioFormOption } from "../RadioForm";
 import useRadioFormController from "./useRadioFormController";
+import { StyledRadioFormButton } from "./RadioFormController.styles";
+import { StandardButtonProps } from "../../StandardButton/StandardButton";
 
 interface RadioFormControllerProps<T extends FieldValues> {
 	formField: Path<T> & string;
 	control: Control<T>;
 	openDialog: () => void;
 	options: RadioFormOption[];
-	initial: PathValue<T, Path<T>> & string;
+	buttonOptions?: StandardButtonProps;
 }
 
 const RadioFormController = <T extends FieldValues>({
@@ -17,20 +18,24 @@ const RadioFormController = <T extends FieldValues>({
 	control,
 	openDialog,
 	options,
-	initial,
+	buttonOptions,
 }: RadioFormControllerProps<T>) => {
-	const { selectedOptionIcon } = useRadioFormController({ options, initial, formField });
+	const { getSelectedOptionIcon } = useRadioFormController({ options });
 
 	return (
 		<Controller
 			name={formField}
 			control={control}
 			render={({ field }) => {
+				const currentSelected = field.value?.[formField] || field.value;
 				return (
-					<ButtonRadioForm
-						value={field.value[formField]}
+					<StyledRadioFormButton
+						text={currentSelected}
+						icon={getSelectedOptionIcon(currentSelected)}
 						onClick={openDialog}
-						icon={selectedOptionIcon}
+						iconSize={0.7}
+						iconColor={"#65676B"}
+						{...buttonOptions}
 					/>
 				);
 			}}

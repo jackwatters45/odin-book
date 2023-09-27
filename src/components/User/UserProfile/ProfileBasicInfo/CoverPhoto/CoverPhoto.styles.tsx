@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { StandardButtonStyles } from "@/styles/SharedStyles";
+import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledContainer = styled.div`
 	width: 100%;
@@ -35,13 +35,11 @@ export const StyledCoverError = styled.span`
 	top: 2rem;
 `;
 
-export const StyledEditCoverPhotoButton = styled.button`
-	${StandardButtonStyles}
+export const StyledEditCoverPhotoButton = styled(StandardButton)`
 	z-index: 2;
-	background-color: rgba(0, 0, 0, 0.4);
 	font-size: 0.9rem;
+	padding: 0.5rem 1rem;
 	position: absolute;
 	bottom: 1rem;
 	right: 1rem;
-	color: white;
 `;

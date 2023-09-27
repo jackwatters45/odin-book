@@ -14,7 +14,7 @@ export const StyledRadioFormLabel = styled.label`
 	align-items: center;
 	gap: 0.5rem;
 	cursor: pointer;
-	padding: 0.5rem;
+	padding: 0.5rem 0.75rem;
 	border-radius: 0.25rem;
 	position: relative;
 

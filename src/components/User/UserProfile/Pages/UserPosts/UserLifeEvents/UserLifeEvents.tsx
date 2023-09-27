@@ -1,19 +1,20 @@
-import UserProfileSection from "@/components/Shared/UserProfileSection";
-import { useParams } from "react-router";
+import UserProfileSectionWithLink from "@/components/Shared/UserProfileSection/UserProfileSectionWithLink";
+import LifeEventDisplay from "../../../../UserFields/LifeEvent/LifeEventDisplay";
+import useLifeEvents from "@/components/User/UserFields/LifeEvent/useLifeEvents";
 
 const UserLifeEvents = () => {
-	const { id: userId } = useParams<{ id: string }>();
+	const { userId, lifeEvents } = useLifeEvents();
 
 	return (
-		<UserProfileSection
+		<UserProfileSectionWithLink
 			title="Life Events"
 			seeAllLink={{
-				to: `/user/${userId}/life-events`,
+				to: `/user/${userId}/about?section=year-overviews`,
 				text: "See all",
 			}}
 		>
-			<p>Life events</p>
-		</UserProfileSection>
+			<LifeEventDisplay lifeEvents={lifeEvents} />
+		</UserProfileSectionWithLink>
 	);
 };
 

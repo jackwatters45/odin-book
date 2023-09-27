@@ -32,19 +32,6 @@ export const StyledButtonDiv = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
-
-	button {
-		font-weight: 600;
-		height: 2.25rem;
-		border-radius: 0.375rem;
-		padding: 0 0.75rem;
-		font-size: 0.9rem;
-	}
-
-	button:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
 `;
 
 export const CenteredDiv = styled.div`
@@ -95,17 +82,18 @@ export const StyledDialog = styled.dialog`
 	width: 90%;
 	max-height: 90%;
 
-	::backdrop {
-		background: rgba(0, 0, 0, 0.8);
-	}
-
 	h2 {
 		font-size: 1.25rem;
 		font-weight: 700;
 	}
+
+	::backdrop {
+		background: white;
+		background: ${({ theme }) => theme.colors.backdrop};
+	}
 `;
 
-export const StyledSearchInput = styled.label`
+export const StyledTextInput = styled.label`
 	width: 100%;
 	height: 42px;
 	border-radius: 1.5rem;
@@ -125,4 +113,23 @@ export const StyledSearchInput = styled.label`
 		border-radius: 1.5rem;
 		cursor: auto;
 	}
+`;
+
+export const StyledNavShadow = styled.div`
+	position: absolute;
+	bottom: -7px;
+	height: 7px;
+	width: 100%;
+	background-image: url("https://res.cloudinary.com/drheg5d7j/image/upload/v1693706871/odin-book/nav-shadow_hbspmi.png");
+	background-size: 1px 7px;
+	background-repeat: repeat-x;
+	z-index: 1;
+	pointer-events: none;
+`;
+
+export const StyledUserAboutFormText = styled.span`
+	font-size: 0.95rem;
+	font-weight: 600;
+	display: block;
+	margin: 1.125rem 0 0.25rem;
 `;

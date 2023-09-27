@@ -1,29 +1,43 @@
 import { Control, FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 import { StyledRadioFormDialog } from "./RadioForm.styles";
 import useRadioForm from "./useRadioForm";
-import RadioFormController from "./RadioFormController";
-import RadioFormDialogContent from "./DialogContent/RadioFormDialogContent";
 
-const DialogActions = lazy(() => import("../DialogActions"));
-const ModalHeader = lazy(() => import("../DialogHeader"));
+import RadioFormDialogContent from "./DialogContent/RadioFormDialogContent";
+import RadioFormController from "./RadioFormController";
+import { StandardButtonProps } from "../StandardButton/StandardButton";
+
+const DialogActions = lazy(() => import("../Dialog/DialogActions"));
+const ModalHeader = lazy(() => import("../Dialog/DialogHeader"));
 
 export interface RadioFormOption {
 	title: string;
-	icon: string;
+	value: string;
+	icon?: string;
 	subtitle?: string;
 }
 
-interface RadioFormProps<T extends FieldValues> {
-	title: string;
-	options: RadioFormOption[];
+export interface RadioFormCoreFormProps<T extends FieldValues> {
 	formField: Path<T> & string;
-	initial: PathValue<T, Path<T>> & string;
+	initial: PathValue<T, Path<T>> | undefined;
 	control: Control<T>;
 	setValue: UseFormSetValue<T>;
+	buttonOptions?: StandardButtonProps;
+	submitsForm: boolean;
+	submitButtonText?: string;
 }
 
+interface RadioFormUIProps {
+	title: string;
+	options: RadioFormOption[];
+}
+
+interface RadioFormProps<T extends FieldValues>
+	extends RadioFormCoreFormProps<T>,
+		RadioFormUIProps {}
+
+// TODO form field - what is being messed up my being work.id
 const RadioForm = <T extends FieldValues>({
 	title,
 	formField,
@@ -31,20 +45,16 @@ const RadioForm = <T extends FieldValues>({
 	initial,
 	control,
 	setValue,
+	buttonOptions,
+	submitsForm = true,
+	submitButtonText,
 }: RadioFormProps<T>) => {
-	const {
-		ref,
-		openDialog,
-		closeDialog,
-		popupValue,
-		setPopupValue,
-		handleConfirm,
-		LazyWrapper,
-	} = useRadioForm({
-		setValue,
-		formField,
-		initial,
-	});
+	const { ref, openDialog, popupValue, setPopupValue, handleConfirm, handleCancel } =
+		useRadioForm({
+			setValue,
+			formField,
+			initial,
+		});
 
 	return (
 		<>
@@ -53,11 +63,11 @@ const RadioForm = <T extends FieldValues>({
 				control={control}
 				openDialog={openDialog}
 				options={options}
-				initial={initial}
+				buttonOptions={buttonOptions}
 			/>
-			<LazyWrapper>
+			<Suspense>
 				<StyledRadioFormDialog ref={ref} id={formField}>
-					<ModalHeader title={title} closeDialog={closeDialog} />
+					<ModalHeader title={title} closeDialog={handleCancel} />
 					<RadioFormDialogContent<T>
 						options={options}
 						formField={formField}
@@ -67,11 +77,13 @@ const RadioForm = <T extends FieldValues>({
 					<DialogActions
 						initial={initial}
 						unsavedValue={popupValue}
-						closeDialog={closeDialog}
+						handleCancel={handleCancel}
 						handleSave={handleConfirm}
+						submitsForm={submitsForm}
+						submitButtonText={submitButtonText}
 					/>
 				</StyledRadioFormDialog>
-			</LazyWrapper>
+			</Suspense>
 		</>
 	);
 };

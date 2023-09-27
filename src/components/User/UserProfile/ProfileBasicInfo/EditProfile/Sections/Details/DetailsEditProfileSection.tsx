@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 import EditProfileSectionHeader from "../../EditProfileSectionHeader";
 import { ContentDiv } from "../../EditProfile.styles";
@@ -16,15 +16,14 @@ interface DetailsEditProfileSectionProps {
 
 const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => {
 	const {
+		isValues,
 		ref,
-		openDialog,
 		closeDialog,
+		openDialog,
 		register,
 		handleSubmit,
 		setValue,
 		control,
-		isValues,
-		LazyWrapper,
 	} = useDetails({
 		user,
 	});
@@ -37,7 +36,7 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 				openDialog={openDialog}
 			/>
 			<DetailsDisplay user={user} isValues={isValues} />
-			<LazyWrapper>
+			<Suspense>
 				<LazyEditDetailsForm
 					user={user}
 					ref={ref}
@@ -47,7 +46,7 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 					control={control}
 					onSubmit={handleSubmit}
 				/>
-			</LazyWrapper>
+			</Suspense>
 		</ContentDiv>
 	);
 };

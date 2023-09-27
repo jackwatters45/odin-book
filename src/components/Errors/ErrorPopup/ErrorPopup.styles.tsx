@@ -1,16 +1,18 @@
 import { keyframes, styled } from "styled-components";
 
-export const StyledDialog = styled.dialog`
+export const StyledErrorDialog = styled.dialog`
 	position: absolute;
 	height: 100px;
 	width: 300px;
 	bottom: 1rem;
 	left: calc(100% - 1rem - 300px);
 	border: 1px solid white;
-
+	position: fixed;
 	background-color: white;
 	border-radius: 0.25rem;
 	z-index: 1100;
+
+	${({ theme }) => theme.cardShadow}
 `;
 
 export const StyledButton = styled.button`

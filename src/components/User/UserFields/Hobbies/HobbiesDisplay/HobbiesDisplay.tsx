@@ -11,17 +11,16 @@ interface HobbiesDisplayProps {
 }
 
 const HobbiesDisplay = ({ hobbiesValue, register }: HobbiesDisplayProps) => {
-	const isHobbies = hobbiesValue && hobbiesValue.length > 0;
-
 	return (
 		<div>
-			{isHobbies ? (
+			{hobbiesValue && hobbiesValue.length > 0 ? (
 				<StyledDisplayHobbiesContainer>
 					{hobbiesValue?.map((name) => {
 						const hobbyData = hobbiesBank.find((hobby) => hobby.name === name);
 						return (
 							<OptionBadge
 								key={name}
+								id={`display-${name}`}
 								name={name}
 								emoji={hobbyData?.emoji}
 								register={register}

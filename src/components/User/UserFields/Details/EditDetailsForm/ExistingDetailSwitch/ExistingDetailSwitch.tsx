@@ -4,8 +4,8 @@ import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
 
-import StyledCheckboxSwitch from "../../../../../Shared/StyledCheckboxSwitch/StyledCheckboxSwitch";
 import { ExistingDetailSwitchContainer, ValueSpan } from "./ExistingDetailSwitch.styles";
+import StyledCheckboxSwitch from "@/components/Shared/StyledCheckboxSwitch";
 
 interface ExistingDetailSwitchProps<T extends FieldValues> {
 	id: Path<T>;
@@ -24,7 +24,8 @@ const ExistingDetailSwitch = <T extends FieldValues>({
 }: ExistingDetailSwitchProps<T>) => {
 	return (
 		<ExistingDetailSwitchContainer>
-			{!icon && register ? <StyledCheckboxSwitch id={id} register={register} /> : icon}
+			{register && <StyledCheckboxSwitch id={id} register={register} />}
+			{icon && icon}
 			<ValueSpan>{value}</ValueSpan>
 			<Link to={to}>
 				<Icon path={mdiPencil} size={1} color={"black"} />

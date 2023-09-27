@@ -1,6 +1,6 @@
-import PrivacyStatus from "@/components/Shared/AudienceStatus/Text";
+import PrivacyStatus from "@/components/Shared/AudienceStatus";
 import useSaveHobbies from "./useSaveHobbies";
-import DialogActions from "@/components/Shared/DialogActions/DialogActions";
+import DialogActions from "@/components/Shared/Dialog/DialogActions/DialogActions";
 
 interface SaveHobbiesProps {
 	closeDialog: () => void;
@@ -14,7 +14,7 @@ const SaveHobbies = ({ closeDialog, initial, unsavedValue }: SaveHobbiesProps) =
 	return (
 		<DialogActions
 			initial={initial}
-			closeDialog={closeDialog}
+			handleCancel={closeDialog}
 			unsavedValue={unsavedValue}
 			handleSave={handleSave}
 			unchangedBehavior="hide"

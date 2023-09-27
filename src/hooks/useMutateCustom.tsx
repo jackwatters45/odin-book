@@ -9,11 +9,12 @@ import useError from "@/components/Errors/useError";
 export interface useMutateFormProps {
 	queryUrl: string;
 	method: "POST" | "PUT" | "DELETE" | "GET" | "PATCH";
-	successNavigate?: string;
 	queryKey?: string[];
 	updateDataKey?: string;
 	headers?: HeadersInit;
 	onError?: Dispatch<SetStateAction<FormError>>;
+	successNavigate?: string;
+	onSuccessFn?: () => void;
 	includeCredentials?: boolean;
 }
 
@@ -25,11 +26,12 @@ export interface MutationFnInputs<T> {
 const useMutateCustom = <T,>({
 	queryUrl,
 	method,
-	successNavigate,
 	queryKey,
 	updateDataKey,
 	headers,
 	onError,
+	successNavigate,
+	onSuccessFn,
 	includeCredentials = true,
 }: useMutateFormProps) => {
 	const navigate = useNavigate();
@@ -55,9 +57,11 @@ const useMutateCustom = <T,>({
 		},
 		onSuccess: (data) => {
 			if (queryKey) {
-				if (!updateDataKey) return queryClient.resetQueries(queryKey);
-				queryClient.setQueryData(queryKey, data[updateDataKey]);
+				if (!updateDataKey) queryClient.resetQueries(queryKey);
+				else queryClient.setQueryData(queryKey, data[updateDataKey]);
 			}
+
+			if (onSuccessFn) onSuccessFn();
 
 			if (successNavigate) navigate(successNavigate, { state: { data } });
 		},

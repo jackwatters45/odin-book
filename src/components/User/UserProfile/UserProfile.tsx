@@ -12,11 +12,11 @@ import {
 } from "./UserProfile.styles";
 
 const UserProfile = () => {
-	const { user, isLoading } = useUserProfile();
+	const { user, isLoading, isError } = useUserProfile();
 
-	if (isLoading) return <Loading />;
-
-	if (!user) return <Navigate to="/login" />;
+	if (isError) return <Navigate to="/404" />;
+	else if (isLoading) return <Loading />;
+	else if (!user) return <Navigate to="/login" />;
 
 	return (
 		<ProfileContainer className="user-profile-container">

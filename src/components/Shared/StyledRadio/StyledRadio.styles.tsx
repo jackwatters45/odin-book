@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export const StyledRadioContainer = styled.div`
+type RadioOptions = { size: number };
+export const StyledRadioContainer = styled.div<RadioOptions>`
 	position: relative;
-	padding-left: 25px;
+	padding-left: ${({ size }) => size * 1.25}rem;
 	cursor: pointer;
-	margin-bottom: 18px;
+	margin-bottom: ${({ size }) => size * 1.1}rem;
 
 	input:checked ~ span {
 		border: 2px solid ${({ theme }) => theme.colors.blueButton};
@@ -16,10 +17,33 @@ export const StyledRadioContainer = styled.div`
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 10px;
-		height: 10px;
+		width: ${({ size }) => size * 0.5}rem;
+		height: ${({ size }) => size * 0.5}rem;
 		border-radius: 50%;
 		background: ${({ theme }) => theme.colors.blueButton};
+	}
+
+	> span:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		width: ${({ size }) => size * 1.65}rem;
+		height: ${({ size }) => size * 1.65}rem;
+
+		border-radius: 50%;
+	}
+
+	background: ${({ theme }) => theme.colors.backgroundSecondary};
+	&:hover input ~ span {
+		border: 2px solid ${({ theme }) => theme.colors.blueButton};
+	}
+
+	> span {
+		height: ${({ size }) => size}rem;
+		width: ${({ size }) => size}rem;
 	}
 `;
 
@@ -35,8 +59,6 @@ export const StyledRadioSpan = styled.span`
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 20px;
-	width: 20px;
 	border-radius: 50%;
 	border: 2px solid ${({ theme }) => theme.colors.textSecondary};
 `;

@@ -5,7 +5,7 @@ import useErrorPopup from "./useErrorPopup";
 import {
 	ProgressBar,
 	StyledButton,
-	StyledDialog,
+	StyledErrorDialog,
 	StyledErrorText,
 } from "./ErrorPopup.styles";
 
@@ -13,7 +13,7 @@ const ErrorPopup = () => {
 	const { ref, closePopup, renderErrorMessage } = useErrorPopup();
 
 	return (
-		<StyledDialog open ref={ref}>
+		<StyledErrorDialog open ref={ref}>
 			<StyledButton onClick={closePopup}>
 				<Icon path={mdiClose} size={0.9} color={"black"} />
 			</StyledButton>
@@ -21,7 +21,7 @@ const ErrorPopup = () => {
 			<ProgressBar>
 				<div></div>
 			</ProgressBar>
-		</StyledDialog>
+		</StyledErrorDialog>
 	);
 };
 

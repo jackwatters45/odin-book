@@ -1,3 +1,4 @@
+import StandardButton from "@/components/Shared/StandardButton";
 import { Link, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
@@ -16,10 +17,6 @@ const LinksContainer = styled.div`
 	width: 100%;
 `;
 
-const StyledButton = styled.button`
-	text-decoration: underline;
-`;
-
 const StyledLink = styled(Link)`
 	text-decoration: underline;
 `;
@@ -34,7 +31,7 @@ const NotFound = ({ message }: { message?: string }) => {
 			{message && <h2>{message}</h2>}
 			<h3>{"Oops! The page you're looking for does not exist."}</h3>
 			<LinksContainer>
-				<StyledButton onClick={goBack}>Go back</StyledButton>
+				<StandardButton text="Go back" onClick={goBack} />
 				<StyledLink to="/">Go home</StyledLink>
 			</LinksContainer>
 		</Container>

@@ -1,6 +1,4 @@
-import { useRef } from "react";
-import useLazyLoad from "./useLazyLoad";
-import Loading from "@/components/Shared/Loading";
+import { useCallback, useEffect, useRef } from "react";
 
 interface UseDialogProps {
 	isModal?: boolean;
@@ -15,15 +13,22 @@ const useDialog = ({ isModal = true, reset }: UseDialogProps) => {
 		return isModal ? ref.current?.showModal() : ref.current?.show();
 	};
 
-	const closeDialog = () => {
+	const closeDialog = useCallback(() => {
 		ref.current?.close();
-	};
+	}, []);
 
-	const { LazyWrapper } = useLazyLoad({
-		fallback: ref.current?.open ? <Loading /> : null,
-	});
+	useEffect(() => {
+		const handleClickOutside = (e: MouseEvent) => {
+			if (ref.current && !ref.current.contains(e.target as Node)) closeDialog();
+		};
 
-	return { ref, openDialog, closeDialog, LazyWrapper };
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [closeDialog]);
+
+	return { ref, openDialog, closeDialog };
 };
 
 export default useDialog;

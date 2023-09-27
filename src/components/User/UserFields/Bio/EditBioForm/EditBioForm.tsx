@@ -1,9 +1,9 @@
 import { StyledButtonDiv } from "@/styles/SharedStyles";
-import PrivacyStatus from "@/components/Shared/AudienceStatus/Text";
+import StandardButton from "@/components/Shared/StandardButton";
+import PrivacyStatus from "@/components/Shared/AudienceStatus";
 import useEditFormBio from "./useEditFormBio";
 import {
 	StyledBottomRow,
-	StyledButton,
 	StyledCharCount,
 	StyledTextArea,
 	StyledTextAreaContainer,
@@ -12,15 +12,16 @@ import {
 interface EditBioFormProps {
 	handleCloseForm: () => void;
 	data: string | undefined;
+	className?: string;
 }
 
-const EditBioForm = ({ handleCloseForm, data }: EditBioFormProps) => {
+const EditBioForm = ({ handleCloseForm, data, className }: EditBioFormProps) => {
 	const { handleSaveBio, register, bioLengthRemaining, bioInput } = useEditFormBio({
 		handleCloseForm,
 	});
 
 	return (
-		<StyledTextAreaContainer>
+		<StyledTextAreaContainer className={className}>
 			<div>
 				<StyledTextArea
 					{...register("bio", { required: true })}
@@ -29,13 +30,12 @@ const EditBioForm = ({ handleCloseForm, data }: EditBioFormProps) => {
 				/>
 			</div>
 			<StyledCharCount>{bioLengthRemaining} characters remaining</StyledCharCount>
+			{/* TODO -> dialog actions */}
 			<StyledBottomRow>
 				<PrivacyStatus value="Public" />
 				<StyledButtonDiv>
-					<StyledButton onClick={handleCloseForm}>Cancel</StyledButton>
-					<StyledButton onClick={handleSaveBio} disabled={!bioInput}>
-						Save
-					</StyledButton>
+					<StandardButton text="Cancel" onClick={handleCloseForm} />
+					<StandardButton text="Save" onClick={handleSaveBio} disabled={!bioInput} />
 				</StyledButtonDiv>
 			</StyledBottomRow>
 		</StyledTextAreaContainer>

@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+
 import OptionBadge from "@/components/Shared/OptionBadge";
 import { hobbiesBank } from "@/config/globals";
 import { StyledSelectedHobbiesContainer } from "./SelectedHobbies.styles";
@@ -19,6 +20,7 @@ const SelectedHobbies = ({ hobbiesValue, register }: SelectedHobbiesProps) => {
 					return (
 						<OptionBadge
 							key={name}
+							id={`selected-form-${name}`}
 							name={name}
 							emoji={hobbyData?.emoji}
 							register={register}

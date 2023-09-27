@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 import IntroSection from "../IntroSection";
 import HobbiesDisplay from "@/components/User/UserFields/Hobbies/HobbiesDisplay";
@@ -13,15 +13,8 @@ interface HobbiesUserIntroProps {
 }
 
 const HobbiesUserIntro = ({ hobbies }: HobbiesUserIntroProps) => {
-	const {
-		ref,
-		openDialog,
-		closeDialog,
-		register,
-		hobbiesValue,
-		searchValue,
-		LazyWrapper,
-	} = useHobbies(hobbies);
+	const { ref, openDialog, closeDialog, register, hobbiesValue, searchValue } =
+		useHobbies(hobbies);
 
 	return (
 		<IntroSection
@@ -30,7 +23,7 @@ const HobbiesUserIntro = ({ hobbies }: HobbiesUserIntroProps) => {
 			handleClickButton={openDialog}
 		>
 			<HobbiesDisplay hobbiesValue={hobbiesValue} register={register("hobbies")} />
-			<LazyWrapper>
+			<Suspense>
 				<EditHobbiesForm
 					ref={ref}
 					hobbies={hobbies}
@@ -40,7 +33,7 @@ const HobbiesUserIntro = ({ hobbies }: HobbiesUserIntroProps) => {
 					searchValue={searchValue}
 					closeDialog={closeDialog}
 				/>
-			</LazyWrapper>
+			</Suspense>
 		</IntroSection>
 	);
 };

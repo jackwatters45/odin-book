@@ -1,4 +1,4 @@
-import { StyledFullWidthButton } from "./StandardFullWidthButton.styles";
+import StandardButton from "../StandardButton";
 
 interface Props {
 	dataExists: boolean;
@@ -8,9 +8,10 @@ interface Props {
 
 const StandardFullWidthButton = ({ dataExists, dataName, onClick }: Props) => {
 	return (
-		<StyledFullWidthButton onClick={onClick}>
-			{`${dataExists ? "Edit" : "Add"} ${dataName}`}
-		</StyledFullWidthButton>
+		<StandardButton
+			onClick={onClick}
+			text={`${dataExists ? "Edit" : "Add"} ${dataName}`}
+		/>
 	);
 };
 

@@ -3,7 +3,7 @@ import BioUserIntro from "./Sections/BioUserIntro";
 import HobbiesUserIntro from "./Sections/HobbiesUserInfo";
 import DetailsUserIntro from "./Sections/DetailsUserIntro";
 import FeaturedUserIntro from "./Sections/FeaturedUserIntro";
-import UserProfileSection from "../../../../../Shared/UserProfileSection";
+import UserProfileSection from "@/components/Shared/UserProfileSection";
 
 interface UserIntroProps {
 	user: IUser;

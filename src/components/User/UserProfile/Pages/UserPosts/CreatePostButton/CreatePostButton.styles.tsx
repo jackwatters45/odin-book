@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 import { UserProfileSectionContainer } from "@/components/Shared/UserProfileSection/UserProfileSection.styles";
-import { StyledSearchInput } from "@/styles/SharedStyles";
+import { StyledTextInput } from "@/styles/SharedStyles";
+import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledCreatePostButton = styled(UserProfileSectionContainer)`
 	gap: 0;
@@ -14,7 +15,7 @@ export const StyledFirstRowCreatePost = styled.div`
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-export const StyledSearchInputCreatePost = styled(StyledSearchInput)`
+export const StyledSearchInputCreatePost = styled(StyledTextInput)`
 	> input {
 		font-size: 1.05rem;
 	}
@@ -26,18 +27,19 @@ export const StyledLastRowCreatePost = styled.div`
 	margin-top: 0.5rem;
 `;
 
-export const StyledCreateTypeButton = styled.button`
+export const StyledCreateTypeButton = styled(StandardButton)`
 	flex-grow: 1;
 	height: 2.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
+	border-radius: 0.25rem;
 
-	&:hover {
-		background: ${({ theme }) => theme.colors.hoverOverlay};
-		border-radius: 0.25rem;
-	}
+	// &:hover {
+	// 	background: ${({ theme }) => theme.colors.hoverOverlay};
+	// 	border-radius: 0.25rem;
+	// }
 
 	span {
 		font-size: 0.95rem;

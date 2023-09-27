@@ -23,8 +23,9 @@ export const StyledBadge = styled.label<{ $showDelete: boolean }>`
 	border-radius: 2rem;
 	padding-right: ${({ $showDelete }) => ($showDelete ? "0.25rem" : "1rem")};
 	cursor: pointer;
+	z-index: 99;
 
-	button {
+	.remove-badge {
 		line-height: 0;
 		margin-top: 2px;
 		padding: 0.25rem;
@@ -33,7 +34,7 @@ export const StyledBadge = styled.label<{ $showDelete: boolean }>`
 	}
 
 	&:hover {
-		button {
+		.remove-badge {
 			background-color: white;
 		}
 	}

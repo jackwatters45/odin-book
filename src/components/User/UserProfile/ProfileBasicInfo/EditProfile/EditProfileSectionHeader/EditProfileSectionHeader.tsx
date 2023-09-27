@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import {
 	EditProfileSectionHeaderContainer,
-	StyledEditButton,
+	StyledEditLink,
 } from "./EditProfileSectionHeader.styles";
 
 interface EditProfileSectionHeaderProps {
@@ -21,7 +21,7 @@ const EditProfileSectionHeader = ({
 	return (
 		<EditProfileSectionHeaderContainer>
 			<h2>{title}</h2>
-			<StyledEditButton onClick={openDialog}>{isData ? "Edit" : "Add"}</StyledEditButton>
+			<StyledEditLink onClick={openDialog} text={isData ? "Edit" : "Add"} />
 			{children}
 		</EditProfileSectionHeaderContainer>
 	);

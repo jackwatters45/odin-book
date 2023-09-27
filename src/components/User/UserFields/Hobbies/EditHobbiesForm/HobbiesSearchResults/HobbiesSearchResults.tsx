@@ -30,7 +30,13 @@ const HobbiesSearchResults = ({
 					filteredItems
 						.slice(0, 30)
 						.map(({ name, emoji }) => (
-							<OptionBadge key={name} name={name} emoji={emoji} register={register} />
+							<OptionBadge
+								key={name}
+								id={name}
+								name={name}
+								emoji={emoji}
+								register={register}
+							/>
 						))
 				) : (
 					<StyledNoResultsContainer>

@@ -12,7 +12,11 @@ const BioUserIntro = ({ bio }: BioUserIntroProps) => {
 	return (
 		<IntroSection dataExists={!!bio} dataName="Bio" handleClickButton={toggleIsEditing}>
 			{isEditing ? (
-				<EditBioForm data={bio} handleCloseForm={toggleIsEditing} />
+				<EditBioForm
+					data={bio}
+					handleCloseForm={toggleIsEditing}
+					className="full-width"
+				/>
 			) : (
 				<div>{bio}</div>
 			)}

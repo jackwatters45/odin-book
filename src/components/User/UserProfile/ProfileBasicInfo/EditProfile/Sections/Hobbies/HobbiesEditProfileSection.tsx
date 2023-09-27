@@ -3,7 +3,7 @@ import HobbiesHeader from "../../EditProfileSectionHeader";
 import { ContentDiv } from "../../EditProfile.styles";
 import HobbiesDisplay from "@/components/User/UserFields/Hobbies/HobbiesDisplay";
 import useHobbies from "@/components/User/UserFields/Hobbies/useHobbies";
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 
 const EditHobbiesForm = lazy(
 	() => import("@/components/User/UserFields/Hobbies/EditHobbiesForm"),
@@ -14,21 +14,14 @@ interface HobbiesEditProfileSectionProps {
 }
 
 const HobbiesEditProfileSection = ({ hobbies }: HobbiesEditProfileSectionProps) => {
-	const {
-		ref,
-		openDialog,
-		closeDialog,
-		register,
-		hobbiesValue,
-		searchValue,
-		LazyWrapper,
-	} = useHobbies(hobbies);
+	const { ref, openDialog, closeDialog, register, hobbiesValue, searchValue } =
+		useHobbies(hobbies);
 
 	return (
 		<ContentDiv>
 			<HobbiesHeader title={"Hobbies"} openDialog={openDialog} isData={!!hobbies} />
-			<HobbiesDisplay hobbiesValue={hobbiesValue} register={register("hobbies")} />
-			<LazyWrapper>
+			<HobbiesDisplay hobbiesValue={hobbies} register={register("hobbies")} />
+			<Suspense>
 				<EditHobbiesForm
 					ref={ref}
 					hobbies={hobbies}
@@ -38,7 +31,7 @@ const HobbiesEditProfileSection = ({ hobbies }: HobbiesEditProfileSectionProps) 
 					searchValue={searchValue}
 					closeDialog={closeDialog}
 				/>
-			</LazyWrapper>
+			</Suspense>
 		</ContentDiv>
 	);
 };

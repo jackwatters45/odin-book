@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-import UserProfileSection from "@/components/Shared/UserProfileSection";
 import { StyledFriend, StyledFriendsContainer } from "./UserFriends.styles";
 import useUserFriends from "./useUserFriends";
 import { defaultUserAvatar } from "@/config/globals";
+import UserProfileSectionWithLink from "@/components/Shared/UserProfileSection/UserProfileSectionWithLink";
 
 const UserFriends = () => {
 	const { userId, friends } = useUserFriends();
 
 	return (
-		<UserProfileSection
+		<UserProfileSectionWithLink
 			title="Friends"
 			seeAllLink={{
 				to: `/user/${userId}/friends`,
@@ -26,7 +26,7 @@ const UserFriends = () => {
 					</StyledFriend>
 				))}
 			</StyledFriendsContainer>
-		</UserProfileSection>
+		</UserProfileSectionWithLink>
 	);
 };
 

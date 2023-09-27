@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-export const SwitchInput = styled.input`
-	height: 0;
-	width: 0;
-	visibility: hidden;
-`;
+export const SwitchInput = styled.input``;
 
 export const SwitchLabel = styled.label`
 	display: flex;
@@ -33,7 +29,7 @@ export const SwitchLabel = styled.label`
 `;
 
 export const SwitchWrapper = styled.div`
-	${SwitchInput}:checked + ${SwitchLabel} {
+	input[type="checkbox"]:checked + label {
 		background: ${({ theme }) => theme.colors.blueText};
 		&::after {
 			content: "";

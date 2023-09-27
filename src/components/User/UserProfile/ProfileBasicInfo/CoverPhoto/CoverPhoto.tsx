@@ -1,5 +1,4 @@
 import { mdiCamera } from "@mdi/js";
-import Icon from "@mdi/react";
 
 import useCoverPhoto from "./useCoverPhoto";
 import {
@@ -28,10 +27,15 @@ const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
 					onChange={handleFileChange}
 					hidden
 				/>
-				<StyledEditCoverPhotoButton onClick={handleUploadClick}>
-					<Icon path={mdiCamera} size={0.8} color={"white"} />
-					{showText && <span>Add Cover Photo</span>}
-				</StyledEditCoverPhotoButton>
+				<StyledEditCoverPhotoButton
+					text="Add Cover Photo"
+					showText={showText}
+					icon={mdiCamera}
+					iconSize={0.8}
+					iconColor="white"
+					colorClass="overlay"
+					onClick={handleUploadClick}
+				/>
 			</StyledDiv>
 		</StyledContainer>
 	);

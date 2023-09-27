@@ -1,15 +1,33 @@
 import { WorkData } from "@/types/IUser";
 
-const formatWorkData = ({ position, endDate, company }: WorkData) => {
-	if (position && endDate) {
-		return `Former ${position} at ${company}`;
-	} else if (position) {
-		return `${position} at ${company}`;
+interface FormatWorkData {
+	work: WorkData | undefined;
+
+	includeCompany?: boolean;
+	includePosition?: boolean;
+}
+
+const formatWorkData = ({
+	work,
+	includeCompany = true,
+	includePosition = true,
+}: FormatWorkData) => {
+	if (!work) return "";
+
+	const { position, endDate, company } = work;
+
+	let text = "";
+	if (position && includePosition && endDate) {
+		text = `Former ${position} at`;
+	} else if (position && includePosition) {
+		text = `${position} at`;
 	} else if (endDate) {
-		return `Worked at ${company}`;
+		text = "Worked at";
 	} else {
-		return `Works at ${company}`;
+		text = "Works at";
 	}
+
+	return includeCompany ? `${text} ${company}` : text;
 };
 
 export default formatWorkData;

@@ -1,11 +1,27 @@
-import { IRelationshipStatus } from "@/types/IUser";
+import capitalizeFirstLetterString from "@/utils/capitalizeFirstLetterString";
+import getRelationshipStatusPreposition from "./relationshipStatusPrepositions";
+import { IRelationshipStatus } from "@/types/IRelationshipStatus";
+import { IUser } from "@/types/IUser";
 
-const capitalizeFirstLetter = (string: string) =>
-	string.charAt(0).toUpperCase() + string.slice(1);
+interface IRelationshipStatusProps {
+	status: IRelationshipStatus["status"];
+	partner?: IUser;
+	includePartner?: boolean;
+}
 
-const formatRelationshipStatus = ({ partner, status }: IRelationshipStatus) => {
-	const capitalizedStatus = capitalizeFirstLetter(status);
-	return partner ? `${capitalizedStatus} with ${partner}` : capitalizedStatus;
+const formatRelationshipStatus = ({
+	partner,
+	status,
+	includePartner = true,
+}: IRelationshipStatusProps) => {
+	const capitalizedStatus = capitalizeFirstLetterString(status);
+	const preposition = getRelationshipStatusPreposition(status);
+
+	if (includePartner && partner) {
+		return `${capitalizedStatus} ${preposition} ${partner.fullName}`;
+	} else if (!includePartner && partner) {
+		return `${capitalizedStatus} ${preposition} `;
+	} else return capitalizedStatus;
 };
 
 export default formatRelationshipStatus;

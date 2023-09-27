@@ -4,7 +4,7 @@ import { useState } from "react";
 
 interface UseRadioFormProps<T extends FieldValues> {
 	formField: Path<T>;
-	initial: PathValue<T, Path<T>>;
+	initial: (PathValue<T, Path<T>> & string) | undefined;
 	setValue: UseFormSetValue<T>;
 }
 
@@ -13,23 +13,35 @@ const useRadioForm = <T extends FieldValues>({
 	initial,
 	setValue,
 }: UseRadioFormProps<T>) => {
-	const { ref, openDialog, closeDialog, LazyWrapper } = useDialog({});
+	const [popupValue, setPopupValue] = useState<PathValue<T, Path<T>> | undefined>(
+		initial,
+	);
 
-	const [popupValue, setPopupValue] = useState<PathValue<T, Path<T>>>(initial);
+	const { ref, openDialog, closeDialog } = useDialog({});
+
+	const resetPopupValue = () => setPopupValue(initial);
+	const handleCancel = () => {
+		resetPopupValue();
+		closeDialog();
+	};
 
 	const handleConfirm = () => {
-		setValue(formField, popupValue);
+		const value = popupValue?.[formField] || popupValue;
+
+		console.log(value);
+
+		if (value) setValue(formField, value);
+
 		closeDialog();
 	};
 
 	return {
 		ref,
 		openDialog,
-		closeDialog,
-		LazyWrapper,
 		popupValue,
 		setPopupValue,
 		handleConfirm,
+		handleCancel,
 	};
 };
 

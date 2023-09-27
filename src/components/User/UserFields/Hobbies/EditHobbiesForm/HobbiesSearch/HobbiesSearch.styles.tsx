@@ -1,4 +1,4 @@
-import { StyledSearchInput } from "@/styles/SharedStyles";
+import { StyledTextInput } from "@/styles/SharedStyles";
 import styled from "styled-components";
 
 export const StyledHobbiesSearchContainer = styled.div`
@@ -8,7 +8,7 @@ export const StyledHobbiesSearchContainer = styled.div`
 	padding: 0 1rem;
 `;
 
-export const StyledHobbiesSearchLabel = styled(StyledSearchInput)`
+export const StyledHobbiesSearchLabel = styled(StyledTextInput)`
 	> input {
 		font-size: 0.95rem;
 		padding: 0 1rem 0 2.25rem;

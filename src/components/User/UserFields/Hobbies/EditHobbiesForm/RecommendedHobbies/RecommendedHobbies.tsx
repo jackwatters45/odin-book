@@ -25,7 +25,13 @@ const RecommendedHobbies = ({
 			<StyledRecommendedText>RECOMMENDED HOBBIES</StyledRecommendedText>
 			<StyledDefaultHobbiesContainer>
 				{defaultHobbies.map(({ name, emoji }) => (
-					<OptionBadge key={name} name={name} emoji={emoji} register={register} />
+					<OptionBadge
+						key={name}
+						id={name}
+						name={name}
+						emoji={emoji}
+						register={register}
+					/>
 				))}
 			</StyledDefaultHobbiesContainer>
 			<div>

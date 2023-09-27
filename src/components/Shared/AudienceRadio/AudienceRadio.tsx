@@ -1,15 +1,10 @@
 import { mdiAccountMultiple, mdiEarth, mdiLock } from "@mdi/js";
-import { Control, FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
+
 import RadioForm from "../RadioForm";
+import { RadioFormCoreFormProps } from "../RadioForm/RadioForm";
 
-interface AudienceRadioProps<T extends FieldValues> {
-	formField: Path<T>;
-	initial: PathValue<T, Path<T>>;
-	control: Control<T>;
-	setValue: UseFormSetValue<T>;
-}
-
-const AudienceRadio = <T extends FieldValues>(props: AudienceRadioProps<T>) => {
+const AudienceRadio = <T extends FieldValues>(props: RadioFormCoreFormProps<T>) => {
 	return (
 		<RadioForm<T>
 			{...props}
@@ -17,16 +12,19 @@ const AudienceRadio = <T extends FieldValues>(props: AudienceRadioProps<T>) => {
 			options={[
 				{
 					title: "Public",
+					value: "Public",
 					icon: mdiEarth,
 					subtitle: "Anyone on or off Odinbook",
 				},
 				{
 					title: "Friends",
+					value: "Friends",
 					icon: mdiAccountMultiple,
 					subtitle: "Your friends on Odinbook",
 				},
 				{
 					title: "Only Me",
+					value: "Only Me",
 					icon: mdiLock,
 					subtitle: "Only you",
 				},

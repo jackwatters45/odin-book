@@ -14,7 +14,7 @@ import { IUser } from "@/types/IUser";
 import useDetailsDisplayContent from "./useDetailsDisplayContent";
 import UserDetail from "../UserDetail";
 import formatWorkData from "../../../Work/formatWorkValue";
-import formatEducationData from "../../../Education/formatEducationData";
+import { formatEducationTitle } from "../../../Education/formatEducationData";
 import formatCity from "../../../PlacesLived/formatCity";
 import { StyledLink } from "../DetailsDisplay.styles";
 import getPlatformUrl from "../../../SocialLinks/getPlatformUrl";
@@ -46,7 +46,7 @@ const DetailsDisplayContent = ({
 
 	return (
 		<>
-			{details.pronouns && pronouns && (
+			{details.pronouns?.pronouns && pronouns && (
 				<UserDetail
 					icon={mdiCommentAccount}
 					textComponent={<>Goes by {pronouns} pronouns</>}
@@ -56,11 +56,11 @@ const DetailsDisplayContent = ({
 				work &&
 				Object.keys(details.work).map((key) => {
 					const workData = work?.find((work) => work._id === key);
-					return workData ? (
+					return workData && details.work?.[key] ? (
 						<UserDetail
 							key={key}
 							icon={mdiBriefcase}
-							textComponent={formatWorkData(workData)}
+							textComponent={formatWorkData({ work: workData })}
 						/>
 					) : null;
 				})}
@@ -68,42 +68,45 @@ const DetailsDisplayContent = ({
 				education &&
 				Object.keys(details.education).map((key) => {
 					const educationData = education?.find((education) => education._id === key);
-					return educationData ? (
+					return educationData && details.education?.[key] ? (
 						<UserDetail
 							key={key}
 							icon={mdiSchool}
-							textComponent={formatEducationData(educationData)}
+							textComponent={formatEducationTitle({ education: educationData })}
 						/>
 					) : null;
 				})}
-			{details.hometown && hometown && (
+			{details.hometown?.hometown && hometown && (
 				<UserDetail
 					icon={mdiMapMarker}
-					textComponent={<>From {formatCity(hometown)}</>}
+					textComponent={<>From {formatCity(hometown.city, hometown.state)}</>}
 				/>
 			)}
-			{details.currentCity && currentCity && (
+			{details.currentCity?.currentCity && currentCity && (
 				<UserDetail
 					icon={mdiHome}
-					textComponent={<>Lives in {formatCity(currentCity)}</>}
+					textComponent={<>Lives in {formatCity(currentCity.city, currentCity.state)}</>}
 				/>
 			)}
-			{details.relationshipStatus && relationshipStatus && (
+			{details.relationshipStatus?.relationshipStatus && relationshipStatus?.status && (
 				<UserDetail
 					icon={mdiHeadHeart}
-					textComponent={formatRelationshipStatus(relationshipStatus)}
+					textComponent={formatRelationshipStatus({
+						partner: relationshipStatus.partner as IUser,
+						status: relationshipStatus.status,
+					})}
 				/>
 			)}
-			{details.namePronunciation && namePronunciation && (
+			{details.namePronunciation?.namePronunciation && namePronunciation && (
 				<UserDetail
 					icon={mdiVolumeHigh}
 					textComponent={<>{namePronunciation?.fullName}</>}
 				/>
 			)}
-			{details.joined && createdAt && (
+			{details.joined?.joined && createdAt && (
 				<UserDetail icon={mdiClockTimeFour} textComponent={<>{formattedJoined}</>} />
 			)}
-			{details.websites &&
+			{details.websites?.websites === "Public" &&
 				websites &&
 				websites?.map((website) => {
 					return (
@@ -118,7 +121,7 @@ const DetailsDisplayContent = ({
 						/>
 					);
 				})}
-			{details.socialLinks &&
+			{details.socialLinks?.socialLinks === "Public" &&
 				socialLinks &&
 				socialLinks?.map(({ platform, username }) => {
 					const url = getPlatformUrl(platform);

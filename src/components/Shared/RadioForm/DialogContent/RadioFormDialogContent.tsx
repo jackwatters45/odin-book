@@ -12,8 +12,8 @@ import StyledRadio from "../../StyledRadio";
 interface RadioFormDialogContentProps<T extends FieldValues> {
 	options: RadioFormOption[];
 	formField: Path<T>;
-	popupValue: PathValue<T, Path<T>>;
-	setPopupValue: Dispatch<SetStateAction<PathValue<T, Path<T>>>>;
+	popupValue: PathValue<T, Path<T>> | undefined;
+	setPopupValue: Dispatch<SetStateAction<PathValue<T, Path<T>> | undefined>>;
 }
 
 const RadioFormDialogContent = <T extends FieldValues>({
@@ -24,9 +24,9 @@ const RadioFormDialogContent = <T extends FieldValues>({
 }: RadioFormDialogContentProps<T>) => {
 	return (
 		<StyledRadioFormDialogContentContainer>
-			{options.map(({ icon, title, subtitle }) => {
+			{options.map(({ icon, title, value, subtitle }) => {
 				const id = `${formField}-${title}`;
-				const selectedValue = popupValue[formField]; // popupValue includes formField -> { formField: "value"}
+				const selectedValue = popupValue?.[formField] || popupValue;
 				return (
 					<StyledRadioFormLabel htmlFor={id} key={id} className="option-label">
 						{icon && (
@@ -37,11 +37,11 @@ const RadioFormDialogContent = <T extends FieldValues>({
 							{subtitle && <span>{subtitle}</span>}
 						</StyledTitleContainer>
 						<StyledRadio
-							radioValue={title}
+							radioValue={value}
 							id={id}
 							selectedValue={selectedValue}
 							onChange={() =>
-								setPopupValue({ [formField]: title } as PathValue<T, Path<T>>)
+								setPopupValue({ [formField]: value } as PathValue<T, Path<T>>)
 							}
 						/>
 					</StyledRadioFormLabel>

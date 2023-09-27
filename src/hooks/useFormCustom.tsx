@@ -12,7 +12,7 @@ export type DataMapper<T = undefined> = (data: T) => MutationFnInputs<T>;
 /**
  * The Validator function takes in data of type T and returns a string or updated data of type T
  */
-type DataValidator<T> = (data: T) => string | void | T;
+export type DataValidator<T> = (data: T) => string | void | T;
 
 /**
  * The formatData function takes in data of type T, a mapper function, a function to set the formError, and a validator function and returns the data formatted as MutationFnInputs<T> or sets the formError and returns void if the data is invalid

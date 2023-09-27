@@ -21,6 +21,10 @@ import ValidateResetLink from "../components/Auth/ForgotPassword/ValidateResetLi
 
 import UserProfile from "../components/User/UserProfile";
 import UserPosts from "../components/User/UserProfile/Pages/UserPosts";
+import UserPhotos from "@/components/User/UserProfile/Pages/UserPhotos";
+import UserAbout from "@/components/User/UserProfile/Pages/UserAbout";
+import UserAboutOverview from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutOverview";
+import UserAboutWorkEducation from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutWorkEducation/UserAboutWorkEducation";
 
 const RoutesComponent = () => {
 	return (
@@ -43,16 +47,19 @@ const RoutesComponent = () => {
 						<Route index element={<Dashboard />} />
 						<Route path="/user/:id" element={<UserProfile />}>
 							<Route index element={<UserPosts />} />
-							<Route path="about" element={<>About</>} />
-							<Route path="friends" element={<>Friends</>} />
-							<Route path="photos" element={<h1>Photos</h1>} />
-							<Route path="videos" element={<>Videos</>} />
-							<Route path="check-ins" element={<>Check-ins</>} />
-							<Route path="more" element={<>more</>} />
+							<Route path="about/" element={<UserAbout />}>
+								<Route index element={<UserAboutOverview />} />
+								<Route path="work_and_education" element={<UserAboutWorkEducation />} />
+							</Route>
 						</Route>
-
-						<Route element={<AdminRoute />}></Route>
+						<Route path="friends" element={<>Friends</>} />
+						<Route path="photos" element={<UserPhotos />} />
+						<Route path="videos" element={<>Videos</>} />
+						<Route path="check-ins" element={<>Check-ins</>} />
+						<Route path="more" element={<>more</>} />
 					</Route>
+
+					<Route element={<AdminRoute />}></Route>
 				</Route>
 
 				<Route path="/unauthorized" element={<Unauthorized />} />
