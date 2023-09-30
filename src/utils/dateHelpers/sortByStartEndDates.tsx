@@ -13,12 +13,10 @@ const sortByStartEndDates = <T extends HasDates>(a: T, b: T): number => {
 	const aEndDate = convertDayMonthYearToDate(a.endYear, a.endMonth, a.endDay);
 	const bEndDate = convertDayMonthYearToDate(b.endYear, b.endMonth, b.endDay);
 
-	if (!aEndDate && bEndDate) return 1;
-	if (aEndDate && !bEndDate) return -1;
-	if (!aEndDate && !bEndDate) return 0;
-
-	const endDateDifference = (bEndDate as Date).getTime() - (aEndDate as Date).getTime();
-	if (endDateDifference !== 0) return endDateDifference;
+	if (aEndDate && bEndDate) {
+		const endDateDifference = bEndDate.getTime() - aEndDate.getTime();
+		if (endDateDifference !== 0) return endDateDifference;
+	}
 
 	const aStartDate = convertDayMonthYearToDate(a.startYear, a.startMonth, a.startDay);
 	const bStartDate = convertDayMonthYearToDate(b.startYear, b.startMonth, b.startDay);
@@ -27,7 +25,7 @@ const sortByStartEndDates = <T extends HasDates>(a: T, b: T): number => {
 	if (aStartDate && !bStartDate) return -1;
 	if (!aStartDate && !bStartDate) return 0;
 
-	return (bStartDate as Date).getTime() - (aStartDate as Date).getTime();
+	return (bStartDate?.getTime() ?? 0) - (aStartDate?.getTime() ?? 0);
 };
 
 export const sortArrByStartEndDates = <T extends object>(

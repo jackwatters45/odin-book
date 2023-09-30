@@ -1,12 +1,12 @@
 import useUserAboutOverview from "./useUserAboutOverview";
 
-import AboutOverviewCurrentCity from "./UserAboutOverviewItems/Sections/CurrentCity";
 import AboutOverviewWork from "./UserAboutOverviewItems/Sections/Work";
 import AboutOverviewEducation from "./UserAboutOverviewItems/Sections/Education/OverviewItem";
-import AboutOverviewHometown from "./UserAboutOverviewItems/Sections/Hometown";
 import AboutOverviewRelationship from "./UserAboutOverviewItems/Sections/Relationship";
-import AboutOverviewPhoneNumber from "./UserAboutOverviewItems/Sections/PhoneNumber";
+import AboutOverviewPhoneNumber from "../../../../../UserFields/PhoneNumber";
 import { StyledUserAboutOverview } from "./UserAboutOverview.styles";
+import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewCurrentCity";
+import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewHometown";
 
 // TODO organize everything smaller
 const UserAboutOverview = () => {

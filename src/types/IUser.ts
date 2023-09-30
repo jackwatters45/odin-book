@@ -1,6 +1,7 @@
 import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/RelationshipStatus/validRelationshipStatuses";
 import AudienceStatusOptions from "./AudienceStatusOptions";
 import { IRelationshipStatus } from "./IRelationshipStatus";
+import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -8,7 +9,7 @@ export interface BasicUserInfo {
 	lastName: string;
 	fullName: string;
 	email: string;
-	gender?: string;
+	gender?: Gender;
 	birthday: Date;
 	pronouns?: "he/him" | "she/her" | "they/them";
 	avatarUrl?: string;
@@ -116,6 +117,7 @@ export const VALID_SOCIAL_PLATFORMS_ARRAY = [
 
 export type ValidSocialPlatformsType = (typeof VALID_SOCIAL_PLATFORMS_ARRAY)[number];
 export interface SocialLinksData {
+	_id: string;
 	platform: ValidSocialPlatformsType;
 	username: string;
 }
@@ -163,9 +165,17 @@ export interface AudienceSettings {
 	hometown: AudienceSettingsField;
 	relationshipStatus: AudienceSettingsField;
 	phoneNumber: AudienceSettingsField;
+	email: AudienceSettingsField;
+	gender: AudienceSettingsField;
+	pronouns: AudienceSettingsField;
+	birthday: AudienceSettingsField;
+	languages: AudienceSettingsField;
 
+	websites: { [key: string]: AudienceSettingsField };
+	socialLinks: { [key: string]: AudienceSettingsField };
 	work: { [key: string]: AudienceSettingsField };
 	education: { [key: string]: AudienceSettingsField };
+	placesLived: { [key: string]: AudienceSettingsField };
 }
 
 type AllKeys<T> = keyof T | `${Extract<keyof T, string>}.${string}`;
@@ -180,6 +190,8 @@ export interface UserAboutData {
 	websites?: string[];
 	socialLinks?: SocialLinksData[];
 	nicknames?: string[];
+
+	languages: string[];
 
 	intro: IntroData;
 

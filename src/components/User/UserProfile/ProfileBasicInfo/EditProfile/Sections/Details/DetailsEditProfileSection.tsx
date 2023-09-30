@@ -12,13 +12,18 @@ const LazyEditDetailsForm = lazy(
 
 interface DetailsEditProfileSectionProps {
 	user: IUser;
+	closeParentDialog: () => void;
 }
 
-const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => {
+const DetailsEditProfileSection = ({
+	user,
+	closeParentDialog,
+}: DetailsEditProfileSectionProps) => {
 	const {
 		isValues,
 		ref,
 		closeDialog,
+		closeAllDialogs,
 		openDialog,
 		register,
 		handleSubmit,
@@ -26,6 +31,7 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 		control,
 	} = useDetails({
 		user,
+		closeParentDialog,
 	});
 
 	return (
@@ -41,6 +47,7 @@ const DetailsEditProfileSection = ({ user }: DetailsEditProfileSectionProps) => 
 					user={user}
 					ref={ref}
 					closeDialog={closeDialog}
+					closeAllDialogs={closeAllDialogs}
 					register={register}
 					setValue={setValue}
 					control={control}

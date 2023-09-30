@@ -1,9 +1,11 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";
-import StandardUserOverviewForm from "../../../../UserAboutOverviewItem/StandardUserOverviewForm";
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
+import StandardUserOverviewForm from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm";
 import { StyledUserAboutFormText } from "@/styles/SharedStyles";
-import { StyledAttenderForContainer } from "./EducationUserOverviewForm.styles";
+import {
+	StyledAttenderForContainer,
+	StyledEducationTimePeriod,
+} from "./EducationUserOverviewForm.styles";
 import useEducationUserOverviewForm from "./useEducationUserOverviewForm";
 import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
 import AboutOverviewTextArea from "@/components/Shared/FormComponents/TextArea/AboutOverviewTextArea";
@@ -46,7 +48,7 @@ const EducationUserOverviewForm = ({
 				register={{ ...register("values.school"), required: true }}
 				labelText="School"
 			/>
-			<TimePeriod
+			<StyledEducationTimePeriod
 				checkboxText="Graduated"
 				checked={formValues.values?.graduated}
 				includeEndDateIfChecked={true}

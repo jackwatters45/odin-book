@@ -28,8 +28,6 @@ const useRadioForm = <T extends FieldValues>({
 	const handleConfirm = () => {
 		const value = popupValue?.[formField] || popupValue;
 
-		console.log(value);
-
 		if (value) setValue(formField, value);
 
 		closeDialog();

@@ -15,14 +15,14 @@ type DatePart = string | undefined;
 export interface SelectedValues {
 	startYear: DatePart;
 	startMonth: DatePart;
-	endYear: DatePart;
-	endMonth: DatePart;
+	endYear?: DatePart;
+	endMonth?: DatePart;
 }
 
 export interface TimePeriodValues extends SelectedValues {
-	checked: boolean | undefined;
+	checked?: boolean | undefined;
 	startDay: DatePart;
-	endDay: DatePart;
+	endDay?: DatePart;
 }
 
 type TimeSegmentInputs = {
@@ -33,10 +33,12 @@ interface TimePeriodProps {
 	checked: boolean | undefined;
 	inputs: TimeSegmentInputs;
 	selectedValues: SelectedValues;
-	checkboxText: string;
+	checkboxText?: string;
+	title?: string;
 	numFutureDates?: number;
 	includeDefaultInDropdowns?: boolean;
 	includeEndDateIfChecked?: boolean;
+	className?: string;
 }
 
 const TimePeriod = ({
@@ -44,16 +46,16 @@ const TimePeriod = ({
 	inputs,
 	selectedValues,
 	checkboxText,
+	title = "Time Period",
 	numFutureDates,
 	includeDefaultInDropdowns = true,
 	includeEndDateIfChecked = false,
+	className,
 }: TimePeriodProps) => {
 	return (
-		<StyledTimePeriodContainer>
-			<StyledTimePeriodText $isPadding={!includeEndDateIfChecked}>
-				Time Period
-			</StyledTimePeriodText>
-			{!includeEndDateIfChecked && (
+		<StyledTimePeriodContainer className={className}>
+			<StyledTimePeriodText>{title}</StyledTimePeriodText>
+			{!includeEndDateIfChecked && inputs.checked && (
 				<StyledStandardCheckbox
 					id="checked"
 					register={inputs.checked}
@@ -87,38 +89,41 @@ const TimePeriod = ({
 						/>
 					)}
 				</div>
-				{(includeEndDateIfChecked || !checked) && (
-					<>
-						<span>to</span>
-						<div>
-							<StandardSelect
-								id="endYear"
-								options={renderYears(includeDefaultInDropdowns, numFutureDates)}
-								register={inputs.endYear}
-							/>
-							{selectedValues.endYear && (
+				{(includeEndDateIfChecked || !checked) &&
+					inputs.endYear &&
+					inputs.endMonth &&
+					inputs.endDay && (
+						<>
+							<span>to</span>
+							<div>
 								<StandardSelect
-									id="endMonth"
-									options={renderMonths(includeDefaultInDropdowns)}
-									register={inputs.endMonth}
+									id="endYear"
+									options={renderYears(includeDefaultInDropdowns, numFutureDates)}
+									register={inputs.endYear}
 								/>
-							)}
-							{selectedValues.endMonth && selectedValues.endYear && (
-								<StandardSelect
-									id="endDay"
-									options={renderDates(
-										selectedValues.endMonth,
-										selectedValues.endYear,
-										includeDefaultInDropdowns,
-									)}
-									register={inputs.endDay}
-								/>
-							)}
-						</div>
-					</>
-				)}
+								{selectedValues.endYear && (
+									<StandardSelect
+										id="endMonth"
+										options={renderMonths(includeDefaultInDropdowns)}
+										register={inputs.endMonth}
+									/>
+								)}
+								{selectedValues.endMonth && selectedValues.endYear && (
+									<StandardSelect
+										id="endDay"
+										options={renderDates(
+											selectedValues.endMonth,
+											selectedValues.endYear,
+											includeDefaultInDropdowns,
+										)}
+										register={inputs.endDay}
+									/>
+								)}
+							</div>
+						</>
+					)}
 			</StyledTimePeriodDatesDiv>
-			{includeEndDateIfChecked && (
+			{includeEndDateIfChecked && inputs.checked && (
 				<StyledStandardCheckboxMarginTop
 					id="checked"
 					register={inputs.checked}

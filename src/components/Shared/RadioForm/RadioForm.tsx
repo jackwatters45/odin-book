@@ -37,7 +37,6 @@ interface RadioFormProps<T extends FieldValues>
 	extends RadioFormCoreFormProps<T>,
 		RadioFormUIProps {}
 
-// TODO form field - what is being messed up my being work.id
 const RadioForm = <T extends FieldValues>({
 	title,
 	formField,

@@ -4,9 +4,10 @@ import { StyledStandardButton, StyledStandardButtonLink } from "./StandardButton
 
 export interface StandardButtonProps {
 	text: string | undefined;
-	onClick?: () => void;
 
+	onClick?: () => void;
 	to?: string;
+
 	icon?: string;
 	className?: string;
 
@@ -48,7 +49,11 @@ const StandardButton = ({
 			{sharedElements}
 		</StyledStandardButton>
 	) : (
-		<StyledStandardButtonLink className={`${className} ${colorClass}`} to={to}>
+		<StyledStandardButtonLink
+			className={`${className} ${colorClass}`}
+			to={to}
+			onClick={onClick}
+		>
 			{sharedElements}
 		</StyledStandardButtonLink>
 	);

@@ -9,9 +9,10 @@ import flattenAndCheckForTrueOrPublic from "@/utils/flattenAndCheckForTrue";
 
 interface UseDetailsProps {
 	user: IUser;
+	closeParentDialog: () => void;
 }
 
-const useDetails = ({ user }: UseDetailsProps) => {
+const useDetails = ({ user, closeParentDialog }: UseDetailsProps) => {
 	const defaultValues = getDefaultFormStateDetails(user);
 
 	const { register, submitForm, setValue, control, reset, watch } =
@@ -40,6 +41,11 @@ const useDetails = ({ user }: UseDetailsProps) => {
 
 	const isValues = flattenAndCheckForTrueOrPublic(user?.intro);
 
+	const closeAllDialogs = () => {
+		closeDialog();
+		closeParentDialog();
+	};
+
 	return {
 		ref,
 		openDialog,
@@ -49,6 +55,7 @@ const useDetails = ({ user }: UseDetailsProps) => {
 		setValue,
 		control,
 		isValues,
+		closeAllDialogs,
 	};
 };
 

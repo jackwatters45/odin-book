@@ -1,7 +1,7 @@
 import React from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
-import { StyledTimePeriodSelectInput } from "./StandardSelect.styles";
+import { StyledSelectInput } from "./StandardSelect.styles";
 
 interface StandardSelectProps {
 	id: string;
@@ -21,7 +21,7 @@ const StandardSelect = ({
 	className,
 }: StandardSelectProps) => {
 	return (
-		<StyledTimePeriodSelectInput
+		<StyledSelectInput
 			id={id}
 			className={className}
 			defaultValue={defaultValue}
@@ -29,7 +29,7 @@ const StandardSelect = ({
 			{...register}
 		>
 			{options}
-		</StyledTimePeriodSelectInput>
+		</StyledSelectInput>
 	);
 };
 

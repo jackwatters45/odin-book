@@ -1,3 +1,4 @@
+import StandardSelect from "@/components/Shared/StandardSelect";
 import styled, { css } from "styled-components";
 
 export const StandardButtonStyles = css`
@@ -132,4 +133,19 @@ export const StyledUserAboutFormText = styled.span`
 	font-weight: 600;
 	display: block;
 	margin: 1.125rem 0 0.25rem;
+`;
+
+export const StyledUserAboutContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+`;
+
+export const BoldText = styled.span`
+	font-weight: 600;
+`;
+
+export const FullWidthStandardSelect = styled(StandardSelect)`
+	width: 100%;
+	margin-bottom: 1rem;
 `;

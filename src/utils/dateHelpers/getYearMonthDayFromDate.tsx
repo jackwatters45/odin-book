@@ -3,7 +3,7 @@ const getYearMonthDayFromDate = (date: Date | undefined) => {
 	return {
 		year: new Date(date).getFullYear().toString(),
 		month: new Date(date).getMonth().toString(),
-		day: new Date(date).getDay().toString(),
+		day: new Date(date).getDate().toString(),
 	};
 };
 

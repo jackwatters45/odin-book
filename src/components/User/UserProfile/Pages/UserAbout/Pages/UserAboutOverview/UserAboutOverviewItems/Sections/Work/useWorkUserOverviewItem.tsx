@@ -1,5 +1,5 @@
 import formatWorkData from "@/components/User/UserFields/Work/formatWorkValue";
-import useUserAboutOverviewItem from "../../UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { WorkData } from "@/types/IUser";
 
 interface useWorkUserOverviewItemProps {

@@ -1,7 +1,7 @@
 import { IUser } from "@/types/IUser";
 import getDefaultFormStateDetails from "./getDefaultFormFieldsDetails";
-import getCurrentCity from "../../PlacesLived/getCurrentCity";
-import getHometown from "../../PlacesLived/getHometown";
+import getCurrentCity from "../../PlacesLived/utils/getCurrentCity";
+import getHometown from "../../PlacesLived/utils/getHometown";
 import formatDateMonthYear from "@/utils/dateHelpers/formatDateMonthYear";
 
 interface IUseEditDetailsForm {

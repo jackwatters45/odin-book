@@ -1,5 +1,5 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import StandardUserOverviewForm from "../../../UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm";
 import useWorkUserOverviewForm from "./useWorkUserOverviewForm";
 import { WorkData } from "@/types/IUser";
 import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";

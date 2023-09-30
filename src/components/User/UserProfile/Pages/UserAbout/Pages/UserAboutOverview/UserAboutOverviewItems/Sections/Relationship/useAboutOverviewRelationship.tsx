@@ -1,5 +1,5 @@
 import formatRelationshipStatus from "@/components/User/UserFields/RelationshipStatus/formatRelationshipStatus";
-import useUserAboutOverviewItem from "../../UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { IUser } from "@/types/IUser";
 import { IRelationshipStatus } from "@/types/IRelationshipStatus";
 

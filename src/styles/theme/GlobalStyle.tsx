@@ -75,12 +75,15 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  button, input[type='text'], textarea, select, option {
+  button, input, textarea, select, option {
     border: none;
     background: transparent;
-    cursor: pointer;
   }
 
+  button,  select, option {
+  cursor: pointer;
+  }
+  
   textarea {
     font-family: inherit;
   }
@@ -116,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.1s ease-in-out;
   }
 
-  :has(dialog[open]) {
+  :has(dialog:modal[open]) {
     overflow: hidden;
   }
 `;

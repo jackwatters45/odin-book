@@ -4,9 +4,10 @@ import {
 	StyledAboutOverviewInput,
 	StyledAboutOverviewInputDiv,
 	StyledAboutOverviewInputLabel,
-} from "../../../User/UserProfile/Pages/UserAbout/Pages/UserAboutOverview/UserAboutOverviewItems/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+} from "../../USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+import { InputHTMLAttributes } from "react";
 
-interface AboutOverviewTextInputProps {
+interface AboutOverviewTextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	category: string;
 	isSelectedValue: boolean | undefined;
 	register: ReturnType<UseFormRegister<FieldValues>>;
@@ -18,6 +19,7 @@ const AboutOverviewTextInput = ({
 	isSelectedValue,
 	register,
 	labelText,
+	...props
 }: AboutOverviewTextInputProps) => {
 	return (
 		<StyledAboutOverviewInputDiv>
@@ -26,6 +28,7 @@ const AboutOverviewTextInput = ({
 				id={category}
 				className={isSelectedValue ? "content" : "placeholder"}
 				{...register}
+				{...props}
 			/>
 			<StyledAboutOverviewInputLabel htmlFor={category}>
 				{labelText}

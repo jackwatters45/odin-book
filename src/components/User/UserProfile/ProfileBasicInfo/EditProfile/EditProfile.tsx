@@ -50,7 +50,7 @@ const EditProfile = ({ user }: EditProfileProps) => {
 					<AvatarEditProfileSection avatarUrl={avatarUrl} />
 					<CoverEditProfileSection coverPhotoUrl={coverPhotoUrl} />
 					<BioEditProfileSection bio={bio} />
-					<IntroEditProfileSection user={user} />
+					<IntroEditProfileSection user={user} closeParentDialog={closeDialog} />
 					<HobbiesEditProfileSection hobbies={hobbies} />
 					<BottomDiv>
 						<StyledStandardButtonFullWidth

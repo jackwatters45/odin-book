@@ -4,14 +4,15 @@ import StandardCheckbox from "../../StandardCheckbox";
 export const StyledTimePeriodContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+
 	padding: 0.5rem 0;
+	gap: 0.5rem;
 `;
 
-export const StyledTimePeriodText = styled.span<{ $isPadding?: boolean }>`
+export const StyledTimePeriodText = styled.span`
 	font-weight: 600;
 	font-size: 0.95rem;
-	padding-bottom: ${({ $isPadding }) => ($isPadding ? "0.5rem" : "0")};
+	padding-bottom: 0.5rem;
 `;
 
 export const StyledStandardCheckbox = styled(StandardCheckbox)`

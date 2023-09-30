@@ -3,12 +3,11 @@ import { FC } from "react";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";
 import capitalizeFirstLetterString from "@/utils/capitalizeFirstLetterString";
-import EmptyUserAboutItem from "../../EmptyUserAboutItem";
+
 import useUserAboutWorkEducationSection from "./useUserAboutWorkEducationSection";
-import {
-	StyledTitleText,
-	StyledUserAboutWorkEducationSection,
-} from "./UserAboutWorkEducationSection.styles";
+import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSection.styles";
+import { BoldText } from "@/styles/SharedStyles";
+import EmptyUserAboutItem from "@/components/Shared/USER/EmptyUserAboutItem";
 
 export interface UserAboutWorkEducationSectionContent<T> {
 	audience: AudienceStatusOptions;
@@ -47,9 +46,9 @@ const UserAboutWorkEducationSection = <T,>({
 
 	return (
 		<StyledUserAboutWorkEducationSection>
-			<StyledTitleText>{capitalizeFirstLetterString(fieldName)}</StyledTitleText>
+			<BoldText>{capitalizeFirstLetterString(fieldName)}</BoldText>
 			<EmptyUserAboutItem
-				fieldName={fieldName}
+				buttonText={fieldName}
 				handleOpenForm={handleOpenForm}
 				isEditing={isEditing}
 				FormComponent={

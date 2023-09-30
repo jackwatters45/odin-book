@@ -6,7 +6,7 @@ export const UserProfileSectionContainer = styled.div`
 	border-radius: 0.25rem;
 	${(props) => props.theme.sectionShadow}
 	display: flex;
-	position: relative;
+
 	flex-direction: column;
 	padding: 1rem;
 	gap: 1rem;

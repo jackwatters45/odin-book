@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTimePeriodSelectInput = styled.select`
+export const StyledSelectInput = styled.select`
 	height: 2.25rem;
 	padding: 0.5rem 1.75rem 0.5rem 0.75rem;
 	border-radius: 0.375rem;

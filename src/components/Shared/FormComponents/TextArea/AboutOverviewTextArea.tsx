@@ -4,7 +4,7 @@ import {
 	StyledAboutOverviewInputDiv,
 	StyledAboutOverviewInputLabel,
 	StyledAboutOverviewTextarea,
-} from "../../../User/UserProfile/Pages/UserAbout/Pages/UserAboutOverview/UserAboutOverviewItems/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+} from "../../USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
 import useAboutOverviewTextArea from "./useAboutOverviewTextArea";
 
 interface AboutOverviewTextAreaProps {

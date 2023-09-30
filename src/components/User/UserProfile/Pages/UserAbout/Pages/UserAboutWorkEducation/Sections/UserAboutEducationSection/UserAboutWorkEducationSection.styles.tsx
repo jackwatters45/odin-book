@@ -5,7 +5,3 @@ export const StyledUserAboutWorkEducationSection = styled.div`
 	flex-direction: column;
 	gap: 1rem;
 `;
-
-export const StyledTitleText = styled.span`
-	font-weight: 600;
-`;

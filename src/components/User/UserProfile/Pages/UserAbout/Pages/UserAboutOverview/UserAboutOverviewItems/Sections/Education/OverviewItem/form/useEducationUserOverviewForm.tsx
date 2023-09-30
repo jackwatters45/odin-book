@@ -1,8 +1,8 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";
-import useUserOverviewForm from "../../../../UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import useTimePeriod from "@/components/Shared/FormComponents/TimePeriod/useTimePeriod";
-import { UserAboutFormFields } from "../../../../UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm";
+import { UserAboutFormFields } from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm";
 
 interface UseEducationUserOverviewFormProps {
 	audience: AudienceStatusOptions;
@@ -27,12 +27,18 @@ const useEducationUserOverviewForm = ({
 }: UseEducationUserOverviewFormProps) => {
 	const isExistingEducation = !!initialValues?._id;
 
-	const formattedInitialValues = initialValues && {
-		...initialValues,
-		concentrations1: initialValues?.concentrations?.[0],
-		concentrations2: initialValues?.concentrations?.[1],
-		concentrations3: initialValues?.concentrations?.[2],
-	};
+	const formattedInitialValues = (
+		initialValues
+			? {
+					...initialValues,
+					concentrations1: initialValues?.concentrations?.[0],
+					concentrations2: initialValues?.concentrations?.[1],
+					concentrations3: initialValues?.concentrations?.[2],
+			  }
+			: {
+					attendedFor: "undergraduate",
+			  }
+	) as EducationWithConcentrations | undefined;
 
 	const addFormTypeToSubmit = (data: EducationFormFields) => {
 		return formType

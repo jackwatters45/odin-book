@@ -15,10 +15,10 @@ import useDetailsDisplayContent from "./useDetailsDisplayContent";
 import UserDetail from "../UserDetail";
 import formatWorkData from "../../../Work/formatWorkValue";
 import { formatEducationTitle } from "../../../Education/formatEducationData";
-import formatCity from "../../../PlacesLived/formatCity";
+import formatCity from "../../../PlacesLived/utils/formatCity";
 import { StyledLink } from "../DetailsDisplay.styles";
-import getPlatformUrl from "../../../SocialLinks/getPlatformUrl";
-import getSocialLinkImage from "../../../SocialLinks/socialLinkImages";
+import getPlatformUrl from "../../../SocialLinks/utils/getPlatformUrl";
+import getSocialLinkImage from "../../../SocialLinks/utils/socialLinkImages";
 import formatRelationshipStatus from "../../../RelationshipStatus/formatRelationshipStatus";
 
 interface DetailsDisplayContentProps {

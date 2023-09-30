@@ -25,6 +25,8 @@ import UserPhotos from "@/components/User/UserProfile/Pages/UserPhotos";
 import UserAbout from "@/components/User/UserProfile/Pages/UserAbout";
 import UserAboutOverview from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutOverview";
 import UserAboutWorkEducation from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutWorkEducation/UserAboutWorkEducation";
+import UserAboutPlacesLived from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutPlacesLived/UserAboutPlacesLived";
+import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutBasicInfo";
 
 const RoutesComponent = () => {
 	return (
@@ -50,6 +52,8 @@ const RoutesComponent = () => {
 							<Route path="about/" element={<UserAbout />}>
 								<Route index element={<UserAboutOverview />} />
 								<Route path="work_and_education" element={<UserAboutWorkEducation />} />
+								<Route path="places" element={<UserAboutPlacesLived />} />
+								<Route path="contact_and_basic_info" element={<UserAboutBasicInfo />} />
 							</Route>
 						</Route>
 						<Route path="friends" element={<>Friends</>} />

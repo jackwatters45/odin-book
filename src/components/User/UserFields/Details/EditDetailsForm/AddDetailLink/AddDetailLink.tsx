@@ -3,10 +3,11 @@ import { StyledAddDetailLink } from "./AddDetailLink.styles";
 
 interface AddDetailLinkProps {
 	text: string | undefined;
-	onClick: () => void;
+	onClick?: () => void;
+	to?: string;
 }
 
-const AddDetailLink = ({ text, onClick }: AddDetailLinkProps) => {
+const AddDetailLink = ({ text, onClick, to }: AddDetailLinkProps) => {
 	return (
 		<StyledAddDetailLink
 			colorClass="transparent"
@@ -15,6 +16,7 @@ const AddDetailLink = ({ text, onClick }: AddDetailLinkProps) => {
 			icon={mdiPlusCircleOutline}
 			iconSize={1.1}
 			className="underline-hover"
+			to={to}
 		/>
 	);
 };

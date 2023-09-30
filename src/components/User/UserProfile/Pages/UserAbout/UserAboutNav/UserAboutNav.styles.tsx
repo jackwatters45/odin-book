@@ -9,7 +9,7 @@ export const StyledUserAboutNav = styled.nav`
 `;
 
 export const StyledUserAboutNavItem = styled(NavLink)`
-	padding: 0.625rem 0.625rem;
+	padding: 0.625rem;
 	margin-left: -0.625rem;
 	width: calc(100% + 1.25rem);
 	font-size: 0.95rem;
@@ -17,7 +17,6 @@ export const StyledUserAboutNavItem = styled(NavLink)`
 	display: flex;
 	align-items: center;
 	font-weight: 700;
-	color: ${({ theme }) => theme.colors.textPrimary};
 	border-radius: 0.375rem;
 
 	&:hover {

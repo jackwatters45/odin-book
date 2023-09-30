@@ -10,6 +10,7 @@ interface DialogActionsProps<T> {
 
 	handleCancel: () => void;
 	handleSave: (() => void) | undefined;
+	disableSave?: boolean;
 	className?: string;
 
 	leftColumn?: ReactNode;
@@ -23,6 +24,7 @@ const DialogActions = <T,>({
 	unsavedValue,
 	handleCancel,
 	handleSave,
+	disableSave = false,
 	className,
 	leftColumn,
 	submitButtonText = "Save",
@@ -37,13 +39,13 @@ const DialogActions = <T,>({
 	return (
 		<BottomDiv className={className} $border={true}>
 			{leftColumn ? leftColumn : <PlaceholderDiv />}
-			{!(unchangedBehavior === "hide" && !isChanged) ? (
+			{!(unchangedBehavior === "hide" && (!isChanged || disableSave)) ? (
 				<StyledButtonDiv>
 					<StandardButton type="button" onClick={handleCancel} text="Cancel" />
 					<StandardButton
 						type={submitsForm ? "submit" : "button"}
 						onClick={handleSave}
-						disabled={unchangedBehavior === "disable" && !isChanged}
+						disabled={unchangedBehavior === "disable" && (!isChanged || disableSave)}
 						text={submitButtonText}
 						colorClass="blue"
 					/>

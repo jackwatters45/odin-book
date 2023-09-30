@@ -11,6 +11,7 @@ interface ExistingDetailSwitchProps<T extends FieldValues> {
 	id: Path<T>;
 	value: string;
 	to: string;
+	onClickLink?: () => void;
 	register: ReturnType<UseFormRegister<FieldValues>> | undefined;
 	icon?: ReactNode;
 }
@@ -19,6 +20,7 @@ const ExistingDetailSwitch = <T extends FieldValues>({
 	id,
 	value,
 	to,
+	onClickLink,
 	register,
 	icon,
 }: ExistingDetailSwitchProps<T>) => {
@@ -27,7 +29,7 @@ const ExistingDetailSwitch = <T extends FieldValues>({
 			{register && <StyledCheckboxSwitch id={id} register={register} />}
 			{icon && icon}
 			<ValueSpan>{value}</ValueSpan>
-			<Link to={to}>
+			<Link to={to} onClick={onClickLink}>
 				<Icon path={mdiPencil} size={1} color={"black"} />
 			</Link>
 		</ExistingDetailSwitchContainer>

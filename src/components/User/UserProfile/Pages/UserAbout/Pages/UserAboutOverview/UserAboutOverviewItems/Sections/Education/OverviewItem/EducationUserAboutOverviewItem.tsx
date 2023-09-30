@@ -1,5 +1,5 @@
 import { mdiSchool } from "@mdi/js";
-import UserAboutOverviewItem from "../../../UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../../../../../../../../Shared/USER/UserAboutOverviewItem";
 import { formatEducationAttendingDates } from "@/components/User/UserFields/Education/formatEducationData";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";

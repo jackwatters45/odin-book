@@ -1,6 +1,6 @@
 import { mdiHeart } from "@mdi/js";
 
-import UserAboutOverviewItem from "../../UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem";
 import { IRelationshipStatus } from "@/types/IRelationshipStatus";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import RelationshipUserOverviewForm from "./form/RelationshipUserOverviewForm";

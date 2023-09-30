@@ -45,6 +45,5 @@ export const StyledMoreButton = styled.button`
 	&:hover {
 		border-radius: 50%;
 		background-color: ${({ theme }) => theme.colors.hoverOverlay};
-		transition: background-color 0.1s ease-in-out;
 	}
 `;

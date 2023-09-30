@@ -16,7 +16,7 @@ import {
 } from "./EditDetailsForm.styles";
 import useEditDetailsForm from "./useEditDetailsForm";
 import SectionTitle from "./SectionTitle";
-import getSocialLinkImage from "../../SocialLinks/socialLinkImages";
+import getSocialLinkImage from "../../SocialLinks/utils/socialLinkImages";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
 import DetailsFormFields from "@/types/DetailsFormFields";
 import formatWorkData from "../../Work/formatWorkValue";
@@ -26,6 +26,7 @@ import formatRelationshipStatus from "../../RelationshipStatus/formatRelationshi
 interface EditDetailsFormProps {
 	user: IUser;
 	closeDialog: () => void;
+	closeAllDialogs: () => void;
 	onSubmit: (e: FormEvent<HTMLFormElement>) => void;
 	register: UseFormReturn<DetailsFormFields>["register"];
 	control: UseFormReturn<DetailsFormFields>["control"];
@@ -33,7 +34,10 @@ interface EditDetailsFormProps {
 }
 
 const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
-	({ user, closeDialog, onSubmit, register, control, setValue }, ref) => {
+	(
+		{ user, closeDialog, closeAllDialogs, onSubmit, register, control, setValue },
+		ref,
+	) => {
 		const { formattedJoined, currentCity, hometown, defaultValues } = useEditDetailsForm({
 			user,
 		});
@@ -54,12 +58,14 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									id="pronouns"
 									value={user.pronouns}
 									register={register("pronouns.pronouns")}
-									to={"about_contact_and_basic_info"}
+									to={"about/contact_and_basic_info"}
+									onClickLink={closeAllDialogs}
 								/>
 							) : (
 								<AddDetailLink
 									text={"Add pronouns to your profile"}
-									to={"about_contact_and_basic_info"}
+									to={"about/contact_and_basic_info"}
+									onClick={closeAllDialogs}
 								/>
 							)}
 						</SectionContainer>
@@ -73,11 +79,16 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 											id={`work.${workRecord._id}`}
 											value={formatWorkData({ work: workRecord })}
 											register={register(`work.${workRecord._id}`)}
-											to={"about_work_and_education"}
+											onClickLink={closeAllDialogs}
+											to={"about/work_and_education"}
 										/>
 									);
 								})}
-							<AddDetailLink text={"Add a workplace"} to={"about_work_and_education"} />
+							<AddDetailLink
+								text={"Add a workplace"}
+								to={"about/work_and_education"}
+								onClick={closeAllDialogs}
+							/>
 						</SectionContainer>
 						<SectionContainer>
 							<SectionTitle title="Education" />
@@ -89,13 +100,15 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 											id={`education.${educationRecord._id}`}
 											value={formatEducationTitle({ education: educationRecord })}
 											register={register(`education.${educationRecord._id}`)}
-											to={"about_work_and_education"}
+											onClickLink={closeAllDialogs}
+											to={"about/work_and_education"}
 										/>
 									);
 								})}
 							<AddDetailLink
 								text={"Add high school or college"}
-								to={"about_work_and_education"}
+								onClick={closeAllDialogs}
+								to={"about/work_and_education"}
 							/>
 						</SectionContainer>
 
@@ -108,10 +121,15 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										currentCity.state ? `, ${currentCity.state}` : ""
 									}`}
 									register={register("currentCity.currentCity")}
-									to={"about_places"}
+									onClickLink={closeAllDialogs}
+									to={"about/places"}
 								/>
 							) : (
-								<AddDetailLink text={"Add a current city"} to={"about_places"} />
+								<AddDetailLink
+									text={"Add a current city"}
+									to={"about/places"}
+									onClick={closeAllDialogs}
+								/>
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -123,10 +141,15 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										hometown.state ? `, ${hometown.state}` : ""
 									}`}
 									register={register("hometown.hometown")}
-									to={"about_places"}
+									onClickLink={closeAllDialogs}
+									to={"about/places"}
 								/>
 							) : (
-								<AddDetailLink text={"Add a hometown"} to={"about_places"} />
+								<AddDetailLink
+									text={"Add a hometown"}
+									to={"about/places"}
+									onClick={closeAllDialogs}
+								/>
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -139,12 +162,14 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										status: user.relationshipStatus.status,
 									})}
 									register={register("relationshipStatus.relationshipStatus")}
-									to={"about_family_and_relationships"}
+									onClickLink={closeAllDialogs}
+									to={"about/family_and_relationships"}
 								/>
 							) : (
 								<AddDetailLink
 									text={"Add a relationship"}
-									to={"about_family_and_relationships"}
+									to={"about/family_and_relationships"}
+									onClick={closeAllDialogs}
 								/>
 							)}
 						</SectionContainer>
@@ -155,10 +180,15 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									id="namePronunciation"
 									value={user.namePronunciation.fullName}
 									register={register("namePronunciation.namePronunciation")}
-									to={"about_details"}
+									onClickLink={closeAllDialogs}
+									to={"about/details"}
 								/>
 							) : (
-								<AddDetailLink text={"Add a name pronunciation"} to={"about_details"} />
+								<AddDetailLink
+									text={"Add a name pronunciation"}
+									to={"about/details"}
+									onClick={closeAllDialogs}
+								/>
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -168,7 +198,8 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									id="joined"
 									value={formattedJoined}
 									register={register("joined.joined")}
-									to={"about_details"}
+									onClickLink={closeAllDialogs}
+									to={"about/details"}
 								/>
 							)}
 						</SectionContainer>
@@ -200,13 +231,18 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 										key={websiteUrl}
 										id="websites"
 										value={websiteUrl}
-										to={"about_contact_and_basic_info"}
+										to={"about/contact_and_basic_info"}
 										register={undefined}
+										onClickLink={closeAllDialogs}
 										icon={<Icon path={mdiWeb} size={1} color={"#65676B"} />}
 									/>
 								))
 							) : (
-								<AddDetailLink text={"Add a website"} to={"about_details"} />
+								<AddDetailLink
+									text={"Add a website"}
+									to={"about/details"}
+									onClick={closeAllDialogs}
+								/>
 							)}
 						</SectionContainer>
 						<SectionContainer>
@@ -238,7 +274,8 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 											key={`${platform}${username}`}
 											id="socialLinks"
 											value={username}
-											to={"about_contact_and_basic_info"}
+											onClickLink={closeAllDialogs}
+											to={"about/contact_and_basic_info"}
 											register={undefined}
 											icon={
 												<Icon
@@ -251,7 +288,11 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 									);
 								})
 							) : (
-								<AddDetailLink text={"Add a social link"} to={"about_details"} />
+								<AddDetailLink
+									text={"Add a social link"}
+									to={"about/details"}
+									onClick={closeAllDialogs}
+								/>
 							)}
 						</SectionContainer>
 					</FormContentContainer>
