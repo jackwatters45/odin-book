@@ -7,6 +7,7 @@ const spin = keyframes`
 
 interface SpinnerProps {
 	size: number;
+	speed: number;
 }
 
 const Spinner = styled.div<SpinnerProps>`
@@ -22,16 +23,17 @@ const Spinner = styled.div<SpinnerProps>`
 	border-radius: 50%;
 	width: ${({ size }) => size}px;
 	height: ${({ size }) => size}px;
-	animation: ${spin} 1.5s linear infinite;
+	animation: ${spin} ${({ speed }) => speed}s linear infinite;
 `;
 
 interface Props {
 	className?: string;
 	size?: number;
+	speed?: number;
 }
 
-const Loading = ({ className, size = 50 }: Props) => {
-	return <Spinner className={className} size={size} />;
+const Loading = ({ className, size = 50, speed = 1.5 }: Props) => {
+	return <Spinner className={className} size={size} speed={speed} />;
 };
 
 export default Loading;

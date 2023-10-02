@@ -2,47 +2,32 @@ import { ReactNode } from "react";
 
 import AddDetailLink from "@/components/User/UserFields/Details/EditDetailsForm/AddDetailLink";
 import UserAboutOverviewItemExisting from "./UserAboutOverviewItemExisting";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import { UserAboutAudienceFormFields } from "@/types/IUser";
+import { ExistingOverviewItemProps } from "./UserAboutOverviewItemExisting/UserAboutOverviewItemExisting";
 
 export type TitleSegment =
 	| { type: "text"; content: string }
 	| { type: "bold"; content: string }
 	| { type: "link"; content: string; linkTo: string };
 
-interface UserAboutOverviewItemProps {
+interface UserAboutOverviewItemProps extends ExistingOverviewItemProps {
 	title: TitleSegment[] | undefined | null;
-	icon: string;
-	audience: AudienceStatusOptions;
-	itemId?: string;
-	category: UserAboutAudienceFormFields;
-	categoryDisplayName: string;
-	FormComponent: ReactNode;
-
-	deleteMutation: (() => void) | undefined;
-	subtitle?: string | undefined | null;
-	addText?: string;
-
-	isEditing: boolean;
-	handleOpenForm: () => void;
 
 	includeAddDetailLink?: boolean;
+	addText?: string;
+	handleOpenForm: () => void;
+
+	isEditing: boolean;
+	FormComponent: ReactNode;
 }
 
 const UserAboutOverviewItem = ({
 	title,
-	icon,
-	audience,
-	itemId,
-	category,
-	categoryDisplayName,
-	FormComponent,
-	deleteMutation,
-	subtitle,
 	isEditing,
 	handleOpenForm,
 	addText,
+	FormComponent,
 	includeAddDetailLink = true,
+	...props
 }: UserAboutOverviewItemProps) => {
 	if (isEditing) {
 		return FormComponent;
@@ -50,14 +35,8 @@ const UserAboutOverviewItem = ({
 		return (
 			<UserAboutOverviewItemExisting
 				title={title}
-				icon={icon}
-				audience={audience}
-				subtitle={subtitle}
-				itemId={itemId}
-				category={category}
-				categoryDisplayName={categoryDisplayName}
 				handleOpenForm={handleOpenForm}
-				deleteMutation={deleteMutation}
+				{...props}
 			/>
 		);
 	} else if (includeAddDetailLink) {

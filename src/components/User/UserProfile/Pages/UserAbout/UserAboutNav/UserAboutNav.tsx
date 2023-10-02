@@ -26,9 +26,6 @@ const UserAboutNav = () => {
 				<StyledUserAboutNavItem to={`/user/${id}/about/details_about_you`}>
 					Details About You
 				</StyledUserAboutNavItem>
-				<StyledUserAboutNavItem to={`/user/${id}/about/life_events`}>
-					Life Events
-				</StyledUserAboutNavItem>
 			</StyledUserAboutNav>
 		</div>
 	);

@@ -24,6 +24,7 @@ const useAboutOverviewRelationship = ({
 
 	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({
 		categoryUrl: "relationship",
+		param: undefined,
 	});
 
 	return {

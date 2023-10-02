@@ -14,10 +14,11 @@ import useUserAboutOverviewItemExisting from "./useUserAboutOverviewItemExisting
 import { TitleSegment } from "../UserAboutOverviewItem";
 import { UserAboutAudienceFormFields } from "@/types/IUser";
 import Audience from "./Audience";
+import { ImageCircle } from "@/components/Nav/Nav.styles";
 
-export interface UserAboutOverviewItem {
-	title: TitleSegment[];
+export interface ExistingOverviewItemProps {
 	icon: string;
+	iconType?: "icon" | "image";
 	audience: AudienceStatusOptions;
 	itemId?: string;
 	category: UserAboutAudienceFormFields;
@@ -27,9 +28,14 @@ export interface UserAboutOverviewItem {
 	subtitle?: string | undefined | null;
 }
 
+interface ExtendedExistingOverviewItemProps extends ExistingOverviewItemProps {
+	title: TitleSegment[];
+}
+
 const UserAboutOverviewItemExisting = ({
 	title,
 	icon,
+	iconType = "icon",
 	audience,
 	itemId,
 	category,
@@ -37,12 +43,16 @@ const UserAboutOverviewItemExisting = ({
 	handleOpenForm,
 	deleteMutation,
 	subtitle,
-}: UserAboutOverviewItem) => {
+}: ExtendedExistingOverviewItemProps) => {
 	const { renderTitleSegment } = useUserAboutOverviewItemExisting();
 
 	return (
 		<StyledUserAboutOverviewItem>
-			<Icon path={icon} size={1.2} color={"#65676B"} />
+			{iconType === "icon" ? (
+				<Icon path={icon} size={1.2} color={"#65676B"} />
+			) : (
+				<ImageCircle src={icon} alt="icon" />
+			)}
 			<StyledUserAboutOverviewItemTitle>
 				<span>
 					{title.map((segment, index) => (

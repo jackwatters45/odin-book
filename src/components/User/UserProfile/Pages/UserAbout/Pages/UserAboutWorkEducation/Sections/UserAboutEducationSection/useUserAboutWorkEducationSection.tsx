@@ -4,10 +4,13 @@ interface UseUserAboutWorkEducationSectionProps {
 	fieldName: "high school" | "college" | "work";
 }
 
-const useUserAboutEducationSection = ({
+const useUserAboutWorkEducationSection = ({
 	fieldName,
 }: UseUserAboutWorkEducationSectionProps) => {
-	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({});
+	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({
+		categoryUrl: undefined,
+		param: undefined,
+	});
 
 	const formType =
 		fieldName === "college" || fieldName === "high school" ? fieldName : undefined;
@@ -20,4 +23,4 @@ const useUserAboutEducationSection = ({
 	};
 };
 
-export default useUserAboutEducationSection;
+export default useUserAboutWorkEducationSection;

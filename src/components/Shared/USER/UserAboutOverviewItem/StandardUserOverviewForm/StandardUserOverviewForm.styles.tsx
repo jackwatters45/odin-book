@@ -23,7 +23,7 @@ export const StyledAboutOverviewInputDiv = styled.div`
 
 export const StyledAboutOverviewInput = styled.input`
 	width: 100%;
-	height: 100%;
+	// height: 100%;
 	padding: 1.625rem 1rem 0.625rem;
 	color: ${({ theme }) => theme.colors.textPrimary};
 	font-size: 1.05rem;

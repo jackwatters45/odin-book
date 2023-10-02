@@ -27,6 +27,7 @@ import UserAboutOverview from "@/components/User/UserProfile/Pages/UserAbout/Pag
 import UserAboutWorkEducation from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutWorkEducation/UserAboutWorkEducation";
 import UserAboutPlacesLived from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutPlacesLived/UserAboutPlacesLived";
 import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutBasicInfo";
+import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily/UserAboutRelationshipFamily";
 
 const RoutesComponent = () => {
 	return (
@@ -54,6 +55,10 @@ const RoutesComponent = () => {
 								<Route path="work_and_education" element={<UserAboutWorkEducation />} />
 								<Route path="places" element={<UserAboutPlacesLived />} />
 								<Route path="contact_and_basic_info" element={<UserAboutBasicInfo />} />
+								<Route
+									path="family_and_relationships"
+									element={<UserAboutRelationshipFamily />}
+								/>
 							</Route>
 						</Route>
 						<Route path="friends" element={<>Friends</>} />

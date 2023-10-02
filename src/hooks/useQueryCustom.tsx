@@ -1,16 +1,12 @@
 import { apiBaseUrl } from "@/config/envVariables";
-import { useQuery } from "@tanstack/react-query";
+import { UseQueryOptions, useQuery } from "@tanstack/react-query";
 
-interface IUseQueryOptions {
-	enabled?: boolean;
-}
-
-interface IQueryCustomProps<T, U> {
+export interface IQueryCustomProps<T, U> {
 	queryKey: (string | undefined)[];
 	queryUrl: string;
 	transformData?: (data: T) => U;
 	includeCredentials?: boolean;
-	options?: IUseQueryOptions;
+	options?: UseQueryOptions<U>;
 }
 
 const useQueryCustom = <T = unknown, U = T>({

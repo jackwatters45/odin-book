@@ -2,6 +2,7 @@ import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/Rela
 import AudienceStatusOptions from "./AudienceStatusOptions";
 import { IRelationshipStatus } from "./IRelationshipStatus";
 import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
+import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembers";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -171,6 +172,7 @@ export interface AudienceSettings {
 	birthday: AudienceSettingsField;
 	languages: AudienceSettingsField;
 
+	familyMembers: { [key: string]: AudienceSettingsField };
 	websites: { [key: string]: AudienceSettingsField };
 	socialLinks: { [key: string]: AudienceSettingsField };
 	work: { [key: string]: AudienceSettingsField };
@@ -196,6 +198,8 @@ export interface UserAboutData {
 	intro: IntroData;
 
 	audienceSettings: AudienceSettings;
+
+	familyMembers?: FamilyMember[];
 
 	bio?: string;
 	hobbies?: string[];
