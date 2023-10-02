@@ -2,7 +2,7 @@ import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";
 import useUserOverviewForm from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import useTimePeriod from "@/components/Shared/FormComponents/TimePeriod/useTimePeriod";
-import { UserAboutFormFields } from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm";
+import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 
 interface UseEducationUserOverviewFormProps {
 	audience: AudienceStatusOptions;
@@ -17,7 +17,7 @@ type EducationWithConcentrations = EducationData & {
 	concentrations3: string | undefined;
 };
 
-type EducationFormFields = UserAboutFormFields<EducationWithConcentrations>;
+type EducationFormFields = FormFieldsWithAudience<EducationWithConcentrations>;
 
 const useEducationUserOverviewForm = ({
 	audience,

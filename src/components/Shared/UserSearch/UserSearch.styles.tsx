@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { StyledDialog } from "@/styles/SharedStyles";
 
-export const StyledDialogFamilyMembers = styled(StyledDialog)`
+export const StyledDialogSearchResultsDialog = styled(StyledDialog)`
 	position: absolute;
 	top: unset;
 	transform: unset;

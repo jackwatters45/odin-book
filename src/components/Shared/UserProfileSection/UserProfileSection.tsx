@@ -7,7 +7,7 @@ import {
 export interface UserProfileSectionProps {
 	title: string;
 	subtitle?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	rightColumn?: ReactNode;
 	className?: string;
 }

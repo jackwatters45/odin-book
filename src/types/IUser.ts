@@ -1,6 +1,6 @@
-import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/RelationshipStatus/validRelationshipStatuses";
+import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/RelationshipStatus/types/validRelationshipStatuses";
 import AudienceStatusOptions from "./AudienceStatusOptions";
-import { IRelationshipStatus } from "./IRelationshipStatus";
+import { IRelationshipStatus } from "../components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
 import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
 import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembers";
 

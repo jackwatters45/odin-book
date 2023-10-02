@@ -1,7 +1,7 @@
 import { mdiHeart } from "@mdi/js";
 
-import UserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem";
-import { IRelationshipStatus } from "@/types/IRelationshipStatus";
+import UserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem";
+import { IRelationshipStatus } from "@/components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import RelationshipUserOverviewForm from "./form/RelationshipUserOverviewForm";
 import useAboutOverviewRelationship from "./useAboutOverviewRelationship";
@@ -29,7 +29,11 @@ const AboutOverviewRelationship = ({
 				relationship?.status
 					? [
 							{ type: "text", content: relationshipPretextFormatted },
-							{ type: "link", content: partner.fullName, linkTo: `/user/${partner._id}` },
+							{
+								type: "link",
+								content: partner?.fullName,
+								linkTo: `/user/${partner?._id}`,
+							},
 					  ]
 					: null
 			}

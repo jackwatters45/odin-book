@@ -2,10 +2,10 @@ import { useParams } from "react-router";
 
 import useFormCustom, { DataMapper, DataValidator } from "@/hooks/useFormCustom";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import { UserAboutFormFields } from "./StandardUserOverviewForm";
 import { FormEvent } from "react";
 import { DeepPartial } from "react-hook-form";
 import useError from "@/components/Errors/useError";
+import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 
 interface UseUserAboutFormProps<T> {
 	handleCloseForm: () => void;
@@ -14,7 +14,7 @@ interface UseUserAboutFormProps<T> {
 	url: string;
 	param?: string;
 	method: "POST" | "PATCH";
-	onSubmit?: DataValidator<UserAboutFormFields<T>>;
+	onSubmit?: DataValidator<FormFieldsWithAudience<T>>;
 	validateSubmit?: (data: T | undefined) => { isValid: boolean; message: string };
 }
 
@@ -36,7 +36,7 @@ const useUserOverviewForm = <T,>({
 		values: initialValues,
 	};
 
-	const dataMapper: DataMapper<UserAboutFormFields<T>> = (data) => ({
+	const dataMapper: DataMapper<FormFieldsWithAudience<T>> = (data) => ({
 		data: {
 			audience: data.audience,
 			values: data.values,
@@ -46,7 +46,7 @@ const useUserOverviewForm = <T,>({
 	const queryUrl = param ? `users/${userId}/${url}/${param}` : `users/${userId}/${url}`;
 
 	const { submitForm, register, watch, control, setValue } = useFormCustom<
-		UserAboutFormFields<T>
+		FormFieldsWithAudience<T>
 	>({
 		dataMapper,
 		onSubmit,

@@ -1,37 +1,24 @@
-import { isEqual } from "lodash";
 import useUserOverviewForm from "../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { AboutFamilyMembersFormProps } from "./AboutFamilyMembersForm";
+import { DefaultUserSearch } from "../../../../Shared/UserSearch/types/DefaultUserSearch";
+import useUserSearch from "../../../../Shared/UserSearch/useUserSearch";
 
-import useSearch from "@/hooks/useSearch";
-import useCurrentUser from "@/hooks/useCurrentUser";
-
-type SearchResult = { _id: string; avatarUrl: string; fullName: string };
-
-type SearchJsonResponse = {
-	users: SearchResult[];
-};
-
-export type SearchResultsType = SearchResult[];
-
-export type FamilyMemberSearch = {
-	user: string | undefined;
-	name: string | undefined;
-	relationship: string | undefined;
-};
+interface FamilyMemberSearch extends DefaultUserSearch {
+	relationship?: string;
+}
 
 const useAboutFamilyMembersForm = ({
 	audience,
 	handleCloseForm,
 	initialValues,
 }: AboutFamilyMembersFormProps) => {
-	const { user } = useCurrentUser();
-
+	// family member form
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
 		useUserOverviewForm<FamilyMemberSearch>({
 			audience,
 			initialValues: {
 				user: initialValues?.user._id,
-				name: initialValues?.user.fullName,
+				search: initialValues?.user.fullName,
 				relationship: initialValues?.relationship,
 			},
 			url: "family-members",
@@ -40,24 +27,17 @@ const useAboutFamilyMembersForm = ({
 			handleCloseForm,
 		});
 
-	const searchQuery = formValues.values?.name;
-	const { searchResults, isLoading } = useSearch<SearchJsonResponse, SearchResultsType>({
-		searchQuery,
-		queryKey: ["users", user?._id, "search", searchQuery],
-		queryUrl: "users/search/friends-not-family",
-		transformData: (data) => data.users,
-		options: { staleTime: 60000, cacheTime: 60000 },
+	// search
+	const { searchQuery, searchResults, isLoading, isSearchValid } = useUserSearch({
+		audience,
+		initialValues,
+		formValues,
+		urlEnding: "friends-not-family",
 	});
 
-	const isChanged =
-		!isEqual(formValues.values, initialValues) || audience !== formValues.audience;
+	const relationshipFieldsExist = !!formValues.values?.relationship;
 
-	const allFieldsExist =
-		!!formValues.values?.relationship &&
-		!!formValues.values?.name &&
-		!!formValues.values?.user;
-
-	const isValid = isChanged && allFieldsExist;
+	const isValid = isSearchValid && relationshipFieldsExist;
 
 	return {
 		handleSubmit,

@@ -1,3 +1,4 @@
+import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
 import styled, { css } from "styled-components";
 
@@ -148,4 +149,14 @@ export const BoldText = styled.span`
 export const FullWidthStandardSelect = styled(StandardSelect)`
 	width: 100%;
 	margin-bottom: 1rem;
+`;
+
+export const StyledTimePeriodStartOnly = styled(TimePeriod)`
+	flex-direction: row;
+	align-items: center;
+	padding: 0 0 0.75rem;
+
+	> span {
+		padding: 0;
+	}
 `;

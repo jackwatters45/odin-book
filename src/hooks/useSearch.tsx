@@ -4,12 +4,12 @@ import { useCallback, useEffect } from "react";
 import useQueryCustom, { IQueryCustomProps } from "./useQueryCustom";
 import { UseQueryOptions } from "@tanstack/react-query";
 
-interface UseSearchProps<T, U> {
-	searchQuery: string | undefined;
+export interface UseSearchProps<T, U> {
 	queryKey: IQueryCustomProps<T, U>["queryKey"];
 	queryUrl: IQueryCustomProps<T, U>["queryUrl"];
-	transformData: IQueryCustomProps<T, U>["transformData"];
+	transformData?: IQueryCustomProps<T, U>["transformData"];
 	options?: UseQueryOptions<U>;
+	searchQuery: string | undefined;
 }
 
 const useSearch = <T, U>({

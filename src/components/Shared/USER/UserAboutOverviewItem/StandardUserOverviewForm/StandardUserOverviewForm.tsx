@@ -4,20 +4,16 @@ import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { StyledAboutOverviewDialogActions } from "./StandardUserOverviewForm.styles";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
 import { Control, UseFormSetValue } from "react-hook-form";
-
-export interface UserAboutFormFields<T> {
-	audience: AudienceStatusOptions;
-	values: T | undefined;
-}
+import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 
 export interface StandardUserOverviewFormProps<T> {
-	initial: UserAboutFormFields<T> | undefined;
-	formValues: UserAboutFormFields<T>;
+	initial: FormFieldsWithAudience<T> | undefined;
+	formValues: FormFieldsWithAudience<T>;
 	audience: AudienceStatusOptions;
 	handleCloseForm: () => void;
 	handleSave: (e: FormEvent<HTMLFormElement>) => void;
-	control: Control<UserAboutFormFields<T>>;
-	setValue: UseFormSetValue<UserAboutFormFields<T>>;
+	control: Control<FormFieldsWithAudience<T>>;
+	setValue: UseFormSetValue<FormFieldsWithAudience<T>>;
 	disableSave?: boolean;
 	children: ReactNode;
 	className?: string;

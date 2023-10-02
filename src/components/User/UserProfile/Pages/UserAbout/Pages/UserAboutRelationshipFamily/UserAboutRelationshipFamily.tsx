@@ -1,14 +1,14 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
-import AboutOverviewRelationship from "../UserAboutOverview/UserAboutOverviewItems/Sections/Relationship/AboutOverviewRelationship";
+
 import EmptyUserAboutFamilyMembers from "@/components/User/UserFields/FamilyMembers/empty/EmptyAboutFamilyMembers";
 import AboutFamilyMembers from "@/components/User/UserFields/FamilyMembers";
 import useUserAboutRelationshipFamily from "./useUserAboutRelationshipFamily";
+import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/AboutOverviewRelationship";
 
-// TODO add this search to relationship + search search
+// TODO add this search to relationship
 
 // TODO add default attributes to standard components (see button)
 // TODO check validation
-// TODO remove grid view and don't do life events
 
 // TODO fix intro - check website + social links as well
 // TODO default audience settings (decide + implement)

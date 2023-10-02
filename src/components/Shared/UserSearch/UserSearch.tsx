@@ -1,47 +1,50 @@
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
 
 import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
-import useFamilyMemberSearch from "./useFamilyMemberSearch";
+import useUserSearchResults from "./useUserSearchResults";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { defaultUserAvatar } from "@/config/globals";
-import { UserAboutFormFields } from "@/components/Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm";
-import { FamilyMemberSearch, SearchResultsType } from "../useAboutFamilyMembers";
-import {
-	StyledDialogFamilyMembers,
-	StyledSearchResult,
-} from "./FamilyMemberSearch.styles";
+import { StyledDialogSearchResultsDialog, StyledSearchResult } from "./UserSearch.styles";
 import Loading from "@/components/Shared/Loading";
+import { SearchResultsType } from "./types/SearchResults";
+import { DefaultUserSearch } from "./types/DefaultUserSearch";
+import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 
-interface FamilyMemberSearchProps {
+interface UserSearchProps {
 	register: ReturnType<UseFormRegister<FieldValues>>;
-	setValue: UseFormSetValue<UserAboutFormFields<FamilyMemberSearch>>;
+	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;
 	searchResults: SearchResultsType | undefined;
 	searchQuery: string | undefined;
 	isLoading: boolean;
+
+	className?: string;
+	labelText: string;
 }
 
-const FamilyMemberSearch = ({
+const UserSearch = ({
 	register,
 	setValue,
 	searchResults,
 	searchQuery,
 	isLoading,
-}: FamilyMemberSearchProps) => {
-	const { handleResultClick, isActive, containerRef } = useFamilyMemberSearch({
+	className,
+	labelText,
+}: UserSearchProps) => {
+	const { handleResultClick, isActive, containerRef } = useUserSearchResults({
 		setValue,
 	});
 
 	return (
-		<div ref={containerRef}>
+		<div ref={containerRef} className={className}>
 			<AboutOverviewTextInput
 				category="values.user.name"
 				isSelectedValue={!!searchQuery}
 				register={register}
-				labelText={"Family Member"}
+				labelText={labelText}
 				onInput={() => setValue("values.user", undefined)}
 				autoComplete="off"
 			/>
-			<StyledDialogFamilyMembers open={isActive}>
+			<StyledDialogSearchResultsDialog open={isActive}>
 				{!searchQuery ? (
 					<span>Type something to get started</span>
 				) : isLoading ? (
@@ -67,9 +70,9 @@ const FamilyMemberSearch = ({
 				) : (
 					<span>No people found</span>
 				)}
-			</StyledDialogFamilyMembers>
+			</StyledDialogSearchResultsDialog>
 		</div>
 	);
 };
 
-export default FamilyMemberSearch;
+export default UserSearch;

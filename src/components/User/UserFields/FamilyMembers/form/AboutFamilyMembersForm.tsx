@@ -2,7 +2,7 @@ import StandardUserOverviewForm from "@/components/Shared/USER/UserAboutOverview
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import useAboutFamilyMembersForm from "./useAboutFamilyMembers";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
-import FamilyMemberSearch from "./FamilyMemberSearch";
+import UserSearch from "../../../../Shared/UserSearch";
 import { FamilyMember, FamilyRelationshipOptions } from "../types/FamilyMembers";
 
 export interface AboutFamilyMembersFormProps {
@@ -44,12 +44,13 @@ const AboutFamilyMembersForm = ({
 			setValue={setValue}
 			disableSave={!isValid}
 		>
-			<FamilyMemberSearch
-				register={{ ...register("values.name"), required: true }}
+			<UserSearch
+				register={{ ...register("values.search"), required: true }}
 				setValue={setValue}
 				searchResults={searchResults}
 				searchQuery={searchQuery}
 				isLoading={isLoading}
+				labelText="Family member"
 			/>
 			<FullWidthStandardSelect
 				id="relationship"

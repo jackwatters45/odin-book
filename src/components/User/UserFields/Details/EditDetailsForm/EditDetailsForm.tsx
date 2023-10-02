@@ -21,7 +21,7 @@ import AudienceRadio from "@/components/Shared/AudienceRadio";
 import DetailsFormFields from "@/types/DetailsFormFields";
 import formatWorkData from "../../Work/formatWorkValue";
 import { formatEducationTitle } from "../../Education/formatEducationData";
-import formatRelationshipStatus from "../../RelationshipStatus/formatRelationshipStatus";
+import formatRelationshipStatus from "../../RelationshipStatus/utils/formatRelationshipStatus";
 
 interface EditDetailsFormProps {
 	user: IUser;
@@ -158,7 +158,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 								<ExistingDetailSwitch
 									id="relationshipStatus"
 									value={formatRelationshipStatus({
-										partner: user.relationshipStatus.partner as IUser,
+										partner: user.relationshipStatus.user as IUser,
 										status: user.relationshipStatus.status,
 									})}
 									register={register("relationshipStatus.relationshipStatus")}

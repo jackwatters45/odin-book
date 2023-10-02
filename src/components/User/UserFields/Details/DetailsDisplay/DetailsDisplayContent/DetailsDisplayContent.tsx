@@ -19,7 +19,7 @@ import formatCity from "../../../PlacesLived/utils/formatCity";
 import { StyledLink } from "../DetailsDisplay.styles";
 import getPlatformUrl from "../../../SocialLinks/utils/getPlatformUrl";
 import getSocialLinkImage from "../../../SocialLinks/utils/socialLinkImages";
-import formatRelationshipStatus from "../../../RelationshipStatus/formatRelationshipStatus";
+import formatRelationshipStatus from "../../../RelationshipStatus/utils/formatRelationshipStatus";
 
 interface DetailsDisplayContentProps {
 	user: IUser;

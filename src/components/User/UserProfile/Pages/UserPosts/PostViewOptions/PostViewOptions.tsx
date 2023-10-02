@@ -1,11 +1,6 @@
-import { mdiCog, mdiTuneVariant, mdiViewGrid, mdiViewHeadline } from "@mdi/js";
+import { mdiCog, mdiTuneVariant } from "@mdi/js";
 
-import {
-	StyledPostViewOptionsContainer,
-	StyledSelectedViewButton,
-	StyledUnselectedViewButton,
-	StyledViewContainer,
-} from "./PostViewOptions.styles";
+import { StyledPostViewOptionsContainer } from "./PostViewOptions.styles";
 import StandardButton from "@/components/Shared/StandardButton";
 import { StandardButtonContainer } from "@/components/Shared/StandardButton/StandardButton.styles";
 
@@ -37,30 +32,7 @@ const PostViewOptions = () => {
 					/>
 				</StandardButtonContainer>
 			}
-		>
-			<StyledViewContainer>
-				<StyledSelectedViewButton
-					text="List view"
-					icon={mdiViewHeadline}
-					iconSize={1}
-					colorClass="transparent"
-					onClick={() => {
-						// TODO
-						console.log("List view");
-					}}
-				/>
-				<StyledUnselectedViewButton
-					text="Grid view"
-					icon={mdiViewGrid}
-					iconSize={1}
-					colorClass="transparent"
-					onClick={() => {
-						// TODO
-						console.log("Grid view");
-					}}
-				/>
-			</StyledViewContainer>
-		</StyledPostViewOptionsContainer>
+		/>
 	);
 };
 

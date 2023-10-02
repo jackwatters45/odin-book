@@ -4,7 +4,7 @@ import { PlaceLivedData, PlaceLivedType } from "@/types/IUser";
 import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
 import StandardUserOverviewForm from "../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm";
 import usePlacesLivedUserOverviewForm from "./usePlacesLivedOverviewForm";
-import { StyledPlacesLivedTimePeriod } from "./PlacesLivedUserOverviewForm.styles";
+import { StyledTimePeriodStartOnly } from "@/styles/SharedStyles";
 
 interface PlacesLivedUserOverviewFormProps {
 	audience: AudienceStatusOptions;
@@ -65,7 +65,7 @@ const PlacesLivedUserOverviewForm = ({
 				labelText={labelText ? `${labelText} country` : "Country"}
 			/>
 			{includeTimePeriod && (
-				<StyledPlacesLivedTimePeriod
+				<StyledTimePeriodStartOnly
 					title="Date Moved"
 					checked={undefined}
 					selectedValues={{

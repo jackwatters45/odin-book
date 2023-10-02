@@ -1,6 +1,6 @@
 import capitalizeFirstLetterString from "@/utils/capitalizeFirstLetterString";
 import getRelationshipStatusPreposition from "./relationshipStatusPrepositions";
-import { IRelationshipStatus } from "@/types/IRelationshipStatus";
+import { IRelationshipStatus } from "@/components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
 import { IUser } from "@/types/IUser";
 
 interface IRelationshipStatusProps {

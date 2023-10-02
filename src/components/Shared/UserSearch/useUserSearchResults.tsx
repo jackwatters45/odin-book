@@ -1,13 +1,14 @@
-import { UserAboutFormFields } from "@/components/Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm";
-import { FamilyMemberSearch } from "../useAboutFamilyMembers";
 import { UseFormSetValue } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 
-interface useFamilyMemberSearchParams {
-	setValue: UseFormSetValue<UserAboutFormFields<FamilyMemberSearch>>;
+import { DefaultUserSearch } from "./types/DefaultUserSearch";
+import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+
+interface useUserSearchResultsParams {
+	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;
 }
 
-const useFamilyMemberSearch = ({ setValue }: useFamilyMemberSearchParams) => {
+const useUserSearchResults = ({ setValue }: useUserSearchResultsParams) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const [isActive, setIsActive] = useState(false);
@@ -30,9 +31,9 @@ const useFamilyMemberSearch = ({ setValue }: useFamilyMemberSearchParams) => {
 		};
 	}, []);
 
-	const handleResultClick = (id: string, fullName: string) => {
-		setValue("values.user", id);
-		setValue("values.name", fullName);
+	const handleResultClick = (userId: string, name: string) => {
+		setValue("values.user", userId);
+		setValue("values.search", name);
 
 		setIsActive(false);
 	};
@@ -40,4 +41,4 @@ const useFamilyMemberSearch = ({ setValue }: useFamilyMemberSearchParams) => {
 	return { handleResultClick, isActive, containerRef };
 };
 
-export default useFamilyMemberSearch;
+export default useUserSearchResults;

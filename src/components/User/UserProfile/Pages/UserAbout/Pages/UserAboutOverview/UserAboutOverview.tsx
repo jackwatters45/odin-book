@@ -2,7 +2,7 @@ import useUserAboutOverview from "./useUserAboutOverview";
 
 import AboutOverviewWork from "./UserAboutOverviewItems/Sections/Work";
 import AboutOverviewEducation from "./UserAboutOverviewItems/Sections/Education/OverviewItem";
-import AboutOverviewRelationship from "./UserAboutOverviewItems/Sections/Relationship";
+import AboutOverviewRelationship from "../../../../../UserFields/RelationshipStatus";
 import AboutOverviewPhoneNumber from "../../../../../UserFields/PhoneNumber";
 import { StyledUserAboutOverview } from "./UserAboutOverview.styles";
 import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewCurrentCity";

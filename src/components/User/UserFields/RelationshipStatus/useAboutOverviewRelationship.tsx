@@ -1,7 +1,7 @@
-import formatRelationshipStatus from "@/components/User/UserFields/RelationshipStatus/formatRelationshipStatus";
-import useUserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
+import formatRelationshipStatus from "@/components/User/UserFields/RelationshipStatus/utils/formatRelationshipStatus";
+import useUserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { IUser } from "@/types/IUser";
-import { IRelationshipStatus } from "@/types/IRelationshipStatus";
+import { IRelationshipStatus } from "@/components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
 
 interface AboutOverviewRelationshipProps {
 	relationship: IRelationshipStatus | undefined;
@@ -10,8 +10,12 @@ interface AboutOverviewRelationshipProps {
 const useAboutOverviewRelationship = ({
 	relationship,
 }: AboutOverviewRelationshipProps) => {
-	const partner = relationship?.partner as IUser;
+	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({
+		categoryUrl: "relationship",
+		param: undefined,
+	});
 
+	const partner = relationship?.user as IUser;
 	const relationshipPretext =
 		relationship?.status &&
 		formatRelationshipStatus({
@@ -21,11 +25,6 @@ const useAboutOverviewRelationship = ({
 		});
 
 	const relationshipPretextFormatted = `${relationshipPretext} `;
-
-	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({
-		categoryUrl: "relationship",
-		param: undefined,
-	});
 
 	return {
 		partner,
