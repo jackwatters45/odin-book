@@ -8,16 +8,16 @@ import {
 	StyledUserAboutOverviewItemTitle,
 } from "./UserAboutOverviewItemExisting.styles";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import MoreOptions from "./MoreOptions/MoreOptions";
+import MoreOptions from "../../MoreOptions/MoreOptions";
 
 import useUserAboutOverviewItemExisting from "./useUserAboutOverviewItemExisting";
 import { TitleSegment } from "../UserAboutOverviewItem";
 import { UserAboutAudienceFormFields } from "@/types/IUser";
-import Audience from "./Audience";
+import Audience from "../../UserAboutAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 
 export interface ExistingOverviewItemProps {
-	icon: string;
+	icon: string | undefined;
 	iconType?: "icon" | "image";
 	audience: AudienceStatusOptions;
 	itemId?: string;
@@ -48,7 +48,7 @@ const UserAboutOverviewItemExisting = ({
 
 	return (
 		<StyledUserAboutOverviewItem>
-			{iconType === "icon" ? (
+			{!icon ? null : iconType === "icon" ? (
 				<Icon path={icon} size={1.2} color={"#65676B"} />
 			) : (
 				<ImageCircle src={icon} alt="icon" />

@@ -1,4 +1,4 @@
-import useUserAboutOverviewItem from "@/components/Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { Gender } from "./types/GenderTypes";
 
 interface AboutGenderProps {

@@ -1,5 +1,5 @@
-import UserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import AboutSocialLinksForm from "./form";
 import { SocialLinksData, UserAboutAudienceFormFields } from "@/types/IUser";

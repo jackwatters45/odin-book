@@ -1,5 +1,5 @@
 import { mdiCakeVariant } from "@mdi/js";
-import UserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import AboutBirthdayForm from "./form";
 import useAboutBirthday from "./useAboutBirthday";

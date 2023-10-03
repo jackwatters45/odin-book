@@ -23,7 +23,7 @@ const UserAboutNav = () => {
 				<StyledUserAboutNavItem to={`/user/${id}/about/family_and_relationships`}>
 					Family and Relationships
 				</StyledUserAboutNavItem>
-				<StyledUserAboutNavItem to={`/user/${id}/about/details_about_you`}>
+				<StyledUserAboutNavItem to={`/user/${id}/about/details`}>
 					Details About You
 				</StyledUserAboutNavItem>
 			</StyledUserAboutNav>

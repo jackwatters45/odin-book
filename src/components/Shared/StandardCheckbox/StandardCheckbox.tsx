@@ -1,25 +1,26 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { HTMLAttributes } from "react";
+
 import {
 	StyledCheckboxLabel,
 	StyledCheckboxLabelText,
 	StyledCheckboxSpan,
 } from "./StandardCheckbox.styles";
 
-interface StandardCheckboxProps {
+interface StandardCheckboxProps extends HTMLAttributes<HTMLLabelElement> {
 	id: string;
 	register: ReturnType<UseFormRegister<FieldValues>>;
 	labelText?: string;
-	className?: string;
 }
 
 const StandardCheckbox = ({
 	id,
 	register,
 	labelText,
-	className,
+	...props
 }: StandardCheckboxProps) => {
 	return (
-		<StyledCheckboxLabel className={className}>
+		<StyledCheckboxLabel {...props}>
 			<input type="checkbox" id={id} {...register} hidden />
 			<StyledCheckboxSpan className="checkbox" />
 			{labelText && (

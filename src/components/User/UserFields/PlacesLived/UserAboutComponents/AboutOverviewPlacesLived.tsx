@@ -2,7 +2,7 @@ import { FC } from "react";
 import { mdiMapMarker } from "@mdi/js";
 
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import UserAboutOverviewItem from "../../../../Shared/USER/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../../Shared/UserAboutOverviewItem";
 import { PlaceLivedData, UserAboutAudienceFormFields } from "@/types/IUser";
 
 import PlacesLivedUserOverviewForm from "../UserOverviewForms/PlacesLivedUserOverviewForm";

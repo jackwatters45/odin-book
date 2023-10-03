@@ -13,7 +13,7 @@ import {
 import { IUser } from "@/types/IUser";
 import useDetailsDisplayContent from "./useDetailsDisplayContent";
 import UserDetail from "../UserDetail";
-import formatWorkData from "../../../Work/formatWorkValue";
+import formatWorkData from "../../../Work/utils/formatWorkValue";
 import { formatEducationTitle } from "../../../Education/formatEducationData";
 import formatCity from "../../../PlacesLived/utils/formatCity";
 import { StyledLink } from "../DetailsDisplay.styles";

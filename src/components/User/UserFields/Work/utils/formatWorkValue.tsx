@@ -14,14 +14,14 @@ const formatWorkData = ({
 }: FormatWorkData) => {
 	if (!work) return "";
 
-	const { position, endDate, company } = work;
+	const { position, current, company } = work;
 
 	let text = "";
-	if (position && includePosition && endDate) {
+	if (position && includePosition && !current) {
 		text = `Former ${position} at`;
 	} else if (position && includePosition) {
 		text = `${position} at`;
-	} else if (endDate) {
+	} else if (!current) {
 		text = "Worked at";
 	} else {
 		text = "Works at";

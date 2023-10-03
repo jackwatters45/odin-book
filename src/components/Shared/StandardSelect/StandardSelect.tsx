@@ -1,15 +1,14 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import { StyledSelectInput } from "./StandardSelect.styles";
 
-interface StandardSelectProps {
+interface StandardSelectProps extends HTMLAttributes<HTMLSelectElement> {
 	id: string;
 	options: React.JSX.Element[];
 	register: ReturnType<UseFormRegister<FieldValues>>;
 	defaultValue?: string;
 	errors?: boolean;
-	className?: string;
 }
 
 const StandardSelect = ({
@@ -18,15 +17,15 @@ const StandardSelect = ({
 	register,
 	defaultValue = "",
 	errors,
-	className,
+	...props
 }: StandardSelectProps) => {
 	return (
 		<StyledSelectInput
 			id={id}
-			className={className}
 			defaultValue={defaultValue}
 			aria-invalid={!!errors}
 			{...register}
+			{...props}
 		>
 			{options}
 		</StyledSelectInput>

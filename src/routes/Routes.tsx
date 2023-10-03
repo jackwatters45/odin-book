@@ -28,6 +28,7 @@ import UserAboutWorkEducation from "@/components/User/UserProfile/Pages/UserAbou
 import UserAboutPlacesLived from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutPlacesLived/UserAboutPlacesLived";
 import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutBasicInfo";
 import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily/UserAboutRelationshipFamily";
+import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
 
 const RoutesComponent = () => {
 	return (
@@ -59,6 +60,7 @@ const RoutesComponent = () => {
 									path="family_and_relationships"
 									element={<UserAboutRelationshipFamily />}
 								/>
+								<Route path="details" element={<UserAboutDetails />} />
 							</Route>
 						</Route>
 						<Route path="friends" element={<>Friends</>} />

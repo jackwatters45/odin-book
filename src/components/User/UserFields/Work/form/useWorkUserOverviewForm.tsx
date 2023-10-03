@@ -1,5 +1,5 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import useUserOverviewForm from "../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { WorkData } from "@/types/IUser";
 import useTimePeriod from "@/components/Shared/FormComponents/TimePeriod/useTimePeriod";
 
@@ -14,8 +14,6 @@ const useWorkUserOverviewForm = ({
 	handleCloseForm,
 	initialValues,
 }: UseWorkUserOverviewFormProps) => {
-	const isExistingWork = !!initialValues?._id;
-
 	const { checkStartDateBeforeEndDate } = useTimePeriod();
 
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
@@ -23,7 +21,7 @@ const useWorkUserOverviewForm = ({
 			audience,
 			initialValues,
 			url: "work",
-			method: isExistingWork ? "PATCH" : "POST",
+			method: initialValues?._id ? "PATCH" : "POST",
 			param: initialValues?._id,
 			handleCloseForm,
 			validateSubmit: checkStartDateBeforeEndDate,

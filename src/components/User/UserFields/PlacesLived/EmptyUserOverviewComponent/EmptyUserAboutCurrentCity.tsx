@@ -1,5 +1,5 @@
-import useUserAboutOverviewItem from "../../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
-import EmptyUserAboutItem from "../../../../Shared/USER/EmptyUserAboutItem";
+import useUserAboutOverviewItem from "../../../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import EmptyUserAboutItem from "../../../../Shared/UserAboutOverviewItem/EmptyUserAboutItem/EmptyUserAboutItem";
 import CurrentCityUserOverviewForm from "../UserOverviewForms/CurrentCityUserOverviewForm";
 
 const EmptyUserAboutCurrentCity = () => {

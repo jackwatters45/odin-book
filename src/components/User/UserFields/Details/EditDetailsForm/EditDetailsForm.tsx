@@ -19,9 +19,10 @@ import SectionTitle from "./SectionTitle";
 import getSocialLinkImage from "../../SocialLinks/utils/socialLinkImages";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
 import DetailsFormFields from "@/types/DetailsFormFields";
-import formatWorkData from "../../Work/formatWorkValue";
+import formatWorkData from "../../Work/utils/formatWorkValue";
 import { formatEducationTitle } from "../../Education/formatEducationData";
 import formatRelationshipStatus from "../../RelationshipStatus/utils/formatRelationshipStatus";
+import getFullName from "../../NamePronunciation/utils/getFullName";
 
 interface EditDetailsFormProps {
 	user: IUser;
@@ -178,7 +179,10 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 							{user.namePronunciation ? (
 								<ExistingDetailSwitch
 									id="namePronunciation"
-									value={user.namePronunciation.fullName}
+									value={getFullName(
+										user.namePronunciation.firstName,
+										user.namePronunciation.lastName,
+									)}
 									register={register("namePronunciation.namePronunciation")}
 									onClickLink={closeAllDialogs}
 									to={"about/details"}

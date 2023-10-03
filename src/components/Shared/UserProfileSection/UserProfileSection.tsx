@@ -1,15 +1,14 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import {
 	StyledProfileSectionHeader,
 	UserProfileSectionContainer,
 } from "./UserProfileSection.styles";
 
-export interface UserProfileSectionProps {
+export interface UserProfileSectionProps extends HTMLAttributes<HTMLDivElement> {
 	title: string;
 	subtitle?: string;
 	children?: ReactNode;
 	rightColumn?: ReactNode;
-	className?: string;
 }
 
 const UserProfileSection = ({
@@ -17,10 +16,10 @@ const UserProfileSection = ({
 	subtitle,
 	children,
 	rightColumn,
-	className,
+	...props
 }: UserProfileSectionProps) => {
 	return (
-		<UserProfileSectionContainer className={className}>
+		<UserProfileSectionContainer {...props}>
 			<StyledProfileSectionHeader className="header">
 				<h3>{title}</h3>
 				{rightColumn && rightColumn}

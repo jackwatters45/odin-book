@@ -24,8 +24,8 @@ const OptionBadge = ({
 	showDelete = false,
 	hideName = false,
 }: OptionBadgeProps) => {
-	const badgeContent = (
-		<>
+	const badge = (
+		<StyledBadge htmlFor={id} $showDelete={showDelete}>
 			{emoji && <span className="emoji">{emoji}</span>}
 			{!hideName && <span>{name}</span>}
 			{showDelete && (
@@ -33,7 +33,7 @@ const OptionBadge = ({
 					<Icon path={mdiClose} size={0.65} color={"#1877f2"} />
 				</span>
 			)}
-		</>
+		</StyledBadge>
 	);
 
 	return (
@@ -47,17 +47,7 @@ const OptionBadge = ({
 				disabled={isLink}
 				hidden
 			/>
-			{isLink ? (
-				<Link to={`/search/top/?q=${name}`}>
-					<StyledBadge htmlFor={id} $showDelete={showDelete}>
-						{badgeContent}
-					</StyledBadge>
-				</Link>
-			) : (
-				<StyledBadge htmlFor={id} $showDelete={showDelete}>
-					{badgeContent}
-				</StyledBadge>
-			)}
+			{isLink ? <Link to={`/search/top/?q=${name}`}>{badge}</Link> : badge}
 		</StyledBadgeContainer>
 	);
 };

@@ -1,4 +1,4 @@
-import useUserAboutOverviewItem from "../../../../../../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../../../../../../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 
 interface UseUserAboutWorkEducationSectionProps {
 	fieldName: "high school" | "college" | "work";

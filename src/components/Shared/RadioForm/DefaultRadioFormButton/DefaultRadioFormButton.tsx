@@ -1,6 +1,7 @@
+import { HTMLAttributes } from "react";
 import { StyledDefaultRadioFormButton } from "./DefaultRadioFormButton.styles";
 
-interface DefaultRadioFormButtonProps {
+interface DefaultRadioFormButtonProps extends HTMLAttributes<HTMLButtonElement> {
 	icon: string | undefined;
 	text: string;
 	openDialog: () => void;
@@ -10,9 +11,11 @@ const DefaultRadioFormButton = ({
 	icon,
 	text,
 	openDialog,
+	...props
 }: DefaultRadioFormButtonProps) => {
 	return (
 		<StyledDefaultRadioFormButton
+			{...props}
 			icon={icon}
 			onClick={openDialog}
 			text={text}
@@ -25,11 +28,3 @@ const DefaultRadioFormButton = ({
 };
 
 export default DefaultRadioFormButton;
-
-// <StyledRadioFormButton
-// 	colorClass={colorClass}
-// 	text={currentSelected}
-// 	showText={includeText}
-// 	onClick={openDialog}
-// 	icon={getSelectedOptionIcon(currentSelected)}
-// 	iconSize={0.7}

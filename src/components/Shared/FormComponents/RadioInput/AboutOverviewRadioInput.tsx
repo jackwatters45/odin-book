@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react";
+
 import StyledRadio from "@/components/Shared/StyledRadio";
 import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 import {
@@ -8,7 +10,7 @@ import {
 
 type OptionsFormValues = { title: string; value: string };
 
-interface AboutOverviewRadioInputProps {
+interface AboutOverviewRadioInputProps extends HTMLAttributes<HTMLDivElement> {
 	formField: Path<FieldValues>;
 	options: OptionsFormValues[];
 	register: ReturnType<UseFormRegister<FieldValues>>;
@@ -20,9 +22,10 @@ const AboutOverviewRadioInput = ({
 	options,
 	register,
 	selectedValue,
+	...props
 }: AboutOverviewRadioInputProps) => {
 	return (
-		<StyledRadioInputsContainer>
+		<StyledRadioInputsContainer {...props}>
 			{options.map(({ title, value }) => {
 				const id = `${formField}-${title}`;
 				return (

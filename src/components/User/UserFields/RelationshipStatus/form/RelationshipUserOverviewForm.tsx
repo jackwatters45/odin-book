@@ -1,5 +1,5 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import StandardUserOverviewForm from "../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
 
 import useRelationshipUserOverviewForm from "./useRelationshipUserOverviewForm";
 import { IRelationshipStatus } from "@/components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";

@@ -1,15 +1,13 @@
 import Icon from "@mdi/react";
 
 import { StyledStandardButton, StyledStandardButtonLink } from "./StandardButton.styles";
+import { HTMLAttributes } from "react";
 
-export interface StandardButtonProps {
+export interface StandardButtonProps extends HTMLAttributes<HTMLElement> {
 	text: string | undefined;
 
-	onClick?: () => void;
 	to?: string;
-
 	icon?: string;
-	className?: string;
 
 	iconSize?: number;
 	iconColor?: string;
@@ -31,6 +29,7 @@ const StandardButton = ({
 	disabled,
 	colorClass = "standard",
 	type = "button",
+	...props
 }: StandardButtonProps) => {
 	const sharedElements = (
 		<>
@@ -45,6 +44,7 @@ const StandardButton = ({
 			onClick={onClick}
 			disabled={disabled}
 			type={type}
+			{...props}
 		>
 			{sharedElements}
 		</StyledStandardButton>
@@ -53,6 +53,7 @@ const StandardButton = ({
 			className={`${className} ${colorClass}`}
 			to={to}
 			onClick={onClick}
+			{...props}
 		>
 			{sharedElements}
 		</StyledStandardButtonLink>

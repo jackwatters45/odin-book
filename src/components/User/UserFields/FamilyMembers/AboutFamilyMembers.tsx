@@ -1,4 +1,4 @@
-import UserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import AboutFamilyMembersForm from "./form";
 import { FamilyMember } from "./types/FamilyMembers";

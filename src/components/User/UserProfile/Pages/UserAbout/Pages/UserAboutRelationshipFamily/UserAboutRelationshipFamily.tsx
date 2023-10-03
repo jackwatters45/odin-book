@@ -5,13 +5,7 @@ import AboutFamilyMembers from "@/components/User/UserFields/FamilyMembers";
 import useUserAboutRelationshipFamily from "./useUserAboutRelationshipFamily";
 import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/AboutOverviewRelationship";
 
-// TODO add this search to relationship
-
-// TODO add default attributes to standard components (see button)
-// TODO check validation
-
 // TODO fix intro - check website + social links as well
-// TODO default audience settings (decide + implement)
 const UserAboutRelationshipFamily = () => {
 	const { relationship, audienceSettings, familyMembers } =
 		useUserAboutRelationshipFamily();

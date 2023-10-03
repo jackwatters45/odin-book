@@ -1,11 +1,14 @@
 import { FieldValues, PathValue, Path, UseFormRegister } from "react-hook-form";
+import { HTMLAttributes } from "react";
+
 import {
 	StyledRadioContainer,
 	StyledRadioInput,
 	StyledRadioSpan,
 } from "./StyledRadio.styles";
 
-interface StyledRadioProps<T extends FieldValues> {
+interface StyledRadioProps<T extends FieldValues>
+	extends HTMLAttributes<HTMLInputElement> {
 	radioValue: string;
 	id: string;
 	selectedValue: PathValue<T, Path<T>>;
@@ -21,6 +24,7 @@ const StyledRadio = <T extends FieldValues>({
 	onChange,
 	register,
 	size = 1.25,
+	...props
 }: StyledRadioProps<T>) => {
 	return (
 		<StyledRadioContainer size={size}>
@@ -32,6 +36,7 @@ const StyledRadio = <T extends FieldValues>({
 				checked={selectedValue === radioValue}
 				onChange={onChange}
 				{...register}
+				{...props}
 			/>
 			<StyledRadioSpan />
 		</StyledRadioContainer>

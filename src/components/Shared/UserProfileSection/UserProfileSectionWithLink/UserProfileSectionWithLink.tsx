@@ -13,10 +13,10 @@ interface UserProfileSectionWithLinkProps extends UserProfileSectionProps {
 
 const UserProfileSectionWithLink = ({
 	seeAllLink: { to, text },
-	...rest
+	...props
 }: UserProfileSectionWithLinkProps) => {
 	return (
-		<UserProfileSection {...rest} rightColumn={<StandardLink to={to} text={text} />} />
+		<UserProfileSection {...props} rightColumn={<StandardLink to={to} text={text} />} />
 	);
 };
 

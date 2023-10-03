@@ -1,6 +1,6 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { EducationData } from "@/types/IUser";
-import useUserOverviewForm from "../../../../../../../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../../../../../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import useTimePeriod from "@/components/Shared/FormComponents/TimePeriod/useTimePeriod";
 import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 

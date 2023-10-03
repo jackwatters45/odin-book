@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { HTMLAttributes } from "react";
 
 import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
 import useUserSearchResults from "./useUserSearchResults";
@@ -10,14 +11,13 @@ import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
 import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
 
-interface UserSearchProps {
+interface UserSearchProps extends HTMLAttributes<HTMLDivElement> {
 	register: ReturnType<UseFormRegister<FieldValues>>;
 	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;
 	searchResults: SearchResultsType | undefined;
 	searchQuery: string | undefined;
 	isLoading: boolean;
 
-	className?: string;
 	labelText: string;
 }
 
@@ -27,15 +27,15 @@ const UserSearch = ({
 	searchResults,
 	searchQuery,
 	isLoading,
-	className,
 	labelText,
+	...props
 }: UserSearchProps) => {
 	const { handleResultClick, isActive, containerRef } = useUserSearchResults({
 		setValue,
 	});
 
 	return (
-		<div ref={containerRef} className={className}>
+		<div ref={containerRef} {...props}>
 			<AboutOverviewTextInput
 				category="values.user.name"
 				isSelectedValue={!!searchQuery}

@@ -1,7 +1,7 @@
 import { mdiBriefcase } from "@mdi/js";
 
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import UserAboutOverviewItem from "../../../../../../../../../Shared/USER/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
 import { WorkData } from "@/types/IUser";
 import WorkUserOverviewForm from "./form/WorkUserOverviewForm";
 import useWorkUserOverviewItem from "./useWorkUserOverviewItem";

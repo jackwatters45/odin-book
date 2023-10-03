@@ -1,5 +1,5 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import useUserOverviewForm from "../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 
 interface UseAboutWebsitesFormProps {
 	audience: AudienceStatusOptions;

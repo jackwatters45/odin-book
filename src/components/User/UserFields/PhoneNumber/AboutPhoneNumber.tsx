@@ -1,10 +1,10 @@
 import { mdiPhone } from "@mdi/js";
 
-import UserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import formatPhoneNumber from "@/utils/formatPrettyPhoneNumber";
 import PhoneNumberUserOverviewForm from "./form/AboutPhoneNumberForm";
-import useUserAboutOverviewItem from "../../../Shared/USER/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 
 interface AboutPhoneNumberProps {
 	phoneNumber: string | undefined;

@@ -1,6 +1,6 @@
 import useUserAboutOverview from "./useUserAboutOverview";
 
-import AboutOverviewWork from "./UserAboutOverviewItems/Sections/Work";
+import AboutOverviewWork from "../../../../../UserFields/Work";
 import AboutOverviewEducation from "./UserAboutOverviewItems/Sections/Education/OverviewItem";
 import AboutOverviewRelationship from "../../../../../UserFields/RelationshipStatus";
 import AboutOverviewPhoneNumber from "../../../../../UserFields/PhoneNumber";
@@ -8,7 +8,6 @@ import { StyledUserAboutOverview } from "./UserAboutOverview.styles";
 import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewCurrentCity";
 import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewHometown";
 
-// TODO organize everything smaller
 const UserAboutOverview = () => {
 	const {
 		mostRecentWork,
@@ -16,11 +15,14 @@ const UserAboutOverview = () => {
 		pastCompany,
 		education,
 		educationAudience,
-		relationship,
-		phoneNumber,
 		currentCity,
+		currentCityAudience,
 		hometown,
-		audienceSettings,
+		hometownAudience,
+		relationship,
+		relationshipStatusAudience,
+		phoneNumber,
+		phoneNumberAudience,
 	} = useUserAboutOverview();
 
 	return (
@@ -33,16 +35,16 @@ const UserAboutOverview = () => {
 			<AboutOverviewEducation education={education} audience={educationAudience} />
 			<AboutOverviewCurrentCity
 				currentCity={currentCity}
-				audience={audienceSettings.currentCity}
+				audience={currentCityAudience}
 			/>
-			<AboutOverviewHometown hometown={hometown} audience={audienceSettings.hometown} />
+			<AboutOverviewHometown hometown={hometown} audience={hometownAudience} />
 			<AboutOverviewRelationship
 				relationship={relationship}
-				audience={audienceSettings.relationshipStatus}
+				audience={relationshipStatusAudience}
 			/>
 			<AboutOverviewPhoneNumber
 				phoneNumber={phoneNumber}
-				audience={audienceSettings.phoneNumber}
+				audience={phoneNumberAudience}
 			/>
 		</StyledUserAboutOverview>
 	);

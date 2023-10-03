@@ -2,8 +2,8 @@ import { WorkData } from "@/types/IUser";
 import UserAboutWorkEducationSection, {
 	UserAboutWorkEducationSectionContent,
 } from "./UserAboutEducationSection/UserAboutWorkEducationSection";
-import WorkUserOverviewForm from "../../UserAboutOverview/UserAboutOverviewItems/Sections/Work/form/WorkUserOverviewForm";
-import WorkUserOverviewItem from "../../UserAboutOverview/UserAboutOverviewItems/Sections/Work/WorkUserOverviewItem";
+import WorkUserOverviewForm from "../../../../../../UserFields/Work/form/WorkUserOverviewForm";
+import WorkUserOverviewItem from "../../../../../../UserFields/Work/WorkUserOverviewItem";
 
 interface UserAboutWorkSectionProps {
 	content: UserAboutWorkEducationSectionContent<WorkData>[] | undefined;

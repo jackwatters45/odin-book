@@ -3,6 +3,8 @@ import AudienceStatusOptions from "./AudienceStatusOptions";
 import { IRelationshipStatus } from "../components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
 import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
 import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembers";
+import { OtherNames } from "@/components/User/UserFields/OtherNames/types/OtherNames";
+import { INamePronunciation } from "@/components/User/UserFields/NamePronunciation/types/NamePronunciation";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -129,19 +131,8 @@ export interface LifeEventData {
 	date: string;
 }
 
-export interface INamePronunciation {
-	firstName: string;
-	lastName: string;
-	fullName: string;
-}
-
 export type ValidRelationshipStatusesType =
 	(typeof VALID_RELATIONSHIP_STATUSES_ARRAY)[number];
-
-export interface UserDetails {
-	namePronunciation?: INamePronunciation;
-	relationshipStatus?: IRelationshipStatus;
-}
 
 export type IntroField = Record<string, boolean>;
 export type IntroFieldAudience = Record<string, AudienceStatusOptions>;
@@ -161,6 +152,8 @@ export interface IntroData {
 
 export type AudienceSettingsField = "Public" | "Friends" | "Only Me";
 
+type AudienceStatusMultiple = { [key: string]: AudienceSettingsField };
+
 export interface AudienceSettings {
 	currentCity: AudienceSettingsField;
 	hometown: AudienceSettingsField;
@@ -171,13 +164,18 @@ export interface AudienceSettings {
 	pronouns: AudienceSettingsField;
 	birthday: AudienceSettingsField;
 	languages: AudienceSettingsField;
+	aboutYou: AudienceSettingsField;
+	namePronunciation: AudienceSettingsField;
+	favoriteQuotes: AudienceSettingsField;
 
-	familyMembers: { [key: string]: AudienceSettingsField };
-	websites: { [key: string]: AudienceSettingsField };
-	socialLinks: { [key: string]: AudienceSettingsField };
-	work: { [key: string]: AudienceSettingsField };
-	education: { [key: string]: AudienceSettingsField };
-	placesLived: { [key: string]: AudienceSettingsField };
+	// multiple
+	otherNames: AudienceStatusMultiple;
+	familyMembers: AudienceStatusMultiple;
+	socialLinks: AudienceStatusMultiple;
+	websites: AudienceStatusMultiple;
+	work: AudienceStatusMultiple;
+	education: AudienceStatusMultiple;
+	placesLived: AudienceStatusMultiple;
 }
 
 type AllKeys<T> = keyof T | `${Extract<keyof T, string>}.${string}`;
@@ -191,7 +189,8 @@ export interface UserAboutData {
 	placesLived?: PlaceLivedData[];
 	websites?: string[];
 	socialLinks?: SocialLinksData[];
-	nicknames?: string[];
+
+	relationshipStatus?: IRelationshipStatus;
 
 	languages: string[];
 
@@ -205,6 +204,11 @@ export interface UserAboutData {
 	hobbies?: string[];
 
 	taggedPosts?: string[];
+
+	aboutYou?: string;
+	namePronunciation?: INamePronunciation;
+	otherNames: OtherNames;
+	favoriteQuotes?: string;
 }
 
 export interface IUser
@@ -213,7 +217,6 @@ export interface IUser
 		UserLoginData,
 		UserActivityData,
 		UserSystemData,
-		UserDetails,
 		UserAboutData {
 	_id: string;
 }

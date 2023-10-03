@@ -7,7 +7,7 @@ import capitalizeFirstLetterString from "@/utils/capitalizeFirstLetterString";
 import useUserAboutWorkEducationSection from "./useUserAboutWorkEducationSection";
 import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSection.styles";
 import { BoldText } from "@/styles/SharedStyles";
-import EmptyUserAboutItem from "@/components/Shared/USER/EmptyUserAboutItem";
+import EmptyUserAboutItem from "@/components/Shared/UserAboutOverviewItem/EmptyUserAboutItem/EmptyUserAboutItem";
 
 export interface UserAboutWorkEducationSectionContent<T> {
 	audience: AudienceStatusOptions;

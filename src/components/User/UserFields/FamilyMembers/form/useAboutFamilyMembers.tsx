@@ -1,4 +1,4 @@
-import useUserOverviewForm from "../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { AboutFamilyMembersFormProps } from "./AboutFamilyMembersForm";
 import { DefaultUserSearch } from "../../../../Shared/UserSearch/types/DefaultUserSearch";
 import useUserSearch from "../../../../Shared/UserSearch/useUserSearch";

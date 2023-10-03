@@ -9,6 +9,7 @@ import {
 	StyledStandardCheckbox,
 	StyledStandardCheckboxMarginTop,
 } from "./TimePeriod.styles";
+import { HTMLAttributes } from "react";
 
 type DatePart = string | undefined;
 
@@ -29,7 +30,7 @@ type TimeSegmentInputs = {
 	[K in keyof TimePeriodValues]: ReturnType<UseFormRegister<FieldValues>>;
 };
 
-interface TimePeriodProps {
+interface TimePeriodProps extends HTMLAttributes<HTMLDivElement> {
 	checked: boolean | undefined;
 	inputs: TimeSegmentInputs;
 	selectedValues: SelectedValues;
@@ -38,7 +39,6 @@ interface TimePeriodProps {
 	numFutureDates?: number;
 	includeDefaultInDropdowns?: boolean;
 	includeEndDateIfChecked?: boolean;
-	className?: string;
 }
 
 const TimePeriod = ({
@@ -50,10 +50,10 @@ const TimePeriod = ({
 	numFutureDates,
 	includeDefaultInDropdowns = true,
 	includeEndDateIfChecked = false,
-	className,
+	...props
 }: TimePeriodProps) => {
 	return (
-		<StyledTimePeriodContainer className={className}>
+		<StyledTimePeriodContainer {...props}>
 			<StyledTimePeriodText>{title}</StyledTimePeriodText>
 			{!includeEndDateIfChecked && inputs.checked && (
 				<StyledStandardCheckbox

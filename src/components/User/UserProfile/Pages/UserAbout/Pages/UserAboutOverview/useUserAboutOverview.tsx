@@ -13,14 +13,13 @@ const useUserAboutOverview = () => {
 
 	const sortedWorkHistory = sortArrByStartEndDates<WorkData>(user?.work);
 
-	const mostRecentWork = sortedWorkHistory?.[0];
+	const pastCompany = sortedWorkHistory?.[1]?.company;
 
+	const mostRecentWork = sortedWorkHistory?.[0];
 	let mostRecentWorkAudience: AudienceStatusOptions = "Public";
 	if (mostRecentWork?._id && audienceSettings.work) {
 		mostRecentWorkAudience = audienceSettings.work[mostRecentWork._id] ?? "Public";
 	}
-
-	const pastCompany = sortedWorkHistory?.[1]?.company;
 
 	const education = getMostRecentItemFromArr(user?.education);
 
@@ -30,11 +29,20 @@ const useUserAboutOverview = () => {
 	}
 
 	const currentCity = user?.placesLived?.find((place) => place.type === "current");
+	const currentCityAudience = currentCity?._id
+		? audienceSettings.placesLived[currentCity._id]
+		: "Friends";
+
 	const hometown = user?.placesLived?.find((place) => place.type === "hometown");
+	const hometownAudience = hometown?._id
+		? audienceSettings.placesLived[hometown._id]
+		: "Friends";
 
 	const relationship = user?.relationshipStatus as IUser["relationshipStatus"];
+	const relationshipStatusAudience = audienceSettings.relationshipStatus;
 
 	const phoneNumber = user?.phoneNumber;
+	const phoneNumberAudience = audienceSettings.phoneNumber;
 
 	return {
 		mostRecentWork,
@@ -42,11 +50,14 @@ const useUserAboutOverview = () => {
 		pastCompany,
 		education,
 		educationAudience,
-		relationship,
-		phoneNumber,
 		currentCity,
+		currentCityAudience,
 		hometown,
-		audienceSettings,
+		hometownAudience,
+		relationship,
+		relationshipStatusAudience,
+		phoneNumber,
+		phoneNumberAudience,
 	};
 };
 

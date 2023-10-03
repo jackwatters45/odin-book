@@ -1,16 +1,22 @@
+import { HTMLAttributes } from "react";
 import StandardButton from "../StandardButton";
 
-interface Props {
+interface StandardFullWidthButtonProps extends HTMLAttributes<HTMLElement> {
 	dataExists: boolean;
 	dataName: string;
-	onClick: () => void;
 }
 
-const StandardFullWidthButton = ({ dataExists, dataName, onClick }: Props) => {
+const StandardFullWidthButton = ({
+	dataExists,
+	dataName,
+	onClick,
+	...props
+}: StandardFullWidthButtonProps) => {
 	return (
 		<StandardButton
 			onClick={onClick}
 			text={`${dataExists ? "Edit" : "Add"} ${dataName}`}
+			{...props}
 		/>
 	);
 };

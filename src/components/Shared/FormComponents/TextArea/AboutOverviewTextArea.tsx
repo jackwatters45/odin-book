@@ -1,13 +1,14 @@
+import { HTMLAttributes } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
 import {
 	StyledAboutOverviewInputDiv,
 	StyledAboutOverviewInputLabel,
 	StyledAboutOverviewTextarea,
-} from "../../USER/UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+} from "../../UserAboutOverviewItem/StandardUserOverviewForm/StandardUserOverviewForm.styles";
 import useAboutOverviewTextArea from "./useAboutOverviewTextArea";
 
-interface AboutOverviewTextAreaProps {
+interface AboutOverviewTextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
 	category: string;
 	isSelectedValue: boolean | undefined;
 	register: ReturnType<UseFormRegister<FieldValues>>;
@@ -19,6 +20,7 @@ const AboutOverviewTextArea = ({
 	isSelectedValue,
 	register,
 	labelText,
+	...props
 }: AboutOverviewTextAreaProps) => {
 	const { textareaRef, handleInput } = useAboutOverviewTextArea();
 
@@ -33,6 +35,7 @@ const AboutOverviewTextArea = ({
 					register.ref(e);
 					textareaRef.current = e;
 				}}
+				{...props}
 			/>
 			<StyledAboutOverviewInputLabel htmlFor={category}>
 				{labelText}

@@ -1,6 +1,6 @@
 import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { PlaceLivedData, PlaceLivedType } from "@/types/IUser";
-import useUserOverviewForm from "../../../../../Shared/USER/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
 
 interface UsePlacesLivedUserOverviewFormProps {
 	audience: AudienceStatusOptions;
