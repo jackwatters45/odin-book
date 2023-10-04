@@ -1,6 +1,6 @@
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/UserForm";
 
 import useSocialLinksForm from "./useSocialLinksForm";
 import StandardSelect from "@/components/Shared/StandardSelect";

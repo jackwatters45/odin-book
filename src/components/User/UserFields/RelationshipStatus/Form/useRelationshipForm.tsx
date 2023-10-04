@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { IRelationshipSearch, IRelationshipStatus } from "../types/RelationshipTypes";
 import useUserSearch from "@/components/User/Shared/UserSearch/useUserSearch";
 
@@ -15,7 +15,7 @@ const useRelationshipForm = ({
 	handleCloseForm,
 }: UseRelationshipFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<IRelationshipSearch>({
+		useUserForm<IRelationshipSearch>({
 			audience,
 			initialValues: {
 				search: initialValues?.user?.fullName,

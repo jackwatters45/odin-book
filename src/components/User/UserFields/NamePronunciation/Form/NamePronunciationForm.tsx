@@ -1,5 +1,5 @@
-import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
+import useUserForm from "@/components/User/Shared/UserForm/useUserForm";
 
 import { INamePronunciation } from "../types/NamePronunciationTypes";
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
@@ -17,7 +17,7 @@ const NamePronunciationForm = ({
 	handleCloseForm,
 }: NamePronunciationFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<INamePronunciation>({
+		useUserForm<INamePronunciation>({
 			audience,
 			initialValues,
 			url: "name-pronunciation",

@@ -5,7 +5,7 @@ import {
 	StyledAboutOverviewInputDiv,
 	StyledAboutOverviewInputLabel,
 	StyledAboutOverviewTextarea,
-} from "../../User/Shared/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+} from "../../User/Shared/UserForm/UserForm.styles";
 import useAboutOverviewTextArea from "./useAboutOverviewTextArea";
 
 interface AboutOverviewTextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {

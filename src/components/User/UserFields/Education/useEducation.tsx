@@ -1,5 +1,5 @@
 import { formatEducationTitle } from "@/components/User/UserFields/Education/utils/formatEducationData";
-import useUserAboutOverviewItem from "../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { EducationData } from "./types/EducationTypes";
 
 interface useEducationProps {

@@ -6,7 +6,7 @@ import capitalizeFirstLetterString from "@/utils/format/capitalizeFirstLetterStr
 import useUserAboutWorkEducationSection from "./useUserAboutWorkEducationSection";
 import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSection.styles";
 import { BoldText } from "@/styles/SharedStyles";
-import EmptyUserAboutItem from "@/components/User/Shared/EmptyUserAboutItem/EmptyUserAboutItem";
+import AddUserProperty from "@/components/User/Shared/AddUserProperty/AddUserProperty";
 import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
 
 export interface UserAboutWorkEducationSectionContent<T> {
@@ -47,7 +47,7 @@ const UserAboutWorkEducationSection = <T,>({
 	return (
 		<StyledUserAboutWorkEducationSection>
 			<BoldText>{capitalizeFirstLetterString(fieldName)}</BoldText>
-			<EmptyUserAboutItem
+			<AddUserProperty
 				buttonText={fieldName}
 				handleOpenForm={handleOpenForm}
 				isEditing={isEditing}

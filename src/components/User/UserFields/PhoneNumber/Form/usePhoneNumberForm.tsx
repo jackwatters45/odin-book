@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 
 interface usePhoneNumberFormProps {
 	audience: AudienceStatusOptions;
@@ -12,7 +12,7 @@ const usePhoneNumberForm = ({
 	initialValues,
 }: usePhoneNumberFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: { phoneNumber: initialValues },
 			url: "phone-number",

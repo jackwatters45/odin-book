@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import useLanguagesForm from "./useLanguagesForm";
-import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import { StyledStandardButton } from "./LanguagesForm.styles";
 
 interface LanguagesFormProps {

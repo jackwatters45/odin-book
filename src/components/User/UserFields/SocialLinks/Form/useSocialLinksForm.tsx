@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { ISocialLinks } from "../types/SocialLinksTypes";
 
 interface useSocialLinksFormProps {
@@ -13,7 +13,7 @@ const useSocialLinksForm = ({
 	initialValues,
 }: useSocialLinksFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues,
 			url: "social-links",

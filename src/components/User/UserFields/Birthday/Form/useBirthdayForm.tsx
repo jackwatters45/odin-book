@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import getYearMonthDayFromDate from "@/utils/dateHelpers/getYearMonthDayFromDate";
 
 interface useBirthdayFormProps {
@@ -19,7 +19,7 @@ const useBirthdayForm = ({
 	};
 
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: {
 				year: dateAsStrings.year,

@@ -1,10 +1,10 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutDetails from "./useUserAboutDetails";
-import AboutYou from "@/components/User/UserFields/AboutYou/AboutYou";
-import AboutNamePronunciation from "@/components/User/UserFields/NamePronunciation/NamePronunciation";
-import AboutFavoriteQuotes from "@/components/User/UserFields/FavoriteQuotes/FavoriteQuotes";
-import AboutOtherNames from "@/components/User/UserFields/OtherNames/OtherNames";
-import EmptyAboutOtherNames from "@/components/User/UserFields/OtherNames/Empty/EmptyOtherNames";
+import AboutYou from "@/components/User/UserFields/AboutYou";
+import AboutNamePronunciation from "@/components/User/UserFields/NamePronunciation";
+import AboutFavoriteQuotes from "@/components/User/UserFields/FavoriteQuotes";
+import AboutOtherNames from "@/components/User/UserFields/OtherNames";
+import AddOtherNames from "@/components/User/UserFields/OtherNames/Add";
 
 const UserAboutDetails = () => {
 	const { audienceSettings, aboutYou, namePronunciation, otherNames, favoriteQuotes } =
@@ -25,7 +25,7 @@ const UserAboutDetails = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Other names</BoldText>
-				<EmptyAboutOtherNames />
+				<AddOtherNames />
 				{otherNames?.map((otherName) => (
 					<AboutOtherNames
 						key={otherName._id}

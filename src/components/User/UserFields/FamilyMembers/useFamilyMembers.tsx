@@ -1,6 +1,6 @@
-import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import { FamilyMember } from "./types/FamilyMembersTypes";
-import { TitleSegment } from "@/components/User/Shared/UserAboutOverviewItem/UserAboutOverviewItem";
+import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
 
 interface useFamilyMembersParams {
 	familyMember: FamilyMember | undefined;

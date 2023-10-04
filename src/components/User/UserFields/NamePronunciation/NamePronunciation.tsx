@@ -1,6 +1,6 @@
 import { mdiAccountVoice } from "@mdi/js";
 
-import UserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem";
+import UserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import NamePronunciationForm from "./Form";
 import { INamePronunciation } from "./types/NamePronunciationTypes";

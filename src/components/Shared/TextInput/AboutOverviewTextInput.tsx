@@ -4,7 +4,7 @@ import {
 	StyledAboutOverviewInput,
 	StyledAboutOverviewInputDiv,
 	StyledAboutOverviewInputLabel,
-} from "../../User/Shared/StandardUserOverviewForm/StandardUserOverviewForm.styles";
+} from "../../User/Shared/UserForm/UserForm.styles";
 import { InputHTMLAttributes } from "react";
 
 interface AboutOverviewTextInputProps extends InputHTMLAttributes<HTMLInputElement> {

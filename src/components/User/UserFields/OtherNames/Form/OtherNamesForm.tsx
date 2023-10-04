@@ -1,5 +1,5 @@
-import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
+import useUserForm from "@/components/User/Shared/UserForm/useUserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { OtherName, otherNameTypeOptions } from "../types/OtherNamesTypes";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
@@ -18,7 +18,7 @@ const OtherNamesForm = ({
 	handleCloseForm,
 }: OtherNamesFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<OtherName>({
+		useUserForm<OtherName>({
 			audience,
 			initialValues,
 			url: "other-names",

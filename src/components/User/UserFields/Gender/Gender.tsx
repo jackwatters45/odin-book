@@ -1,5 +1,5 @@
 import { mdiAccount } from "@mdi/js";
-import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import GenderForm from "./Form";
 import useGender from "./useGender";

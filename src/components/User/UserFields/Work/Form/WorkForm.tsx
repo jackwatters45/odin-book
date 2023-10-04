@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/UserForm";
 import useWorkForm from "./useWorkForm";
 import TimePeriod from "@/components/Shared/TimePeriod";
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";

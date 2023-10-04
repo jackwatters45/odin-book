@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
-import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/UserForm";
 import usePlacesLivedForm from "./usePlacesLivedForm";
 import { StyledTimePeriodStartOnly } from "@/styles/SharedStyles";
 import { IPlaceLived, PlaceLivedType } from "../types/PlacesLivedTypes";

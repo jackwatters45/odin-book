@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 
 interface useWebsitesFormProps {
 	audience: AudienceStatusOptions;
@@ -12,7 +12,7 @@ const useWebsitesForm = ({
 	initialValues,
 }: useWebsitesFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: { websites: initialValues },
 			url: "websites",

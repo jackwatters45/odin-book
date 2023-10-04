@@ -1,11 +1,10 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 
-import EmptyUserAboutFamilyMembers from "@/components/User/UserFields/FamilyMembers/Empty/EmptyFamilyMembers";
+import AddFamilyMembers from "@/components/User/UserFields/FamilyMembers/Add";
 import AboutFamilyMembers from "@/components/User/UserFields/FamilyMembers";
 import useUserAboutRelationshipFamily from "./useUserAboutRelationshipFamily";
 import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/Relationship";
 
-// TODO fix intro - check website + social links as well
 const UserAboutRelationshipFamily = () => {
 	const { relationship, audienceSettings, familyMembers } =
 		useUserAboutRelationshipFamily();
@@ -21,7 +20,7 @@ const UserAboutRelationshipFamily = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Family members</BoldText>
-				<EmptyUserAboutFamilyMembers />
+				<AddFamilyMembers />
 				<StyledUserAboutContainer>
 					{familyMembers?.map((familyMember) => (
 						<AboutFamilyMembers

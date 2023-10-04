@@ -1,6 +1,6 @@
 import { mdiBriefcase } from "@mdi/js";
 
-import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import WorkUserOverviewForm from "./Form/WorkForm";
 import useWork from "./useWork";
 import { IWork } from "./types/WorkTypes";

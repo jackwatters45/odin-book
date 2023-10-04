@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { Gender } from "../types/GenderTypes";
 
 interface useGenderFormProps {
@@ -13,7 +13,7 @@ const useGenderForm = ({
 	initialValues,
 }: useGenderFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: initialValues,
 			url: "gender",

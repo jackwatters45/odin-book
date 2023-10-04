@@ -1,15 +1,15 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutBasicInfo from "./useUserAboutBasicInfo";
-import AboutEmail from "@/components/User/UserFields/Email/Email";
-import AboutPhoneNumber from "@/components/User/UserFields/PhoneNumber/PhoneNumber";
-import AboutGender from "@/components/User/UserFields/Gender/Gender";
-import AboutPronouns from "@/components/User/UserFields/Pronouns/Pronouns";
-import AboutWebsite from "@/components/User/UserFields/Websites/Websites";
-import EmptyAboutWebsites from "@/components/User/UserFields/Websites/Empty/EmptyWebsites";
-import AboutSocialLink from "@/components/User/UserFields/SocialLinks/SocialLinks";
-import EmptyAboutSocialLinks from "@/components/User/UserFields/SocialLinks/Empty/EmptySocialLinks";
-import AboutLanguages from "@/components/User/UserFields/Languages/Languages";
-import AboutBirthday from "@/components/User/UserFields/Birthday/Birthday";
+import AboutEmail from "@/components/User/UserFields/Email";
+import AboutPhoneNumber from "@/components/User/UserFields/PhoneNumber";
+import AboutGender from "@/components/User/UserFields/Gender";
+import AboutPronouns from "@/components/User/UserFields/Pronouns";
+import AboutWebsite from "@/components/User/UserFields/Websites";
+import AddWebsites from "@/components/User/UserFields/Websites/Add";
+import AboutSocialLink from "@/components/User/UserFields/SocialLinks";
+import AddSocialLinks from "@/components/User/UserFields/SocialLinks/Add";
+import AboutLanguages from "@/components/User/UserFields/Languages";
+import AboutBirthday from "@/components/User/UserFields/Birthday";
 import encodeWebsiteId from "@/components/User/UserFields/Websites/utils/encodeWebsiteId";
 
 const UserAboutBasicInfo = () => {
@@ -27,7 +27,7 @@ const UserAboutBasicInfo = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Websites and social links</BoldText>
-				<EmptyAboutWebsites />
+				<AddWebsites />
 				{user?.websites?.map((website) => (
 					<AboutWebsite
 						key={website}
@@ -37,7 +37,7 @@ const UserAboutBasicInfo = () => {
 						includeAddDetailLink={false}
 					/>
 				))}
-				<EmptyAboutSocialLinks />
+				<AddSocialLinks />
 				{user?.socialLinks?.map((socialLink) => (
 					<AboutSocialLink
 						key={socialLink._id}

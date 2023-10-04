@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { useEffect, useState } from "react";
 
 interface useLanguagesFormProps {
@@ -13,7 +13,7 @@ const useLanguagesForm = ({
 	initialValues,
 }: useLanguagesFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues,
 			url: "languages",

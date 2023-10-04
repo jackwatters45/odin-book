@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import useTimePeriod from "@/components/Shared/TimePeriod/useTimePeriod";
 import { IWork } from "../types/WorkTypes";
 
@@ -13,7 +13,7 @@ const useWorkForm = ({ audience, handleCloseForm, initialValues }: useWorkFormPr
 	const { checkStartDateBeforeEndDate } = useTimePeriod();
 
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<IWork>({
+		useUserForm<IWork>({
 			audience,
 			initialValues,
 			url: "work",

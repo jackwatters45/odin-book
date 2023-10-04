@@ -1,4 +1,4 @@
-import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 
 interface useBirthdayProps {
 	birthday: Date | undefined;

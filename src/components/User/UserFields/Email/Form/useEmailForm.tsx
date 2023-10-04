@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 
 interface useEmailFormProps {
 	audience: AudienceStatusOptions;
@@ -12,7 +12,7 @@ const useEmailForm = ({
 	initialValues,
 }: useEmailFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: { email: initialValues },
 			url: "email",

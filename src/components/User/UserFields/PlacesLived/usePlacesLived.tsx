@@ -1,7 +1,7 @@
-import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import { IPlaceLived } from "@/types/IUser";
 import formatCity from "./utils/formatCity";
-import { TitleSegment } from "@/components/User/Shared/UserAboutOverviewItem/UserAboutOverviewItem";
+import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
 
 interface usePlacesLivedProps {
 	categoryUrl: string;

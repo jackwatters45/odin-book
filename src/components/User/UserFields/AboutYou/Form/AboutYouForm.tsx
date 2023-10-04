@@ -1,6 +1,6 @@
 import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
-import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
+import useUserForm from "@/components/User/Shared/UserForm/useUserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 interface AboutYouFormProps {
@@ -15,7 +15,7 @@ const AboutYouForm = ({
 	handleCloseForm,
 }: AboutYouFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<string>({
+		useUserForm<string>({
 			audience,
 			initialValues,
 			url: "about-you",

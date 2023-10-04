@@ -1,6 +1,6 @@
 import { mdiWeb } from "@mdi/js";
-import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
+import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { AudienceFormFields, AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import WebsitesForm from "./Form";
 

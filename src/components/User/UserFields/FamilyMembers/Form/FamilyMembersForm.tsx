@@ -1,4 +1,4 @@
-import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import useFamilyMembersForm from "./useFamilyMembers";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";

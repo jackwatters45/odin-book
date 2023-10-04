@@ -1,6 +1,6 @@
-import EmptyUserAboutCurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity/Empty/EmptyCurrentCity";
-import EmptyUserAboutHometown from "@/components/User/UserFields/PlacesLived/Hometown/Empty/EmptyHometown";
-import EmptyUserAboutPlacesLived from "@/components/User/UserFields/PlacesLived/Empty/EmptyPlacesLived";
+import AddCurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity/Add";
+import AddHometown from "@/components/User/UserFields/PlacesLived/Hometown/Add";
+import AddPlacesLived from "@/components/User/UserFields/PlacesLived/Add";
 import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity/AboutOverviewCurrentCity";
 import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/Hometown/Hometown";
 import AboutOverviewPlacesLived from "@/components/User/UserFields/PlacesLived/PlacesLived";
@@ -22,9 +22,9 @@ const UserAboutPlacesLived = () => {
 	return (
 		<StyledUserAboutContainer>
 			<BoldText>Places lived</BoldText>
-			{!isHometown && <EmptyUserAboutHometown />}
-			{!isCurrentCity && <EmptyUserAboutCurrentCity />}
-			<EmptyUserAboutPlacesLived />
+			{!isHometown && <AddHometown />}
+			{!isCurrentCity && <AddCurrentCity />}
+			<AddPlacesLived />
 			{isHometown && (
 				<AboutOverviewHometown
 					hometown={hometown}

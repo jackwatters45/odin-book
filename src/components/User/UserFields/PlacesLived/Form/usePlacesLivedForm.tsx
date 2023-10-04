@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { IPlaceLived, PlaceLivedType } from "../types/PlacesLivedTypes";
 
 interface usePlacesLivedFormProps {
@@ -18,7 +18,7 @@ const usePlacesLivedForm = ({
 	formType,
 }: usePlacesLivedFormProps) => {
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm({
+		useUserForm({
 			audience,
 			initialValues: {
 				city: initialValues?.city,

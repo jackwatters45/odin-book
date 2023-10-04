@@ -1,6 +1,6 @@
 import formatWorkData from "@/components/User/UserFields/Work/utils/formatWorkValue";
-import useUserAboutOverviewItem from "../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
-import { TitleSegment } from "@/components/User/Shared/UserAboutOverviewItem/UserAboutOverviewItem";
+import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
+import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
 import { IWork } from "./types/WorkTypes";
 
 interface useWorkProps {

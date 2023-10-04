@@ -1,7 +1,7 @@
 import { mdiCommentAccount } from "@mdi/js";
 import PronounsForm from "./Form";
-import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
+import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { PronounsType } from "./types/PronounsTypes";
 

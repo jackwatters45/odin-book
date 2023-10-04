@@ -1,4 +1,4 @@
-import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { FamilyMembersFormProps } from "./FamilyMembersForm";
 import { DefaultUserSearch } from "../../../Shared/UserSearch/types/DefaultUserSearch";
 import useUserSearch from "../../../Shared/UserSearch/useUserSearch";
@@ -14,7 +14,7 @@ const useFamilyMembers = ({
 }: FamilyMembersFormProps) => {
 	// family member form
 	const { handleSubmit, register, control, setValue, formValues, defaultValues } =
-		useUserOverviewForm<FamilyMemberSearch>({
+		useUserForm<FamilyMemberSearch>({
 			audience,
 			initialValues: {
 				user: initialValues?.user._id,

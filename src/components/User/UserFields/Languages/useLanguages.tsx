@@ -1,4 +1,4 @@
-import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import displayLanguages from "./utils/displayLanguages";
 
 interface useLanguagesParams {

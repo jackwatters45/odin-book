@@ -1,6 +1,6 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "../../Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
+import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { mdiEmailFastOutline } from "@mdi/js";
 import EmailUserOverviewForm from "./Form";
 

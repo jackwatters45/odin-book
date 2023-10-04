@@ -1,5 +1,5 @@
-import UserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty";
+import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import AboutYouForm from "./Form";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
