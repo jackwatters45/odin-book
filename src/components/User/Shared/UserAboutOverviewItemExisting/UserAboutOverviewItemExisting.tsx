@@ -7,10 +7,10 @@ import {
 	StyledUserAboutOverviewItemRightColumn,
 	StyledUserAboutOverviewItemTitle,
 } from "./UserAboutOverviewItemExisting.styles";
-import MoreOptions from "../../MoreOptions/MoreOptions";
+import MoreOptions from "../../../Shared/MoreOptions/MoreOptions";
 import useUserAboutOverviewItemExisting from "./useUserAboutOverviewItemExisting";
-import { TitleSegment } from "../UserAboutOverviewItem";
-import Audience from "../../UserAboutAudience";
+import { TitleSegment } from "../UserAboutOverviewItem/UserAboutOverviewItem";
+import Audience from "../UserAboutAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 

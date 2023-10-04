@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
 
-import ModalHeader from "@/components/Shared/Dialog/DialogHeader";
+import ModalHeader from "@/components/Shared/DialogHeader";
 import useEditHobbiesForm from "./useEditHobbiesForm";
 import HobbiesSearch from "./HobbiesSearch";
 import SelectedHobbies from "./SelectedHobbies";

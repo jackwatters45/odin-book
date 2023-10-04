@@ -1,8 +1,8 @@
-import StandardUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import useFamilyMembersForm from "./useFamilyMembers";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
-import UserSearch from "../../../../Shared/UserSearch";
+import UserSearch from "../../../Shared/UserSearch";
 import { FamilyMember, FamilyRelationshipOptions } from "../types/FamilyMembersTypes";
 
 export interface FamilyMembersFormProps {

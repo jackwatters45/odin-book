@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
 import AddDetailLink from "@/components/User/UserFields/Details/EditDetailsForm/AddDetailLink";
-import UserAboutOverviewItemExisting from "./UserAboutOverviewItemExisting";
-import { ExistingOverviewItemProps } from "./UserAboutOverviewItemExisting/UserAboutOverviewItemExisting";
+import UserAboutOverviewItemExisting from "../UserAboutOverviewItemExisting";
+import { ExistingOverviewItemProps } from "../UserAboutOverviewItemExisting/UserAboutOverviewItemExisting";
 
 export type TitleSegment =
 	| { type: "text"; content: string }

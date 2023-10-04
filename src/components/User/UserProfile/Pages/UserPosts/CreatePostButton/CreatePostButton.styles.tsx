@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { UserProfileSectionContainer } from "@/components/Shared/UserProfileSection/UserProfileSection.styles";
+import { UserProfileSectionContainer } from "@/components/User/Shared/UserProfileSection/UserProfileSection.styles";
 import { StyledTextInput } from "@/styles/SharedStyles";
 import StandardButton from "@/components/Shared/StandardButton";
 

@@ -1,12 +1,12 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 
 import useRelationshipForm from "./useRelationshipForm";
 import {
 	IRelationshipStatus,
 	VALID_RELATIONSHIP_STATUSES_ARRAY,
 } from "@/components/User/UserFields/RelationshipStatus/types/RelationshipTypes";
-import UserSearch from "@/components/Shared/UserSearch";
+import UserSearch from "@/components/User/Shared/UserSearch";
 import {
 	FullWidthStandardSelect,
 	StyledTimePeriodStartOnly,

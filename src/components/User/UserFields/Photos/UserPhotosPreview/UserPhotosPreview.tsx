@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import UserProfileSectionWithLink from "@/components/Shared/UserProfileSection/UserProfileSectionWithLink";
+import UserProfileSectionWithLink from "@/components/User/Shared/UserProfileSection/UserProfileSectionWithLink";
 import { StyledPhoto, StyledPhotosContainer } from "./UserPhotosPreview.styles";
 import useUserPhotosPreview from "./useUserPhotosPreview";
 

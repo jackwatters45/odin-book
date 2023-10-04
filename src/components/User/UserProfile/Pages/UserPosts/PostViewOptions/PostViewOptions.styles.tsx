@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import UserProfileSection from "@/components/Shared/UserProfileSection";
+import UserProfileSection from "@/components/User/Shared/UserProfileSection";
 import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledPostViewOptionsContainer = styled(UserProfileSection)`

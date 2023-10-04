@@ -1,9 +1,9 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import useWorkForm from "./useWorkForm";
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
-import AboutOverviewTextArea from "@/components/Shared/FormComponents/TextArea/AboutOverviewTextArea";
+import TimePeriod from "@/components/Shared/TimePeriod";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
 import { IWork } from "../types/WorkTypes";
 
 interface WorkFormProps {

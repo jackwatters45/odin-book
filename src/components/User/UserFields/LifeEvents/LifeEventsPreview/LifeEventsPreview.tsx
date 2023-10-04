@@ -1,4 +1,4 @@
-import UserProfileSectionWithLink from "@/components/Shared/UserProfileSection/UserProfileSectionWithLink";
+import UserProfileSectionWithLink from "@/components/User/Shared/UserProfileSection/UserProfileSectionWithLink";
 import LifeEventDisplay from "../LifeEventDisplay";
 import useLifeEvents from "@/components/User/UserFields/LifeEvents/useLifeEvents";
 

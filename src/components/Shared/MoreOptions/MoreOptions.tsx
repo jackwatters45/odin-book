@@ -1,6 +1,6 @@
 import { mdiDotsHorizontal, mdiPencilOutline, mdiTrashCanOutline } from "@mdi/js";
 
-import DialogTriangle from "./DialogTriangle";
+import DialogTriangle from "./utils/DialogTriangle";
 import useMoreOptions from "./useMoreOptions";
 import {
 	StyledDialogMoreOptions,

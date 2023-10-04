@@ -1,6 +1,6 @@
 import UserProfileSection from "..";
 import { UserProfileSectionProps } from "../UserProfileSection";
-import StandardLink from "../../StandardLink";
+import StandardLink from "../../../../Shared/StandardLink";
 
 type seeAllLink = {
 	to: string;

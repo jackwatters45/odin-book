@@ -1,8 +1,8 @@
-import StandardUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
+import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
 
 import { INamePronunciation } from "../types/NamePronunciationTypes";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 interface NamePronunciationFormProps {

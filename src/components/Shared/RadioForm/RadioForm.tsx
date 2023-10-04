@@ -8,8 +8,8 @@ import RadioFormDialogContent from "./DialogContent/RadioFormDialogContent";
 import RadioFormController from "./RadioFormController";
 import { StandardButtonProps } from "../StandardButton/StandardButton";
 
-const DialogActions = lazy(() => import("../Dialog/DialogActions"));
-const ModalHeader = lazy(() => import("../Dialog/DialogHeader"));
+const DialogActions = lazy(() => import("../DialogActions"));
+const ModalHeader = lazy(() => import("../DialogHeader"));
 
 export interface RadioFormOption {
 	title: string;

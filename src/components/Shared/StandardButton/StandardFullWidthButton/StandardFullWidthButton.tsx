@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import StandardButton from "../StandardButton";
+import StandardButton from "..";
 
 interface StandardFullWidthButtonProps extends HTMLAttributes<HTMLElement> {
 	dataExists: boolean;

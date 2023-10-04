@@ -1,7 +1,7 @@
 import { mdiBookAccount } from "@mdi/js";
 
-import UserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem";
-import useUserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import UserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import OtherNamesForm from "./Form";
 import { OtherName } from "./types/OtherNamesTypes";

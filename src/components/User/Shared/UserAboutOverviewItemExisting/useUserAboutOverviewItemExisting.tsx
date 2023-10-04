@@ -1,4 +1,4 @@
-import { TitleSegment } from "../UserAboutOverviewItem";
+import { TitleSegment } from "../UserAboutOverviewItem/UserAboutOverviewItem";
 import { StyledUserAboutOverviewLink } from "./UserAboutOverviewItemExisting.styles";
 
 const useUserAboutOverviewItemExisting = () => {

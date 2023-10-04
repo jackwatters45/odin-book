@@ -1,6 +1,6 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import useEmailForm from "./useEmailForm";
 
 interface EmailFormProps {

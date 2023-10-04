@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StandardCheckbox from "../../StandardCheckbox";
+import StandardCheckbox from "../StandardCheckbox";
 
 export const StyledTimePeriodContainer = styled.div`
 	display: flex;

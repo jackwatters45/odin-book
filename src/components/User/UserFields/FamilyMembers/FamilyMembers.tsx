@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
 import FamilyMembersForm from "./Form";
 import { FamilyMember } from "./types/FamilyMembersTypes";
 import useFamilyMembers from "./useFamilyMembers";

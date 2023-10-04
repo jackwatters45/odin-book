@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { StyledFriend, StyledFriendsContainer } from "./UserFriendsPreview.styles";
 import useUserFriendsPreview from "./useUserFriendsPreview";
-import UserProfileSectionWithLink from "@/components/Shared/UserProfileSection/UserProfileSectionWithLink";
+import UserProfileSectionWithLink from "@/components/User/Shared/UserProfileSection/UserProfileSectionWithLink";
 import defaultUserAvatar from "../../Avatar/utils/defaultUserAvatar";
 
 const UserFriendsPreview = () => {

@@ -1,12 +1,12 @@
 import Icon from "@mdi/react";
 import { mdiWeb } from "@mdi/js";
 
-import ModalHeader from "@/components/Shared/Dialog/DialogHeader";
+import ModalHeader from "@/components/Shared/DialogHeader";
 import { IUser } from "@/types/IUser";
 import { FormEvent, forwardRef } from "react";
 import ExistingDetailSwitch from "./ExistingDetailSwitch";
 import { UseFormReturn } from "react-hook-form";
-import DialogActions from "../../../../Shared/Dialog/DialogActions";
+import DialogActions from "../../../../Shared/DialogActions";
 import AddDetailLink from "./AddDetailLink";
 import {
 	FormContentContainer,

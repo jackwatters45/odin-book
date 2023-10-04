@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import usePronounsForm from "./usePronounsForm";
 import { Pronouns, PronounsType } from "../types/PronounsTypes";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";

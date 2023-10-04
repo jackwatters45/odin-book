@@ -1,6 +1,6 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import usePhoneNumberForm from "./usePhoneNumberForm";
 
 interface PhoneNumberFormProps {

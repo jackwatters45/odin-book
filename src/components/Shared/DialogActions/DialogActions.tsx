@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import useDialogActions from "./useDialogActions";
 import { BottomDiv, PlaceholderDiv, StyledButtonDiv } from "@/styles/SharedStyles";
-import StandardButton from "../../StandardButton";
+import StandardButton from "../StandardButton";
 
 interface DialogActionsProps<T> {
 	initial: T | undefined;

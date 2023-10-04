@@ -1,4 +1,4 @@
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
+import TimePeriod from "@/components/Shared/TimePeriod";
 import styled from "styled-components";
 
 export const StyledEducationTimePeriod = styled(TimePeriod)`

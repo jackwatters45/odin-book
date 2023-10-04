@@ -1,7 +1,7 @@
-import useUserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 import { INamePronunciation } from "./types/NamePronunciationTypes";
 import getFullName from "./utils/getFullName";
-import { TitleSegment } from "@/components/Shared/UserAboutOverviewItem/UserAboutOverviewItem";
+import { TitleSegment } from "@/components/User/Shared/UserAboutOverviewItem/UserAboutOverviewItem";
 
 interface IUseNamePronunciation {
 	initialValues: INamePronunciation | undefined;

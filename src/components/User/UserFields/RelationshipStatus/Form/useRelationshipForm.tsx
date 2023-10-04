@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { IRelationshipSearch, IRelationshipStatus } from "../types/RelationshipTypes";
-import useUserSearch from "@/components/Shared/UserSearch/useUserSearch";
+import useUserSearch from "@/components/User/Shared/UserSearch/useUserSearch";
 
 interface UseRelationshipFormProps {
 	audience: AudienceStatusOptions;

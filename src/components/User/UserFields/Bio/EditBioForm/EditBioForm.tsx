@@ -1,6 +1,6 @@
 import { StyledButtonDiv } from "@/styles/SharedStyles";
 import StandardButton from "@/components/Shared/StandardButton";
-import PrivacyStatus from "@/components/Shared/AudienceStatus";
+import PrivacyStatus from "@/components/Shared/AudienceStatusText";
 import useEditFormBio from "./useEditFormBio";
 import {
 	StyledBottomRow,

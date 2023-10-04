@@ -1,6 +1,6 @@
-import AboutOverviewTextArea from "@/components/Shared/FormComponents/TextArea/AboutOverviewTextArea";
-import StandardUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
+import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
+import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 interface FavoriteQuotesFormProps {

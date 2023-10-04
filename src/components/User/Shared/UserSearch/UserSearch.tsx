@@ -1,7 +1,7 @@
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { HTMLAttributes } from "react";
 
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import useUserSearchResults from "./useUserSearchResults";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { StyledDialogSearchResultsDialog, StyledSearchResult } from "./UserSearch.styles";

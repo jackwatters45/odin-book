@@ -14,7 +14,7 @@ import {
 import styled from "styled-components";
 
 import LifeEventIcon from "./LifeEventIcon/LifeEventIcon";
-import DialogHeader from "@/components/Shared/Dialog/DialogHeader";
+import DialogHeader from "@/components/Shared/DialogHeader";
 
 export const StyledIconsContainer = styled.div`
 	display: flex;

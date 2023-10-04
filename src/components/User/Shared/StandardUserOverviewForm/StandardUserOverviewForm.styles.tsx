@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import DialogActions from "@/components/Shared/Dialog/DialogActions";
+import DialogActions from "@/components/Shared/DialogActions";
 
 export const StyledAboutOverviewInputDiv = styled.div`
 	border: 1px solid #dddfe2;

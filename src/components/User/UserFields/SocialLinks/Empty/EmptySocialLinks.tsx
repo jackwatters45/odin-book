@@ -1,6 +1,6 @@
-import EmptyUserAboutItem from "@/components/Shared/UserAboutOverviewItem/EmptyUserAboutItem/EmptyUserAboutItem";
+import EmptyUserAboutItem from "@/components/User/Shared/EmptyUserAboutItem/EmptyUserAboutItem";
 import AboutSocialLinksForm from "../Form";
-import useUserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 
 const EmptySocialLinks = () => {
 	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({

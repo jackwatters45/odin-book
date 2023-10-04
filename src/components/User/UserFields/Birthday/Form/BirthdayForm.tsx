@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import useBirthdayForm from "./useBirthdayForm";
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
+import TimePeriod from "@/components/Shared/TimePeriod";
 
 interface BirthdayFormProps {
 	audience: AudienceStatusOptions;

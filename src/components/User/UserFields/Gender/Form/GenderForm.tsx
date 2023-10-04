@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import useGenderForm from "./useGenderForm";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
 import { Gender } from "../types/GenderTypes";
 

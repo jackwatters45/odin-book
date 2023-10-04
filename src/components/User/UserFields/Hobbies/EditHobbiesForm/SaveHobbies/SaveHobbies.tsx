@@ -1,6 +1,6 @@
-import PrivacyStatus from "@/components/Shared/AudienceStatus";
+import PrivacyStatus from "@/components/Shared/AudienceStatusText";
 import useSaveHobbies from "./useSaveHobbies";
-import DialogActions from "@/components/Shared/Dialog/DialogActions/DialogActions";
+import DialogActions from "@/components/Shared/DialogActions/DialogActions";
 
 interface SaveHobbiesProps {
 	closeDialog: () => void;

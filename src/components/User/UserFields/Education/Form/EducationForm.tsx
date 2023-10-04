@@ -1,14 +1,14 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm";
+import StandardUserOverviewForm from "../../../Shared/StandardUserOverviewForm";
 import { StyledUserAboutFormText } from "@/styles/SharedStyles";
 import {
 	StyledAttenderForContainer,
 	StyledEducationTimePeriod,
 } from "./EducationForm.styles";
 import useEducationForm from "./useEducationForm";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
-import AboutOverviewTextArea from "@/components/Shared/FormComponents/TextArea/AboutOverviewTextArea";
-import AboutOverviewRadioInput from "@/components/Shared/FormComponents/RadioInput/AboutOverviewRadioInput";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
+import AboutOverviewRadioInput from "@/components/Shared/RadioInput/AboutOverviewRadioInput";
 import { EducationData } from "../types/EducationTypes";
 
 interface EducationFormProps {

@@ -1,6 +1,6 @@
 import Icon from "@mdi/react";
 
-import { StyledAudienceStatusDiv } from "./AudienceStatus.styles.";
+import { StyledAudienceStatusDiv } from "./AudienceStatusText.styles.";
 import getAudienceIcon from "@/utils/audience/getAudienceIcon";
 import { HTMLAttributes } from "react";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";

@@ -1,5 +1,5 @@
-import EmptyUserAboutItem from "@/components/Shared/UserAboutOverviewItem/EmptyUserAboutItem";
-import useUserAboutOverviewItem from "@/components/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
+import EmptyUserAboutItem from "@/components/User/Shared/EmptyUserAboutItem";
+import useUserAboutOverviewItem from "@/components/User/Shared/UserAboutOverviewItem/useUserAboutOverviewItem";
 import FamilyMembersForm from "../Form/FamilyMembersForm";
 
 const EmptyFamilyMembers = () => {

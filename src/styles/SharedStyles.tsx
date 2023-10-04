@@ -1,4 +1,4 @@
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
+import TimePeriod from "@/components/Shared/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
 import styled, { css } from "styled-components";
 

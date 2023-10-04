@@ -10,9 +10,7 @@ import {
 	StyledStandardButtonFullWidth,
 } from "./EditProfile.styles";
 
-const DialogHeader = lazy(
-	() => import("@/components/Shared/Dialog/DialogHeader/DialogHeader"),
-);
+const DialogHeader = lazy(() => import("@/components/Shared/DialogHeader/DialogHeader"));
 const AvatarEditProfileSection = lazy(
 	() => import("../../../UserFields/Avatar/EditProfile/EditProfileAvatar"),
 );

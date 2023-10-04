@@ -1,7 +1,7 @@
-import useUserOverviewForm from "../../../../Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import useUserOverviewForm from "../../../Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { FamilyMembersFormProps } from "./FamilyMembersForm";
-import { DefaultUserSearch } from "../../../../Shared/UserSearch/types/DefaultUserSearch";
-import useUserSearch from "../../../../Shared/UserSearch/useUserSearch";
+import { DefaultUserSearch } from "../../../Shared/UserSearch/types/DefaultUserSearch";
+import useUserSearch from "../../../Shared/UserSearch/useUserSearch";
 
 interface FamilyMemberSearch extends DefaultUserSearch {
 	relationship?: string;

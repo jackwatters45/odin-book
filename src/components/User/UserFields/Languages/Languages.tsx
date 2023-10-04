@@ -1,5 +1,5 @@
 import { mdiAccountVoice } from "@mdi/js";
-import UserAboutOverviewItem from "../../../Shared/UserAboutOverviewItem";
+import UserAboutOverviewItem from "../../Shared/UserAboutOverviewItem";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import LanguagesForm from "./Form";
 import useLanguages from "./useLanguages";

@@ -1,4 +1,4 @@
-import UserProfileSection from "@/components/Shared/UserProfileSection";
+import UserProfileSection from "@/components/User/Shared/UserProfileSection";
 // import styled from "styled-components";
 
 // const StyledUserPhotosContainer = styled.div`

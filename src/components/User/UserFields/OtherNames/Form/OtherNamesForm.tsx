@@ -1,9 +1,9 @@
-import StandardUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm";
-import useUserOverviewForm from "@/components/Shared/UserAboutOverviewItem/StandardUserOverviewForm/useStandardUserOverviewForm";
+import StandardUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm";
+import useUserOverviewForm from "@/components/User/Shared/StandardUserOverviewForm/useStandardUserOverviewForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { OtherName, otherNameTypeOptions } from "../types/OtherNamesTypes";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
-import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
+import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import { StyledStandardCheckbox } from "./OtherNamesForm.styles";
 
 interface OtherNamesFormProps {

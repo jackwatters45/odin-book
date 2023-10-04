@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import TimePeriod from "@/components/Shared/FormComponents/TimePeriod";
+import TimePeriod from "@/components/Shared/TimePeriod";
 
 export const StyledEducationTimePeriod = styled(TimePeriod)`
 	> span {
