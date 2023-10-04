@@ -1,15 +1,15 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutBasicInfo from "./useUserAboutBasicInfo";
-import AboutEmail from "@/components/User/UserFields/Email/AboutEmail";
-import AboutPhoneNumber from "@/components/User/UserFields/PhoneNumber/AboutPhoneNumber";
-import AboutGender from "@/components/User/UserFields/Gender/AboutGender";
-import AboutPronouns from "@/components/User/UserFields/Pronouns/AboutPronouns";
-import AboutWebsite from "@/components/User/UserFields/Websites/AboutWebsites";
-import EmptyAboutWebsites from "@/components/User/UserFields/Websites/empty/EmptyAboutWebsites";
-import AboutSocialLink from "@/components/User/UserFields/SocialLinks/AboutSocialLink";
-import EmptyAboutSocialLinks from "@/components/User/UserFields/SocialLinks/empty/EmptyAboutSocialLinks";
-import AboutLanguages from "@/components/User/UserFields/Languages/AboutLanguages";
-import AboutBirthday from "@/components/User/UserFields/Birthday/AboutBirthday";
+import AboutEmail from "@/components/User/UserFields/Email/Email";
+import AboutPhoneNumber from "@/components/User/UserFields/PhoneNumber/PhoneNumber";
+import AboutGender from "@/components/User/UserFields/Gender/Gender";
+import AboutPronouns from "@/components/User/UserFields/Pronouns/Pronouns";
+import AboutWebsite from "@/components/User/UserFields/Websites/Websites";
+import EmptyAboutWebsites from "@/components/User/UserFields/Websites/Empty/EmptyWebsites";
+import AboutSocialLink from "@/components/User/UserFields/SocialLinks/SocialLinks";
+import EmptyAboutSocialLinks from "@/components/User/UserFields/SocialLinks/Empty/EmptySocialLinks";
+import AboutLanguages from "@/components/User/UserFields/Languages/Languages";
+import AboutBirthday from "@/components/User/UserFields/Birthday/Birthday";
 import encodeWebsiteId from "@/components/User/UserFields/Websites/utils/encodeWebsiteId";
 
 const UserAboutBasicInfo = () => {

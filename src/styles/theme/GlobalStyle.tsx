@@ -115,13 +115,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :hover {
-    // transition: background-color 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
   }
 
   :has(dialog:modal[open]) {
     overflow: hidden;
   }
+
+  dialog::backdrop {
+    background-color: ${({ theme }) => theme.colors.backdropColor};
+  }
+
 `;
 
 export default GlobalStyle;

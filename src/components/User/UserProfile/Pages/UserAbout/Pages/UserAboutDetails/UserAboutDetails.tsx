@@ -1,10 +1,10 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutDetails from "./useUserAboutDetails";
-import AboutAboutYou from "@/components/User/UserFields/AboutYou/AboutAboutYou";
-import AboutNamePronunciation from "@/components/User/UserFields/NamePronunciation/AboutNamePronunciation";
-import AboutFavoriteQuotes from "@/components/User/UserFields/FavoriteQuotes/AboutFavoriteQuotes";
-import AboutOtherNames from "@/components/User/UserFields/OtherNames/AboutOtherNames";
-import EmptyAboutOtherNames from "@/components/User/UserFields/OtherNames/empty/EmptyAboutOtherNames";
+import AboutYou from "@/components/User/UserFields/AboutYou/AboutYou";
+import AboutNamePronunciation from "@/components/User/UserFields/NamePronunciation/NamePronunciation";
+import AboutFavoriteQuotes from "@/components/User/UserFields/FavoriteQuotes/FavoriteQuotes";
+import AboutOtherNames from "@/components/User/UserFields/OtherNames/OtherNames";
+import EmptyAboutOtherNames from "@/components/User/UserFields/OtherNames/Empty/EmptyOtherNames";
 
 const UserAboutDetails = () => {
 	const { audienceSettings, aboutYou, namePronunciation, otherNames, favoriteQuotes } =
@@ -14,7 +14,7 @@ const UserAboutDetails = () => {
 		<StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>About you</BoldText>
-				<AboutAboutYou initialValues={aboutYou} audience={audienceSettings.aboutYou} />
+				<AboutYou initialValues={aboutYou} audience={audienceSettings.aboutYou} />
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Name pronunciation</BoldText>

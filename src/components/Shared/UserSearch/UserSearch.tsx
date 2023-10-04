@@ -4,12 +4,12 @@ import { HTMLAttributes } from "react";
 import AboutOverviewTextInput from "@/components/Shared/FormComponents/TextInput/AboutOverviewTextInput";
 import useUserSearchResults from "./useUserSearchResults";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
-import { defaultUserAvatar } from "@/config/globals";
 import { StyledDialogSearchResultsDialog, StyledSearchResult } from "./UserSearch.styles";
 import Loading from "@/components/Shared/Loading";
 import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
-import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
+import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 
 interface UserSearchProps extends HTMLAttributes<HTMLDivElement> {
 	register: ReturnType<UseFormRegister<FieldValues>>;

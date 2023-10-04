@@ -1,5 +1,5 @@
 import { IUser } from "@/types/IUser";
-import getDefaultFormStateDetails from "./getDefaultFormFieldsDetails";
+import getDefaultFormStateDetails from "../utils/getDefaultFormFieldsDetails";
 import getCurrentCity from "../../PlacesLived/utils/getCurrentCity";
 import getHometown from "../../PlacesLived/utils/getHometown";
 import formatDateMonthYear from "@/utils/dateHelpers/formatDateMonthYear";

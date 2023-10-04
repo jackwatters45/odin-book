@@ -1,9 +1,9 @@
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 
-import EmptyUserAboutFamilyMembers from "@/components/User/UserFields/FamilyMembers/empty/EmptyAboutFamilyMembers";
+import EmptyUserAboutFamilyMembers from "@/components/User/UserFields/FamilyMembers/Empty/EmptyFamilyMembers";
 import AboutFamilyMembers from "@/components/User/UserFields/FamilyMembers";
 import useUserAboutRelationshipFamily from "./useUserAboutRelationshipFamily";
-import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/AboutOverviewRelationship";
+import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/Relationship";
 
 // TODO fix intro - check website + social links as well
 const UserAboutRelationshipFamily = () => {

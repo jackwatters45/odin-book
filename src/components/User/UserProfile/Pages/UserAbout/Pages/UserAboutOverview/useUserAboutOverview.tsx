@@ -1,5 +1,6 @@
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import { IUser, WorkData } from "@/types/IUser";
+import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
+import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import { IUser } from "@/types/IUser";
 import {
 	getMostRecentItemFromArr,
 	sortArrByStartEndDates,
@@ -11,7 +12,7 @@ const useUserAboutOverview = () => {
 
 	const audienceSettings = user.audienceSettings;
 
-	const sortedWorkHistory = sortArrByStartEndDates<WorkData>(user?.work);
+	const sortedWorkHistory = sortArrByStartEndDates<IWork>(user?.work);
 
 	const pastCompany = sortedWorkHistory?.[1]?.company;
 

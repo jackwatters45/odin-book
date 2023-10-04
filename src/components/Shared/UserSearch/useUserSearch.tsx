@@ -2,12 +2,14 @@ import { isEqual } from "lodash";
 
 import useSearch from "@/hooks/useSearch";
 import { SearchJsonResponse, SearchResultsType } from "./types/SearchResults";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
 import { UseQueryOptions } from "@tanstack/react-query";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+import {
+	AudienceStatusOptions,
+	FormFieldsWithAudience,
+} from "@/types/AudienceSettingsTypes";
 
 interface IUseUserSearch<T> {
 	audience: AudienceStatusOptions;

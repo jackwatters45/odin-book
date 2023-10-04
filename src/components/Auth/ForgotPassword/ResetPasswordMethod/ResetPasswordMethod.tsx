@@ -1,7 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 
 import useResetPasswordMethod from "./useResetPasswordMethod";
-import renderFormErrors from "@/utils/renderFormErrors";
+import renderFormErrors from "@/utils/render/renderFormErrors";
 import RecoverUserPreview from "../utils/RecoverUserPreview";
 import blurEmail from "./utils/blurEmail";
 import ForgotPasswordNav from "../ForgotPasswordNav";

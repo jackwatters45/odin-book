@@ -1,4 +1,4 @@
-import convertDayMonthYearToDate from "@/utils/convertDayMonthYearToDate";
+import convertDayMonthYearToDate from "@/utils/dateHelpers/convertDayMonthYearToDate";
 
 type DatePart = string | undefined;
 

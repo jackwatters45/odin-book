@@ -1,6 +1,6 @@
-import { PlaceLivedData } from "@/types/IUser";
+import { IPlaceLived } from "@/types/IUser";
 
-const getHometown = (placesLived: PlaceLivedData[] | undefined) =>
+const getHometown = (placesLived: IPlaceLived[] | undefined) =>
 	placesLived?.find((place) => place.type === "hometown");
 
 export default getHometown;

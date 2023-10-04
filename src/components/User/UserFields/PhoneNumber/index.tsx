@@ -1,1 +1,1 @@
-export { default } from "./AboutPhoneNumber";
+export { default } from "./PhoneNumber";

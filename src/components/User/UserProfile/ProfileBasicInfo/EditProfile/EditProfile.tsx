@@ -14,16 +14,18 @@ const DialogHeader = lazy(
 	() => import("@/components/Shared/Dialog/DialogHeader/DialogHeader"),
 );
 const AvatarEditProfileSection = lazy(
-	() => import("./Sections/Avatar/AvatarEditProfileSection"),
+	() => import("../../../UserFields/Avatar/EditProfile/EditProfileAvatar"),
 );
 const CoverEditProfileSection = lazy(
-	() => import("./Sections/Cover/CoverEditProfileSection"),
+	() => import("../../../UserFields/CoverPhoto/EditProfile/CoverEditProfile"),
 );
-const BioEditProfileSection = lazy(() => import("./Sections/Bio"));
+const BioEditProfileSection = lazy(() => import("../../../UserFields/Bio/EditProfile"));
 const IntroEditProfileSection = lazy(
-	() => import("./Sections/Details/DetailsEditProfileSection"),
+	() => import("../../../UserFields/Details/EditProfile/EditProfileDetails"),
 );
-const HobbiesEditProfileSection = lazy(() => import("./Sections/Hobbies"));
+const HobbiesEditProfileSection = lazy(
+	() => import("../../../UserFields/Hobbies/EditProfile"),
+);
 
 interface EditProfileProps {
 	user: IUser;
@@ -33,8 +35,6 @@ const EditProfile = ({ user }: EditProfileProps) => {
 	const { ref, openDialog, closeDialog } = useDialog({});
 
 	const { avatarUrl, coverPhotoUrl, bio, hobbies } = user;
-
-	// TODO tests for all of this
 
 	return (
 		<div>

@@ -18,9 +18,9 @@ import useEditDetailsForm from "./useEditDetailsForm";
 import SectionTitle from "./SectionTitle";
 import getSocialLinkImage from "../../SocialLinks/utils/socialLinkImages";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
-import DetailsFormFields from "@/types/DetailsFormFields";
+import DetailsFormFields from "@/components/User/UserFields/Details/types/DetailsTypes";
 import formatWorkData from "../../Work/utils/formatWorkValue";
-import { formatEducationTitle } from "../../Education/formatEducationData";
+import { formatEducationTitle } from "../../Education/utils/formatEducationData";
 import formatRelationshipStatus from "../../RelationshipStatus/utils/formatRelationshipStatus";
 import getFullName from "../../NamePronunciation/utils/getFullName";
 

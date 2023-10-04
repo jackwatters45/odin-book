@@ -2,7 +2,7 @@ import { UseFormSetValue } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
-import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
 
 interface useUserSearchResultsParams {
 	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;

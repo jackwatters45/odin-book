@@ -1,7 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 
 import useEnterSecurityCode from "./useEnterSecurityCode";
-import renderFormErrors from "@/utils/renderFormErrors";
+import renderFormErrors from "@/utils/render/renderFormErrors";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 
 const EnterSecurityCode = () => {

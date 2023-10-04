@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { IUser } from "@/types/IUser";
-import CoverPhoto from "./CoverPhoto";
-import ProfileAvatar from "./ProfileAvatar";
+import CoverPhoto from "../../UserFields/CoverPhoto/Profile/CoverPhoto";
+import ProfileAvatar from "../../UserFields/Avatar/Profile";
 import EditProfile from "./EditProfile";
 import {
 	StyledFriends,

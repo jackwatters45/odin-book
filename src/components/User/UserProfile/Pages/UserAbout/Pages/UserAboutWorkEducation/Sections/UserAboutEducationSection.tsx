@@ -1,9 +1,9 @@
-import { EducationData } from "@/types/IUser";
+import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
 import UserAboutWorkEducationSection, {
 	UserAboutWorkEducationSectionContent,
 } from "./UserAboutEducationSection/UserAboutWorkEducationSection";
-import EducationUserOverviewForm from "../../UserAboutOverview/UserAboutOverviewItems/Sections/Education/OverviewItem/form/EducationUserOverviewForm";
-import EducationUserOverviewItem from "../../UserAboutOverview/UserAboutOverviewItems/Sections/Education/OverviewItem/EducationUserAboutOverviewItem";
+import EducationUserOverviewForm from "@/components/User/UserFields/Education/Form";
+import Education from "@/components/User/UserFields/Education";
 
 interface UserAboutEducationSectionProps {
 	fieldName: "high school" | "college";
@@ -19,7 +19,7 @@ const UserAboutEducationSection = ({
 			fieldName={fieldName}
 			content={content}
 			NewFormComponent={EducationUserOverviewForm}
-			ExistingFormComponent={EducationUserOverviewItem}
+			ExistingFormComponent={Education}
 		/>
 	);
 };

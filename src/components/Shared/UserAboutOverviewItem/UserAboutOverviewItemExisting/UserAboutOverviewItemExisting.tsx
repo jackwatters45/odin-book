@@ -7,21 +7,19 @@ import {
 	StyledUserAboutOverviewItemRightColumn,
 	StyledUserAboutOverviewItemTitle,
 } from "./UserAboutOverviewItemExisting.styles";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import MoreOptions from "../../MoreOptions/MoreOptions";
-
 import useUserAboutOverviewItemExisting from "./useUserAboutOverviewItemExisting";
 import { TitleSegment } from "../UserAboutOverviewItem";
-import { UserAboutAudienceFormFields } from "@/types/IUser";
 import Audience from "../../UserAboutAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
+import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 
 export interface ExistingOverviewItemProps {
 	icon: string | undefined;
 	iconType?: "icon" | "image";
 	audience: AudienceStatusOptions;
 	itemId?: string;
-	category: UserAboutAudienceFormFields;
+	category: AudienceFormFields;
 	categoryDisplayName: string;
 	handleOpenForm: () => void;
 	deleteMutation: (() => void) | undefined;

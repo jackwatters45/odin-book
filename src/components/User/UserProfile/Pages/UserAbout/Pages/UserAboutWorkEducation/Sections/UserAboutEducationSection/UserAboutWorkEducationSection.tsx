@@ -1,13 +1,13 @@
 import { FC } from "react";
 
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import { EducationData } from "@/types/IUser";
-import capitalizeFirstLetterString from "@/utils/capitalizeFirstLetterString";
+import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import capitalizeFirstLetterString from "@/utils/format/capitalizeFirstLetterString";
 
 import useUserAboutWorkEducationSection from "./useUserAboutWorkEducationSection";
 import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSection.styles";
 import { BoldText } from "@/styles/SharedStyles";
 import EmptyUserAboutItem from "@/components/Shared/UserAboutOverviewItem/EmptyUserAboutItem/EmptyUserAboutItem";
+import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
 
 export interface UserAboutWorkEducationSectionContent<T> {
 	audience: AudienceStatusOptions;

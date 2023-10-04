@@ -5,7 +5,6 @@ import PostContent from "./PostContent";
 import { StyledPostContainer } from "./UserPostsDisplay.styles";
 
 const post = {
-	id: "1",
 	author: {
 		id: "1",
 		name: "John Doe",
@@ -22,7 +21,9 @@ const post = {
 	},
 };
 
-const posts = Array(15).fill(post);
+const posts = Array(15)
+	.fill(post)
+	.map((post, index) => ({ ...post, id: index }));
 
 const UserPostsDisplay = () => {
 	return (

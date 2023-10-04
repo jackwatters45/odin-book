@@ -1,11 +1,10 @@
 import AudienceRadio from "@/components/Shared/AudienceRadio";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
+import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import useUserAboutAudience from "./useUserAboutAudience";
-import { UserAboutAudienceFormFields } from "@/types/IUser";
 
 interface UserAboutAudienceProps {
 	audience: AudienceStatusOptions;
-	category: UserAboutAudienceFormFields;
+	category: AudienceFormFields;
 	itemId?: string;
 }
 

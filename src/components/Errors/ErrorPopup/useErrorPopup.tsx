@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import useError from "../useError";
-import renderFormErrors from "../../../utils/renderFormErrors";
+import renderFormErrors from "../../../utils/render/renderFormErrors";
 
 const useErrorPopup = () => {
 	const { setError, error } = useError();

@@ -1,4 +1,4 @@
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
+import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { mdiAccountMultiple, mdiEarth, mdiLock } from "@mdi/js";
 
 const getAudienceIcon = (value: AudienceStatusOptions) => {

@@ -1,8 +1,8 @@
 import { IUser } from "@/types/IUser";
-import BioUserIntro from "./Sections/BioUserIntro";
-import HobbiesUserIntro from "./Sections/HobbiesUserInfo";
-import DetailsUserIntro from "./Sections/DetailsUserIntro";
-import FeaturedUserIntro from "./Sections/FeaturedUserIntro";
+import BioUserIntro from "../../../../UserFields/Bio/Intro/IntroBio";
+import HobbiesUserIntro from "../../../../UserFields/Hobbies/Intro/IntroHobbies";
+import DetailsUserIntro from "../../../../UserFields/Details/Intro/IntroDetails";
+
 import UserProfileSection from "@/components/Shared/UserProfileSection";
 
 interface UserIntroProps {
@@ -17,7 +17,6 @@ const UserIntro = ({ user }: UserIntroProps) => {
 			<BioUserIntro bio={bio} />
 			<HobbiesUserIntro hobbies={hobbies} />
 			<DetailsUserIntro user={user} />
-			<FeaturedUserIntro featured={[]} />
 		</UserProfileSection>
 	);
 };

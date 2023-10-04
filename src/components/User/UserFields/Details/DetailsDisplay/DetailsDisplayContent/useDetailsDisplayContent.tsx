@@ -1,11 +1,11 @@
-import { PlaceLivedData } from "@/types/IUser";
+import { IPlaceLived } from "@/types/IUser";
 import getHometown from "../../../PlacesLived/utils/getHometown";
 import getCurrentCity from "../../../PlacesLived/utils/getCurrentCity";
 import formatDateMonthYear from "@/utils/dateHelpers/formatDateMonthYear";
 
 interface UseDetailsDisplayContentProps {
 	joined: string;
-	placesLived: PlaceLivedData[] | undefined;
+	placesLived: IPlaceLived[] | undefined;
 }
 
 const useDetailsDisplayContent = ({

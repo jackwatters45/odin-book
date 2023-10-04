@@ -1,11 +1,13 @@
 import { useParams } from "react-router";
-
-import useFormCustom, { DataMapper, DataValidator } from "@/hooks/useFormCustom";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { FormEvent } from "react";
 import { DeepPartial } from "react-hook-form";
+
+import useFormCustom, { DataMapper, DataValidator } from "@/hooks/useFormCustom";
 import useError from "@/components/Errors/useError";
-import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+import {
+	AudienceStatusOptions,
+	FormFieldsWithAudience,
+} from "@/types/AudienceSettingsTypes";
 
 interface UseUserAboutFormProps<T> {
 	handleCloseForm: () => void;

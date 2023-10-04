@@ -1,8 +1,8 @@
-import { PlaceLivedData } from "@/types/IUser";
+import { IPlaceLived } from "@/types/IUser";
 
 const getCurrentCity = (
-	placesLived: PlaceLivedData[] | undefined,
-): PlaceLivedData | undefined => {
+	placesLived: IPlaceLived[] | undefined,
+): IPlaceLived | undefined => {
 	return placesLived?.find((place) => place.type === "current");
 };
 

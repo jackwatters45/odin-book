@@ -1,7 +1,7 @@
-import { WorkData } from "@/types/IUser";
+import { IWork } from "../types/WorkTypes";
 
 interface FormatWorkData {
-	work: WorkData | undefined;
+	work: IWork | undefined;
 
 	includeCompany?: boolean;
 	includePosition?: boolean;

@@ -88,11 +88,6 @@ export const StyledDialog = styled.dialog`
 		font-size: 1.25rem;
 		font-weight: 700;
 	}
-
-	::backdrop {
-		background: white;
-		background: ${({ theme }) => theme.colors.backdrop};
-	}
 `;
 
 export const StyledTextInput = styled.label`

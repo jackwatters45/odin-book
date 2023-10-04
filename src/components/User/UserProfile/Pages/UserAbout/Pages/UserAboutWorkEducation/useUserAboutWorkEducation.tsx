@@ -1,4 +1,7 @@
-import { EducationData, IUser, WorkData } from "@/types/IUser";
+import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
+import { IUser } from "@/types/IUser";
+
 import { sortArrByStartEndDates } from "@/utils/dateHelpers/sortByStartEndDates";
 import { useOutletContext } from "react-router";
 
@@ -7,7 +10,7 @@ const useUserAboutWorkEducation = () => {
 
 	const audienceSettings = user.audienceSettings;
 
-	const workContent = sortArrByStartEndDates<WorkData>(user?.work)?.map((workData) => ({
+	const workContent = sortArrByStartEndDates<IWork>(user?.work)?.map((workData) => ({
 		audience: audienceSettings?.work?.[workData?._id] ?? "Public",
 		values: workData,
 	}));

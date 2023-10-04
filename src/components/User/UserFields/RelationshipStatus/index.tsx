@@ -1,1 +1,1 @@
-export { default } from "./AboutOverviewRelationship";
+export { default } from "./Relationship";

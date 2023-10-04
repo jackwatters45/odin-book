@@ -1,12 +1,11 @@
 import useFormCustom from "@/hooks/useFormCustom";
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
-import { UserAboutAudienceFormFields } from "@/types/IUser";
+import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import { FormEvent } from "react";
 import { useParams } from "react-router";
 
 interface useUserAboutAudienceProps {
 	audience: AudienceStatusOptions;
-	category: UserAboutAudienceFormFields;
+	category: AudienceFormFields;
 	itemId?: string;
 }
 

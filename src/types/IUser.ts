@@ -1,43 +1,44 @@
-import VALID_RELATIONSHIP_STATUSES_ARRAY from "@/components/User/UserFields/RelationshipStatus/types/validRelationshipStatuses";
-import AudienceStatusOptions from "./AudienceStatusOptions";
-import { IRelationshipStatus } from "../components/User/UserFields/RelationshipStatus/types/IRelationshipStatus";
+import { AudienceSettings } from "./AudienceSettingsTypes";
+import { IRelationshipStatus } from "../components/User/UserFields/RelationshipStatus/types/RelationshipTypes";
 import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
-import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembers";
-import { OtherNames } from "@/components/User/UserFields/OtherNames/types/OtherNames";
-import { INamePronunciation } from "@/components/User/UserFields/NamePronunciation/types/NamePronunciation";
+import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembersTypes";
+import { OtherNames } from "@/components/User/UserFields/OtherNames/types/OtherNamesTypes";
+import { INamePronunciation } from "@/components/User/UserFields/NamePronunciation/types/NamePronunciationTypes";
+import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
+import { IPlaceLived } from "@/components/User/UserFields/PlacesLived/types/PlacesLivedTypes";
+import { ISocialLinks } from "@/components/User/UserFields/SocialLinks/types/SocialLinksTypes";
+import { IntroData } from "./IntroTypes";
+import { PronounsType } from "@/components/User/UserFields/Pronouns/types/PronounsTypes";
 
 // Basic User Info
 export interface BasicUserInfo {
 	firstName: string;
 	lastName: string;
 	fullName: string;
-	email: string;
-	gender?: Gender;
 	birthday: Date;
-	pronouns?: "he/him" | "she/her" | "they/them";
-	avatarUrl?: string;
-	coverPhotoUrl?: string;
-	description?: string;
-	phoneNumber?: string;
 }
 
 export interface UserLoginData {
+	email: string;
+	phoneNumber?: string;
 	password?: string;
 	facebookId?: string;
 	googleId?: string;
 	githubId?: string;
 }
 
+type StandardLoginType = "email" | "phoneNumber";
 export interface UserVerificationData {
 	isVerified: boolean;
-	type: "email" | "phoneNumber";
+	type: StandardLoginType;
 	token?: string;
 	tokenExpires?: number;
 	code?: string;
 }
 
 export interface UserResetPasswordData {
-	type: "email" | "phoneNumber";
+	type: StandardLoginType;
 	token?: string;
 	tokenExpires?: number;
 	code?: string;
@@ -51,9 +52,11 @@ export interface UserActivityData {
 	friendRequestsReceived: string[];
 }
 
+type userType = "user" | "admin" | "guest";
+
 // User Deleted Data
 interface DeletedData {
-	deletedBy: string | undefined; // objectId
+	deletedBy: string; // objectId
 	deletedAt: Date;
 	email: string;
 	followerCount: number;
@@ -63,152 +66,36 @@ interface DeletedData {
 export interface UserSystemData {
 	createdAt: string;
 	updatedAt: string;
-	userType: "user" | "admin" | "guest";
+	userType: userType;
 	isDeleted: boolean;
-	deletedData?: DeletedData;
+	deletedData: DeletedData | undefined;
 	validUntil?: number;
-	refreshTokens: string[];
+	refreshTokens: string[] | undefined;
 }
-
-type IncludesStartEndDates = {
-	startYear: string | undefined;
-	startMonth: string | undefined;
-	startDay: string | undefined;
-	endYear: string | undefined;
-	endMonth: string | undefined;
-	endDay: string | undefined;
-};
-export interface WorkData extends IncludesStartEndDates {
-	_id: string;
-	company: string;
-	current: boolean;
-	position?: string;
-	city?: string;
-	description?: string;
-}
-
-export interface EducationData extends IncludesStartEndDates {
-	_id: string;
-	type: "college" | "high school";
-	school: string;
-	graduated: boolean;
-	degree?: string;
-	attendedFor?: "undergraduate" | "graduate school";
-	concentrations?: string[];
-	description?: string;
-}
-
-export type PlaceLivedType = "current" | "hometown" | "default";
-export interface PlaceLivedData extends IncludesStartEndDates {
-	_id: string;
-	type: PlaceLivedType;
-	city: string;
-	state: string;
-	country: string;
-}
-
-export const VALID_SOCIAL_PLATFORMS_ARRAY = [
-	"twitter",
-	"instagram",
-	"linkedin",
-	"youtube",
-	"github",
-	"snapchat",
-	"spotify",
-	"whatsapp",
-] as const;
-
-export type ValidSocialPlatformsType = (typeof VALID_SOCIAL_PLATFORMS_ARRAY)[number];
-export interface SocialLinksData {
-	_id: string;
-	platform: ValidSocialPlatformsType;
-	username: string;
-}
-
-export interface LifeEventData {
-	_id: string;
-	title: string;
-	date: string;
-}
-
-export type ValidRelationshipStatusesType =
-	(typeof VALID_RELATIONSHIP_STATUSES_ARRAY)[number];
-
-export type IntroField = Record<string, boolean>;
-export type IntroFieldAudience = Record<string, AudienceStatusOptions>;
-
-export interface IntroData {
-	pronouns: IntroField;
-	work: IntroField;
-	education: IntroField;
-	currentCity: IntroField;
-	hometown: IntroField;
-	relationshipStatus: IntroField;
-	namePronunciation: IntroField;
-	joined: IntroField;
-	websites: IntroFieldAudience;
-	socialLinks: IntroFieldAudience;
-}
-
-export type AudienceSettingsField = "Public" | "Friends" | "Only Me";
-
-type AudienceStatusMultiple = { [key: string]: AudienceSettingsField };
-
-export interface AudienceSettings {
-	currentCity: AudienceSettingsField;
-	hometown: AudienceSettingsField;
-	relationshipStatus: AudienceSettingsField;
-	phoneNumber: AudienceSettingsField;
-	email: AudienceSettingsField;
-	gender: AudienceSettingsField;
-	pronouns: AudienceSettingsField;
-	birthday: AudienceSettingsField;
-	languages: AudienceSettingsField;
-	aboutYou: AudienceSettingsField;
-	namePronunciation: AudienceSettingsField;
-	favoriteQuotes: AudienceSettingsField;
-
-	// multiple
-	otherNames: AudienceStatusMultiple;
-	familyMembers: AudienceStatusMultiple;
-	socialLinks: AudienceStatusMultiple;
-	websites: AudienceStatusMultiple;
-	work: AudienceStatusMultiple;
-	education: AudienceStatusMultiple;
-	placesLived: AudienceStatusMultiple;
-}
-
-type AllKeys<T> = keyof T | `${Extract<keyof T, string>}.${string}`;
-
-export type UserAboutAudienceFormFields = AllKeys<AudienceSettings>;
 
 // User About Data
 export interface UserAboutData {
-	work?: WorkData[];
-	education?: EducationData[];
-	placesLived?: PlaceLivedData[];
-	websites?: string[];
-	socialLinks?: SocialLinksData[];
-
-	relationshipStatus?: IRelationshipStatus;
-
-	languages: string[];
-
-	intro: IntroData;
-
+	aboutYou: string | undefined;
+	avatarUrl: string | undefined;
 	audienceSettings: AudienceSettings;
-
-	familyMembers?: FamilyMember[];
-
-	bio?: string;
-	hobbies?: string[];
-
-	taggedPosts?: string[];
-
-	aboutYou?: string;
-	namePronunciation?: INamePronunciation;
-	otherNames: OtherNames;
-	favoriteQuotes?: string;
+	bio: string | undefined;
+	coverPhotoUrl: string | undefined;
+	education: EducationData[] | undefined;
+	familyMembers: FamilyMember[] | undefined;
+	favoriteQuotes: string | undefined;
+	gender: Gender | undefined;
+	hobbies: string[] | undefined;
+	intro: IntroData | undefined;
+	languages: string[] | undefined;
+	namePronunciation: INamePronunciation | undefined;
+	otherNames: OtherNames | undefined;
+	placesLived: IPlaceLived[] | undefined;
+	pronouns: PronounsType | undefined;
+	relationshipStatus: IRelationshipStatus | undefined;
+	socialLinks: ISocialLinks[] | undefined;
+	taggedPosts: string[] | undefined;
+	websites: string[] | undefined;
+	work: IWork[] | undefined;
 }
 
 export interface IUser

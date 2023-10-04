@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import renderFormErrors from "@/utils/renderFormErrors";
+import renderFormErrors from "@/utils/render/renderFormErrors";
 import { validatePassword } from "../../utils/validationHelpers";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 import useChooseNewPassword from "./useChooseNewPassword";

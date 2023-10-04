@@ -12,7 +12,7 @@ export const FormContentContainer = styled.div`
 	flex-direction: column;
 	gap: 2rem;
 	overflow-y: auto;
-	max-height: 612px; // TODO
+	max-height: 612px;
 `;
 
 export const SectionContainer = styled.div`

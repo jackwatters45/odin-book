@@ -9,12 +9,14 @@ import {
 	StyledUserPostsRightColumn,
 	StyledUserPostsLeftColumn,
 } from "./UserPosts.styles";
-import UserPhotos from "./UserPhotosPreview";
+import UserPhotos from "../../../UserFields/Photos/UserPhotosPreview";
 import Loading from "@/components/Shared/Loading";
 import UserPostsDisplay from "./UserPostsDisplay";
 
-const UserFriends = lazy(() => import("./UserFriends"));
-const UserLifeEvents = lazy(() => import("./UserLifeEvents"));
+const UserFriends = lazy(() => import("../../../UserFields/Friends/FriendsPreview"));
+const UserLifeEvents = lazy(
+	() => import("../../../UserFields/LifeEvents/LifeEventsPreview"),
+);
 
 const UserPosts = () => {
 	const { user, top, leftSidebarRef } = useUserPosts();

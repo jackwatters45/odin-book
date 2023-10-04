@@ -1,9 +1,9 @@
-import EmptyUserAboutCurrentCity from "@/components/User/UserFields/PlacesLived/EmptyUserOverviewComponent/EmptyUserAboutCurrentCity";
-import EmptyUserAboutHometown from "@/components/User/UserFields/PlacesLived/EmptyUserOverviewComponent/EmptyUserAboutHometown";
-import EmptyUserAboutPlacesLived from "@/components/User/UserFields/PlacesLived/EmptyUserOverviewComponent/EmptyUserAboutPlacesLived";
-import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewCurrentCity";
-import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewHometown";
-import AboutOverviewPlacesLived from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewPlacesLived";
+import EmptyUserAboutCurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity/Empty/EmptyCurrentCity";
+import EmptyUserAboutHometown from "@/components/User/UserFields/PlacesLived/Hometown/Empty/EmptyHometown";
+import EmptyUserAboutPlacesLived from "@/components/User/UserFields/PlacesLived/Empty/EmptyPlacesLived";
+import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity/AboutOverviewCurrentCity";
+import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/Hometown/Hometown";
+import AboutOverviewPlacesLived from "@/components/User/UserFields/PlacesLived/PlacesLived";
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutPlacesLived from "./useUserAboutPlacesLived";
 

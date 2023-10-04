@@ -1,1 +1,1 @@
-export { default } from "./WorkUserOverviewItem";
+export { default } from "./Work";

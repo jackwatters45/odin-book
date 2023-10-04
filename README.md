@@ -32,4 +32,3 @@
 ## eventually / possible improvements
 
 - best way to upload shit to npm and build for prod
-- for edit profile -> implement featured

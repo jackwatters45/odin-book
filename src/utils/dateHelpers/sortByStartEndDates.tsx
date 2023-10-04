@@ -1,15 +1,7 @@
-import convertDayMonthYearToDate from "../convertDayMonthYearToDate";
+import { IncludesStartEndDates } from "@/types/IncludesDates";
+import convertDayMonthYearToDate from "./convertDayMonthYearToDate";
 
-interface HasDates {
-	startYear?: string;
-	startMonth?: string;
-	startDay?: string;
-	endYear?: string;
-	endMonth?: string;
-	endDay?: string;
-}
-
-const sortByStartEndDates = <T extends HasDates>(a: T, b: T): number => {
+const sortByStartEndDates = <T extends IncludesStartEndDates>(a: T, b: T): number => {
 	const aEndDate = convertDayMonthYearToDate(a.endYear, a.endMonth, a.endDay);
 	const bEndDate = convertDayMonthYearToDate(b.endYear, b.endMonth, b.endDay);
 
@@ -29,14 +21,14 @@ const sortByStartEndDates = <T extends HasDates>(a: T, b: T): number => {
 };
 
 export const sortArrByStartEndDates = <T extends object>(
-	arr: (T & HasDates)[] | undefined,
+	arr: (T & IncludesStartEndDates)[] | undefined,
 ) => {
 	if (!arr) return undefined;
 	return arr.sort(sortByStartEndDates);
 };
 
 const getItemFromSortedArr = <T extends object>(
-	arr: (T & HasDates)[] | undefined,
+	arr: (T & IncludesStartEndDates)[] | undefined,
 	index: number,
 ) => {
 	if (!arr) return undefined;
@@ -44,13 +36,13 @@ const getItemFromSortedArr = <T extends object>(
 };
 
 export const getMostRecentItemFromArr = <T extends object>(
-	arr: (T & HasDates)[] | undefined,
+	arr: (T & IncludesStartEndDates)[] | undefined,
 ) => {
 	return getItemFromSortedArr(arr, 0);
 };
 
 export const getSecondMostRecentItemFromArr = <T extends object>(
-	arr: (T & HasDates)[] | undefined,
+	arr: (T & IncludesStartEndDates)[] | undefined,
 ) => {
 	return getItemFromSortedArr(arr, 1);
 };

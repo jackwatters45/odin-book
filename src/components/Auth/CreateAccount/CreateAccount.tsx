@@ -4,7 +4,7 @@ import {
 	validatePassword,
 } from "../utils/validationHelpers";
 import { monthOptions, getDaysInMonth } from "../../../utils/dateHelpers";
-import renderFormErrors from "../../../utils/renderFormErrors";
+import renderFormErrors from "../../../utils/render/renderFormErrors";
 
 const CreateAccount = () => {
 	const {

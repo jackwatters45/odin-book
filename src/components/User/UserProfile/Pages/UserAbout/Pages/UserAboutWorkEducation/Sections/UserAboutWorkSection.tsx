@@ -1,12 +1,12 @@
-import { WorkData } from "@/types/IUser";
 import UserAboutWorkEducationSection, {
 	UserAboutWorkEducationSectionContent,
 } from "./UserAboutEducationSection/UserAboutWorkEducationSection";
-import WorkUserOverviewForm from "../../../../../../UserFields/Work/form/WorkUserOverviewForm";
-import WorkUserOverviewItem from "../../../../../../UserFields/Work/WorkUserOverviewItem";
+import WorkForm from "@/components/User/UserFields/Work/Form/WorkForm";
+import Work from "@/components/User/UserFields/Work";
+import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
 
 interface UserAboutWorkSectionProps {
-	content: UserAboutWorkEducationSectionContent<WorkData>[] | undefined;
+	content: UserAboutWorkEducationSectionContent<IWork>[] | undefined;
 }
 
 const UserAboutWorkSection = ({ content }: UserAboutWorkSectionProps) => {
@@ -14,8 +14,8 @@ const UserAboutWorkSection = ({ content }: UserAboutWorkSectionProps) => {
 		<UserAboutWorkEducationSection
 			fieldName={"work"}
 			content={content}
-			NewFormComponent={WorkUserOverviewForm}
-			ExistingFormComponent={WorkUserOverviewItem}
+			NewFormComponent={WorkForm}
+			ExistingFormComponent={Work}
 		/>
 	);
 };

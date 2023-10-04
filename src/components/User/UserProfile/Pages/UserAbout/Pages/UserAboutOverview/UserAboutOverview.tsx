@@ -1,12 +1,11 @@
-import useUserAboutOverview from "./useUserAboutOverview";
-
-import AboutOverviewWork from "../../../../../UserFields/Work";
-import AboutOverviewEducation from "./UserAboutOverviewItems/Sections/Education/OverviewItem";
-import AboutOverviewRelationship from "../../../../../UserFields/RelationshipStatus";
-import AboutOverviewPhoneNumber from "../../../../../UserFields/PhoneNumber";
+import Work from "@/components/User/UserFields/Work";
 import { StyledUserAboutOverview } from "./UserAboutOverview.styles";
-import AboutOverviewCurrentCity from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewCurrentCity";
-import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/UserAboutComponents/AboutOverviewHometown";
+import useUserAboutOverview from "./useUserAboutOverview";
+import CurrentCity from "@/components/User/UserFields/PlacesLived/CurrentCity";
+import Hometown from "@/components/User/UserFields/PlacesLived/Hometown";
+import Relationship from "@/components/User/UserFields/RelationshipStatus/Relationship";
+import PhoneNumber from "@/components/User/UserFields/PhoneNumber";
+import EducationBoth from "@/components/User/UserFields/Education/EducationBoth";
 
 const UserAboutOverview = () => {
 	const {
@@ -27,25 +26,16 @@ const UserAboutOverview = () => {
 
 	return (
 		<StyledUserAboutOverview>
-			<AboutOverviewWork
+			<Work
 				initialValues={mostRecentWork}
 				pastCompany={pastCompany}
 				audience={mostRecentWorkAudience}
 			/>
-			<AboutOverviewEducation education={education} audience={educationAudience} />
-			<AboutOverviewCurrentCity
-				currentCity={currentCity}
-				audience={currentCityAudience}
-			/>
-			<AboutOverviewHometown hometown={hometown} audience={hometownAudience} />
-			<AboutOverviewRelationship
-				relationship={relationship}
-				audience={relationshipStatusAudience}
-			/>
-			<AboutOverviewPhoneNumber
-				phoneNumber={phoneNumber}
-				audience={phoneNumberAudience}
-			/>
+			<EducationBoth education={education} audience={educationAudience} />
+			<CurrentCity currentCity={currentCity} audience={currentCityAudience} />
+			<Hometown hometown={hometown} audience={hometownAudience} />
+			<Relationship relationship={relationship} audience={relationshipStatusAudience} />
+			<PhoneNumber phoneNumber={phoneNumber} audience={phoneNumberAudience} />
 		</StyledUserAboutOverview>
 	);
 };

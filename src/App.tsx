@@ -8,9 +8,9 @@ import { useColorTheme } from "./styles/theme/useColorTheme";
 import "./styles/reset.css";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 
-function App() {
-	const queryClient = new QueryClient();
+const queryClient = new QueryClient();
 
+function App() {
 	const colorTheme = useColorTheme();
 
 	return (

@@ -1,10 +1,12 @@
 import { FormEvent, ReactNode } from "react";
 
-import AudienceStatusOptions from "@/types/AudienceStatusOptions";
 import { StyledAboutOverviewDialogActions } from "./StandardUserOverviewForm.styles";
 import AudienceRadio from "@/components/Shared/AudienceRadio";
 import { Control, UseFormSetValue } from "react-hook-form";
-import { FormFieldsWithAudience } from "@/types/FormFieldsWithAudience";
+import {
+	AudienceStatusOptions,
+	FormFieldsWithAudience,
+} from "@/types/AudienceSettingsTypes";
 
 export interface StandardUserOverviewFormProps<T> {
 	initial: FormFieldsWithAudience<T> | undefined;

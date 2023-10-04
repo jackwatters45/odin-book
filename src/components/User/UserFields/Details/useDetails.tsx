@@ -2,14 +2,14 @@ import { FormEvent } from "react";
 
 import useFormCustom from "@/hooks/useFormCustom";
 import useDialog from "@/hooks/useDialog";
-import DetailsFormFields from "@/types/DetailsFormFields";
-import getDefaultFormStateDetails from "@/components/User/UserFields/Details/EditDetailsForm/getDefaultFormFieldsDetails";
+import DetailsFormFields from "@/components/User/UserFields/Details/types/DetailsTypes";
+import getDefaultFormStateDetails from "@/components/User/UserFields/Details/utils/getDefaultFormFieldsDetails";
 import { IUser } from "@/types/IUser";
-import flattenAndCheckForTrueOrPublic from "@/utils/flattenAndCheckForTrue";
+import flattenAndCheckForTrueOrPublic from "@/utils/other/flattenAndCheckForTrue";
 
 interface UseDetailsProps {
 	user: IUser;
-	closeParentDialog: () => void;
+	closeParentDialog: (() => void) | undefined;
 }
 
 const useDetails = ({ user, closeParentDialog }: UseDetailsProps) => {
@@ -43,7 +43,7 @@ const useDetails = ({ user, closeParentDialog }: UseDetailsProps) => {
 
 	const closeAllDialogs = () => {
 		closeDialog();
-		closeParentDialog();
+		if (closeParentDialog) closeParentDialog();
 	};
 
 	return {

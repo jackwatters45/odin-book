@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import renderFormErrors from "@/utils/renderFormErrors";
+import renderFormErrors from "@/utils/render/renderFormErrors";
 import { validateUsernameForReactHookForm } from "../../utils/validationHelpers";
 import ForgotPasswordNav from "../ForgotPasswordNav";
 import useFindYourAccount from "./useFindYourAccount";

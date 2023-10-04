@@ -1,7 +1,4 @@
-import { IHobby } from "@/types/IHobby";
-
-export const defaultUserAvatar =
-	"https://res.cloudinary.com/drheg5d7j/image/upload/v1693427762/odin-book/defaultUserAvatar_fuzkmd.png";
+import { IHobby } from "@/components/User/UserFields/Hobbies/types/HobbyTypes";
 
 export const defaultHobbies: IHobby[] = [
 	{ name: "Traveling", emoji: "🌍" },
