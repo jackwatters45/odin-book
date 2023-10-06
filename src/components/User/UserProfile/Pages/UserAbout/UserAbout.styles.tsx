@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const StyledUserProfileContentContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	padding: 1rem;
-	gap: 1rem;
-	align-items: center;
-	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-	width: 100%;
-`;
-
 export const StyledUserAboutSectionContainer = styled.div`
 	width: 100%;
 	background-color: #ffffff;

@@ -1,9 +1,9 @@
 # vite-react-ts-linting
 
-- user
+- posts
 
-  - profile
-  - settings
+  - user posts page
+  - user photos page
 
 - style auth pages
 - check that login guest is working well
@@ -18,11 +18,7 @@
   - delete
   - view
 
-- businesses
 - notifications
-- sidebar
-  - left
-  - right
 
 ## keep eye on
 
@@ -31,4 +27,5 @@
 
 ## eventually / possible improvements
 
+- businesses
 - best way to upload shit to npm and build for prod

@@ -9,14 +9,12 @@ const useMoreOptions = ({ deleteMutation }: UseMoreOptionsProps) => {
 		isModal: false,
 	});
 
-	const isUsingDialog = !!deleteMutation;
-
 	const handleDelete = () => {
 		deleteMutation?.();
 		closeDialog();
 	};
 
-	return { ref, openDialog, isUsingDialog, handleDelete };
+	return { ref, openDialog, handleDelete };
 };
 
 export default useMoreOptions;

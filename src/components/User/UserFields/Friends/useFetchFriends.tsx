@@ -1,16 +1,11 @@
 import useQueryCustom from "@/hooks/useQueryCustom";
 import { useParams } from "react-router";
+import { IFriendsDisplay } from "./types/FriendsTypes";
 
-export type UserFriendPreview = {
-	id: string;
-	fullName: string;
-	avatarUrl: string;
-}[];
-
-const useUserFriendsPreview = () => {
+const useFetchFriends = () => {
 	const { id: userId } = useParams<{ id: string }>();
 
-	const { data: friends } = useQueryCustom<UserFriendPreview>({
+	const { data: friends } = useQueryCustom<IFriendsDisplay>({
 		queryUrl: `users/${userId}/friends?limit=9`,
 		queryKey: ["user", userId, "friends"],
 	});
@@ -21,4 +16,4 @@ const useUserFriendsPreview = () => {
 	};
 };
 
-export default useUserFriendsPreview;
+export default useFetchFriends;

@@ -1,4 +1,4 @@
-import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 import UserAboutWorkEducationSection, {
 	UserAboutWorkEducationSectionContent,
 } from "./UserAboutEducationSection/UserAboutWorkEducationSection";
@@ -7,7 +7,7 @@ import Education from "@/components/User/UserFields/Education";
 
 interface UserAboutEducationSectionProps {
 	fieldName: "high school" | "college";
-	content: UserAboutWorkEducationSectionContent<EducationData>[] | undefined;
+	content: UserAboutWorkEducationSectionContent<IEducation>[] | undefined;
 }
 
 const UserAboutEducationSection = ({

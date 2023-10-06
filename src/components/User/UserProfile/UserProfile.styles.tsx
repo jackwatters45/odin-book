@@ -19,3 +19,13 @@ export const OutletWrapper = styled.div`
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
 	flex-grow: 1;
 `;
+
+export const StyledUserProfileContentContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	gap: 1rem;
+	align-items: center;
+	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+	width: 100%;
+`;

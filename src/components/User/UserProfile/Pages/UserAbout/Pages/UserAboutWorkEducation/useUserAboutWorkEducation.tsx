@@ -1,4 +1,4 @@
-import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
 import { IUser } from "@/types/IUser";
 
@@ -15,9 +15,9 @@ const useUserAboutWorkEducation = () => {
 		values: workData,
 	}));
 
-	const sortedEducationHistory = sortArrByStartEndDates<EducationData>(user?.education);
+	const sortedEducationHistory = sortArrByStartEndDates<IEducation>(user?.education);
 
-	const filterEducationByType = (type: EducationData["type"]) =>
+	const filterEducationByType = (type: IEducation["type"]) =>
 		sortedEducationHistory
 			?.filter((educationData) => educationData.type === type)
 			.map((educationData) => ({

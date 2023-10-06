@@ -1,5 +1,5 @@
 import convertDayMonthYearToDate from "@/utils/dateHelpers/convertDayMonthYearToDate";
-import { EducationData } from "../types/EducationTypes";
+import { IEducation } from "../types/EducationTypes";
 
 const isFutureDate = (date: Date | string | undefined): boolean => {
 	if (!date) return true;
@@ -12,7 +12,7 @@ const isFutureDate = (date: Date | string | undefined): boolean => {
 };
 
 interface FormatEducationAttendingDatesProps {
-	education: EducationData | undefined;
+	education: IEducation | undefined;
 	includeSchool?: boolean;
 	includeFieldOfStudy?: boolean;
 }
@@ -75,7 +75,7 @@ const formatEndDateOnly = (
 		? `Graduated in ${formattedEndDate}`
 		: `Left in ${formattedEndDate}`;
 
-export const formatEducationAttendingDates = (education: EducationData | undefined) => {
+export const formatEducationAttendingDates = (education: IEducation | undefined) => {
 	if (!education) return "";
 
 	const startDate = convertDayMonthYearToDate(

@@ -1,7 +1,7 @@
 import UserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty";
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import { mdiBookAccount } from "@mdi/js";
+import { mdiCommentQuote } from "@mdi/js";
 import FavoriteQuotesForm from "./Form";
 
 interface FavoriteQuotesProps {
@@ -26,7 +26,7 @@ const FavoriteQuotes = ({
 			categoryDisplayName="Favorite Quotes"
 			addText={"Add your favorite quotes"}
 			isEditing={isEditing}
-			icon={mdiBookAccount}
+			icon={mdiCommentQuote}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
 			includeAddDetailLink={includeAddDetailLink}

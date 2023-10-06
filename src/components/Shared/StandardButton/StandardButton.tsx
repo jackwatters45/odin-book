@@ -13,7 +13,13 @@ export interface StandardButtonProps extends HTMLAttributes<HTMLElement> {
 	iconColor?: string;
 	showText?: boolean;
 	disabled?: boolean;
-	colorClass?: "standard" | "blue" | "overlay" | "light-blue" | "transparent";
+	colorClass?:
+		| "standard"
+		| "blue"
+		| "overlay"
+		| "light-blue"
+		| "transparent"
+		| "transparent-blue";
 	type?: "button" | "submit" | "reset";
 }
 

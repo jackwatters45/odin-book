@@ -5,21 +5,23 @@ import useUserAbout from "./useUserAbout";
 import {
 	StyledUserAboutRightColumn,
 	StyledUserAboutSectionContainer,
-	StyledUserProfileContentContainer,
 } from "./UserAbout.styles";
+import Photos from "@/components/User/UserProfile/Pages/UserPhotos";
 
 const UserAbout = () => {
 	const { user } = useUserAbout();
 
 	return (
-		<StyledUserProfileContentContainer>
+		<>
 			<StyledUserAboutSectionContainer>
 				<UserAboutNav />
 				<StyledUserAboutRightColumn>
 					<Outlet context={{ user }} />
 				</StyledUserAboutRightColumn>
 			</StyledUserAboutSectionContainer>
-		</StyledUserProfileContentContainer>
+			{/* TODO how to actually render the others + manage button state */}
+			<Photos />
+		</>
 	);
 };
 

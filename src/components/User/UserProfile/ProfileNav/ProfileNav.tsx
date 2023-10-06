@@ -4,18 +4,25 @@ import {
 	StyledProfileLink,
 	StyledProfileNavContainer,
 } from "./ProfileNav.styles";
+import { useMatch } from "react-router";
 
 const ProfileNav = () => {
+	const isRoot = !!useMatch("/user/:id/");
+	const isAbout = !!useMatch("/user/:id/about/*");
+	const isFriends = !!useMatch("/user/:id/friends/*");
+	const isPhotos = !!useMatch("/user/:id/photos/*");
+	const isVideos = !!useMatch("/user/:id/videos/*");
+	const isCheckIns = !!useMatch("/user/:id/check-ins/*");
+
 	return (
 		<StyledProfileNavContainer>
 			<StyledProfileNavContents>
-				<StyledProfileLink to={""} text="Posts" />
-				<StyledProfileLink to={"about/"} text="About" />
-				<StyledProfileLink to={"friends/"} text="Friends" />
-				<StyledProfileLink to={"photos/"} text="Photos" />
-				<StyledProfileLink to={"videos/"} text="Videos" />
-				<StyledProfileLink to={"check-ins/"} text="Check-ins" />
-				<StyledProfileLink to={"more/"} text="More" />
+				<StyledProfileLink to={""} text="Posts" isActive={isRoot} end={true} />
+				<StyledProfileLink to={"about/"} text="About" isActive={isAbout} />
+				<StyledProfileLink to={"friends/"} text="Friends" isActive={isFriends} />
+				<StyledProfileLink to={"photos/"} text="Photos" isActive={isPhotos} />
+				<StyledProfileLink to={"videos/"} text="Videos" isActive={isVideos} />
+				<StyledProfileLink to={"check-ins/"} text="Check-ins" isActive={isCheckIns} />
 			</StyledProfileNavContents>
 			<StyledNavShadow />
 		</StyledProfileNavContainer>

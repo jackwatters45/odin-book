@@ -21,6 +21,7 @@ const StyledStandardButtonStyles = css`
 
 	font-size: 0.95rem;
 	font-weight: 600;
+	line-height: normal;
 
 	transition: all 0.2s ease-in-out;
 	background-color: ${({ theme }) => theme.colors.primaryButton};
@@ -71,6 +72,11 @@ const StyledStandardButtonStyles = css`
 
 	&.transparent {
 		background-color: transparent;
+	}
+
+	&.transparent-blue {
+		background-color: transparent;
+		color: ${({ theme }) => theme.colors.blueButton};
 	}
 `;
 

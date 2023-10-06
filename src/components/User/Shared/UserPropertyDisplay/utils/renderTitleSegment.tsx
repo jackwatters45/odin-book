@@ -1,4 +1,4 @@
-import { StyledUserAboutOverviewLink } from "../UserPropertyDisplay.styles";
+import { StyledUserPropertyDisplayLink } from "../UserPropertyDisplay.styles";
 import ITitleSegment from "../types/ITitleSegment";
 
 const renderTitleSegment = (segment: ITitleSegment) => {
@@ -10,9 +10,9 @@ const renderTitleSegment = (segment: ITitleSegment) => {
 		case "link":
 			return (
 				<strong>
-					<StyledUserAboutOverviewLink to={segment.linkTo}>
+					<StyledUserPropertyDisplayLink to={segment.linkTo}>
 						{segment.content}
-					</StyledUserAboutOverviewLink>
+					</StyledUserPropertyDisplayLink>
 				</strong>
 			);
 	}

@@ -9,11 +9,11 @@ import {
 	StyledUserPostsRightColumn,
 	StyledUserPostsLeftColumn,
 } from "./UserPosts.styles";
-import UserPhotos from "../../../UserFields/Photos/UserPhotosPreview";
+import UserPhotos from "./PhotosPreview";
 import Loading from "@/components/Shared/Loading";
 import UserPostsDisplay from "./UserPostsDisplay";
 
-const UserFriends = lazy(() => import("../../../UserFields/Friends/FriendsPreview"));
+const UserFriends = lazy(() => import("./FriendsPreview"));
 const UserLifeEvents = lazy(
 	() => import("../../../UserFields/LifeEvents/LifeEventsPreview"),
 );

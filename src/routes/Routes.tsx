@@ -29,6 +29,7 @@ import UserAboutPlacesLived from "@/components/User/UserProfile/Pages/UserAbout/
 import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutBasicInfo";
 import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily/UserAboutRelationshipFamily";
 import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
+import UserFriends from "@/components/User/UserProfile/Pages/UserFriends";
 
 const RoutesComponent = () => {
 	return (
@@ -62,12 +63,21 @@ const RoutesComponent = () => {
 								/>
 								<Route path="details" element={<UserAboutDetails />} />
 							</Route>
+							<Route path="photos" element={<UserPhotos />}>
+								<Route path="of" element={<UserPhotos />} />
+								<Route path="by" element={<UserPhotos />} />
+							</Route>
+							<Route path="friends" element={<UserFriends />}>
+								<Route path="all" element={<UserFriends />} />
+								<Route path="mutual" element={<UserFriends />} />
+								<Route path="college" element={<UserFriends />} />
+								<Route path="current-city" element={<UserFriends />} />
+								<Route path="hometown" element={<UserFriends />} />
+							</Route>
+							<Route path="videos" element={<>Videos</>} />
+							<Route path="check-ins" element={<>Check-ins</>} />
+							<Route path="more" element={<>more</>} />
 						</Route>
-						<Route path="friends" element={<>Friends</>} />
-						<Route path="photos" element={<UserPhotos />} />
-						<Route path="videos" element={<>Videos</>} />
-						<Route path="check-ins" element={<>Check-ins</>} />
-						<Route path="more" element={<>more</>} />
 					</Route>
 
 					<Route element={<AdminRoute />}></Route>

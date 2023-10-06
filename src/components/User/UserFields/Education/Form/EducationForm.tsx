@@ -9,13 +9,13 @@ import useEducationForm from "./useEducationForm";
 import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
 import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
 import AboutOverviewRadioInput from "@/components/Shared/RadioInput/AboutOverviewRadioInput";
-import { EducationData } from "../types/EducationTypes";
+import { IEducation } from "../types/EducationTypes";
 
 interface EducationFormProps {
 	audience: AudienceStatusOptions;
-	initialValues: EducationData | undefined;
+	initialValues: IEducation | undefined;
 	handleCloseForm: () => void;
-	formType: EducationData["type"];
+	formType: IEducation["type"];
 }
 
 const EducationForm = ({

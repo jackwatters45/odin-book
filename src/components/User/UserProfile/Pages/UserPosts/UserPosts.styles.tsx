@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const UserPostsContainer = styled.div`
 	display: flex;
-	padding: 1rem;
 	gap: 1rem;
 	justify-content: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};

@@ -1,4 +1,4 @@
-import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 import convertDayMonthYearToDate from "@/utils/dateHelpers/convertDayMonthYearToDate";
 
 const isFutureDate = (date: Date | string | undefined): boolean => {
@@ -12,7 +12,7 @@ const isFutureDate = (date: Date | string | undefined): boolean => {
 };
 
 interface FormatEducationAttendingDatesProps {
-	education: EducationData | undefined;
+	education: IEducation | undefined;
 	includeSchool?: boolean;
 	includeFieldOfStudy?: boolean;
 }
@@ -75,7 +75,7 @@ const formatEndDateOnly = (
 		? `Graduated in ${formattedEndDate}`
 		: `Left in ${formattedEndDate}`;
 
-export const formatEducationAttendingDates = (education: EducationData | undefined) => {
+export const formatEducationAttendingDates = (education: IEducation | undefined) => {
 	if (!education) return "";
 
 	const startDate = convertDayMonthYearToDate(

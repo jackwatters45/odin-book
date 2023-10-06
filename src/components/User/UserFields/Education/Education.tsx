@@ -4,12 +4,12 @@ import { formatEducationAttendingDates } from "@/components/User/UserFields/Educ
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewForm from "./Form/EducationForm";
 import useAboutOverviewEducation from "./useEducation";
-import { EducationData } from "./types/EducationTypes";
+import { IEducation } from "./types/EducationTypes";
 
 interface EducationProps {
-	initialValues: EducationData | undefined;
+	initialValues: IEducation | undefined;
 	audience: AudienceStatusOptions;
-	formType: EducationData["type"];
+	formType: IEducation["type"];
 	includeAddDetailLink?: boolean;
 }
 

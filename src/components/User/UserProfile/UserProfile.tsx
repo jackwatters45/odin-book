@@ -9,6 +9,7 @@ import {
 	OutletWrapper,
 	ProfileBottomBorder,
 	ProfileContainer,
+	StyledUserProfileContentContainer,
 } from "./UserProfile.styles";
 
 const UserProfile = () => {
@@ -28,7 +29,9 @@ const UserProfile = () => {
 			</ProfileBottomBorder>
 			<OutletWrapper>
 				<MaxWidthContainer>
-					<Outlet context={{ user }} />
+					<StyledUserProfileContentContainer>
+						<Outlet context={{ user }} />
+					</StyledUserProfileContentContainer>
 				</MaxWidthContainer>
 			</OutletWrapper>
 		</ProfileContainer>

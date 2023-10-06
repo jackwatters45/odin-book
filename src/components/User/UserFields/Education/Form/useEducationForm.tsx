@@ -2,16 +2,16 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import useUserForm from "../../../Shared/UserForm/useUserForm";
 import useTimePeriod from "@/components/Shared/TimePeriod/useTimePeriod";
 import {
-	EducationData,
+	IEducation,
 	EducationFormFields,
 	EducationWithConcentrations,
 } from "../types/EducationTypes";
 
 interface useEducationFormProps {
 	audience: AudienceStatusOptions;
-	initialValues: EducationData | undefined;
+	initialValues: IEducation | undefined;
 	handleCloseForm: () => void;
-	formType?: EducationData["type"];
+	formType?: IEducation["type"];
 }
 
 const useEducationForm = ({

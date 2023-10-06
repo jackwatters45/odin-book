@@ -33,6 +33,10 @@ export const StyledProfileLink = styled(NavLink)`
 			}
 		}
 
+		a.active {
+			color: ${({ theme }) => theme.colors.selectedBlue};
+		}
+
 		a.active::after {
 			content: "";
 			position: absolute;
@@ -41,7 +45,6 @@ export const StyledProfileLink = styled(NavLink)`
 			left: 0;
 			bottom: 0;
 			border-bottom: 3px solid ${({ theme }) => theme.colors.selectedBlue};
-			color: ${({ theme }) => theme.colors.selectedBlue};
 			margin-bottom: -5px;
 			border-radius: 0;
 		}

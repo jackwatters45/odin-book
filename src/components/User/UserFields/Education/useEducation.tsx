@@ -1,9 +1,9 @@
 import { formatEducationTitle } from "@/components/User/UserFields/Education/utils/formatEducationData";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
-import { EducationData } from "./types/EducationTypes";
+import { IEducation } from "./types/EducationTypes";
 
 interface useEducationProps {
-	education: EducationData | undefined;
+	education: IEducation | undefined;
 }
 
 const useEducation = ({ education }: useEducationProps) => {

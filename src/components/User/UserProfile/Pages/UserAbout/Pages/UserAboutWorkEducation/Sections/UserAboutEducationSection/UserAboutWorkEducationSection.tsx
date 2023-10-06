@@ -7,7 +7,7 @@ import useUserAboutWorkEducationSection from "./useUserAboutWorkEducationSection
 import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSection.styles";
 import { BoldText } from "@/styles/SharedStyles";
 import AddUserProperty from "@/components/User/Shared/AddUserProperty/AddUserProperty";
-import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 
 export interface UserAboutWorkEducationSectionContent<T> {
 	audience: AudienceStatusOptions;
@@ -17,7 +17,7 @@ export interface UserAboutWorkEducationSectionContent<T> {
 interface SharedFormProps {
 	audience: AudienceStatusOptions;
 	handleCloseForm: () => void;
-	formType: EducationData["type"];
+	formType: IEducation["type"];
 }
 
 interface NewFormProps extends SharedFormProps {
@@ -30,7 +30,7 @@ interface ExistingFormProps<T> extends SharedFormProps {
 
 interface UserAboutWorkEducationSectionProps<T> {
 	content: UserAboutWorkEducationSectionContent<T>[] | undefined;
-	fieldName: EducationData["type"] | "work";
+	fieldName: IEducation["type"] | "work";
 	NewFormComponent: FC<NewFormProps>;
 	ExistingFormComponent: FC<ExistingFormProps<T>>;
 }
@@ -56,7 +56,7 @@ const UserAboutWorkEducationSection = <T,>({
 						audience={"Public"}
 						initialValues={undefined}
 						handleCloseForm={handleCloseForm}
-						formType={formType as EducationData["type"]}
+						formType={formType as IEducation["type"]}
 					/>
 				}
 			/>
@@ -67,7 +67,7 @@ const UserAboutWorkEducationSection = <T,>({
 						audience={audience}
 						initialValues={values}
 						handleCloseForm={handleCloseForm}
-						formType={formType as EducationData["type"]}
+						formType={formType as IEducation["type"]}
 					/>
 				))}
 		</StyledUserAboutWorkEducationSection>

@@ -1,7 +1,7 @@
 import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
 import { IncludesStartEndDates } from "@/types/IncludesDates";
 
-export interface EducationData extends IncludesStartEndDates {
+export interface IEducation extends IncludesStartEndDates {
 	_id: string;
 	type: "college" | "high school";
 	school: string;
@@ -12,7 +12,7 @@ export interface EducationData extends IncludesStartEndDates {
 	description?: string;
 }
 
-export type EducationWithConcentrations = EducationData & {
+export type EducationWithConcentrations = IEducation & {
 	concentrations1: string | undefined;
 	concentrations2: string | undefined;
 	concentrations3: string | undefined;

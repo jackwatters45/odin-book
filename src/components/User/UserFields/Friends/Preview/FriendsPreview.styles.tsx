@@ -13,10 +13,11 @@ export const StyledFriend = styled.div`
 	margin-bottom: 1.25rem;
 
 	> a {
+		display: block;
 		> img {
 			width: 100%;
 			aspect-ratio: 1 / 1;
-			// object-fit: cover;
+			object-fit: cover;
 		}
 
 		> span {

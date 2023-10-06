@@ -4,7 +4,7 @@ import { Gender } from "@/components/User/UserFields/Gender/types/GenderTypes";
 import { FamilyMember } from "@/components/User/UserFields/FamilyMembers/types/FamilyMembersTypes";
 import { OtherNames } from "@/components/User/UserFields/OtherNames/types/OtherNamesTypes";
 import { INamePronunciation } from "@/components/User/UserFields/NamePronunciation/types/NamePronunciationTypes";
-import { EducationData } from "@/components/User/UserFields/Education/types/EducationTypes";
+import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 import { IWork } from "@/components/User/UserFields/Work/types/WorkTypes";
 import { IPlaceLived } from "@/components/User/UserFields/PlacesLived/types/PlacesLivedTypes";
 import { ISocialLinks } from "@/components/User/UserFields/SocialLinks/types/SocialLinksTypes";
@@ -80,7 +80,7 @@ export interface UserAboutData {
 	audienceSettings: AudienceSettings;
 	bio: string | undefined;
 	coverPhotoUrl: string | undefined;
-	education: EducationData[] | undefined;
+	education: IEducation[] | undefined;
 	familyMembers: FamilyMember[] | undefined;
 	favoriteQuotes: string | undefined;
 	gender: Gender | undefined;

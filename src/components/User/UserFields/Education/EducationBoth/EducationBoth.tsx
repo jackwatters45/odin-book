@@ -1,9 +1,9 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewItem from "../Education";
-import { EducationData } from "../types/EducationTypes";
+import { IEducation } from "../types/EducationTypes";
 
 interface EducationBothProps {
-	education: EducationData | undefined;
+	education: IEducation | undefined;
 	audience: AudienceStatusOptions;
 }
 
