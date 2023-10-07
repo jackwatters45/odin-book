@@ -4,6 +4,7 @@ import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import BirthdayForm from "./Form";
 import useBirthday from "./useBirthday";
+import BirthdayPlaceholder from "./Placeholder/BirthdayPlaceholder";
 
 interface BirthdayProps {
 	birthday: Date | undefined;
@@ -34,6 +35,7 @@ const Birthday = ({ birthday, audience }: BirthdayProps) => {
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<BirthdayPlaceholder />}
 		/>
 	);
 };

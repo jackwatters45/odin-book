@@ -1,7 +1,13 @@
 import UseFetchPhotos from "@/components/User/UserFields/Photos/UseFetchPhotos";
-import { useMatch } from "react-router";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import { IUser } from "@/types/IUser";
+import { useMatch, useOutletContext } from "react-router";
 
 const useUserPhotos = () => {
+	const { user } = useOutletContext<{ user: IUser }>();
+	const userFirstName = user?.firstName as string;
+	const isOwnProfile = useIsOwnProfile();
+
 	const matchDefault = !!useMatch("/user/:username/photos/");
 	const matchOf = !!useMatch("/user/:username/photos/of");
 	const matchBy = !!useMatch("/user/:username/photos/by");
@@ -13,7 +19,13 @@ const useUserPhotos = () => {
 		photosType: isPhotosOfYou ? "photos-of" : "photos-by",
 	});
 
-	return { isPhotosOfYou, isYourPhotos, photos };
+	return {
+		userFirstName,
+		isOwnProfile,
+		isPhotosOfYou,
+		isYourPhotos,
+		photos,
+	};
 };
 
 export default useUserPhotos;

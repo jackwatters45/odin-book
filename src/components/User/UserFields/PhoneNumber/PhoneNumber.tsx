@@ -5,6 +5,7 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import formatPhoneNumber from "@/utils/format/formatPrettyPhoneNumber";
 import PhoneNumberUserOverviewForm from "./Form";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
+import PhoneNumberPlaceholder from "./Placeholder.tsx/PhoneNumberPlaceholder";
 
 interface PhoneNumberProps {
 	phoneNumber: string | undefined;
@@ -38,6 +39,7 @@ const PhoneNumber = ({ phoneNumber, audience }: PhoneNumberProps) => {
 					initialValues={phoneNumber}
 				/>
 			}
+			PlaceholderComponent={<PhoneNumberPlaceholder />}
 		/>
 	);
 };

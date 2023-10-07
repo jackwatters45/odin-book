@@ -4,9 +4,10 @@ import AddFamilyMembers from "@/components/User/UserFields/FamilyMembers/Add";
 import AboutFamilyMembers from "@/components/User/UserFields/FamilyMembers";
 import useUserAboutRelationshipFamily from "./useUserAboutRelationshipFamily";
 import AboutOverviewRelationship from "@/components/User/UserFields/RelationshipStatus/Relationship";
+import FamilyMembersPlaceholder from "@/components/User/UserFields/FamilyMembers/Placeholder/FamilyMembersPlaceholder";
 
 const UserAboutRelationshipFamily = () => {
-	const { relationship, audienceSettings, familyMembers } =
+	const { isOwnProfile, relationship, audienceSettings, familyMembers } =
 		useUserAboutRelationshipFamily();
 
 	return (
@@ -20,7 +21,7 @@ const UserAboutRelationshipFamily = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Family members</BoldText>
-				<AddFamilyMembers />
+				{isOwnProfile ? <AddFamilyMembers /> : <FamilyMembersPlaceholder />}
 				<StyledUserAboutContainer>
 					{familyMembers?.map((familyMember) => (
 						<AboutFamilyMembers

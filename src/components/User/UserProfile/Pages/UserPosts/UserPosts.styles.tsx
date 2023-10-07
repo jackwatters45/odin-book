@@ -5,6 +5,7 @@ export const UserPostsContainer = styled.div`
 	gap: 1rem;
 	justify-content: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+	width: 100%;
 
 	@media (max-width: 899px) {
 		flex-direction: column;
@@ -18,8 +19,9 @@ export const UserPostsContainer = styled.div`
 		overflow-y: auto;
 		height: 100%;
 
-		@media (max-width: 899px) {
+		@media (max-width: 909px) {
 			width: 100%;
+			max-width: 680px;
 		}
 	}
 `;
@@ -28,7 +30,7 @@ export const StyledUserPostsLeftColumn = styled.div`
 	width: 42%;
 
 	@media (min-width: 900px) {
-		position: -webkit-sticky; /* for Safari */
+		position: -webkit-sticky;
 		position: sticky;
 	}
 `;

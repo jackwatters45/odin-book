@@ -5,6 +5,7 @@ import WorkUserOverviewForm from "./Form/WorkForm";
 import useWork from "./useWork";
 import { IWork } from "./types/WorkTypes";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import WorkPlaceholder from "./Placeholder/WorkPlaceholder";
 
 interface WorkProps {
 	initialValues: IWork | undefined;
@@ -44,6 +45,7 @@ const Work = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<WorkPlaceholder />}
 		/>
 	);
 };

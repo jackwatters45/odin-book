@@ -14,12 +14,9 @@ import Loading from "@/components/Shared/Loading";
 import UserPostsDisplay from "./UserPostsDisplay";
 
 const UserFriends = lazy(() => import("./FriendsPreview"));
-const UserLifeEvents = lazy(
-	() => import("../../../UserFields/LifeEvents/LifeEventsPreview"),
-);
 
 const UserPosts = () => {
-	const { user, top, leftSidebarRef } = useUserPosts();
+	const { user, leftSidebarRef, top } = useUserPosts();
 
 	return (
 		<UserPostsContainer>
@@ -29,7 +26,6 @@ const UserPosts = () => {
 
 				<Suspense fallback={<Loading />}>
 					<UserFriends />
-					<UserLifeEvents />
 				</Suspense>
 			</StyledUserPostsLeftColumn>
 			<StyledUserPostsRightColumn>

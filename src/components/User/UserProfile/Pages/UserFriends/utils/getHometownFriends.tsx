@@ -6,6 +6,8 @@ type FriendsParam = IFriendsDisplay | undefined;
 const getHometownFriends = (user: IUser, friends: FriendsParam) => {
 	const userHometown = user?.placesLived?.find(({ type }) => type === "hometown");
 
+	if (!userHometown) return [];
+
 	return friends?.filter(({ placesLived }) => {
 		const friendHometown = placesLived?.find(({ type }) => type === "hometown");
 		return friendHometown?.city === userHometown?.city;

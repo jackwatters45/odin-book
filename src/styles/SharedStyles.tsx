@@ -96,7 +96,6 @@ export const StyledTextInput = styled.label`
 	height: 42px;
 	border-radius: 1.5rem;
 	background-color: #f0f2f5;
-	margin-bottom: 0.5rem;
 	display: flex;
 	align-items: center;
 	position: relative;

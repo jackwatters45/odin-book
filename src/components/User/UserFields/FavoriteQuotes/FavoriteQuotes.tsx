@@ -3,6 +3,7 @@ import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserPropert
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { mdiCommentQuote } from "@mdi/js";
 import FavoriteQuotesForm from "./Form";
+import FavoriteQuotesPlaceholder from "./Placeholder/FavoriteQuotesPlaceholder";
 
 interface FavoriteQuotesProps {
 	initialValues: string | undefined;
@@ -37,6 +38,7 @@ const FavoriteQuotes = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<FavoriteQuotesPlaceholder />}
 		/>
 	);
 };

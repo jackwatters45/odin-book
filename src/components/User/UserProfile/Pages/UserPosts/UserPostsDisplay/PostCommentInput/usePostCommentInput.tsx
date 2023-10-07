@@ -1,10 +1,10 @@
-import useCurrentUser from "@/hooks/useCurrentUser";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
 const usePostCommentInput = () => {
-	const { user } = useCurrentUser();
+	const currentUser = useCurrentUserCached();
 
-	const userAvatarUrl = user?.avatarUrl;
-	const userName = user?.fullName;
+	const userAvatarUrl = currentUser?.avatarUrl;
+	const userName = currentUser?.fullName;
 
 	return {
 		userAvatarUrl,

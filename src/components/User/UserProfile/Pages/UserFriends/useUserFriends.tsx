@@ -5,17 +5,20 @@ import useFriendPageType from "./useFriendPageType";
 import getHometownFriends from "./utils/getHometownFriends";
 import getCurrentCityFriends from "./utils/getCurrentCityFriends";
 import getCollegeFriends from "./utils/getCollegeFriends";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
 const useUserFriends = () => {
-	const { user } = useOutletContext<{ user: IUser }>();
+	const currentUser = useCurrentUserCached();
 
 	const { friends } = useFetchFriends();
 
-	const friendType = useFriendPageType();
-
 	const userMutualFriends = friends?.filter(
-		({ mutualFriends }) => mutualFriends?.length > 0,
+		({ mutualFriends, id }) =>
+			mutualFriends?.length > 0 && String(id) !== String(currentUser?._id),
 	);
+
+	const friendType = useFriendPageType();
+	const { user } = useOutletContext<{ user: IUser }>();
 
 	let filteredFriends = friends;
 	switch (friendType) {

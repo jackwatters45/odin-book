@@ -2,11 +2,11 @@ import useCurrentUser from "../../../hooks/useCurrentUser";
 import ProtectedRoutes from "../Protected/ProtectedRoutes";
 
 const AdminRoutes = () => {
-	const { user } = useCurrentUser();
+	const { currentUser } = useCurrentUser();
 
 	return (
 		<ProtectedRoutes
-			isAllowed={user?.userType === "admin"}
+			isAllowed={currentUser?.userType === "admin"}
 			redirectPath="/unauthorized"
 		/>
 	);

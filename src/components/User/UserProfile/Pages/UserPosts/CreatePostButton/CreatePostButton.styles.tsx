@@ -11,8 +11,10 @@ export const StyledCreatePostButton = styled(UserProfileSectionContainer)`
 export const StyledFirstRowCreatePost = styled.div`
 	display: flex;
 	gap: 0.25rem;
+	align-items: center;
 	padding-bottom: 0.25rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 0.5rem;
 `;
 
 export const StyledSearchInputCreatePost = styled(StyledTextInput)`

@@ -14,7 +14,7 @@ const UserAbout = () => {
 	return (
 		<>
 			<StyledUserAboutSectionContainer>
-				<UserAboutNav />
+				<UserAboutNav userFirstName={user?.firstName as string} />
 				<StyledUserAboutRightColumn>
 					<Outlet context={{ user }} />
 				</StyledUserAboutRightColumn>

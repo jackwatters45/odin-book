@@ -3,6 +3,7 @@ import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { mdiEmailFastOutline } from "@mdi/js";
 import EmailUserOverviewForm from "./Form";
+import EmailPlaceholder from "./Placeholder";
 
 interface EmailProps {
 	email: string | undefined;
@@ -34,6 +35,7 @@ const Email = ({ email, audience }: EmailProps) => {
 					initialValues={email}
 				/>
 			}
+			PlaceholderComponent={<EmailPlaceholder />}
 		/>
 	);
 };

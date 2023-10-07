@@ -120,7 +120,7 @@ describe("Nav Component", () => {
 
 	it("if no current user, redirects to login", async () => {
 		vi.spyOn(useCurrentUser, "default").mockReturnValue({
-			user: null,
+			currentUser: null,
 			isSuccess: true,
 			isError: false,
 			isLoading: false,

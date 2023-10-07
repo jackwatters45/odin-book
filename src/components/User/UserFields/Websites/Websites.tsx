@@ -3,6 +3,7 @@ import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { AudienceFormFields, AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import WebsitesForm from "./Form";
+import WebsitesPlaceholder from "./Placeholder/WebsitesPlaceholder";
 
 interface WebsitesProps {
 	website: string | undefined;
@@ -45,6 +46,7 @@ const Websites = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<WebsitesPlaceholder />}
 		/>
 	);
 };

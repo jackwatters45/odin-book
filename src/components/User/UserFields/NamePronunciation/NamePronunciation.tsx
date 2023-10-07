@@ -5,6 +5,7 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import NamePronunciationForm from "./Form";
 import { INamePronunciation } from "./types/NamePronunciationTypes";
 import useNamePronunciation from "./useNamePronunciation";
+import NamePronunciationPlaceholder from "./Placeholder/NamePronunciationPlaceholder";
 
 interface NamePronunciationProps {
 	initialValues: INamePronunciation | undefined;
@@ -39,6 +40,7 @@ const NamePronunciation = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<NamePronunciationPlaceholder />}
 		/>
 	);
 };

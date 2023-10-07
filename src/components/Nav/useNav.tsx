@@ -4,11 +4,11 @@ import useCurrentUser from "../../hooks/useCurrentUser";
 const useNav = () => {
 	const { handleClickLogout } = useLogout();
 
-	const { user, isSuccess } = useCurrentUser();
+	const { currentUser, isSuccess } = useCurrentUser();
 
 	return {
 		handleClickLogout,
-		user,
+		user: currentUser,
 		isSuccess,
 	};
 };

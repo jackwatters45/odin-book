@@ -1,6 +1,6 @@
-import { mdiAccount, mdiFlag, mdiImageMultiple } from "@mdi/js";
+import { mdiImageMultiple } from "@mdi/js";
 
-import { IconCircleBackground, ImageCircle } from "@/components/Nav/Nav.styles";
+import { ImageCircle } from "@/components/Nav/Nav.styles";
 import {
 	StyledCreatePostButton,
 	StyledCreateTypeButton,
@@ -8,6 +8,7 @@ import {
 	StyledLastRowCreatePost,
 	StyledSearchInputCreatePost,
 } from "./CreatePostButton.styles";
+import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 
 interface CreatePostButtonProps {
 	userIcon: string | undefined;
@@ -17,12 +18,7 @@ const CreatePostButton = ({ userIcon }: CreatePostButtonProps) => {
 	return (
 		<StyledCreatePostButton>
 			<StyledFirstRowCreatePost>
-				{userIcon ? (
-					<ImageCircle src={userIcon} alt={"User icon"} />
-				) : (
-					// TODO make a component for this?
-					<IconCircleBackground path={mdiAccount} size={1.5} color={"#1c1e21"} />
-				)}
+				<ImageCircle src={userIcon || defaultUserAvatar} alt={"User icon"} />
 				<StyledSearchInputCreatePost>
 					<input type="text" placeholder="What's on your mind?" />
 				</StyledSearchInputCreatePost>
@@ -37,17 +33,6 @@ const CreatePostButton = ({ userIcon }: CreatePostButtonProps) => {
 					onClick={() => {
 						// TODO
 						console.log("Photo/Video");
-					}}
-				/>
-				<StyledCreateTypeButton
-					text="Life event"
-					icon={mdiFlag}
-					iconSize={1.2}
-					iconColor="#3b82f6"
-					colorClass="transparent"
-					onClick={() => {
-						// TODO
-						console.log("Life event");
 					}}
 				/>
 			</StyledLastRowCreatePost>

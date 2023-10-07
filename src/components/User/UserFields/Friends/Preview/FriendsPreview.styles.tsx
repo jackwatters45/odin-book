@@ -10,7 +10,7 @@ export const StyledFriendsContainer = styled.div`
 export const StyledFriend = styled.div`
 	width: calc(33.33% - 0.5rem);
 	border-radius: 0.25rem;
-	margin-bottom: 1.25rem;
+	margin-bottom: 1.5rem;
 
 	> a {
 		display: block;
@@ -18,6 +18,7 @@ export const StyledFriend = styled.div`
 			width: 100%;
 			aspect-ratio: 1 / 1;
 			object-fit: cover;
+			margin-bottom: 0.75rem;
 		}
 
 		> span {

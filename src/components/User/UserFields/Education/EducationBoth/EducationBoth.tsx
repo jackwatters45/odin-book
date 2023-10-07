@@ -1,6 +1,8 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewItem from "../Education";
 import { IEducation } from "../types/EducationTypes";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import EducationBothPlaceholder from "../Placeholder/EducationPlaceholder";
 
 interface EducationBothProps {
 	education: IEducation | undefined;
@@ -10,7 +12,9 @@ interface EducationBothProps {
 const EducationBoth = ({ education, audience }: EducationBothProps) => {
 	const formType = education?.type || ("both" as const);
 
-	if (formType === "both") {
+	const isOwnProfile = useIsOwnProfile();
+
+	if (formType === "both" && isOwnProfile) {
 		return (
 			<>
 				<EducationUserOverviewItem
@@ -25,13 +29,15 @@ const EducationBoth = ({ education, audience }: EducationBothProps) => {
 				/>
 			</>
 		);
+	} else if (formType === "both" && !isOwnProfile) {
+		return <EducationBothPlaceholder />;
 	}
 
 	return (
 		<EducationUserOverviewItem
 			audience={audience}
 			initialValues={education}
-			formType={formType}
+			formType={formType as IEducation["type"]}
 		/>
 	);
 };

@@ -8,6 +8,11 @@ import { StyledUserAboutWorkEducationSection } from "./UserAboutWorkEducationSec
 import { BoldText } from "@/styles/SharedStyles";
 import AddUserProperty from "@/components/User/Shared/AddUserProperty/AddUserProperty";
 import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
+import WorkPlaceholder from "@/components/User/UserFields/Work/Placeholder/WorkPlaceholder";
+import {
+	CollegePlaceholder,
+	HighSchoolPlaceholder,
+} from "@/components/User/UserFields/Education/Placeholders";
 
 export interface UserAboutWorkEducationSectionContent<T> {
 	audience: AudienceStatusOptions;
@@ -41,25 +46,36 @@ const UserAboutWorkEducationSection = <T,>({
 	NewFormComponent,
 	ExistingFormComponent,
 }: UserAboutWorkEducationSectionProps<T>) => {
-	const { isEditing, handleOpenForm, handleCloseForm, formType } =
+	const { isOwnProfile, isEditing, handleOpenForm, handleCloseForm, formType } =
 		useUserAboutWorkEducationSection({ fieldName });
 
 	return (
 		<StyledUserAboutWorkEducationSection>
 			<BoldText>{capitalizeFirstLetterString(fieldName)}</BoldText>
-			<AddUserProperty
-				buttonText={fieldName}
-				handleOpenForm={handleOpenForm}
-				isEditing={isEditing}
-				FormComponent={
-					<NewFormComponent
-						audience={"Public"}
-						initialValues={undefined}
-						handleCloseForm={handleCloseForm}
-						formType={formType as IEducation["type"]}
-					/>
-				}
-			/>
+			{isOwnProfile && (
+				<AddUserProperty
+					buttonText={fieldName}
+					handleOpenForm={handleOpenForm}
+					isEditing={isEditing}
+					FormComponent={
+						<NewFormComponent
+							audience={"Public"}
+							initialValues={undefined}
+							handleCloseForm={handleCloseForm}
+							formType={formType as IEducation["type"]}
+						/>
+					}
+				/>
+			)}
+			{!isOwnProfile &&
+				!content?.length &&
+				(fieldName === "work" ? (
+					<WorkPlaceholder />
+				) : fieldName === "college" ? (
+					<CollegePlaceholder />
+				) : (
+					<HighSchoolPlaceholder />
+				))}
 			{content &&
 				content.map(({ audience, values }) => (
 					<ExistingFormComponent

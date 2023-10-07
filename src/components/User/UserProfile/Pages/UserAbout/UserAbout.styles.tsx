@@ -31,11 +31,11 @@ export const StyledUserAboutSectionContainer = styled.div`
 
 		> div:last-child {
 			width: 100%;
-			padding-bottom: 0;
 		}
 	}
 `;
 
 export const StyledUserAboutRightColumn = styled.div`
 	position: relative;
+	padding-bottom: 1rem;
 `;

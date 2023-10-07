@@ -5,6 +5,7 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewForm from "./Form/EducationForm";
 import useAboutOverviewEducation from "./useEducation";
 import { IEducation } from "./types/EducationTypes";
+import { CollegePlaceholder, HighSchoolPlaceholder } from "./Placeholders";
 
 interface EducationProps {
 	initialValues: IEducation | undefined;
@@ -53,6 +54,9 @@ const Education = ({
 					handleCloseForm={handleCloseForm}
 					formType={formType}
 				/>
+			}
+			PlaceholderComponent={
+				formType === "college" ? <CollegePlaceholder /> : <HighSchoolPlaceholder />
 			}
 		/>
 	);

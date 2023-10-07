@@ -1,8 +1,14 @@
 import { useParams } from "react-router";
 import { StyledUserAboutNav, StyledUserAboutNavItem } from "./UserAboutNav.styles";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
 
-const UserAboutNav = () => {
+interface UserAboutNavProps {
+	userFirstName: string;
+}
+const UserAboutNav = ({ userFirstName }: UserAboutNavProps) => {
 	const { id } = useParams<{ id: string }>();
+
+	const isOwnProfile = useIsOwnProfile();
 
 	return (
 		<div>
@@ -15,7 +21,7 @@ const UserAboutNav = () => {
 					Work and Education
 				</StyledUserAboutNavItem>
 				<StyledUserAboutNavItem to={`/user/${id}/about/places`}>
-					Places
+					Places lived
 				</StyledUserAboutNavItem>
 				<StyledUserAboutNavItem to={`/user/${id}/about/contact_and_basic_info`}>
 					Contact and Basic Info
@@ -24,7 +30,7 @@ const UserAboutNav = () => {
 					Family and Relationships
 				</StyledUserAboutNavItem>
 				<StyledUserAboutNavItem to={`/user/${id}/about/details`}>
-					Details About You
+					Details About {isOwnProfile ? "You" : userFirstName}
 				</StyledUserAboutNavItem>
 			</StyledUserAboutNav>
 		</div>

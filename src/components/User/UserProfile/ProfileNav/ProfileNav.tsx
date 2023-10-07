@@ -11,8 +11,6 @@ const ProfileNav = () => {
 	const isAbout = !!useMatch("/user/:id/about/*");
 	const isFriends = !!useMatch("/user/:id/friends/*");
 	const isPhotos = !!useMatch("/user/:id/photos/*");
-	const isVideos = !!useMatch("/user/:id/videos/*");
-	const isCheckIns = !!useMatch("/user/:id/check-ins/*");
 
 	return (
 		<StyledProfileNavContainer>
@@ -21,8 +19,6 @@ const ProfileNav = () => {
 				<StyledProfileLink to={"about/"} text="About" isActive={isAbout} />
 				<StyledProfileLink to={"friends/"} text="Friends" isActive={isFriends} />
 				<StyledProfileLink to={"photos/"} text="Photos" isActive={isPhotos} />
-				<StyledProfileLink to={"videos/"} text="Videos" isActive={isVideos} />
-				<StyledProfileLink to={"check-ins/"} text="Check-ins" isActive={isCheckIns} />
 			</StyledProfileNavContents>
 			<StyledNavShadow />
 		</StyledProfileNavContainer>

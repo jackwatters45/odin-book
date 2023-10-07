@@ -5,6 +5,7 @@ import { IRelationshipStatus } from "@/components/User/UserFields/RelationshipSt
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import RelationshipUserOverviewForm from "./Form/RelationshipForm";
 import useRelationship from "./useRelationship";
+import RelationshipPlaceholder from "./Placeholder";
 
 interface RelationshipProps {
 	relationship: IRelationshipStatus | undefined;
@@ -49,6 +50,7 @@ const Relationship = ({ relationship, audience }: RelationshipProps) => {
 					initialValues={relationship}
 				/>
 			}
+			PlaceholderComponent={<RelationshipPlaceholder />}
 		/>
 	);
 };

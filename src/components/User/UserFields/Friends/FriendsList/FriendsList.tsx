@@ -10,8 +10,8 @@ import {
 	StyledMutualFriends,
 	StyledUserNameMutualFriendsContainer,
 } from "./FriendsList.styles";
-import FriendsListMoreOptions from "./MoreOptions/FriendsListMoreOptions";
-import useCurrentUser from "@/hooks/useCurrentUser";
+import FriendsListMoreOptions from "../FriendStatus/MoreOptions/FriendStatusMoreOptions";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
 export interface FriendsListProps {
 	friends: IFriendsDisplay | undefined;
@@ -19,7 +19,7 @@ export interface FriendsListProps {
 }
 
 const FriendsList = ({ friends, className }: FriendsListProps) => {
-	const { user: currentUser } = useCurrentUser();
+	const currentUser = useCurrentUserCached();
 	return (
 		<StyledFriendsContainer className={className}>
 			{friends?.map(({ avatarUrl, id, fullName, mutualFriends, ...rest }) => {

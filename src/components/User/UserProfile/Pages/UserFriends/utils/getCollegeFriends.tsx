@@ -6,6 +6,8 @@ type FriendsParam = IFriendsDisplay | undefined;
 const getCollegeFriends = (user: IUser, friends: FriendsParam) => {
 	const userColleges = user?.education?.filter(({ type }) => type === "college");
 
+	if (!userColleges) return [];
+
 	return friends?.filter(({ education }) => {
 		const friendColleges = education?.filter(({ type }) => type === "college");
 		return friendColleges?.some(({ school }) => {

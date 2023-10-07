@@ -1,7 +1,10 @@
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
 
 const useUserAboutRelationshipFamily = () => {
+	const isOwnProfile = useIsOwnProfile();
+
 	const { user } = useOutletContext<{ user: IUser }>();
 
 	const audienceSettings = user.audienceSettings;
@@ -11,6 +14,7 @@ const useUserAboutRelationshipFamily = () => {
 	const familyMembers = user?.familyMembers;
 
 	return {
+		isOwnProfile,
 		relationship,
 		audienceSettings,
 		familyMembers,

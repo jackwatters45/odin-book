@@ -4,6 +4,7 @@ import FamilyMembersForm from "./Form";
 import { FamilyMember } from "./types/FamilyMembersTypes";
 import useFamilyMembers from "./useFamilyMembers";
 import defaultUserAvatar from "../Avatar/utils/defaultUserAvatar";
+import FamilyMembersPlaceholder from "./Placeholder";
 
 interface FamilyMembersProps {
 	familyMember: FamilyMember | undefined;
@@ -35,6 +36,7 @@ const FamilyMembers = ({ familyMember, audience }: FamilyMembersProps) => {
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<FamilyMembersPlaceholder />}
 		/>
 	);
 };

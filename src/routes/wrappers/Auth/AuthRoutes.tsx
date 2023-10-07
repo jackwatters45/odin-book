@@ -2,9 +2,9 @@ import useCurrentUser from "../../../hooks/useCurrentUser";
 import ProtectedRoutes from "../Protected/ProtectedRoutes";
 
 const AuthRoute = () => {
-	const { user } = useCurrentUser();
+	const { currentUser } = useCurrentUser();
 
-	return <ProtectedRoutes isAllowed={!user} redirectPath="/" />;
+	return <ProtectedRoutes isAllowed={!currentUser} redirectPath="/" />;
 };
 
 export default AuthRoute;

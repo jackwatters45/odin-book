@@ -33,3 +33,7 @@ export const StyledFriends = styled.div`
 	padding: 0.75rem 0 1rem;
 	font-weight: 600;
 `;
+
+export const StyledProfileButtonContainer = styled.div`
+	margin-bottom: 2rem;
+`;

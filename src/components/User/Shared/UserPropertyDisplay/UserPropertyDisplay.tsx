@@ -14,9 +14,10 @@ import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import ITitleSegment from "./types/ITitleSegment";
 import renderTitleSegment from "./utils/renderTitleSegment";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
 
 export interface UserPropertyDisplayProps {
-	icon: string | undefined;
+	icon: string;
 	iconType?: "icon" | "image";
 	audience: AudienceStatusOptions;
 	itemId?: string;
@@ -43,6 +44,8 @@ const UserPropertyDisplay = ({
 	deleteMutation,
 	subtitle,
 }: ExtendedUserPropertyDisplayProps) => {
+	const isOwnProfile = useIsOwnProfile();
+
 	return (
 		<StyledUserPropertyDisplayItem>
 			{!icon ? null : iconType === "icon" ? (
@@ -62,14 +65,16 @@ const UserPropertyDisplay = ({
 					</StyledUserPropertyDisplayItemSubtitle>
 				)}
 			</StyledUserPropertyDisplayItemTitle>
-			<StyledUserPropertyDisplayItemRightColumn>
-				<UserAboutAudience audience={audience} category={category} itemId={itemId} />
-				<MoreOptions
-					categoryName={categoryDisplayName}
-					openForm={handleOpenForm}
-					deleteMutation={deleteMutation}
-				/>
-			</StyledUserPropertyDisplayItemRightColumn>
+			{isOwnProfile && (
+				<StyledUserPropertyDisplayItemRightColumn>
+					<UserAboutAudience audience={audience} category={category} itemId={itemId} />
+					<MoreOptions
+						categoryName={categoryDisplayName}
+						openForm={handleOpenForm}
+						deleteMutation={deleteMutation}
+					/>
+				</StyledUserPropertyDisplayItemRightColumn>
+			)}
 		</StyledUserPropertyDisplayItem>
 	);
 };

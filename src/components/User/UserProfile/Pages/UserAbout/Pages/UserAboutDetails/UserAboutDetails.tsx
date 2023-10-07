@@ -5,15 +5,23 @@ import AboutNamePronunciation from "@/components/User/UserFields/NamePronunciati
 import AboutFavoriteQuotes from "@/components/User/UserFields/FavoriteQuotes";
 import AboutOtherNames from "@/components/User/UserFields/OtherNames";
 import AddOtherNames from "@/components/User/UserFields/OtherNames/Add";
+import OtherNamesPlaceholder from "@/components/User/UserFields/OtherNames/Placeholder";
 
 const UserAboutDetails = () => {
-	const { audienceSettings, aboutYou, namePronunciation, otherNames, favoriteQuotes } =
-		useUserAboutDetails();
+	const {
+		isOwnProfile,
+		audienceSettings,
+		aboutYou,
+		namePronunciation,
+		otherNames,
+		favoriteQuotes,
+		userFirstName,
+	} = useUserAboutDetails();
 
 	return (
 		<StyledUserAboutContainer>
 			<StyledUserAboutContainer>
-				<BoldText>About you</BoldText>
+				<BoldText>About {isOwnProfile ? "you" : userFirstName}</BoldText>
 				<AboutYou initialValues={aboutYou} audience={audienceSettings.aboutYou} />
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
@@ -25,7 +33,7 @@ const UserAboutDetails = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Other names</BoldText>
-				<AddOtherNames />
+				{isOwnProfile ? <AddOtherNames /> : <OtherNamesPlaceholder />}
 				{otherNames?.map((otherName) => (
 					<AboutOtherNames
 						key={otherName._id}

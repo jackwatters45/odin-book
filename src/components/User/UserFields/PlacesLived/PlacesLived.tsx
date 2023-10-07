@@ -1,5 +1,4 @@
-import { FC } from "react";
-import { mdiMapMarker } from "@mdi/js";
+import { FC, ReactNode } from "react";
 
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
@@ -24,6 +23,8 @@ interface AboutOverviewHometownProps {
 	categoryUrl?: string;
 	titlePrefix?: string;
 	subtitle?: string;
+	icon: string;
+	PlaceholderComponent: ReactNode | undefined;
 	includeAddDetailLink?: boolean;
 
 	FormComponent?: FC<PlacesLivedFormProps>;
@@ -37,6 +38,8 @@ const PlacesLived = ({
 	categoryUrl = "places-lived",
 	titlePrefix,
 	subtitle,
+	icon,
+	PlaceholderComponent,
 	includeAddDetailLink = true,
 
 	FormComponent = PlacesLivedUserOverviewForm,
@@ -60,7 +63,7 @@ const PlacesLived = ({
 			category={category}
 			categoryDisplayName={categoryDisplayName}
 			audience={audience}
-			icon={mdiMapMarker}
+			icon={icon}
 			subtitle={subtitle || defaultSubtitle}
 			addText={`Add ${categoryDisplayName} to profile`}
 			isEditing={isEditing}
@@ -77,6 +80,7 @@ const PlacesLived = ({
 					url={categoryUrl}
 				/>
 			}
+			PlaceholderComponent={PlaceholderComponent}
 		/>
 	);
 };

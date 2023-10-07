@@ -8,27 +8,58 @@ import {
 	StyledFriends,
 	StyledNameFriendsContainer,
 	StyledProfileBasicInfo,
+	StyledProfileButtonContainer,
 } from "./ProfileBasicInfo.styles";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import ProfileFriendStatus from "../../UserFields/Friends/FriendStatus/Profile/ProfileFriendStatus";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
 interface ProfileBasicInfoProps {
 	user: IUser;
 }
 
+// TODO
+const useProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
+	const isViewingCurrentUser = useIsOwnProfile();
+
+	const currentUser = useCurrentUserCached();
+
+	const mutualFriends = [""];
+	const mutualFriendsLength = mutualFriends?.length;
+
+	const showMutual = !isViewingCurrentUser && mutualFriends && mutualFriends.length > 0;
+
+	return { isViewingCurrentUser, mutualFriendsLength, showMutual };
+};
+
+// TODO - add mutual friends to user fetch
 const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const { avatarUrl, coverPhotoUrl, fullName, friends } = user;
+	const { isViewingCurrentUser, mutualFriendsLength, showMutual } = useProfileBasicInfo({
+		user,
+	});
 
 	return (
 		<>
-			<CoverPhoto userCoverUrl={coverPhotoUrl} />
+			<CoverPhoto userCoverUrl={user.coverPhotoUrl} />
 			<StyledProfileBasicInfo>
-				<ProfileAvatar avatarUrl={avatarUrl} />
+				<ProfileAvatar avatarUrl={user.avatarUrl} />
 				<StyledNameFriendsContainer>
-					<h1>{fullName}</h1>
+					<h1>{user.fullName}</h1>
 					<StyledFriends>
-						<Link to="friends">{friends.length} friends</Link>
+						<Link to="friends">{user.friends.length} friends</Link>
+						{showMutual && " • "}
+						<Link to="friends/mutual">
+							{showMutual && `${mutualFriendsLength} mutual`}
+						</Link>
 					</StyledFriends>
 				</StyledNameFriendsContainer>
-				<EditProfile user={user} />
+				<StyledProfileButtonContainer>
+					{isViewingCurrentUser ? (
+						<EditProfile user={user} />
+					) : (
+						<ProfileFriendStatus user={user} />
+					)}
+				</StyledProfileButtonContainer>
 			</StyledProfileBasicInfo>
 		</>
 	);

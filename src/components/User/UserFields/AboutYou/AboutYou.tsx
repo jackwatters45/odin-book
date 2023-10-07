@@ -2,6 +2,8 @@ import UserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty";
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import AboutYouForm from "./Form";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import { mdiAccountSupervisorCircle } from "@mdi/js";
+import AboutYouPlaceholder from "./Placeholder";
 
 interface AboutYouProps {
 	initialValues: string | undefined;
@@ -22,10 +24,10 @@ const AboutYou = ({
 			title={initialValues ? [{ type: "text", content: initialValues }] : null}
 			audience={audience}
 			category={"aboutYou"}
-			categoryDisplayName="About you"
+			categoryDisplayName="About ou"
 			addText={"Write some details about yourself"}
 			isEditing={isEditing}
-			icon={undefined}
+			icon={mdiAccountSupervisorCircle}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
 			includeAddDetailLink={includeAddDetailLink}
@@ -36,6 +38,7 @@ const AboutYou = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<AboutYouPlaceholder />}
 		/>
 	);
 };

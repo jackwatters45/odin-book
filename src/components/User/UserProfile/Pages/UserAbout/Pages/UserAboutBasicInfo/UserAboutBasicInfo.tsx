@@ -12,8 +12,11 @@ import AboutLanguages from "@/components/User/UserFields/Languages";
 import AboutBirthday from "@/components/User/UserFields/Birthday";
 import encodeWebsiteId from "@/components/User/UserFields/Websites/utils/encodeWebsiteId";
 
+import WebsitesPlaceholder from "@/components/User/UserFields/Websites/Placeholder/WebsitesPlaceholder";
+import SocialLinksPlaceholder from "@/components/User/UserFields/SocialLinks/Placeholder/";
+
 const UserAboutBasicInfo = () => {
-	const { audienceSettings, user } = useUserAboutBasicInfo();
+	const { isOwnProfile, audienceSettings, user } = useUserAboutBasicInfo();
 
 	return (
 		<StyledUserAboutContainer>
@@ -27,7 +30,7 @@ const UserAboutBasicInfo = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Websites and social links</BoldText>
-				<AddWebsites />
+				{isOwnProfile ? <AddWebsites /> : <WebsitesPlaceholder />}
 				{user?.websites?.map((website) => (
 					<AboutWebsite
 						key={website}
@@ -37,7 +40,7 @@ const UserAboutBasicInfo = () => {
 						includeAddDetailLink={false}
 					/>
 				))}
-				<AddSocialLinks />
+				{isOwnProfile ? <AddSocialLinks /> : <SocialLinksPlaceholder />}
 				{user?.socialLinks?.map((socialLink) => (
 					<AboutSocialLink
 						key={socialLink._id}

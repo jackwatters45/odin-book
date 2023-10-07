@@ -1,14 +1,13 @@
-# vite-react-ts-linting
+# Odin Book
 
-- posts
+- test that default audience settings work
 
-  - user posts page
-  - user photos page
+- user
 
-- style auth pages
-- check that login guest is working well
+  - actually show/hide based on audience + hide empty
 
-## after
+  - include mutual next to user name and friends preview
+  - display about, friends, photos sequentially
 
 - dashboard
 - post
@@ -19,6 +18,9 @@
   - view
 
 - notifications
+
+- style auth pages
+- check that login guest is working well
 
 ## keep eye on
 

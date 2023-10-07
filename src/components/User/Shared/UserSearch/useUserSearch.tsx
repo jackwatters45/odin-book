@@ -26,12 +26,12 @@ const useUserSearch = <T,>({
 	urlEnding,
 	options,
 }: IUseUserSearch<T>) => {
-	const { user } = useCurrentUser();
+	const { currentUser } = useCurrentUser();
 
 	const searchQuery = formValues.values?.search;
 	const { searchResults, isLoading } = useSearch<SearchJsonResponse, SearchResultsType>({
 		searchQuery,
-		queryKey: ["users", user?._id, "search", urlEnding, searchQuery],
+		queryKey: ["users", currentUser?._id, "search", urlEnding, searchQuery],
 		queryUrl: `users/search/${urlEnding}`,
 		transformData: (data) => data.users,
 		options: { staleTime: 60000, cacheTime: 60000, ...options },

@@ -6,9 +6,13 @@ import AboutOverviewHometown from "@/components/User/UserFields/PlacesLived/Home
 import AboutOverviewPlacesLived from "@/components/User/UserFields/PlacesLived/PlacesLived";
 import { BoldText, StyledUserAboutContainer } from "@/styles/SharedStyles";
 import useUserAboutPlacesLived from "./useUserAboutPlacesLived";
+import { mdiMapMarker } from "@mdi/js";
+import HometownPlaceholder from "@/components/User/UserFields/PlacesLived/Hometown/Placeholder";
+import CurrentCityPlaceholder from "@/components/User/UserFields/PlacesLived/CurrentCity/Placeholder/CurrentCityPlaceholder";
 
 const UserAboutPlacesLived = () => {
 	const {
+		isOwnProfile,
 		hometown,
 		isHometown,
 		homeTownAudience,
@@ -22,9 +26,9 @@ const UserAboutPlacesLived = () => {
 	return (
 		<StyledUserAboutContainer>
 			<BoldText>Places lived</BoldText>
-			{!isHometown && <AddHometown />}
-			{!isCurrentCity && <AddCurrentCity />}
-			<AddPlacesLived />
+			{!isHometown && (isOwnProfile ? <AddHometown /> : <HometownPlaceholder />)}
+			{!isCurrentCity && (isOwnProfile ? <AddCurrentCity /> : <CurrentCityPlaceholder />)}
+			{isOwnProfile && <AddPlacesLived />}
 			{isHometown && (
 				<AboutOverviewHometown
 					hometown={hometown}
@@ -51,8 +55,10 @@ const UserAboutPlacesLived = () => {
 							placeLived={placeLived}
 							audience={audience}
 							category={`placesLived.${placeLived._id}`}
+							icon={mdiMapMarker}
 							categoryDisplayName="city"
 							categoryUrl="places-lived"
+							PlaceholderComponent={undefined}
 						/>
 					);
 				})}

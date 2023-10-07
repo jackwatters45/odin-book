@@ -3,11 +3,12 @@ import useCurrentUser from "../../../hooks/useCurrentUser";
 import ProtectedRoutes from "../Protected/ProtectedRoutes";
 
 const LoggedInRoutes = () => {
-	const { user, isLoading, isSuccess } = useCurrentUser();
+	const { currentUser, isLoading, isSuccess } = useCurrentUser();
 
 	if (isLoading) return <Loading />;
 
-	if (isSuccess) return <ProtectedRoutes isAllowed={!!user} redirectPath="/login" />;
+	if (isSuccess)
+		return <ProtectedRoutes isAllowed={!!currentUser} redirectPath="/login" />;
 };
 
 export default LoggedInRoutes;

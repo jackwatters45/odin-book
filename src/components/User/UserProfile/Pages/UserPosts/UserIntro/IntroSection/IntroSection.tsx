@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { IntroCategoryContainer } from "./IntroSection.styles";
 import StandardFullWidthButton from "@/components/Shared/StandardButton/StandardFullWidthButton";
+import useIsOwnProfile from "@/hooks/useIsOwnProfile";
 
 interface IntroSectionProps {
 	dataExists: boolean;
@@ -16,14 +17,18 @@ const IntroSection = ({
 	handleClickButton,
 	children,
 }: IntroSectionProps) => {
+	const isOwnProfile = useIsOwnProfile();
+
 	return (
 		<IntroCategoryContainer>
 			{children}
-			<StandardFullWidthButton
-				dataExists={dataExists}
-				dataName={dataName}
-				onClick={handleClickButton}
-			/>
+			{isOwnProfile && (
+				<StandardFullWidthButton
+					dataExists={dataExists}
+					dataName={dataName}
+					onClick={handleClickButton}
+				/>
+			)}
 		</IntroCategoryContainer>
 	);
 };

@@ -6,13 +6,22 @@ import { StyledProfileLink } from "../../ProfileNav/ProfileNav.styles";
 import { StyledProfileSectionNav } from "@/styles/SharedStyles";
 
 const UserPhotos = () => {
-	const { isPhotosOfYou, isYourPhotos, photos } = useUserPhotos();
+	const { userFirstName, isOwnProfile, isPhotosOfYou, isYourPhotos, photos } =
+		useUserPhotos();
 
 	return (
 		<UserProfileSection title="Photos" rightColumn={<PhotosAdd />}>
 			<StyledProfileSectionNav>
-				<StyledProfileLink isActive={isPhotosOfYou} to={"of"} text="Photos of you" />
-				<StyledProfileLink to={"by"} text="Your photos" isActive={isYourPhotos} />
+				<StyledProfileLink
+					isActive={isPhotosOfYou}
+					to={"of"}
+					text={`Photos of ${isOwnProfile ? "you" : `${userFirstName}`}`}
+				/>
+				<StyledProfileLink
+					to={"by"}
+					text={`${isOwnProfile ? "Your" : `${userFirstName}'s`} photos`}
+					isActive={isYourPhotos}
+				/>
 			</StyledProfileSectionNav>
 			<PhotosDisplay photos={photos} />
 		</UserProfileSection>

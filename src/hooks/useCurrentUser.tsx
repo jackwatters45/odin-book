@@ -20,7 +20,7 @@ const useCurrentUser = () => {
 		},
 	});
 
-	return { user: data, error, isLoading, isError, isSuccess };
+	return { currentUser: data, error, isLoading, isError, isSuccess };
 };
 
 export default useCurrentUser;
