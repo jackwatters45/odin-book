@@ -1,5 +1,5 @@
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 
 interface UseUserAboutWorkEducationSectionProps {
 	fieldName: "high school" | "college" | "work";
@@ -8,7 +8,7 @@ interface UseUserAboutWorkEducationSectionProps {
 const useUserAboutWorkEducationSection = ({
 	fieldName,
 }: UseUserAboutWorkEducationSectionProps) => {
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	const { isEditing, handleOpenForm, handleCloseForm } = useUserAboutOverviewItem({
 		categoryUrl: undefined,

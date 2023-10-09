@@ -12,6 +12,7 @@ interface AboutOverviewTextInputProps extends InputHTMLAttributes<HTMLInputEleme
 	isSelectedValue: boolean | undefined;
 	register: ReturnType<UseFormRegister<FieldValues>>;
 	labelText: string;
+	className?: string;
 }
 
 const AboutOverviewTextInput = ({
@@ -19,10 +20,11 @@ const AboutOverviewTextInput = ({
 	isSelectedValue,
 	register,
 	labelText,
+	className,
 	...props
 }: AboutOverviewTextInputProps) => {
 	return (
-		<StyledAboutOverviewInputDiv>
+		<StyledAboutOverviewInputDiv className={className}>
 			<StyledAboutOverviewInput
 				type="text"
 				id={category}

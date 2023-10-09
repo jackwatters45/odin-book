@@ -1,23 +1,20 @@
 import { apiBaseUrl } from "@/config/envVariables";
 import useLoginAlternativeMethods from "./useLoginAlternativeMethods";
+import {
+	StyledAlternativeMethod,
+	StyledAlternativeMethodContainer,
+	StyledAlternativeMethodsContainer,
+	StyledAlternativeMethodsHeader,
+} from "./LoginAlternativeMethods.styles";
 
 const LoginAlternativeMethods = () => {
 	const { errorMessage } = useLoginAlternativeMethods();
 
 	return (
-		<div>
-			<div className="relative">
-				<div className="absolute inset-0 flex items-center">
-					<div className="w-full border-t border-gray-300"></div>
-				</div>
-				<div className="relative flex justify-center text-sm">
-					<p className="bg-white dark:bg-gray-800 px-2 text-gray-500 dark:text-gray-400">
-						Or continue with
-					</p>
-				</div>
-			</div>
-			<div>
-				<button style={{ backgroundColor: "grey" }}>
+		<StyledAlternativeMethodsContainer>
+			<StyledAlternativeMethodsHeader>Or continue with?</StyledAlternativeMethodsHeader>
+			<StyledAlternativeMethodContainer>
+				<StyledAlternativeMethod>
 					<a href={`${apiBaseUrl}/auth/login/facebook`}>
 						<img
 							src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-plain.svg"
@@ -25,8 +22,8 @@ const LoginAlternativeMethods = () => {
 							style={{ width: "2.5rem" }}
 						/>
 					</a>
-				</button>
-				<button style={{ backgroundColor: "grey" }}>
+				</StyledAlternativeMethod>
+				<StyledAlternativeMethod>
 					<a href={`${apiBaseUrl}/auth/login/google`}>
 						<img
 							src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
@@ -34,8 +31,8 @@ const LoginAlternativeMethods = () => {
 							style={{ width: "2.5rem" }}
 						/>
 					</a>
-				</button>
-				<button style={{ backgroundColor: "grey" }}>
+				</StyledAlternativeMethod>
+				<StyledAlternativeMethod>
 					<a href={`${apiBaseUrl}/auth/login/github`}>
 						<img
 							src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
@@ -43,10 +40,10 @@ const LoginAlternativeMethods = () => {
 							style={{ width: "2.5rem" }}
 						/>
 					</a>
-				</button>
-			</div>
+				</StyledAlternativeMethod>
+			</StyledAlternativeMethodContainer>
 			{errorMessage && <div className="formErrors">{errorMessage}</div>}
-		</div>
+		</StyledAlternativeMethodsContainer>
 	);
 };
 

@@ -3,12 +3,12 @@ import { mdiCog, mdiTuneVariant } from "@mdi/js";
 import { StyledPostViewOptionsContainer } from "./PostViewOptions.styles";
 import StandardButton from "@/components/Shared/StandardButton";
 import { StandardButtonContainer } from "@/components/Shared/StandardButton/StandardButton.styles";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 
 // TODO how to manage preferences for this? local storage?
 // TODO manage selected view state
 const PostViewOptions = () => {
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	return (
 		<StyledPostViewOptionsContainer

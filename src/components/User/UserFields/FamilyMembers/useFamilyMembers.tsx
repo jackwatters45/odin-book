@@ -1,6 +1,6 @@
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
 import { FamilyMember } from "./types/FamilyMembersTypes";
-import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
+import ITitleSegment from "../../Shared/UserPropertyDisplay/types/ITitleSegment";
 
 interface useFamilyMembersParams {
 	familyMember: FamilyMember | undefined;
@@ -19,7 +19,7 @@ const useFamilyMembers = ({ familyMember }: useFamilyMembersParams) => {
 					type: "link",
 					content: familyMember?.user.fullName,
 					linkTo: `/user/${familyMember?.user._id}`,
-				} as TitleSegment,
+				} as ITitleSegment,
 		  ]
 		: null;
 

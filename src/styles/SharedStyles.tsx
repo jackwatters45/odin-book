@@ -2,6 +2,7 @@ import TimePeriod from "@/components/Shared/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
 import styled, { css } from "styled-components";
 import { Nav } from "@jackwatters/simple-nav";
+import StandardButton from "@/components/Shared/StandardButton";
 
 export const StandardButtonStyles = css`
 	border-radius: 0.25rem;
@@ -163,4 +164,8 @@ export const StyledTimePeriodStartOnly = styled(TimePeriod)`
 export const StyledProfileSectionNav = styled(Nav)`
 	display: flex;
 	height: 60px;
+`;
+
+export const StandardButtonFullWidth = styled(StandardButton)`
+	width: 100%;
 `;

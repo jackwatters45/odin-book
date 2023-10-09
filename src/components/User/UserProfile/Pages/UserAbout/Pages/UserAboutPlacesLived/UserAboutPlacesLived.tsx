@@ -49,6 +49,8 @@ const UserAboutPlacesLived = () => {
 				sortedPlacesLived?.length > 0 &&
 				sortedPlacesLived.map((placeLived) => {
 					const audience = audienceSettings?.placesLived?.[placeLived._id] ?? "Public";
+
+					console.log("placeLived", placeLived);
 					return (
 						<AboutOverviewPlacesLived
 							key={placeLived._id}

@@ -1,9 +1,9 @@
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
 
 const useUserAboutRelationshipFamily = () => {
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	const { user } = useOutletContext<{ user: IUser }>();
 

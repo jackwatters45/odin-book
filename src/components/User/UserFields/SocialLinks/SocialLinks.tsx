@@ -4,6 +4,7 @@ import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSetti
 import SocialLinksForm from "./Form";
 import getSocialLinkImage from "./utils/socialLinkImages";
 import { ISocialLinks } from "./types/SocialLinksTypes";
+import SocialLinksPlaceholder from "./Placeholder/SocialLinksPlaceholder";
 
 interface SocialLinksProps {
 	socialLink: ISocialLinks | undefined;
@@ -43,6 +44,7 @@ const SocialLinks = ({
 					category={category}
 				/>
 			}
+			PlaceholderComponent={<SocialLinksPlaceholder />}
 		/>
 	);
 };

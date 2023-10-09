@@ -12,6 +12,7 @@ interface EducationProps {
 	audience: AudienceStatusOptions;
 	formType: IEducation["type"];
 	includeAddDetailLink?: boolean;
+	hideIfRestricted?: boolean;
 }
 
 const Education = ({
@@ -19,6 +20,7 @@ const Education = ({
 	audience,
 	formType,
 	includeAddDetailLink = true,
+	hideIfRestricted = false,
 }: EducationProps) => {
 	const {
 		educationPretextFormatted,
@@ -42,6 +44,7 @@ const Education = ({
 			subtitle={formatEducationAttendingDates(initialValues)}
 			audience={audience}
 			icon={mdiSchool}
+			hideIfRestricted={hideIfRestricted}
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}

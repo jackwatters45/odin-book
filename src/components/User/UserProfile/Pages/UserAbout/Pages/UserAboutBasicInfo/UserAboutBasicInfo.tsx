@@ -30,26 +30,34 @@ const UserAboutBasicInfo = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Websites and social links</BoldText>
-				{isOwnProfile ? <AddWebsites /> : <WebsitesPlaceholder />}
-				{user?.websites?.map((website) => (
-					<AboutWebsite
-						key={website}
-						website={website}
-						audience={audienceSettings?.websites?.[website] ?? "Public"}
-						category={`websites.${encodeWebsiteId(website)}`}
-						includeAddDetailLink={false}
-					/>
-				))}
-				{isOwnProfile ? <AddSocialLinks /> : <SocialLinksPlaceholder />}
-				{user?.socialLinks?.map((socialLink) => (
-					<AboutSocialLink
-						key={socialLink._id}
-						socialLink={socialLink}
-						audience={audienceSettings?.socialLinks?.[socialLink._id]}
-						category={`socialLinks.${socialLink._id}`}
-						includeAddDetailLink={false}
-					/>
-				))}
+				{isOwnProfile && <AddWebsites />}
+				{user?.websites && user.websites.length > 0 ? (
+					user?.websites?.map((website) => (
+						<AboutWebsite
+							key={website}
+							website={website}
+							audience={audienceSettings?.websites?.[website] ?? "Public"}
+							category={`websites.${encodeWebsiteId(website)}`}
+							includeAddDetailLink={false}
+						/>
+					))
+				) : (
+					<WebsitesPlaceholder />
+				)}
+				{isOwnProfile && <AddSocialLinks />}
+				{user?.socialLinks && user.socialLinks.length > 0 ? (
+					user?.socialLinks?.map((socialLink) => (
+						<AboutSocialLink
+							key={socialLink._id}
+							socialLink={socialLink}
+							audience={audienceSettings?.socialLinks?.[socialLink._id]}
+							category={`socialLinks.${socialLink._id}`}
+							includeAddDetailLink={false}
+						/>
+					))
+				) : (
+					<SocialLinksPlaceholder />
+				)}
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Basic info</BoldText>

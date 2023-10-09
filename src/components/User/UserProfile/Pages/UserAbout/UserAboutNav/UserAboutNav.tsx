@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { StyledUserAboutNav, StyledUserAboutNavItem } from "./UserAboutNav.styles";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 
 interface UserAboutNavProps {
 	userFirstName: string;
@@ -8,7 +8,7 @@ interface UserAboutNavProps {
 const UserAboutNav = ({ userFirstName }: UserAboutNavProps) => {
 	const { id } = useParams<{ id: string }>();
 
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	return (
 		<div>

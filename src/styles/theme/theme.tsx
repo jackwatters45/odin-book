@@ -20,6 +20,8 @@ export const lightTheme = {
 		blueButton: "#1b74e4",
 		blueButtonTextColor: "#ffffff",
 
+		errorColor: "#dc2626",
+
 		secondaryBlueButton: "#e7f3ff",
 		secondaryBlueButtonTextColor: "#1877f2",
 

@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewItem from "../Education";
 import { IEducation } from "../types/EducationTypes";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 import EducationBothPlaceholder from "../Placeholder/EducationPlaceholder";
 
 interface EducationBothProps {
@@ -12,7 +12,7 @@ interface EducationBothProps {
 const EducationBoth = ({ education, audience }: EducationBothProps) => {
 	const formType = education?.type || ("both" as const);
 
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	if (formType === "both" && isOwnProfile) {
 		return (

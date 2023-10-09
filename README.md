@@ -1,13 +1,16 @@
 # Odin Book
 
-- test that default audience settings work
+- actually show/hide based on audience + hide empty
 
 - user
 
-  - actually show/hide based on audience + hide empty
-
   - include mutual next to user name and friends preview
   - display about, friends, photos sequentially
+
+- style auth pages
+
+  - autofill style issue
+  - Forgot stuff
 
 - dashboard
 - post
@@ -19,15 +22,15 @@
 
 - notifications
 
-- style auth pages
 - check that login guest is working well
+- nav break point
 
 ## keep eye on
 
 - user birthday (age) make sure good
 - all forms involving email should be case insensitive/convert to lowercase
 
-## eventually / possible improvements
+## eventually look into
 
-- businesses
+- sharing types between backend and frontend
 - best way to upload shit to npm and build for prod

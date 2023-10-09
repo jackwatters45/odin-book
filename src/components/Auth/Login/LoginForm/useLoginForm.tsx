@@ -8,22 +8,26 @@ interface LoginFormInputs {
 const useLoginForm = () => {
 	const dataMapper: DataMapper<LoginFormInputs> = (data) => ({ data });
 
-	const { register, submitForm, errors, formError } = useFormCustom<LoginFormInputs>({
-		dataMapper,
-		mutateOptions: {
-			queryKey: ["currentUser"],
-			updateDataKey: "user",
-			queryUrl: "auth/login",
-			method: "POST",
-			successNavigate: "/",
-		},
-	});
+	const { register, submitForm, errors, formError, watch, setValue, control } =
+		useFormCustom<LoginFormInputs>({
+			dataMapper,
+			mutateOptions: {
+				queryKey: ["currentUser"],
+				updateDataKey: "user",
+				queryUrl: "auth/login",
+				method: "POST",
+				successNavigate: "/",
+			},
+		});
+
+	const formValues = watch();
 
 	return {
 		formError,
 		register,
 		submitForm,
 		errors,
+		formValues,
 	};
 };
 

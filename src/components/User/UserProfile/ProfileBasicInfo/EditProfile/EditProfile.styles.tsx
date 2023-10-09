@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { StyledDialog } from "@/styles/SharedStyles";
+import { StandardButtonFullWidth, StyledDialog } from "@/styles/SharedStyles";
 import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledEditProfileDialog = styled(StyledDialog)`
@@ -49,8 +49,7 @@ export const StyledButton = styled.button`
 	}
 `;
 
-export const StyledStandardButtonFullWidth = styled(StandardButton)`
-	width: 100%;
+export const StyledStandardButtonFullWidth = styled(StandardButtonFullWidth)`
 	font-size: 1rem;
 	font-weight: 700;
 	margin: 0.25rem;

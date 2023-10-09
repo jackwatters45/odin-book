@@ -10,7 +10,7 @@ import {
 	StyledProfileBasicInfo,
 	StyledProfileButtonContainer,
 } from "./ProfileBasicInfo.styles";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 import ProfileFriendStatus from "../../UserFields/Friends/FriendStatus/Profile/ProfileFriendStatus";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
@@ -20,21 +20,21 @@ interface ProfileBasicInfoProps {
 
 // TODO
 const useProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const isViewingCurrentUser = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	const currentUser = useCurrentUserCached();
 
 	const mutualFriends = [""];
 	const mutualFriendsLength = mutualFriends?.length;
 
-	const showMutual = !isViewingCurrentUser && mutualFriends && mutualFriends.length > 0;
+	const showMutual = !isOwnProfile && mutualFriends && mutualFriends.length > 0;
 
-	return { isViewingCurrentUser, mutualFriendsLength, showMutual };
+	return { isOwnProfile, mutualFriendsLength, showMutual };
 };
 
 // TODO - add mutual friends to user fetch
 const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const { isViewingCurrentUser, mutualFriendsLength, showMutual } = useProfileBasicInfo({
+	const { isOwnProfile, mutualFriendsLength, showMutual } = useProfileBasicInfo({
 		user,
 	});
 
@@ -54,7 +54,7 @@ const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
 					</StyledFriends>
 				</StyledNameFriendsContainer>
 				<StyledProfileButtonContainer>
-					{isViewingCurrentUser ? (
+					{isOwnProfile ? (
 						<EditProfile user={user} />
 					) : (
 						<ProfileFriendStatus user={user} />

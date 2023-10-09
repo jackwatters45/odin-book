@@ -33,14 +33,18 @@ const UserAboutDetails = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Other names</BoldText>
-				{isOwnProfile ? <AddOtherNames /> : <OtherNamesPlaceholder />}
-				{otherNames?.map((otherName) => (
-					<AboutOtherNames
-						key={otherName._id}
-						initialValues={otherName}
-						audience={audienceSettings?.otherNames?.[otherName._id as string]}
-					/>
-				))}
+				{isOwnProfile && <AddOtherNames />}
+				{otherNames && otherNames.length > 0 ? (
+					otherNames?.map((otherName) => (
+						<AboutOtherNames
+							key={otherName._id}
+							initialValues={otherName}
+							audience={audienceSettings?.otherNames?.[otherName._id as string]}
+						/>
+					))
+				) : (
+					<OtherNamesPlaceholder />
+				)}
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Favorite quotes</BoldText>

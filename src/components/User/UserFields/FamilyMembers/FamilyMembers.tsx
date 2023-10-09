@@ -9,9 +9,14 @@ import FamilyMembersPlaceholder from "./Placeholder";
 interface FamilyMembersProps {
 	familyMember: FamilyMember | undefined;
 	audience: AudienceStatusOptions;
+	hideIfRestricted?: boolean;
 }
 
-const FamilyMembers = ({ familyMember, audience }: FamilyMembersProps) => {
+const FamilyMembers = ({
+	familyMember,
+	audience,
+	hideIfRestricted,
+}: FamilyMembersProps) => {
 	const { isEditing, handleOpenForm, handleCloseForm, deleteMutation, title } =
 		useFamilyMembers({ familyMember });
 
@@ -25,6 +30,7 @@ const FamilyMembers = ({ familyMember, audience }: FamilyMembersProps) => {
 			icon={familyMember?.user.avatarUrl || defaultUserAvatar}
 			iconType={"image"}
 			addText={"Add familyMembers to profile"}
+			hideIfRestricted={hideIfRestricted}
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}

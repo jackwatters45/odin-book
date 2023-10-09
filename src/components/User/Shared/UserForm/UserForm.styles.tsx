@@ -26,6 +26,10 @@ export const StyledAboutOverviewInput = styled.input`
 	padding: 1.625rem 1rem 0.625rem;
 	color: ${({ theme }) => theme.colors.textPrimary};
 	font-size: 1.05rem;
+
+	&:invalid {
+		border-color: red;
+	}
 `;
 
 export const StyledAboutOverviewTextarea = styled.textarea`

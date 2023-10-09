@@ -1,15 +1,15 @@
 import useFormCustom, { DataMapper } from "../../../hooks/useFormCustom";
 
-interface CreateAccountInputs {
+export interface CreateAccountInputs {
 	firstName: string;
 	lastName: string;
 	username: string;
 	password: string;
 	gender: string;
 	pronouns?: string;
-	month?: number;
-	day?: number;
-	year?: number;
+	month?: string;
+	day?: string;
+	year?: string;
 	genderCustom?: string;
 	birthday?: Date;
 }
@@ -19,7 +19,7 @@ const useCreateAccountForm = () => {
 		const { genderCustom, day, month, year, pronouns, ...rest } = data;
 
 		if (!day || !month || !year) return "Invalid birthday";
-		const birthday = new Date(year, month, day);
+		const birthday = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 		if (isNaN(birthday.getTime())) return "Invalid birthday";
 
 		const userWithBirthday = { ...rest, birthday };
@@ -53,18 +53,17 @@ const useCreateAccountForm = () => {
 			},
 		});
 
+	const formValues = watch();
+
 	const selectedGenderOption = watch("gender");
-	const selectedYear = watch("year", new Date().getFullYear());
-	const selectedMonth = watch("month", new Date().getMonth() + 1);
 
 	return {
+		formValues,
 		formError,
 		register,
 		submitForm,
 		errors,
 		selectedGenderOption,
-		selectedYear,
-		selectedMonth,
 	};
 };
 

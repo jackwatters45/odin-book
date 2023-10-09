@@ -21,15 +21,20 @@ const UserAboutRelationshipFamily = () => {
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Family members</BoldText>
-				{isOwnProfile ? <AddFamilyMembers /> : <FamilyMembersPlaceholder />}
+				{isOwnProfile && <AddFamilyMembers />}
 				<StyledUserAboutContainer>
-					{familyMembers?.map((familyMember) => (
-						<AboutFamilyMembers
-							key={familyMember._id}
-							familyMember={familyMember}
-							audience={audienceSettings?.familyMembers?.[familyMember._id as string]}
-						/>
-					))}
+					{familyMembers && familyMembers.length > 0 ? (
+						familyMembers?.map((familyMember, index) => (
+							<AboutFamilyMembers
+								key={familyMember._id}
+								familyMember={familyMember}
+								audience={audienceSettings?.familyMembers?.[familyMember._id as string]}
+								hideIfRestricted={index > 0}
+							/>
+						))
+					) : (
+						<FamilyMembersPlaceholder />
+					)}
 				</StyledUserAboutContainer>
 			</StyledUserAboutContainer>
 		</StyledUserAboutContainer>

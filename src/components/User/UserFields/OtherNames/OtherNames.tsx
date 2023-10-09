@@ -5,6 +5,7 @@ import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserPropert
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import OtherNamesForm from "./Form";
 import { OtherName } from "./types/OtherNamesTypes";
+import OtherNamesPlaceholder from "./Placeholder/OtherNamesPlaceholder";
 
 interface OtherNamesProps {
 	initialValues: OtherName | undefined;
@@ -41,6 +42,7 @@ const OtherNames = ({
 					handleCloseForm={handleCloseForm}
 				/>
 			}
+			PlaceholderComponent={<OtherNamesPlaceholder />}
 		/>
 	);
 };

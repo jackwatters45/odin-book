@@ -4,7 +4,7 @@ import AddDetailLink from "@/components/User/UserFields/Details/EditDetailsForm/
 import SingleUserPropertyExisting from "../UserPropertyDisplay";
 import ITitleSegment from "../UserPropertyDisplay/types/ITitleSegment";
 import { UserPropertyDisplayProps } from "../UserPropertyDisplay/UserPropertyDisplay";
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 
 interface SingleUserPropertyProps extends UserPropertyDisplayProps {
 	title: ITitleSegment[] | undefined | null;
@@ -12,6 +12,7 @@ interface SingleUserPropertyProps extends UserPropertyDisplayProps {
 	includeAddDetailLink?: boolean;
 	addText?: string;
 	handleOpenForm: () => void;
+	hideIfRestricted?: boolean;
 
 	isEditing: boolean;
 	FormComponent: ReactNode | undefined;
@@ -23,30 +24,43 @@ const SingleUserProperty = ({
 	isEditing,
 	handleOpenForm,
 	addText,
+	hideIfRestricted = false,
 	FormComponent,
 	PlaceholderComponent,
 	includeAddDetailLink = true,
 	icon,
+	audience,
 	...props
 }: SingleUserPropertyProps) => {
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile, isFriend } = useProfileStatus();
 
-	if (isEditing && isOwnProfile) {
-		return FormComponent;
-	} else if (title && title.length) {
+	if (isOwnProfile && isEditing) return FormComponent;
+
+	const isAudienceRestricted =
+		(!isOwnProfile && audience === "Only Me") || (audience === "Friends" && !isFriend);
+
+	if (isAudienceRestricted) {
+		return hideIfRestricted ? null : PlaceholderComponent;
+	}
+
+	const isContent = title && title.length;
+	if (isContent) {
 		return (
 			<SingleUserPropertyExisting
 				title={title}
 				handleOpenForm={handleOpenForm}
 				icon={icon}
+				audience={audience}
 				{...props}
 			/>
 		);
-	} else if (includeAddDetailLink && isOwnProfile) {
-		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
-	} else {
-		return PlaceholderComponent;
 	}
+
+	if (isOwnProfile && includeAddDetailLink) {
+		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
+	}
+
+	return PlaceholderComponent;
 };
 
 export default SingleUserProperty;

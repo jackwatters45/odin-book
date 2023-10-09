@@ -1,19 +1,23 @@
-import { Link } from "react-router-dom";
-
 import renderFormErrors from "@/utils/render/renderFormErrors";
 import useLoginForm from "./useLoginForm";
 import {
 	validatePassword,
 	validateUsernameForReactHookForm,
 } from "../../utils/validationHelpers";
+import AboutOverviewTextInput from "@/components/Shared/TextInput";
+import {
+	StyledForgotLoginLink,
+	StyledRecoverCreateLinkContainer,
+	StyledStandardButton,
+} from "./LoginForm.styles";
 
 interface LoginProps {
 	className?: string;
-	forgotText?: "password" | "Account";
+	forgotText?: "password?" | "Account";
 }
 
-const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
-	const { formError, register, submitForm, errors } = useLoginForm();
+const LoginForm = ({ className, forgotText = "password?" }: LoginProps) => {
+	const { formError, register, submitForm, errors, formValues } = useLoginForm();
 
 	return (
 		<form method="POST" onSubmit={submitForm} className={className}>
@@ -21,13 +25,13 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 				<label htmlFor="username" hidden>
 					Email or phone number:
 				</label>
-				<input
-					type="text"
-					id="username"
-					placeholder="Email or phone number"
+				<AboutOverviewTextInput
+					labelText="Email or phone number"
+					isSelectedValue={!!formValues.username}
 					aria-invalid={!!errors.username}
 					autoComplete="username"
-					{...register("username", {
+					category={"username"}
+					register={register("username", {
 						validate: validateUsernameForReactHookForm,
 					})}
 				/>
@@ -37,25 +41,30 @@ const LoginForm = ({ className, forgotText = "password" }: LoginProps) => {
 				<label htmlFor="password" hidden>
 					Password:
 				</label>
-				<input
-					type="password"
-					id="password"
-					placeholder="Password"
+				<AboutOverviewTextInput
+					labelText="Password"
+					isSelectedValue={!!formValues.password}
 					aria-invalid={!!errors.password}
 					autoComplete="current-password"
-					{...register("password", {
+					type="password"
+					category={"password"}
+					register={register("password", {
 						required: "Password is required.",
 						validate: validatePassword,
 					})}
 				/>
 				{errors.password && <div className="inputErrors">{errors.password.message}</div>}
 			</div>
-			<button type="submit">Login</button>
+			<StyledStandardButton colorClass="blue" text="Login" type="submit" />
 			{formError && <div className="formErrors">{renderFormErrors(formError)}</div>}
-			<Link to={"/recover"} className="forgotLink">
-				Forgot {forgotText}
-			</Link>
-			<Link to={"/create-account"}>Create new account</Link>
+			<StyledRecoverCreateLinkContainer>
+				<StyledForgotLoginLink to={"/recover"} className="forgotLink">
+					Forgot {forgotText}
+				</StyledForgotLoginLink>
+				<StyledForgotLoginLink to={"/create-account"}>
+					Create account
+				</StyledForgotLoginLink>
+			</StyledRecoverCreateLinkContainer>
 		</form>
 	);
 };

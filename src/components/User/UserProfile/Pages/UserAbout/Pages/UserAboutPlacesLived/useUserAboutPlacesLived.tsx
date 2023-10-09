@@ -1,13 +1,13 @@
 import { useOutletContext } from "react-router";
 
-import useIsOwnProfile from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 import getCurrentCity from "@/components/User/UserFields/PlacesLived/utils/getCurrentCity";
 import getHometown from "@/components/User/UserFields/PlacesLived/utils/getHometown";
 import { IUser } from "@/types/IUser";
 import { sortArrByStartEndDates } from "@/utils/dateHelpers";
 
 const useUserAboutPlacesLived = () => {
-	const isOwnProfile = useIsOwnProfile();
+	const { isOwnProfile } = useProfileStatus();
 
 	const { user } = useOutletContext<{ user: IUser }>();
 

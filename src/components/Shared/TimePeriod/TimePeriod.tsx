@@ -37,6 +37,7 @@ interface TimePeriodProps extends HTMLAttributes<HTMLDivElement> {
 	checkboxText?: string;
 	title?: string;
 	numFutureDates?: number;
+	showAllDates?: boolean;
 	includeDefaultInDropdowns?: boolean;
 	includeEndDateIfChecked?: boolean;
 }
@@ -48,6 +49,7 @@ const TimePeriod = ({
 	checkboxText,
 	title = "Time Period",
 	numFutureDates,
+	showAllDates = false,
 	includeDefaultInDropdowns = true,
 	includeEndDateIfChecked = false,
 	...props
@@ -70,19 +72,19 @@ const TimePeriod = ({
 						options={renderYears(includeDefaultInDropdowns, numFutureDates)}
 						register={inputs.startYear}
 					/>
-					{selectedValues.startYear && (
+					{(selectedValues.startYear || showAllDates) && (
 						<StandardSelect
 							id="startMonth"
 							options={renderMonths(includeDefaultInDropdowns)}
 							register={inputs.startMonth}
 						/>
 					)}
-					{selectedValues.startMonth && selectedValues.startYear && (
+					{((selectedValues.startMonth && selectedValues.startYear) || showAllDates) && (
 						<StandardSelect
 							id="startDay"
 							options={renderDates(
-								selectedValues.startMonth,
-								selectedValues.startYear,
+								selectedValues.startMonth || "1",
+								selectedValues.startYear || "1",
 								includeDefaultInDropdowns,
 							)}
 							register={inputs.startDay}

@@ -23,6 +23,7 @@ interface SharedFormProps {
 	audience: AudienceStatusOptions;
 	handleCloseForm: () => void;
 	formType: IEducation["type"];
+	hideIfRestricted?: boolean;
 }
 
 interface NewFormProps extends SharedFormProps {
@@ -48,6 +49,12 @@ const UserAboutWorkEducationSection = <T,>({
 }: UserAboutWorkEducationSectionProps<T>) => {
 	const { isOwnProfile, isEditing, handleOpenForm, handleCloseForm, formType } =
 		useUserAboutWorkEducationSection({ fieldName });
+
+	if (!(!content?.length && !isOwnProfile)) {
+		console.log("fieldName", fieldName);
+
+		console.log("content", content);
+	}
 
 	return (
 		<StyledUserAboutWorkEducationSection>
@@ -77,13 +84,14 @@ const UserAboutWorkEducationSection = <T,>({
 					<HighSchoolPlaceholder />
 				))}
 			{content &&
-				content.map(({ audience, values }) => (
+				content.map(({ audience, values }, index) => (
 					<ExistingFormComponent
 						key={values._id}
 						audience={audience}
 						initialValues={values}
 						handleCloseForm={handleCloseForm}
 						formType={formType as IEducation["type"]}
+						hideIfRestricted={index > 0}
 					/>
 				))}
 		</StyledUserAboutWorkEducationSection>

@@ -36,7 +36,7 @@ export const StyledRadioContainer = styled.div<RadioOptions>`
 		border-radius: 50%;
 	}
 
-	background: ${({ theme }) => theme.colors.backgroundSecondary};
+	// background: transparent;
 	&:hover input ~ span {
 		border: 2px solid ${({ theme }) => theme.colors.blueButton};
 	}

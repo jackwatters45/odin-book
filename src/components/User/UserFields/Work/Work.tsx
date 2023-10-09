@@ -9,9 +9,10 @@ import WorkPlaceholder from "./Placeholder/WorkPlaceholder";
 
 interface WorkProps {
 	initialValues: IWork | undefined;
+	pastCompany?: string | undefined;
 	audience: AudienceStatusOptions;
 	includeAddDetailLink?: boolean;
-	pastCompany?: string | undefined;
+	hideIfRestricted?: boolean;
 }
 
 const Work = ({
@@ -19,10 +20,13 @@ const Work = ({
 	pastCompany,
 	audience,
 	includeAddDetailLink = true,
+	hideIfRestricted = false,
 }: WorkProps) => {
 	const { title, isEditing, handleOpenForm, handleCloseForm, deleteMutation } = useWork({
 		work: initialValues,
 	});
+
+	console.log("hideIfRestricted", hideIfRestricted); // TODO
 
 	return (
 		<UserAboutOverviewItem
@@ -34,6 +38,7 @@ const Work = ({
 			categoryDisplayName="work"
 			icon={mdiBriefcase}
 			addText={"Add work to profile"}
+			hideIfRestricted={hideIfRestricted}
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
