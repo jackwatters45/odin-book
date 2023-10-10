@@ -1,7 +1,7 @@
 import { FieldValues, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { HTMLAttributes } from "react";
 
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import useUserSearchResults from "./useUserSearchResults";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { StyledDialogSearchResultsDialog, StyledSearchResult } from "./UserSearch.styles";
@@ -36,7 +36,7 @@ const UserSearch = ({
 
 	return (
 		<div ref={containerRef} {...props}>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category="values.user.name"
 				isSelectedValue={!!searchQuery}
 				register={register}

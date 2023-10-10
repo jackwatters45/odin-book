@@ -1,4 +1,4 @@
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 
@@ -39,7 +39,7 @@ const SocialLinksForm = ({
 			setValue={setValue}
 		>
 			<StyledFormContentContainer>
-				<AboutOverviewTextInput
+				<StandardTextInput
 					category={category}
 					isSelectedValue={!!formValues.values?.username}
 					register={{ ...register("values.username"), required: true }}

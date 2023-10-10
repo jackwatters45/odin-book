@@ -20,7 +20,7 @@ const StyledStandardButtonStyles = css`
 	border-radius: 0.375rem;
 
 	font-size: 0.95rem;
-	font-weight: 600;
+	font-weight: 700;
 	line-height: normal;
 
 	transition: all 0.2s ease-in-out;

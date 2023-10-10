@@ -1,6 +1,6 @@
 import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
 
-interface LoginFormInputs {
+export interface LoginFormInputs {
 	username: string;
 	password: string;
 }
@@ -8,7 +8,7 @@ interface LoginFormInputs {
 const useLoginForm = () => {
 	const dataMapper: DataMapper<LoginFormInputs> = (data) => ({ data });
 
-	const { register, submitForm, errors, formError, watch, setValue, control } =
+	const { register, submitForm, errors, formError, watch } =
 		useFormCustom<LoginFormInputs>({
 			dataMapper,
 			mutateOptions: {

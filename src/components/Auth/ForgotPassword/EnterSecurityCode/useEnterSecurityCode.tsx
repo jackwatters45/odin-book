@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 
 import useFormCustom from "@/hooks/useFormCustom";
 
-interface SecurityCodeInputs {
+export interface SecurityCodeInputs {
 	code: string;
 }
 
@@ -13,14 +13,17 @@ const useEnterSecurityCode = () => {
 
 	const dataMapper = (data: SecurityCodeInputs) => ({ params: data.code });
 
-	const { register, submitForm, errors, formError } = useFormCustom<SecurityCodeInputs>({
-		dataMapper,
-		mutateOptions: {
-			queryUrl: "auth/reset-password/code",
-			method: "GET",
-			successNavigate: "/recover/password",
-		},
-	});
+	const { register, submitForm, errors, formError, watch } =
+		useFormCustom<SecurityCodeInputs>({
+			dataMapper,
+			mutateOptions: {
+				queryUrl: "auth/reset-password/code",
+				method: "GET",
+				successNavigate: "/recover/password",
+			},
+		});
+
+	const formValues = watch();
 
 	return {
 		formError,
@@ -28,6 +31,7 @@ const useEnterSecurityCode = () => {
 		submitForm,
 		errors,
 		recoverValue,
+		formValues,
 	};
 };
 

@@ -2,9 +2,8 @@ import { useLocation } from "react-router";
 
 import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
 import useMutateCustom from "@/hooks/useMutateCustom";
-import useToggledState from "@/hooks/useToggledState";
 
-interface ChooseNewPasswordInputs {
+export interface ChooseNewPasswordInputs {
 	newPassword: string;
 }
 
@@ -18,7 +17,7 @@ const useChooseNewPassword = () => {
 		params: token,
 	});
 
-	const { register, submitForm, errors, formError, setFormError } =
+	const { register, submitForm, errors, formError, setFormError, watch } =
 		useFormCustom<ChooseNewPasswordInputs>({
 			dataMapper,
 			mutateOptions: {
@@ -39,12 +38,12 @@ const useChooseNewPassword = () => {
 		successNavigate: "/",
 	});
 
+	const formValues = watch();
+
 	const handleSkip = () => {
 		if (!token) return setFormError("No token found");
 		mutateUser({ data: { token } });
 	};
-
-	const [showPassword, toggleShowPassword] = useToggledState();
 
 	return {
 		token,
@@ -52,9 +51,8 @@ const useChooseNewPassword = () => {
 		register,
 		submitForm,
 		errors,
+		formValues,
 		handleSkip,
-		showPassword,
-		toggleShowPassword,
 	};
 };
 

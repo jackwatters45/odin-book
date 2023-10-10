@@ -3,7 +3,7 @@ import useUserForm from "@/components/User/Shared/UserForm/useUserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { OtherName, otherNameTypeOptions } from "../types/OtherNamesTypes";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import { StyledStandardCheckbox } from "./OtherNamesForm.styles";
 
 interface OtherNamesFormProps {
@@ -49,7 +49,7 @@ const OtherNamesForm = ({
 					)),
 				]}
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={`otherNames.name.${initialValues?._id}`}
 				isSelectedValue={!!formValues.values?.name}
 				register={{ ...register("values.name"), required: true }}

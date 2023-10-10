@@ -6,29 +6,34 @@ import {
 	StyledAboutOverviewInputLabel,
 } from "../../User/Shared/UserForm/UserForm.styles";
 import { InputHTMLAttributes } from "react";
+import useStandardTextInput from "./useStandardTextInput";
 
-interface AboutOverviewTextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface StandardTextInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	category: string;
 	isSelectedValue: boolean | undefined;
-	register: ReturnType<UseFormRegister<FieldValues>>;
+	register: ReturnType<UseFormRegister<FieldValues>> | undefined;
 	labelText: string;
 	className?: string;
 }
 
-const AboutOverviewTextInput = ({
+const StandardTextInput = ({
 	category,
 	isSelectedValue,
 	register,
 	labelText,
 	className,
+	autoComplete,
 	...props
-}: AboutOverviewTextInputProps) => {
+}: StandardTextInputProps) => {
+	const { ref, isAutofilled } = useStandardTextInput();
+
 	return (
-		<StyledAboutOverviewInputDiv className={className}>
+		<StyledAboutOverviewInputDiv className={className} ref={ref}>
 			<StyledAboutOverviewInput
 				type="text"
 				id={category}
-				className={isSelectedValue ? "content" : "placeholder"}
+				className={isAutofilled || isSelectedValue ? "content" : "placeholder"}
+				autoComplete={autoComplete}
 				{...register}
 				{...props}
 			/>
@@ -39,4 +44,4 @@ const AboutOverviewTextInput = ({
 	);
 };
 
-export default AboutOverviewTextInput;
+export default StandardTextInput;

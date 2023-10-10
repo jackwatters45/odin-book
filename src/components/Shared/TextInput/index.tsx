@@ -1,1 +1,1 @@
-export { default } from "./AboutOverviewTextInput";
+export { default } from "./StandardTextInput";

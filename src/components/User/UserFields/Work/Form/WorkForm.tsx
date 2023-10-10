@@ -2,7 +2,7 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 import useWorkForm from "./useWorkForm";
 import TimePeriod from "@/components/Shared/TimePeriod";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
 import { IWork } from "../types/WorkTypes";
 
@@ -30,19 +30,19 @@ const WorkForm = ({ audience, initialValues, handleCloseForm }: WorkFormProps) =
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"company"}
 				isSelectedValue={!!formValues.values?.company}
 				register={{ ...register("values.company"), required: true }}
 				labelText="Company"
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"position"}
 				isSelectedValue={!!formValues.values?.position}
 				register={{ ...register("values.position") }}
 				labelText="Position"
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"city"}
 				isSelectedValue={!!formValues.values?.city}
 				register={{ ...register("values.city") }}

@@ -6,7 +6,7 @@ import {
 	StyledEducationTimePeriod,
 } from "./EducationForm.styles";
 import useEducationForm from "./useEducationForm";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import AboutOverviewTextArea from "@/components/Shared/TextArea/AboutOverviewTextArea";
 import AboutOverviewRadioInput from "@/components/Shared/RadioInput/AboutOverviewRadioInput";
 import { IEducation } from "../types/EducationTypes";
@@ -42,7 +42,7 @@ const EducationForm = ({
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"school"}
 				isSelectedValue={!!formValues.values?.school}
 				register={{ ...register("values.school"), required: true }}
@@ -79,19 +79,19 @@ const EducationForm = ({
 				<>
 					<div>
 						<StyledUserAboutFormText>Concentrations</StyledUserAboutFormText>
-						<AboutOverviewTextInput
+						<StandardTextInput
 							category={"concentrations1"}
 							isSelectedValue={!!formValues.values?.concentrations1}
 							register={{ ...register("values.concentrations1") }}
 							labelText="Concentration"
 						/>
-						<AboutOverviewTextInput
+						<StandardTextInput
 							category={"concentrations2"}
 							isSelectedValue={!!formValues.values?.concentrations2}
 							register={{ ...register("values.concentrations2") }}
 							labelText="Concentration"
 						/>
-						<AboutOverviewTextInput
+						<StandardTextInput
 							category={"concentrations3"}
 							isSelectedValue={!!formValues.values?.concentrations3}
 							register={{ ...register("values.concentrations3") }}
@@ -110,7 +110,7 @@ const EducationForm = ({
 							]}
 						/>
 					</StyledAttenderForContainer>
-					<AboutOverviewTextInput
+					<StandardTextInput
 						category={"degree"}
 						isSelectedValue={!!formValues.values?.degree}
 						register={{ ...register("values.degree") }}

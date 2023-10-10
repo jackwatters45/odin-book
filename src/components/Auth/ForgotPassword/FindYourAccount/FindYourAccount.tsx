@@ -1,46 +1,52 @@
-import { Link } from "react-router-dom";
-
 import renderFormErrors from "@/utils/render/renderFormErrors";
 import { validateUsernameForReactHookForm } from "../../utils/validationHelpers";
-import ForgotPasswordNav from "../ForgotPasswordNav";
-import useFindYourAccount from "./useFindYourAccount";
+import useFindYourAccount, { FindYourAccountInputs } from "./useFindYourAccount";
+import AuthTextInput from "../../Shared/AuthTextInput";
+import StandardButton from "@/components/Shared/StandardButton";
+import {
+	StyledButtonsContainer,
+	StyledFindAccountSubHeader,
+} from "./FindYourAccount.styles";
+import AuthRoutesWrapper from "../../Shared/AuthRoutesWrapper";
+import { StyledRecoverHeader } from "../styles/ForgotPassword.styles";
+import { StyledErrorText } from "../../Shared/AuthTextInput/AuthTextInput.styles";
 
 const FindYourAccount = () => {
-	const { formError, register, submitForm, errors, linkError } = useFindYourAccount();
+	const { formError, register, submitForm, errors, linkError, formValues } =
+		useFindYourAccount();
 
 	return (
-		<div>
-			<ForgotPasswordNav includeLogin={true} />
+		<AuthRoutesWrapper>
+			<StyledRecoverHeader>Find your account</StyledRecoverHeader>
 			<form method="POST" onSubmit={submitForm}>
-				<h1>Find your account</h1>
-				<p>Please enter your email or mobile number to search for your account.</p>
-				<div className="formSection">
-					<label htmlFor="usernameFind" hidden>
-						Email or phone number:
-					</label>
-					<input
-						type="text"
-						id="usernameFind"
-						placeholder="Email or phone number"
-						aria-invalid={!!errors.username}
-						autoComplete="username"
-						{...register("username", {
-							required: "Email or phone number is required",
-							validate: (value) => validateUsernameForReactHookForm(value),
-						})}
-					/>
-					{errors.username && (
-						<div className="inputErrors">{errors.username.message}</div>
-					)}
-					{linkError && <div className="inputErrors">{linkError}</div>}
-				</div>
-				<button type="button">
-					<Link to={"/login"}>Cancel</Link>
-				</button>
-				<button type="submit">Search</button>
-				{formError && <div className="formErrors">{renderFormErrors(formError)}</div>}
+				<StyledFindAccountSubHeader>
+					Please enter your email or mobile number to search for your account.
+				</StyledFindAccountSubHeader>
+				<AuthTextInput<FindYourAccountInputs>
+					id="username"
+					idText="Email or phone number"
+					formValues={formValues}
+					errors={errors}
+					autoComplete="username"
+					register={register("username", {
+						required: "Email or phone number is required",
+						validate: (value) => validateUsernameForReactHookForm(value),
+					})}
+				/>
+				{linkError && (
+					<StyledErrorText className="inputErrors">{linkError}</StyledErrorText>
+				)}
+				{formError && (
+					<StyledErrorText className="formErrors">
+						{renderFormErrors(formError)}
+					</StyledErrorText>
+				)}
+				<StyledButtonsContainer>
+					<StandardButton type="button" text="Cancel" to="/login" />
+					<StandardButton type="submit" text="Search" colorClass="blue" />
+				</StyledButtonsContainer>
 			</form>
-		</div>
+		</AuthRoutesWrapper>
 	);
 };
 

@@ -2,7 +2,7 @@ import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import useUserForm from "@/components/User/Shared/UserForm/useUserForm";
 
 import { INamePronunciation } from "../types/NamePronunciationTypes";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 interface NamePronunciationFormProps {
@@ -36,13 +36,13 @@ const NamePronunciationForm = ({
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"firstNamePronunciation"}
 				isSelectedValue={!!formValues.values?.firstName}
 				register={{ ...register("values.firstName") }}
 				labelText="First name"
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"lastNamePronunciation"}
 				isSelectedValue={!!formValues.values?.lastName}
 				register={{ ...register("values.lastName") }}

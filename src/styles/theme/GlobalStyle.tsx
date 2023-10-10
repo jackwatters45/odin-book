@@ -78,6 +78,7 @@ const GlobalStyle = createGlobalStyle`
   button, input, textarea, select, option {
     border: none;
     background: transparent;
+    border-radius: inherit;
   }
 
   button,  select, option {

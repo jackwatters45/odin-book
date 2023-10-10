@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 import useGenderForm from "./useGenderForm";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
 import { Gender } from "../types/GenderTypes";
 
@@ -58,7 +58,7 @@ const GenderForm = ({ audience, handleCloseForm, initialValues }: GenderFormProp
 				]}
 			/>
 			{isOther && (
-				<AboutOverviewTextInput
+				<StandardTextInput
 					category="otherGender"
 					isSelectedValue={!!formValues.values?.other}
 					register={{ ...register("values.other"), required: true }}

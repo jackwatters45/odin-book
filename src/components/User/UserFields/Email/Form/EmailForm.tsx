@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 import useEmailForm from "./useEmailForm";
 
@@ -27,7 +27,7 @@ const EmailForm = ({ audience, handleCloseForm, initialValues }: EmailFormProps)
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"email"}
 				isSelectedValue={!!formValues.values?.email}
 				register={{ ...register("values.email"), required: true }}

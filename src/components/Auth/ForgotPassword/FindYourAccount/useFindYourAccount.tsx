@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 
 import useFormCustom from "@/hooks/useFormCustom";
 
-interface FindYourAccountInputs {
+export interface FindYourAccountInputs {
 	username: string;
 }
 
@@ -13,7 +13,7 @@ const useFindYourAccount = () => {
 
 	const dataMapper = (data: FindYourAccountInputs) => ({ data });
 
-	const { register, submitForm, errors, formError } =
+	const { register, submitForm, errors, formError, watch } =
 		useFormCustom<FindYourAccountInputs>({
 			dataMapper,
 			mutateOptions: {
@@ -23,12 +23,15 @@ const useFindYourAccount = () => {
 			},
 		});
 
+	const formValues = watch();
+
 	return {
 		formError,
 		register,
 		submitForm,
 		errors,
 		linkError,
+		formValues,
 	};
 };
 

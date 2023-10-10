@@ -1,5 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import useLanguagesForm from "./useLanguagesForm";
 import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import { StyledStandardButton } from "./LanguagesForm.styles";
@@ -42,7 +42,7 @@ const LanguagesForm = ({
 			setValue={setValue}
 		>
 			{languages?.map((_, index) => (
-				<AboutOverviewTextInput
+				<StandardTextInput
 					key={index}
 					category={"languages"}
 					isSelectedValue={!!formValues.values?.[index]}

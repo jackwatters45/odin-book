@@ -50,12 +50,6 @@ const UserAboutWorkEducationSection = <T,>({
 	const { isOwnProfile, isEditing, handleOpenForm, handleCloseForm, formType } =
 		useUserAboutWorkEducationSection({ fieldName });
 
-	if (!(!content?.length && !isOwnProfile)) {
-		console.log("fieldName", fieldName);
-
-		console.log("content", content);
-	}
-
 	return (
 		<StyledUserAboutWorkEducationSection>
 			<BoldText>{capitalizeFirstLetterString(fieldName)}</BoldText>

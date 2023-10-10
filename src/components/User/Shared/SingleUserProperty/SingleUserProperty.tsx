@@ -36,6 +36,10 @@ const SingleUserProperty = ({
 
 	if (isOwnProfile && isEditing) return FormComponent;
 
+	if (isOwnProfile && includeAddDetailLink) {
+		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
+	}
+
 	const isAudienceRestricted =
 		(!isOwnProfile && audience === "Only Me") || (audience === "Friends" && !isFriend);
 
@@ -54,10 +58,6 @@ const SingleUserProperty = ({
 				{...props}
 			/>
 		);
-	}
-
-	if (isOwnProfile && includeAddDetailLink) {
-		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
 	}
 
 	return PlaceholderComponent;

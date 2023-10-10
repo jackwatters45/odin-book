@@ -1,16 +1,12 @@
 # Odin Book
 
-- actually show/hide based on audience + hide empty
+- select false make sure all still work
+
+- include mutual next to user name and friends preview
 
 - user
 
-  - include mutual next to user name and friends preview
   - display about, friends, photos sequentially
-
-- style auth pages
-
-  - autofill style issue
-  - Forgot stuff
 
 - dashboard
 - post

@@ -1,6 +1,6 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 import usePlacesLivedForm from "./usePlacesLivedForm";
 import { StyledTimePeriodStartOnly } from "@/styles/SharedStyles";
@@ -46,19 +46,19 @@ const PlacesLivedForm = ({
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={`${category}.city`}
 				isSelectedValue={!!formValues.values?.city}
 				register={{ ...register("values.city"), required: true }}
 				labelText={labelText ? `${labelText} city` : "City"}
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={`${category}.state`}
 				isSelectedValue={!!formValues.values?.state}
 				register={{ ...register("values.state"), required: true }}
 				labelText={labelText ? `${labelText} state` : "State"}
 			/>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={`${category}.country`}
 				isSelectedValue={!!formValues.values?.country}
 				register={{ ...register("values.country"), required: true }}

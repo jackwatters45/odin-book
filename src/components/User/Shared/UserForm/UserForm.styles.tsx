@@ -30,6 +30,10 @@ export const StyledAboutOverviewInput = styled.input`
 	&:invalid {
 		border-color: red;
 	}
+
+	&:-webkit-autofill {
+		background-color: black;
+	}
 `;
 
 export const StyledAboutOverviewTextarea = styled.textarea`

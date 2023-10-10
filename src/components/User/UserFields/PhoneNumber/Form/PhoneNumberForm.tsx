@@ -1,6 +1,6 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
-import AboutOverviewTextInput from "@/components/Shared/TextInput/AboutOverviewTextInput";
+import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import usePhoneNumberForm from "./usePhoneNumberForm";
 
 interface PhoneNumberFormProps {
@@ -31,7 +31,7 @@ const PhoneNumberForm = ({
 			control={control}
 			setValue={setValue}
 		>
-			<AboutOverviewTextInput
+			<StandardTextInput
 				category={"phoneNumber"}
 				isSelectedValue={!!formValues.values?.phoneNumber}
 				register={{ ...register("values.phoneNumber"), required: true }}

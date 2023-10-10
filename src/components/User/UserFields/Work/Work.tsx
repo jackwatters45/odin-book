@@ -26,8 +26,6 @@ const Work = ({
 		work: initialValues,
 	});
 
-	console.log("hideIfRestricted", hideIfRestricted); // TODO
-
 	return (
 		<UserAboutOverviewItem
 			title={title}

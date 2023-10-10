@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
 import { IUser } from "@/types/IUser";
 
-interface ResetPasswordProps {
+export interface ResetPasswordProps {
 	userId: string;
 }
 
@@ -23,15 +23,21 @@ const useResetPasswordMethod = () => {
 
 	const dataMapper: DataMapper<ResetPasswordProps> = (data) => ({ data });
 
-	const { register, submitForm, errors, formError } = useFormCustom<ResetPasswordProps>({
-		dataMapper,
-		onSubmit,
-		mutateOptions: {
-			queryUrl: "auth/forgot-password",
-			method: "POST",
-			successNavigate: "/recover/code",
-		},
-	});
+	const { register, submitForm, errors, formError, watch } =
+		useFormCustom<ResetPasswordProps>({
+			dataMapper,
+			onSubmit,
+			mutateOptions: {
+				queryUrl: "auth/forgot-password",
+				method: "POST",
+				successNavigate: "/recover/code",
+			},
+			formOptions: {
+				defaultValues: { userId: user.email || user.phoneNumber || "password" },
+			},
+		});
+
+	const selectedValue = watch("userId");
 
 	return {
 		user,
@@ -39,6 +45,7 @@ const useResetPasswordMethod = () => {
 		register,
 		submitForm,
 		errors,
+		selectedValue,
 	};
 };
 

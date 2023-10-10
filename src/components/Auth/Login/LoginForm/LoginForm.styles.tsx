@@ -14,7 +14,7 @@ export const StyledRecoverCreateLinkContainer = styled.div`
 `;
 
 export const StyledForgotLoginLink = styled(Link)`
-	font-size: 0.7rem;
+	font-size: 0.8rem;
 	font-weight: 600;
 	color: ${({ theme }) => theme.colors.blueButton};
 	display: block;

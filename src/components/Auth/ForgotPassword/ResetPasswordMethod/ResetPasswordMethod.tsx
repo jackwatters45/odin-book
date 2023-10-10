@@ -1,65 +1,74 @@
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import useResetPasswordMethod from "./useResetPasswordMethod";
 import renderFormErrors from "@/utils/render/renderFormErrors";
-import RecoverUserPreview from "../utils/RecoverUserPreview";
-import blurEmail from "./utils/blurEmail";
-import ForgotPasswordNav from "../ForgotPasswordNav";
+import RecoverUserPreview from "./RecoverUserPreview";
+import AuthRoutesWrapper from "../../Shared/AuthRoutesWrapper";
+import { StyledRecoverHeader } from "../styles/ForgotPassword.styles";
+import {
+	StyledButtonsContainer,
+	StyledFindAccountSubHeader,
+} from "../FindYourAccount/FindYourAccount.styles";
+import StandardButton from "@/components/Shared/StandardButton";
+import RecoveryMethod from "./RecoveryMethod";
+import {
+	StyledAuthFormContents,
+	StyledRecoveryMethods,
+} from "./ResetPasswordMethod.styles";
+import { StyledErrorText } from "../../Shared/AuthTextInput/AuthTextInput.styles";
 
 const ResetPasswordMethod = () => {
-	const { user, formError, register, submitForm, errors } = useResetPasswordMethod();
+	const { user, formError, register, submitForm, errors, selectedValue } =
+		useResetPasswordMethod();
 
 	if (!user) return <Navigate to={"/recover"} />;
 	return (
-		<div>
-			<ForgotPasswordNav />
+		<AuthRoutesWrapper>
+			<StyledRecoverHeader>Reset your password</StyledRecoverHeader>
 			<form onSubmit={submitForm}>
-				<h1>Reset your password</h1>
-				<div>
-					<label htmlFor="userId">
-						How do you want to get the code to reset your password?
-					</label>
-					{user?.email && (
-						<div>
-							<label htmlFor="email">Send code via email {blurEmail(user?.email)}</label>
-							<input
-								type="radio"
-								id="email"
-								value={user?.email}
-								{...register("userId", { required: "Please select a method" })}
-							/>
-						</div>
-					)}
-					{user.phoneNumber && (
-						<div>
-							<label htmlFor="sms">Send code via SMS {user?.phoneNumber}</label>
-							<input
-								type="radio"
-								id="sms"
-								value={user?.phoneNumber}
-								{...register("userId", { required: "Please select a method" })}
-							/>
-						</div>
-					)}
+				<StyledAuthFormContents>
 					<div>
-						<label htmlFor="password">Enter password to log in</label>
-						<input
-							type="radio"
-							id="password"
-							value="password"
-							{...register("userId", { required: "Please select a method" })}
-						/>
+						<StyledFindAccountSubHeader>
+							How do you want to get the code to reset your password?
+						</StyledFindAccountSubHeader>
+						<StyledRecoveryMethods>
+							{user?.email && (
+								<RecoveryMethod
+									value={user.email}
+									type="email"
+									register={register}
+									selectedValue={selectedValue}
+								/>
+							)}
+							{user.phoneNumber && (
+								<RecoveryMethod
+									value={user.phoneNumber}
+									type="sms"
+									register={register}
+									selectedValue={selectedValue}
+								/>
+							)}
+							<RecoveryMethod
+								value="password"
+								type="password"
+								register={register}
+								selectedValue={selectedValue}
+							/>
+						</StyledRecoveryMethods>
+						{errors.userId && <StyledErrorText>{errors.userId.message}</StyledErrorText>}
+						{formError && (
+							<StyledErrorText>{renderFormErrors(formError)}</StyledErrorText>
+						)}
 					</div>
-					{errors.userId && <div>{errors.userId.message}</div>}
-				</div>
-				<RecoverUserPreview user={user} includeNotYou={false} />
-				{formError && <p>{renderFormErrors(formError)}</p>}
-				<button type="button">
-					<Link to="/recover">Not you?</Link>
-				</button>
-				<button type="submit">Continue</button>
+					<RecoverUserPreview user={user} />
+				</StyledAuthFormContents>
+
+				<StyledButtonsContainer>
+					<StandardButton type="button" text="Not you?" to="/recover" />
+					<StandardButton type="submit" text="Continue" colorClass="blue" />
+				</StyledButtonsContainer>
 			</form>
-		</div>
+		</AuthRoutesWrapper>
 	);
 };
 
