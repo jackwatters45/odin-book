@@ -22,3 +22,8 @@ export const StyledPhoto = styled.div`
 		}
 	}
 `;
+
+export const StyledPhotoPlaceholder = styled.div`
+	min-height: 160px;
+	border-radius: 0.25rem;
+`;

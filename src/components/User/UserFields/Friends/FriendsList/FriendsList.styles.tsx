@@ -54,3 +54,15 @@ export const StyledMutualFriends = styled.span`
 	color: ${({ theme }) => theme.colors.textSecondary};
 	font-size: 0.8rem;
 `;
+
+export const StyledFriendPlaceholder = styled.div`
+	position: relative;
+	height: 3.5rem;
+	width: calc(50% - 0.5rem);
+	border-radius: 0.5rem;
+
+	@media (min-width: 900px) {
+		height: 100px;
+		padding: 1 rem;
+	}
+`;

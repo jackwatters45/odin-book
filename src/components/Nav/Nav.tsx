@@ -7,7 +7,6 @@ import {
 	mdiBellOutline,
 	mdiPlusBoxOutline,
 	mdiLogoutVariant,
-	mdiCog,
 	mdiAccount,
 } from "@mdi/js";
 
@@ -103,7 +102,6 @@ const NavComponent = () => {
 						}}
 						dataTestid="profile-dropdown"
 					>
-						{/* TODO fancy profile thing */}
 						<StyledDropdownLink
 							to={`/user/${user?._id}/`}
 							text="Profile"
@@ -111,12 +109,6 @@ const NavComponent = () => {
 								<IconCircleBackground path={mdiAccount} size={1.5} color={"#1c1e21"} />
 							}
 							dataTestid="profile-button"
-						/>
-						<StyledDropdownLink
-							to="/settings"
-							text="Settings"
-							icon={<IconCircleBackground path={mdiCog} size={1.5} color={"#1c1e21"} />}
-							dataTestid="settings-button"
 						/>
 						<StyledDropdownButton
 							onClick={handleClickLogout}

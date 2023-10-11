@@ -1,28 +1,27 @@
 import UserProfileSection from "@/components/User/Shared/UserProfileSection";
 import PhotosAdd from "./PhotosAdd/PhotosAdd";
 import useUserPhotos from "./useUserPhotos";
+import UserPhotosNav from "./UserPhotosNav";
 import PhotosDisplay from "@/components/User/UserFields/Photos/PhotosDisplay";
-import { StyledProfileLink } from "../../ProfileNav/ProfileNav.styles";
-import { StyledProfileSectionNav } from "@/styles/SharedStyles";
 
-const UserPhotos = () => {
-	const { userFirstName, isOwnProfile, isPhotosOfYou, isYourPhotos, photos } =
-		useUserPhotos();
+interface UserPhotosProps {
+	isUsingLink?: boolean;
+}
+
+const UserPhotos = ({ isUsingLink = true }: UserPhotosProps) => {
+	const { userFirstName, isOwnProfile, activeTabSelector, setSelectedTab, photos } =
+		useUserPhotos({ isUsingLink });
 
 	return (
+		// TODO maybe remove PhotosAdd
 		<UserProfileSection title="Photos" rightColumn={<PhotosAdd />}>
-			<StyledProfileSectionNav>
-				<StyledProfileLink
-					isActive={isPhotosOfYou}
-					to={"of"}
-					text={`Photos of ${isOwnProfile ? "you" : `${userFirstName}`}`}
-				/>
-				<StyledProfileLink
-					to={"by"}
-					text={`${isOwnProfile ? "Your" : `${userFirstName}'s`} photos`}
-					isActive={isYourPhotos}
-				/>
-			</StyledProfileSectionNav>
+			<UserPhotosNav
+				isOwnProfile={isOwnProfile}
+				userFirstName={userFirstName}
+				isUsingLink={isUsingLink}
+				setSelectedTab={setSelectedTab}
+				activeTabSelector={activeTabSelector}
+			/>
 			<PhotosDisplay photos={photos} />
 		</UserProfileSection>
 	);

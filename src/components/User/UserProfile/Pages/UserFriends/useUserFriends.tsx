@@ -6,9 +6,15 @@ import getHometownFriends from "./utils/getHometownFriends";
 import getCurrentCityFriends from "./utils/getCurrentCityFriends";
 import getCollegeFriends from "./utils/getCollegeFriends";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import { useState } from "react";
 
-const useUserFriends = () => {
+interface UseUserFriendsProps {
+	isUsingLink: boolean;
+}
+
+const useUserFriends = ({ isUsingLink }: UseUserFriendsProps) => {
 	const currentUser = useCurrentUserCached();
+	const { user } = useOutletContext<{ user: IUser }>();
 
 	const { friends } = useFetchFriends();
 
@@ -18,20 +24,23 @@ const useUserFriends = () => {
 	);
 
 	const friendType = useFriendPageType();
-	const { user } = useOutletContext<{ user: IUser }>();
+
+	const [selectedTab, setSelectedTab] = useState(friendType);
+
+	const activeTabSelector = isUsingLink ? friendType : selectedTab;
 
 	let filteredFriends = friends;
-	switch (friendType) {
-		case "MUTUAL":
+	switch (activeTabSelector) {
+		case "mutual":
 			filteredFriends = userMutualFriends;
 			break;
-		case "COLLEGE":
+		case "college":
 			filteredFriends = getCollegeFriends(user, friends);
 			break;
-		case "CURRENT_CITY":
+		case "current-city":
 			filteredFriends = getCurrentCityFriends(user, friends);
 			break;
-		case "HOMETOWN":
+		case "hometown":
 			filteredFriends = getHometownFriends(user, friends);
 			break;
 		default:
@@ -39,7 +48,7 @@ const useUserFriends = () => {
 			break;
 	}
 
-	return { filteredFriends, friendType };
+	return { filteredFriends, friendType, setSelectedTab, activeTabSelector };
 };
 
 export default useUserFriends;

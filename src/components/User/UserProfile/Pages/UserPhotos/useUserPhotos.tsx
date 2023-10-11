@@ -1,30 +1,37 @@
 import UseFetchPhotos from "@/components/User/UserFields/Photos/UseFetchPhotos";
 import useProfileStatus from "@/hooks/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
+import { useState } from "react";
 import { useMatch, useOutletContext } from "react-router";
 
-const useUserPhotos = () => {
+interface UseUserPhotosProps {
+	isUsingLink?: boolean;
+}
+
+const useUserPhotos = ({ isUsingLink = true }: UseUserPhotosProps) => {
 	const { user } = useOutletContext<{ user: IUser }>();
 	const userFirstName = user?.firstName as string;
+
 	const { isOwnProfile } = useProfileStatus();
 
-	const matchDefault = !!useMatch("/user/:username/photos/");
-	const matchOf = !!useMatch("/user/:username/photos/of");
-	const matchBy = !!useMatch("/user/:username/photos/by");
-
-	const isPhotosOfYou = !!matchOf || !!matchDefault;
-	const isYourPhotos = !!matchBy;
+	const isYourPhotos = !!useMatch("/user/:username/photos/by");
 
 	const { photos } = UseFetchPhotos({
-		photosType: isPhotosOfYou ? "photos-of" : "photos-by",
+		photosType: isYourPhotos ? "photos-by" : "photos-of",
 	});
+
+	const currentPath = isYourPhotos ? "by" : "of";
+
+	const [selectedTab, setSelectedTab] = useState(currentPath);
+
+	const activeTabSelector = isUsingLink ? currentPath : selectedTab;
 
 	return {
 		userFirstName,
 		isOwnProfile,
-		isPhotosOfYou,
-		isYourPhotos,
 		photos,
+		activeTabSelector,
+		setSelectedTab,
 	};
 };
 

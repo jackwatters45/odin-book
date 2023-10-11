@@ -6,7 +6,7 @@ import {
 	StyledUserAboutRightColumn,
 	StyledUserAboutSectionContainer,
 } from "./UserAbout.styles";
-import Photos from "@/components/User/UserProfile/Pages/UserPhotos";
+import UserFriends from "../UserFriends";
 
 const UserAbout = () => {
 	const { user } = useUserAbout();
@@ -19,8 +19,7 @@ const UserAbout = () => {
 					<Outlet context={{ user }} />
 				</StyledUserAboutRightColumn>
 			</StyledUserAboutSectionContainer>
-			{/* TODO how to actually render the others + manage button state */}
-			<Photos />
+			<UserFriends isUsingLink={false} />
 		</>
 	);
 };

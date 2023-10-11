@@ -7,15 +7,15 @@ const useFriendPageType = () => {
 	const isHometownFriends = !!useMatch("/user/:username/friends/hometown");
 
 	if (isMutualFriends) {
-		return "MUTUAL";
+		return "mutual";
 	} else if (isCollegeFriends) {
-		return "COLLEGE";
+		return "college";
 	} else if (isCurrentCityFriends) {
-		return "CURRENT_CITY";
+		return "current-city";
 	} else if (isHometownFriends) {
-		return "HOMETOWN";
+		return "hometown";
 	} else {
-		return "ALL";
+		return "all";
 	}
 };
 

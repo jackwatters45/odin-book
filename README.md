@@ -1,30 +1,23 @@
 # Odin Book
 
-- select false make sure all still work
+- photos + friends deal with awkward bottom padding if no content
+- actually delete guests
 
-- include mutual next to user name and friends preview
-
-- user
-
-  - display about, friends, photos sequentially
-
-- dashboard
 - post
 
   - create
   - edit
   - delete
   - view
+  - preview
 
+- search
+- dashboard
 - notifications
 
-- check that login guest is working well
+- guests should have some default data
 - nav break point
-
-## keep eye on
-
-- user birthday (age) make sure good
-- all forms involving email should be case insensitive/convert to lowercase
+- tests
 
 ## eventually look into
 

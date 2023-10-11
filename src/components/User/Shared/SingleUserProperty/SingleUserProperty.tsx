@@ -34,9 +34,11 @@ const SingleUserProperty = ({
 }: SingleUserPropertyProps) => {
 	const { isOwnProfile, isFriend } = useProfileStatus();
 
+	const isContent = title && title.length;
+
 	if (isOwnProfile && isEditing) return FormComponent;
 
-	if (isOwnProfile && includeAddDetailLink) {
+	if (isOwnProfile && !isContent && includeAddDetailLink) {
 		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
 	}
 
@@ -47,7 +49,6 @@ const SingleUserProperty = ({
 		return hideIfRestricted ? null : PlaceholderComponent;
 	}
 
-	const isContent = title && title.length;
 	if (isContent) {
 		return (
 			<SingleUserPropertyExisting

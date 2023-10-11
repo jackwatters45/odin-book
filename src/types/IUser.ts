@@ -47,6 +47,7 @@ export interface UserResetPasswordData {
 // User Activity Data (all were objectIds)
 export interface UserActivityData {
 	friends: string[];
+	mutualFriends?: string[];
 	savedPosts: string[];
 	friendRequestsSent: string[];
 	friendRequestsReceived: string[];

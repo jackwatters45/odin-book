@@ -10,29 +10,13 @@ import {
 	StyledProfileBasicInfo,
 	StyledProfileButtonContainer,
 } from "./ProfileBasicInfo.styles";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
-import ProfileFriendStatus from "../../UserFields/Friends/FriendStatus/Profile/ProfileFriendStatus";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import ProfileFriendStatus from "../../UserFields/Friends/FriendStatus/Profile";
+import useProfileBasicInfo from "./useProfileBasicInfo";
 
 interface ProfileBasicInfoProps {
 	user: IUser;
 }
 
-// TODO
-const useProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const { isOwnProfile } = useProfileStatus();
-
-	const currentUser = useCurrentUserCached();
-
-	const mutualFriends = [""];
-	const mutualFriendsLength = mutualFriends?.length;
-
-	const showMutual = !isOwnProfile && mutualFriends && mutualFriends.length > 0;
-
-	return { isOwnProfile, mutualFriendsLength, showMutual };
-};
-
-// TODO - add mutual friends to user fetch
 const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
 	const { isOwnProfile, mutualFriendsLength, showMutual } = useProfileBasicInfo({
 		user,

@@ -65,7 +65,7 @@ const CreateAccount = () => {
 				/>
 				<AuthTextInput<CreateAccountInputs>
 					id="password"
-					idText="New password"
+					idText="Password"
 					formValues={formValues}
 					errors={errors}
 					autoComplete="new-password"
