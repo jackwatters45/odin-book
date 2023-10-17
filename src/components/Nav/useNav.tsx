@@ -9,11 +9,15 @@ const useNav = () => {
 
 	const { openDialog } = useCreatePostContext();
 
+	const openCreatePostDialog = () => {
+		openDialog({ initialValues: undefined, initialOpenedState: undefined });
+	};
+
 	return {
 		handleClickLogout,
 		user: currentUser,
 		isSuccess,
-		openDialog,
+		openCreatePostDialog,
 	};
 };
 

@@ -1,9 +1,10 @@
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
-import { FormValues, InitialOpenedState } from "../types/CreatePostTypes";
+import { CreatePostFormValues, InitialOpenedState } from "../types/CreatePostTypes";
 import useToggledState from "@/hooks/useToggledState";
+import { useEffect } from "react";
 
 interface UseBaseCreatePostFormProps {
-	formValues: FormValues;
+	formValues: CreatePostFormValues;
 	initialOpenedState: InitialOpenedState;
 }
 const useBaseCreatePostForm = ({
@@ -12,7 +13,10 @@ const useBaseCreatePostForm = ({
 }: UseBaseCreatePostFormProps) => {
 	const currentUser = useCurrentUserCached();
 
-	const addPhotoState = useToggledState({ initialState: initialOpenedState === "photo" });
+	const addPhotoState = useToggledState();
+	useEffect(() => {
+		addPhotoState[2](initialOpenedState === "photo");
+	}, [initialOpenedState, addPhotoState]);
 
 	const isSubmitDisabled = !(
 		formValues.content ||

@@ -1,11 +1,11 @@
 import { UseFormSetValue } from "react-hook-form";
 import { TaggedUserType } from "./types/TagTypes";
 import useUserSearch from "@/hooks/useUserSearch";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 import useError from "@/components/Errors/useError";
 
 interface UseCreatePostAddTagFormProps {
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	taggedUsers: TaggedUserType[];
 }
 

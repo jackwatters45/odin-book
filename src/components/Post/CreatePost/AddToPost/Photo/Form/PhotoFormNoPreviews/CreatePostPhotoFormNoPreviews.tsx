@@ -5,7 +5,7 @@ import { mdiPlusBoxMultiple } from "@mdi/js";
 import { PhotoPreviews } from "../../types/PhotoTypes";
 import { IconCircleBackground } from "@/components/Nav/Nav.styles";
 import useCreatePostPhotoForm from "../useCreatePostPhotoForm";
-import { FormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
+import { CreatePostFormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
 import {
 	StyledAddPhotoLabel,
 	StyledAddPhotoSubtext,
@@ -13,7 +13,7 @@ import {
 } from "./CreatePostPhotoFormNoPreviews.styles";
 
 interface CreatePostPhotoFormNoPreviewsProps {
-	control: Control<FormValues>;
+	control: Control<CreatePostFormValues>;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
 }
 

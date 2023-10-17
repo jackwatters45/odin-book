@@ -6,12 +6,12 @@ import { PhotoPreviews } from "../types/PhotoTypes";
 import PhotoFormNoPreviews from "./PhotoFormNoPreviews";
 import CreatePostPhotoCloseButton from "./CloseButton";
 import { StyledCreatePostPhotoContainer } from "./CreatePostPhotoForm.styles";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CreatePostPhotoFormProps {
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	toggleIsAddingPhoto: () => void;
-	control: Control<FormValues>;
+	control: Control<CreatePostFormValues>;
 	photoPreviews: PhotoPreviews;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
 }

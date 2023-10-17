@@ -1,6 +1,6 @@
 import { UseFormSetValue, useForm } from "react-hook-form";
 import { CheckInValues } from "../types/CheckInTypes";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CheckInFormValues {
 	location: string;
@@ -11,7 +11,7 @@ interface CheckInFormValues {
 
 interface UseCreatePostCheckInformProps {
 	closeForm: () => void;
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	currentValue: CheckInValues;
 }
 

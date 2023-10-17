@@ -1,14 +1,14 @@
-import useCreatePostContext from "@/components/Post/CreatePost/context/useCreatePostContext";
 import StandardButton from "@/components/Shared/StandardButton";
+import usePhotosAdd from "./usePhotosAdd";
 
 const PhotosAdd = () => {
-	const { openDialog } = useCreatePostContext();
+	const { openCreatePostDialog } = usePhotosAdd();
 
 	return (
 		<StandardButton
 			text="Add photos/video"
 			colorClass="transparent-blue"
-			onClick={openDialog}
+			onClick={openCreatePostDialog}
 		/>
 	);
 };

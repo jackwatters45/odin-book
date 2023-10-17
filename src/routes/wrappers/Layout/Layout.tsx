@@ -7,7 +7,7 @@ const Layout = () => {
 		<>
 			<Nav />
 			<Outlet />
-			<CreatePost initialOpenedState={undefined} initialValues={undefined} />
+			<CreatePost />
 		</>
 	);
 };

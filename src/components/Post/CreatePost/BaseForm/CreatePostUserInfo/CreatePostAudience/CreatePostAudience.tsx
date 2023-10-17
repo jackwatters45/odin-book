@@ -2,12 +2,12 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import AudienceFormController from "./AudienceFormController";
 import { Control, UseFormSetValue } from "react-hook-form";
 import { StyledAudienceRadio } from "./CreatePostAudience.styles";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CreatePostAudienceProps {
 	audience: AudienceStatusOptions;
-	control: Control<FormValues>;
-	setValue: UseFormSetValue<FormValues>;
+	control: Control<CreatePostFormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 }
 
 const CreatePostAudience = ({ audience, control, setValue }: CreatePostAudienceProps) => {

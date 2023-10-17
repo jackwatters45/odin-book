@@ -5,7 +5,7 @@ import { ImageCircle } from "@/components/Nav/Nav.styles";
 import CreatePostAudience from "./CreatePostAudience";
 import renderTitleSegment from "@/utils/render/titleSegment/titleSegments";
 import getPostTitleSegments from "./utils/getPostTitleSegments";
-import { FormValues } from "../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../types/CreatePostTypes";
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 import { StyledFullName, StyledUserInfo } from "./CreatePostUserInfo.styles.";
 
@@ -13,9 +13,9 @@ interface CreatePostUserInfoProps {
 	userId: string;
 	avatarUrl: string | undefined;
 	fullName: string;
-	control: Control<FormValues>;
-	setValue: UseFormSetValue<FormValues>;
-	formValues: FormValues;
+	control: Control<CreatePostFormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
+	formValues: CreatePostFormValues;
 }
 
 const CreatePostUserInfo = ({

@@ -6,7 +6,7 @@ import ContentTextArea from "./CreatePostTextArea";
 import UserInfo from "./CreatePostUserInfo";
 import PhotoForm from "../AddToPost/Photo/Form";
 import { StandardButtonFullWidth } from "@/styles/SharedStyles";
-import { FormValues, InitialOpenedState } from "../types/CreatePostTypes";
+import { CreatePostFormValues, InitialOpenedState } from "../types/CreatePostTypes";
 import useBaseCreatePostForm from "./useBaseCreatePostForm";
 import AddToPostButtons from "./AddToPostButtons";
 import {
@@ -18,11 +18,11 @@ import { PhotoPreviews } from "../AddToPost/Photo/types/PhotoTypes";
 interface BaseCreatePostFormProps {
 	isPreviousDefault: boolean;
 	closeDialog: () => void;
-	formValues: FormValues;
+	formValues: CreatePostFormValues;
 	initialOpenedState: InitialOpenedState;
-	setValue: UseFormSetValue<FormValues>;
-	control: Control<FormValues>;
-	register: UseFormRegister<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
+	control: Control<CreatePostFormValues>;
+	register: UseFormRegister<CreatePostFormValues>;
 	submitForm: (e: FormEvent<HTMLFormElement>) => void;
 	toggleIsTaggingUsers: () => void;
 	toggleIsAddingFeeling: () => void;

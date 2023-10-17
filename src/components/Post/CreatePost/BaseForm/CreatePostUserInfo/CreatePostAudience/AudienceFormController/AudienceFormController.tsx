@@ -1,10 +1,10 @@
 import { Control, Controller } from "react-hook-form";
 import getAudienceIcon from "@/utils/audience/getAudienceIcon";
 import { StyledCreatePostAudienceButton } from "./AudienceFormController.styles";
-import { FormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
+import { CreatePostFormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
 
 interface AudienceFormControllerProps {
-	control: Control<FormValues>;
+	control: Control<CreatePostFormValues>;
 	openDialog: () => void;
 }
 

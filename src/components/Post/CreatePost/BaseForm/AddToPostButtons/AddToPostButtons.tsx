@@ -8,10 +8,10 @@ import PhotoButton from "../../AddToPost/Photo/Button";
 import TagButton from "../../AddToPost/Tag/Button";
 import FeelingButton from "../../AddToPost/Feeling/Button";
 import CheckInButton from "../../AddToPost/CheckIn/Button";
-import { FormValues } from "../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../types/CreatePostTypes";
 
 interface AddToPostButtonsProps {
-	formValues: FormValues;
+	formValues: CreatePostFormValues;
 	isAddingPhoto: boolean;
 	toggleIsAddingPhoto: () => void;
 	toggleIsTaggingUsers: () => void;

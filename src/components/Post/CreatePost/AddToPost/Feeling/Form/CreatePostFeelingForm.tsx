@@ -10,11 +10,11 @@ import {
 	StyledDialogContent,
 	StyledFeelingsContainer,
 } from "./CreatePostFeelingForm.styles";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CreatePostFeelingFormProps {
 	closeForm: () => void;
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	currentValue: string;
 }
 

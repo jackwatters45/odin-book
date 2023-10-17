@@ -19,11 +19,11 @@ import {
 	StyledTaggedUsersContainer,
 	UserSearchContainer,
 } from "./CreatePostAddTagForm.styles";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CreatePostAddTagFormProps {
 	closeForm: () => void;
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	taggedUsers: TaggedUserType[];
 }
 

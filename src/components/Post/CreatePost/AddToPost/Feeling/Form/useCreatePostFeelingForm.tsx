@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from "react";
 import { UseFormSetValue } from "react-hook-form";
 import { feelings } from "../Constants/feelingOptions";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface UseCreatePostFeelingFormProps {
 	closeForm: () => void;
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 }
 
 const useCreatePostFeelingForm = ({

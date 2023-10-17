@@ -13,7 +13,6 @@ const UserPhotos = ({ isUsingLink = true }: UserPhotosProps) => {
 		useUserPhotos({ isUsingLink });
 
 	return (
-		// TODO maybe remove PhotosAdd
 		<UserProfileSection title="Photos" rightColumn={<PhotosAdd />}>
 			<UserPhotosNav
 				isOwnProfile={isOwnProfile}

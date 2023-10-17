@@ -1,10 +1,10 @@
 import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
 import { getFeelingEmoji } from "../../../AddToPost/Feeling/Constants/feelingOptions";
 import getSeparatorAtIndex from "@/utils/format/getSeparatorAtIndex";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface getPostTitleSegmentsProps {
-	formValues: FormValues;
+	formValues: CreatePostFormValues;
 	fullName: string;
 	userId: string;
 }

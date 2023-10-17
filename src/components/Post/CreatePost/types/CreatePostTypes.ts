@@ -6,7 +6,7 @@ export type InitialOpenedStateFields = "checkIn" | "feeling" | "photo" | "tag";
 
 export type InitialOpenedState = InitialOpenedStateFields | undefined;
 
-export interface FormValues {
+export interface CreatePostFormValues {
 	audience: AudienceStatusOptions;
 	content: string;
 	checkIn: CheckInValues;

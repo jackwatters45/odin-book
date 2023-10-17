@@ -1,24 +1,15 @@
 import useCreatePost from "./useCreatePost";
-import { FormValues, InitialOpenedState } from "./types/CreatePostTypes";
 import { StyledDialogCreatePost } from "./CreatePost.styles";
 import TagForm from "./AddToPost/Tag/Form";
 import FeelingForm from "./AddToPost/Feeling/Form";
 import CheckinForm from "./AddToPost/CheckIn/Form";
 import BaseCreatePostForm from "./BaseForm";
 
-interface CreatePostProps {
-	initialValues: FormValues | undefined;
-	initialOpenedState: InitialOpenedState;
-}
-
-// TODO dialog actually work
-
-// TODO real previews
-// TODO edit post
-const CreatePost = ({ initialValues, initialOpenedState }: CreatePostProps) => {
+const CreatePost = () => {
 	const {
 		ref,
 		closeDialog,
+		initialOpenedState,
 		setValue,
 		formValues,
 		isTaggingUsers,
@@ -31,10 +22,10 @@ const CreatePost = ({ initialValues, initialOpenedState }: CreatePostProps) => {
 		setPhotoPreviews,
 		isPreviousDefault,
 		...formMethods
-	} = useCreatePost({ initialValues, initialOpenedState });
+	} = useCreatePost();
 
 	return (
-		<StyledDialogCreatePost ref={ref} open>
+		<StyledDialogCreatePost ref={ref}>
 			{isTaggingUsers ? (
 				<TagForm
 					closeForm={toggleIsTaggingUsers}

@@ -7,12 +7,12 @@ import { StandardButtonFullWidth } from "@/styles/SharedStyles";
 import { StyledCheckInContainer } from "./CreatePostCheckinForm.styles";
 import useCreatePostCheckInForm from "./useCreatePostCheckInForm";
 import { CheckInValues } from "../types/CheckInTypes";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface CreatePostCheckInformProps {
 	closeForm: () => void;
 	currentValue: CheckInValues;
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 }
 
 const CreatePostCheckinForm = ({

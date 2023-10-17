@@ -1,23 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 
 import useFormCustom from "@/hooks/useFormCustom";
-import { FormValues, InitialOpenedState } from "./types/CreatePostTypes";
+import { CreatePostFormValues } from "./types/CreatePostTypes";
 import useToggledState from "@/hooks/useToggledState";
 import { PhotoPreviews } from "./AddToPost/Photo/types/PhotoTypes";
 import useCreatePostContext from "./context/useCreatePostContext";
 
-interface useCreatePostProps {
-	initialOpenedState: InitialOpenedState;
-	initialValues: FormValues | undefined;
-}
-
-const useCreatePost = ({ initialOpenedState, initialValues }: useCreatePostProps) => {
+const useCreatePost = () => {
 	// dialog
-	const { ref, closeDialog } = useCreatePostContext();
+	const { ref, closeDialog, initialOpenedState, initialValues } = useCreatePostContext();
+
+	console.log("initialOpenedState", initialOpenedState);
 
 	// use form
 	const { control, setValue, register, watch, mutate, handleSubmit } =
-		useFormCustom<FormValues>({
+		useFormCustom<CreatePostFormValues>({
 			mutateOptions: { queryUrl: "posts", method: "POST" },
 			formOptions: {
 				defaultValues: {
@@ -58,17 +55,17 @@ const useCreatePost = ({ initialOpenedState, initialValues }: useCreatePostProps
 	const formValues = watch();
 
 	// other forms state
-	const [isTaggingUsers, toggleIsTaggingUsers] = useToggledState({
-		initialState: initialOpenedState === "tag",
-	});
+	const [isTaggingUsers, toggleIsTaggingUsers, setIsTaggingUsers] = useToggledState();
 
-	const [isAddingFeeling, toggleIsAddingFeeling] = useToggledState({
-		initialState: initialOpenedState === "feeling",
-	});
+	const [isAddingFeeling, toggleIsAddingFeeling, setIsAddingFeeling] = useToggledState();
 
-	const [isCheckingIn, toggleIsCheckingIn] = useToggledState({
-		initialState: initialOpenedState === "checkIn",
-	});
+	const [isCheckingIn, toggleIsCheckingIn, setIsCheckingIn] = useToggledState();
+
+	useEffect(() => {
+		setIsTaggingUsers(initialOpenedState === "tag");
+		setIsAddingFeeling(initialOpenedState === "feeling");
+		setIsCheckingIn(initialOpenedState === "checkIn");
+	}, [initialOpenedState, setIsTaggingUsers, setIsAddingFeeling, setIsCheckingIn]);
 
 	const [photoPreviews, setPhotoPreviews] = useState<PhotoPreviews>([]);
 
@@ -99,6 +96,7 @@ const useCreatePost = ({ initialOpenedState, initialValues }: useCreatePostProps
 	return {
 		ref,
 		closeDialog,
+		initialOpenedState,
 		control,
 		setValue,
 		register,

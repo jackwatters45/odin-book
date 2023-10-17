@@ -34,7 +34,7 @@ import defaultUserAvatar from "../User/UserFields/Avatar/utils/defaultUserAvatar
 // TODO notifications
 
 const NavComponent = () => {
-	const { handleClickLogout, user, isSuccess, openDialog } = useNav();
+	const { handleClickLogout, user, isSuccess, openCreatePostDialog } = useNav();
 
 	if (isSuccess && !user) return <Navigate to="/login" />;
 	return (
@@ -86,7 +86,7 @@ const NavComponent = () => {
 					/>
 				</StyledCenterNav>
 				<StyledSideNav>
-					<StyledCreatePostButton onClick={openDialog}>
+					<StyledCreatePostButton onClick={openCreatePostDialog}>
 						<IconCircleBackground
 							path={mdiPlusBoxOutline}
 							size={5 / 3}

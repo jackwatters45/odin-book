@@ -3,7 +3,7 @@ import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 import useError from "@/components/Errors/useError";
 import { PhotoPreview, PhotoPreviews } from "../types/PhotoTypes";
-import { FormValues } from "../../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../../types/CreatePostTypes";
 
 interface useCreatePostPhotoFormProps {
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
@@ -14,7 +14,7 @@ const useCreatePostPhotoForm = ({ setPhotoPreviews }: useCreatePostPhotoFormProp
 
 	const addPhotos = async (
 		e: ChangeEvent<HTMLInputElement>,
-		field: ControllerRenderProps<FormValues, "media">,
+		field: ControllerRenderProps<CreatePostFormValues, "media">,
 	) => {
 		if (e.target.files) {
 			const selectedFiles = Array.from(e.target.files);

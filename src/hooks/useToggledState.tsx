@@ -1,19 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-interface UseToggledStateProps {
-	initialState?: boolean;
-	delay?: number;
-}
+type UseToggledStateReturn = [boolean, () => void, Dispatch<SetStateAction<boolean>>];
 
-const useToggledState = ({
-	initialState = false,
-	delay = 0,
-}: UseToggledStateProps): [boolean, () => void] => {
+const useToggledState = (initialState = false): UseToggledStateReturn => {
 	const [isToggled, setIsToggled] = useState(initialState);
 
-	const toggleState = () => setTimeout(() => setIsToggled((prev) => !prev), delay);
+	const toggleState = () => setIsToggled((prev) => !prev);
 
-	return [isToggled, toggleState];
+	return [isToggled, toggleState, setIsToggled];
 };
 
 export default useToggledState;

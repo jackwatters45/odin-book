@@ -1,10 +1,10 @@
 import { UseFormRegister } from "react-hook-form";
 import { StyledPostTextArea, StyledPostTextContainer } from "./CreatePostTextArea.styles";
 import useCreatePostTextArea from "./useCreatePostTextArea";
-import { FormValues } from "../../types/CreatePostTypes";
+import { CreatePostFormValues } from "../../types/CreatePostTypes";
 
 interface CreatePostTextAreaProps {
-	register: ReturnType<UseFormRegister<FormValues>>;
+	register: ReturnType<UseFormRegister<CreatePostFormValues>>;
 	isPhotosSelected: boolean;
 }
 

@@ -5,10 +5,10 @@ import { Dispatch, SetStateAction } from "react";
 
 import { StyledCloseButton } from "./CreatePostPhotoCloseButton.styles";
 import { PhotoPreviews } from "../../types/PhotoTypes";
-import { FormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
+import { CreatePostFormValues } from "@/components/Post/CreatePost/types/CreatePostTypes";
 
 interface CreatePostPhotoCloseButtonProps {
-	setValue: UseFormSetValue<FormValues>;
+	setValue: UseFormSetValue<CreatePostFormValues>;
 	toggleIsAddingPhoto: () => void;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
 }
