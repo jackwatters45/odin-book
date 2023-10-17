@@ -18,6 +18,7 @@ const useCurrentUser = () => {
 		transformData: ({ isAuthenticated, user }) => {
 			return isAuthenticated ? user : null;
 		},
+		allowErrors: true,
 	});
 
 	return { currentUser: data, error, isLoading, isError, isSuccess };

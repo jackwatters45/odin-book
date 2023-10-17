@@ -1,8 +1,8 @@
 import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
-import useFamilyMembersForm from "./useFamilyMembers";
+import useFamilyMembersForm from "./useFamilyMembersForm";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
-import UserSearch from "../../../Shared/UserSearch";
+import UserSearch from "../../../Shared/UserSearchSingle";
 import { FamilyMember, FamilyRelationshipOptions } from "../types/FamilyMembersTypes";
 
 export interface FamilyMembersFormProps {
@@ -24,6 +24,7 @@ const FamilyMembersForm = ({
 		formValues,
 		defaultValues,
 		isValid,
+		registerSearchInput,
 		searchResults,
 		isLoading,
 		searchQuery,
@@ -45,7 +46,7 @@ const FamilyMembersForm = ({
 			disableSave={!isValid}
 		>
 			<UserSearch
-				register={{ ...register("values.search"), required: true }}
+				registerSearchInput={registerSearchInput}
 				setValue={setValue}
 				searchResults={searchResults}
 				searchQuery={searchQuery}

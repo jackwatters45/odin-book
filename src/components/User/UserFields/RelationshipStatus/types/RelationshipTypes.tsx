@@ -1,4 +1,4 @@
-import { DefaultUserSearch } from "@/components/User/Shared/UserSearch/types/DefaultUserSearch";
+import { DefaultUserSearch } from "@/components/User/Shared/UserSearchSingle/types/DefaultUserSearch";
 import { IUser } from "@/types/IUser";
 import { IncludesStartDates } from "@/types/IncludesDates";
 

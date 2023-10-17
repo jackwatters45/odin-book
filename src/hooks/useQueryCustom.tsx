@@ -7,6 +7,7 @@ export interface IQueryCustomProps<T, U> {
 	transformData?: (data: T) => U;
 	includeCredentials?: boolean;
 	options?: UseQueryOptions<U>;
+	allowErrors?: boolean;
 }
 
 const useQueryCustom = <T = unknown, U = T>({
@@ -15,6 +16,7 @@ const useQueryCustom = <T = unknown, U = T>({
 	transformData,
 	includeCredentials = true,
 	options,
+	allowErrors = false,
 }: IQueryCustomProps<T, U>) => {
 	const queryFn = async () => {
 		const res = await fetch(`${apiBaseUrl}/${queryUrl}`, {
@@ -23,7 +25,7 @@ const useQueryCustom = <T = unknown, U = T>({
 		});
 
 		const json = await res.json();
-		if (!(res.ok || res.status === 302)) {
+		if (!(res.ok || res.status === 302) && !allowErrors) {
 			throw new Error(json.message || json);
 		}
 

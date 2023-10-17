@@ -1,7 +1,7 @@
 import { RadioFormOption } from "../RadioForm";
 
 interface UseRadioFormControllerProps {
-	options: RadioFormOption[];
+	options?: RadioFormOption[];
 }
 
 const useRadioFormController = ({ options }: UseRadioFormControllerProps) => {

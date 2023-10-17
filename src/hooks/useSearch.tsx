@@ -5,11 +5,12 @@ import useQueryCustom, { IQueryCustomProps } from "./useQueryCustom";
 import { UseQueryOptions } from "@tanstack/react-query";
 
 export interface UseSearchProps<T, U> {
+	searchQuery: string | undefined;
 	queryKey: IQueryCustomProps<T, U>["queryKey"];
 	queryUrl: IQueryCustomProps<T, U>["queryUrl"];
 	transformData?: IQueryCustomProps<T, U>["transformData"];
+	includeEmpty?: boolean;
 	options?: UseQueryOptions<U>;
-	searchQuery: string | undefined;
 }
 
 const useSearch = <T, U>({
@@ -17,6 +18,7 @@ const useSearch = <T, U>({
 	queryKey,
 	queryUrl,
 	transformData,
+	includeEmpty = false,
 	options,
 }: UseSearchProps<T, U>) => {
 	const {
@@ -39,9 +41,9 @@ const useSearch = <T, U>({
 	}, [debouncedRefetch]);
 
 	useEffect(() => {
-		if (searchQuery) refetchDebounced();
+		if (searchQuery || includeEmpty) refetchDebounced();
 		return debouncedRefetch.cancel;
-	}, [searchQuery, refetchDebounced, debouncedRefetch]);
+	}, [searchQuery, includeEmpty, refetchDebounced, debouncedRefetch]);
 
 	return { searchResults, isLoading };
 };

@@ -42,9 +42,9 @@ const UserAboutDetails = () => {
 							audience={audienceSettings?.otherNames?.[otherName._id as string]}
 						/>
 					))
-				) : (
+				) : !isOwnProfile ? (
 					<OtherNamesPlaceholder />
-				)}
+				) : null}
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Favorite quotes</BoldText>

@@ -1,4 +1,7 @@
-import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import {
+	AudienceStatusOptions,
+	FormFieldsWithAudience,
+} from "@/types/AudienceSettingsTypes";
 import StandardUserOverviewForm from "../../../Shared/UserForm";
 
 import useRelationshipForm from "./useRelationshipForm";
@@ -6,12 +9,14 @@ import {
 	IRelationshipStatus,
 	VALID_RELATIONSHIP_STATUSES_ARRAY,
 } from "@/components/User/UserFields/RelationshipStatus/types/RelationshipTypes";
-import UserSearch from "@/components/User/Shared/UserSearch";
+import UserSearch from "@/components/User/Shared/UserSearchSingle";
 import {
 	FullWidthStandardSelect,
 	StyledTimePeriodStartOnly,
 } from "@/styles/SharedStyles";
 import capitalizeFirstLetterString from "@/utils/format/capitalizeFirstLetterString";
+import { UseFormSetValue } from "react-hook-form";
+import { DefaultUserSearch } from "@/components/User/Shared/UserSearchSingle/types/DefaultUserSearch";
 
 interface RelationshipFormProps {
 	audience: AudienceStatusOptions;
@@ -31,6 +36,7 @@ const RelationshipForm = ({
 		register,
 		formValues,
 		defaultValues,
+		registerSearchInput,
 		searchQuery,
 		searchResults,
 		isLoading,
@@ -66,8 +72,12 @@ const RelationshipForm = ({
 			{showSearch && (
 				<>
 					<UserSearch
-						register={{ ...register("values.search"), required: true }}
-						setValue={setValue}
+						registerSearchInput={registerSearchInput}
+						setValue={
+							setValue as unknown as UseFormSetValue<
+								FormFieldsWithAudience<DefaultUserSearch>
+							>
+						}
 						searchResults={searchResults}
 						searchQuery={searchQuery}
 						isLoading={isLoading}

@@ -1,5 +1,5 @@
 import { Control, FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
-import { Suspense, lazy } from "react";
+import { FC, Suspense, lazy } from "react";
 
 import { StyledRadioFormDialog } from "./RadioForm.styles";
 import useRadioForm from "./useRadioForm";
@@ -26,6 +26,15 @@ export interface RadioFormCoreFormProps<T extends FieldValues> {
 	buttonOptions?: StandardButtonProps;
 	submitsForm: boolean;
 	submitButtonText?: string;
+	className?: string;
+
+	ControllerComponent?: FC<{
+		formField: Path<T> & string;
+		control: Control<T>;
+		openDialog: () => void;
+		options: RadioFormOption[];
+		buttonOptions?: StandardButtonProps;
+	}>;
 }
 
 interface RadioFormUIProps {
@@ -45,8 +54,10 @@ const RadioForm = <T extends FieldValues>({
 	control,
 	setValue,
 	buttonOptions,
+	className,
 	submitsForm = true,
 	submitButtonText,
+	ControllerComponent = RadioFormController,
 }: RadioFormProps<T>) => {
 	const { ref, openDialog, popupValue, setPopupValue, handleConfirm, handleCancel } =
 		useRadioForm({
@@ -57,15 +68,15 @@ const RadioForm = <T extends FieldValues>({
 
 	return (
 		<>
-			<RadioFormController<T>
-				formField={formField}
-				control={control}
+			<ControllerComponent
 				openDialog={openDialog}
+				control={control}
+				formField={formField}
 				options={options}
 				buttonOptions={buttonOptions}
 			/>
 			<Suspense>
-				<StyledRadioFormDialog ref={ref} id={formField}>
+				<StyledRadioFormDialog ref={ref} id={formField} className={className}>
 					<ModalHeader title={title} closeDialog={handleCancel} />
 					<RadioFormDialogContent<T>
 						options={options}

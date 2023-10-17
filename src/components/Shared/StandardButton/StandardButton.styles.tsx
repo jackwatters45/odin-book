@@ -48,9 +48,6 @@ const StyledStandardButtonStyles = css`
 
 	&:disabled {
 		cursor: not-allowed;
-	}
-
-	&:disabled.blue {
 		color: #bcc0c4;
 		background-color: ${({ theme }) => theme.colors.primaryButton};
 	}
@@ -68,6 +65,10 @@ const StyledStandardButtonStyles = css`
 	&.light-blue {
 		color: ${({ theme }) => theme.colors.blueButton};
 		background: ${({ theme }) => theme.colors.secondaryBlueButton};
+	}
+
+	&.white {
+		background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 	}
 
 	&.transparent {

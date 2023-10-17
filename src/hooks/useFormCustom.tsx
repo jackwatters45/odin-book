@@ -65,7 +65,7 @@ const useFormCustom = <T extends FieldValues>({
 		mutate(dataMapper ? dataMapper(submitData) : { data: submitData });
 	});
 
-	return { submitForm, errors, formError, setFormError, ...formMethods };
+	return { submitForm, errors, formError, setFormError, mutate, ...formMethods };
 };
 
 export default useFormCustom;

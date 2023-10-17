@@ -4,6 +4,7 @@ import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import { PronounsType } from "./types/PronounsTypes";
+import PronounsPlaceholder from "./Placeholder";
 
 interface PronounsProps {
 	pronouns: PronounsType | undefined;
@@ -26,6 +27,7 @@ const Pronouns = ({ pronouns, audience }: PronounsProps) => {
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
+			PlaceholderComponent={<PronounsPlaceholder />}
 			FormComponent={
 				<PronounsForm
 					audience={audience}

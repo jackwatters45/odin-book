@@ -7,13 +7,14 @@ export const SearchInputContainer = styled.div`
 	margin-bottom: 1rem;
 `;
 
-export const StyledInput = styled.input`
-	border: none;
-	border-radius: 1.5rem;
-	padding: 0.75rem 1rem;
-	font-size: 1rem;
-	flex-grow: 1;
-`;
+// 	export const StyledInput = styled.input`
+// 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+// 	border: none;
+// 	border-radius: 1.5rem;
+// 	padding: 0.75rem 1rem;
+// 	font-size: 1rem;
+// 	flex-grow: 1;
+// `;
 
 export const SearchResult = styled.div`
 	padding: 0.5rem 0;

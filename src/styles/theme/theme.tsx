@@ -31,6 +31,7 @@ export const lightTheme = {
 
 		hoverBackground: "#f0f2f5",
 		hoverOverlay: "rgba(0, 0, 0, 0.05)",
+		darkHoverOverlay: "rgba(68, 73, 80, 0.15)",
 	},
 	cardShadow: css`
 		box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);

@@ -1,7 +1,6 @@
 # Odin Book
 
-- photos + friends deal with awkward bottom padding if no content
-- actually delete guests
+- repopulate db with some default data
 
 - post
 

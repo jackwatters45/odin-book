@@ -32,9 +32,9 @@ const UserAboutRelationshipFamily = () => {
 								hideIfRestricted={index > 0}
 							/>
 						))
-					) : (
+					) : !isOwnProfile ? (
 						<FamilyMembersPlaceholder />
-					)}
+					) : null}
 				</StyledUserAboutContainer>
 			</StyledUserAboutContainer>
 		</StyledUserAboutContainer>

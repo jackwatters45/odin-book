@@ -6,7 +6,7 @@ import {
 	StyledAboutOverviewInputLabel,
 	StyledAboutOverviewTextarea,
 } from "../../User/Shared/UserForm/UserForm.styles";
-import useAboutOverviewTextArea from "./useAboutOverviewTextArea";
+import useResponsiveTextArea from "@/hooks/useResponsiveTextArea";
 
 interface AboutOverviewTextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
 	category: string;
@@ -22,7 +22,7 @@ const AboutOverviewTextArea = ({
 	labelText,
 	...props
 }: AboutOverviewTextAreaProps) => {
-	const { textareaRef, handleInput } = useAboutOverviewTextArea();
+	const { textareaRef, handleInput } = useResponsiveTextArea();
 
 	return (
 		<StyledAboutOverviewInputDiv>

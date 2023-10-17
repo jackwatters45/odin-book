@@ -7,7 +7,7 @@ interface IntroBioProps {
 }
 
 const IntroBio = ({ bio }: IntroBioProps) => {
-	const [isEditing, toggleIsEditing] = useToggledState();
+	const [isEditing, toggleIsEditing] = useToggledState({});
 
 	return (
 		<IntroSection dataExists={!!bio} dataName="Bio" handleClickButton={toggleIsEditing}>

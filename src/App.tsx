@@ -7,6 +7,7 @@ import AppInitializer from "./AppInitializer";
 import { useColorTheme } from "./styles/theme/useColorTheme";
 import "./styles/reset.css";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
+import CreatePostProvider from "./components/Post/CreatePost/context/CreatePostProvider";
 
 const queryClient = new QueryClient();
 
@@ -17,9 +18,11 @@ function App() {
 		<QueryClientProvider client={queryClient}>
 			<ThemeProvider theme={colorTheme}>
 				<ErrorProvider>
-					<AppInitializer />
-					<GlobalStyle />
-					<ReactQueryDevtools initialIsOpen={true} />
+					<CreatePostProvider>
+						<AppInitializer />
+						<GlobalStyle />
+						<ReactQueryDevtools initialIsOpen={true} />
+					</CreatePostProvider>
 				</ErrorProvider>
 			</ThemeProvider>
 		</QueryClientProvider>

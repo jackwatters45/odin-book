@@ -12,9 +12,10 @@ import MoreOptions from "../../../Shared/MoreOptions/MoreOptions";
 import UserAboutAudience from "../UserPropertyAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
-import ITitleSegment from "./types/ITitleSegment";
-import renderTitleSegment from "./utils/renderTitleSegment";
 import useProfileStatus from "@/hooks/useIsOwnProfile";
+import renderTitleSegment, {
+	ITitleSegment,
+} from "@/utils/render/titleSegment/titleSegments";
 
 export interface UserPropertyDisplayProps {
 	icon: string;

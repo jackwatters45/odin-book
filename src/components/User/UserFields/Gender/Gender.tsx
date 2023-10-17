@@ -4,6 +4,7 @@ import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import GenderForm from "./Form";
 import useGender from "./useGender";
 import { Gender } from "./types/GenderTypes";
+import GenderPlaceholder from "./Placeholder";
 
 interface GenderProps {
 	gender: Gender | undefined;
@@ -26,6 +27,7 @@ const Gender = ({ gender, audience }: GenderProps) => {
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
+			PlaceholderComponent={<GenderPlaceholder />}
 			FormComponent={
 				<GenderForm
 					audience={audience}

@@ -39,3 +39,11 @@ export const StyledDialogCloseButton = styled.button`
 	display: flex;
 	padding: 0.25rem;
 `;
+
+export const StyledDialogBackButton = styled.button`
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	display: flex;
+	padding: 0.25rem;
+`;

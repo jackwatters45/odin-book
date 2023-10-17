@@ -23,16 +23,18 @@ import {
 	StyledDropdown,
 	StyledDropdownLink,
 	StyledDropdownButton,
+	StyledCreatePostButton,
 } from "./Nav.styles";
 import { Navigate } from "react-router";
 import { StyledNavShadow } from "@/styles/SharedStyles";
+import defaultUserAvatar from "../User/UserFields/Avatar/utils/defaultUserAvatar";
 
 // TODO responsive will need a lot of work (facebook's is just complicated)
 // TODO search
 // TODO notifications
-// TODO icon color: active plus dark mode
+
 const NavComponent = () => {
-	const { handleClickLogout, user, isSuccess } = useNav();
+	const { handleClickLogout, user, isSuccess, openDialog } = useNav();
 
 	if (isSuccess && !user) return <Navigate to="/login" />;
 	return (
@@ -82,22 +84,24 @@ const NavComponent = () => {
 						icon={<Icon path={mdiBellOutline} size={1.2} color={"#65676B"} />}
 						dataTestid="notifications-button"
 					/>
-					<NavLinkCenterColumn
-						to="/create"
-						text="Create"
-						showText={false}
-						icon={<Icon path={mdiPlusBoxOutline} size={1.2} color={"#65676B"} />}
-						dataTestid="create-button"
-					/>
 				</StyledCenterNav>
 				<StyledSideNav>
+					<StyledCreatePostButton onClick={openDialog}>
+						<IconCircleBackground
+							path={mdiPlusBoxOutline}
+							size={5 / 3}
+							color={"#65676B"}
+							background="transparent"
+						/>
+					</StyledCreatePostButton>
 					<StyledDropdown
 						buttonOptions={{
 							includeArrow: false,
-							icon: user?.avatarUrl ? (
-								<ImageCircle src={user.avatarUrl} alt="User profile icon" />
-							) : (
-								<IconCircleBackground path={mdiAccount} size={1.5} color={"#1c1e21"} />
+							icon: (
+								<ImageCircle
+									src={user?.avatarUrl || defaultUserAvatar}
+									alt="User profile icon"
+								/>
 							),
 						}}
 						dataTestid="profile-dropdown"

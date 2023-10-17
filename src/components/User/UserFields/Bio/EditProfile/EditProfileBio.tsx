@@ -8,7 +8,7 @@ interface EditProfileBioProps {
 }
 
 const EditProfileBio = ({ bio }: EditProfileBioProps) => {
-	const [isEditing, handleToggleForm] = useToggledState();
+	const [isEditing, handleToggleForm] = useToggledState({});
 
 	return (
 		<ContentDiv>

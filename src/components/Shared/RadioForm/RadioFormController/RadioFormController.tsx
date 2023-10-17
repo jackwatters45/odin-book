@@ -9,7 +9,7 @@ interface RadioFormControllerProps<T extends FieldValues> {
 	formField: Path<T> & string;
 	control: Control<T>;
 	openDialog: () => void;
-	options: RadioFormOption[];
+	options?: RadioFormOption[];
 	buttonOptions?: StandardButtonProps;
 }
 

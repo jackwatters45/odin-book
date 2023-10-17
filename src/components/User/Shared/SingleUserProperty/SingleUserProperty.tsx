@@ -2,9 +2,9 @@ import { ReactNode } from "react";
 
 import AddDetailLink from "@/components/User/UserFields/Details/EditDetailsForm/AddDetailLink";
 import SingleUserPropertyExisting from "../UserPropertyDisplay";
-import ITitleSegment from "../UserPropertyDisplay/types/ITitleSegment";
 import { UserPropertyDisplayProps } from "../UserPropertyDisplay/UserPropertyDisplay";
 import useProfileStatus from "@/hooks/useIsOwnProfile";
+import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
 
 interface SingleUserPropertyProps extends UserPropertyDisplayProps {
 	title: ITitleSegment[] | undefined | null;
@@ -43,7 +43,7 @@ const SingleUserProperty = ({
 	}
 
 	const isAudienceRestricted =
-		(!isOwnProfile && audience === "Only Me") || (audience === "Friends" && !isFriend);
+		!isOwnProfile && (audience === "Only Me" || (audience === "Friends" && !isFriend));
 
 	if (isAudienceRestricted) {
 		return hideIfRestricted ? null : PlaceholderComponent;

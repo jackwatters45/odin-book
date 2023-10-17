@@ -1,8 +1,17 @@
 import { useState } from "react";
 
-const useToggledState = (): [boolean, () => void] => {
-	const [isToggled, setIsToggled] = useState(false);
-	const toggleState = () => setIsToggled((prev) => !prev);
+interface UseToggledStateProps {
+	initialState?: boolean;
+	delay?: number;
+}
+
+const useToggledState = ({
+	initialState = false,
+	delay = 0,
+}: UseToggledStateProps): [boolean, () => void] => {
+	const [isToggled, setIsToggled] = useState(initialState);
+
+	const toggleState = () => setTimeout(() => setIsToggled((prev) => !prev), delay);
 
 	return [isToggled, toggleState];
 };

@@ -1,5 +1,3 @@
-import { Suspense, lazy } from "react";
-
 import UserIntro from "./UserIntro";
 import useUserPosts from "./useUserPosts";
 import CreatePostButton from "./CreatePostButton";
@@ -10,10 +8,8 @@ import {
 	StyledUserPostsLeftColumn,
 } from "./UserPosts.styles";
 import UserPhotos from "./PhotosPreview";
-import Loading from "@/components/Shared/Loading";
+import UserFriends from "./FriendsPreview";
 import UserPostsDisplay from "./UserPostsDisplay";
-
-const UserFriends = lazy(() => import("./FriendsPreview"));
 
 const UserPosts = () => {
 	const { user, leftSidebarRef, top } = useUserPosts();
@@ -23,10 +19,7 @@ const UserPosts = () => {
 			<StyledUserPostsLeftColumn ref={leftSidebarRef} style={{ top }}>
 				<UserIntro user={user} />
 				<UserPhotos />
-
-				<Suspense fallback={<Loading />}>
-					<UserFriends />
-				</Suspense>
+				<UserFriends />
 			</StyledUserPostsLeftColumn>
 			<StyledUserPostsRightColumn>
 				<CreatePostButton userIcon={user?.avatarUrl} />

@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import useUserForm from "../../../Shared/UserForm/useUserForm";
 import { IRelationshipSearch, IRelationshipStatus } from "../types/RelationshipTypes";
-import useUserSearch from "@/components/User/Shared/UserSearch/useUserSearch";
+import useUserSearchSingle from "@/components/User/Shared/UserSearchSingle/useUserSearchSingle";
 
 interface UseRelationshipFormProps {
 	audience: AudienceStatusOptions;
@@ -31,12 +31,13 @@ const useRelationshipForm = ({
 		});
 
 	// search
-	const { searchQuery, searchResults, isLoading, isSearchValid } = useUserSearch({
-		audience,
-		initialValues,
-		formValues,
-		urlEnding: "friends",
-	});
+	const { registerSearchInput, searchQuery, searchResults, isLoading, isSearchValid } =
+		useUserSearchSingle({
+			audience,
+			initialValues,
+			formValues,
+			urlEnding: "friends",
+		});
 
 	const status = formValues.values?.status;
 	const statusExists = !!status;
@@ -52,6 +53,7 @@ const useRelationshipForm = ({
 		setValue,
 		formValues,
 		defaultValues,
+		registerSearchInput,
 		searchQuery,
 		searchResults,
 		isLoading,

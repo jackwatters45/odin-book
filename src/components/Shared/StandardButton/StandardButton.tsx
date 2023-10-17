@@ -19,7 +19,8 @@ export interface StandardButtonProps extends HTMLAttributes<HTMLElement> {
 		| "overlay"
 		| "light-blue"
 		| "transparent"
-		| "transparent-blue";
+		| "transparent-blue"
+		| "white";
 	type?: "button" | "submit" | "reset";
 }
 

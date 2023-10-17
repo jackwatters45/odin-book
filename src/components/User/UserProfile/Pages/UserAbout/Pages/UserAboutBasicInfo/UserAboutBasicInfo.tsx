@@ -41,9 +41,9 @@ const UserAboutBasicInfo = () => {
 							includeAddDetailLink={false}
 						/>
 					))
-				) : (
+				) : !isOwnProfile ? (
 					<WebsitesPlaceholder />
-				)}
+				) : null}
 				{isOwnProfile && <AddSocialLinks />}
 				{user?.socialLinks && user.socialLinks.length > 0 ? (
 					user?.socialLinks?.map((socialLink) => (
@@ -55,9 +55,9 @@ const UserAboutBasicInfo = () => {
 							includeAddDetailLink={false}
 						/>
 					))
-				) : (
+				) : !isOwnProfile ? (
 					<SocialLinksPlaceholder />
-				)}
+				) : null}
 			</StyledUserAboutContainer>
 			<StyledUserAboutContainer>
 				<BoldText>Basic info</BoldText>

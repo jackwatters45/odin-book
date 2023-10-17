@@ -19,7 +19,7 @@ export interface useMutateFormProps {
 }
 
 export interface MutationFnInputs<T> {
-	data?: T;
+	data?: T | FormData;
 	params?: string;
 }
 

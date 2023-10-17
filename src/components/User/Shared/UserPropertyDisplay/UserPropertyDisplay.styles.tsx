@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledUserPropertyDisplayItem = styled.div`
@@ -13,14 +12,6 @@ export const StyledUserPropertyDisplayItemTitle = styled.div`
 	font-size: 0.95rem;
 	line-height: 1.34;
 	flex-grow: 1;
-`;
-
-export const StyledUserPropertyDisplayLink = styled(Link)`
-	color: ${({ theme }) => theme.colors.textPrimary};
-
-	&:hover {
-		text-decoration: underline;
-	}
 `;
 
 export const StyledUserPropertyDisplayItemSubtitle = styled.div`

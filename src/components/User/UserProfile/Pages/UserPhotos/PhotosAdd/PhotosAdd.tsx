@@ -1,22 +1,15 @@
-import CreatePost from "@/components/Post/CreatePost/CreatePost";
+import useCreatePostContext from "@/components/Post/CreatePost/context/useCreatePostContext";
 import StandardButton from "@/components/Shared/StandardButton";
-import useDialog from "@/hooks/useDialog";
-import { StyledDialog } from "@/styles/SharedStyles";
 
 const PhotosAdd = () => {
-	const { ref, openDialog, closeDialog } = useDialog({});
+	const { openDialog } = useCreatePostContext();
 
 	return (
-		<div>
-			<StandardButton
-				text="Add photos/video"
-				colorClass="transparent-blue"
-				onClick={openDialog}
-			/>
-			<StyledDialog ref={ref} onClose={closeDialog}>
-				<CreatePost />
-			</StyledDialog>
-		</div>
+		<StandardButton
+			text="Add photos/video"
+			colorClass="transparent-blue"
+			onClick={openDialog}
+		/>
 	);
 };
 

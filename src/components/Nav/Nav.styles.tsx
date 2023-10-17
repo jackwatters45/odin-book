@@ -160,13 +160,35 @@ export const NavLinkCenterColumn = styled(NavLink)`
 	}
 `;
 
+export const StyledCreatePostButton = styled.button`
+	border-radius: 50%;
+	position: relative;
+	background-color: ${({ theme }) => theme.colors.primaryButton};
+
+	&::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: background-color 0.2s ease;
+		border-radius: 50%;
+	}
+
+	&:hover::before {
+		background: ${({ theme }) => theme.colors.hoverOverlay};
+	}
+`;
+
 export const ImageCircle = styled.img<{ size?: number }>`
 	border-radius: 50%;
 	height: ${({ size }) => (size ? `${size}px` : "40px")};
 	width: ${({ size }) => (size ? `${size}px` : "40px")};
 `;
 
-export const IconCircleBackground = styled(Icon)<{ background?: string }>`
+const CircleBackgroundCss = css<{ background?: string }>`
 	border-radius: 50%;
 	background: ${({ background, theme }) =>
 		background || theme.colors.primaryButton}; // TODO theme
@@ -174,4 +196,16 @@ export const IconCircleBackground = styled(Icon)<{ background?: string }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+`;
+
+export const IconCircleBackground = styled(Icon)<{ background?: string }>`
+	${CircleBackgroundCss}
+`;
+
+export const EmojiCircleBackground = styled.div<{ background?: string }>`
+	${CircleBackgroundCss}
+
+	line-height: 1;
+	font-size: 1.375rem;
 `;

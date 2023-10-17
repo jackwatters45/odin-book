@@ -3,6 +3,7 @@ import UserAboutOverviewItem from "../../Shared/SingleUserProperty";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import LanguagesForm from "./Form";
 import useLanguages from "./useLanguages";
+import LanguagesPlaceholder from "./Placeholder";
 
 interface LanguagesProps {
 	languages: string[] | undefined;
@@ -34,6 +35,7 @@ const Languages = ({ languages, audience }: LanguagesProps) => {
 			isEditing={isEditing}
 			handleOpenForm={handleOpenForm}
 			deleteMutation={deleteMutation}
+			PlaceholderComponent={<LanguagesPlaceholder />}
 			FormComponent={
 				<LanguagesForm
 					audience={audience}

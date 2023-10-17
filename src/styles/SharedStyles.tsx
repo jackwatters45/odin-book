@@ -84,7 +84,7 @@ export const StyledDialog = styled.dialog`
 
 	max-width: 700px;
 	width: 90%;
-	max-height: 90%;
+	max-height: 90vh;
 
 	h2 {
 		font-size: 1.25rem;
@@ -118,7 +118,7 @@ export const StyledNavShadow = styled.div`
 	bottom: -7px;
 	height: 7px;
 	width: 100%;
-	background-image: url("https://res.cloudinary.com/drheg5d7j/image/upload/v1693706871/odin-book/nav-shadow_hbspmi.png");
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAOBAMAAAD3WtBsAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAD29va1cB7UAAAAB3RSTlMCCwQHGBAaZf6MKAAAABpJREFUCNdjSGNIY3BhCGUQBEJjIFQCQigAACyJAjLNW4w5AAAAAElFTkSuQmCC);
 	background-size: 1px 7px;
 	background-repeat: repeat-x;
 	z-index: 1;
@@ -168,4 +168,11 @@ export const StyledProfileSectionNav = styled(Nav)`
 
 export const StandardButtonFullWidth = styled(StandardButton)`
 	width: 100%;
+`;
+
+export const StyledUppercaseGreyText = styled.p`
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: ${({ theme }) => theme.colors.textSecondary};
+	text-transform: uppercase;
 `;

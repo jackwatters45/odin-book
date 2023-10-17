@@ -1,14 +1,10 @@
 import Icon from "@mdi/react";
 import { mdiArrowLeftThin, mdiMagnify } from "@mdi/js";
 
-import {
-	SearchInputContainer,
-	SearchResult,
-	StyledInput,
-	StyledResultName,
-} from "./Search.styles";
+import { SearchInputContainer, SearchResult, StyledResultName } from "./Search.styles";
 import { IconCircleBackground, ImageCircle } from "../Nav.styles";
 import useSearch from "./useSearch";
+import SearchInput from "@/components/Shared/SearchInput/SearchInput";
 
 const Search = () => {
 	// TODO actual fetch
@@ -21,7 +17,11 @@ const Search = () => {
 				<button>
 					<Icon path={mdiArrowLeftThin} size={1} />
 				</button>
-				<StyledInput type="text" placeholder="Search Odinbook" {...register("search")} />
+				<SearchInput
+					id="search"
+					placeholder="Search Odinbook"
+					register={register("search")}
+				/>
 			</SearchInputContainer>
 			<div>
 				{/* TODO make all results clickable */}
