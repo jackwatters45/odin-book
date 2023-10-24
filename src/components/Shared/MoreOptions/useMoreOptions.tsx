@@ -14,7 +14,11 @@ const useMoreOptions = ({ deleteMutation }: UseMoreOptionsProps) => {
 		closeDialog();
 	};
 
-	return { ref, openDialog, handleDelete };
+	return {
+		ref,
+		openDialog,
+		handleDelete,
+	};
 };
 
 export default useMoreOptions;

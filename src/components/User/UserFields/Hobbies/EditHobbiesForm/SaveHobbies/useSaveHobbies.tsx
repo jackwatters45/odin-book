@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import useMutateCustom from "@/hooks/useMutateCustom";
+import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 
 interface useSaveHobbiesProps {
 	unsavedValue: string[];

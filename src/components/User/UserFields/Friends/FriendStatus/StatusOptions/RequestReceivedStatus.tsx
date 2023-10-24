@@ -32,9 +32,7 @@ const RequestReceivedStatus = ({
 
 	return (
 		<StyledFriendStatusMoreOptions
-			categoryName={`friend-${id}`}
-			openForm={undefined}
-			deleteMutation={undefined}
+			categoryName={"friend"}
 			isUsingDialog={true}
 			Button={includeIcon ? RespondButtonWithIcon : RespondButton}
 			options={[

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 
 import { IUser } from "../../../types/IUser";
-import useQueryCustom from "@/hooks/useQueryCustom";
+import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 
 const useUserProfile = () => {
 	const { id } = useParams<{ id: string }>();

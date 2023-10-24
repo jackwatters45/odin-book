@@ -1,4 +1,4 @@
-import useCreatePostContext from "@/components/Post/CreatePost/context/useCreatePostContext";
+import useCreatePostContext from "@/components/Post/PostForm/context/usePostFormContext";
 
 const usePhotosAdd = () => {
 	const { openDialog } = useCreatePostContext();

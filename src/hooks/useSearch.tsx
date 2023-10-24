@@ -1,7 +1,7 @@
 import { debounce } from "lodash";
 import { useCallback, useEffect } from "react";
 
-import useQueryCustom, { IQueryCustomProps } from "./useQueryCustom";
+import useQueryCustom, { IQueryCustomProps } from "./reactQuery/useQueryCustom";
 import { UseQueryOptions } from "@tanstack/react-query";
 
 export interface UseSearchProps<T, U> {

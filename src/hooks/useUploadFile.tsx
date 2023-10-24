@@ -1,5 +1,5 @@
 import { ChangeEvent, useRef } from "react";
-import useMutateCustom from "./useMutateCustom";
+import useMutateCustom from "./reactQuery/useMutateCustom";
 
 interface Props {
 	queryUrl: string;

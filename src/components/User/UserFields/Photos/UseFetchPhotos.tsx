@@ -1,4 +1,4 @@
-import useQueryCustom from "@/hooks/useQueryCustom";
+import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { useParams } from "react-router";
 import { IPhotosDisplay } from "./types/PhotosTypes";
 

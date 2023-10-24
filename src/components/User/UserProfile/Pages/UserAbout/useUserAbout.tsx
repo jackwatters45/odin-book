@@ -1,4 +1,4 @@
-import useQueryCustom from "@/hooks/useQueryCustom";
+import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { IUser } from "@/types/IUser";
 import { useParams } from "react-router";
 

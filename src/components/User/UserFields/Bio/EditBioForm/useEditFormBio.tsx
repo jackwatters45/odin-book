@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 
-import useMutateCustom from "@/hooks/useMutateCustom";
+import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 
 interface useEditFormBioProps {
 	handleCloseForm: () => void;

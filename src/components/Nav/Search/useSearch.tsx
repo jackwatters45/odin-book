@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-import useQueryCustom from "@/hooks/useQueryCustom";
+import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 
 // TODO
 type IResult = { id: string };

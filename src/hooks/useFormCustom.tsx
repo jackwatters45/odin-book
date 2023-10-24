@@ -2,7 +2,10 @@ import { useState } from "react";
 import { DefaultValues, FieldValues, useForm } from "react-hook-form";
 
 import { FormError } from "../types/ErrorInterfaces";
-import useMutateCustom, { MutationFnInputs, useMutateFormProps } from "./useMutateCustom";
+import useMutateCustom, {
+	MutationFnInputs,
+	useMutateFormProps,
+} from "./reactQuery/useMutateCustom";
 
 /**
  * The Mapper function takers in data of type T and return it formatted as MutationFnInputs<T> for use in the mutate function

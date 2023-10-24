@@ -1,13 +1,18 @@
 import { Outlet } from "react-router-dom";
+
 import Nav from "../../../components/Nav";
-import CreatePost from "@/components/Post/CreatePost";
+import usePostFormContext from "@/components/Post/PostForm/context/usePostFormContext";
+
+import PostForm from "@/components/Post/PostForm";
 
 const Layout = () => {
+	const { isDialogOpen } = usePostFormContext();
+
 	return (
 		<>
 			<Nav />
 			<Outlet />
-			<CreatePost />
+			<>{isDialogOpen && <PostForm />}</>
 		</>
 	);
 };

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useMutateCustom from "./useMutateCustom";
+import useMutateCustom from "./reactQuery/useMutateCustom";
 
 const useLogout = () => {
 	const navigate = useNavigate();

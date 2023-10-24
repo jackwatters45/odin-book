@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 
 import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
-import useMutateCustom from "@/hooks/useMutateCustom";
+import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 
 export interface ChooseNewPasswordInputs {
 	newPassword: string;

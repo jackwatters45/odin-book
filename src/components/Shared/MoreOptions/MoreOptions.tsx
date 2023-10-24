@@ -1,47 +1,48 @@
-import { mdiDotsHorizontal, mdiPencilOutline, mdiTrashCanOutline } from "@mdi/js";
+import { mdiDotsHorizontal, mdiPencilOutline } from "@mdi/js";
+import { FC, HTMLAttributes } from "react";
 
 import DialogTriangle from "./utils/DialogTriangle";
 import useMoreOptions from "./useMoreOptions";
 import {
 	StyledDialogMoreOptions,
-	StyledDialogMoreOptionsContent,
-	StyledDialogMoreOptionsItem,
 	StyledIcon,
 	StyledUserAboutOverviewItemMoreButton,
 } from "./MoreOptions.styles";
-import { FC } from "react";
+import { MoreOptionsOptions } from "./types/MoreOptionTypes";
+import MoreOptionsContent from "./MoreOptionsContent/MoreOptionsContent";
 
-export interface MoreOptionsOption {
-	text: string;
-	icon: string | undefined;
-	onClick: () => void;
-}
-interface MoreOptionsProps {
+interface MoreOptionsProps extends HTMLAttributes<HTMLDivElement> {
 	categoryName: string;
-	openForm: (() => void) | undefined;
-	deleteMutation: (() => void) | undefined;
+
+	openForm?: () => void;
+	openAudienceForm?: () => void;
+	deleteMutation?: () => void;
+	saveMutation?: () => void;
+
+	isSaved?: boolean;
 	isUsingDialog?: boolean;
 	Button?: FC<{ onClick: (() => void) | undefined }>;
-
-	options?: MoreOptionsOption[];
-	className?: string;
+	options?: MoreOptionsOptions;
 }
 
 const MoreOptions = ({
 	categoryName,
 	openForm,
+	openAudienceForm,
 	deleteMutation,
+	saveMutation,
+	isSaved = false,
 	isUsingDialog = !!deleteMutation,
 	Button,
 	options,
-	className,
+	...props
 }: MoreOptionsProps) => {
 	const { ref, openDialog, handleDelete } = useMoreOptions({
 		deleteMutation,
 	});
 
 	return (
-		<div className={className}>
+		<div {...props}>
 			{Button ? (
 				<Button onClick={isUsingDialog ? openDialog : openForm} />
 			) : (
@@ -57,34 +58,16 @@ const MoreOptions = ({
 			)}
 			{isUsingDialog && (
 				<StyledDialogMoreOptions ref={ref}>
-					<StyledDialogMoreOptionsContent>
-						{options ? (
-							options.map((option) => (
-								<StyledDialogMoreOptionsItem
-									key={option.text}
-									colorClass="transparent"
-									text={option.text}
-									icon={option.icon}
-									onClick={option.onClick}
-								/>
-							))
-						) : (
-							<>
-								<StyledDialogMoreOptionsItem
-									colorClass="transparent"
-									text={`Edit ${categoryName}`}
-									icon={mdiPencilOutline}
-									onClick={openForm}
-								/>
-								<StyledDialogMoreOptionsItem
-									colorClass="transparent"
-									text={`Delete ${categoryName}`}
-									icon={mdiTrashCanOutline}
-									onClick={handleDelete}
-								/>
-							</>
-						)}
-					</StyledDialogMoreOptionsContent>
+					<MoreOptionsContent
+						categoryName={categoryName}
+						isSaved={isSaved}
+						options={options}
+						openForm={openForm}
+						openAudienceForm={openAudienceForm}
+						deleteMutation={deleteMutation}
+						handleDelete={handleDelete}
+						saveMutation={saveMutation}
+					/>
 					<DialogTriangle />
 				</StyledDialogMoreOptions>
 			)}

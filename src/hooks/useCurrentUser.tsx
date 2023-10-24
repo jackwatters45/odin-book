@@ -1,4 +1,4 @@
-import useQueryCustom from "./useQueryCustom";
+import useQueryCustom from "./reactQuery/useQueryCustom";
 import { IUser } from "../types/IUser";
 
 type JsonResponse = {
@@ -15,10 +15,10 @@ const useCurrentUser = () => {
 	>({
 		queryKey: ["currentUser"],
 		queryUrl: "auth/current-user",
+		allowErrors: true,
 		transformData: ({ isAuthenticated, user }) => {
 			return isAuthenticated ? user : null;
 		},
-		allowErrors: true,
 	});
 
 	return { currentUser: data, error, isLoading, isError, isSuccess };

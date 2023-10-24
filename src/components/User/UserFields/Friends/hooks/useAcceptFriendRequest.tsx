@@ -1,4 +1,4 @@
-import useMutateCustom from "@/hooks/useMutateCustom";
+import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 
 interface UseAcceptFriendRequest {
 	id: string;

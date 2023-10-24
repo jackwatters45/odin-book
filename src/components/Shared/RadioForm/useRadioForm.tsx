@@ -21,8 +21,8 @@ const useRadioForm = <T extends FieldValues>({
 
 	const resetPopupValue = () => setPopupValue(initial);
 	const handleCancel = () => {
-		resetPopupValue();
 		closeDialog();
+		resetPopupValue();
 	};
 
 	const handleConfirm = () => {

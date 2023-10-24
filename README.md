@@ -4,11 +4,11 @@
 
 - post
 
-  - create
-  - edit
+  - real previews (don't forget link to view post)
   - delete
-  - view
-  - preview
+  - edit
+  - to option ( tag users in content??)
+  - view (actually click into)
 
 - search
 - dashboard

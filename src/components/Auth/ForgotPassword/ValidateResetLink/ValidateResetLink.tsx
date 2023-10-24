@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router";
 import { useEffect } from "react";
 
 import Loading from "../../../Shared/Loading";
-import useQueryCustom from "@/hooks/useQueryCustom";
+import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 
 const ValidateResetLink = () => {
 	const { token } = useParams<{ token: string }>();

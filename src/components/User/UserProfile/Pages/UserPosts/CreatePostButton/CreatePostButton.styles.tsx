@@ -18,8 +18,26 @@ export const StyledFirstRowCreatePost = styled.div`
 `;
 
 export const StyledSearchInputCreatePost = styled(StyledTextInput)`
-	> input {
-		font-size: 1.05rem;
+	cursor: pointer;
+
+	> span {
+		font-size: 1rem;
+		color: ${({ theme }) => theme.colors.textSecondary};
+		padding-left: 1rem;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+	}
+
+	&:hover::before {
+		background: ${({ theme }) => theme.colors.hoverOverlay};
 	}
 `;
 

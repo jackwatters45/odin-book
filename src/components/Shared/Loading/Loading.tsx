@@ -32,7 +32,7 @@ interface Props {
 	speed?: number;
 }
 
-const Loading = ({ className, size = 50, speed = 1.5 }: Props) => {
+const Loading = ({ className, size = 50, speed = 1 }: Props) => {
 	return <Spinner className={className} size={size} speed={speed} />;
 };
 

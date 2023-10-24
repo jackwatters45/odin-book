@@ -1,7 +1,7 @@
-import StandardButton from "@/components/Shared/StandardButton";
-import { StyledDialog } from "@/styles/SharedStyles";
 import Icon from "@mdi/react";
 import styled from "styled-components";
+
+import { StyledDialog } from "@/styles/SharedStyles";
 
 export const StyledUserAboutOverviewItemMoreButton = styled.button`
 	border-radius: 50%;
@@ -28,21 +28,4 @@ export const StyledDialogMoreOptions = styled(StyledDialog)`
 	transform: unset;
 	border-radius: 0.5rem 0 0.5rem 0.5rem;
 	z-index: 1000;
-`;
-
-export const StyledDialogMoreOptionsContent = styled.div`
-	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
-	height: 100%;
-	width: 100%;
-	border-radius: inherit;
-	${({ theme }) => theme.cardShadow};
-	display: flex;
-	flex-direction: column;
-	padding: 0.5rem;
-`;
-
-export const StyledDialogMoreOptionsItem = styled(StandardButton)`
-	font-size: 0.95rem;
-	justify-content: flex-start;
-	padding: 0.5rem;
 `;

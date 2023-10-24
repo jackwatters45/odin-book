@@ -7,7 +7,7 @@ import {
 	StyledUserPropertyDisplayItemRightColumn,
 	StyledUserPropertyDisplayItemTitle,
 } from "./UserPropertyDisplay.styles";
-import MoreOptions from "../../../Shared/MoreOptions/MoreOptions";
+import MoreOptions from "../../../Shared/MoreOptions";
 
 import UserAboutAudience from "../UserPropertyAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";

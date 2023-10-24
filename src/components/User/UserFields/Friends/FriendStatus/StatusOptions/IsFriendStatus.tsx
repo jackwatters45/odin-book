@@ -22,7 +22,7 @@ const IsFriendStatus = ({
 
 	return (
 		<StyledFriendStatusMoreOptions
-			categoryName={`friend-${id}`}
+			categoryName={"friend"}
 			openForm={undefined}
 			deleteMutation={undefined}
 			isUsingDialog={true}

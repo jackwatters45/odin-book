@@ -1,6 +1,6 @@
 import useLogout from "../../hooks/useLogout";
 import useCurrentUser from "../../hooks/useCurrentUser";
-import useCreatePostContext from "../Post/CreatePost/context/useCreatePostContext";
+import useCreatePostContext from "../Post/PostForm/context/usePostFormContext";
 
 const useNav = () => {
 	const { handleClickLogout } = useLogout();

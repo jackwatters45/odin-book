@@ -108,7 +108,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button  {
-    color: ${({ theme }) => theme.colors.textPrimary};
+		color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
   }
 
   img {

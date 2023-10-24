@@ -111,6 +111,11 @@ export const StyledTextInput = styled.label`
 		border-radius: 1.5rem;
 		cursor: auto;
 	}
+
+	&:focus-within {
+		svg {
+			display: block;
+		}
 `;
 
 export const StyledNavShadow = styled.div`

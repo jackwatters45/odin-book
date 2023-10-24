@@ -1,9 +1,9 @@
 import { IUser } from "@/types/IUser";
 import { useQueryClient } from "@tanstack/react-query";
 
-const useCurrentUserCached = () => {
+const useCurrentUserCached = (): IUser | undefined => {
 	const queryClient = useQueryClient();
-	return queryClient.getQueryData(["currentUser"]) as IUser;
+	return queryClient.getQueryData(["currentUser"]);
 };
 
 export default useCurrentUserCached;

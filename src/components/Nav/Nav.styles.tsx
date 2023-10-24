@@ -207,5 +207,5 @@ export const EmojiCircleBackground = styled.div<{ background?: string }>`
 	${CircleBackgroundCss}
 
 	line-height: 1;
-	font-size: 1.375rem;
+	font-size: "1.375rem";
 `;

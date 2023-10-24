@@ -1,6 +1,6 @@
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-import { RadioFormOption } from "../RadioForm";
+import { RadioFormOptions } from "../types/RadioFormTypes";
 import useRadioFormController from "./useRadioFormController";
 import { StyledRadioFormButton } from "./RadioFormController.styles";
 import { StandardButtonProps } from "../../StandardButton/StandardButton";
@@ -9,7 +9,7 @@ interface RadioFormControllerProps<T extends FieldValues> {
 	formField: Path<T> & string;
 	control: Control<T>;
 	openDialog: () => void;
-	options?: RadioFormOption[];
+	options?: RadioFormOptions;
 	buttonOptions?: StandardButtonProps;
 }
 

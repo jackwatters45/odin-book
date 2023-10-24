@@ -28,7 +28,7 @@ const AuthTextInput = <T extends FieldValues>({
 	isPassword = false,
 	...props
 }: AuthTextInputProps<T>) => {
-	const [showPassword, toggleShowPassword] = useToggledState({});
+	const [showPassword, toggleShowPassword] = useToggledState();
 
 	return (
 		<AuthTextInputContainer>

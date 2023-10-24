@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface UseDialogProps {
 	isModal?: boolean;
@@ -13,31 +13,42 @@ const useDialog = ({
 }: UseDialogProps) => {
 	const ref = useRef<HTMLDialogElement>(null);
 
+	const [isOpen, setIsOpen] = useState(false);
+
 	const openDialog = useCallback(() => {
 		if (reset) reset();
+
+		setIsOpen(true);
 		return isModal ? ref.current?.showModal() : ref.current?.show();
 	}, [isModal, reset]);
 
 	const closeDialog = useCallback(() => {
+		setIsOpen(false);
 		ref.current?.close();
 	}, []);
 
 	useEffect(() => {
-		if (isOpenByDefault) openDialog();
+		if (isOpenByDefault) {
+			setIsOpen(true);
+			openDialog();
+		}
 	}, [isOpenByDefault, openDialog]);
 
 	useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
-			if (ref.current && !ref.current.contains(e.target as Node)) closeDialog();
+			if (ref.current && !ref.current.contains(e.target as Node)) {
+				closeDialog();
+				setIsOpen(false);
+			}
 		};
 
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [closeDialog]);
+	}, [closeDialog, isOpen]);
 
-	return { ref, openDialog, closeDialog };
+	return { ref, openDialog, closeDialog, isOpen };
 };
 
 export default useDialog;

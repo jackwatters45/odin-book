@@ -1,18 +1,19 @@
 import UserIntro from "./UserIntro";
 import useUserPosts from "./useUserPosts";
 import CreatePostButton from "./CreatePostButton";
-import PostViewOptions from "./PostViewOptions";
 import {
 	UserPostsContainer,
 	StyledUserPostsRightColumn,
 	StyledUserPostsLeftColumn,
+	StyledPostsContainer,
 } from "./UserPosts.styles";
 import UserPhotos from "./PhotosPreview";
 import UserFriends from "./FriendsPreview";
-import UserPostsDisplay from "./UserPostsDisplay";
+import Loading from "@/components/Shared/Loading";
+import UserPostDisplay from "@/components/Post/PostDisplay";
 
 const UserPosts = () => {
-	const { user, leftSidebarRef, top } = useUserPosts();
+	const { user, leftSidebarRef, top, posts, isLoading } = useUserPosts();
 
 	return (
 		<UserPostsContainer>
@@ -22,9 +23,18 @@ const UserPosts = () => {
 				<UserFriends />
 			</StyledUserPostsLeftColumn>
 			<StyledUserPostsRightColumn>
-				<CreatePostButton userIcon={user?.avatarUrl} />
-				<PostViewOptions />
-				<UserPostsDisplay />
+				<CreatePostButton
+					userFirstName={user.firstName}
+					userFullName={user.fullName}
+					userIcon={user?.avatarUrl}
+				/>
+				<StyledPostsContainer>
+					{isLoading ? (
+						<Loading />
+					) : (
+						posts?.map((post) => <UserPostDisplay key={post._id} post={post} />)
+					)}
+				</StyledPostsContainer>
 			</StyledUserPostsRightColumn>
 		</UserPostsContainer>
 	);

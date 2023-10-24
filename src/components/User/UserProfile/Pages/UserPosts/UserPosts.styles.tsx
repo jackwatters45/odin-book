@@ -11,6 +11,12 @@ export const UserPostsContainer = styled.div`
 		flex-direction: column;
 		align-items: center;
 	}
+	margin-bottom: -1rem;
+
+	> :first-child {
+		margin-bottom: -1rem;
+		padding-bottom: 1rem;
+	}
 
 	> div {
 		display: flex;
@@ -37,4 +43,14 @@ export const StyledUserPostsLeftColumn = styled.div`
 
 export const StyledUserPostsRightColumn = styled.div`
 	width: 58%;
+`;
+
+export const StyledPostsContainer = styled.div`
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	min-height: 100px;
+	padding-bottom: 1rem;
 `;
