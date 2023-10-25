@@ -30,6 +30,7 @@ import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pa
 import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily/UserAboutRelationshipFamily";
 import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
 import UserFriends from "@/components/User/UserProfile/Pages/UserFriends";
+import ViewPost from "@/components/Post/ViewPost";
 
 const RoutesComponent = () => {
 	return (
@@ -50,6 +51,7 @@ const RoutesComponent = () => {
 				<Route element={<LoggedInRoute />}>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Dashboard />} />
+						<Route path="post" element={<ViewPost />} />
 						<Route path="/user/:id" element={<UserProfile />}>
 							<Route index element={<UserPosts />} />
 							<Route path="about/" element={<UserAbout />}>

@@ -4,15 +4,21 @@ import Nav from "../../../components/Nav";
 import usePostFormContext from "@/components/Post/PostForm/context/usePostFormContext";
 
 import PostForm from "@/components/Post/PostForm";
+import useViewPostContext from "@/components/Post/ViewPost/context/useViewPostContext";
+import ViewPost from "@/components/Post/ViewPost";
 
 const Layout = () => {
-	const { isDialogOpen } = usePostFormContext();
+	const { isOpen: isPostFormOpen } = usePostFormContext();
+	const { isOpen: isViewPostOpen } = useViewPostContext();
 
 	return (
 		<>
 			<Nav />
 			<Outlet />
-			<>{isDialogOpen && <PostForm />}</>
+			<>
+				{isPostFormOpen && <PostForm />}
+				{isViewPostOpen && <ViewPost />}
+			</>
 		</>
 	);
 };

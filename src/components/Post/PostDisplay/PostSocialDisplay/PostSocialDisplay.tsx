@@ -35,8 +35,13 @@ const PostSocialDisplay = ({ post }: PostSocialDisplayProps) => {
 				<Comment
 					commentCount={commentCount}
 					hideCommentShareText={hideCommentShareText}
+					postId={post._id}
 				/>
-				<Share shareCount={shareCount} hideCommentShareText={hideCommentShareText} />
+				<Share
+					shareCount={shareCount}
+					hideCommentShareText={hideCommentShareText}
+					postId={post._id}
+				/>
 			</StyledCommentsSharesContainer>
 		</StyledPostSocialDisplayContainer>
 	);

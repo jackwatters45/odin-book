@@ -20,6 +20,7 @@ export const StyledDialogPostForm = styled(StyledDialog)`
 	width: 100%;
 	z-index: 1005;
 	height: fit-content;
+	min-height: 333px;
 	overflow-x: hidden;
 `;
 

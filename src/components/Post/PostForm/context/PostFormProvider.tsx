@@ -19,9 +19,8 @@ const PostFormProvider = ({ children }: PostFormProviderProps) => {
 		ref,
 		openDialog: openPostFormDialog,
 		closeDialog: closePostFormDialog,
+		isOpen,
 	} = useDialog({});
-
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	const [initialOpenedState, setInitialOpenedState] = useState<
 		InitialOpenedState | undefined
@@ -40,24 +39,21 @@ const PostFormProvider = ({ children }: PostFormProviderProps) => {
 	}: HandleOpenDialogProps) => {
 		setInitialValues(initialValues);
 		setInitialOpenedState(initialOpenedState);
-		setIsDialogOpen(true);
 		setIsEditing(isEditing);
 
-		setTimeout(() => {
-			openPostFormDialog();
-		}, 50);
+		setTimeout(() => openPostFormDialog(), 50);
 	};
 
 	const closeDialog = () => {
 		closePostFormDialog();
-		setIsDialogOpen(false);
+		// setIsDialogOpen(false);
 	};
 
 	const PostFormHookValue = {
 		ref,
 		closeDialog,
 		openDialog,
-		isDialogOpen,
+		isOpen,
 		initialOpenedState,
 		initialValues,
 		isEditing,

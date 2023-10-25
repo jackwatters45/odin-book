@@ -8,6 +8,7 @@ import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
 import { AudienceFormValues } from "./EditAudienceForm/types/EditAudienceTypes";
+import useViewPostContext from "@/components/Post/ViewPost/context/useViewPostContext";
 
 interface usePostMoreOptionsProps {
 	post: IPost;
@@ -93,6 +94,10 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 	});
 	const handleDeletePost = () => deletePost({});
 
+	// open post
+	const { openDialog } = useViewPostContext();
+	const handleOpenViewPost = () => openDialog({ postId: post._id });
+
 	return {
 		isOwnPost,
 		isPostSaved,
@@ -100,6 +105,7 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 		handleOpenEditPost,
 		handleOpenEditAudience,
 		handleDeletePost,
+		handleOpenViewPost,
 		audienceFormRef,
 		audienceFormProps: { ...rest, submitForm },
 	};

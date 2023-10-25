@@ -1,16 +1,24 @@
 import { mdiComment } from "@mdi/js";
 import Icon from "@mdi/react";
 
+import useViewPostContext from "@/components/Post/ViewPost/context/useViewPostContext";
+
 interface PostCommentProps {
 	commentCount: number;
 	hideCommentShareText: boolean;
+	postId: string;
 }
 
-const PostComment = ({ commentCount, hideCommentShareText }: PostCommentProps) => {
+const PostComment = ({
+	commentCount,
+	hideCommentShareText,
+	postId,
+}: PostCommentProps) => {
+	const { isOpen, openDialog } = useViewPostContext();
+
 	return (
 		commentCount > 0 && (
-			// TODO open post view and focus on comment button
-			<button onClick={() => console.log("TODO")}>
+			<button onClick={() => (!isOpen ? openDialog({ postId }) : null)}>
 				<span>{commentCount}</span>
 				{hideCommentShareText ? (
 					<Icon path={mdiComment} size={0.7} />

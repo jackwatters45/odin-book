@@ -2,6 +2,7 @@ import {
 	mdiBookmark,
 	mdiBookmarkOutline,
 	mdiEarth,
+	mdiEye,
 	mdiPencilOutline,
 	mdiTrashCanOutline,
 } from "@mdi/js";
@@ -18,6 +19,7 @@ interface MoreOptionsContentProps {
 	options: MoreOptionsOptions | undefined;
 	saveMutation: (() => void) | undefined;
 	openForm: (() => void) | undefined;
+	openView?: (() => void) | undefined;
 	openAudienceForm: (() => void) | undefined;
 	deleteMutation: (() => void) | undefined;
 	handleDelete: (() => void) | undefined;
@@ -27,8 +29,8 @@ const MoreOptionsContent = ({
 	categoryName,
 	isSaved,
 	options,
-
 	saveMutation,
+	openView,
 	openForm,
 	openAudienceForm,
 	deleteMutation,
@@ -52,6 +54,14 @@ const MoreOptionsContent = ({
 					text={`Save ${categoryName}`}
 					icon={isSaved ? mdiBookmark : mdiBookmarkOutline}
 					onClick={saveMutation}
+				/>
+			)}
+			{openView && (
+				<StyledDialogMoreOptionsItem
+					colorClass="transparent"
+					text={`View ${categoryName}`}
+					icon={mdiEye}
+					onClick={openView}
 				/>
 			)}
 			{openForm && (

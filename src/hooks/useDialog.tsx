@@ -19,7 +19,8 @@ const useDialog = ({
 		if (reset) reset();
 
 		setIsOpen(true);
-		return isModal ? ref.current?.showModal() : ref.current?.show();
+
+		setTimeout(() => (isModal ? ref.current?.showModal() : ref.current?.show()), 0);
 	}, [isModal, reset]);
 
 	const closeDialog = useCallback(() => {
@@ -48,7 +49,7 @@ const useDialog = ({
 		};
 	}, [closeDialog, isOpen]);
 
-	return { ref, openDialog, closeDialog, isOpen };
+	return { ref, openDialog, closeDialog, isOpen, setIsOpen };
 };
 
 export default useDialog;

@@ -15,7 +15,7 @@ const usePostSocialDisplay = ({ post }: UsePostSocialDisplayProps) => {
 
 	const postSocialDisplayContainerRef = useRef<HTMLDivElement>(null);
 
-	const divHeight = 41;
+	const divHeight = 42;
 	useEffect(() => {
 		const checkFitting = () => {
 			const container = postSocialDisplayContainerRef.current;

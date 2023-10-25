@@ -8,6 +8,7 @@ import { useColorTheme } from "./styles/theme/useColorTheme";
 import "./styles/reset.css";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 import PostFormProvider from "./components/Post/PostForm/context/PostFormProvider";
+import ViewPostProvider from "./components/Post/ViewPost/context/ViewPostProvider";
 
 const queryClient = new QueryClient();
 
@@ -19,9 +20,11 @@ function App() {
 			<ThemeProvider theme={colorTheme}>
 				<ErrorProvider>
 					<PostFormProvider>
-						<AppInitializer />
-						<GlobalStyle />
-						<ReactQueryDevtools initialIsOpen={true} />
+						<ViewPostProvider>
+							<AppInitializer />
+							<GlobalStyle />
+							<ReactQueryDevtools initialIsOpen={true} />
+						</ViewPostProvider>
 					</PostFormProvider>
 				</ErrorProvider>
 			</ThemeProvider>

@@ -1,20 +1,14 @@
 # Odin Book
 
-- repopulate db with some default data
-
 - post
 
-  - real previews (don't forget link to view post)
-  - delete
-  - edit
-  - to option ( tag users in content??)
   - view (actually click into)
 
 - search
 - dashboard
 - notifications
 
-- guests should have some default data
+- repopulate db with some default data (guest should have some default data somehow)
 - nav break point
 - tests
 

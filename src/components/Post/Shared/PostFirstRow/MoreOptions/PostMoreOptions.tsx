@@ -16,6 +16,7 @@ const PostMoreOptions = ({ post }: PostMoreOptionsProps) => {
 		handleOpenEditPost,
 		handleOpenEditAudience,
 		handleDeletePost,
+		handleOpenViewPost,
 		audienceFormRef,
 		audienceFormProps,
 	} = usePostMoreOptions({
@@ -30,6 +31,7 @@ const PostMoreOptions = ({ post }: PostMoreOptionsProps) => {
 				isSaved={isPostSaved}
 				saveMutation={handleClickSavePost}
 				openForm={isOwnPost ? handleOpenEditPost : undefined}
+				openView={handleOpenViewPost}
 				openAudienceForm={isOwnPost ? handleOpenEditAudience : undefined}
 				deleteMutation={isOwnPost ? handleDeletePost : undefined}
 			/>

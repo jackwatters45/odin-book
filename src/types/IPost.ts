@@ -1,4 +1,5 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
+import { IComment } from "./IComment";
 
 export interface UserPreview {
 	_id: string;
@@ -58,7 +59,7 @@ export interface IPost {
 	updatedAt: string;
 	reactions: IReaction[];
 	popularReactions?: ReactionType[];
-	comments: string[];
+	comments: IComment[];
 	shares: string[];
 	sharedFrom?: IPost;
 	media?: string[];

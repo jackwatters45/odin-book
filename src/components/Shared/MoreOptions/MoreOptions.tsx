@@ -15,6 +15,7 @@ interface MoreOptionsProps extends HTMLAttributes<HTMLDivElement> {
 	categoryName: string;
 
 	openForm?: () => void;
+	openView?: () => void;
 	openAudienceForm?: () => void;
 	deleteMutation?: () => void;
 	saveMutation?: () => void;
@@ -28,6 +29,7 @@ interface MoreOptionsProps extends HTMLAttributes<HTMLDivElement> {
 const MoreOptions = ({
 	categoryName,
 	openForm,
+	openView,
 	openAudienceForm,
 	deleteMutation,
 	saveMutation,
@@ -63,6 +65,7 @@ const MoreOptions = ({
 						isSaved={isSaved}
 						options={options}
 						openForm={openForm}
+						openView={openView}
 						openAudienceForm={openAudienceForm}
 						deleteMutation={deleteMutation}
 						handleDelete={handleDelete}

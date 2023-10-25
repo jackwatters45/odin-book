@@ -12,7 +12,7 @@ interface PostFormContextReturn {
 	ref: RefObject<HTMLDialogElement>;
 	closeDialog: () => void;
 	openDialog: ({ initialValues, initialOpenedState }: HandleOpenDialogProps) => void;
-	isDialogOpen: boolean;
+	isOpen: boolean;
 	initialOpenedState: InitialOpenedState | undefined;
 	initialValues: PostFormInitialValues | undefined;
 	isEditing: boolean;

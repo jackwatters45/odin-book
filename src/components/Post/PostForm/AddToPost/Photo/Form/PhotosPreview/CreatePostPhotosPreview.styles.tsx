@@ -18,15 +18,6 @@ export const StyledLabel = styled.label`
 export const StyledPostPhotosPreview = styled(StyledPostPhotos)<{ $numPhotos: number }>`
 	width: 100%;
 	margin: 0;
-	border-radius: 0.375rem;
-
-	& > div:nth-child(1) {
-		border-radius: 0.375rem 0 0 0;
-	}
-
-	& > div:nth-child(2) {
-		border-radius: 0 0.375rem 0 0;
-	}
 
 	${({ $numPhotos }) =>
 		$numPhotos === 1
@@ -58,7 +49,7 @@ export const StyledPostPhotosPreview = styled(StyledPostPhotos)<{ $numPhotos: nu
 export const StyledImageContainer = styled.div`
 	position: relative;
 	line-height: 0;
-	border-radius: unset;
+	border-radius: inherit;
 	cursor: default;
 
 	> img {
