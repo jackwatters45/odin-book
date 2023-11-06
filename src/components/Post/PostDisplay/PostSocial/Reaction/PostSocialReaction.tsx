@@ -1,19 +1,19 @@
 import Icon from "@mdi/react";
 import { mdiThumbUp, mdiThumbUpOutline } from "@mdi/js";
 
-import usePostSocialReaction from "./usePostSocialReaction";
+import useSocialReaction from "./usePostSocialReaction";
 import { StyledSocialOptionButton } from "../PostSocial.styles";
-import {
-	IPost,
-	ReactionType,
-	getReactionTypeEmoji,
-	reactionTypeEmojis,
-} from "@/types/IPost";
+import { IPost } from "@/types/IPost";
 import {
 	StyledHoverOption,
 	StyledHoverOptions,
 	StyledReactionsContainer,
 } from "./PostSocialReaction.styles";
+import {
+	ReactionType,
+	getReactionTypeEmoji,
+	reactionTypeEmojis,
+} from "@/types/IReaction";
 
 interface PostSocialReactionProps {
 	post: IPost;
@@ -27,7 +27,7 @@ const PostSocialReaction = ({ post }: PostSocialReactionProps) => {
 		handleMouseEnter,
 		handleMouseLeave,
 		handleOptionClick,
-	} = usePostSocialReaction(post);
+	} = useSocialReaction(post);
 
 	return (
 		<StyledReactionsContainer

@@ -24,13 +24,13 @@ export const StyledNameFriendsContainer = styled.div`
 
 	@media (min-width: 900px) {
 		display: block;
-		margin: 2rem 2rem 0;
+		margin: 0 2rem 0.75rem;
 		flex-grow: 1;
 	}
 `;
 
 export const StyledFriends = styled.div`
-	padding: 0.75rem 0 1rem;
+	padding-bottom: 1rem;
 	font-weight: 600;
 `;
 

@@ -3,22 +3,31 @@ import styled from "styled-components";
 
 import { StyledTextInput } from "@/styles/SharedStyles";
 
-export const StyledCommentContainer = styled.div`
+export const StyledCommentContainer = styled.div<{ $nestedCount?: number }>`
 	display: flex;
 	gap: 0.5rem;
-	margin-top: 0.5rem;
 	align-items: center;
-	margin-bottom: 0.5rem;
 
 	* {
 		margin-bottom: 0;
 	}
 `;
 
+export const StyledSendIconButton = styled.button`
+	height: 18px;
+
+	& :disabled {
+		cursor: "not-allowed";
+	}
+`;
+
 export const StyledSendIcon = styled(Icon)`
 	margin-right: 0.75rem;
+	visibility: hidden;
 
-	display: none;
+	& .disabled {
+		cursor: not-allowed;
+	}
 `;
 
 export const StyledCommentInputLabel = styled(StyledTextInput)`

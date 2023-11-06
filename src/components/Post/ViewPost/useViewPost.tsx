@@ -5,7 +5,7 @@ import { IPost } from "@/types/IPost";
 import useViewPostContext from "./context/useViewPostContext";
 
 const useViewPost = () => {
-	const { postId, ref, closeDialog } = useViewPostContext();
+	const { postId, authorName, ref, closeDialog } = useViewPostContext();
 
 	const postIdTemp = postId || "6532021f19447873e74dc753";
 	const { data: post, isLoading } = useQueryCustom<IPost>({
@@ -23,6 +23,7 @@ const useViewPost = () => {
 	const showPhotos = post?.media && post.media.length > 0;
 
 	return {
+		authorName,
 		post,
 		isLoading,
 		ref,

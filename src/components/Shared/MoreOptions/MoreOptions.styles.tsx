@@ -8,6 +8,7 @@ export const StyledUserAboutOverviewItemMoreButton = styled.button`
 	padding: 0.375rem;
 	display: flex;
 	align-items: center;
+	line-height: 0;
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.hoverOverlay};
@@ -18,7 +19,9 @@ export const StyledIcon = styled(Icon)<{ $isUsingDialog: boolean }>`
 	padding: ${({ $isUsingDialog }) => !$isUsingDialog && "1px"};
 `;
 
-export const StyledDialogMoreOptions = styled(StyledDialog)`
+export const StyledDialogMoreOptions = styled(StyledDialog)<{
+	$Direction: "left" | "right";
+}>`
 	width: 350px;
 	position: absolute;
 	margin-top: 1rem;
@@ -26,6 +29,12 @@ export const StyledDialogMoreOptions = styled(StyledDialog)`
 	right: 2rem;
 	left: unset;
 	transform: unset;
-	border-radius: 0.5rem 0 0.5rem 0.5rem;
 	z-index: 1000;
+
+	${({ $Direction }) =>
+		$Direction === "left"
+			? "border-radius: 0.5rem 0 0.5rem 0.5rem;"
+			: "border-radius: 0 0.5rem 0.5rem 0.5rem;"}
+
+	${({ $Direction }) => ($Direction === "left" ? "right: 50%;" : "left: 50%;")}
 `;

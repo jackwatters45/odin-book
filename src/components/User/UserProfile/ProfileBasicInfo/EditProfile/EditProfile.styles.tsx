@@ -6,6 +6,11 @@ export const StyledEditProfileDialog = styled(StyledDialog)`
 	z-index: 1001;
 `;
 
+export const StyledEditProfileContent = styled.div`
+	overflow-y: auto;
+	max-height: calc(90vh - 4rem);
+`;
+
 export const ContentDiv = styled.div`
 	display: flex;
 	flex-direction: column;

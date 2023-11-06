@@ -25,3 +25,11 @@ export const StyledBasePostForm = styled.form`
 	gap: 1rem;
 	padding: 1rem;
 `;
+
+export const StyledBaseFormScrollContainer = styled.div`
+	max-height: 70vh;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+`;

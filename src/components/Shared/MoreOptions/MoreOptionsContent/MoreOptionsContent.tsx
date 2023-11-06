@@ -17,6 +17,7 @@ interface MoreOptionsContentProps {
 	categoryName: string;
 	isSaved?: boolean;
 	options: MoreOptionsOptions | undefined;
+	closeDialog: () => void;
 	saveMutation: (() => void) | undefined;
 	openForm: (() => void) | undefined;
 	openView?: (() => void) | undefined;
@@ -29,6 +30,7 @@ const MoreOptionsContent = ({
 	categoryName,
 	isSaved,
 	options,
+	closeDialog,
 	saveMutation,
 	openView,
 	openForm,
@@ -61,7 +63,10 @@ const MoreOptionsContent = ({
 					colorClass="transparent"
 					text={`View ${categoryName}`}
 					icon={mdiEye}
-					onClick={openView}
+					onClick={() => {
+						openView();
+						closeDialog();
+					}}
 				/>
 			)}
 			{openForm && (
@@ -69,7 +74,10 @@ const MoreOptionsContent = ({
 					colorClass="transparent"
 					text={`Edit ${categoryName}`}
 					icon={mdiPencilOutline}
-					onClick={openForm}
+					onClick={() => {
+						openForm();
+						closeDialog();
+					}}
 				/>
 			)}
 			{openAudienceForm && (
@@ -77,7 +85,10 @@ const MoreOptionsContent = ({
 					colorClass="transparent"
 					text="Edit Audience"
 					icon={mdiEarth}
-					onClick={openAudienceForm}
+					onClick={() => {
+						openAudienceForm();
+						closeDialog();
+					}}
 				/>
 			)}
 			{deleteMutation && (

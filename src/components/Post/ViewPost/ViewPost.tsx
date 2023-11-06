@@ -10,13 +10,16 @@ import PostPhotos from "../Shared/PostPhotos";
 import PostSocialDisplay from "../PostDisplay/PostSocialDisplay";
 import PostSocial from "../PostDisplay/PostSocial";
 import PostCommentInput from "../PostDisplay/PostCommentInput";
-import { StyledViewPostContent } from "./ViewPost.styles";
+import {
+	StyledCommentInputContainer,
+	StyledViewPostScrollContainer,
+} from "./ViewPost.styles";
 import useViewPost from "./useViewPost";
 import PostComments from "./Comments";
 
-// TODO post comments
 const ViewPost = () => {
 	const {
+		authorName,
 		post,
 		isLoading,
 		ref,
@@ -29,17 +32,14 @@ const ViewPost = () => {
 
 	return (
 		<StyledDialogPostForm ref={ref}>
+			<DialogHeader title={`${authorName}'s post`} closeDialog={closeDialog} />
 			{isLoading ? (
 				<Loading />
 			) : !post ? (
 				<Navigate to="/404" />
 			) : (
-				<>
-					<DialogHeader
-						title={`${post.author.fullName}'s post`}
-						closeDialog={closeDialog}
-					/>
-					<StyledViewPostContent>
+				<div>
+					<StyledViewPostScrollContainer>
 						<PostFirstRow post={post} />
 						{post.content && (
 							<PostContent postContent={post.content} isPhotos={!!post.media?.length} />
@@ -52,10 +52,12 @@ const ViewPost = () => {
 						)}
 						{showReactions && <PostSocialDisplay post={post} />}
 						<PostSocial post={post} handleClickComment={handleClickComment} />
-						<PostComments comments={post.comments} />
+						<PostComments comments={post.comments} postId={post._id} />
+					</StyledViewPostScrollContainer>
+					<StyledCommentInputContainer>
 						<PostCommentInput ref={commentInputRef} postId={post._id} />
-					</StyledViewPostContent>
-				</>
+					</StyledCommentInputContainer>
+				</div>
 			)}
 		</StyledDialogPostForm>
 	);

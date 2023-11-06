@@ -7,9 +7,7 @@ export const HeaderDiv = styled.div`
 	justify-content: center;
 	min-height: 4rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	position: relative;
 	width: 100%;
-
 	button {
 		border-radius: 50%;
 		background: ${({ theme }) => theme.colors.primaryButton};

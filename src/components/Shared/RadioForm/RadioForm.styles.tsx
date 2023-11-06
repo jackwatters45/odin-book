@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const StyledRadioFormDialog = styled(StyledDialog)`
 	z-index: 1003;
 
-	max-width: 500px;
-	width: 100%;
+	width: 500px;
 	max-height: min(90%, 628px);
 `;

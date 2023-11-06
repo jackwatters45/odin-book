@@ -13,16 +13,17 @@ import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/default
 
 interface PostCommentInputProps {
 	postId: string;
+	commentId?: string;
 }
 
 const PostCommentInput = forwardRef<HTMLInputElement, PostCommentInputProps>(
-	({ postId }, ref) => {
+	({ postId, commentId }, ref) => {
 		const {
 			currentUserPreview: { _id, avatarUrl, fullName },
 			onSubmit,
 			setValue,
 			comment,
-		} = usePostCommentInput({ postId });
+		} = usePostCommentInput({ postId, commentId });
 
 		return (
 			<StyledCommentContainer>
@@ -35,6 +36,7 @@ const PostCommentInput = forwardRef<HTMLInputElement, PostCommentInputProps>(
 							type="text"
 							placeholder="Write a comment..."
 							ref={ref}
+							value={comment}
 							onChange={(e) => setValue("content", e.target.value)}
 						/>
 						<button disabled={!comment}>

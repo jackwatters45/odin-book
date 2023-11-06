@@ -23,6 +23,7 @@ export const StyledHoverOptions = styled.span`
 export const StyledHoverOption = styled.span`
 	border-radius: 50%;
 	padding: 3px 6px 1px;
+	cursor: pointer;
 
 	&:hover {
 		background-color: ${({ theme }) => theme.colors.hoverOverlay};

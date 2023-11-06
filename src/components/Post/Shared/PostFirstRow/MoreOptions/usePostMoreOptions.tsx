@@ -96,7 +96,8 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 
 	// open post
 	const { openDialog } = useViewPostContext();
-	const handleOpenViewPost = () => openDialog({ postId: post._id });
+	const handleOpenViewPost = () =>
+		openDialog({ postId: post._id, authorName: post.author.fullName });
 
 	return {
 		isOwnPost,

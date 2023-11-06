@@ -1,13 +1,13 @@
-import { IPost, getReactionTypeEmoji } from "@/types/IPost";
+import { ReactionType, getReactionTypeEmoji } from "@/types/IReaction";
 import { StyledReactionEmojiContainer } from "./PostReactionEmoji.styles";
 
 interface ReactionEmojiProps {
-	post: IPost;
+	popularReactions: ReactionType[] | undefined;
 }
 
-const PostReactionEmoji = ({ post }: ReactionEmojiProps) => (
+const ReactionEmoji = ({ popularReactions }: ReactionEmojiProps) => (
 	<StyledReactionEmojiContainer>
-		{post.popularReactions?.map((reaction) => (
+		{popularReactions?.map((reaction) => (
 			<span key={reaction} title={reaction}>
 				{getReactionTypeEmoji(reaction)}
 			</span>
@@ -15,4 +15,4 @@ const PostReactionEmoji = ({ post }: ReactionEmojiProps) => (
 	</StyledReactionEmojiContainer>
 );
 
-export default PostReactionEmoji;
+export default ReactionEmoji;

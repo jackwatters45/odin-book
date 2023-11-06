@@ -1,4 +1,5 @@
 import { UserPreview } from "./IPost";
+import { IReaction, ReactionType } from "./IReaction";
 
 export interface IComment {
 	content: string;
@@ -6,8 +7,9 @@ export interface IComment {
 	_id: string;
 	createdAt: string;
 	updatedAt: string;
-	likes: [];
-	replies: [];
+	reactions: IReaction[];
+	popularReactions?: ReactionType[];
+	replies: IComment[];
 	isDeleted: false;
 	parentComment?: string;
 }

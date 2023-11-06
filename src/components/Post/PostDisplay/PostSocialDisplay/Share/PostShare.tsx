@@ -6,14 +6,20 @@ interface PostShareProps {
 	shareCount: number;
 	hideCommentShareText: boolean;
 	postId: string;
+	authorName: string;
 }
 
-const PostShare = ({ shareCount, hideCommentShareText, postId }: PostShareProps) => {
+const PostShare = ({
+	shareCount,
+	hideCommentShareText,
+	postId,
+	authorName,
+}: PostShareProps) => {
 	const { isOpen, openDialog } = useViewPostContext();
 
 	return (
 		shareCount > 0 && (
-			<button onClick={() => (!isOpen ? openDialog({ postId }) : null)}>
+			<button onClick={() => (!isOpen ? openDialog({ postId, authorName }) : null)}>
 				<span>{shareCount}</span>
 				<span>
 					{hideCommentShareText ? (

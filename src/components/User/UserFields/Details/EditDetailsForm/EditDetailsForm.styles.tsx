@@ -4,6 +4,7 @@ import { StyledDialog } from "@/styles/SharedStyles";
 
 export const StyledDetailsFormDialog = styled(StyledDialog)`
 	z-index: 1002;
+	width: 548px;
 `;
 
 export const FormContentContainer = styled.div`

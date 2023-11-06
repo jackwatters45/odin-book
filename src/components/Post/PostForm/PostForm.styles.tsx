@@ -16,10 +16,8 @@ const slideInAnimation = css`
 `;
 
 export const StyledDialogPostForm = styled(StyledDialog)`
-	max-width: 600px;
-	width: 100%;
+	width: 600px;
 	z-index: 1005;
-	height: fit-content;
 	min-height: 333px;
 	overflow-x: hidden;
 `;

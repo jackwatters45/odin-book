@@ -70,7 +70,7 @@ export const PlaceholderDiv = styled.div`
 	flex-grow: 1;
 `;
 
-export const StyledDialog = styled.dialog`
+export const StyledDialog = styled.dialog<{ $Direction?: "left" | "right" }>`
 	background: white;
 	color: black;
 	border-radius: 0.5rem;
@@ -82,8 +82,8 @@ export const StyledDialog = styled.dialog`
 	left: 50%;
 	transform: translate(-50%, -50%);
 
-	max-width: 700px;
-	width: 90%;
+	max-width: 95vw;
+	width: 700px;
 	max-height: 90vh;
 
 	h2 {
@@ -113,9 +113,13 @@ export const StyledTextInput = styled.label`
 	}
 
 	&:focus-within {
-		svg {
-			display: block;
+		button {
+			line-height: 0;
 		}
+		svg {
+			visibility: visible;
+		}
+	}
 `;
 
 export const StyledNavShadow = styled.div`

@@ -7,7 +7,11 @@ import { StandardButtonFullWidth } from "@/styles/SharedStyles";
 import { PostFormValues, InitialOpenedState } from "../types/PostFormTypes";
 import useBasePostForm from "./useBasePostForm";
 import AddToPostButtons from "./AddToPostButtons";
-import { StyledBasePostForm, StyledMainFormContainer } from "./BasePostForm.styles";
+import {
+	StyledBaseFormScrollContainer,
+	StyledBasePostForm,
+	StyledMainFormContainer,
+} from "./BasePostForm.styles";
 import { PhotoPreviews } from "../AddToPost/Photo/types/PhotoTypes";
 import UserInfo from "./PostUserInfo";
 import ContentTextArea from "./PostTextArea";
@@ -69,22 +73,24 @@ const BasePostForm = ({
 					userId={currentUser?._id as string}
 					formValues={formValues}
 				/>
-				<ContentTextArea
-					initialValue={formValues?.content || ""}
-					setValue={setValue}
-					isPhotosSelected={photoPreviews.length > 0}
-				/>
-				{(photoPreviews.length > 0 || formValues?.media?.length || isAddingPhoto) && (
-					<PhotoForm
-						toggleIsAddingPhoto={toggleIsAddingPhoto}
-						control={control}
+				<StyledBaseFormScrollContainer>
+					<ContentTextArea
+						initialValue={formValues?.content || ""}
 						setValue={setValue}
-						photoPreviews={photoPreviews}
-						savedMedia={formValues?.media}
-						setPhotoPreviews={setPhotoPreviews}
+						isPhotosSelected={photoPreviews.length > 0}
 					/>
-				)}
-				{sharedFromData?._id && <PostSharedFrom sharedFromPost={sharedFromData} />}
+					{(photoPreviews.length > 0 || formValues?.media?.length || isAddingPhoto) && (
+						<PhotoForm
+							toggleIsAddingPhoto={toggleIsAddingPhoto}
+							control={control}
+							setValue={setValue}
+							photoPreviews={photoPreviews}
+							savedMedia={formValues?.media}
+							setPhotoPreviews={setPhotoPreviews}
+						/>
+					)}
+					{sharedFromData?._id && <PostSharedFrom sharedFromPost={sharedFromData} />}
+				</StyledBaseFormScrollContainer>
 				{!sharedFromData?._id && (
 					<AddToPostButtons
 						formValues={formValues}

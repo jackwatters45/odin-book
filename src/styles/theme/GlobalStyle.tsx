@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
       "Segoe UI Symbol";
     line-height: 1.5;
     
-    color-scheme: light dark;
+    color-scheme: light;
     
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -63,12 +63,17 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   }
 
+  body {
+    font-family: inherit;
+  }
+
   a {
     color: ${({ theme }) => theme.colors.textSecondary};
     cursor: pointer;
     text-decoration: none;
     line-height: 0;
     border-radius: inherit;
+
   }
 
   li {
@@ -79,10 +84,98 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background: transparent;
     border-radius: inherit;
+    font-family: inherit;
   }
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  font: inherit;
+  line-height: normal;
+}
 
   button,  select, option {
   cursor: pointer;
+
   }
   
   textarea {

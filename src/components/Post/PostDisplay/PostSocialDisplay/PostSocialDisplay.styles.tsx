@@ -7,7 +7,8 @@ export const StyledPostSocialDisplayContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;
-	padding: 1.25rem 0 0.25rem;
+	padding: 0.75rem 0.5rem 0rem;
+	min-height: 40px;
 `;
 
 export const StyledReactionsContainer = styled.div`

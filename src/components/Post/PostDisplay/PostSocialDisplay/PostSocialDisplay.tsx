@@ -28,7 +28,7 @@ const PostSocialDisplay = ({ post }: PostSocialDisplayProps) => {
 	return (
 		<StyledPostSocialDisplayContainer ref={postSocialDisplayContainerRef}>
 			<StyledReactionsContainer>
-				<ReactionEmoji post={post} />
+				<ReactionEmoji popularReactions={post.popularReactions} />
 				<ReactionText post={post} hideReactionsText={hideReactionsText} />
 			</StyledReactionsContainer>
 			<StyledCommentsSharesContainer>
@@ -36,11 +36,13 @@ const PostSocialDisplay = ({ post }: PostSocialDisplayProps) => {
 					commentCount={commentCount}
 					hideCommentShareText={hideCommentShareText}
 					postId={post._id}
+					authorName={post.author.fullName}
 				/>
 				<Share
 					shareCount={shareCount}
 					hideCommentShareText={hideCommentShareText}
 					postId={post._id}
+					authorName={post.author.fullName}
 				/>
 			</StyledCommentsSharesContainer>
 		</StyledPostSocialDisplayContainer>

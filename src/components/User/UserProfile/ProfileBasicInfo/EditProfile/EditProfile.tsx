@@ -5,6 +5,7 @@ import { IUser } from "@/types/IUser";
 import useDialog from "@/hooks/useDialog";
 import { BottomDiv } from "@/styles/SharedStyles";
 import {
+	StyledEditProfileContent,
 	StyledEditProfileDialog,
 	StyledStandardButton,
 	StyledStandardButtonFullWidth,
@@ -45,19 +46,21 @@ const EditProfile = ({ user }: EditProfileProps) => {
 			<Suspense>
 				<StyledEditProfileDialog ref={ref}>
 					<DialogHeader title={"Edit profile"} closeDialog={closeDialog} />
-					<AvatarEditProfileSection avatarUrl={avatarUrl} />
-					<CoverEditProfileSection coverPhotoUrl={coverPhotoUrl} />
-					<BioEditProfileSection bio={bio} />
-					<IntroEditProfileSection user={user} closeParentDialog={closeDialog} />
-					<HobbiesEditProfileSection hobbies={hobbies} />
-					<BottomDiv>
-						<StyledStandardButtonFullWidth
-							text="Edit your About info"
-							to="about"
-							colorClass="light-blue"
-							onClick={closeDialog}
-						/>
-					</BottomDiv>
+					<StyledEditProfileContent>
+						<AvatarEditProfileSection avatarUrl={avatarUrl} />
+						<CoverEditProfileSection coverPhotoUrl={coverPhotoUrl} />
+						<BioEditProfileSection bio={bio} />
+						<IntroEditProfileSection user={user} closeParentDialog={closeDialog} />
+						<HobbiesEditProfileSection hobbies={hobbies} />
+						<BottomDiv>
+							<StyledStandardButtonFullWidth
+								text="Edit your About info"
+								to="about"
+								colorClass="light-blue"
+								onClick={closeDialog}
+							/>
+						</BottomDiv>
+					</StyledEditProfileContent>
 				</StyledEditProfileDialog>
 			</Suspense>
 		</div>

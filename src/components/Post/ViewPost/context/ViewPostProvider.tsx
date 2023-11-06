@@ -16,9 +16,11 @@ const ViewPostProvider = ({ children }: ViewPostProviderProps) => {
 	} = useDialog({});
 
 	const [postId, setPostId] = useState("");
+	const [authorName, setAuthorName] = useState("");
 
-	const openDialog = ({ postId }: HandleOpenDialogProps) => {
+	const openDialog = ({ postId, authorName }: HandleOpenDialogProps) => {
 		setPostId(postId);
+		setAuthorName(authorName);
 
 		openViewPostDialog();
 	};
@@ -31,6 +33,7 @@ const ViewPostProvider = ({ children }: ViewPostProviderProps) => {
 		openDialog,
 		isOpen,
 		postId,
+		authorName,
 	};
 
 	return (

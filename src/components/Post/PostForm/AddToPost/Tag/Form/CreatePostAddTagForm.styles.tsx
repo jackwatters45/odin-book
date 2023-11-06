@@ -5,6 +5,7 @@ export const UserSearchContainer = styled.div`
 	gap: 0.625rem;
 	margin-right: -0.25rem;
 	align-items: center;
+	padding-bottom: 0.5rem;
 
 	> :first-child {
 		flex-grow: 1;
@@ -15,6 +16,8 @@ export const StyledDialogContent = styled.div`
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
+	overflow-y: auto;
+	max-height: 50vh;
 `;
 
 export const StyledSearchResultsContainer = styled.div`

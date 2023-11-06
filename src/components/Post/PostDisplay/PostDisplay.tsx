@@ -7,7 +7,10 @@ import usePostDisplay from "./usePostDisplay";
 import PostSocialDisplay from "./PostSocialDisplay";
 import PostPhotos from "../Shared/PostPhotos";
 import SharedFrom from "../Shared/PostSharedFrom/PostSharedForm";
-import { StyledPostContainer } from "./PostDisplay.styles";
+import {
+	StyledPostCommentInputContainer,
+	StyledPostContainer,
+} from "./PostDisplay.styles";
 
 interface PostDisplayProps {
 	post: IPost;
@@ -31,7 +34,9 @@ const PostDisplay = ({ post }: PostDisplayProps) => {
 			{showPhotos && <PostPhotos postId={post._id} media={post.media as string[]} />}
 			{showReactions && <PostSocialDisplay post={post} />}
 			<PostSocial post={post} handleClickComment={handleClickComment} />
-			<PostCommentInput ref={commentInputRef} postId={post._id} />
+			<StyledPostCommentInputContainer>
+				<PostCommentInput ref={commentInputRef} postId={post._id} />
+			</StyledPostCommentInputContainer>
 		</StyledPostContainer>
 	);
 };

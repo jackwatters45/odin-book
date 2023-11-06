@@ -2,6 +2,7 @@ import { RefObject, createContext } from "react";
 
 export interface HandleOpenDialogProps {
 	postId: string;
+	authorName: string;
 }
 
 interface ViewPostContextReturn {
@@ -10,6 +11,7 @@ interface ViewPostContextReturn {
 	openDialog: ({ postId }: HandleOpenDialogProps) => void;
 	isOpen: boolean;
 	postId: string;
+	authorName: string;
 }
 
 const ViewPostContext = createContext<ViewPostContextReturn | undefined>(undefined);

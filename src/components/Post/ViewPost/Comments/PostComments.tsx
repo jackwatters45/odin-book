@@ -1,10 +1,35 @@
 import { IComment } from "@/types/IComment";
+import CommentSort from "./CommentSort";
+import NoCommentsPlaceholder from "./NoCommentsPlaceholder";
+import Comment from "./Comment";
+import { StyledCommentsContainer } from "./PostComments.styles";
+import usePostComments from "./usePostComments";
+import Loading from "@/components/Shared/Loading";
 
 interface PostCommentsProps {
 	comments: IComment[];
+	postId: string;
 }
-const PostComments = ({ comments }: PostCommentsProps) => {
-	return <div>Comments here</div>;
+
+const PostComments = ({ comments, postId }: PostCommentsProps) => {
+	const { control, setValue, sort, sortedComments } = usePostComments({ postId });
+
+	return comments.length ? (
+		<div>
+			<CommentSort control={control} setValue={setValue} />
+			<StyledCommentsContainer>
+				{sortedComments && sortedComments?.length > 0 ? (
+					sortedComments?.map((comment) => (
+						<Comment key={comment._id} comment={comment} sort={sort} postId={postId} />
+					))
+				) : (
+					<Loading />
+				)}
+			</StyledCommentsContainer>
+		</div>
+	) : (
+		<NoCommentsPlaceholder />
+	);
 };
 
 export default PostComments;

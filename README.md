@@ -1,11 +1,9 @@
 # Odin Book
 
-- post
+- responsive dialog -> add up down too -> when neither direction fits
 
-  - view (actually click into)
-
-- search
 - dashboard
+- search
 - notifications
 
 - repopulate db with some default data (guest should have some default data somehow)

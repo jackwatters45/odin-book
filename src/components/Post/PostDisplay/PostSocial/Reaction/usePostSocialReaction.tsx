@@ -1,8 +1,9 @@
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 import useUpdatePosts from "@/hooks/reactQuery/useUpdatePosts";
-import { IPost, ReactionType } from "@/types/IPost";
+import { IPost } from "@/types/IPost";
 import { useEffect, useState } from "react";
+import { ReactionType } from "@/types/IReaction";
 
 const usePostSocialReaction = (post: IPost) => {
 	const currentUser = useCurrentUserCached();

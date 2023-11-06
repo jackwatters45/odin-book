@@ -6,8 +6,9 @@ import {
 	StyledDialogBackButton,
 	StyledDialogCloseButton,
 } from "./DialogHeader.styles";
+import { HTMLAttributes } from "react";
 
-interface DialogHeaderProps {
+interface DialogHeaderProps extends HTMLAttributes<HTMLDivElement> {
 	title: string;
 	closeDialog: () => void;
 	buttonActionType?: "back" | "close";
@@ -17,9 +18,10 @@ const DialogHeader = ({
 	title,
 	closeDialog,
 	buttonActionType = "close",
+	...props
 }: DialogHeaderProps) => {
 	return (
-		<HeaderDiv>
+		<HeaderDiv {...props}>
 			{buttonActionType === "back" && (
 				<StyledDialogBackButton onClick={closeDialog} type="button">
 					<Icon path={mdiArrowLeft} size={1.1} color={"#65676B"} />

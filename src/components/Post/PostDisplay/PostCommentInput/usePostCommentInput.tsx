@@ -3,27 +3,32 @@ import { useForm } from "react-hook-form";
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { IUser } from "@/types/IUser";
-import { IComment } from "@/types/IComment";
-import usePostCommentQuery from "@/hooks/reactQuery/usePostCommentQuery";
+import useCommentQuery from "@/hooks/reactQuery/useCommentQuery";
 
 interface PostCommentInputProps {
 	postId: string;
+	commentId?: string;
 }
 
-const usePostCommentInput = ({ postId }: PostCommentInputProps) => {
+const usePostCommentInput = ({ postId, commentId }: PostCommentInputProps) => {
 	const currentUserPreview = useCurrentUserCached() as IUser;
 
-	const addCommentToPost = usePostCommentQuery({ postId });
+	const queryUrl = commentId
+		? `posts/${postId}/comments/${commentId}/reply`
+		: `posts/${postId}/comments`;
+
 	const { handleSubmit, setValue, watch } = useForm();
+
+	const { createCommentQuery } = useCommentQuery(postId);
 	const { mutate: createComment } = useMutateCustom({
-		queryUrl: `posts/${postId}/comments`,
+		queryUrl,
 		method: "POST",
-		onSuccessFn: (data: IComment) => addCommentToPost(data),
+		onSuccessFn: createCommentQuery,
 	});
 
 	const onSubmit = handleSubmit((data) => {
-		setValue("content", "");
 		createComment({ data });
+		setValue("content", "");
 	});
 
 	const comment = watch("content");

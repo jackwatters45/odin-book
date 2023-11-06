@@ -6,9 +6,8 @@ import { ContentDiv } from "../../../UserProfile/ProfileBasicInfo/EditProfile/Ed
 export const StyledDialogHobbies = styled(StyledDialog)`
 	z-index: 1002;
 
-	max-width: 548px;
+	width: 548px;
 	height: 628px;
-	width: 80%;
 `;
 
 export const StyledHobbiesContainer = styled.div`

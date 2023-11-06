@@ -22,8 +22,9 @@ interface MoreOptionsProps extends HTMLAttributes<HTMLDivElement> {
 
 	isSaved?: boolean;
 	isUsingDialog?: boolean;
-	Button?: FC<{ onClick: (() => void) | undefined }>;
+	Button?: FC<{ onClick: (() => void) | undefined; showButton?: boolean }>;
 	options?: MoreOptionsOptions;
+	showButton?: boolean;
 }
 
 const MoreOptions = ({
@@ -37,9 +38,10 @@ const MoreOptions = ({
 	isUsingDialog = !!deleteMutation,
 	Button,
 	options,
+	showButton = true,
 	...props
 }: MoreOptionsProps) => {
-	const { ref, openDialog, handleDelete } = useMoreOptions({
+	const { ref, openDialog, closeDialog, handleDelete, dialogDirection } = useMoreOptions({
 		deleteMutation,
 	});
 
@@ -50,20 +52,23 @@ const MoreOptions = ({
 			) : (
 				<StyledUserAboutOverviewItemMoreButton
 					onClick={isUsingDialog ? openDialog : openForm}
+					style={{ visibility: showButton ? "visible" : "hidden" }}
 				>
 					<StyledIcon
 						path={isUsingDialog ? mdiDotsHorizontal : mdiPencilOutline}
 						size={1}
 						$isUsingDialog={isUsingDialog}
+						color={"#65676B"}
 					/>
 				</StyledUserAboutOverviewItemMoreButton>
 			)}
 			{isUsingDialog && (
-				<StyledDialogMoreOptions ref={ref}>
+				<StyledDialogMoreOptions ref={ref} $Direction={dialogDirection}>
 					<MoreOptionsContent
 						categoryName={categoryName}
 						isSaved={isSaved}
 						options={options}
+						closeDialog={closeDialog}
 						openForm={openForm}
 						openView={openView}
 						openAudienceForm={openAudienceForm}
@@ -71,7 +76,7 @@ const MoreOptions = ({
 						handleDelete={handleDelete}
 						saveMutation={saveMutation}
 					/>
-					<DialogTriangle />
+					<DialogTriangle Direction={dialogDirection} />
 				</StyledDialogMoreOptions>
 			)}
 		</div>

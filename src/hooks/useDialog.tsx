@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface UseDialogProps {
 	isModal?: boolean;
@@ -15,27 +15,53 @@ const useDialog = ({
 
 	const [isOpen, setIsOpen] = useState(false);
 
+	const [isOverflowLeft, setIsOverflowLeft] = useState(false);
+	const [isOverflowRight, setIsOverflowRight] = useState(false);
+
 	const openDialog = useCallback(() => {
 		if (reset) reset();
 
 		setIsOpen(true);
 
 		setTimeout(() => (isModal ? ref.current?.showModal() : ref.current?.show()), 0);
+
+		const positionDialog = () =>
+			setTimeout(() => {
+				const rect = ref.current?.getBoundingClientRect();
+
+				const parentDialog = ref.current?.parentElement?.closest("dialog");
+				const parentDialogRect = parentDialog?.getBoundingClientRect();
+
+				const rightBoundaryElement = rect?.right || 0;
+				const rightBoundaryParentBoundary = parentDialogRect?.right || window.innerWidth;
+
+				const isModalOverflowingRight =
+					rightBoundaryElement > rightBoundaryParentBoundary;
+
+				const leftBoundaryElement = rect?.left || 0;
+				const leftBoundaryParentBoundary = parentDialogRect?.left || 0;
+
+				const isModalOverflowingLeft = leftBoundaryElement < leftBoundaryParentBoundary;
+
+				if (isModalOverflowingRight) setIsOverflowRight(true);
+				else setIsOverflowRight(false);
+
+				if (isModalOverflowingLeft) setIsOverflowLeft(true);
+				else setIsOverflowLeft(false);
+			}, 0);
+		positionDialog();
 	}, [isModal, reset]);
 
 	const closeDialog = useCallback(() => {
-		setIsOpen(false);
 		ref.current?.close();
+		setIsOpen(false);
 	}, []);
 
 	useEffect(() => {
-		if (isOpenByDefault) {
-			setIsOpen(true);
-			openDialog();
-		}
+		if (isOpenByDefault) openDialog();
 	}, [isOpenByDefault, openDialog]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
 			if (ref.current && !ref.current.contains(e.target as Node)) {
 				closeDialog();
@@ -49,7 +75,39 @@ const useDialog = ({
 		};
 	}, [closeDialog, isOpen]);
 
-	return { ref, openDialog, closeDialog, isOpen, setIsOpen };
+	// useEffect(() => {
+	// 	const rect = ref.current?.getBoundingClientRect();
+
+	// 	const parentDialog = ref.current?.parentElement?.closest("dialog");
+	// 	const parentDialogRect = parentDialog?.getBoundingClientRect();
+
+	// 	const rightBoundaryElement = rect?.right || 0;
+	// 	const rightBoundaryParentBoundary = parentDialogRect?.right || window.innerWidth;
+
+	// 	const isModalOverflowingRight = rightBoundaryElement > rightBoundaryParentBoundary;
+
+	// 	const leftBoundaryElement = rect?.left || 0;
+	// 	const leftBoundaryParentBoundary = parentDialogRect?.left || 0;
+
+	// 	const isModalOverflowingLeft = leftBoundaryElement < leftBoundaryParentBoundary;
+
+	// 	if (isModalOverflowingRight) setIsOverflowRight(true);
+	// 	else setIsOverflowRight(false);
+
+	// 	if (isModalOverflowingLeft) setIsOverflowLeft(true);
+	// 	else setIsOverflowLeft(false);
+	// 	}, 50);
+	// }, [isOpen]);
+
+	return {
+		ref,
+		openDialog,
+		closeDialog,
+		isOpen,
+		setIsOpen,
+		isOverflowLeft,
+		isOverflowRight,
+	};
 };
 
 export default useDialog;

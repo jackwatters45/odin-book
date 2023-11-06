@@ -15,8 +15,8 @@ const useQueryCustom = <T = unknown, U = T>({
 	queryUrl,
 	transformData,
 	includeCredentials = true,
-	options,
 	allowErrors = false,
+	options,
 }: IQueryCustomProps<T, U>) => {
 	const queryFn = async () => {
 		const res = await fetch(`${apiBaseUrl}/${queryUrl}`, {
@@ -32,20 +32,11 @@ const useQueryCustom = <T = unknown, U = T>({
 		return transformData ? transformData(json) : json;
 	};
 
-	const { data, error, isLoading, isError, isSuccess, refetch } = useQuery<U>({
+	return useQuery<U>({
 		queryKey,
 		queryFn,
 		...options,
 	});
-
-	return {
-		data,
-		error,
-		isLoading,
-		isError,
-		isSuccess,
-		refetch,
-	};
 };
 
 export default useQueryCustom;
