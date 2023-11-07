@@ -1,14 +1,17 @@
 # Odin Book
 
-- responsive dialog -> add up down too -> when neither direction fits
+- google chrome errors
+- repopulate db with some default data (guest should have some default data somehow)
 
-- dashboard
 - search
+
+- friends page
 - notifications
 
-- repopulate db with some default data (guest should have some default data somehow)
+- responsive
 - nav break point
 - tests
+  - fix backend + make sure existing frontend tests work
 
 ## eventually look into
 

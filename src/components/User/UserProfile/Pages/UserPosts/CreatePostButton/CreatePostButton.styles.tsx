@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { UserProfileSectionContainer } from "@/components/User/Shared/UserProfileSection/UserProfileSection.styles";
-import { StyledTextInput } from "@/styles/SharedStyles";
+import { StyledTextInputSharedCss } from "@/styles/SharedStyles";
 import StandardButton from "@/components/Shared/StandardButton";
 
 export const StyledCreatePostButton = styled(UserProfileSectionContainer)`
@@ -17,7 +17,8 @@ export const StyledFirstRowCreatePost = styled.div`
 	padding-bottom: 0.5rem;
 `;
 
-export const StyledSearchInputCreatePost = styled(StyledTextInput)`
+export const StyledSearchInputCreatePost = styled.button`
+	${StyledTextInputSharedCss}
 	cursor: pointer;
 
 	> span {

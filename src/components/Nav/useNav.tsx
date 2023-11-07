@@ -1,6 +1,7 @@
 import useLogout from "../../hooks/useLogout";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import useCreatePostContext from "../Post/PostForm/context/usePostFormContext";
+import { useMatch } from "react-router";
 
 const useNav = () => {
 	const { handleClickLogout } = useLogout();
@@ -13,11 +14,18 @@ const useNav = () => {
 		openDialog({ initialValues: undefined, initialOpenedState: undefined });
 	};
 
+	const isDashboardActive = useMatch("/");
+	const isFriendsActive = useMatch("/friends");
+	const isNotificationsActive = useMatch("/notifications");
+
 	return {
 		handleClickLogout,
 		user: currentUser,
 		isSuccess,
 		openCreatePostDialog,
+		isDashboardActive,
+		isFriendsActive,
+		isNotificationsActive,
 	};
 };
 

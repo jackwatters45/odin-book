@@ -33,6 +33,7 @@ const PostCommentInput = forwardRef<HTMLInputElement, PostCommentInputProps>(
 				<form style={{ width: "100%" }} onSubmit={onSubmit}>
 					<StyledCommentInputLabel>
 						<input
+							name={`comment-${commentId || postId}-input`}
 							type="text"
 							placeholder="Write a comment..."
 							ref={ref}

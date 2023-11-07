@@ -1,5 +1,5 @@
 import useDialog from "@/hooks/useDialog";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 interface UseMoreOptionsProps {
 	deleteMutation: (() => void) | undefined;
@@ -15,7 +15,7 @@ const useMoreOptions = ({ deleteMutation }: UseMoreOptionsProps) => {
 		"left",
 	);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (isOverflowLeft && !isOverflowRight) {
 			setDialogDirection("right");
 		}

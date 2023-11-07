@@ -3,6 +3,7 @@ import StandardSelect from "@/components/Shared/StandardSelect";
 import styled, { css } from "styled-components";
 import { Nav } from "@jackwatters/simple-nav";
 import StandardButton from "@/components/Shared/StandardButton";
+import { DialogDirectionX } from "@/components/Shared/MoreOptions/types/MoreOptionTypes";
 
 export const StandardButtonStyles = css`
 	border-radius: 0.25rem;
@@ -70,7 +71,7 @@ export const PlaceholderDiv = styled.div`
 	flex-grow: 1;
 `;
 
-export const StyledDialog = styled.dialog<{ $Direction?: "left" | "right" }>`
+export const StyledDialog = styled.dialog<{ $Direction?: DialogDirectionX }>`
 	background: white;
 	color: black;
 	border-radius: 0.5rem;
@@ -92,7 +93,7 @@ export const StyledDialog = styled.dialog<{ $Direction?: "left" | "right" }>`
 	}
 `;
 
-export const StyledTextInput = styled.label`
+export const StyledTextInputSharedCss = css`
 	width: 100%;
 	height: 42px;
 	border-radius: 1.5rem;
@@ -100,6 +101,10 @@ export const StyledTextInput = styled.label`
 	display: flex;
 	align-items: center;
 	position: relative;
+`;
+
+export const StyledTextInput = styled.label`
+	${StyledTextInputSharedCss}
 
 	> input {
 		font-size: 0.95rem;

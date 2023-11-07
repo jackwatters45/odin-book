@@ -63,7 +63,7 @@ const MoreOptions = ({
 				</StyledUserAboutOverviewItemMoreButton>
 			)}
 			{isUsingDialog && (
-				<StyledDialogMoreOptions ref={ref} $Direction={dialogDirection}>
+				<StyledDialogMoreOptions ref={ref} $Direction={dialogDirection || "left"}>
 					<MoreOptionsContent
 						categoryName={categoryName}
 						isSaved={isSaved}
@@ -76,7 +76,7 @@ const MoreOptions = ({
 						handleDelete={handleDelete}
 						saveMutation={saveMutation}
 					/>
-					<DialogTriangle Direction={dialogDirection} />
+					<DialogTriangle Direction={dialogDirection || "left"} />
 				</StyledDialogMoreOptions>
 			)}
 		</div>

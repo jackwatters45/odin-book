@@ -1,17 +1,59 @@
-import { Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
+import { Fragment } from "react";
+
+import {
+	StyledDashboardContainer,
+	StyledDashboardContentContainer,
+	StyledLoadingContainer,
+	StyledNoMorePosts,
+	StyledPostsContainer,
+} from "./Dashboard.styles";
+import CreatePostButton from "./User/UserProfile/Pages/UserPosts/CreatePostButton";
+import Loading from "./Shared/Loading";
+import PostDisplay from "./Post/PostDisplay";
+import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
-	const { handleClickLogout } = useLogout();
+	const { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage } =
+		useDashboard();
 
 	return (
-		<div>
-			<h1>Dashboard</h1>
-			<Link to="/login">Login</Link>
-			<Link to="/create-account">Create Account</Link>
-			<Link to="/recover">Forgot Password</Link>
-			<button onClick={handleClickLogout}>Logout</button>
-		</div>
+		<StyledDashboardContainer>
+			<StyledDashboardContentContainer>
+				<StyledPostsContainer>
+					<CreatePostButton
+						userFirstName={currentUser?.firstName as string}
+						userFullName={currentUser?.fullName as string}
+						userIcon={currentUser?.avatarUrl}
+					/>
+					{isLoading ? (
+						<Loading />
+					) : (
+						posts?.pages.map((group, i) => (
+							<Fragment key={i}>
+								{group.map((post) => (
+									<PostDisplay key={post._id} post={post} />
+								))}
+							</Fragment>
+						))
+					)}
+				</StyledPostsContainer>
+				{isFetchingNextPage ? (
+					<StyledLoadingContainer>
+						<Loading />
+					</StyledLoadingContainer>
+				) : !hasNextPage && !isLoading ? (
+					<StyledNoMorePosts>No more posts...</StyledNoMorePosts>
+				) : (
+					<div
+						ref={ref}
+						style={{
+							width: "100%",
+							height: "1px",
+						}}
+					/>
+				)}
+			</StyledDashboardContentContainer>
+		</StyledDashboardContainer>
 	);
 };
 

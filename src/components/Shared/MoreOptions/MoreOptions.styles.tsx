@@ -2,6 +2,7 @@ import Icon from "@mdi/react";
 import styled from "styled-components";
 
 import { StyledDialog } from "@/styles/SharedStyles";
+import { DialogDirectionX } from "./types/MoreOptionTypes";
 
 export const StyledUserAboutOverviewItemMoreButton = styled.button`
 	border-radius: 50%;
@@ -20,7 +21,7 @@ export const StyledIcon = styled(Icon)<{ $isUsingDialog: boolean }>`
 `;
 
 export const StyledDialogMoreOptions = styled(StyledDialog)<{
-	$Direction: "left" | "right";
+	$Direction: DialogDirectionX;
 }>`
 	width: 350px;
 	position: absolute;

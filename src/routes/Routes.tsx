@@ -51,6 +51,8 @@ const RoutesComponent = () => {
 				<Route element={<LoggedInRoute />}>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Dashboard />} />
+						<Route path="friends" element={<>Friends</>} />
+						<Route path="notifications" element={<>Notifications</>} />
 						<Route path="post" element={<ViewPost />} />
 						<Route path="/user/:id" element={<UserProfile />}>
 							<Route index element={<UserPosts />} />

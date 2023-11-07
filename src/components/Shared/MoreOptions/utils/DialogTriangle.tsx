@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { DialogDirectionX } from "../types/MoreOptionTypes";
 
-const StyledSvg = styled.svg<{ $Direction: "left" | "right" }>`
+const StyledSvg = styled.svg<{ $Direction: DialogDirectionX | undefined }>`
 	position: absolute;
 
 	${({ $Direction }) =>
@@ -15,10 +16,10 @@ const StyledSvg = styled.svg<{ $Direction: "left" | "right" }>`
 `;
 
 interface DialogTriangleProps {
-	Direction: "left" | "right" | undefined;
+	Direction: DialogDirectionX | undefined;
 }
 
-const DialogTriangle = ({ Direction = "left" }: DialogTriangleProps) => {
+const DialogTriangle = ({ Direction }: DialogTriangleProps) => {
 	return (
 		<StyledSvg
 			$Direction={Direction}
