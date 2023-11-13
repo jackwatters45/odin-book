@@ -23,7 +23,7 @@ export const OutletWrapper = styled.div`
 export const StyledUserProfileContentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 1rem;
+	padding: 1rem 1rem 0;
 	gap: 1rem;
 	align-items: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};

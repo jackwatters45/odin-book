@@ -11,7 +11,7 @@ import AuthRoute from "./wrappers/Auth/AuthRoutes";
 import LoggedInRoute from "./wrappers/LoggedIn/LoggedInRoutes";
 import Layout from "./wrappers/Layout/Layout";
 
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/Dashboard/Dashboard";
 
 import ResetPasswordMethod from "../components/Auth/ForgotPassword/ResetPasswordMethod";
 import EnterSecurityCode from "../components/Auth/ForgotPassword/EnterSecurityCode";
@@ -31,6 +31,12 @@ import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/Use
 import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
 import UserFriends from "@/components/User/UserProfile/Pages/UserFriends";
 import ViewPost from "@/components/Post/ViewPost";
+import Friends from "@/components/Friends";
+import FriendsHome from "@/components/Friends/Content/Home";
+import FriendsFriendRequests from "@/components/Friends/Content/FriendRequests";
+import FriendsSuggestions from "@/components/Friends/Content/Suggestions";
+import FriendsAll from "@/components/Friends/Content/All";
+import FriendsBirthdays from "@/components/Friends/Content/Birthdays";
 
 const RoutesComponent = () => {
 	return (
@@ -51,7 +57,14 @@ const RoutesComponent = () => {
 				<Route element={<LoggedInRoute />}>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Dashboard />} />
-						<Route path="friends" element={<>Friends</>} />
+						<Route path="friends" element={<Friends />}>
+							<Route index element={<FriendsHome />} />
+							<Route path="requests" element={<FriendsFriendRequests />} />
+							<Route path="suggestions" element={<FriendsSuggestions />} />
+							<Route path="all" element={<FriendsAll />} />
+							<Route path="birthdays" element={<FriendsBirthdays />} />
+						</Route>
+
 						<Route path="notifications" element={<>Notifications</>} />
 						<Route path="post" element={<ViewPost />} />
 						<Route path="/user/:id" element={<UserProfile />}>

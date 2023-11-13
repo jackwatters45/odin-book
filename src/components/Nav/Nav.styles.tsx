@@ -21,7 +21,6 @@ export const StyledSideNav = styled.div`
 	gap: 0.5rem;
 `;
 
-// TODO bottom border selected / hover unselected
 export const StyledCenterNav = styled.div`
 	display: flex;
 	align-items: center;
@@ -100,7 +99,7 @@ export const StyledDropdownButton = styled(NavButton)`
 	}
 `;
 
-export const StyledDropdown = styled(NavDropdown)`
+const StyledDropdown = styled(NavDropdown)`
 	.normal-dropdown-button {
 		height: 2.5rem;
 		width: 2.5rem;
@@ -111,10 +110,19 @@ export const StyledDropdown = styled(NavDropdown)`
 	}
 
 	.normal-dropdown-content {
+		z-index: 1010;
+		width: 360px;
 		background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 		display: flex;
 		min-width: 300px;
 		${({ theme }) => theme.cardShadow};
+	}
+`;
+
+export const StyledSearchDropdown = styled(StyledDropdown)`
+	.normal-dropdown-content {
+		top: 0;
+		left: 0;
 	}
 `;
 
@@ -192,7 +200,7 @@ const CircleBackgroundCss = css<{ background?: string }>`
 	border-radius: 50%;
 	background: ${({ background, theme }) =>
 		background || theme.colors.primaryButton}; // TODO theme
-	padding: 0.5rem;
+	padding: 0.375rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;

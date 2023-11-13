@@ -6,6 +6,7 @@ import useMoreOptions from "./useMoreOptions";
 import {
 	StyledDialogMoreOptions,
 	StyledIcon,
+	StyledMoreOptionsContainer,
 	StyledUserAboutOverviewItemMoreButton,
 } from "./MoreOptions.styles";
 import { MoreOptionsOptions } from "./types/MoreOptionTypes";
@@ -46,7 +47,7 @@ const MoreOptions = ({
 	});
 
 	return (
-		<div {...props}>
+		<StyledMoreOptionsContainer {...props}>
 			{Button ? (
 				<Button onClick={isUsingDialog ? openDialog : openForm} />
 			) : (
@@ -79,7 +80,7 @@ const MoreOptions = ({
 					<DialogTriangle Direction={dialogDirection || "left"} />
 				</StyledDialogMoreOptions>
 			)}
-		</div>
+		</StyledMoreOptionsContainer>
 	);
 };
 

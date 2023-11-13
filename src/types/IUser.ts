@@ -10,6 +10,7 @@ import { IPlaceLived } from "@/components/User/UserFields/PlacesLived/types/Plac
 import { ISocialLinks } from "@/components/User/UserFields/SocialLinks/types/SocialLinksTypes";
 import { IntroData } from "./IntroTypes";
 import { PronounsType } from "@/components/User/UserFields/Pronouns/types/PronounsTypes";
+import { UserPreview } from "./IPost";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -44,10 +45,10 @@ export interface UserResetPasswordData {
 	code?: string;
 }
 
-// User Activity Data (all were objectIds)
+// User Activity Data
 export interface UserActivityData {
 	friends: string[];
-	mutualFriends?: string[];
+	mutualFriends?: string[] | UserPreview[];
 	savedPosts: string[];
 	friendRequestsSent: string[];
 	friendRequestsReceived: string[];
@@ -70,8 +71,8 @@ export interface UserSystemData {
 	userType: userType;
 	isDeleted: boolean;
 	deletedData: DeletedData | undefined;
-	validUntil?: number;
 	refreshTokens: string[] | undefined;
+	validUntil?: number;
 }
 
 // User About Data

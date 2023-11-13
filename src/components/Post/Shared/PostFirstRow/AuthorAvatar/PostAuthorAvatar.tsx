@@ -9,10 +9,10 @@ interface PostAuthorAvatarProps {
 
 const PostAuthorAvatar = ({ author }: PostAuthorAvatarProps) => (
 	<span>
-		<Link to={`/user/${author._id}`}>
+		<Link to={`/user/${author?._id}`}>
 			<ImageCircle
-				src={author.avatarUrl || defaultUserAvatar}
-				alt={`${author.fullName} avatar`}
+				src={author?.avatarUrl || defaultUserAvatar}
+				alt={`${author?.fullName} avatar`}
 			/>
 		</Link>
 	</span>

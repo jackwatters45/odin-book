@@ -1,11 +1,24 @@
 # Odin Book
 
-- google chrome errors
-- repopulate db with some default data (guest should have some default data somehow)
+- close nav modals on click option
 
-- search
+- fix dashboard to add popular posts
+- work about part may be wonky
+- logic for displaying social + websites in about is wrong
+- family members error (try to friend April Blick)
+- fix populate errors
+
+<!-- Play around with test db to check for bugs! -->
+
+- nav needs to be sticky
 
 - friends page
+- search results
+
+- guest -> create random new user
+- fix nav dropdowns -> search needs a wrapper (remove dropdown styles)
+
+- stupid fucking intro is broken again...
 - notifications
 
 - responsive

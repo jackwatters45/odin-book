@@ -16,7 +16,7 @@ const usePhoneNumberForm = ({
 			audience,
 			initialValues: { phoneNumber: initialValues },
 			url: "phone-number",
-			method: initialValues ? "PATCH" : "POST",
+			method: "PATCH",
 			handleCloseForm,
 		});
 

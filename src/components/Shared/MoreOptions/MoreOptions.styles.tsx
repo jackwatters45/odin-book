@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { StyledDialog } from "@/styles/SharedStyles";
 import { DialogDirectionX } from "./types/MoreOptionTypes";
 
+export const StyledMoreOptionsContainer = styled.div`
+	position: relative;
+`;
+
 export const StyledUserAboutOverviewItemMoreButton = styled.button`
 	border-radius: 50%;
 	padding: 0.375rem;

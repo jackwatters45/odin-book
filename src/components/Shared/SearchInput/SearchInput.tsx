@@ -21,7 +21,7 @@ const SearchInput = <T extends FieldValues>({
 	return (
 		<StyledHobbiesSearchLabel className={className} htmlFor={id}>
 			<span>
-				<Icon path={mdiMagnify} size={0.9} color={"#65676b"} />
+				<Icon path={mdiMagnify} size={0.85} color={"#65676b"} />
 			</span>
 			<input type="text" id={id} placeholder={placeholder} {...register} {...props} />
 		</StyledHobbiesSearchLabel>

@@ -2,20 +2,19 @@ import { Navigate } from "react-router";
 import { NavLink } from "@jackwatters/simple-nav";
 import Icon from "@mdi/react";
 import {
-	mdiMagnify,
 	mdiHomeOutline,
 	mdiAccountMultipleOutline,
 	mdiBellOutline,
 	mdiPlusBoxOutline,
-	mdiLogoutVariant,
-	mdiAccount,
 	mdiHome,
 	mdiAccountMultiple,
 	mdiBell,
 } from "@mdi/js";
 
-import Search from "./Search/Search";
 import useNav from "./useNav";
+import { StyledNavShadow } from "@/styles/SharedStyles";
+import SearchNav from "./Search";
+
 import {
 	StyledNavContainer,
 	StyledNav,
@@ -24,17 +23,12 @@ import {
 	ImageCircle,
 	NavLinkCenterColumn,
 	IconCircleBackground,
-	StyledDropdown,
-	StyledDropdownLink,
-	StyledDropdownButton,
 	StyledCreatePostButton,
 } from "./Nav.styles";
-import { StyledNavShadow } from "@/styles/SharedStyles";
-import defaultUserAvatar from "../User/UserFields/Avatar/utils/defaultUserAvatar";
+import ProfileDropdown from "./ProfileDropdown";
 
 const NavComponent = () => {
 	const {
-		handleClickLogout,
 		user,
 		isSuccess,
 		openCreatePostDialog,
@@ -60,17 +54,7 @@ const NavComponent = () => {
 						}
 						dataTestid="dashboard-button"
 					/>
-					<StyledDropdown
-						buttonOptions={{
-							includeArrow: false,
-							includeText: false,
-							text: "Search",
-							icon: <Icon path={mdiMagnify} size={0.9} color={"#65676B"} />,
-						}}
-						dataTestid="search-dropdown"
-					>
-						<Search />
-					</StyledDropdown>
+					<SearchNav />
 				</StyledSideNav>
 				<StyledCenterNav>
 					<NavLinkCenterColumn
@@ -87,9 +71,10 @@ const NavComponent = () => {
 						dataTestid="home-button"
 					/>
 					<NavLinkCenterColumn
-						to="/friends"
+						to="/friends/"
 						text="Friends"
 						showText={false}
+						isActive={isFriendsActive}
 						icon={
 							<Icon
 								path={isFriendsActive ? mdiAccountMultiple : mdiAccountMultipleOutline}
@@ -100,7 +85,7 @@ const NavComponent = () => {
 						dataTestid="friends-button"
 					/>
 					<NavLinkCenterColumn
-						to="/notifications"
+						to="/notifications/"
 						text="Notifications"
 						showText={false}
 						icon={
@@ -122,39 +107,7 @@ const NavComponent = () => {
 							background="transparent"
 						/>
 					</StyledCreatePostButton>
-					<StyledDropdown
-						buttonOptions={{
-							includeArrow: false,
-							icon: (
-								<ImageCircle
-									src={user?.avatarUrl || defaultUserAvatar}
-									alt="User profile icon"
-								/>
-							),
-						}}
-						dataTestid="profile-dropdown"
-					>
-						<StyledDropdownLink
-							to={`/user/${user?._id}/`}
-							text="Profile"
-							icon={
-								<IconCircleBackground path={mdiAccount} size={1.5} color={"#1c1e21"} />
-							}
-							dataTestid="profile-button"
-						/>
-						<StyledDropdownButton
-							onClick={handleClickLogout}
-							text="Log out"
-							icon={
-								<IconCircleBackground
-									path={mdiLogoutVariant}
-									size={1.5}
-									color={"#1c1e21"}
-								/>
-							}
-							dataTestid="logout-button"
-						/>
-					</StyledDropdown>
+					<ProfileDropdown />
 				</StyledSideNav>
 			</StyledNav>
 			<StyledNavShadow />

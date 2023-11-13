@@ -1,16 +1,15 @@
 import { Fragment } from "react";
 
+import CreatePostButton from "../User/UserProfile/Pages/UserPosts/CreatePostButton";
+import Loading from "../Shared/Loading";
+import PostDisplay from "../Post/PostDisplay";
+import useDashboard from "./useDashboard";
+import InfiniteScrollLoading from "../Shared/InfiniteScrollLoading";
 import {
 	StyledDashboardContainer,
 	StyledDashboardContentContainer,
-	StyledLoadingContainer,
-	StyledNoMorePosts,
 	StyledPostsContainer,
 } from "./Dashboard.styles";
-import CreatePostButton from "./User/UserProfile/Pages/UserPosts/CreatePostButton";
-import Loading from "./Shared/Loading";
-import PostDisplay from "./Post/PostDisplay";
-import useDashboard from "./useDashboard";
 
 const Dashboard = () => {
 	const { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage } =
@@ -37,21 +36,13 @@ const Dashboard = () => {
 						))
 					)}
 				</StyledPostsContainer>
-				{isFetchingNextPage ? (
-					<StyledLoadingContainer>
-						<Loading />
-					</StyledLoadingContainer>
-				) : !hasNextPage && !isLoading ? (
-					<StyledNoMorePosts>No more posts...</StyledNoMorePosts>
-				) : (
-					<div
-						ref={ref}
-						style={{
-							width: "100%",
-							height: "1px",
-						}}
-					/>
-				)}
+				<InfiniteScrollLoading
+					ref={ref}
+					isFetchingNextPage={isFetchingNextPage}
+					isLoading={isLoading}
+					hasNextPage={hasNextPage}
+					noMoreText="No posts to display..."
+				/>
 			</StyledDashboardContentContainer>
 		</StyledDashboardContainer>
 	);

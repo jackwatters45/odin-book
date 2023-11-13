@@ -1,8 +1,8 @@
 import { apiBaseUrl } from "@/config/envVariables";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { IPost } from "@/types/IPost";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -33,31 +33,12 @@ const useDashboard = () => {
 			lastPage.length < ITEMS_PER_PAGE ? undefined : pages.length,
 	});
 
-	// actual infinite scroll ui logic
-	const ref = useRef<HTMLDivElement>(null);
-	const [isLoadMore, setIsLoadMore] = useState(false);
-	useEffect(() => {
-		const currentRef = ref.current;
-
-		if (posts?.pages && posts.pages.length > 0 && ref.current) {
-			const observer = new IntersectionObserver((entries) => {
-				const entry = entries[0];
-				setIsLoadMore(entry.isIntersecting);
-			});
-
-			if (currentRef) observer.observe(currentRef);
-
-			return () => {
-				if (currentRef) observer.unobserve(currentRef);
-			};
-		}
-	}, [posts?.pages]);
-
-	useEffect(() => {
-		if (!hasNextPage || !isLoadMore) return;
-		fetchNextPage();
-		setIsLoadMore(false);
-	}, [isLoadMore, fetchNextPage, hasNextPage]);
+	// infinite scroll ui
+	const { ref } = useInfiniteScroll<IPost[]>({
+		data: posts,
+		hasNextPage,
+		fetchNextPage,
+	});
 
 	return { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage };
 };

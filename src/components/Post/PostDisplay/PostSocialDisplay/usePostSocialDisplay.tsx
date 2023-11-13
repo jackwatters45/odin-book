@@ -7,8 +7,8 @@ interface UsePostSocialDisplayProps {
 }
 
 const usePostSocialDisplay = ({ post }: UsePostSocialDisplayProps) => {
-	const commentCount = post.comments.length;
-	const shareCount = post.shares.length;
+	const commentCount = post.comments?.length;
+	const shareCount = post.shares?.length;
 
 	const [hideCommentShareText, setHideCommentShareText] = useState(false);
 	const [hideReactionsText, setHideReactionsText] = useState(false);

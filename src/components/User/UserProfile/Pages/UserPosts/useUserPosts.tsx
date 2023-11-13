@@ -4,11 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
 type JsonResponse = { posts: IPost[] };
 type FnReturnType = IPost[] | null;
 
 const useUserPosts = () => {
+	const currentUserAvatar = useCurrentUserCached()?.avatarUrl;
+
 	// user who's profile is being viewed
 	const { user } = useOutletContext<{ user: IUser }>();
 
@@ -42,7 +45,7 @@ const useUserPosts = () => {
 		transformData: (data) => data.posts,
 	});
 
-	return { user, leftSidebarRef, top, posts, isLoading };
+	return { currentUserAvatar, user, leftSidebarRef, top, posts, isLoading };
 };
 
 export default useUserPosts;

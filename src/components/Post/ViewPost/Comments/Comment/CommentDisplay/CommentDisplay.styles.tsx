@@ -29,11 +29,20 @@ export const StyledCommentReactions = styled.div`
 	bottom: -0.5rem;
 	left: calc(100% - 0.75rem);
 	border-radius: 1.5rem;
-	padding: 0.0625rem 0.125rem;
+	padding: 0.0625rem 0.25rem 0.0625rem 0.125rem;
 	font-size: 0.75rem;
 	display: flex;
+	align-items: center;
 	gap: 0.125rem;
+
 	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 
 	${({ theme }) => theme.cardShadow};
+`;
+
+export const StyledReactionsCount = styled.span`
+	color: ${({ theme }) => theme.colors.textSecondary};
+	font-weight: 500;
+	line-height: 1.05rem;
+	margin-left: 0.175rem;
 `;

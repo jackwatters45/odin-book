@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Route } from "react-router";
 
-import Search from "./Search";
-import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
+import SearchDialog from "./SearchDialog";
+import TestEnvironmentWrapper from "../../../../config/tests/Utils/setupRender";
 
 const mockSearchData = [
 	{ fullName: "Test", avatarUrl: "url1", isFriend: true },
@@ -13,7 +13,7 @@ const mockSearchData = [
 ];
 
 vi.mock("./useSearch", async () => ({
-	...((await vi.importActual("./useSearch")) as typeof import("./useSearch")),
+	...((await vi.importActual("./useSearch")) as typeof import("../useSearch")),
 	default: () => ({
 		register: vi.fn(),
 		data: mockSearchData,
@@ -25,7 +25,16 @@ describe("Search Component", () => {
 	beforeEach(() => {
 		render(
 			<TestEnvironmentWrapper initialRoute={["/"]}>
-				<Route path="/" element={<Search />} />
+				<Route
+					path="/"
+					element={
+						<SearchDialog
+							closeDialog={() => {
+								console.log("closeDialog");
+							}}
+						/>
+					}
+				/>
 			</TestEnvironmentWrapper>,
 		);
 	});

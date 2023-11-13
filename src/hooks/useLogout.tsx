@@ -14,8 +14,8 @@ const useLogout = () => {
 	const logout = () => mutate({});
 
 	const handleClickLogout = () => {
-		logout();
 		navigate("/login");
+		logout();
 	};
 
 	return { logout, handleClickLogout };

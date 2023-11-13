@@ -1,45 +1,45 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
+import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 
-// TODO
-type IResult = { id: string };
-
-type JsonResponse = {
-	results: IResult[];
-};
+type IResult = { _id: string; fullName: string; avatarUrl: string; isFriend: boolean };
 
 type FnReturnType = IResult[];
 
-// TODO implement search route
 const useSearch = () => {
+	const currentUser = useCurrentUserCached();
+
 	const { register, watch } = useForm();
 	const searchQuery = watch("search");
 
-	const { data, refetch } = useQueryCustom<JsonResponse, FnReturnType>({
+	const [searchResults, setSearchResults] = useState<FnReturnType>([]);
+
+	const { data, refetch } = useQueryCustom<FnReturnType>({
 		queryKey: ["searchResults", searchQuery],
-		queryUrl: `search?q=${searchQuery}`,
-		transformData: (data) => data.results,
-		options: {
-			enabled: false,
-		},
+		queryUrl: `users/search?q=${searchQuery}`,
+		options: { enabled: false },
 	});
 
-	const debounce = setTimeout(() => {
-		if (searchQuery) {
-			refetch();
-		}
-	}, 300);
+	useEffect(() => {
+		if (data) setSearchResults(data);
+	}, [data]);
 
 	useEffect(() => {
-		return () => clearTimeout(debounce);
-	}, [searchQuery, debounce]);
+		if (searchQuery) {
+			const debounceTimeout = setTimeout(refetch, 300);
+			return () => clearTimeout(debounceTimeout);
+		}
+	}, [searchQuery, refetch]); // Dependencies
+
+	const currentUserId = currentUser?._id;
 
 	return {
 		register,
-		data,
+		searchResults,
 		searchQuery,
+		currentUserId,
 	};
 };
 

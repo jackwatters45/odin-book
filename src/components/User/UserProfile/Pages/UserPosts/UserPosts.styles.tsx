@@ -11,10 +11,8 @@ export const UserPostsContainer = styled.div`
 		flex-direction: column;
 		align-items: center;
 	}
-	margin-bottom: -1rem;
 
 	> :first-child {
-		margin-bottom: -1rem;
 		padding-bottom: 1rem;
 	}
 

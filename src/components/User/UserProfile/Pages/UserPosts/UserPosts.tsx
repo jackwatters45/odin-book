@@ -13,7 +13,8 @@ import Loading from "@/components/Shared/Loading";
 import UserPostDisplay from "@/components/Post/PostDisplay";
 
 const UserPosts = () => {
-	const { user, leftSidebarRef, top, posts, isLoading } = useUserPosts();
+	const { currentUserAvatar, user, leftSidebarRef, top, posts, isLoading } =
+		useUserPosts();
 
 	return (
 		<UserPostsContainer>
@@ -26,7 +27,7 @@ const UserPosts = () => {
 				<CreatePostButton
 					userFirstName={user.firstName}
 					userFullName={user.fullName}
-					userIcon={user?.avatarUrl}
+					userIcon={currentUserAvatar}
 				/>
 				<StyledPostsContainer>
 					{isLoading ? (

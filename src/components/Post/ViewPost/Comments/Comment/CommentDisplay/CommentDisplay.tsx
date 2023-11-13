@@ -5,26 +5,26 @@ import {
 	StyledCommentAuthorName,
 	StyledCommentContent,
 	StyledCommentReactions,
+	StyledReactionsCount,
 } from "./CommentDisplay.styles";
-import { useEffect } from "react";
 
 interface CommentDisplayProps {
 	comment: IComment;
 }
 
-const CommentDisplay = ({ comment }: CommentDisplayProps) => {
-	useEffect(() => {
-		if (comment._id === "654570ddc2bb1ca01e7ffcd1") console.log(comment.content);
-	}, [comment]);
+const CommentDisplay = ({
+	comment: { author, content, reactions, popularReactions },
+}: CommentDisplayProps) => {
 	return (
 		<StyledCommentContent>
 			<StyledCommentAuthorName>
-				<Link to={`/user/${comment.author._id}`}>{comment.author.fullName}</Link>
+				<Link to={`/user/${author._id}`}>{author.fullName}</Link>
 			</StyledCommentAuthorName>
-			<span>{comment.content}</span>
-			{comment.popularReactions && comment.popularReactions.length > 0 && (
+			<span>{content}</span>
+			{popularReactions && popularReactions.length > 0 && (
 				<StyledCommentReactions>
-					{comment.popularReactions.map((reaction) => (
+					<StyledReactionsCount>{reactions.length}</StyledReactionsCount>
+					{popularReactions.map((reaction) => (
 						<span key={reaction} title={reaction}>
 							{getReactionTypeEmoji(reaction)}
 						</span>

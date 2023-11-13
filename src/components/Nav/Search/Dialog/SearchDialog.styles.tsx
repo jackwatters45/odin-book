@@ -4,21 +4,18 @@ export const SearchInputContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	margin-bottom: 1rem;
-`;
+	margin-bottom: 0.75rem;
 
-// 	export const StyledInput = styled.input`
-// 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-// 	border: none;
-// 	border-radius: 1.5rem;
-// 	padding: 0.75rem 1rem;
-// 	font-size: 1rem;
-// 	flex-grow: 1;
-// `;
+	input {
+		color: ${({ theme }) => theme.colors.textPrimary};
+	}
+`;
 
 export const SearchResult = styled.div`
 	padding: 0.5rem 0;
 	position: relative;
+	color: ${({ theme }) => theme.colors.blueText};
+	font-size: 0.95rem;
 
 	> ::before {
 		content: "";
@@ -31,14 +28,14 @@ export const SearchResult = styled.div`
 	}
 
 	> :hover::before {
-		background: grey;
+		background: ${({ theme }) => theme.colors.hoverOverlay};
 	}
 
 	* {
 		z-index: 2;
 	}
 
-	button {
+	> a {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
@@ -48,6 +45,16 @@ export const SearchResult = styled.div`
 export const StyledResultName = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	color: ${({ theme }) => theme.colors.textPrimary};
+`;
+
+export const StyledSearchForText = styled.p`
+	color: ${({ theme }) => theme.colors.blueText};
+`;
+
+export const StyledSearchResultSubtext = styled.p`
+	margin-top: 0.25rem;
+	font-size: 0.8rem;
+	color: ${({ theme }) => theme.colors.textSecondary};
 `;
