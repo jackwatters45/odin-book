@@ -1,3 +1,4 @@
+import useAboutFieldVisibility from "@/hooks/useAboutFieldVisibility";
 import useProfileStatus from "@/hooks/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
@@ -14,6 +15,10 @@ const useUserAboutDetails = () => {
 	const namePronunciation = user?.namePronunciation;
 
 	const otherNames = user?.otherNames;
+	const showOtherNames =
+		useAboutFieldVisibility()(audienceSettings.otherNames) &&
+		otherNames &&
+		otherNames.length > 0;
 
 	const favoriteQuotes = user?.favoriteQuotes;
 
@@ -25,6 +30,7 @@ const useUserAboutDetails = () => {
 		aboutYou,
 		namePronunciation,
 		otherNames,
+		showOtherNames,
 		favoriteQuotes,
 		userFirstName,
 	};

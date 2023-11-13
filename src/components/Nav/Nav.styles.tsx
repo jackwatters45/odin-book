@@ -3,7 +3,10 @@ import { Nav, NavLink, NavDropdown, NavButton } from "@jackwatters/simple-nav";
 import Icon from "@mdi/react";
 
 export const StyledNavContainer = styled.div`
-	position: relative;
+	position: fixed;
+	width: 100%;
+	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+	z-index: 999;
 `;
 
 export const StyledNav = styled(Nav)`
@@ -216,4 +219,8 @@ export const EmojiCircleBackground = styled.div<{ background?: string }>`
 
 	line-height: 1;
 	font-size: "1.375rem";
+`;
+
+export const StyledFixedNavPadding = styled.div`
+	padding-top: 56px;
 `;

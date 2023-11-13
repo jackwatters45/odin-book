@@ -12,7 +12,6 @@ interface SingleUserPropertyProps extends UserPropertyDisplayProps {
 	includeAddDetailLink?: boolean;
 	addText?: string;
 	handleOpenForm: () => void;
-	hideIfRestricted?: boolean;
 
 	isEditing: boolean;
 	FormComponent: ReactNode | undefined;
@@ -24,7 +23,6 @@ const SingleUserProperty = ({
 	isEditing,
 	handleOpenForm,
 	addText,
-	hideIfRestricted = false,
 	FormComponent,
 	PlaceholderComponent,
 	includeAddDetailLink = true,
@@ -32,7 +30,7 @@ const SingleUserProperty = ({
 	audience,
 	...props
 }: SingleUserPropertyProps) => {
-	const { isOwnProfile, isFriend } = useProfileStatus();
+	const { isOwnProfile } = useProfileStatus();
 
 	const isContent = title && title.length;
 
@@ -40,13 +38,6 @@ const SingleUserProperty = ({
 
 	if (isOwnProfile && !isContent && includeAddDetailLink) {
 		return <AddDetailLink text={addText} onClick={handleOpenForm} />;
-	}
-
-	const isAudienceRestricted =
-		!isOwnProfile && (audience === "Only Me" || (audience === "Friends" && !isFriend));
-
-	if (isAudienceRestricted) {
-		return hideIfRestricted ? null : PlaceholderComponent;
 	}
 
 	if (isContent) {

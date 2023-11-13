@@ -24,6 +24,7 @@ import {
 	NavLinkCenterColumn,
 	IconCircleBackground,
 	StyledCreatePostButton,
+	StyledFixedNavPadding,
 } from "./Nav.styles";
 import ProfileDropdown from "./ProfileDropdown";
 
@@ -39,79 +40,82 @@ const NavComponent = () => {
 
 	if (isSuccess && !user) return <Navigate to="/login" />;
 	return (
-		<StyledNavContainer>
-			<StyledNav>
-				<StyledSideNav>
-					<NavLink
-						to="/"
-						text="Dashboard"
-						showText={false}
-						icon={
-							<ImageCircle
-								src="https://res.cloudinary.com/drheg5d7j/image/upload/v1699317092/OdinBookLogo_jus0m9.png"
-								alt="Odinbook"
-							/>
-						}
-						dataTestid="dashboard-button"
-					/>
-					<SearchNav />
-				</StyledSideNav>
-				<StyledCenterNav>
-					<NavLinkCenterColumn
-						to="/"
-						text="Home"
-						showText={false}
-						icon={
-							<Icon
-								path={isDashboardActive ? mdiHome : mdiHomeOutline}
-								size={1.2}
-								color={isDashboardActive ? "#1b74e4" : "#65676B"}
-							/>
-						}
-						dataTestid="home-button"
-					/>
-					<NavLinkCenterColumn
-						to="/friends/"
-						text="Friends"
-						showText={false}
-						isActive={isFriendsActive}
-						icon={
-							<Icon
-								path={isFriendsActive ? mdiAccountMultiple : mdiAccountMultipleOutline}
-								size={1.2}
-								color={isFriendsActive ? "#1b74e4" : "#65676B"}
-							/>
-						}
-						dataTestid="friends-button"
-					/>
-					<NavLinkCenterColumn
-						to="/notifications/"
-						text="Notifications"
-						showText={false}
-						icon={
-							<Icon
-								path={isNotificationsActive ? mdiBell : mdiBellOutline}
-								size={1.2}
-								color={isNotificationsActive ? "#1b74e4" : "#65676B"}
-							/>
-						}
-						dataTestid="notifications-button"
-					/>
-				</StyledCenterNav>
-				<StyledSideNav>
-					<StyledCreatePostButton onClick={openCreatePostDialog}>
-						<IconCircleBackground
-							path={mdiPlusBoxOutline}
-							size={5 / 3}
-							color={"#65676B"}
-							background="transparent"
+		<>
+			<StyledNavContainer>
+				<StyledNav>
+					<StyledSideNav>
+						<NavLink
+							to="/"
+							text="Dashboard"
+							showText={false}
+							icon={
+								<ImageCircle
+									src="https://res.cloudinary.com/drheg5d7j/image/upload/v1699317092/OdinBookLogo_jus0m9.png"
+									alt="Odinbook"
+								/>
+							}
+							dataTestid="dashboard-button"
 						/>
-					</StyledCreatePostButton>
-					<ProfileDropdown />
-				</StyledSideNav>
-			</StyledNav>
-			<StyledNavShadow />
-		</StyledNavContainer>
+						<SearchNav />
+					</StyledSideNav>
+					<StyledCenterNav>
+						<NavLinkCenterColumn
+							to="/"
+							text="Home"
+							showText={false}
+							icon={
+								<Icon
+									path={isDashboardActive ? mdiHome : mdiHomeOutline}
+									size={1.2}
+									color={isDashboardActive ? "#1b74e4" : "#65676B"}
+								/>
+							}
+							dataTestid="home-button"
+						/>
+						<NavLinkCenterColumn
+							to="/friends/"
+							text="Friends"
+							showText={false}
+							isActive={isFriendsActive}
+							icon={
+								<Icon
+									path={isFriendsActive ? mdiAccountMultiple : mdiAccountMultipleOutline}
+									size={1.2}
+									color={isFriendsActive ? "#1b74e4" : "#65676B"}
+								/>
+							}
+							dataTestid="friends-button"
+						/>
+						<NavLinkCenterColumn
+							to="/notifications/"
+							text="Notifications"
+							showText={false}
+							icon={
+								<Icon
+									path={isNotificationsActive ? mdiBell : mdiBellOutline}
+									size={1.2}
+									color={isNotificationsActive ? "#1b74e4" : "#65676B"}
+								/>
+							}
+							dataTestid="notifications-button"
+						/>
+					</StyledCenterNav>
+					<StyledSideNav>
+						<StyledCreatePostButton onClick={openCreatePostDialog}>
+							<IconCircleBackground
+								path={mdiPlusBoxOutline}
+								size={5 / 3}
+								color={"#65676B"}
+								background="transparent"
+							/>
+						</StyledCreatePostButton>
+						<ProfileDropdown />
+					</StyledSideNav>
+				</StyledNav>
+				<StyledNavShadow />
+			</StyledNavContainer>
+			<StyledFixedNavPadding />
+		</>
 	);
 };
 

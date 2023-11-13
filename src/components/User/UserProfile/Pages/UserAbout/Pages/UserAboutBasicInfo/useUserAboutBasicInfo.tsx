@@ -1,3 +1,4 @@
+import useAboutFieldVisibility from "@/hooks/useAboutFieldVisibility";
 import useProfileStatus from "@/hooks/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
@@ -9,10 +10,22 @@ const useUserAboutBasicInfo = () => {
 
 	const audienceSettings = user.audienceSettings;
 
+	const showWebsites =
+		useAboutFieldVisibility()(audienceSettings.websites) &&
+		!!user?.websites &&
+		user.websites.length > 0;
+
+	const showSocialLinks =
+		useAboutFieldVisibility()(audienceSettings.socialLinks) &&
+		!!user?.socialLinks &&
+		user.socialLinks.length > 0;
+
 	return {
 		isOwnProfile,
 		audienceSettings,
 		user,
+		showWebsites,
+		showSocialLinks,
 	};
 };
 

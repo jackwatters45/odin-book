@@ -85,6 +85,7 @@ const GlobalStyle = createGlobalStyle`
     background: transparent;
     border-radius: inherit;
     font-family: inherit;
+    outline: none;
   }
 
 

@@ -21,6 +21,7 @@ const UserAboutPlacesLived = () => {
 		currentCityAudience,
 		audienceSettings,
 		sortedPlacesLived,
+		showPlacesLived,
 	} = useUserAboutPlacesLived();
 
 	return (
@@ -45,11 +46,9 @@ const UserAboutPlacesLived = () => {
 					includePrefix={false}
 				/>
 			)}
-			{sortedPlacesLived &&
-				sortedPlacesLived?.length > 0 &&
-				sortedPlacesLived.map((placeLived) => {
+			{showPlacesLived &&
+				sortedPlacesLived?.map((placeLived) => {
 					const audience = audienceSettings?.placesLived?.[placeLived._id] ?? "Public";
-
 					return (
 						<AboutOverviewPlacesLived
 							key={placeLived._id}

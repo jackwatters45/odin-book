@@ -5,6 +5,7 @@ import getCurrentCity from "@/components/User/UserFields/PlacesLived/utils/getCu
 import getHometown from "@/components/User/UserFields/PlacesLived/utils/getHometown";
 import { IUser } from "@/types/IUser";
 import { sortArrByStartEndDates } from "@/utils/dateHelpers";
+import useAboutFieldVisibility from "@/hooks/useAboutFieldVisibility";
 
 const useUserAboutPlacesLived = () => {
 	const { isOwnProfile } = useProfileStatus();
@@ -31,6 +32,11 @@ const useUserAboutPlacesLived = () => {
 		),
 	);
 
+	const showPlacesLived =
+		useAboutFieldVisibility()(audienceSettings.placesLived) &&
+		!!sortedPlacesLived &&
+		sortedPlacesLived.length > 0;
+
 	return {
 		isOwnProfile,
 		hometown,
@@ -41,6 +47,7 @@ const useUserAboutPlacesLived = () => {
 		currentCityAudience,
 		audienceSettings,
 		sortedPlacesLived,
+		showPlacesLived,
 	};
 };
 

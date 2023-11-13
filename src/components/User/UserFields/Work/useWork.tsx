@@ -1,7 +1,7 @@
 import formatWorkData from "@/components/User/UserFields/Work/utils/formatWorkValue";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
-import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
 import { IWork } from "./types/WorkTypes";
+import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
 
 interface useWorkProps {
 	work: IWork | undefined;
@@ -20,8 +20,8 @@ const useWork = ({ work }: useWorkProps) => {
 
 	const title = work?.company
 		? [
-				{ type: "text", content: workPretextFormatted } as TitleSegment,
-				{ type: "bold", content: work.company } as TitleSegment,
+				{ type: "text", content: workPretextFormatted } as ITitleSegment,
+				{ type: "bold", content: work.company } as ITitleSegment,
 		  ]
 		: null;
 

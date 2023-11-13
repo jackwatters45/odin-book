@@ -9,15 +9,15 @@ import SocialLinksPlaceholder from "./Placeholder/SocialLinksPlaceholder";
 interface SocialLinksProps {
 	socialLink: ISocialLinks | undefined;
 	audience: AudienceStatusOptions;
-	includeAddDetailLink?: boolean;
 	category: AudienceFormFields;
+	includeAddDetailLink?: boolean;
 }
 
 const SocialLinks = ({
 	socialLink,
 	audience,
-	includeAddDetailLink = true,
 	category,
+	includeAddDetailLink = true,
 }: SocialLinksProps) => {
 	const { isEditing, handleOpenForm, handleCloseForm, deleteMutation } =
 		useUserAboutOverviewItem({ categoryUrl: "social-links", param: socialLink?._id });

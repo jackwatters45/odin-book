@@ -25,7 +25,7 @@ const SearchDialog = ({ closeDialog }: SearchProps) => {
 	return (
 		<div>
 			<SearchInputContainer>
-				<button>
+				<button onClick={closeDialog}>
 					<Icon path={mdiArrowLeftThin} size={1} />
 				</button>
 				<SearchInput

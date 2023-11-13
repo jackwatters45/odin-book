@@ -16,7 +16,8 @@ import WebsitesPlaceholder from "@/components/User/UserFields/Websites/Placehold
 import SocialLinksPlaceholder from "@/components/User/UserFields/SocialLinks/Placeholder/";
 
 const UserAboutBasicInfo = () => {
-	const { isOwnProfile, audienceSettings, user } = useUserAboutBasicInfo();
+	const { isOwnProfile, audienceSettings, user, showSocialLinks, showWebsites } =
+		useUserAboutBasicInfo();
 
 	return (
 		<StyledUserAboutContainer>
@@ -31,8 +32,8 @@ const UserAboutBasicInfo = () => {
 			<StyledUserAboutContainer>
 				<BoldText>Websites and social links</BoldText>
 				{isOwnProfile && <AddWebsites />}
-				{user?.websites && user.websites.length > 0 ? (
-					user?.websites?.map((website) => (
+				{showWebsites ? (
+					user.websites?.map((website) => (
 						<AboutWebsite
 							key={website}
 							website={website}
@@ -45,8 +46,8 @@ const UserAboutBasicInfo = () => {
 					<WebsitesPlaceholder />
 				) : null}
 				{isOwnProfile && <AddSocialLinks />}
-				{user?.socialLinks && user.socialLinks.length > 0 ? (
-					user?.socialLinks?.map((socialLink) => (
+				{showSocialLinks ? (
+					user.socialLinks?.map((socialLink) => (
 						<AboutSocialLink
 							key={socialLink._id}
 							socialLink={socialLink}

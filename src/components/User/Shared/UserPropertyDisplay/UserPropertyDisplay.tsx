@@ -50,9 +50,22 @@ const UserPropertyDisplay = ({
 	return (
 		<StyledUserPropertyDisplayItem>
 			{!icon ? null : iconType === "icon" ? (
-				<Icon path={icon} size={1.2} color={"#65676B"} />
+				<Icon
+					path={icon}
+					size={1.2}
+					style={{
+						minWidth: "1.8rem",
+					}}
+					color={"#65676B"}
+				/>
 			) : (
-				<ImageCircle src={icon} alt="icon" />
+				<ImageCircle
+					src={icon}
+					alt="icon"
+					style={{
+						minWidth: "1.8rem",
+					}}
+				/>
 			)}
 			<StyledUserPropertyDisplayItemTitle>
 				<span>

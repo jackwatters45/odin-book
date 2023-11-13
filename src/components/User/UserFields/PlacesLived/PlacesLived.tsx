@@ -26,7 +26,6 @@ interface AboutOverviewHometownProps {
 	icon: string;
 	PlaceholderComponent: ReactNode | undefined;
 	includeAddDetailLink?: boolean;
-
 	FormComponent?: FC<PlacesLivedFormProps>;
 }
 
@@ -41,7 +40,6 @@ const PlacesLived = ({
 	icon,
 	PlaceholderComponent,
 	includeAddDetailLink = true,
-
 	FormComponent = PlacesLivedUserOverviewForm,
 }: AboutOverviewHometownProps) => {
 	const {

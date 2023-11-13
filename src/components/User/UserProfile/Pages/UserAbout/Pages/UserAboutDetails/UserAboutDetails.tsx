@@ -14,6 +14,7 @@ const UserAboutDetails = () => {
 		aboutYou,
 		namePronunciation,
 		otherNames,
+		showOtherNames,
 		favoriteQuotes,
 		userFirstName,
 	} = useUserAboutDetails();
@@ -34,7 +35,7 @@ const UserAboutDetails = () => {
 			<StyledUserAboutContainer>
 				<BoldText>Other names</BoldText>
 				{isOwnProfile && <AddOtherNames />}
-				{otherNames && otherNames.length > 0 ? (
+				{showOtherNames ? (
 					otherNames?.map((otherName) => (
 						<AboutOtherNames
 							key={otherName._id}

@@ -7,8 +7,13 @@ import AboutOverviewRelationship from "@/components/User/UserFields/Relationship
 import FamilyMembersPlaceholder from "@/components/User/UserFields/FamilyMembers/Placeholder/FamilyMembersPlaceholder";
 
 const UserAboutRelationshipFamily = () => {
-	const { isOwnProfile, relationship, audienceSettings, familyMembers } =
-		useUserAboutRelationshipFamily();
+	const {
+		isOwnProfile,
+		relationship,
+		audienceSettings,
+		familyMembers,
+		showFamilyMembers,
+	} = useUserAboutRelationshipFamily();
 
 	return (
 		<StyledUserAboutContainer>
@@ -23,13 +28,12 @@ const UserAboutRelationshipFamily = () => {
 				<BoldText>Family members</BoldText>
 				{isOwnProfile && <AddFamilyMembers />}
 				<StyledUserAboutContainer>
-					{familyMembers && familyMembers.length > 0 ? (
-						familyMembers?.map((familyMember, index) => (
+					{showFamilyMembers ? (
+						familyMembers?.map((familyMember) => (
 							<AboutFamilyMembers
 								key={familyMember._id}
 								familyMember={familyMember}
 								audience={audienceSettings?.familyMembers?.[familyMember._id as string]}
-								hideIfRestricted={index > 0}
 							/>
 						))
 					) : !isOwnProfile ? (

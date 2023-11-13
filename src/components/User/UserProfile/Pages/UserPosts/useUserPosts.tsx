@@ -31,8 +31,8 @@ const useUserPosts = () => {
 		const isColumnBiggerThanScreen = leftColumnHeight > windowHeight;
 
 		return isColumnBiggerThanScreen
-			? `calc(${windowHeight - leftColumnHeight}px )`
-			: "1rem";
+			? `calc(${windowHeight - leftColumnHeight}px)`
+			: "calc(1rem + 56px)";
 	};
 	const top = getTop();
 

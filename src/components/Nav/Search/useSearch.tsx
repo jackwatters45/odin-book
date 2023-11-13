@@ -12,6 +12,7 @@ const useSearch = () => {
 	const currentUser = useCurrentUserCached();
 
 	const { register, watch } = useForm();
+
 	const searchQuery = watch("search");
 
 	const [searchResults, setSearchResults] = useState<FnReturnType>([]);
@@ -31,7 +32,7 @@ const useSearch = () => {
 			const debounceTimeout = setTimeout(refetch, 300);
 			return () => clearTimeout(debounceTimeout);
 		}
-	}, [searchQuery, refetch]); // Dependencies
+	}, [searchQuery, refetch]);
 
 	const currentUserId = currentUser?._id;
 

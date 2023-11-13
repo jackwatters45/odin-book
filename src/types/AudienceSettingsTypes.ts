@@ -1,6 +1,6 @@
 export type AudienceStatusOptions = "Public" | "Friends" | "Only Me";
 
-type AudienceStatusMultiple = { [key: string]: AudienceStatusOptions };
+export type AudienceStatusMultiple = { [key: string]: AudienceStatusOptions };
 
 export interface AudienceSettings {
 	currentCity: AudienceStatusOptions;

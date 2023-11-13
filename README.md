@@ -1,16 +1,16 @@
 # Odin Book
 
-- close nav modals on click option
+- work (max two active?)
 
-- fix dashboard to add popular posts
-- work about part may be wonky
-- logic for displaying social + websites in about is wrong
+- are photos working when pop users?
+
 - family members error (try to friend April Blick)
+
 - fix populate errors
 
-<!-- Play around with test db to check for bugs! -->
+- fix dashboard to add popular posts
 
-- nav needs to be sticky
+<!-- Play around with test db to check for bugs! -->
 
 - friends page
 - search results
