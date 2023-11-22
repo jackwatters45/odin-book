@@ -1,6 +1,6 @@
 import UserProfileSectionWithLink from "@/components/User/Shared/UserProfileSection/UserProfileSectionWithLink";
-import FriendsPreview from "@/components/User/UserFields/Friends/Preview/FriendsPreview";
-import useFetchFriends from "@/components/User/UserFields/Friends/useFetchFriends";
+import FriendsPreview from "@/components/Friends/Components/Preview/FriendsPreview";
+import useFetchFriends from "@/components/Friends/hooks/useFetchFriends";
 
 const UserFriendsPreview = () => {
 	const { userId, friends } = useFetchFriends();

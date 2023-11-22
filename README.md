@@ -1,22 +1,15 @@
 # Odin Book
 
-- work (max two active?)
+- lol open create post -> reaction will on /friends/ page
+- search should load some results on initial open
+- add infinite loading to user posts
 
-- are photos working when pop users?
+- photos view?
+- search results page
 
-- family members error (try to friend April Blick)
+- populate friend requests etc needs to make sure not to include current user or friends
 
-- fix populate errors
-
-- fix dashboard to add popular posts
-
-<!-- Play around with test db to check for bugs! -->
-
-- friends page
-- search results
-
-- guest -> create random new user
-- fix nav dropdowns -> search needs a wrapper (remove dropdown styles)
+<!--  -->
 
 - stupid fucking intro is broken again...
 - notifications

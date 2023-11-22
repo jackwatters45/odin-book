@@ -1,5 +1,5 @@
 import UserProfileSection from "@/components/User/Shared/UserProfileSection";
-import FriendsList from "@/components/User/UserFields/Friends/FriendsList";
+import FriendsList from "@/components/Friends/Components/FriendsList";
 import useUserFriends from "./useUserFriends";
 import UserFriendsNav from "./UserFriendsNav";
 import UserPhotos from "../UserPhotos";

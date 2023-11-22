@@ -11,9 +11,8 @@ import {
 const PhotosDisplayPreview = ({ photos, className }: PhotosDisplayProps) => {
 	return (
 		<StyledPhotosPreviewContainer className={className}>
-			{photos?.map(({ media, postId }, index) => {
+			{photos?.slice(0, 9).map(({ media, postId }, index) => {
 				const borderRadius = setBorderRadius(index, photos.length);
-
 				return (
 					<StyledPhotoPreview
 						$BorderRadius={borderRadius}

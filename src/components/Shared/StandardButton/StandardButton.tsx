@@ -3,6 +3,15 @@ import Icon from "@mdi/react";
 import { StyledStandardButton, StyledStandardButtonLink } from "./StandardButton.styles";
 import { HTMLAttributes } from "react";
 
+export type colorClassTypes =
+	| "standard"
+	| "blue"
+	| "overlay"
+	| "light-blue"
+	| "transparent"
+	| "transparent-blue"
+	| "white";
+
 export interface StandardButtonProps extends HTMLAttributes<HTMLElement> {
 	text: string | undefined;
 
@@ -13,14 +22,7 @@ export interface StandardButtonProps extends HTMLAttributes<HTMLElement> {
 	iconColor?: string;
 	showText?: boolean;
 	disabled?: boolean;
-	colorClass?:
-		| "standard"
-		| "blue"
-		| "overlay"
-		| "light-blue"
-		| "transparent"
-		| "transparent-blue"
-		| "white";
+	colorClass?: colorClassTypes;
 	type?: "button" | "submit" | "reset";
 }
 

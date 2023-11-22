@@ -1,4 +1,4 @@
-import { IFriendsDisplay } from "@/components/User/UserFields/Friends/types/FriendsTypes";
+import { IFriendsDisplay } from "@/components/Friends/types/FriendsTypes";
 import { IUser } from "@/types/IUser";
 
 type FriendsParam = IFriendsDisplay | undefined;

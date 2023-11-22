@@ -6,7 +6,7 @@ interface InfiniteScrollLoadingProps {
 	isFetchingNextPage: boolean;
 	hasNextPage: boolean | undefined;
 	isLoading: boolean;
-	noMoreText: string;
+	noMoreText?: string;
 	ref: RefObject<HTMLDivElement>;
 }
 
@@ -16,7 +16,7 @@ const InfiniteScrollLoading = forwardRef<HTMLDivElement, InfiniteScrollLoadingPr
 			<StyledLoadingContainer>
 				<Loading />
 			</StyledLoadingContainer>
-		) : !hasNextPage && !isLoading ? (
+		) : !hasNextPage && !isLoading && noMoreText ? (
 			<StyledNoMoreText>{noMoreText}</StyledNoMoreText>
 		) : (
 			<div

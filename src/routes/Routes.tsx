@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Fragment } from "react";
 
 import Login from "../components/Auth/Login/Login";
 import CreateAccount from "../components/Auth/CreateAccount";
@@ -31,12 +32,35 @@ import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/Use
 import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
 import UserFriends from "@/components/User/UserProfile/Pages/UserFriends";
 import ViewPost from "@/components/Post/ViewPost";
-import Friends from "@/components/Friends";
-import FriendsHome from "@/components/Friends/Content/Home";
-import FriendsFriendRequests from "@/components/Friends/Content/FriendRequests";
-import FriendsSuggestions from "@/components/Friends/Content/Suggestions";
-import FriendsAll from "@/components/Friends/Content/All";
-import FriendsBirthdays from "@/components/Friends/Content/Birthdays";
+import FriendsHome from "@/components/Friends/FriendsPage/Pages/Home";
+import FriendsFriendRequests from "@/components/Friends/FriendsPage/Pages/Requests";
+import FriendsSuggestions from "@/components/Friends/FriendsPage/Pages/Suggestions";
+import FriendsAll from "@/components/Friends/FriendsPage/Pages/All";
+
+const UserRoutes = [
+	<Fragment key="1">
+		<Route index element={<UserPosts />} />
+		<Route path="about/" element={<UserAbout />}>
+			<Route index element={<UserAboutOverview />} />
+			<Route path="work_and_education" element={<UserAboutWorkEducation />} />
+			<Route path="places" element={<UserAboutPlacesLived />} />
+			<Route path="contact_and_basic_info" element={<UserAboutBasicInfo />} />
+			<Route path="family_and_relationships" element={<UserAboutRelationshipFamily />} />
+			<Route path="details" element={<UserAboutDetails />} />
+		</Route>
+		<Route path="photos" element={<UserPhotos />}>
+			<Route path="of" element={<UserPhotos />} />
+			<Route path="by" element={<UserPhotos />} />
+		</Route>
+		<Route path="friends" element={<UserFriends />}>
+			<Route path="all" element={<UserFriends />} />
+			<Route path="mutual" element={<UserFriends />} />
+			<Route path="college" element={<UserFriends />} />
+			<Route path="current-city" element={<UserFriends />} />
+			<Route path="hometown" element={<UserFriends />} />
+		</Route>
+	</Fragment>,
+];
 
 const RoutesComponent = () => {
 	return (
@@ -53,53 +77,38 @@ const RoutesComponent = () => {
 						<Route path="validate-link/:token" element={<ValidateResetLink />} />
 					</Route>
 				</Route>
-
 				<Route element={<LoggedInRoute />}>
 					<Route path="/" element={<Layout />}>
 						<Route index element={<Dashboard />} />
-						<Route path="friends" element={<Friends />}>
+						<Route path="friends">
 							<Route index element={<FriendsHome />} />
-							<Route path="requests" element={<FriendsFriendRequests />} />
-							<Route path="suggestions" element={<FriendsSuggestions />} />
-							<Route path="all" element={<FriendsAll />} />
-							<Route path="birthdays" element={<FriendsBirthdays />} />
+							<Route path="requests">
+								<Route index element={<FriendsFriendRequests />} />
+								<Route path=":id" element={<FriendsFriendRequests />}>
+									{UserRoutes}
+								</Route>
+							</Route>
+							<Route path="suggestions">
+								<Route index element={<FriendsSuggestions />} />
+								<Route path=":id" element={<FriendsSuggestions />}>
+									{UserRoutes}
+								</Route>
+							</Route>
+							<Route path="all">
+								<Route index element={<FriendsAll />} />
+								<Route path=":id" element={<FriendsAll />}>
+									{UserRoutes}
+								</Route>
+							</Route>
 						</Route>
-
 						<Route path="notifications" element={<>Notifications</>} />
 						<Route path="post" element={<ViewPost />} />
-						<Route path="/user/:id" element={<UserProfile />}>
-							<Route index element={<UserPosts />} />
-							<Route path="about/" element={<UserAbout />}>
-								<Route index element={<UserAboutOverview />} />
-								<Route path="work_and_education" element={<UserAboutWorkEducation />} />
-								<Route path="places" element={<UserAboutPlacesLived />} />
-								<Route path="contact_and_basic_info" element={<UserAboutBasicInfo />} />
-								<Route
-									path="family_and_relationships"
-									element={<UserAboutRelationshipFamily />}
-								/>
-								<Route path="details" element={<UserAboutDetails />} />
-							</Route>
-							<Route path="photos" element={<UserPhotos />}>
-								<Route path="of" element={<UserPhotos />} />
-								<Route path="by" element={<UserPhotos />} />
-							</Route>
-							<Route path="friends" element={<UserFriends />}>
-								<Route path="all" element={<UserFriends />} />
-								<Route path="mutual" element={<UserFriends />} />
-								<Route path="college" element={<UserFriends />} />
-								<Route path="current-city" element={<UserFriends />} />
-								<Route path="hometown" element={<UserFriends />} />
-							</Route>
-							<Route path="videos" element={<>Videos</>} />
-							<Route path="check-ins" element={<>Check-ins</>} />
-							<Route path="more" element={<>more</>} />
+						<Route path="user/:id" element={<UserProfile />}>
+							{UserRoutes}
 						</Route>
 					</Route>
-
 					<Route element={<AdminRoute />}></Route>
 				</Route>
-
 				<Route path="/unauthorized" element={<Unauthorized />} />
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<NotFound />} />

@@ -41,7 +41,13 @@ const Dashboard = () => {
 					isFetchingNextPage={isFetchingNextPage}
 					isLoading={isLoading}
 					hasNextPage={hasNextPage}
-					noMoreText="No posts to display..."
+					noMoreText={
+						currentUser?.friends && currentUser?.friends.length > 20
+							? "No more posts to display..."
+							: currentUser?.friends && currentUser?.friends.length > 0
+							? "No more posts to display... add more friends to see more posts!"
+							: "No posts to display... add friends to see posts!"
+					}
 				/>
 			</StyledDashboardContentContainer>
 		</StyledDashboardContainer>

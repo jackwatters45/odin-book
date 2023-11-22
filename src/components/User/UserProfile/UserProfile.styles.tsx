@@ -13,6 +13,7 @@ export const ProfileBottomBorder = styled.div`
 export const MaxWidthContainer = styled.div`
 	margin: 0 auto;
 	max-width: 1250px;
+	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 `;
 
 export const OutletWrapper = styled.div`

@@ -15,6 +15,15 @@ const useUserPosts = () => {
 	// user who's profile is being viewed
 	const { user } = useOutletContext<{ user: IUser }>();
 
+	// user posts
+	const { id: userId } = useParams<{ id: string }>() as { id: string };
+
+	const { data: posts, isLoading } = useQueryCustom<JsonResponse, FnReturnType>({
+		queryUrl: `users/${userId}/posts`,
+		queryKey: ["user", userId, "posts"],
+		transformData: (data) => data.posts,
+	});
+
 	// column scroll styles
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const handleResize = () => setWindowHeight(window.innerHeight);
@@ -36,14 +45,8 @@ const useUserPosts = () => {
 	};
 	const top = getTop();
 
-	// user posts
-	const { id: userId } = useParams<{ id: string }>() as { id: string };
-
-	const { data: posts, isLoading } = useQueryCustom<JsonResponse, FnReturnType>({
-		queryUrl: `users/${userId}/posts`,
-		queryKey: ["user", userId, "posts"],
-		transformData: (data) => data.posts,
-	});
+	console.log(posts);
+	console.log(isLoading);
 
 	return { currentUserAvatar, user, leftSidebarRef, top, posts, isLoading };
 };

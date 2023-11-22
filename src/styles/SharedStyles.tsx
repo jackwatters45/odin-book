@@ -190,3 +190,9 @@ export const StyledUppercaseGreyText = styled.p`
 	color: ${({ theme }) => theme.colors.textSecondary};
 	text-transform: uppercase;
 `;
+
+export const StyledHr = styled.hr`
+	border: none;
+	height: 1px;
+	background-color: ${({ theme }) => theme.colors.border};
+`;

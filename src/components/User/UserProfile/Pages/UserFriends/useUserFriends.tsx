@@ -1,4 +1,4 @@
-import useFetchFriends from "@/components/User/UserFields/Friends/useFetchFriends";
+import useFetchFriends from "@/components/Friends/hooks/useFetchFriends";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
 import useFriendPageType from "./useFriendPageType";

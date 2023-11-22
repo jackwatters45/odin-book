@@ -5,9 +5,7 @@ export const StyledLoadingContainer = styled.div`
 	position: relative;
 	min-height: 80px;
 	width: 100%;
-	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 	border-radius: 0.375rem;
-	${({ theme }) => theme.cardShadow};
 `;
 
 export const StyledNoMoreText = styled.h2`

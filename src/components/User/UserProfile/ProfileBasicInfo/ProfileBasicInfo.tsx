@@ -10,7 +10,7 @@ import {
 	StyledProfileBasicInfo,
 	StyledProfileButtonContainer,
 } from "./ProfileBasicInfo.styles";
-import ProfileFriendStatus from "../../UserFields/Friends/FriendStatus/Profile";
+import ProfileFriendStatus from "../../../Friends/Components/FriendStatus/Profile";
 import useProfileBasicInfo from "./useProfileBasicInfo";
 
 interface ProfileBasicInfoProps {

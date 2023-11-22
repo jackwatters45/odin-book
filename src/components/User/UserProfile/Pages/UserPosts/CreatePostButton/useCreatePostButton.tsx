@@ -1,6 +1,6 @@
 import useCreatePostContext from "@/components/Post/PostForm/context/usePostFormContext";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
-import { useParams } from "react-router";
+import { useMatch, useParams } from "react-router";
 
 interface UseCreatePostButtonProps {
 	userFirstName: string;
@@ -15,11 +15,13 @@ const useCreatePostButton = ({
 
 	const currentUserId = useCurrentUserCached()?._id;
 
+	const isDashboard = useMatch("/");
 	const isOwnProfile = currentUserId === userId;
 
-	const placeholderText = isOwnProfile
-		? "What's on your mind?"
-		: `Write something to ${userFirstName}...`;
+	const placeholderText =
+		isOwnProfile || isDashboard
+			? "What's on your mind?"
+			: `Write something to ${userFirstName}...`;
 
 	const { openDialog } = useCreatePostContext();
 
