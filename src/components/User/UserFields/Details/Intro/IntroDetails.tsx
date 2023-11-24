@@ -1,13 +1,9 @@
-import { Suspense, lazy } from "react";
-
 import { IUser } from "@/types/IUser";
 import IntroSection from "../../../UserProfile/Pages/UserPosts/UserIntro/IntroSection";
 import DetailsDisplay from "@/components/User/UserFields/Details/DetailsDisplay";
 import useDetails from "@/components/User/UserFields/Details/useDetails";
 
-const EditDetailsForm = lazy(
-	() => import("@/components/User/UserFields/Details/EditDetailsForm"),
-);
+import EditDetailsForm from "@/components/User/UserFields/Details/EditDetailsForm";
 
 interface IntroDetailsProps {
 	user: IUser;
@@ -17,9 +13,10 @@ const IntroDetails = ({ user }: IntroDetailsProps) => {
 	const {
 		ref,
 		openDialog,
-		closeDialog,
+		closeDialogAndReset,
+		isOpen,
 		register,
-		handleSubmit,
+		submitForm,
 		setValue,
 		control,
 		isValues,
@@ -31,18 +28,18 @@ const IntroDetails = ({ user }: IntroDetailsProps) => {
 	return (
 		<IntroSection dataExists={isValues} dataName="Details" handleClickButton={openDialog}>
 			<DetailsDisplay user={user} isValues={isValues} />
-			<Suspense>
+			{isOpen && (
 				<EditDetailsForm
 					ref={ref}
 					user={user}
 					register={register}
-					onSubmit={handleSubmit}
+					onSubmit={submitForm}
 					setValue={setValue}
 					control={control}
-					closeDialog={closeDialog}
-					closeAllDialogs={closeDialog}
+					closeDialog={closeDialogAndReset}
+					closeAllDialogs={closeDialogAndReset}
 				/>
-			</Suspense>
+			)}
 		</IntroSection>
 	);
 };

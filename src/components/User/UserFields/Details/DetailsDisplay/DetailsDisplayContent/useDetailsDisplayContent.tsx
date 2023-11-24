@@ -1,7 +1,7 @@
-import { IPlaceLived } from "@/types/IUser";
 import getHometown from "../../../PlacesLived/utils/getHometown";
 import getCurrentCity from "../../../PlacesLived/utils/getCurrentCity";
 import formatDateMonthYear from "@/utils/dateHelpers/formatDateMonthYear";
+import { IPlaceLived } from "../../../PlacesLived/types/PlacesLivedTypes";
 
 interface UseDetailsDisplayContentProps {
 	joined: string;

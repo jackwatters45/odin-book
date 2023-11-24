@@ -25,7 +25,6 @@ export const ContentDiv = styled.div`
 	> div:last-child {
 		display: flex;
 		justify-content: center;
-		align-items: center;
 	}
 `;
 

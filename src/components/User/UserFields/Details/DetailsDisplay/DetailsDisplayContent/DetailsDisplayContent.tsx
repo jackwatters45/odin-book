@@ -44,6 +44,7 @@ const DetailsDisplayContent = ({
 		placesLived,
 	});
 
+	if (!details) return null;
 	return (
 		<>
 			{details.pronouns?.pronouns && pronouns && (
@@ -92,7 +93,7 @@ const DetailsDisplayContent = ({
 				<UserDetail
 					icon={mdiHeadHeart}
 					textComponent={formatRelationshipStatus({
-						partner: relationshipStatus.partner as IUser,
+						partner: relationshipStatus.user as IUser,
 						status: relationshipStatus.status,
 					})}
 				/>
@@ -100,7 +101,11 @@ const DetailsDisplayContent = ({
 			{details.namePronunciation?.namePronunciation && namePronunciation && (
 				<UserDetail
 					icon={mdiVolumeHigh}
-					textComponent={<>{namePronunciation?.fullName}</>}
+					textComponent={
+						<>
+							{namePronunciation.firstName} {namePronunciation.lastName}
+						</>
+					}
 				/>
 			)}
 			{details.joined?.joined && createdAt && (
