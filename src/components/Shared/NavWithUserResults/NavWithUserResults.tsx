@@ -1,25 +1,25 @@
 import { ReactNode } from "react";
-import { FriendPreview } from "../../../types/FriendsTypes";
-import {
-	StyledFriendsNavPadding,
-	StyledNavHeaderH2,
-} from "../../Pages/Home/Nav/FriendsHomeNav.styles";
 import Icon from "@mdi/react";
+
 import { mdiArrowLeftThin } from "@mdi/js";
 import {
 	StyledBackLink,
 	StyledLoadingPosition,
-	StyledNavFriendsCardContainer,
-	StyledNavFriendsHeader,
-	StyledNavFriendsLink,
+	StyledNavHeaderH2,
+	StyledNavUserCardContainer,
+	StyledNavUserHeader,
+	StyledNavUserLink,
 	StyledNoResultsText,
-} from "./NavWithFriendResults.styles";
-import NavFriendCard from "../NavFriendCard";
+	StyledUserNavPadding,
+} from "./NavWithUserResults.styles";
 import Loading from "@/components/Shared/Loading";
 
-interface NavWithFriendResultsProps {
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
+import NavFriendCard from "../../Friends/FriendsPage/Components/NavFriendCard";
+
+interface NavWithUserResultsProps {
 	title: string;
-	users: FriendPreview[] | undefined;
+	users: UserPreviewWithMutuals[] | undefined;
 	children?: ReactNode;
 	to: "all" | "requests" | "suggestions";
 	scrollLoader?: ReactNode;
@@ -27,7 +27,7 @@ interface NavWithFriendResultsProps {
 	noResultsText?: string;
 }
 
-const NavWithFriendResults = ({
+const NavWithUserResults = ({
 	title,
 	users,
 	children,
@@ -35,20 +35,20 @@ const NavWithFriendResults = ({
 	scrollLoader,
 	isLoading,
 	noResultsText,
-}: NavWithFriendResultsProps) => {
+}: NavWithUserResultsProps) => {
 	return (
-		<StyledFriendsNavPadding>
-			<StyledNavFriendsHeader>
+		<StyledUserNavPadding>
+			<StyledNavUserHeader>
 				<StyledBackLink to="/friends/">
 					<Icon path={mdiArrowLeftThin} size={1.2} />
 				</StyledBackLink>
 				<div>
-					<StyledNavFriendsLink to="/friends/">Friends</StyledNavFriendsLink>
+					<StyledNavUserLink to="/friends/">friends</StyledNavUserLink>
 					<StyledNavHeaderH2>{title}</StyledNavHeaderH2>
 				</div>
-			</StyledNavFriendsHeader>
+			</StyledNavUserHeader>
 			{children}
-			<StyledNavFriendsCardContainer>
+			<StyledNavUserCardContainer>
 				{isLoading ? (
 					<StyledLoadingPosition>
 						<Loading />
@@ -59,9 +59,9 @@ const NavWithFriendResults = ({
 					users?.map((user) => <NavFriendCard key={user._id} user={user} to={to} />)
 				)}
 				{scrollLoader}
-			</StyledNavFriendsCardContainer>
-		</StyledFriendsNavPadding>
+			</StyledNavUserCardContainer>
+		</StyledUserNavPadding>
 	);
 };
 
-export default NavWithFriendResults;
+export default NavWithUserResults;

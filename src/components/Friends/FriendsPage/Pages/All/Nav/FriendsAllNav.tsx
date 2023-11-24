@@ -1,7 +1,7 @@
-import NavWithFriendResults from "@/components/Friends/FriendsPage/Components/NavWithFriendResults";
+import NavWithFriendResults from "@/components/Shared/NavWithUserResults";
 import { StyledHrAll, StyledSearchInput } from "./FriendsAllNav.styles";
 import useFriendsAllNav from "./useFriendsAllNav";
-import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
+import { InfiniteScrollLoadingFriendsNav } from "@/styles/SharedStyles";
 
 const FriendsAllNav = () => {
 	const { users, isLoading, ref, isFetchingNextPage, hasNextPage, register, q } =
@@ -15,7 +15,7 @@ const FriendsAllNav = () => {
 			isLoading={isLoading}
 			noResultsText={q ? `No friends named "${q}"` : "No friends"}
 			scrollLoader={
-				<InfiniteScrollLoading
+				<InfiniteScrollLoadingFriendsNav
 					isFetchingNextPage={isFetchingNextPage}
 					hasNextPage={hasNextPage}
 					isLoading={isLoading}

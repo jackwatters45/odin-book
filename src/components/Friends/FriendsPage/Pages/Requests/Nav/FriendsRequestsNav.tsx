@@ -1,10 +1,10 @@
-import NavWithFriendResults from "../../../Components/NavWithFriendResults";
+import NavWithFriendResults from "../../../../../Shared/NavWithUserResults";
 import {
-	StyledFriendsNavHr,
+	StyledUserNavHr,
 	StyledSubtitle,
-} from "@/components/Friends/FriendsPage/Components/NavWithFriendResults/NavWithFriendResults.styles";
+} from "@/components/Shared/NavWithUserResults/NavWithUserResults.styles";
 import useFriendsRequestsNav from "./useFriendsRequestsNav";
-import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
+import { InfiniteScrollLoadingFriendsNav } from "@/styles/SharedStyles";
 
 const FriendsRequestsNav = () => {
 	const { users, isLoading, ref, isFetchingNextPage, hasNextPage, requestsCount } =
@@ -18,7 +18,7 @@ const FriendsRequestsNav = () => {
 			noResultsText="No friend requests"
 			isLoading={isLoading}
 			scrollLoader={
-				<InfiniteScrollLoading
+				<InfiniteScrollLoadingFriendsNav
 					isFetchingNextPage={isFetchingNextPage}
 					hasNextPage={hasNextPage}
 					isLoading={isLoading}
@@ -26,7 +26,7 @@ const FriendsRequestsNav = () => {
 				/>
 			}
 		>
-			<StyledFriendsNavHr />
+			<StyledUserNavHr />
 			{requestsCount > 0 && (
 				<StyledSubtitle>
 					{`${requestsCount} Friend Request${requestsCount > 1 && "s"}`}

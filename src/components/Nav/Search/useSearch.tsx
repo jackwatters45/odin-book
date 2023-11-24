@@ -28,7 +28,9 @@ const useSearch = () => {
 	}, [data]);
 
 	useEffect(() => {
-		if (searchQuery) {
+		if (!searchQuery) {
+			refetch();
+		} else {
 			const debounceTimeout = setTimeout(refetch, 300);
 			return () => clearTimeout(debounceTimeout);
 		}

@@ -16,10 +16,6 @@ export const StyledFriendsNav = styled.nav`
 	}
 `;
 
-export const StyledFriendsNavPadding = styled(StyledFriendsNav)`
-	padding: 0.75rem;
-`;
-
 export const StyledNavHeader = styled.div`
 	display: flex;
 	align-items: center;

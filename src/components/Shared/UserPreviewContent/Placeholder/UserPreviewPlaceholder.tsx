@@ -2,9 +2,9 @@ import {
 	StyledPlaceholderContainer,
 	StyledPlaceholderImage,
 	StyledPlaceholderText,
-} from "./FriendsPlaceholder.styles";
+} from "./UserPreviewPlaceholder.styles";
 
-const FriendsPlaceholder = () => {
+const UserPreviewPlaceholder = () => {
 	return (
 		<StyledPlaceholderContainer>
 			<StyledPlaceholderImage
@@ -18,4 +18,4 @@ const FriendsPlaceholder = () => {
 	);
 };
 
-export default FriendsPlaceholder;
+export default UserPreviewPlaceholder;

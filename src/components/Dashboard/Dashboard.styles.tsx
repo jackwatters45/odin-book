@@ -12,6 +12,8 @@ export const StyledDashboardContentContainer = styled.div`
 	margin: 0 auto;
 	padding: 1rem;
 
+	position: relative;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;

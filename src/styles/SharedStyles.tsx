@@ -1,9 +1,11 @@
+import styled, { css } from "styled-components";
+
 import TimePeriod from "@/components/Shared/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
-import styled, { css } from "styled-components";
 import { Nav } from "@jackwatters/simple-nav";
 import StandardButton from "@/components/Shared/StandardButton";
 import { DialogDirectionX } from "@/components/Shared/MoreOptions/types/MoreOptionTypes";
+import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
 
 export const StandardButtonStyles = css`
 	border-radius: 0.25rem;
@@ -195,4 +197,18 @@ export const StyledHr = styled.hr`
 	border: none;
 	height: 1px;
 	background-color: ${({ theme }) => theme.colors.border};
+`;
+
+export const InfiniteScrollLoadingFriendsNav = styled(InfiniteScrollLoading)`
+	position: absolute;
+	bottom: 350px;
+	right: 0;
+`;
+
+export const InfiniteScrollLoadingPosts = styled(InfiniteScrollLoading)`
+	position: absolute;
+	bottom: 40vh;
+	width: 100%;
+	height: 100px;
+	background: black;
 `;

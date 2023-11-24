@@ -1,6 +1,5 @@
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import useFriendCard from "../HomeSection/Cards/Card/useFriendCard";
-import { FriendPreview } from "../../../types/FriendsTypes";
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 
 import StandardButton from "@/components/Shared/StandardButton";
@@ -12,10 +11,11 @@ import {
 	StyledNavFriendCardUserName,
 } from "./NavFriendCard.styles";
 import { MouseEvent } from "react";
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
 interface NavFriendCardProps {
-	user: FriendPreview;
-	to: "all" | "requests" | "suggestions";
+	user: UserPreviewWithMutuals;
+	to: "all" | "requests" | "suggestions" | "search";
 }
 
 const NavFriendCard = ({

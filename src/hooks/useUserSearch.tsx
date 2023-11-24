@@ -42,7 +42,6 @@ const useUserSearch = ({
 		searchQuery,
 		queryKey: ["users", currentUser?._id, "search", urlEnding, searchQuery],
 		queryUrl: `users/search/${urlEnding}`,
-		transformData: (data) => data.users,
 		includeEmpty,
 		options: { staleTime: 60000, cacheTime: 60000, ...options },
 	});

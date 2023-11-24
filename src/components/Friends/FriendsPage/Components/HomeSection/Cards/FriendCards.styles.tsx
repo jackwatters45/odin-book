@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledFriendCardsContainer = styled.div`
+	position: relative;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
 	gap: 0.75rem;

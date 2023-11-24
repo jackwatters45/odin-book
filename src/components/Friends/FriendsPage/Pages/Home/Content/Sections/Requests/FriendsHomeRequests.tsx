@@ -6,8 +6,14 @@ import {
 } from "./FriendsHomeRequests.styles";
 
 const FriendsHomeRequests = () => {
-	const { users, isLoading, isViewMore, showViewMore, handleClickViewMore } =
-		useFriendsHomeRequests();
+	const {
+		users,
+		isLoading,
+		isViewMore,
+		showViewMore,
+		handleClickViewMore,
+		setItemsPerRow,
+	} = useFriendsHomeRequests();
 
 	return (
 		<FriendsHomeSection
@@ -15,6 +21,7 @@ const FriendsHomeRequests = () => {
 			link="/friends/requests"
 			users={users}
 			isLoading={isLoading}
+			setItemsPerRow={setItemsPerRow}
 		>
 			{isViewMore && <StyledPlaceholderDiv />}
 			{showViewMore && (

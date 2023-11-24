@@ -22,7 +22,7 @@ const PostPhotos = ({ media, postId, includeLink = true, ...props }: PostPhotosP
 			{media.slice(0, 5).map((photo, index) => {
 				const isLastPhoto = index === 4;
 				return (
-					<StyledPostPhotoLink key={`${uuid()}-${media}`} to={`/post/${postId}`}>
+					<StyledPostPhotoLink key={`${uuid()}-${media}`} to={`/post/${postId}/photos`}>
 						<StyledPostPhoto src={photo} alt="Post photo" />
 						{showNumHiddenPhotos && isLastPhoto && (
 							<StyledHiddenPhotosOverlay>+{media.length - 5}</StyledHiddenPhotosOverlay>

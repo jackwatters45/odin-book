@@ -4,7 +4,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { IPost } from "@/types/IPost";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = 10;
 
 const fetchPosts = async ({ pageParam = 0 }) => {
 	const res = await fetch(`${apiBaseUrl}/posts/friends?page=${pageParam}`, {

@@ -11,10 +11,20 @@ import UserPhotos from "./PhotosPreview";
 import UserFriends from "./FriendsPreview";
 import Loading from "@/components/Shared/Loading";
 import UserPostDisplay from "@/components/Post/PostDisplay";
+import { InfiniteScrollLoadingPosts } from "@/styles/SharedStyles";
 
 const UserPosts = () => {
-	const { currentUserAvatar, user, leftSidebarRef, top, posts, isLoading } =
-		useUserPosts();
+	const {
+		currentUserAvatar,
+		user,
+		leftSidebarRef,
+		top,
+		posts,
+		isLoading,
+		ref,
+		isFetchingNextPage,
+		hasNextPage,
+	} = useUserPosts();
 
 	return (
 		<UserPostsContainer>
@@ -33,7 +43,19 @@ const UserPosts = () => {
 					{isLoading ? (
 						<Loading />
 					) : (
-						posts?.map((post) => <UserPostDisplay key={post._id} post={post} />)
+						<>
+							{posts?.map((post) => (
+								<UserPostDisplay key={post._id} post={post} />
+							))}
+							{hasNextPage && (
+								<InfiniteScrollLoadingPosts
+									ref={ref}
+									isFetchingNextPage={isFetchingNextPage}
+									isLoading={isLoading}
+									hasNextPage={hasNextPage}
+								/>
+							)}
+						</>
 					)}
 				</StyledPostsContainer>
 			</StyledUserPostsRightColumn>

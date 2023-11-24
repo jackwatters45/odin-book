@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { StyledHr } from "@/styles/SharedStyles";
+import { StyledFriendsNav } from "@/components/Friends/FriendsPage/Pages/Home/Nav/FriendsHomeNav.styles";
 
-export const StyledNavFriendsHeader = styled.div`
+export const StyledUserNavPadding = styled(StyledFriendsNav)`
+	padding: 0.75rem;
+`;
+
+export const StyledNavHeaderH2 = styled.h2`
+	font-size: 1.5rem;
+	font-weight: 700;
+`;
+
+export const StyledNavUserHeader = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -28,14 +38,15 @@ export const StyledBackLink = styled(Link)`
 	}
 `;
 
-export const StyledNavFriendsLink = styled(Link)`
+export const StyledNavUserLink = styled(Link)`
 	font-size: 0.85rem;
 	margin-left: 2px;
 `;
 
-export const StyledNavFriendsCardContainer = styled.div`
+export const StyledNavUserCardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	position: relative;
 `;
 
 export const StyledSubtitle = styled.h4`
@@ -44,7 +55,7 @@ export const StyledSubtitle = styled.h4`
 	margin-bottom: 1rem;
 `;
 
-export const StyledFriendsNavHr = styled(StyledHr)`
+export const StyledUserNavHr = styled(StyledHr)`
 	margin: 0.5rem 0 0.75rem;
 `;
 

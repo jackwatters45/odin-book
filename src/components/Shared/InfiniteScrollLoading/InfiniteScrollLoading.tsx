@@ -8,10 +8,11 @@ interface InfiniteScrollLoadingProps {
 	isLoading: boolean;
 	noMoreText?: string;
 	ref: RefObject<HTMLDivElement>;
+	className?: string;
 }
 
 const InfiniteScrollLoading = forwardRef<HTMLDivElement, InfiniteScrollLoadingProps>(
-	({ isFetchingNextPage, hasNextPage, isLoading, noMoreText }, ref) => {
+	({ isFetchingNextPage, hasNextPage, isLoading, noMoreText, className }, ref) => {
 		return isFetchingNextPage ? (
 			<StyledLoadingContainer>
 				<Loading />
@@ -21,8 +22,9 @@ const InfiniteScrollLoading = forwardRef<HTMLDivElement, InfiniteScrollLoadingPr
 		) : (
 			<div
 				ref={ref}
+				className={className}
 				style={{
-					width: "100%",
+					width: "1px",
 					height: "1px",
 				}}
 			/>

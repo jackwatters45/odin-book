@@ -1,4 +1,4 @@
-import FriendsContentWithUsers from "../../../Components/FriendsContentWithUsers";
+import FriendsContentWithUsers from "../../../../../Shared/UserPreviewContent";
 
 const FriendsRequestsContent = () => <FriendsContentWithUsers />;
 

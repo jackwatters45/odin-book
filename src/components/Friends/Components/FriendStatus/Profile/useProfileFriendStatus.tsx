@@ -7,7 +7,7 @@ interface UseProfileFriendStatusProps {
 }
 
 const useProfileFriendStatus = ({ user }: UseProfileFriendStatusProps) => {
-	const { currentUser } = useCurrentUser();
+	const { user: currentUser } = useCurrentUser();
 
 	const friendStatus = !!(currentUser?._id && user.friends.includes(currentUser?._id));
 

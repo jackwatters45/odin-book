@@ -28,14 +28,14 @@ import UserAboutOverview from "@/components/User/UserProfile/Pages/UserAbout/Pag
 import UserAboutWorkEducation from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutWorkEducation/UserAboutWorkEducation";
 import UserAboutPlacesLived from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutPlacesLived/UserAboutPlacesLived";
 import UserAboutBasicInfo from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutBasicInfo";
-import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily/UserAboutRelationshipFamily";
+import UserAboutRelationshipFamily from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutRelationshipFamily";
 import UserAboutDetails from "@/components/User/UserProfile/Pages/UserAbout/Pages/UserAboutDetails";
 import UserFriends from "@/components/User/UserProfile/Pages/UserFriends";
-import ViewPost from "@/components/Post/ViewPost";
 import FriendsHome from "@/components/Friends/FriendsPage/Pages/Home";
 import FriendsFriendRequests from "@/components/Friends/FriendsPage/Pages/Requests";
 import FriendsSuggestions from "@/components/Friends/FriendsPage/Pages/Suggestions";
 import FriendsAll from "@/components/Friends/FriendsPage/Pages/All";
+import PostPhotosView from "@/components/Post/PhotoDisplay";
 
 const UserRoutes = [
 	<Fragment key="1">
@@ -102,12 +102,12 @@ const RoutesComponent = () => {
 							</Route>
 						</Route>
 						<Route path="notifications" element={<>Notifications</>} />
-						<Route path="post" element={<ViewPost />} />
 						<Route path="user/:id" element={<UserProfile />}>
 							{UserRoutes}
 						</Route>
 					</Route>
-					<Route element={<AdminRoute />}></Route>
+					<Route path="post/:id/photos" element={<PostPhotosView />} />
+					<Route element={<AdminRoute />} />
 				</Route>
 				<Route path="/unauthorized" element={<Unauthorized />} />
 				<Route path="/404" element={<NotFound />} />

@@ -1,7 +1,7 @@
-import { FriendPreview } from "@/components/Friends/types/FriendsTypes";
 import { apiBaseUrl } from "@/config/envVariables";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
@@ -36,7 +36,7 @@ const useFriendsAllNav = () => {
 		fetchNextPage,
 		isFetchingNextPage,
 		hasNextPage,
-	} = useInfiniteQuery<FriendPreview[]>({
+	} = useInfiniteQuery<UserPreviewWithMutuals[]>({
 		queryKey: [currentUser?._id as string, "friends", "all", q],
 		queryFn: ({ pageParam }) => fetchFriendsAll({ pageParam, q }),
 		getNextPageParam: (lastPage, pages) =>
@@ -44,13 +44,13 @@ const useFriendsAllNav = () => {
 	});
 
 	// infinite scroll ui
-	const { ref } = useInfiniteScroll<FriendPreview[]>({
+	const { ref } = useInfiniteScroll<UserPreviewWithMutuals[]>({
 		data: usersUnflattened,
 		hasNextPage,
 		fetchNextPage,
 	});
 
-	const users = usersUnflattened?.pages.flat() as FriendPreview[];
+	const users = usersUnflattened?.pages.flat() as UserPreviewWithMutuals[];
 
 	return { users, isLoading, ref, isFetchingNextPage, hasNextPage, register, q };
 };

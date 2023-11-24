@@ -9,7 +9,7 @@ import { StyledHobbiesSearchLabel } from "@/components/User/UserFields/Hobbies/E
 interface SearchInputProps<T extends FieldValues> extends HTMLProps<HTMLInputElement> {
 	id: string;
 	placeholder: string;
-	register: ReturnType<UseFormRegister<T>>;
+	register: ReturnType<UseFormRegister<T>> | undefined;
 	className?: string;
 }
 
@@ -33,7 +33,7 @@ const SearchInput = <T extends FieldValues>({
 				placeholder={placeholder}
 				{...register}
 				ref={(e) => {
-					register.ref(e);
+					if (register) register.ref(e);
 					inputRef.current = e;
 				}}
 				{...props}

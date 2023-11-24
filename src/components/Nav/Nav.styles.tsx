@@ -201,8 +201,7 @@ export const ImageCircle = styled.img<{ size?: number }>`
 
 const CircleBackgroundCss = css<{ background?: string }>`
 	border-radius: 50%;
-	background: ${({ background, theme }) =>
-		background || theme.colors.primaryButton}; // TODO theme
+	background: ${({ background, theme }) => background || theme.colors.primaryButton};
 	padding: 0.375rem;
 	display: flex;
 	align-items: center;

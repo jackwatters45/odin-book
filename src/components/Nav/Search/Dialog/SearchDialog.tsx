@@ -6,7 +6,6 @@ import {
 	SearchInputContainer,
 	SearchResult,
 	StyledResultName,
-	StyledSearchForText,
 	StyledSearchResultSubtext,
 } from "./SearchDialog.styles";
 import { IconCircleBackground, ImageCircle } from "../../Nav.styles";
@@ -64,7 +63,7 @@ const SearchDialog = ({ closeDialog }: SearchProps) => {
 						</Link>
 					</SearchResult>
 				))}
-				{searchQuery && (
+				{/* {searchQuery && (
 					<SearchResult>
 						<Link to={`/search/top/?q=${searchQuery}`}>
 							<IconCircleBackground
@@ -78,7 +77,7 @@ const SearchDialog = ({ closeDialog }: SearchProps) => {
 							</StyledSearchForText>
 						</Link>
 					</SearchResult>
-				)}
+				)} */}
 			</div>
 		</div>
 	);

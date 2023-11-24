@@ -1,7 +1,8 @@
-import NavWithFriendResults from "../../../Components/NavWithFriendResults/NavWithFriendResults";
+import NavWithFriendResults from "../../../../../Shared/NavWithUserResults/NavWithUserResults";
 import { StyledSubtitleSuggestions } from "./FriendsSuggestionsNav.styles";
 import useFriendsHomeSuggestions from "../../Home/Content/Sections/Suggestions/useFriendsHomeSuggestions";
-import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
+
+import { InfiniteScrollLoadingFriendsNav } from "@/styles/SharedStyles";
 
 const FriendsRequestsContent = () => {
 	const { users, isLoading, ref, isFetchingNextPage, hasNextPage } =
@@ -13,7 +14,7 @@ const FriendsRequestsContent = () => {
 			users={users}
 			to="suggestions"
 			scrollLoader={
-				<InfiniteScrollLoading
+				<InfiniteScrollLoadingFriendsNav
 					isFetchingNextPage={isFetchingNextPage}
 					hasNextPage={hasNextPage}
 					isLoading={isLoading}

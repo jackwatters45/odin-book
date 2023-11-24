@@ -1,13 +1,28 @@
 import { useOutletContext, useParams } from "react-router";
 import { useEffect, useRef, useState } from "react";
 
-import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { apiBaseUrl } from "@/config/envVariables";
 
-type JsonResponse = { posts: IPost[] };
-type FnReturnType = IPost[] | null;
+const ITEMS_PER_PAGE = 20;
+
+interface FetchPostsParams {
+	userId: string;
+	pageParam?: number;
+}
+const fetchPosts = async ({ userId, pageParam = 0 }: FetchPostsParams) => {
+	const res = await fetch(`${apiBaseUrl}/users/${userId}/posts?page=${pageParam}`, {
+		method: "GET",
+		credentials: "include",
+	});
+
+	if (!res.ok) throw new Error((await res.json()).message);
+	return await res.json();
+};
 
 const useUserPosts = () => {
 	const currentUserAvatar = useCurrentUserCached()?.avatarUrl;
@@ -18,10 +33,26 @@ const useUserPosts = () => {
 	// user posts
 	const { id: userId } = useParams<{ id: string }>() as { id: string };
 
-	const { data: posts, isLoading } = useQueryCustom<JsonResponse, FnReturnType>({
-		queryUrl: `users/${userId}/posts`,
+	const {
+		data: unflattenedPosts,
+		isLoading,
+		fetchNextPage,
+		isFetchingNextPage,
+		hasNextPage,
+	} = useInfiniteQuery<IPost[]>({
 		queryKey: ["user", userId, "posts"],
-		transformData: (data) => data.posts,
+		queryFn: ({ pageParam }) => fetchPosts({ userId, pageParam }),
+		getNextPageParam: (lastPage, pages) =>
+			lastPage.length < ITEMS_PER_PAGE ? undefined : pages.length,
+	});
+
+	const posts = unflattenedPosts?.pages.flat() ?? [];
+
+	// infinite scroll ui
+	const { ref } = useInfiniteScroll<IPost[]>({
+		data: unflattenedPosts,
+		hasNextPage,
+		fetchNextPage,
 	});
 
 	// column scroll styles
@@ -45,10 +76,17 @@ const useUserPosts = () => {
 	};
 	const top = getTop();
 
-	console.log(posts);
-	console.log(isLoading);
-
-	return { currentUserAvatar, user, leftSidebarRef, top, posts, isLoading };
+	return {
+		currentUserAvatar,
+		user,
+		leftSidebarRef,
+		top,
+		posts,
+		isLoading,
+		ref,
+		isFetchingNextPage,
+		hasNextPage,
+	};
 };
 
 export default useUserPosts;

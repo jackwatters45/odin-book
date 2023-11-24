@@ -1,4 +1,3 @@
-import { FriendPreview } from "@/components/Friends/types/FriendsTypes";
 import {
 	StyledFriendCard,
 	StyledFriendCardTextContent,
@@ -8,9 +7,10 @@ import FriendCardImage from "./Image";
 import FriendCardMutualFriends from "./MutualFriends";
 import FriendCardButtons from "./Buttons/FriendCardButtons";
 import useFriendCard from "./useFriendCard";
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
 interface FriendCardProps {
-	user: FriendPreview;
+	user: UserPreviewWithMutuals;
 }
 
 const FriendCard = ({

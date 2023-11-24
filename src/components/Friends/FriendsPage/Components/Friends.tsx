@@ -1,5 +1,6 @@
-import { StyledFriendsContainer, StyledFriendsContent } from "./Friends.styles";
 import { HTMLAttributes, ReactNode } from "react";
+
+import { StyledFriendsContainer, StyledFriendsContent } from "./Friends.styles";
 
 interface FriendsProps extends HTMLAttributes<HTMLDivElement> {
 	Nav: ReactNode;

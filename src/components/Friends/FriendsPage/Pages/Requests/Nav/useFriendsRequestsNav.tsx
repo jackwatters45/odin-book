@@ -2,8 +2,8 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { apiBaseUrl } from "@/config/envVariables";
-import { FriendPreview } from "@/components/Friends/types/FriendsTypes";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -27,7 +27,7 @@ const useFriendsRequestsNav = () => {
 		fetchNextPage,
 		isFetchingNextPage,
 		hasNextPage,
-	} = useInfiniteQuery<FriendPreview[]>({
+	} = useInfiniteQuery<UserPreviewWithMutuals[]>({
 		queryKey: [currentUser?._id as string, "friends", "requests", "infinite"],
 		queryFn: ({ pageParam }) => fetchFriendsRequests({ pageParam }),
 		getNextPageParam: (lastPage, pages) =>
@@ -35,7 +35,7 @@ const useFriendsRequestsNav = () => {
 	});
 
 	// infinite scroll ui
-	const { ref } = useInfiniteScroll<FriendPreview[]>({
+	const { ref } = useInfiniteScroll<UserPreviewWithMutuals[]>({
 		data: usersUnflattened,
 		hasNextPage,
 		fetchNextPage,

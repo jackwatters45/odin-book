@@ -1,9 +1,9 @@
-import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
 import FriendsHomeSection from "../../../../../Components/HomeSection/FriendsHomeSection";
+import { InfiniteScrollLoadingUserPreviewCard } from "./FriendsHomeSuggestions.styles";
 import useFriendsHomeSuggestions from "./useFriendsHomeSuggestions";
 
 const FriendsHomeSuggestions = () => {
-	const { users, isLoading, ref, isFetchingNextPage, hasNextPage } =
+	const { users, isLoading, ref, isFetchingNextPage, hasNextPage, setItemsPerRow } =
 		useFriendsHomeSuggestions();
 
 	return (
@@ -11,8 +11,9 @@ const FriendsHomeSuggestions = () => {
 			title="People You May Know"
 			link="/friends/suggestions"
 			users={users}
+			setItemsPerRow={setItemsPerRow}
 		>
-			<InfiniteScrollLoading
+			<InfiniteScrollLoadingUserPreviewCard
 				isFetchingNextPage={isFetchingNextPage}
 				hasNextPage={hasNextPage}
 				isLoading={isLoading}

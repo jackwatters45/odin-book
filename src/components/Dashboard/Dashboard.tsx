@@ -4,12 +4,12 @@ import CreatePostButton from "../User/UserProfile/Pages/UserPosts/CreatePostButt
 import Loading from "../Shared/Loading";
 import PostDisplay from "../Post/PostDisplay";
 import useDashboard from "./useDashboard";
-import InfiniteScrollLoading from "../Shared/InfiniteScrollLoading";
 import {
 	StyledDashboardContainer,
 	StyledDashboardContentContainer,
 	StyledPostsContainer,
 } from "./Dashboard.styles";
+import { InfiniteScrollLoadingPosts } from "@/styles/SharedStyles";
 
 const Dashboard = () => {
 	const { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage } =
@@ -36,7 +36,7 @@ const Dashboard = () => {
 						))
 					)}
 				</StyledPostsContainer>
-				<InfiniteScrollLoading
+				<InfiniteScrollLoadingPosts
 					ref={ref}
 					isFetchingNextPage={isFetchingNextPage}
 					isLoading={isLoading}
