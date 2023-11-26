@@ -16,16 +16,18 @@ import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 interface NavFriendCardProps {
 	user: UserPreviewWithMutuals;
 	to: "all" | "requests" | "suggestions" | "search";
+	isPreview: boolean;
 }
 
 const NavFriendCard = ({
 	user: { _id, avatarUrl, fullName, mutualFriends },
 	to,
+	isPreview,
 }: NavFriendCardProps) => {
 	const { buttonOptions } = useFriendCard(_id);
 
 	return (
-		<StyledNavFriendCardLink to={`/friends/${to}/${_id}`}>
+		<StyledNavFriendCardLink to={isPreview ? `/friends/${to}/${_id}` : `/user/${_id}/`}>
 			<ImageCircle src={avatarUrl || defaultUserAvatar} size={60} />
 			<StyledNavFriendCardTextContent>
 				<div>

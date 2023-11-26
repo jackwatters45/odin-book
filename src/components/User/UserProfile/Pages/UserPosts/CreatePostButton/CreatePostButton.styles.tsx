@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { UserProfileSectionContainer } from "@/components/User/Shared/UserProfileSection/UserProfileSection.styles";
 import { StyledTextInputSharedCss } from "@/styles/SharedStyles";
 import StandardButton from "@/components/Shared/StandardButton";
+import { ContainerWidth } from "@/components/User/UserProfile/context/ContainerWidthType";
 
 export const StyledCreatePostButton = styled(UserProfileSectionContainer)`
 	gap: 0;
 	padding: 0.75rem 1rem 0.5rem;
 `;
+
 export const StyledFirstRowCreatePost = styled.div`
 	display: flex;
 	gap: 0.25rem;
@@ -48,7 +50,7 @@ export const StyledLastRowCreatePost = styled.div`
 	margin-top: 0.5rem;
 `;
 
-export const StyledCreateTypeButton = styled(StandardButton)`
+export const StyledCreateTypeButton = styled(StandardButton)<ContainerWidth>`
 	flex-grow: 1;
 	height: 2.5rem;
 	display: flex;
@@ -57,14 +59,19 @@ export const StyledCreateTypeButton = styled(StandardButton)`
 	gap: 0.5rem;
 	border-radius: 0.25rem;
 
-	// &:hover {
-	// 	background: ${({ theme }) => theme.colors.hoverOverlay};
-	// 	border-radius: 0.25rem;
-	// }
-
 	span {
 		font-size: 0.95rem;
 		font-weight: 600;
 		color: ${({ theme }) => theme.colors.textSecondary};
 	}
+
+	${({ $containerWidth }) => {
+		if ($containerWidth <= 406) {
+			return `
+				span {
+					display: none;
+				}
+			`;
+		}
+	}}
 `;

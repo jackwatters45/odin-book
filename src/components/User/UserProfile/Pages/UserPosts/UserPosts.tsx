@@ -16,6 +16,7 @@ import { InfiniteScrollLoadingPosts } from "@/styles/SharedStyles";
 const UserPosts = () => {
 	const {
 		currentUserAvatar,
+		containerWidth,
 		user,
 		leftSidebarRef,
 		top,
@@ -27,8 +28,12 @@ const UserPosts = () => {
 	} = useUserPosts();
 
 	return (
-		<UserPostsContainer>
-			<StyledUserPostsLeftColumn ref={leftSidebarRef} style={{ top }}>
+		<UserPostsContainer $containerWidth={containerWidth}>
+			<StyledUserPostsLeftColumn
+				ref={leftSidebarRef}
+				style={{ top }}
+				$containerWidth={containerWidth}
+			>
 				<UserIntro user={user} />
 				<UserPhotos />
 				<UserFriends />

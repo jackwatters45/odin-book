@@ -1,6 +1,7 @@
 import useCreatePostContext from "@/components/Post/PostForm/context/usePostFormContext";
 import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { useMatch, useParams } from "react-router";
+import useContainerWidth from "../../../context/useContainerWidth";
 
 interface UseCreatePostButtonProps {
 	userFirstName: string;
@@ -11,6 +12,8 @@ const useCreatePostButton = ({
 	userFirstName,
 	userFullName,
 }: UseCreatePostButtonProps) => {
+	const containerWidth = useContainerWidth();
+
 	const { id: userId } = useParams<{ id: string }>() as { id: string };
 
 	const currentUserId = useCurrentUserCached()?._id;
@@ -50,6 +53,7 @@ const useCreatePostButton = ({
 		openDialog({ initialOpenedState: "checkIn", initialValues: undefined });
 
 	return {
+		containerWidth,
 		currentUserId,
 		placeholderText,
 		handleClickInput,

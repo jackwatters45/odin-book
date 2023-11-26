@@ -5,17 +5,18 @@ import Comment from "./Comment";
 import { StyledCommentsContainer } from "./PostComments.styles";
 import usePostComments from "./usePostComments";
 import Loading from "@/components/Shared/Loading";
+import { HTMLAttributes } from "react";
 
-interface PostCommentsProps {
+interface PostCommentsProps extends HTMLAttributes<HTMLDivElement> {
 	comments: IComment[];
 	postId: string;
 }
 
-const PostComments = ({ comments, postId }: PostCommentsProps) => {
+const PostComments = ({ comments, postId, ...props }: PostCommentsProps) => {
 	const { control, setValue, sort, sortedComments } = usePostComments({ postId });
 
 	return comments.length ? (
-		<div>
+		<div {...props}>
 			<CommentSort control={control} setValue={setValue} />
 			<StyledCommentsContainer>
 				{sortedComments && sortedComments?.length > 0 ? (

@@ -1,6 +1,9 @@
+import { useParams } from "react-router";
+
 import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { IUser } from "@/types/IUser";
-import { useParams } from "react-router";
+import useContainerWidth from "../../context/useContainerWidth";
+import useProfileStatus from "@/hooks/useIsOwnProfile";
 
 const useUserAbout = () => {
 	const { id } = useParams<{ id: string }>();
@@ -10,7 +13,11 @@ const useUserAbout = () => {
 		queryUrl: `users/${id}`,
 	});
 
-	return { user };
+	const containerWidth = useContainerWidth();
+
+	const { isOwnProfile } = useProfileStatus();
+
+	return { user, containerWidth, isOwnProfile };
 };
 
 export default useUserAbout;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledPostSocialDisplayContainer = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;

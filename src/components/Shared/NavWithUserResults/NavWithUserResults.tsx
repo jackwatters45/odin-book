@@ -16,12 +16,13 @@ import Loading from "@/components/Shared/Loading";
 
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 import NavFriendCard from "../../Friends/FriendsPage/Components/NavFriendCard";
+import useNavWithUserResults from "./useNavWithUserResults";
 
 interface NavWithUserResultsProps {
 	title: string;
 	users: UserPreviewWithMutuals[] | undefined;
-	children?: ReactNode;
 	to: "all" | "requests" | "suggestions";
+	children?: ReactNode;
 	scrollLoader?: ReactNode;
 	isLoading?: boolean;
 	noResultsText?: string;
@@ -30,12 +31,14 @@ interface NavWithUserResultsProps {
 const NavWithUserResults = ({
 	title,
 	users,
-	children,
 	to,
+	children,
 	scrollLoader,
 	isLoading,
 	noResultsText,
 }: NavWithUserResultsProps) => {
+	const { isPreview } = useNavWithUserResults();
+
 	return (
 		<StyledUserNavPadding>
 			<StyledNavUserHeader>
@@ -48,7 +51,7 @@ const NavWithUserResults = ({
 				</div>
 			</StyledNavUserHeader>
 			{children}
-			<StyledNavUserCardContainer>
+			<StyledNavUserCardContainer $isPreview={isPreview}>
 				{isLoading ? (
 					<StyledLoadingPosition>
 						<Loading />
@@ -56,7 +59,9 @@ const NavWithUserResults = ({
 				) : !users?.length && noResultsText ? (
 					<StyledNoResultsText>{noResultsText}</StyledNoResultsText>
 				) : (
-					users?.map((user) => <NavFriendCard key={user._id} user={user} to={to} />)
+					users?.map((user) => (
+						<NavFriendCard key={user._id} user={user} to={to} isPreview={isPreview} />
+					))
 				)}
 				{scrollLoader}
 			</StyledNavUserCardContainer>

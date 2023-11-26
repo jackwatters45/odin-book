@@ -14,7 +14,7 @@ export const StyledNavDropdownDialog = styled.dialog`
 
 	z-index: 1010;
 	width: 360px;
+	max-width: 100vw;
 	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
-	min-width: 300px;
 	${({ theme }) => theme.cardShadow};
 `;

@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
-export const StyledPhotosContainer = styled.div<{ $columns?: number }>`
+import { ContainerWidth } from "@/components/User/UserProfile/context/ContainerWidthType";
+
+export const StyledPhotosContainer = styled.div<ContainerWidth>`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 	gap: 0.75rem;
 
-	@media (min-width: 960px) {
-		grid-template-columns: repeat(6, 1fr);
-	}
+	${({ $containerWidth }) => {
+		if ($containerWidth >= 960) {
+			return `
+				grid-template-columns: repeat(6, 1fr);
+			`;
+		}
+	}}
 `;
 
 export const StyledPhoto = styled.div`

@@ -12,6 +12,7 @@ import {
 	FormContentContainer,
 	SectionContainer,
 	StyledDetailsFormDialog,
+	StyledExistingDetailSwitchBreakWord,
 	StyledSectionTitleHeader,
 } from "./EditDetailsForm.styles";
 import useEditDetailsForm from "./useEditDetailsForm";
@@ -231,7 +232,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 							/>
 							{user.websites?.length ? (
 								user.websites.map((websiteUrl) => (
-									<ExistingDetailSwitch
+									<StyledExistingDetailSwitchBreakWord
 										key={websiteUrl}
 										id="websites"
 										value={websiteUrl}
@@ -274,7 +275,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 							{user.socialLinks?.length ? (
 								user.socialLinks.map(({ username, platform }) => {
 									return (
-										<ExistingDetailSwitch
+										<StyledExistingDetailSwitchBreakWord
 											key={`${platform}${username}`}
 											id="socialLinks"
 											value={username}

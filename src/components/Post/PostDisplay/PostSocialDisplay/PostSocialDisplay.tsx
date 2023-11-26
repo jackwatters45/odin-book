@@ -11,12 +11,13 @@ import {
 	StyledPostSocialDisplayContainer,
 	StyledReactionsContainer,
 } from "./PostSocialDisplay.styles";
+import { HTMLAttributes } from "react";
 
-interface PostSocialDisplayProps {
+interface PostSocialDisplayProps extends HTMLAttributes<HTMLDivElement> {
 	post: IPost;
 }
 
-const PostSocialDisplay = ({ post }: PostSocialDisplayProps) => {
+const PostSocialDisplay = ({ post, ...props }: PostSocialDisplayProps) => {
 	const {
 		commentCount,
 		shareCount,
@@ -26,7 +27,7 @@ const PostSocialDisplay = ({ post }: PostSocialDisplayProps) => {
 	} = usePostSocialDisplay({ post });
 
 	return (
-		<StyledPostSocialDisplayContainer ref={postSocialDisplayContainerRef}>
+		<StyledPostSocialDisplayContainer ref={postSocialDisplayContainerRef} {...props}>
 			<StyledReactionsContainer>
 				<ReactionEmoji popularReactions={post.popularReactions} />
 				<ReactionText post={post} hideReactionsText={hideReactionsText} />

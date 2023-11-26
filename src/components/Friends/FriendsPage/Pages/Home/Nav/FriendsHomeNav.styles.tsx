@@ -14,6 +14,13 @@ export const StyledFriendsNav = styled.nav`
 		width: 0;
 		height: 0;
 	}
+
+	@media (max-width: 768px) {
+		min-width: 320px;
+		position: relative;
+		overflow-y: unset;
+		width: 100%;
+	}
 `;
 
 export const StyledNavHeader = styled.div`
@@ -29,5 +36,5 @@ export const StyledNavHeaderH2 = styled.h2`
 `;
 
 export const StyledFriendsNavOptions = styled.div`
-	padding: 0 0.5rem;
+	padding: 0 0.5rem 0.5rem;
 `;

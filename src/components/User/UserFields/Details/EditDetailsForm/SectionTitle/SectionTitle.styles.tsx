@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SectionTitleContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	gap: 1rem;
 `;
 
 export const StyledSectionTitle = styled.h3`

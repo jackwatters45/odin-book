@@ -1,20 +1,29 @@
 import styled from "styled-components";
+import { ContainerWidth } from "../../context/ContainerWidthType";
 
-export const UserPostsContainer = styled.div`
+export const UserPostsContainer = styled.div<ContainerWidth>`
 	display: flex;
 	gap: 1rem;
 	justify-content: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
 	width: 100%;
 
-	@media (max-width: 899px) {
-		flex-direction: column;
-		align-items: center;
-	}
-
 	> :first-child {
 		padding-bottom: 1rem;
 	}
+
+	${({ $containerWidth }) => {
+		if ($containerWidth <= 899) {
+			return `
+				flex-direction: column;
+				align-items: center;
+
+				> :first-child {
+					padding-bottom: 0;
+				}
+			`;
+		}
+	}}
 
 	> div {
 		display: flex;
@@ -23,20 +32,29 @@ export const UserPostsContainer = styled.div`
 		overflow-y: auto;
 		height: 100%;
 
-		@media (max-width: 909px) {
-			width: 100%;
-			max-width: 680px;
-		}
+		${({ $containerWidth }) => {
+			if ($containerWidth <= 909) {
+				return `
+					width: 100%;
+					max-width: 680px;
+					
+				
+				`;
+			}
+		}}
 	}
 `;
 
-export const StyledUserPostsLeftColumn = styled.div`
+export const StyledUserPostsLeftColumn = styled.div<ContainerWidth>`
 	width: 42%;
 
-	@media (min-width: 900px) {
-		position: -webkit-sticky;
-		position: sticky;
-	}
+	${({ $containerWidth }) => {
+		if ($containerWidth >= 900) {
+			return `
+			position: -webkit-sticky;
+			position: sticky;`;
+		}
+	}}
 `;
 
 export const StyledUserPostsRightColumn = styled.div`

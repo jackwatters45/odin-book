@@ -14,10 +14,19 @@ export const StyledAddToPost = styled.div`
 export const StyledAddToPostText = styled.span`
 	font-size: 0.95rem;
 	font-weight: 600;
+
+	@media (max-width: 400px) {
+		display: none;
+	}
 `;
 
 export const StyledAddToPostIcons = styled.div`
 	display: flex;
 	gap: 0.375rem;
 	cursor: pointer;
+
+	@media (max-width: 400px) {
+		width: 100%;
+		justify-content: space-evenly;
+	}
 `;

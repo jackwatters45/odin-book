@@ -11,6 +11,7 @@ import {
 	ProfileContainer,
 	StyledUserProfileContentContainer,
 } from "./UserProfile.styles";
+import ContainerWidthProvider from "./context/ContainerWidthProvider";
 
 const UserProfile = () => {
 	const { user, isLoading, isError } = useUserProfile();
@@ -20,21 +21,23 @@ const UserProfile = () => {
 	else if (!user) return <Navigate to="/login" />;
 
 	return (
-		<ProfileContainer className="user-profile-container">
-			<ProfileBottomBorder>
-				<MaxWidthContainer>
-					<ProfileBasicInfo user={user} />
-					<ProfileNav />
-				</MaxWidthContainer>
-			</ProfileBottomBorder>
-			<OutletWrapper>
-				<MaxWidthContainer>
-					<StyledUserProfileContentContainer>
-						<Outlet context={{ user }} />
-					</StyledUserProfileContentContainer>
-				</MaxWidthContainer>
-			</OutletWrapper>
-		</ProfileContainer>
+		<ContainerWidthProvider>
+			<ProfileContainer className="user-profile-container">
+				<ProfileBottomBorder>
+					<MaxWidthContainer>
+						<ProfileBasicInfo user={user} />
+						<ProfileNav />
+					</MaxWidthContainer>
+				</ProfileBottomBorder>
+				<OutletWrapper>
+					<MaxWidthContainer>
+						<StyledUserProfileContentContainer>
+							<Outlet context={{ user }} />
+						</StyledUserProfileContentContainer>
+					</MaxWidthContainer>
+				</OutletWrapper>
+			</ProfileContainer>
+		</ContainerWidthProvider>
 	);
 };
 

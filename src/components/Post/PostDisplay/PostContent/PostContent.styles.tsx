@@ -10,6 +10,7 @@ export const StyledBodyText = styled.span<StyledBodyTextProps>`
 	display: flex;
 	flex-wrap: wrap;
 	padding-bottom: 0.5rem;
+	padding-right: 1rem;
 	max-width: 100%;
 
 	white-space: pre-line;

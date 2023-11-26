@@ -29,4 +29,8 @@ export const StyledUserProfileContentContainer = styled.div`
 	align-items: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
 	width: 100%;
+
+	> div {
+		width: 100%;
+	}
 `;

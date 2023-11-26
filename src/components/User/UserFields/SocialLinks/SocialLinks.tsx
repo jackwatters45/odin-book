@@ -24,7 +24,17 @@ const SocialLinks = ({
 
 	return (
 		<UserAboutOverviewItem
-			title={socialLink ? [{ type: "text", content: socialLink.username }] : null}
+			title={
+				socialLink
+					? [
+							{
+								type: "text",
+								content: socialLink.username,
+								style: { wordBreak: "break-all" },
+							},
+					  ]
+					: null
+			}
 			itemId={socialLink?._id}
 			category={category}
 			categoryDisplayName="social link"

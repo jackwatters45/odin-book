@@ -1,5 +1,4 @@
 import { Navigate } from "react-router";
-import { NavLink } from "@jackwatters/simple-nav";
 import Icon from "@mdi/react";
 import {
 	mdiHomeOutline,
@@ -12,12 +11,11 @@ import {
 } from "@mdi/js";
 
 import useNav from "./useNav";
-import { StyledNavShadow } from "@/styles/SharedStyles";
+import { StyledNavShadowX } from "@/styles/SharedStyles";
 import SearchNav from "./Search";
 
 import {
 	StyledNavContainer,
-	StyledNav,
 	StyledSideNav,
 	StyledCenterNav,
 	ImageCircle,
@@ -25,8 +23,10 @@ import {
 	IconCircleBackground,
 	StyledCreatePostButton,
 	StyledFixedNavPadding,
+	StyledNav,
 } from "./Nav.styles";
 import ProfileDropdown from "./ProfileDropdown";
+import NavLink from "./NavLink";
 
 const NavComponent = () => {
 	const {
@@ -46,23 +46,19 @@ const NavComponent = () => {
 					<StyledSideNav>
 						<NavLink
 							to="/"
-							text="Dashboard"
-							showText={false}
 							icon={
 								<ImageCircle
 									src="https://res.cloudinary.com/drheg5d7j/image/upload/v1699317092/OdinBookLogo_jus0m9.png"
 									alt="Odinbook"
 								/>
 							}
-							dataTestid="dashboard-button"
 						/>
 						<SearchNav />
 					</StyledSideNav>
 					<StyledCenterNav>
 						<NavLinkCenterColumn
 							to="/"
-							text="Home"
-							showText={false}
+							isActive={isDashboardActive}
 							icon={
 								<Icon
 									path={isDashboardActive ? mdiHome : mdiHomeOutline}
@@ -70,12 +66,9 @@ const NavComponent = () => {
 									color={isDashboardActive ? "#1b74e4" : "#65676B"}
 								/>
 							}
-							dataTestid="home-button"
 						/>
 						<NavLinkCenterColumn
 							to="/friends/"
-							text="Friends"
-							showText={false}
 							isActive={isFriendsActive}
 							icon={
 								<Icon
@@ -84,12 +77,10 @@ const NavComponent = () => {
 									color={isFriendsActive ? "#1b74e4" : "#65676B"}
 								/>
 							}
-							dataTestid="friends-button"
 						/>
 						<NavLinkCenterColumn
 							to="/notifications/"
-							text="Notifications"
-							showText={false}
+							isActive={isNotificationsActive}
 							icon={
 								<Icon
 									path={isNotificationsActive ? mdiBell : mdiBellOutline}
@@ -97,7 +88,6 @@ const NavComponent = () => {
 									color={isNotificationsActive ? "#1b74e4" : "#65676B"}
 								/>
 							}
-							dataTestid="notifications-button"
 						/>
 					</StyledCenterNav>
 					<StyledSideNav>
@@ -112,7 +102,7 @@ const NavComponent = () => {
 						<ProfileDropdown />
 					</StyledSideNav>
 				</StyledNav>
-				<StyledNavShadow />
+				<StyledNavShadowX />
 			</StyledNavContainer>
 			<StyledFixedNavPadding />
 		</>

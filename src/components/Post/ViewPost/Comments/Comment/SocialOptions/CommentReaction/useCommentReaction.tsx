@@ -29,7 +29,6 @@ const useCommentReaction = ({ comment, postId }: UseCommentReactionProps) => {
 		queryUrl: `posts/${postId}/comments/${comment._id}/react`,
 		method: "POST",
 		onSuccessFn: (data: IComment) => {
-			console.log("comment", data);
 			updateComment(postId, data);
 			setIsReaction(true);
 		},

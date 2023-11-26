@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const UserProfileSectionContainer = styled.div`
-	width: 100%;
+	// width: 100%;
 	background-color: #ffffff;
 	border-radius: 0.25rem;
 	${(props) => props.theme.sectionShadow}

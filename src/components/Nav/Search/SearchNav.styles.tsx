@@ -9,4 +9,8 @@ export const SearchNavDropdown = styled(NavDropdown)`
 		left: 0;
 		margin: 0;
 	}
+
+	@media (max-width: 400px) {
+		display: none;
+	}
 `;

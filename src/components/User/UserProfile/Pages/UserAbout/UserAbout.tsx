@@ -9,11 +9,14 @@ import {
 import UserFriends from "../UserFriends";
 
 const UserAbout = () => {
-	const { user } = useUserAbout();
+	const { user, containerWidth, isOwnProfile } = useUserAbout();
 
 	return (
 		<>
-			<StyledUserAboutSectionContainer>
+			<StyledUserAboutSectionContainer
+				$containerWidth={containerWidth}
+				$isOwnProfile={isOwnProfile}
+			>
 				<UserAboutNav userFirstName={user?.firstName as string} />
 				<StyledUserAboutRightColumn>
 					<Outlet context={{ user }} />

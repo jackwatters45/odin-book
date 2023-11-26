@@ -1,4 +1,5 @@
 import useResponsiveTextArea from "@/hooks/useResponsiveTextArea";
+import useWindowWidth from "@/hooks/useWindowWidth";
 import { useCallback, useEffect } from "react";
 
 export interface usePostContentProps {
@@ -7,6 +8,8 @@ export interface usePostContentProps {
 
 const usePostContent = ({ isPhotosSelected }: usePostContentProps) => {
 	const { textareaRef, handleInput: handleInputHeight } = useResponsiveTextArea();
+
+	const windowWidth = useWindowWidth();
 
 	const handleInput = useCallback(() => {
 		const charCount = textareaRef.current?.value.length;
@@ -18,12 +21,12 @@ const usePostContent = ({ isPhotosSelected }: usePostContentProps) => {
 			textareaRef.current.style.fontWeight = "500";
 		} else {
 			if (!textareaRef.current) return;
-			textareaRef.current.style.fontSize = "1.5rem";
+			textareaRef.current.style.fontSize = windowWidth > 400 ? "1.5rem" : "1.25rem";
 			textareaRef.current.style.fontWeight = "400";
 		}
 
 		handleInputHeight();
-	}, [handleInputHeight, isPhotosSelected, textareaRef]);
+	}, [handleInputHeight, isPhotosSelected, textareaRef, windowWidth]);
 
 	useEffect(() => {
 		handleInput();

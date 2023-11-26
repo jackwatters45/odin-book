@@ -13,4 +13,9 @@ export const StyledPostTextArea = styled.textarea`
 	font-size: 1.5rem;
 	font-weight: 400;
 	max-height: 720px;
+	min-height: 56px;
+
+	@media (max-width: 400px) {
+		font-size: 1.25rem;
+	}
 `;

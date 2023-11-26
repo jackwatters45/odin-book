@@ -6,6 +6,7 @@ import {
 	StyledPhotosContainer,
 } from "./PhotosDisplay.styles";
 import { IPhotosDisplay } from "../types/PhotosTypes";
+import useContainerWidth from "@/components/User/UserProfile/context/useContainerWidth";
 
 export interface PhotosDisplayProps {
 	photos: IPhotosDisplay | undefined;
@@ -13,8 +14,10 @@ export interface PhotosDisplayProps {
 }
 
 const PhotosDisplay = ({ photos, className }: PhotosDisplayProps) => {
+	const containerWidth = useContainerWidth();
+
 	return (
-		<StyledPhotosContainer className={className}>
+		<StyledPhotosContainer className={className} $containerWidth={containerWidth}>
 			{photos && photos.length ? (
 				photos?.map(({ media, postId }, index) => (
 					<StyledPhoto key={`${media}-${postId}-${index}`}>

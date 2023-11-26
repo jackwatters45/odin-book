@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 
 import TimePeriod from "@/components/Shared/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
-import { Nav } from "@jackwatters/simple-nav";
 import StandardButton from "@/components/Shared/StandardButton";
 import { DialogDirectionX } from "@/components/Shared/MoreOptions/types/MoreOptionTypes";
 import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
@@ -129,7 +128,7 @@ export const StyledTextInput = styled.label`
 	}
 `;
 
-export const StyledNavShadow = styled.div`
+export const StyledNavShadowX = styled.div`
 	position: absolute;
 	bottom: -7px;
 	height: 7px;
@@ -138,6 +137,19 @@ export const StyledNavShadow = styled.div`
 	background-size: 1px 7px;
 	background-repeat: repeat-x;
 	z-index: 1;
+	pointer-events: none;
+`;
+
+export const StyledNavShadowY = styled.div<{ left: number }>`
+	position: absolute;
+	top: 3px;
+	bottom: 0;
+	left: ${({ left }) => left}px;
+	width: 7px;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACBAMAAACapPCZAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAD29va1cB7UAAAAB3RSTlMCCwQHGBAaZf6MKAAAABJJREFUCNdjSHMVNFZiYGCA0gAUdgIjNiRPgQAAAABJRU5ErkJggg==);
+	background-size: 7px 1px;
+	background-repeat: repeat-y;
+	z-index: 999;
 	pointer-events: none;
 `;
 
@@ -177,9 +189,10 @@ export const StyledTimePeriodStartOnly = styled(TimePeriod)`
 	}
 `;
 
-export const StyledProfileSectionNav = styled(Nav)`
+export const StyledProfileSectionNav = styled.nav`
 	display: flex;
-	height: 60px;
+	min-height: 60px;
+	flex-wrap: wrap;
 `;
 
 export const StandardButtonFullWidth = styled(StandardButton)`

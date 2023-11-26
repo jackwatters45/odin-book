@@ -18,14 +18,15 @@ interface ProfileBasicInfoProps {
 }
 
 const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
-	const { isOwnProfile, mutualFriendsLength, showMutual } = useProfileBasicInfo({
-		user,
-	});
+	const { containerWidth, isOwnProfile, mutualFriendsLength, showMutual } =
+		useProfileBasicInfo({
+			user,
+		});
 
 	return (
 		<>
 			<CoverPhoto userCoverUrl={user.coverPhotoUrl} />
-			<StyledProfileBasicInfo>
+			<StyledProfileBasicInfo $containerWidth={containerWidth}>
 				<ProfileAvatar avatarUrl={user.avatarUrl} />
 				<StyledNameFriendsContainer>
 					<h1>{user.fullName}</h1>

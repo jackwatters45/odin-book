@@ -11,8 +11,8 @@ import {
 	StyledUserNameMutualFriendsContainer,
 } from "./FriendsList.styles";
 import FriendsListMoreOptions from "../FriendStatus/MoreOptions/FriendStatusMoreOptions";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { IFriendsDisplay } from "../../types/FriendsTypes";
+import useFriendsList from "./useFriendsList";
 
 export interface FriendsListProps {
 	friends: IFriendsDisplay | undefined;
@@ -20,7 +20,8 @@ export interface FriendsListProps {
 }
 
 const FriendsList = ({ friends, className }: FriendsListProps) => {
-	const currentUser = useCurrentUserCached();
+	const { currentUser, containerWidth } = useFriendsList();
+
 	return (
 		<StyledFriendsContainer className={className}>
 			{friends && friends.length ? (
@@ -28,9 +29,10 @@ const FriendsList = ({ friends, className }: FriendsListProps) => {
 					const hasMutualFriends = mutualFriends?.length > 0;
 					const isCurrentUser = currentUser?._id === id;
 					return (
-						<StyledFriendCard key={id}>
+						<StyledFriendCard key={id} $containerWidth={containerWidth}>
 							<Link to={`/user/${id}`}>
 								<StyledFriendAvatar
+									$containerWidth={containerWidth}
 									src={avatarUrl || defaultUserAvatar}
 									alt={"User friend"}
 								/>
@@ -57,7 +59,7 @@ const FriendsList = ({ friends, className }: FriendsListProps) => {
 					);
 				})
 			) : (
-				<StyledFriendPlaceholder />
+				<StyledFriendPlaceholder $containerWidth={containerWidth} />
 			)}
 		</StyledFriendsContainer>
 	);

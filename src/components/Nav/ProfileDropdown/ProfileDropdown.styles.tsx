@@ -6,8 +6,9 @@ export const StyledProfileNavDropdown = styled(NavDropdown)`
 	position: relative;
 
 	dialog {
-		margin-left: -320px;
+		margin-left: -260px;
 		right: 0;
+		min-width: 300px;
 	}
 
 	li {

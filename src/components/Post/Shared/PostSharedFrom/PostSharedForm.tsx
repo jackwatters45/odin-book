@@ -5,8 +5,9 @@ import {
 	StyledPostPhotos,
 	StyledSharedFromPostContainer,
 } from "./PostSharedFrom.styles";
+import { HTMLAttributes } from "react";
 
-interface PostSharedFromProps {
+interface PostSharedFromProps extends HTMLAttributes<HTMLDivElement> {
 	sharedFromPost: IPost;
 	showShowMore?: boolean;
 }
@@ -14,9 +15,10 @@ interface PostSharedFromProps {
 const PostSharedFrom = ({
 	sharedFromPost,
 	showShowMore = false,
+	...props
 }: PostSharedFromProps) => {
 	return (
-		<StyledSharedFromPostContainer>
+		<StyledSharedFromPostContainer {...props}>
 			{sharedFromPost?.media && sharedFromPost.media.length > 0 && (
 				<StyledPostPhotos
 					includeLink={false}

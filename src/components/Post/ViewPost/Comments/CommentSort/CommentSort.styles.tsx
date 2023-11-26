@@ -6,6 +6,7 @@ export const StyledCommentSortContainer = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	margin-top: 0.75rem;
+	padding-right: 0.5rem;
 `;
 
 export const StyledCommentSortButton = styled.button`
@@ -18,6 +19,7 @@ export const StyledCommentSortButton = styled.button`
 
 export const StyledCommentSortDialogMoreOptions = styled(StyledDialogMoreOptions)`
 	top: 1rem;
+	width: 200px;
 `;
 
 export const StyledCommentSortAnchor = styled.div`

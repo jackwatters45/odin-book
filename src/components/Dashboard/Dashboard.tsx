@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 
-import CreatePostButton from "../User/UserProfile/Pages/UserPosts/CreatePostButton";
 import Loading from "../Shared/Loading";
 import PostDisplay from "../Post/PostDisplay";
 import useDashboard from "./useDashboard";
 import {
+	StyledCreatePostButton,
 	StyledDashboardContainer,
 	StyledDashboardContentContainer,
 	StyledPostsContainer,
@@ -19,7 +19,7 @@ const Dashboard = () => {
 		<StyledDashboardContainer>
 			<StyledDashboardContentContainer>
 				<StyledPostsContainer>
-					<CreatePostButton
+					<StyledCreatePostButton
 						userFirstName={currentUser?.firstName as string}
 						userFullName={currentUser?.fullName as string}
 						userIcon={currentUser?.avatarUrl}

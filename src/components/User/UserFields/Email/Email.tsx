@@ -18,7 +18,11 @@ const Email = ({ email, audience }: EmailProps) => {
 
 	return (
 		<UserAboutOverviewItem
-			title={email ? [{ type: "text", content: email }] : null}
+			title={
+				email
+					? [{ type: "text", content: email, style: { wordBreak: "break-all" } }]
+					: null
+			}
 			category="email"
 			categoryDisplayName="email"
 			subtitle={email ? "Email" : null}

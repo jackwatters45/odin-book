@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SectionTitle from "./SectionTitle";
 import { StyledDialog } from "@/styles/SharedStyles";
+import ExistingDetailSwitch from "./ExistingDetailSwitch";
 
 export const StyledDetailsFormDialog = styled(StyledDialog)`
 	z-index: 1002;
@@ -26,4 +27,8 @@ export const StyledSectionTitleHeader = styled(SectionTitle)`
 	span {
 		font-size: 0.95rem;
 	}
+`;
+
+export const StyledExistingDetailSwitchBreakWord = styled(ExistingDetailSwitch)`
+	word-break: break-all;
 `;

@@ -7,10 +7,13 @@ import {
 	StyledPhotoPreview,
 	StyledPhotosPreviewContainer,
 } from "./PhotosDisplayPreview.styles";
+import useContainerWidth from "@/components/User/UserProfile/context/useContainerWidth";
 
 const PhotosDisplayPreview = ({ photos, className }: PhotosDisplayProps) => {
+	const containerWidth = useContainerWidth();
+
 	return (
-		<StyledPhotosPreviewContainer className={className}>
+		<StyledPhotosPreviewContainer className={className} $containerWidth={containerWidth}>
 			{photos?.slice(0, 9).map(({ media, postId }, index) => {
 				const borderRadius = setBorderRadius(index, photos.length);
 				return (

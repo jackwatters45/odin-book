@@ -1,3 +1,4 @@
+import { ContainerWidth } from "@/components/User/UserProfile/context/ContainerWidthType";
 import styled from "styled-components";
 
 export const StyledFriendsContainer = styled.div`
@@ -7,7 +8,7 @@ export const StyledFriendsContainer = styled.div`
 	margin-right: -0.5rem;
 `;
 
-export const StyledFriendCard = styled.div`
+export const StyledFriendCard = styled.div<ContainerWidth>`
 	position: relative;
 	height: 3.5rem;
 	width: calc(50% - 0.5rem);
@@ -20,23 +21,35 @@ export const StyledFriendCard = styled.div`
 
 	${({ theme }) => theme.sectionShadow};
 
-	@media (min-width: 900px) {
-		height: 100px;
-		padding: 1 rem;
-	}
+	${({ $containerWidth }) => {
+		if ($containerWidth <= 700) {
+			return `
+        width: 100%;
+      `;
+		} else if ($containerWidth >= 900) {
+			return `
+        height: 100px;
+        padding: 1rem;
+      `;
+		}
+	}}
 `;
 
-export const StyledFriendAvatar = styled.img`
+export const StyledFriendAvatar = styled.img<ContainerWidth>`
 	width: 2.25rem;
 	height: 2.25rem;
 	aspect-ratio: 1 / 1;
 	object-fit: cover;
 	border-radius: 0.5rem;
 
-	@media (min-width: 900px) {
-		width: 5rem;
-		height: 5rem;
-	}
+	${({ $containerWidth }) => {
+		if ($containerWidth >= 900) {
+			return `
+				width: 5rem;
+				height: 5rem;
+			`;
+		}
+	}}
 `;
 
 export const StyledUserNameMutualFriendsContainer = styled.div`
@@ -55,14 +68,18 @@ export const StyledMutualFriends = styled.span`
 	font-size: 0.8rem;
 `;
 
-export const StyledFriendPlaceholder = styled.div`
+export const StyledFriendPlaceholder = styled.div<ContainerWidth>`
 	position: relative;
 	height: 3.5rem;
 	width: calc(50% - 0.5rem);
 	border-radius: 0.5rem;
 
-	@media (min-width: 900px) {
-		height: 100px;
-		padding: 1 rem;
-	}
+	${({ $containerWidth }) => {
+		if ($containerWidth >= 900) {
+			return `
+				height: 100px;
+				padding: 1rem;
+			`;
+		}
+	}}
 `;

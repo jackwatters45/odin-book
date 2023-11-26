@@ -43,10 +43,26 @@ export const StyledNavUserLink = styled(Link)`
 	margin-left: 2px;
 `;
 
-export const StyledNavUserCardContainer = styled.div`
-	display: flex;
+export const StyledNavUserCardContainer = styled.div<{ $isPreview: boolean }>`
+	${({ $isPreview, theme }) =>
+		$isPreview
+			? `	display: flex;
 	flex-direction: column;
-	position: relative;
+	position: relative;`
+			: `
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+
+	> a {
+		width: calc(50% - 0.5rem);
+		${theme.sectionShadow}	
+
+		@media (max-width: 631px) {
+			width: 100%;
+		}
+	}
+	`}
 `;
 
 export const StyledSubtitle = styled.h4`

@@ -12,9 +12,10 @@ import {
 	StyledNavHeaderH2,
 } from "./FriendsHomeNav.styles";
 import FriendsNavOption from "../../../Components/FriendsNavOption";
+import { HtmlHTMLAttributes } from "react";
 
-const FriendsHomeNav = () => (
-	<StyledFriendsNav>
+const FriendsHomeNav = (props: HtmlHTMLAttributes<HTMLDivElement>) => (
+	<StyledFriendsNav {...props}>
 		<StyledNavHeader>
 			<StyledNavHeaderH2>Friends</StyledNavHeaderH2>
 		</StyledNavHeader>

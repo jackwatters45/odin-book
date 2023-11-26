@@ -8,6 +8,12 @@ export const HeaderDiv = styled.div`
 	min-height: 4rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	width: 100%;
+
+	h2 {
+		padding: 0 80px;
+		text-align: center;
+	}
+
 	button {
 		border-radius: 50%;
 		background: ${({ theme }) => theme.colors.primaryButton};
@@ -32,8 +38,8 @@ export const HeaderDiv = styled.div`
 
 export const StyledDialogCloseButton = styled.button`
 	position: absolute;
-	top: 0.75rem;
-	right: 0.75rem;
+	top: 1rem;
+	right: 1rem;
 	display: flex;
 	padding: 0.25rem;
 `;

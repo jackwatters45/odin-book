@@ -26,7 +26,11 @@ const Websites = ({
 
 	return (
 		<UserAboutOverviewItem
-			title={website ? [{ type: "text", content: website }] : null}
+			title={
+				website
+					? [{ type: "text", content: website, style: { wordBreak: "break-all" } }]
+					: null
+			}
 			category={category}
 			categoryDisplayName="website"
 			subtitle={website ? "Website" : null}

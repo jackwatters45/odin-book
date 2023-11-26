@@ -7,6 +7,7 @@ import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { apiBaseUrl } from "@/config/envVariables";
+import useContainerWidth from "../../context/useContainerWidth";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -26,6 +27,9 @@ const fetchPosts = async ({ userId, pageParam = 0 }: FetchPostsParams) => {
 
 const useUserPosts = () => {
 	const currentUserAvatar = useCurrentUserCached()?.avatarUrl;
+
+	// container width
+	const containerWidth = useContainerWidth();
 
 	// user who's profile is being viewed
 	const { user } = useOutletContext<{ user: IUser }>();
@@ -78,6 +82,7 @@ const useUserPosts = () => {
 
 	return {
 		currentUserAvatar,
+		containerWidth,
 		user,
 		leftSidebarRef,
 		top,

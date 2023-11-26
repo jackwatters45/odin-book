@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
+import { ContainerWidth } from "../context/ContainerWidthType";
 
-export const StyledProfileBasicInfo = styled.div`
+export const StyledProfileBasicInfo = styled.div<ContainerWidth>`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -11,10 +12,22 @@ export const StyledProfileBasicInfo = styled.div`
 	transform: translateY(-80px);
 	margin-bottom: -80px;
 
-	@media (min-width: 900px) {
-		flex-direction: row;
-		align-items: flex-end;
-		justify-content: flex-start;
+	// @media (min-width: 900px) {
+	// 	flex-direction: row;
+	// 	align-items: flex-end;
+	// 	justify-content: flex-start;
+
+	// }
+
+	${({ $containerWidth }) => {
+		if ($containerWidth >= 900) {
+			return `
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: flex-start;
+			`;
+		}
+	}}
 `;
 
 export const StyledNameFriendsContainer = styled.div`

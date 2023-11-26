@@ -11,8 +11,9 @@ import {
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 import useCreatePostButton from "./useCreatePostButton";
 import { Link } from "react-router-dom";
+import { HTMLAttributes } from "react";
 
-interface CreatePostButtonProps {
+interface CreatePostButtonProps extends HTMLAttributes<HTMLDivElement> {
 	userFirstName: string;
 	userFullName: string;
 	userIcon: string | undefined;
@@ -22,8 +23,10 @@ const CreatePostButton = ({
 	userFirstName,
 	userFullName,
 	userIcon,
+	...props
 }: CreatePostButtonProps) => {
 	const {
+		containerWidth,
 		currentUserId,
 		placeholderText,
 		handleClickInput,
@@ -33,7 +36,7 @@ const CreatePostButton = ({
 	} = useCreatePostButton({ userFirstName, userFullName });
 
 	return (
-		<StyledCreatePostButton>
+		<StyledCreatePostButton {...props}>
 			<StyledFirstRowCreatePost>
 				<Link to={`/user/${currentUserId}`}>
 					<ImageCircle src={userIcon || defaultUserAvatar} alt={"User icon"} />
@@ -50,6 +53,7 @@ const CreatePostButton = ({
 					iconColor="#22c55e"
 					colorClass="transparent"
 					onClick={handleOpenDialogPhotos}
+					$containerWidth={containerWidth}
 				/>
 				<StyledCreateTypeButton
 					text="Feeling"
@@ -58,6 +62,7 @@ const CreatePostButton = ({
 					iconColor="#eab308"
 					colorClass="transparent"
 					onClick={handleOpenDialogFeeling}
+					$containerWidth={containerWidth}
 				/>
 				<StyledCreateTypeButton
 					text="Check in"
@@ -66,6 +71,7 @@ const CreatePostButton = ({
 					iconColor="#ef4444"
 					colorClass="transparent"
 					onClick={handleOpenDialogCheckIn}
+					$containerWidth={containerWidth}
 				/>
 			</StyledLastRowCreatePost>
 		</StyledCreatePostButton>

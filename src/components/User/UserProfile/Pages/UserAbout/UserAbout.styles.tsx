@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledUserAboutSectionContainer = styled.div`
+import { ContainerWidth } from "../../context/ContainerWidthType";
+
+export const StyledUserAboutSectionContainer = styled.div<
+	ContainerWidth & { $isOwnProfile: boolean }
+>`
 	width: 100%;
 	background-color: #ffffff;
 	border-radius: 0.25rem;
@@ -20,8 +24,11 @@ export const StyledUserAboutSectionContainer = styled.div`
 		width: 62%;
 	}
 
-	@media (max-width: 768px) {
-		flex-direction: column;
+	${({ $isOwnProfile, $containerWidth }) => {
+		if ($isOwnProfile) {
+			if ($containerWidth <= 768) {
+				return `
+			flex-direction: column;
 
 		> div:first-child {
 			width: 100%;
@@ -32,7 +39,26 @@ export const StyledUserAboutSectionContainer = styled.div`
 		> div:last-child {
 			width: 100%;
 		}
-	}
+			`;
+			}
+		} else {
+			if ($containerWidth <= 676) {
+				return `
+			flex-direction: column;
+
+		> div:first-child {
+			width: 100%;
+			border-right: none;
+			border-bottom: 1px solid #dddfe2;
+		}
+
+		> div:last-child {
+			width: 100%;
+		}
+			`;
+			}
+		}
+	}}
 `;
 
 export const StyledUserAboutRightColumn = styled.div`

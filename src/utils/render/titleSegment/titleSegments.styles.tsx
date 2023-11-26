@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 export const TitleSegmentLink = styled(Link)`
 	color: ${({ theme }) => theme.colors.textPrimary};
+	font-weight: 600;
 
 	&:hover {
 		text-decoration: underline;

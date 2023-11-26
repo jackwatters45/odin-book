@@ -21,7 +21,6 @@ const ProfileDropdownContent = ({ closeDialog }: ProfileDropdownContentProps) =>
 				onClick={closeDialog}
 				text="Profile"
 				icon={<IconCircleBackground path={mdiAccount} size={1.5} color={"#1c1e21"} />}
-				dataTestid="profile-button"
 			/>
 			<StyledDropdownButton
 				onClick={handleClickLogout}
@@ -29,7 +28,6 @@ const ProfileDropdownContent = ({ closeDialog }: ProfileDropdownContentProps) =>
 				icon={
 					<IconCircleBackground path={mdiLogoutVariant} size={1.5} color={"#1c1e21"} />
 				}
-				dataTestid="logout-button"
 			/>
 		</>
 	);

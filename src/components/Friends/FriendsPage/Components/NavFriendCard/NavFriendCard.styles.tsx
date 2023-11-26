@@ -4,15 +4,12 @@ import { NavLink } from "react-router-dom";
 import FriendCardMutualFriends from "../HomeSection/Cards/Card/MutualFriends/FriendCardMutualFriends";
 
 export const StyledNavFriendCardLink = styled(NavLink)`
-	position: "absolute";
-	top: 0;
-	left: 0;
-	bottom: 0;
 	z-index: 1;
 
 	display: flex;
 	gap: 1rem;
 	width: 100%;
+	min-width: 300px;
 
 	border-radius: 0.375rem;
 	padding: 0.5rem 0.375rem;
@@ -52,6 +49,9 @@ export const StyledNavFriendCardButtonContainer = styled.div`
 	display: flex;
 	gap: 0.5rem;
 	grid-column: 2 / 3;
+	max-width: 300px;
+	align-self: flex-end;
+	width: 100%;
 
 	& > button {
 		flex-grow: 1;
