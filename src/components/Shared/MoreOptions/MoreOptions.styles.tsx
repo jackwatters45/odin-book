@@ -2,7 +2,6 @@ import Icon from "@mdi/react";
 import styled from "styled-components";
 
 import { StyledDialog } from "@/styles/SharedStyles";
-import { DialogDirectionX } from "./types/MoreOptionTypes";
 
 export const StyledMoreOptionsContainer = styled.div`
 	position: relative;
@@ -24,10 +23,8 @@ export const StyledIcon = styled(Icon)<{ $isUsingDialog: boolean }>`
 	padding: ${({ $isUsingDialog }) => !$isUsingDialog && "1px"};
 `;
 
-export const StyledDialogMoreOptions = styled(StyledDialog)<{
-	$Direction: DialogDirectionX;
-}>`
-	width: 350px;
+export const StyledDialogMoreOptions = styled(StyledDialog)`
+	width: 250px;
 	position: absolute;
 	margin-top: 1rem;
 	top: unset;
@@ -36,10 +33,6 @@ export const StyledDialogMoreOptions = styled(StyledDialog)<{
 	transform: unset;
 	z-index: 1000;
 
-	${({ $Direction }) =>
-		$Direction === "left"
-			? "border-radius: 0.5rem 0 0.5rem 0.5rem;"
-			: "border-radius: 0 0.5rem 0.5rem 0.5rem;"}
-
-	${({ $Direction }) => ($Direction === "left" ? "right: 50%;" : "left: 50%;")}
+	border-radius: 0.5rem 0 0.5rem 0.5rem;
+	// border-radius: 0 0.5rem 0.5rem 0.5rem;
 `;

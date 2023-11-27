@@ -115,7 +115,7 @@ const StyledDropdown = styled(NavDropdown)`
 
 	.normal-dropdown-content {
 		z-index: 1010;
-		width: 360px;
+		width: 320px;
 		max-width: 100%;
 		background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 		display: flex;

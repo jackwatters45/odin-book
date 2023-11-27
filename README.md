@@ -1,21 +1,24 @@
 # Odin Book
 
-- post display social (likes, comments, shares) not fitting properly
-- dialogs not fit meep
+shower, shave
 
 <!--  -->
 
 - notifications
+  - socket.io
 
-- check nested user profile still good
-  - post scroll part meh
-- viewing own friends is totally wrong (use isOwnProfile)
-- nested shared posts!!! (something needs to be populated)
+<!--  -->
 
-- test populate shit one last time (also check all dialogs)
+- check issues
+- test populate shit one last time
+  - make sure shares are being added to posts as well or something
 - check nothing bad
+
+## after publish
+
 - tests
   - fix backend + make sure existing frontend tests work
+  - maybe frontend ones that exists
 
 ## eventually look into
 

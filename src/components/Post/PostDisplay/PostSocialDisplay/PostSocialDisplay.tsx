@@ -1,3 +1,5 @@
+import { HTMLAttributes } from "react";
+
 import Share from "./Share";
 import Comment from "./Comment";
 import ReactionText from "./ReactionText";
@@ -11,7 +13,6 @@ import {
 	StyledPostSocialDisplayContainer,
 	StyledReactionsContainer,
 } from "./PostSocialDisplay.styles";
-import { HTMLAttributes } from "react";
 
 interface PostSocialDisplayProps extends HTMLAttributes<HTMLDivElement> {
 	post: IPost;
@@ -21,27 +22,26 @@ const PostSocialDisplay = ({ post, ...props }: PostSocialDisplayProps) => {
 	const {
 		commentCount,
 		shareCount,
-		hideCommentShareText,
-		hideReactionsText,
-		postSocialDisplayContainerRef,
+		containerRef,
+		reactionsRef,
+		commentsSharesRef,
+		showReactionText,
 	} = usePostSocialDisplay({ post });
 
 	return (
-		<StyledPostSocialDisplayContainer ref={postSocialDisplayContainerRef} {...props}>
-			<StyledReactionsContainer>
+		<StyledPostSocialDisplayContainer ref={containerRef} {...props}>
+			<StyledReactionsContainer ref={reactionsRef}>
 				<ReactionEmoji popularReactions={post.popularReactions} />
-				<ReactionText post={post} hideReactionsText={hideReactionsText} />
+				<ReactionText post={post} showReactionText={showReactionText} />
 			</StyledReactionsContainer>
-			<StyledCommentsSharesContainer>
+			<StyledCommentsSharesContainer ref={commentsSharesRef}>
 				<Comment
 					commentCount={commentCount}
-					hideCommentShareText={hideCommentShareText}
 					postId={post._id}
 					authorName={post.author.fullName}
 				/>
 				<Share
 					shareCount={shareCount}
-					hideCommentShareText={hideCommentShareText}
 					postId={post._id}
 					authorName={post.author.fullName}
 				/>

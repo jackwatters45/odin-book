@@ -1,5 +1,6 @@
 import { IPost, UserPreview } from "@/types/IPost";
 import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import formatNumberDisplay from "@/utils/format/formatNumberDisplay";
 
 const pushYou = (segments: ITitleSegment[], currentUserId: string) =>
 	segments.push({
@@ -30,7 +31,7 @@ const pushUser = (segments: ITitleSegment[], user: UserPreview) =>
 const pushOtherUsers = (segments: ITitleSegment[], reactionCount: number) =>
 	segments.push({
 		type: "text",
-		content: ` and ${reactionCount - 2} more`,
+		content: ` and ${formatNumberDisplay(reactionCount - 2)} more`,
 	});
 
 const getReactionTitleSegments = (post: IPost, currentUserId: string | undefined) => {

@@ -9,6 +9,5 @@ export const StyledMoreOptions = styled(MoreOptions)<{ $Direction: "left" | "rig
 	dialog {
 		top: 2.5rem;
 		margin: 0;
-		width: 275px;
 	}
 `;

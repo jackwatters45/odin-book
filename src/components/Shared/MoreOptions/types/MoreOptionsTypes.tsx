@@ -9,12 +9,3 @@ export interface MoreOptionsOption {
 }
 
 export type MoreOptionsOptions = MoreOptionsOption[];
-
-export type DialogDirectionX = "left" | "right" | "both";
-
-export type DialogDirectionY = "top" | "bottom" | "both";
-
-export type Direction = {
-	x: DialogDirectionX;
-	y: DialogDirectionY;
-};

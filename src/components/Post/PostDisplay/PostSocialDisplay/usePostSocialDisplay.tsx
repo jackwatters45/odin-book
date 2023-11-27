@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { IPost } from "@/types/IPost";
 
@@ -8,47 +8,46 @@ interface UsePostSocialDisplayProps {
 
 const usePostSocialDisplay = ({ post }: UsePostSocialDisplayProps) => {
 	const commentCount = post.comments?.length;
-	const shareCount = post.shares?.length;
+	const shareCount = post.shareCount;
 
-	const [hideCommentShareText, setHideCommentShareText] = useState(false);
-	const [hideReactionsText, setHideReactionsText] = useState(false);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-	const postSocialDisplayContainerRef = useRef<HTMLDivElement>(null);
+	const commentsSharesRef = useRef<HTMLDivElement>(null);
 
-	const divHeight = 50;
+	const [showReactionText, setShowReactionText] = useState(true);
+	const reactionsRef = useRef<HTMLDivElement>(null);
+	const [reactionTextWidth, setReactionTextWidth] = useState(0);
+
+	useLayoutEffect(() => {
+		if (reactionTextWidth === 0 && reactionsRef.current) {
+			setReactionTextWidth(reactionsRef.current.offsetWidth);
+		}
+	}, [reactionTextWidth, reactionsRef]);
+
 	useEffect(() => {
-		const checkFitting = () => {
-			const container = postSocialDisplayContainerRef.current;
-			if (container) {
-				const isSingleLine = container.scrollHeight <= divHeight;
-				if (!isSingleLine) {
-					setHideCommentShareText(true);
-					const isSingleLineAfterHidingCommentShareText =
-						container.scrollHeight <= divHeight;
-					if (!isSingleLineAfterHidingCommentShareText) {
-						setHideReactionsText(true);
-					}
-				} else {
-					setHideCommentShareText(false);
-					setHideReactionsText(false);
-				}
-			}
-		};
+		const checkAndSetReactionVisibility = () => {
+			const isRefsNull =
+				!containerRef.current || !reactionsRef.current || !commentsSharesRef.current;
+			if (isRefsNull) return;
 
-		checkFitting();
-		window.addEventListener("resize", checkFitting);
+			const containerWidth = containerRef.current.offsetWidth;
+			const commentsSharesWidth = commentsSharesRef.current.offsetWidth;
 
-		return () => {
-			window.removeEventListener("resize", checkFitting);
+			setShowReactionText(reactionTextWidth <= containerWidth - commentsSharesWidth - 48);
 		};
-	}, [post]);
+		checkAndSetReactionVisibility();
+
+		window.addEventListener("resize", checkAndSetReactionVisibility);
+		return () => window.removeEventListener("resize", checkAndSetReactionVisibility);
+	}, [reactionTextWidth]);
 
 	return {
 		commentCount,
 		shareCount,
-		hideCommentShareText,
-		hideReactionsText,
-		postSocialDisplayContainerRef,
+		containerRef,
+		reactionsRef,
+		commentsSharesRef,
+		showReactionText,
 	};
 };
 

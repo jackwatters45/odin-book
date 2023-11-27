@@ -9,7 +9,7 @@ import {
 	StyledMoreOptionsContainer,
 	StyledUserAboutOverviewItemMoreButton,
 } from "./MoreOptions.styles";
-import { MoreOptionsOptions } from "./types/MoreOptionTypes";
+import { MoreOptionsOptions } from "./types/MoreOptionsTypes";
 import MoreOptionsContent from "./MoreOptionsContent/MoreOptionsContent";
 
 interface MoreOptionsProps extends HTMLAttributes<HTMLDivElement> {
@@ -42,7 +42,7 @@ const MoreOptions = ({
 	showButton = true,
 	...props
 }: MoreOptionsProps) => {
-	const { ref, openDialog, closeDialog, handleDelete, dialogDirection } = useMoreOptions({
+	const { ref, openDialog, closeDialog, handleDelete } = useMoreOptions({
 		deleteMutation,
 	});
 
@@ -64,7 +64,7 @@ const MoreOptions = ({
 				</StyledUserAboutOverviewItemMoreButton>
 			)}
 			{isUsingDialog && (
-				<StyledDialogMoreOptions ref={ref} $Direction={dialogDirection || "left"}>
+				<StyledDialogMoreOptions ref={ref}>
 					<MoreOptionsContent
 						categoryName={categoryName}
 						isSaved={isSaved}
@@ -77,7 +77,7 @@ const MoreOptions = ({
 						handleDelete={handleDelete}
 						saveMutation={saveMutation}
 					/>
-					<DialogTriangle Direction={dialogDirection || "left"} />
+					<DialogTriangle />
 				</StyledDialogMoreOptions>
 			)}
 		</StyledMoreOptionsContainer>

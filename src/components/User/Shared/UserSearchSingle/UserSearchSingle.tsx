@@ -11,8 +11,6 @@ import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
 import UserSearchResult from "./UserSearchResult";
 import { RegisterSearchInput } from "@/hooks/useUserSearch";
 
-// type AllKeys<T> = keyof T | `${Extract<keyof T, string>}.${string}`;
-
 interface UserSearchProps extends HTMLAttributes<HTMLDivElement> {
 	registerSearchInput: RegisterSearchInput;
 	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;

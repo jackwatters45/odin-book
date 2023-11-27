@@ -12,6 +12,7 @@ export const StyledCommentContainer = styled.div<{ $nestedCount: number }>`
 export const StyledCommentContentSocialContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 	gap: 0.125rem;
 `;
 
@@ -29,6 +30,7 @@ export const StyledViewRepliesButton = styled(StandardButton)`
 export const StyledContentMoreOptionsContainer = styled.div`
 	display: flex;
 	gap: 0.5rem;
+	justify-content: space-between;
 `;
 
 export const StyledFirstColumn = styled.div`

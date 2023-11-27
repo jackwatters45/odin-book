@@ -18,7 +18,7 @@ const useViewPost = () => {
 
 	const showReactions =
 		post &&
-		(post.reactions?.length > 0 || post.comments?.length > 0 || post.shares?.length > 0);
+		(post.reactions?.length > 0 || post.comments?.length > 0 || post.shareCount > 0);
 
 	const showPhotos = post?.media && post.media.length > 0;
 

@@ -5,7 +5,6 @@ export const StyledPostFirstRow = styled.div`
 	gap: 0.5rem;
 	align-items: center;
 	margin: 0.25rem 0 0.75rem;
-	position: relative;
 `;
 
 export const StyledPostFirstRowMiddle = styled.div`

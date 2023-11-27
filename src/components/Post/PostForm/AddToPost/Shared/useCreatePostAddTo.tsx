@@ -12,7 +12,7 @@ const useCreatePostAddTo = ({
 }: useCreatePostAddToProps) => {
 	const isOpenByDefault = initialOpenedState === field;
 
-	return useDialog({ isOpenByDefault });
+	return useDialog({ initial: isOpenByDefault });
 };
 
 export default useCreatePostAddTo;

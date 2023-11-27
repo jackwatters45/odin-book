@@ -8,6 +8,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { apiBaseUrl } from "@/config/envVariables";
 import useContainerWidth from "../../context/useContainerWidth";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -28,8 +29,11 @@ const fetchPosts = async ({ userId, pageParam = 0 }: FetchPostsParams) => {
 const useUserPosts = () => {
 	const currentUserAvatar = useCurrentUserCached()?.avatarUrl;
 
-	// container width
+	// container + window width
 	const containerWidth = useContainerWidth();
+	const windowWidth = useWindowWidth();
+
+	const isPreview = windowWidth !== containerWidth;
 
 	// user who's profile is being viewed
 	const { user } = useOutletContext<{ user: IUser }>();
@@ -74,9 +78,15 @@ const useUserPosts = () => {
 
 		const isColumnBiggerThanScreen = leftColumnHeight > windowHeight;
 
-		return isColumnBiggerThanScreen
-			? `calc(${windowHeight - leftColumnHeight}px)`
-			: "calc(1rem + 56px)";
+		if (isPreview) {
+			return isColumnBiggerThanScreen
+				? `calc(${windowHeight - leftColumnHeight - 56}px)`
+				: "1rem";
+		} else {
+			return isColumnBiggerThanScreen
+				? `calc(${windowHeight - leftColumnHeight}px)`
+				: "calc(1rem + 56px)";
+		}
 	};
 	const top = getTop();
 

@@ -7,7 +7,7 @@ import {
 	mdiTrashCanOutline,
 } from "@mdi/js";
 
-import { MoreOptionsOptions } from "../types/MoreOptionTypes";
+import { MoreOptionsOptions } from "../types/MoreOptionsTypes";
 import {
 	StyledDialogMoreOptionsContent,
 	StyledDialogMoreOptionsItem,

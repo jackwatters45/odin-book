@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import TimePeriod from "@/components/Shared/TimePeriod";
 import StandardSelect from "@/components/Shared/StandardSelect";
 import StandardButton from "@/components/Shared/StandardButton";
-import { DialogDirectionX } from "@/components/Shared/MoreOptions/types/MoreOptionTypes";
 import InfiniteScrollLoading from "@/components/Shared/InfiniteScrollLoading";
 
 export const StandardButtonStyles = css`
@@ -72,7 +71,7 @@ export const PlaceholderDiv = styled.div`
 	flex-grow: 1;
 `;
 
-export const StyledDialog = styled.dialog<{ $Direction?: DialogDirectionX }>`
+export const StyledDialog = styled.dialog`
 	background: white;
 	color: black;
 	border-radius: 0.5rem;

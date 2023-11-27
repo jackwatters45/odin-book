@@ -1,35 +1,20 @@
-import { mdiShare } from "@mdi/js";
-import { StyledCommentIcon } from "./PostShare.styles";
 import useViewPostContext from "@/components/Post/ViewPost/context/useViewPostContext";
+import formatNumberDisplay from "@/utils/format/formatNumberDisplay";
 
 interface PostShareProps {
 	shareCount: number;
-	hideCommentShareText: boolean;
 	postId: string;
 	authorName: string;
 }
 
-const PostShare = ({
-	shareCount,
-	hideCommentShareText,
-	postId,
-	authorName,
-}: PostShareProps) => {
+const PostShare = ({ shareCount, postId, authorName }: PostShareProps) => {
 	const { isOpen, openDialog } = useViewPostContext();
 
 	return (
 		shareCount > 0 && (
 			<button onClick={() => (!isOpen ? openDialog({ postId, authorName }) : null)}>
-				<span>{shareCount}</span>
-				<span>
-					{hideCommentShareText ? (
-						<StyledCommentIcon path={mdiShare} size={0.8} />
-					) : shareCount > 1 ? (
-						<span>shares</span>
-					) : (
-						<span>share</span>
-					)}
-				</span>
+				<span>{formatNumberDisplay(shareCount)}</span>
+				<span>{shareCount > 1 ? <span>shares</span> : <span>share</span>}</span>
 			</button>
 		)
 	);

@@ -13,7 +13,7 @@ export const UserPostsContainer = styled.div<ContainerWidth>`
 	}
 
 	${({ $containerWidth }) => {
-		if ($containerWidth <= 899) {
+		if ($containerWidth <= 900) {
 			return `
 				flex-direction: column;
 				align-items: center;
@@ -33,12 +33,10 @@ export const UserPostsContainer = styled.div<ContainerWidth>`
 		height: 100%;
 
 		${({ $containerWidth }) => {
-			if ($containerWidth <= 909) {
+			if ($containerWidth <= 900) {
 				return `
 					width: 100%;
 					max-width: 680px;
-					
-				
 				`;
 			}
 		}}
@@ -49,7 +47,7 @@ export const StyledUserPostsLeftColumn = styled.div<ContainerWidth>`
 	width: 42%;
 
 	${({ $containerWidth }) => {
-		if ($containerWidth >= 900) {
+		if ($containerWidth > 900) {
 			return `
 			position: -webkit-sticky;
 			position: sticky;`;

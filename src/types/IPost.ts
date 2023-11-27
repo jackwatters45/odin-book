@@ -24,7 +24,7 @@ export interface IPost {
 	reactions: IReaction[];
 	popularReactions?: ReactionType[];
 	comments: IComment[];
-	shares: string[];
+	shareCount: number;
 	sharedFrom?: IPost;
 	media?: string[];
 	unsavedMedia?: File[];

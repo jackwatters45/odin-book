@@ -22,7 +22,7 @@ interface CommentSortProps {
 }
 
 const CommentSort = ({ control, setValue }: CommentSortProps) => {
-	const { ref, openDialog, closeDialog, dialogDirection } = useMoreOptions({
+	const { ref, openDialog, closeDialog } = useMoreOptions({
 		deleteMutation: undefined,
 	});
 
@@ -41,7 +41,7 @@ const CommentSort = ({ control, setValue }: CommentSortProps) => {
 						);
 					}}
 				/>
-				<StyledCommentSortDialogMoreOptions ref={ref} $Direction={dialogDirection}>
+				<StyledCommentSortDialogMoreOptions ref={ref}>
 					<StyledDialogMoreOptionsContent>
 						<StyledDialogMoreOptionsItem
 							colorClass="transparent"
@@ -60,7 +60,7 @@ const CommentSort = ({ control, setValue }: CommentSortProps) => {
 							}}
 						/>
 					</StyledDialogMoreOptionsContent>
-					<DialogTriangle Direction={dialogDirection} />
+					<DialogTriangle />
 				</StyledCommentSortDialogMoreOptions>
 			</StyledCommentSortAnchor>
 		</StyledCommentSortContainer>
