@@ -1,17 +1,33 @@
 # Odin Book
 
-shower, shave
-
-<!--  -->
-
 - notifications
+
+  - build basic frontend
+
+  - post
+
+    - like
+    - comment
+    - share
+
+  - comment
+
+    - like
+    - reply
+
+  - friend
+
+    - request
+    - accept
+
   - socket.io
 
 <!--  -->
 
+- todos
 - check issues
-- test populate shit one last time
-  - make sure shares are being added to posts as well or something
+- test populate db shit one last time
+  - make sure shares are being added different posts
 - check nothing bad
 
 ## after publish

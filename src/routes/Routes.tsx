@@ -36,6 +36,7 @@ import FriendsFriendRequests from "@/components/Friends/FriendsPage/Pages/Reques
 import FriendsSuggestions from "@/components/Friends/FriendsPage/Pages/Suggestions";
 import FriendsAll from "@/components/Friends/FriendsPage/Pages/All";
 import PostPhotosView from "@/components/Post/PhotoDisplay";
+import Notifications from "@/components/Notifications";
 
 const UserRoutes = [
 	<Fragment key="1">
@@ -101,7 +102,7 @@ const RoutesComponent = () => {
 								</Route>
 							</Route>
 						</Route>
-						<Route path="notifications" element={<>Notifications</>} />
+						<Route path="notifications" element={<Notifications />} />
 						<Route path="user/:id" element={<UserProfile />}>
 							{UserRoutes}
 						</Route>
