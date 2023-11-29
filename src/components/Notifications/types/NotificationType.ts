@@ -1,15 +1,23 @@
 import { UserPreview } from "@/types/IPost";
 
 export type NotificationType =
-	| "friend request"
-	| "friend accepted"
+	| "request received"
+	| "request accepted"
 	| "comment"
-	| "like"
+	| "reaction"
 	| "birthday";
 
-export interface Notification {
+export type NotificationContentType = "post" | "comment";
+
+export interface INotification {
 	_id: string;
 	type: NotificationType;
-	user: UserPreview;
-	time: string;
+	to: string;
+	from: UserPreview;
+	contentId?: string;
+	contentType?: NotificationContentType;
+	rootId?: string;
+	isRead: boolean;
+	createdAt: string;
+	updatedAt: string;
 }

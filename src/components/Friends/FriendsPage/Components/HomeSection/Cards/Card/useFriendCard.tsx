@@ -6,7 +6,7 @@ import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import useSendFriendRequest from "@/components/Friends/hooks/useSendFriendRequest";
 import useRemoveSuggestedFriend from "@/components/Friends/hooks/useRemoveSuggestedFriend";
 import useCancelFriendRequest from "@/components/Friends/hooks/useCancelFriendRequest";
-import { buttonOptions, responseState } from "./types/FriendCardTypes";
+import { buttonOptions, ResponseState } from "./types/FriendCardTypes";
 
 const useFriendCard = (userId: string) => {
 	const currentUser = useCurrentUserCached();
@@ -35,7 +35,7 @@ const useFriendCard = (userId: string) => {
 	};
 
 	// request received state
-	const [responseState, setResponseState] = useState<responseState>(undefined);
+	const [responseState, setResponseState] = useState<ResponseState>(undefined);
 	const isFriendRequestReceived = currentUser?.friendRequestsReceived.some(
 		(request) => String(request) === String(userId),
 	);

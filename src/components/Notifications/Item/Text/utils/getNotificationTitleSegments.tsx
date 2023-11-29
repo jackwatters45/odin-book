@@ -1,37 +1,47 @@
-import { NotificationType } from "@/components/Notifications/types/NotificationType";
+import {
+	NotificationContentType,
+	NotificationType,
+} from "@/components/Notifications/types/NotificationType";
 import { UserPreview } from "@/types/IPost";
 import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
 
 const getNotificationTitleSegments = (
 	type: NotificationType,
 	user: UserPreview,
+	contentType: NotificationContentType | undefined,
 ): ITitleSegment[] => {
 	switch (type) {
-		case "friend request":
+		case "request received":
 			return [
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				{ type: "bold", content: user.fullName },
 				{ type: "text", content: " sent you a friend request" },
 			];
-		case "friend accepted":
+		case "request accepted":
 			return [
 				{ type: "text", content: "New friend: You can now check out " },
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				{ type: "bold", content: user.fullName },
 				{ type: "text", content: "'s posts" },
 			];
 		case "comment":
 			return [
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
-				{ type: "text", content: " commented on your post" },
+				{ type: "bold", content: user.fullName },
+				{
+					type: "text",
+					content:
+						contentType === "post"
+							? " commented on your post"
+							: " replied to your comment",
+				},
 			];
-		case "like":
+		case "reaction":
 			return [
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
-				{ type: "text", content: " liked your post" },
+				{ type: "bold", content: user.fullName },
+				{ type: "text", content: ` reacted to your ${contentType}` },
 			];
 		case "birthday":
 			return [
 				{ type: "text", content: "It's " },
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				{ type: "bold", content: user.fullName },
 				{ type: "text", content: "'s birthday today" },
 			];
 	}

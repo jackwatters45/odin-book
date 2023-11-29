@@ -224,3 +224,24 @@ export const InfiniteScrollLoadingPosts = styled(InfiniteScrollLoading)`
 	height: 100px;
 	background: black;
 `;
+
+export const StyledCenteredContainer = styled.div`
+	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+	min-height: calc(100vh - 56px);
+	display: flex;
+`;
+
+export const StyledCenteredContainerContent = styled.div`
+	max-width: 680px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 1rem;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+`;

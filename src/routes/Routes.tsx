@@ -102,7 +102,10 @@ const RoutesComponent = () => {
 								</Route>
 							</Route>
 						</Route>
-						<Route path="notifications" element={<Notifications />} />
+						<Route path="notifications">
+							<Route index element={<Notifications />} />
+							<Route path="unread" element={<Notifications />} />
+						</Route>
 						<Route path="user/:id" element={<UserProfile />}>
 							{UserRoutes}
 						</Route>

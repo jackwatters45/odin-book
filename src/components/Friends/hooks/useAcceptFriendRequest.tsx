@@ -4,7 +4,6 @@ interface UseAcceptFriendRequest {
 	id: string;
 }
 
-// TODO change name link
 const useAcceptFriendRequest = ({ id }: UseAcceptFriendRequest) => {
 	const { mutate: accept } = useMutateCustom({
 		queryUrl: `users/me/friend-requests/${id}/accept`,

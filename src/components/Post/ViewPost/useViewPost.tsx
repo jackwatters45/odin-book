@@ -7,10 +7,9 @@ import useViewPostContext from "./context/useViewPostContext";
 const useViewPost = () => {
 	const { postId, authorName, ref, closeDialog } = useViewPostContext();
 
-	const postIdTemp = postId || "6532021f19447873e74dc753";
 	const { data: post, isLoading } = useQueryCustom<IPost>({
-		queryUrl: `posts/${postIdTemp}`,
-		queryKey: ["post", postIdTemp],
+		queryUrl: `posts/${postId}`,
+		queryKey: ["post", postId],
 	});
 
 	const commentInputRef = useRef<HTMLInputElement>(null);

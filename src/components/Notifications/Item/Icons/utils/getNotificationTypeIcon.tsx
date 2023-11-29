@@ -11,13 +11,13 @@ const getNotificationTypeIcon = (
 	type: NotificationType,
 ): getNotificationTypeIconReturn => {
 	switch (type) {
-		case "friend request":
+		case "request received":
 			return { typeIcon: mdiAccount, IconBackgroundColor: "#6b7280" };
-		case "friend accepted":
+		case "request accepted":
 			return { typeIcon: mdiAccount, IconBackgroundColor: "#6b7280" };
 		case "comment":
 			return { typeIcon: mdiComment, IconBackgroundColor: "#22c55e" };
-		case "like":
+		case "reaction":
 			return { typeIcon: mdiThumbUp, IconBackgroundColor: "#1b74e4" };
 		case "birthday":
 			return { typeIcon: mdiCakeVariant, IconBackgroundColor: "#ec4899" };

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { Notification } from "../../types/NotificationType";
+import { INotification } from "../../types/NotificationType";
 import formatTimeSince from "@/utils/dateHelpers/formatTimeSince";
 import renderTitleSegment from "@/utils/render/titleSegment/titleSegments";
 import getNotificationTitleSegments from "./utils/getNotificationTitleSegments";
@@ -11,13 +11,13 @@ import {
 } from "./NotificationItemText.styles";
 
 interface NotificationItemTextProps {
-	notification: Notification;
+	notification: INotification;
 }
 
 const NotificationItemText = ({
-	notification: { user, type, time },
+	notification: { from, type, createdAt, contentType },
 }: NotificationItemTextProps) => {
-	const title = getNotificationTitleSegments(type, user);
+	const title = getNotificationTitleSegments(type, from, contentType);
 
 	return (
 		<StyledNotificationItemTextContainer>
@@ -27,7 +27,7 @@ const NotificationItemText = ({
 				))}
 			</StyledNotificationItemTextContent>
 			<StyledNotificationItemTextTime>
-				{formatTimeSince(time)}
+				{formatTimeSince(createdAt)}
 			</StyledNotificationItemTextTime>
 		</StyledNotificationItemTextContainer>
 	);

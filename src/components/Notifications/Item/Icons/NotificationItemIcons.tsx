@@ -11,16 +11,16 @@ import {
 
 interface NotificationItemIconsProps {
 	type: NotificationType;
-	user: UserPreview;
+	from: UserPreview;
 }
 
-const NotificationItemIcons = ({ type, user }: NotificationItemIconsProps) => {
+const NotificationItemIcons = ({ type, from }: NotificationItemIconsProps) => {
 	const { typeIcon, IconBackgroundColor } = getNotificationTypeIcon(type);
 
 	return (
 		<StyledNotificationIconsContainer>
-			<Link to={`/user/${user._id}`}>
-				<ImageCircle src={user.avatarUrl} alt={user.fullName} size={56} />
+			<Link to={`/user/${from._id}`}>
+				<ImageCircle src={from.avatarUrl} alt={from.fullName} size={56} />
 			</Link>
 			<StyledNotificationTypeIcon
 				path={typeIcon}

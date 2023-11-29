@@ -6,6 +6,7 @@ export const StyledNotificationIconsContainer = styled.div`
 	position: relative;
 	padding-right: 0.25rem;
 	padding-bottom: 0.25rem;
+	align-self: flex-start;
 `;
 
 export const StyledNotificationTypeIcon = styled(IconCircleBackground)`

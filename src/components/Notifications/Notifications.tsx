@@ -1,48 +1,51 @@
+import NotificationsNav from "./Nav";
+import NotificationItem from "./Item";
+import useNotifications from "./useNotifications";
 import MarkAllAsRead from "./MarkAllAsRead";
 import { StyledNotificationsSection, StyledSectionTitle } from "./Notifications.styles";
-import NotificationsNav from "./Nav";
-
-import NotificationItem from "./Item/NotificationItem";
-import { Notification } from "./types/NotificationType";
-
-// TODO rename -> move
 import {
-	StyledDashboardContainer,
-	StyledDashboardContentContainer,
-} from "../Dashboard/Dashboard.styles";
+	StyledCenteredContainer,
+	StyledCenteredContainerContent,
+} from "@/styles/SharedStyles";
+import Loading from "../Shared/Loading";
 
-const notification: Notification = {
-	_id: "1",
-	type: "birthday",
-	user: {
-		_id: "1",
-		fullName: "John Doe",
-		avatarUrl: "https://via.placeholder.com/150",
-	},
-	time: new Date().toISOString(),
-};
+// TODO birthdays (how to trigger?)
+// TODO paginationv (+ make sure gets are working)
 
-// TODO friend requests part
-
-// TODO make mark read buttons work + style
-// TODO if read -> secondary text
-// TODO conditional render of each section
-
-// TODO populate with data
-// new = last 24hr, earlier = before 24hrs (I think just do frontend)
-// how to deal with multiple comments/like on same post
+// TODO websockets
 const Notifications = () => {
-	return (
-		<StyledDashboardContainer>
-			<StyledDashboardContentContainer>
-				<StyledNotificationsSection title="Notifications" rightColumn={<MarkAllAsRead />}>
+	const { newNotifications, earlierNotifications, isLoading, isUnreadNotification } =
+		useNotifications();
+
+	return isLoading ? (
+		<Loading />
+	) : (
+		<StyledCenteredContainer>
+			<StyledCenteredContainerContent>
+				<StyledNotificationsSection
+					title="Notifications"
+					rightColumn={<MarkAllAsRead isUnreadNotification={isUnreadNotification} />}
+				>
 					<NotificationsNav />
-					<StyledSectionTitle>New</StyledSectionTitle>
-					<NotificationItem notification={notification} />
-					<StyledSectionTitle>Earlier</StyledSectionTitle>
+					{newNotifications && newNotifications.length > 0 && (
+						<>
+							<StyledSectionTitle>New</StyledSectionTitle>
+							{newNotifications.map((notification) => (
+								<NotificationItem key={notification._id} notification={notification} />
+							))}
+						</>
+					)}
+					{earlierNotifications && earlierNotifications.length > 0 && (
+						<>
+							<StyledSectionTitle>Earlier</StyledSectionTitle>
+							{earlierNotifications.map((notification) => (
+								<NotificationItem key={notification._id} notification={notification} />
+							))}
+						</>
+					)}
 				</StyledNotificationsSection>
-			</StyledDashboardContentContainer>
-		</StyledDashboardContainer>
+			</StyledCenteredContainerContent>
+		</StyledCenteredContainer>
 	);
 };
 

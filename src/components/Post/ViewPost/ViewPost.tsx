@@ -36,7 +36,7 @@ const ViewPost = () => {
 			{isLoading ? (
 				<Loading />
 			) : !post ? (
-				<Navigate to="/404" />
+				<Navigate to="/404/post-not-found" />
 			) : (
 				<div>
 					<StyledViewPostScrollContainer>

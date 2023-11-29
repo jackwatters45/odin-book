@@ -3,21 +3,20 @@ import { Fragment } from "react";
 import Loading from "../Shared/Loading";
 import PostDisplay from "../Post/PostDisplay";
 import useDashboard from "./useDashboard";
+import { StyledCreatePostButton, StyledPostsContainer } from "./Dashboard.styles";
 import {
-	StyledCreatePostButton,
-	StyledDashboardContainer,
-	StyledDashboardContentContainer,
-	StyledPostsContainer,
-} from "./Dashboard.styles";
-import { InfiniteScrollLoadingPosts } from "@/styles/SharedStyles";
+	InfiniteScrollLoadingPosts,
+	StyledCenteredContainer,
+	StyledCenteredContainerContent,
+} from "@/styles/SharedStyles";
 
 const Dashboard = () => {
 	const { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage } =
 		useDashboard();
 
 	return (
-		<StyledDashboardContainer>
-			<StyledDashboardContentContainer>
+		<StyledCenteredContainer>
+			<StyledCenteredContainerContent>
 				<StyledPostsContainer>
 					<StyledCreatePostButton
 						userFirstName={currentUser?.firstName as string}
@@ -49,8 +48,8 @@ const Dashboard = () => {
 							: "No posts to display... add friends to see posts!"
 					}
 				/>
-			</StyledDashboardContentContainer>
-		</StyledDashboardContainer>
+			</StyledCenteredContainerContent>
+		</StyledCenteredContainer>
 	);
 };
 

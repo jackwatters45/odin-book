@@ -1,6 +1,6 @@
 import { colorClassTypes } from "@/components/Shared/StandardButton/StandardButton";
 
-export type responseState = "accepted" | "declined" | "pending" | undefined;
+export type ResponseState = "accepted" | "declined" | "pending" | undefined;
 
 export interface buttonOption {
 	text: string;

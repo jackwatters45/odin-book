@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const StyledNotificationItemTextContainer = styled.div`
-	align-self: flex-start;
 	display: flex;
 	flex-direction: column;
 	gap: 0.125rem;
-	margin-top: 0.25rem;
+	margin-top: 0.5rem;
+	align-items: flex-start;
 `;
 
 export const StyledNotificationItemTextContent = styled.span`
