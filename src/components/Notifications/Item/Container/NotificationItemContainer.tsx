@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 
-import { INotification } from "../../types/NotificationType";
+import MarkAsReadDot from "../MarkAsReadDot";
 import useNotificationItemContainer from "./useNotificationItemContainer";
+import { INotification } from "../../types/NotificationType";
 import {
+	StyledNotificationItemContainer,
 	StyledNotificationItemContainerButton,
 	StyledNotificationItemContainerLink,
 } from "./NotificationItemContainer.styles";
@@ -19,13 +21,19 @@ const NotificationItemContainer = ({
 	const { to, handleOpenViewPost } = useNotificationItemContainer(notification);
 
 	return to ? (
-		<StyledNotificationItemContainerLink to={to}>
-			{children}
-		</StyledNotificationItemContainerLink>
+		<StyledNotificationItemContainer>
+			<StyledNotificationItemContainerLink to={to}>
+				{children}
+			</StyledNotificationItemContainerLink>
+			<MarkAsReadDot notificationId={notification._id} isRead={notification.isRead} />
+		</StyledNotificationItemContainer>
 	) : (
-		<StyledNotificationItemContainerButton onClick={handleOpenViewPost}>
-			{children}
-		</StyledNotificationItemContainerButton>
+		<StyledNotificationItemContainer>
+			<StyledNotificationItemContainerButton onClick={handleOpenViewPost}>
+				{children}
+			</StyledNotificationItemContainerButton>
+			<MarkAsReadDot notificationId={notification._id} isRead={notification.isRead} />
+		</StyledNotificationItemContainer>
 	);
 };
 

@@ -21,7 +21,7 @@ const fetchNotifications = async (queryKeyEnd: string) => {
 };
 
 const useNotifications = () => {
-	const queryKeyEnd = useMatch("/notifications/unread") ? "unread" : "";
+	const queryKeyEnd = useMatch("/notifications/unread") ? "unread" : "all";
 
 	const { data: notifications, isLoading } = useQuery<INotification[]>({
 		queryKey: ["me", "notifications", queryKeyEnd],

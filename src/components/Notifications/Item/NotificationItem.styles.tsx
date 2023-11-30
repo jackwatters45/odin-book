@@ -9,14 +9,6 @@ export const StyledNotificationItemContent = styled.div`
 	flex: 1;
 `;
 
-export const MarkAsReadDot = styled.button`
-	width: 0.75rem;
-	height: 0.75rem;
-	border-radius: 50%;
-	background-color: ${({ theme }) => theme.colors.blueButton};
-	align-self: center;
-`;
-
 export const StyledNotificationItemMiddleRow = styled.div`
 	flex: 1;
 	align-self: flex-start;

@@ -10,6 +10,7 @@ export const StyledNotificationItemTextContainer = styled.div`
 
 export const StyledNotificationItemTextContent = styled.span`
 	font-size: 0.95rem;
+	color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
 export const StyledNotificationItemTextTime = styled.span`

@@ -1,4 +1,5 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
+
 import ContainerWidthContext from "./ContainerWidthContext";
 
 interface ContainerWidthProviderProps {
@@ -8,6 +9,11 @@ interface ContainerWidthProviderProps {
 const ContainerWidthProvider = ({ children }: ContainerWidthProviderProps) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [containerWidth, setContainerWidth] = useState(0);
+
+	useLayoutEffect(() => {
+		const container = containerRef.current;
+		if (container) setContainerWidth(container.offsetWidth);
+	}, []);
 
 	useEffect(() => {
 		const container = containerRef.current;

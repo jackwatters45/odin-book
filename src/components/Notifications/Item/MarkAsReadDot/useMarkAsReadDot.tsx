@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { apiBaseUrl } from "@/config/envVariables";
-import { INotification } from "../types/NotificationType";
+import { INotification } from "@/components/Notifications/types/NotificationType";
 import { useMatch } from "react-router";
 
-const fetchMarkAllAsRead = async () => {
-	const response = await fetch(`${apiBaseUrl}/notifications/read/all`, {
+const fetchMarkAsRead = async (id: string) => {
+	const response = await fetch(`${apiBaseUrl}/notifications/${id}/read`, {
 		method: "PATCH",
 		credentials: "include",
 	});
@@ -15,38 +16,39 @@ const fetchMarkAllAsRead = async () => {
 	return data;
 };
 
-interface UseMarkAllAsReadProps {
-	isUnreadNotification: boolean;
-}
-
-const useMarkAllAsRead = ({ isUnreadNotification }: UseMarkAllAsReadProps) => {
+const useMarkAsReadDot = (id: string) => {
 	const queryClient = useQueryClient();
 
 	const queryKeyEnd = useMatch("/notifications/unread") ? "unread" : "all";
 
+	// mark as read
+	const notificationId = id;
 	const { mutate } = useMutation({
 		mutationKey: ["me", "notifications", queryKeyEnd],
-		mutationFn: fetchMarkAllAsRead,
+		mutationFn: fetchMarkAsRead,
 		onSuccess: () => {
 			queryClient.setQueryData<INotification[]>(
 				["me", "notifications", queryKeyEnd],
 				(prevNotifications) => {
 					return (
-						prevNotifications?.map((notification) => ({
-							...notification,
-							isRead: true,
-						})) ?? []
+						prevNotifications?.map((notification) => {
+							return notification._id === notificationId
+								? {
+										...notification,
+										isRead: true,
+								  }
+								: notification;
+						}) ?? []
 					);
 				},
 			);
 		},
 	});
-
-	const handleClickMarkAllAsRead = () => {
-		if (isUnreadNotification) mutate();
+	const handleClickMarkAsRead = () => {
+		mutate(notificationId);
 	};
 
-	return { handleClickMarkAllAsRead };
+	return { handleClickMarkAsRead };
 };
 
-export default useMarkAllAsRead;
+export default useMarkAsReadDot;

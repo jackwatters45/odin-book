@@ -24,7 +24,7 @@ const getNotificationTitleSegments = (
 			];
 		case "comment":
 			return [
-				{ type: "bold", content: user.fullName },
+				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
 				{
 					type: "text",
 					content:
@@ -35,13 +35,13 @@ const getNotificationTitleSegments = (
 			];
 		case "reaction":
 			return [
-				{ type: "bold", content: user.fullName },
+				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
 				{ type: "text", content: ` reacted to your ${contentType}` },
 			];
 		case "birthday":
 			return [
 				{ type: "text", content: "It's " },
-				{ type: "bold", content: user.fullName },
+				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
 				{ type: "text", content: "'s birthday today" },
 			];
 	}

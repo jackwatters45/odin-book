@@ -5,6 +5,7 @@ import UserProfileSection from "../User/Shared/UserProfileSection";
 export const StyledNotificationsSection = styled(UserProfileSection)`
 	gap: 0;
 	padding: 1rem 0.5rem;
+	min-height: calc(100vh - 88px);
 
 	> div:first-child {
 		margin-left: 0.5rem;

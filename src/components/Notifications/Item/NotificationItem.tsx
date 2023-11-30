@@ -2,7 +2,6 @@ import { INotification } from "../types/NotificationType";
 import NotificationItemContainer from "./Container/NotificationItemContainer";
 import NotificationItemIcons from "./Icons";
 import {
-	MarkAsReadDot,
 	StyledNotificationFriendRequestButtons,
 	StyledNotificationItemContent,
 	StyledNotificationItemMiddleRow,
@@ -16,13 +15,9 @@ export interface NotificationItemProps {
 }
 
 const NotificationItem = ({ notification }: NotificationItemProps) => {
-	const {
-		handleClickMarkAsRead,
-		isRequest,
-		responseState,
-		handleClickAccept,
-		handleClickDecline,
-	} = useNotificationItem({ notification });
+	const { isRequest, responseState, handleClickAccept, handleClickDecline } =
+		useNotificationItem({ notification });
+
 	return (
 		<NotificationItemContainer notification={notification}>
 			<StyledNotificationItemContent>
@@ -52,10 +47,6 @@ const NotificationItem = ({ notification }: NotificationItemProps) => {
 						))}
 				</StyledNotificationItemMiddleRow>
 			</StyledNotificationItemContent>
-			<MarkAsReadDot
-				onClick={handleClickMarkAsRead}
-				style={{ visibility: notification.isRead ? "hidden" : "visible" }}
-			/>
 		</NotificationItemContainer>
 	);
 };

@@ -2,26 +2,6 @@
 
 - notifications
 
-  - build basic frontend
-
-  - post
-
-    - like
-    - comment
-    - share
-
-  - comment
-
-    - like
-    - reply
-
-  - friend
-
-    - request
-    - accept
-
-  - socket.io
-
 <!--  -->
 
 - todos

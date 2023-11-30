@@ -20,7 +20,9 @@ const renderTitleSegment = (segment: ITitleSegment) => {
 		case "link":
 			return (
 				<span style={segment.style}>
-					<TitleSegmentLink to={segment.linkTo}>{segment.content}</TitleSegmentLink>
+					<TitleSegmentLink to={segment.linkTo} onClick={(e) => e.stopPropagation()}>
+						{segment.content}
+					</TitleSegmentLink>
 				</span>
 			);
 		case "icon":
