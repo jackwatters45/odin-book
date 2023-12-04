@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-
 import Loading from "../Shared/Loading";
 import PostDisplay from "../Post/PostDisplay";
 import useDashboard from "./useDashboard";
@@ -26,13 +24,7 @@ const Dashboard = () => {
 					{isLoading ? (
 						<Loading />
 					) : (
-						posts?.pages.map((group, i) => (
-							<Fragment key={i}>
-								{group.map((post) => (
-									<PostDisplay key={post._id} post={post} />
-								))}
-							</Fragment>
-						))
+						posts?.map((post) => <PostDisplay key={post._id} post={post} />)
 					)}
 				</StyledPostsContainer>
 				<InfiniteScrollLoadingPosts

@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 
 import "./styles/reset.css";
 import GlobalStyle from "./styles/theme/GlobalStyle";
-import AppInitializer from "./AppInitializer";
+import RoutesComponent from "./routes/Routes";
 import { useColorTheme } from "./styles/theme/useColorTheme";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 import PostFormProvider from "./components/Post/PostForm/context/PostFormProvider";
@@ -21,7 +21,7 @@ function App() {
 				<ErrorProvider>
 					<PostFormProvider>
 						<ViewPostProvider>
-							<AppInitializer />
+							<RoutesComponent />
 							<GlobalStyle />
 							<ReactQueryDevtools initialIsOpen={true} />
 						</ViewPostProvider>

@@ -25,6 +25,7 @@ export const lightTheme = {
 		secondaryBlueButton: "#e7f3ff",
 		secondaryBlueButtonTextColor: "#1877f2",
 
+		grey: "#6b7280",
 		selectedBlue: "#1877f2",
 
 		backdropColor: "rgba(244, 244, 244, 0.8)",
@@ -39,6 +40,10 @@ export const lightTheme = {
 
 	shadowBorder: css`
 		box-shadow: inset 0 0 0 0.25px rgba(0, 0, 0, 0.2);
+	`,
+
+	greyBorder: css`
+		box-shadow: inset 0 0 0 0.25px ${({ theme }) => theme.colors.grey};
 	`,
 
 	sectionShadow: css`

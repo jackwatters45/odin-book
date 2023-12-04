@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { apiBaseUrl } from "@/config/envVariables";
-import { INotification } from "@/components/Notifications/types/NotificationType";
+import { InfiniteNotificationsResults } from "@/components/Notifications/types/NotificationType";
 import { useMatch } from "react-router";
 
 const fetchMarkAsRead = async (id: string) => {
@@ -27,20 +27,29 @@ const useMarkAsReadDot = (id: string) => {
 		mutationKey: ["me", "notifications", queryKeyEnd],
 		mutationFn: fetchMarkAsRead,
 		onSuccess: () => {
-			queryClient.setQueryData<INotification[]>(
+			queryClient.setQueryData<InfiniteNotificationsResults>(
 				["me", "notifications", queryKeyEnd],
 				(prevNotifications) => {
-					return (
-						prevNotifications?.map((notification) => {
-							return notification._id === notificationId
-								? {
-										...notification,
-										isRead: true,
-								  }
-								: notification;
-						}) ?? []
-					);
+					if (!prevNotifications) return { pages: [], pageParams: [] };
+
+					const updatedPages = prevNotifications.pages.map((page) => {
+						return page.map((notification) => {
+							if (notification._id === notificationId) {
+								return { ...notification, isRead: true };
+							}
+							return notification;
+						});
+					});
+
+					return {
+						pages: updatedPages,
+						pageParams: prevNotifications.pageParams,
+					};
 				},
+			);
+
+			queryClient.setQueryData<number>(["me", "notifications", "count"], (prev) =>
+				prev ? prev - 1 : 0,
 			);
 		},
 	});

@@ -14,6 +14,7 @@ interface ReactionTextProps {
 const PostReactionText = ({ post, showReactionText }: ReactionTextProps) => {
 	const currentUserId = useCurrentUserCached()?._id;
 
+	return null;
 	return showReactionText ? (
 		<StyledReactionsTextContainer>
 			{getReactionTitleSegments(post, currentUserId).map((segment, index) => (

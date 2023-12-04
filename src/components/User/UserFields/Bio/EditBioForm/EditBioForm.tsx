@@ -8,6 +8,7 @@ import {
 	StyledTextArea,
 	StyledTextAreaContainer,
 } from "./EditBioForm.styles";
+import DialogActions from "@/components/Shared/DialogActions";
 
 interface EditBioFormProps {
 	handleCloseForm: () => void;
@@ -30,7 +31,6 @@ const EditBioForm = ({ handleCloseForm, data, className }: EditBioFormProps) => 
 				/>
 			</div>
 			<StyledCharCount>{bioLengthRemaining} characters remaining</StyledCharCount>
-			{/* TODO -> dialog actions */}
 			<StyledBottomRow>
 				<PrivacyStatus value="Public" />
 				<StyledButtonDiv>

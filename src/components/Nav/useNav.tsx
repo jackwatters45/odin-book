@@ -1,10 +1,8 @@
-import useCurrentUser from "../../hooks/useCurrentUser";
-import useCreatePostContext from "../Post/PostForm/context/usePostFormContext";
 import { useMatch } from "react-router";
 
-const useNav = () => {
-	const { currentUser, isSuccess } = useCurrentUser();
+import useCreatePostContext from "../Post/PostForm/context/usePostFormContext";
 
+const useNav = () => {
 	const { openDialog } = useCreatePostContext();
 
 	const openCreatePostDialog = () => {
@@ -16,8 +14,6 @@ const useNav = () => {
 	const isNotificationsActive = !!useMatch("/notifications/*");
 
 	return {
-		user: currentUser,
-		isSuccess,
 		openCreatePostDialog,
 		isDashboardActive,
 		isFriendsActive,

@@ -6,7 +6,7 @@ const splitArrayByDate = (array: INotification[]): [INotification[], INotificati
 	const olderThan24Hours: INotification[] = [];
 
 	array.forEach((item) => {
-		if (new Date(item.createdAt) > twentyFourHoursAgo) {
+		if (new Date(item.updatedAt) > twentyFourHoursAgo) {
 			last24Hours.push(item);
 		} else {
 			olderThan24Hours.push(item);

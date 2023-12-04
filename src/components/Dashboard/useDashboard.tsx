@@ -21,7 +21,7 @@ const useDashboard = () => {
 
 	// infinite scroll query
 	const {
-		data: posts,
+		data: unflattenedPosts,
 		isLoading,
 		fetchNextPage,
 		isFetchingNextPage,
@@ -35,10 +35,12 @@ const useDashboard = () => {
 
 	// infinite scroll ui
 	const { ref } = useInfiniteScroll<IPost[]>({
-		data: posts,
+		data: unflattenedPosts,
 		hasNextPage,
 		fetchNextPage,
 	});
+
+	const posts = unflattenedPosts?.pages.flat() as IPost[];
 
 	return { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage };
 };

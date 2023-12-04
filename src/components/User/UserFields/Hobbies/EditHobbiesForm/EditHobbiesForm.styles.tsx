@@ -23,7 +23,7 @@ export const StyledMoreOptionsButton = styled.button`
 	color: #1877f2;
 	background-color: #e7f3ff;
 	height: 38px;
-	box-shadow: inset 0 0 0 0.25px grey;
+	${({ theme }) => theme.greyBorder}
 	border-radius: 2rem;
 	font-size: 0.95rem;
 	margin-top: 0.5rem;

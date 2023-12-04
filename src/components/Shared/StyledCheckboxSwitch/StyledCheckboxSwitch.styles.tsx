@@ -9,7 +9,7 @@ export const SwitchLabel = styled.label`
 	cursor: pointer;
 	width: 50px;
 	height: 25px;
-	background: grey;
+	background: ${({ theme }) => theme.colors.grey};
 	border-radius: 100px;
 	position: relative;
 	transition: background-color 0.2s;

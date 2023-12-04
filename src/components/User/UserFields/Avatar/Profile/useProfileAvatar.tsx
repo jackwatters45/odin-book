@@ -6,7 +6,7 @@ const useProfileAvatar = () => {
 	const { id } = useParams();
 
 	const { fileInputRef, handleUploadClick, handleFileChange } = useFileUpload({
-		queryUrl: `users/${id}/profile-photo`,
+		queryUrl: `users/${id}/avatar-photo`,
 		method: "PATCH",
 		queryKey: ["user", id as string],
 		updateDataKey: "user",

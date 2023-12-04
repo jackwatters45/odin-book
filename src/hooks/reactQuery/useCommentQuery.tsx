@@ -1,8 +1,10 @@
 import { apiBaseUrl } from "@/config/envVariables";
 import { IComment } from "@/types/IComment";
 import { IPost } from "@/types/IPost";
-import { useQueryClient } from "@tanstack/react-query";
+import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router";
+
+type InfinitePostsResults = InfiniteData<IPost[]>;
 
 export const useCommentQuery = (postId: string) => {
 	const queryClient = useQueryClient();
@@ -25,12 +27,19 @@ export const useCommentQuery = (postId: string) => {
 
 	// create comment on success
 	const createCommentQuery = (data: IComment) => {
-		queryClient.setQueryData<IPost[]>(["user", userId, "posts"], (prevData) =>
-			prevData?.map((prev) => {
-				return prev._id === postId
-					? { ...prev, comments: [data, ...(prev.comments || [])] }
-					: prev;
-			}),
+		queryClient.setQueryData<InfinitePostsResults>(
+			["user", userId, "posts"],
+			(prevData) => {
+				if (!prevData) return prevData;
+				const updatedPages = prevData.pages.map((page) =>
+					page.map((p) => (p._id === data._id ? data : p)),
+				) as IPost[][];
+
+				return {
+					pages: updatedPages,
+					pageParams: prevData.pageParams,
+				};
+			},
 		);
 
 		return data.parentComment

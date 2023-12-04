@@ -9,7 +9,7 @@ interface NavButtonProps extends HTMLAttributes<HTMLButtonElement> {
 
 const NavButton = ({ icon, text, onClick, ...props }: NavButtonProps) => {
 	return (
-		<StyledButton {...props}>
+		<StyledButton {...props} onClick={onClick}>
 			{icon && icon}
 			<span>{text}</span>
 		</StyledButton>

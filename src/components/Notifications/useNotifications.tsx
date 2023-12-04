@@ -1,13 +1,23 @@
 import { useMatch } from "react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { apiBaseUrl } from "@/config/envVariables";
 import { INotification } from "./types/NotificationType";
 import splitArrayByDate from "./utils/splitArrayByDate";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
-const fetchNotifications = async (queryKeyEnd: string) => {
+const ITEMS_PER_PAGE = 20;
+interface FetchNotificationsParams {
+	queryKeyEnd: string;
+	pageParam?: number;
+}
+
+const fetchNotifications = async ({
+	queryKeyEnd,
+	pageParam = 0,
+}: FetchNotificationsParams) => {
 	const response = await fetch(
-		`${apiBaseUrl}/notifications${queryKeyEnd ? `/${queryKeyEnd}` : ""}`,
+		`${apiBaseUrl}/notifications/${queryKeyEnd}?page=${pageParam}`,
 		{
 			method: "GET",
 			credentials: "include",
@@ -23,10 +33,28 @@ const fetchNotifications = async (queryKeyEnd: string) => {
 const useNotifications = () => {
 	const queryKeyEnd = useMatch("/notifications/unread") ? "unread" : "all";
 
-	const { data: notifications, isLoading } = useQuery<INotification[]>({
+	const {
+		data: unflattenedNotifications,
+		isLoading,
+		fetchNextPage,
+		isFetchingNextPage,
+		hasNextPage,
+	} = useInfiniteQuery<INotification[]>({
 		queryKey: ["me", "notifications", queryKeyEnd],
-		queryFn: () => fetchNotifications(queryKeyEnd),
+		queryFn: ({ pageParam }) => fetchNotifications({ queryKeyEnd, pageParam }),
+		getNextPageParam: (lastPage, pages) =>
+			lastPage.length < ITEMS_PER_PAGE ? undefined : pages.length,
 	});
+
+	// infinite scroll ui
+	const { ref } = useInfiniteScroll<INotification[]>({
+		data: unflattenedNotifications,
+		hasNextPage,
+		fetchNextPage,
+	});
+
+	// notifications split by date
+	const notifications = unflattenedNotifications?.pages.flat() ?? [];
 
 	const isUnreadNotification =
 		notifications?.some((notification) => !notification.isRead) ?? false;
@@ -38,6 +66,9 @@ const useNotifications = () => {
 		earlierNotifications,
 		isLoading,
 		isUnreadNotification,
+		ref,
+		isFetchingNextPage,
+		hasNextPage,
 	};
 };
 

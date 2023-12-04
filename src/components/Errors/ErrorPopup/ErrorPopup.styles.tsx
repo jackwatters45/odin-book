@@ -49,7 +49,7 @@ export const ProgressBar = styled.div`
 	div {
 		height: 100%;
 		width: 0;
-		background-color: grey;
+		background-color: ${({ theme }) => theme.colors.blueButton};
 		animation: ${progressAnimation} 10s linear forwards;
 	}
 `;

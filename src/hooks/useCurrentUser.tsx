@@ -1,5 +1,7 @@
 import useQueryCustom from "./reactQuery/useQueryCustom";
 import { IUser } from "../types/IUser";
+import socket from "../config/socket";
+import { useEffect } from "react";
 
 type JsonResponse = {
 	isAuthenticated: boolean;
@@ -19,6 +21,12 @@ const useCurrentUser = () => {
 		transformData: ({ isAuthenticated, user }) => {
 			return isAuthenticated ? user : null;
 		},
+	});
+
+	useEffect(() => {
+		if (!data) return;
+		socket.connect();
+		socket.emit("register", data?._id);
 	});
 
 	return { currentUser: data, error, isLoading, isError, isSuccess };

@@ -5,26 +5,71 @@ import {
 import { UserPreview } from "@/types/IPost";
 import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
 
+const formatMultipleUsersText = (users: UserPreview[]): ITitleSegment[] => {
+	const mostRecentUser = users?.[0];
+	const secondMostRecentUser = users?.[1];
+
+	if (users.length === 1)
+		return [
+			{
+				type: "link",
+				content: mostRecentUser.fullName,
+				linkTo: `/user/${mostRecentUser._id}`,
+			},
+		];
+
+	if (users.length === 2) {
+		return [
+			{
+				type: "link",
+				content: mostRecentUser.fullName,
+				linkTo: `/user/${mostRecentUser._id}`,
+			},
+			{ type: "text", content: " and " },
+			{
+				type: "link",
+				content: secondMostRecentUser.fullName,
+				linkTo: `/user/${secondMostRecentUser._id}`,
+			},
+		];
+	}
+
+	return [
+		{
+			type: "link",
+			content: mostRecentUser.fullName,
+			linkTo: `/user/${mostRecentUser._id}`,
+		},
+		{ type: "text", content: " and " },
+		{
+			type: "text",
+			content: `${users.length - 1} others`,
+		},
+	];
+};
+
 const getNotificationTitleSegments = (
 	type: NotificationType,
-	user: UserPreview,
+	users: UserPreview[],
 	contentType: NotificationContentType | undefined,
 ): ITitleSegment[] => {
+	const mostRecentUser = users[0];
+
 	switch (type) {
 		case "request received":
 			return [
-				{ type: "bold", content: user.fullName },
+				{ type: "bold", content: mostRecentUser.fullName },
 				{ type: "text", content: " sent you a friend request" },
 			];
 		case "request accepted":
 			return [
 				{ type: "text", content: "New friend: You can now check out " },
-				{ type: "bold", content: user.fullName },
+				{ type: "bold", content: mostRecentUser.fullName },
 				{ type: "text", content: "'s posts" },
 			];
 		case "comment":
 			return [
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				...formatMultipleUsersText(users),
 				{
 					type: "text",
 					content:
@@ -35,13 +80,17 @@ const getNotificationTitleSegments = (
 			];
 		case "reaction":
 			return [
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				...formatMultipleUsersText(users),
 				{ type: "text", content: ` reacted to your ${contentType}` },
 			];
 		case "birthday":
 			return [
 				{ type: "text", content: "It's " },
-				{ type: "link", content: user.fullName, linkTo: `/user/${user._id}` },
+				{
+					type: "link",
+					content: mostRecentUser.fullName,
+					linkTo: `/user/${mostRecentUser._id}`,
+				},
 				{ type: "text", content: "'s birthday today" },
 			];
 	}

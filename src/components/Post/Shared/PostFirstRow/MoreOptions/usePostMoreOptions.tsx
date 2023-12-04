@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useQueryClient } from "@tanstack/react-query";
+import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 
 import usePostFormContext from "@/components/Post/PostForm/context/usePostFormContext";
 import useRadioForm from "@/components/Shared/RadioForm/useRadioForm";
@@ -14,6 +14,8 @@ interface usePostMoreOptionsProps {
 	post: IPost;
 }
 
+type InfinitePostsResults = InfiniteData<IPost[]>;
+
 const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 	const currentUser = useCurrentUserCached();
 	const queryClient = useQueryClient();
@@ -27,10 +29,9 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 		queryUrl: `posts/${post._id}/save`,
 		method: "PATCH",
 		onSuccessFn: (savedPosts: string[]) => {
-			const currentData = (queryClient.getQueryData(["currentUser"]) as IUser) || {};
-
-			const updatedUser = { ...currentData, savedPosts };
-			queryClient.setQueryData(["currentUser"], updatedUser);
+			queryClient.setQueryData<IUser>(["currentUser"], (prevData) =>
+				prevData ? { ...prevData, savedPosts } : prevData,
+			);
 		},
 	});
 	const handleClickSavePost = () => savePost({});
@@ -68,14 +69,20 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 		queryUrl: `posts/${post._id}/audience`,
 		method: "PATCH",
 		onSuccessFn: (data: AudienceFormValues) => {
-			const currentData =
-				(queryClient.getQueryData(["user", post.author._id, "posts"]) as IPost[]) || [];
+			queryClient.setQueryData<InfinitePostsResults>(
+				["user", post.author._id, "posts"],
+				(prevData) => {
+					if (!prevData) return prevData;
+					const updatedPages = prevData.pages.map((page) =>
+						page.map((p) => (p._id === post._id ? { ...p, audience: data.audience } : p)),
+					);
 
-			const updatedData = currentData.map((p) =>
-				p._id === post._id ? { ...p, audience: data.audience } : p,
+					return {
+						pages: updatedPages,
+						pageParams: prevData.pageParams,
+					};
+				},
 			);
-
-			queryClient.setQueryData(["user", post.author._id, "posts"], updatedData);
 		},
 	});
 	const submitForm = handleSubmit((data) => updateAudience({ data }));

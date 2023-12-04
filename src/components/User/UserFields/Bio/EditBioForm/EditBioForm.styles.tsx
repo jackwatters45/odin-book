@@ -25,7 +25,7 @@ export const StyledTextArea = styled.textarea`
 	text-align: center;
 	padding-top: 0.5rem;
 	border: none;
-	box-shadow: inset 0 0 0 0.5px grey;
+	box-shadow: inset 0 0 0 0.5px ${({ theme }) => theme.colors.grey};
 `;
 
 export const StyledCharCount = styled.p`

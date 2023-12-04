@@ -15,7 +15,7 @@ interface NotificationItemTextProps {
 }
 
 const NotificationItemText = ({
-	notification: { from, type, createdAt, contentType },
+	notification: { from, type, updatedAt, contentType },
 }: NotificationItemTextProps) => {
 	const title = getNotificationTitleSegments(type, from, contentType);
 
@@ -27,7 +27,7 @@ const NotificationItemText = ({
 				))}
 			</StyledNotificationItemTextContent>
 			<StyledNotificationItemTextTime>
-				{formatTimeSince(createdAt)}
+				{formatTimeSince(updatedAt)}
 			</StyledNotificationItemTextTime>
 		</StyledNotificationItemTextContainer>
 	);

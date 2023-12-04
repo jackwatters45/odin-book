@@ -188,8 +188,10 @@ export const StyledCreatePostButton = styled.button`
 
 export const ImageCircle = styled.img<{ size?: number }>`
 	border-radius: 50%;
-	height: ${({ size }) => (size ? `${size}px` : "40px")};
-	width: ${({ size }) => (size ? `${size}px` : "40px")};
+	min-width: ${({ size }) => (size ? `${size}px` : "40px")};
+	min-height: ${({ size }) => (size ? `${size}px` : "40px")};
+	max-height: ${({ size }) => (size ? `${size}px` : "40px")};
+	max-width: ${({ size }) => (size ? `${size}px` : "40px")};
 `;
 
 const CircleBackgroundCss = css<{ background?: string }>`

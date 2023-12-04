@@ -1,19 +1,17 @@
-import { Navigate } from "react-router";
 import Icon from "@mdi/react";
 import {
 	mdiHomeOutline,
 	mdiAccountMultipleOutline,
-	mdiBellOutline,
 	mdiPlusBoxOutline,
 	mdiHome,
 	mdiAccountMultiple,
-	mdiBell,
 } from "@mdi/js";
 
 import useNav from "./useNav";
 import { StyledNavShadowX } from "@/styles/SharedStyles";
 import SearchNav from "./Search";
-
+import ProfileDropdown from "./ProfileDropdown";
+import NavLink from "./NavLink";
 import {
 	StyledNavContainer,
 	StyledSideNav,
@@ -25,20 +23,16 @@ import {
 	StyledFixedNavPadding,
 	StyledNav,
 } from "./Nav.styles";
-import ProfileDropdown from "./ProfileDropdown";
-import NavLink from "./NavLink";
+import NotificationsNavIcon from "./NotificationsIcon/NotificationsNavIcon";
 
 const NavComponent = () => {
 	const {
-		user,
-		isSuccess,
 		openCreatePostDialog,
 		isDashboardActive,
 		isFriendsActive,
 		isNotificationsActive,
 	} = useNav();
 
-	if (isSuccess && !user) return <Navigate to="/login" />;
 	return (
 		<>
 			<StyledNavContainer>
@@ -82,11 +76,7 @@ const NavComponent = () => {
 							to="/notifications/"
 							isActive={isNotificationsActive}
 							icon={
-								<Icon
-									path={isNotificationsActive ? mdiBell : mdiBellOutline}
-									size={1.2}
-									color={isNotificationsActive ? "#1b74e4" : "#65676B"}
-								/>
+								<NotificationsNavIcon isNotificationsActive={isNotificationsActive} />
 							}
 						/>
 					</StyledCenterNav>

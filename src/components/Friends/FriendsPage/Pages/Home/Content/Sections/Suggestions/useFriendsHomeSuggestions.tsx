@@ -18,7 +18,6 @@ const fetchFriendsSuggestions = async ({ pageParam = 0 }) => {
 	return await res.json();
 };
 
-// TODO meh
 const useFriendsHomeSuggestions = () => {
 	const currentUser = useCurrentUserCached();
 

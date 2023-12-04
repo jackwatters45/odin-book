@@ -19,7 +19,7 @@ export const StyledBadge = styled.label<{ $showDelete: boolean }>`
 
 	font-size: 0.9rem;
 	height: 38px;
-	box-shadow: inset 0 0 0 0.25px grey;
+	${({ theme }) => theme.greyBorder}
 	border-radius: 2rem;
 	padding-right: ${({ $showDelete }) => ($showDelete ? "0.25rem" : "1rem")};
 	cursor: pointer;

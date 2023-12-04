@@ -1,4 +1,5 @@
 import { UserPreview } from "@/types/IPost";
+import { InfiniteData } from "@tanstack/react-query";
 
 export type NotificationType =
 	| "request received"
@@ -13,11 +14,13 @@ export interface INotification {
 	_id: string;
 	type: NotificationType;
 	to: string;
-	from: UserPreview;
+	from: UserPreview[];
 	contentId?: string;
 	contentType?: NotificationContentType;
-	rootId?: string;
+	postId?: string;
 	isRead: boolean;
 	createdAt: string;
 	updatedAt: string;
 }
+
+export type InfiniteNotificationsResults = InfiniteData<INotification[]>;

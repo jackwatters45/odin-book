@@ -9,8 +9,8 @@ const useNotificationItemContainer = (notification: INotification) => {
 	// open view post dialog
 	const { isOpen, openDialog } = useViewPostContext();
 
-	const postId = (notification.rootId || notification.contentId) as string;
-	const authorName = notification.from.fullName as string;
+	const postId = (notification.postId || notification.contentId) as string;
+	const authorName = notification.from[0].fullName;
 
 	const handleOpenViewPost = () => (!isOpen ? openDialog({ postId, authorName }) : null);
 

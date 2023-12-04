@@ -21,7 +21,7 @@ const NotificationItem = ({ notification }: NotificationItemProps) => {
 	return (
 		<NotificationItemContainer notification={notification}>
 			<StyledNotificationItemContent>
-				<NotificationItemIcons type={notification.type} from={notification.from} />
+				<NotificationItemIcons type={notification.type} from={notification.from?.[0]} />
 				<StyledNotificationItemMiddleRow className={notification.isRead ? "read" : ""}>
 					<NotificationItemText notification={notification} />
 					{isRequest &&

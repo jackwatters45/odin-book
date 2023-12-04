@@ -16,6 +16,7 @@ interface FetchPostsParams {
 	userId: string;
 	pageParam?: number;
 }
+
 const fetchPosts = async ({ userId, pageParam = 0 }: FetchPostsParams) => {
 	const res = await fetch(`${apiBaseUrl}/users/${userId}/posts?page=${pageParam}`, {
 		method: "GET",

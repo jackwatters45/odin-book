@@ -10,9 +10,17 @@ const usePostSocialReaction = (post: IPost) => {
 
 	const updatePosts = useUpdatePosts();
 
+	const test = post.reactions.forEach((reaction) => {
+		if (!reaction.user || !reaction.user?._id) {
+			console.log(reaction);
+		}
+	});
+
+	console.log(test);
+
 	// is reaction
 	const hasCurrentUserReacted = post.reactions.some(
-		(reaction) => String(reaction.user._id) === String(currentUser?._id),
+		(reaction) => String(reaction.user?._id) === String(currentUser?._id),
 	);
 
 	const [isReaction, setIsReaction] = useState(hasCurrentUserReacted);

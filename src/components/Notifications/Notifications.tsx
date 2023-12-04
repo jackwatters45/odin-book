@@ -4,19 +4,22 @@ import useNotifications from "./useNotifications";
 import MarkAllAsRead from "./MarkAllAsRead";
 import { StyledNotificationsSection, StyledSectionTitle } from "./Notifications.styles";
 import {
+	InfiniteScrollLoadingPosts,
 	StyledCenteredContainer,
 	StyledCenteredContainerContent,
 } from "@/styles/SharedStyles";
 import Loading from "../Shared/Loading";
 
-// TODO birthdays (how to trigger?)
-
-// TODO pagination (+ make sure gets are working)
-
-// TODO websockets
 const Notifications = () => {
-	const { newNotifications, earlierNotifications, isLoading, isUnreadNotification } =
-		useNotifications();
+	const {
+		newNotifications,
+		earlierNotifications,
+		isLoading,
+		ref,
+		isUnreadNotification,
+		isFetchingNextPage,
+		hasNextPage,
+	} = useNotifications();
 
 	return (
 		<StyledCenteredContainer>
@@ -51,6 +54,14 @@ const Notifications = () => {
 										/>
 									))}
 								</>
+							)}
+							{hasNextPage && (
+								<InfiniteScrollLoadingPosts
+									ref={ref}
+									isFetchingNextPage={isFetchingNextPage}
+									isLoading={isLoading}
+									hasNextPage={hasNextPage}
+								/>
 							)}
 						</>
 					)}
