@@ -5,7 +5,7 @@ import { Route } from "react-router";
 
 import Nav from ".";
 import TestEnvironmentWrapper from "../../config/tests/Utils/setupRender";
-import * as useCurrentUser from "../../hooks/useCurrentUser";
+import * as useCurrentUser from "../../hooks/auth/useCurrentUser";
 
 window.fetch = vi
 	.fn()

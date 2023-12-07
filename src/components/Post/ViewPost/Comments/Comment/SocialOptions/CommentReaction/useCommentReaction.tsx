@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import useUpdateComment from "@/hooks/reactQuery/useUpdateComment";
 import { IComment } from "@/types/IComment";
 import { ReactionType } from "@/types/IReaction";

@@ -2,7 +2,7 @@ import { Suspense, lazy } from "react";
 import { mdiPencil } from "@mdi/js";
 
 import { IUser } from "@/types/IUser";
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 import { BottomDiv } from "@/styles/SharedStyles";
 import {
 	StyledEditProfileContent,

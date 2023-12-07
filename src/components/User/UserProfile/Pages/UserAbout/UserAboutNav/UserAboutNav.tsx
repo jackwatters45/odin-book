@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { StyledUserAboutNav, StyledUserAboutNavItem } from "./UserAboutNav.styles";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 
 interface UserAboutNavProps {
 	userFirstName: string;

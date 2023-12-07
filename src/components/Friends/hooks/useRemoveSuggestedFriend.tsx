@@ -1,6 +1,6 @@
 import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
 type InfiniteFriendsSuggestions = InfiniteData<UserPreviewWithMutuals[]>;

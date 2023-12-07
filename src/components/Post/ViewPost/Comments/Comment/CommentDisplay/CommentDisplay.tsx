@@ -7,6 +7,7 @@ import {
 	StyledCommentReactions,
 	StyledReactionsCount,
 } from "./CommentDisplay.styles";
+import useDialogsContext from "@/hooks/dialogs/useDialogsContext";
 
 interface CommentDisplayProps {
 	comment: IComment;
@@ -15,10 +16,14 @@ interface CommentDisplayProps {
 const CommentDisplay = ({
 	comment: { author, content, reactions, popularReactions },
 }: CommentDisplayProps) => {
+	const { closeAllDialogs } = useDialogsContext();
+
 	return (
 		<StyledCommentContent>
 			<StyledCommentAuthorName>
-				<Link to={`/user/${author._id}`}>{author.fullName}</Link>
+				<Link to={`/user/${author._id}`} onClick={closeAllDialogs}>
+					{author.fullName}
+				</Link>
 			</StyledCommentAuthorName>
 			<span>{content}</span>
 			{popularReactions && popularReactions.length > 0 && (

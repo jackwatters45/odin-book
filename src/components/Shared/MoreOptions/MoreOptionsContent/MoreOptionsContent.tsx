@@ -53,7 +53,7 @@ const MoreOptionsContent = ({
 			{saveMutation && (
 				<StyledDialogMoreOptionsItem
 					colorClass="transparent"
-					text={`Save ${categoryName}`}
+					text={`${isSaved ? "Unsave" : "Save"} ${categoryName}`}
 					icon={isSaved ? mdiBookmark : mdiBookmarkOutline}
 					onClick={saveMutation}
 				/>

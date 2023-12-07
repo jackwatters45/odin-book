@@ -1,6 +1,6 @@
 import { UseFormSetValue } from "react-hook-form";
 import { TaggedUserType } from "./types/TagTypes";
-import useUserSearch from "@/hooks/useUserSearch";
+import useUserSearch from "@/hooks/misc/useUserSearch";
 import { PostFormValues } from "../../../types/PostFormTypes";
 import useError from "@/components/Errors/useError";
 

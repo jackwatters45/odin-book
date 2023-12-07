@@ -1,4 +1,4 @@
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 import useUpdatePosts from "@/hooks/reactQuery/useUpdatePosts";
 import { IPost } from "@/types/IPost";
@@ -9,14 +9,6 @@ const usePostSocialReaction = (post: IPost) => {
 	const currentUser = useCurrentUserCached();
 
 	const updatePosts = useUpdatePosts();
-
-	const test = post.reactions.forEach((reaction) => {
-		if (!reaction.user || !reaction.user?._id) {
-			console.log(reaction);
-		}
-	});
-
-	console.log(test);
 
 	// is reaction
 	const hasCurrentUserReacted = post.reactions.some(
@@ -29,7 +21,7 @@ const usePostSocialReaction = (post: IPost) => {
 	}, [hasCurrentUserReacted, post]);
 
 	// reaction requests
-	const { mutate: likePost } = useMutateCustom({
+	const { mutate: reactToPost } = useMutateCustom({
 		queryUrl: `posts/${post._id}/react`,
 		method: "PATCH",
 		onSuccessFn: (data: IPost) => {
@@ -42,7 +34,7 @@ const usePostSocialReaction = (post: IPost) => {
 		},
 	});
 
-	const { mutate: unlikePost } = useMutateCustom({
+	const { mutate: unreactToPost } = useMutateCustom({
 		queryUrl: `posts/${post._id}/unreact`,
 		method: "DELETE",
 		onSuccessFn: (data: IPost) => {
@@ -62,8 +54,8 @@ const usePostSocialReaction = (post: IPost) => {
 	const handleClickReact = (type: ReactionType, hasUnlike = false) => {
 		setShowHoverOptions(false);
 		return isReaction && hasUnlike
-			? unlikePost({ data: { user: currentUser?._id, post: post._id, type } })
-			: likePost({ data: { user: currentUser?._id, post: post._id, type } });
+			? unreactToPost({ data: { user: currentUser?._id, post: post._id, type } })
+			: reactToPost({ data: { user: currentUser?._id, post: post._id, type } });
 	};
 
 	const handleMouseEnter = () => {

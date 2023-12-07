@@ -1,1 +1,1 @@
-export { default } from "./titleSegments";
+export { default } from "./useRenderTitleSegments";

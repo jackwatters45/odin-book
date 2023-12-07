@@ -8,8 +8,8 @@ interface PostDateAudienceProps {
 }
 
 const PostDateAudience = ({ post }: PostDateAudienceProps) => (
-	<StyledPostDateAudienceRow title={new Date(post.createdAt).toLocaleString()}>
-		<span>
+	<StyledPostDateAudienceRow>
+		<span title={new Date(post.createdAt).toLocaleString()}>
 			{new Date(post.createdAt).toLocaleDateString("en-US", {
 				year: "numeric",
 				month: "short",

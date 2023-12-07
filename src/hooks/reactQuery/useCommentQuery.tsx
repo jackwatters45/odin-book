@@ -1,15 +1,35 @@
-import { apiBaseUrl } from "@/config/envVariables";
-import { IComment } from "@/types/IComment";
-import { IPost } from "@/types/IPost";
 import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router";
 
+import { apiBaseUrl } from "@/config/envVariables";
+import { IComment } from "@/types/IComment";
+import { IPost } from "@/types/IPost";
+import useCurrentUserCached from "../auth/useCurrentUserCached";
+
 type InfinitePostsResults = InfiniteData<IPost[]>;
 
-export const useCommentQuery = (postId: string) => {
-	const queryClient = useQueryClient();
+const updatePostsComments = (
+	data: IComment,
+	prevData: InfinitePostsResults | undefined,
+) => {
+	if (!prevData) return prevData;
+	const updatedPages = prevData.pages.map((page) =>
+		page.map((p) => {
+			return p._id === data.post ? { ...p, comments: [...(p.comments || []), data] } : p;
+		}),
+	) as IPost[][];
 
+	return {
+		pages: updatedPages,
+		pageParams: prevData.pageParams,
+	};
+};
+
+export const useCommentQuery = (postId: string) => {
 	const { id: userId } = useParams<{ id: string }>() as { id: string };
+	const currentUser = useCurrentUserCached();
+
+	const queryClient = useQueryClient();
 
 	// fetch replies
 	const fetchReplies = async (postId: string, commentId: string) => {
@@ -28,19 +48,24 @@ export const useCommentQuery = (postId: string) => {
 	// create comment on success
 	const createCommentQuery = (data: IComment) => {
 		queryClient.setQueryData<InfinitePostsResults>(
-			["user", userId, "posts"],
-			(prevData) => {
-				if (!prevData) return prevData;
-				const updatedPages = prevData.pages.map((page) =>
-					page.map((p) => (p._id === data._id ? data : p)),
-				) as IPost[][];
-
-				return {
-					pages: updatedPages,
-					pageParams: prevData.pageParams,
-				};
-			},
+			["posts", currentUser?._id],
+			(prevData) => updatePostsComments(data, prevData),
 		);
+
+		queryClient.setQueryData<InfinitePostsResults>(
+			["user", userId, "posts"],
+			(prevData) => updatePostsComments(data, prevData),
+		);
+
+		queryClient.setQueryData<IPost>(["post", postId], (prevData) => {
+			if (!prevData) return prevData;
+			return (
+				{
+					...prevData,
+					comments: [data, ...(prevData?.comments || [])],
+				} ?? []
+			);
+		});
 
 		return data.parentComment
 			? queryClient.setQueryData<IComment[]>(

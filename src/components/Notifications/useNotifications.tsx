@@ -4,7 +4,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { apiBaseUrl } from "@/config/envVariables";
 import { INotification } from "./types/NotificationType";
 import splitArrayByDate from "./utils/splitArrayByDate";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 
 const ITEMS_PER_PAGE = 20;
 interface FetchNotificationsParams {

@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 
-import useWindowWidth from "@/hooks/useWindowWidth";
-import useFileUpload from "@/hooks/useUploadFile";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
+import useFileUpload from "@/hooks/misc/useUploadFile";
 
 const useCoverPhoto = () => {
 	const windowWidth = useWindowWidth();

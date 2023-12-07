@@ -3,7 +3,7 @@ import { ChangeEvent, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { IComment } from "@/types/IComment";
 import useCommentQuery from "@/hooks/reactQuery/useCommentQuery";
 

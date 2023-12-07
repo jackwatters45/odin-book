@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 
-import useFormCustom from "@/hooks/useFormCustom";
+import useFormCustom from "@/hooks/reactQuery/useFormCustom";
 
 export interface SecurityCodeInputs {
 	code: string;

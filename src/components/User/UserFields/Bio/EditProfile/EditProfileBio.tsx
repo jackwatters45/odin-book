@@ -1,7 +1,7 @@
 import { ContentDiv } from "../../../UserProfile/ProfileBasicInfo/EditProfile/EditProfile.styles";
 import EditProfileSectionHeader from "../../../UserProfile/ProfileBasicInfo/EditProfile/EditProfileSectionHeader";
 import EditFormBio from "../EditBioForm";
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 
 interface EditProfileBioProps {
 	bio: string | undefined;

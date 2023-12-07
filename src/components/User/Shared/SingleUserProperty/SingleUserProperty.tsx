@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 import AddDetailLink from "@/components/User/UserFields/Details/EditDetailsForm/AddDetailLink";
 import SingleUserPropertyExisting from "../UserPropertyDisplay";
 import { UserPropertyDisplayProps } from "../UserPropertyDisplay/UserPropertyDisplay";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
-import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 
 interface SingleUserPropertyProps extends UserPropertyDisplayProps {
 	title: ITitleSegment[] | undefined | null;

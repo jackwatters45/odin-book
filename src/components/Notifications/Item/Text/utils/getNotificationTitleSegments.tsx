@@ -3,7 +3,7 @@ import {
 	NotificationType,
 } from "@/components/Notifications/types/NotificationType";
 import { UserPreview } from "@/types/IPost";
-import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 
 const formatMultipleUsersText = (users: UserPreview[]): ITitleSegment[] => {
 	const mostRecentUser = users?.[0];

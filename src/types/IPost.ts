@@ -36,3 +36,18 @@ export interface IPost {
 }
 
 export type IPostKey = keyof IPost;
+
+// interface of form values
+export interface IPostFormFields {
+	_id?: string;
+	audience: AudienceStatusOptions;
+	author: UserPreview;
+	content?: string;
+	media?: string[];
+	unsavedMedia?: File[];
+	taggedUsers?: UserPreview[];
+	feeling?: string;
+	checkIn?: CheckInValues;
+	sharedFrom?: IPost;
+	to?: UserPreview;
+}

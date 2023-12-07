@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from "react";
 
 import { StyledFriendsContainer, StyledFriendsContent } from "./Friends.styles";
 import { StyledNavShadowY } from "@/styles/SharedStyles";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
 
 interface FriendsProps extends HTMLAttributes<HTMLDivElement> {
 	Nav: ReactNode;

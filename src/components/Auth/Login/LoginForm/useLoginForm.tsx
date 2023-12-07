@@ -1,4 +1,4 @@
-import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
+import useFormCustom, { DataMapper } from "@/hooks/reactQuery/useFormCustom";
 
 export interface LoginFormInputs {
 	username: string;

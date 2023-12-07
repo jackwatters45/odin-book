@@ -1,5 +1,5 @@
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 
 interface UseUserAboutWorkEducationSectionProps {
 	fieldName: "high school" | "college" | "work";

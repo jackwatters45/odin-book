@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn, useForm } from "react-hook-form";
-import useCurrentUser from "./useCurrentUser";
+import useCurrentUser from "../auth/useCurrentUser";
 import useSearch from "./useSearch";
 import { UseQueryOptions } from "@tanstack/react-query";
 

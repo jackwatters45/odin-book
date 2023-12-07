@@ -21,7 +21,7 @@ export const StyledCommentInputContainer = styled.div`
 
 export const StyledPostFirstRow = styled(PostFirstRow)`
 	margin: 0.75rem 0;
-	margin-right: 1rem;
+	margin-right: 0.5rem;
 `;
 
 export const StyledPostSharedFrom = styled(PostSharedFrom)`

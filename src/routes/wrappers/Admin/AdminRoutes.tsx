@@ -1,4 +1,4 @@
-import useCurrentUser from "../../../hooks/useCurrentUser";
+import useCurrentUser from "../../../hooks/auth/useCurrentUser";
 import ProtectedRoutes from "../Protected/ProtectedRoutes";
 
 const AdminRoutes = () => {

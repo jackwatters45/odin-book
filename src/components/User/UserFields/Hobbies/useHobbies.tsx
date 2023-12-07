@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 import { useEffect } from "react";
 
 const useHobbies = (hobbies: string[] | undefined) => {

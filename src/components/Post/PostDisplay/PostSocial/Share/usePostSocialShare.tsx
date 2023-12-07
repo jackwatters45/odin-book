@@ -13,9 +13,7 @@ const usePostSocialShare = ({ post }: UsePostSocialShareProps) => {
 			initialOpenedState: "share",
 		});
 
-	return {
-		handleClickShare,
-	};
+	return { handleClickShare };
 };
 
 export default usePostSocialShare;

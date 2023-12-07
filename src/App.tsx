@@ -9,6 +9,7 @@ import { useColorTheme } from "./styles/theme/useColorTheme";
 import ErrorProvider from "./components/Errors/useError/ErrorProvider";
 import PostFormProvider from "./components/Post/PostForm/context/PostFormProvider";
 import ViewPostProvider from "./components/Post/ViewPost/context/ViewPostProvider";
+import ContainerWidthProvider from "./components/User/UserProfile/context/ContainerWidthProvider";
 
 const queryClient = new QueryClient();
 
@@ -21,9 +22,11 @@ function App() {
 				<ErrorProvider>
 					<PostFormProvider>
 						<ViewPostProvider>
-							<RoutesComponent />
-							<GlobalStyle />
-							<ReactQueryDevtools initialIsOpen={true} />
+							<ContainerWidthProvider>
+								<RoutesComponent />
+								<GlobalStyle />
+								<ReactQueryDevtools initialIsOpen={true} />
+							</ContainerWidthProvider>
 						</ViewPostProvider>
 					</PostFormProvider>
 				</ErrorProvider>

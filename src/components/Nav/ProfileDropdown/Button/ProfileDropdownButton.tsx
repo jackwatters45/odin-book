@@ -1,4 +1,4 @@
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 import { StyledImageCircle } from "./ProfileDropdownButton.styles";
 

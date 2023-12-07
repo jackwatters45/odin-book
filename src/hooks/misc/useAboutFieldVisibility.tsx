@@ -2,7 +2,7 @@ import {
 	AudienceStatusMultiple,
 	AudienceStatusOptions,
 } from "@/types/AudienceSettingsTypes";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 
 const useAboutFieldVisibility = () => {
 	const { isOwnProfile, isFriend } = useProfileStatus();

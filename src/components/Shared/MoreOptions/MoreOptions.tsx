@@ -42,9 +42,10 @@ const MoreOptions = ({
 	showButton = true,
 	...props
 }: MoreOptionsProps) => {
-	const { ref, openDialog, closeDialog, handleDelete } = useMoreOptions({
-		deleteMutation,
-	});
+	const { ref, openDialog, closeDialog, handleDelete, isPostFormOpen, isViewPostOpen } =
+		useMoreOptions({
+			deleteMutation,
+		});
 
 	return (
 		<StyledMoreOptionsContainer {...props}>
@@ -70,8 +71,8 @@ const MoreOptions = ({
 						isSaved={isSaved}
 						options={options}
 						closeDialog={closeDialog}
-						openForm={openForm}
-						openView={openView}
+						openForm={isPostFormOpen ? undefined : openForm}
+						openView={isViewPostOpen ? undefined : openView}
 						openAudienceForm={openAudienceForm}
 						deleteMutation={deleteMutation}
 						handleDelete={handleDelete}

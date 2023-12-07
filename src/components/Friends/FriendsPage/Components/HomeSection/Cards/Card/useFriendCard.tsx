@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import useAcceptFriendRequest from "@/components/Friends/hooks/useAcceptFriendRequest";
 import useRejectFriendRequest from "@/components/Friends/hooks/useRejectFriendRequest";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import useSendFriendRequest from "@/components/Friends/hooks/useSendFriendRequest";
 import useRemoveSuggestedFriend from "@/components/Friends/hooks/useRemoveSuggestedFriend";
 import useCancelFriendRequest from "@/components/Friends/hooks/useCancelFriendRequest";

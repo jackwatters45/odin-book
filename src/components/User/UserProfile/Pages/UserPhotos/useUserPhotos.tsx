@@ -1,5 +1,5 @@
 import UseFetchPhotos from "@/components/User/UserFields/Photos/UseFetchPhotos";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useState } from "react";
 import { useMatch, useOutletContext } from "react-router";

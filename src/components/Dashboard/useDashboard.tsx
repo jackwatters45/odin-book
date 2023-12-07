@@ -1,8 +1,9 @@
 import { apiBaseUrl } from "@/config/envVariables";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
+import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { IPost } from "@/types/IPost";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -40,7 +41,14 @@ const useDashboard = () => {
 		fetchNextPage,
 	});
 
-	const posts = unflattenedPosts?.pages.flat() as IPost[];
+	const [posts, setPosts] = useState<IPost[]>([]);
+	useEffect(() => {
+		if (unflattenedPosts) {
+			const flattenedPosts = unflattenedPosts.pages.flat();
+			setPosts(flattenedPosts);
+		}
+	}, [unflattenedPosts]);
+	// const posts = unflattenedPosts?.pages.flat() as IPost[];
 
 	return { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage };
 };

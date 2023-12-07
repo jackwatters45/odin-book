@@ -29,7 +29,7 @@ const PostDisplay = ({ post }: PostDisplayProps) => {
 				<PostContent postContent={post.content} isPhotos={!!post.media?.length} />
 			)}
 			{post.sharedFrom && (
-				<SharedFrom sharedFromPost={post.sharedFrom} showShowMore={true} />
+				<SharedFrom sharedFromPost={post.sharedFrom as IPost} showShowMore={true} />
 			)}
 			{showPhotos && <PostPhotos postId={post._id} media={post.media as string[]} />}
 			{showReactions && <PostSocialDisplay post={post} />}

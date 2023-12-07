@@ -4,7 +4,7 @@ import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 import usePostFormContext from "@/components/Post/PostForm/context/usePostFormContext";
 import useRadioForm from "@/components/Shared/RadioForm/useRadioForm";
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
 import { AudienceFormValues } from "./EditAudienceForm/types/EditAudienceTypes";
@@ -92,11 +92,56 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 		queryUrl: `posts/${post._id}`,
 		method: "DELETE",
 		onSuccessFn: () => {
-			const currentData =
-				(queryClient.getQueryData(["user", post.author._id, "posts"]) as IPost[]) || [];
+			queryClient.setQueryData<InfinitePostsResults>(
+				["user", post.author._id, "posts"],
+				(prev) => {
+					if (!prev) return prev;
+					const pages = prev?.pages.map((page) => {
+						return page.filter((p) => p._id !== post._id);
+					});
 
-			const updatedData = currentData.filter((p) => p._id !== post._id);
-			queryClient.setQueryData(["user", post.author._id, "posts"], updatedData);
+					return {
+						pages,
+						pageParams: prev?.pageParams,
+					};
+				},
+			);
+
+			// if post is shared, update shared post count in original post
+			const isSharedPost = !!post.sharedFrom;
+			if (isSharedPost) {
+				queryClient.setQueryData<IPost>(["post", post.sharedFrom?._id], (prevData) => {
+					return prevData
+						? { ...prevData, shareCount: prevData.shareCount - 1 }
+						: prevData;
+				});
+
+				const updatePostsShareCount = (prevData: InfinitePostsResults | undefined) => {
+					if (!prevData) return prevData;
+					const updatedPages = prevData.pages.map((page) =>
+						page.map((p) => {
+							return p._id === post.sharedFrom?._id
+								? { ...p, shareCount: p.shareCount - 1 }
+								: p;
+						}),
+					);
+
+					return {
+						pages: updatedPages,
+						pageParams: prevData.pageParams,
+					};
+				};
+
+				queryClient.setQueryData<InfinitePostsResults>(
+					["posts", currentUser?._id],
+					(prevData) => updatePostsShareCount(prevData),
+				);
+
+				queryClient.setQueryData<InfinitePostsResults>(
+					["user", post.author._id, "posts"],
+					(prevData) => updatePostsShareCount(prevData),
+				);
+			}
 		},
 	});
 	const handleDeletePost = () => deletePost({});

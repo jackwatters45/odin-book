@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { IUser } from "@/types/IUser";
 import useContainerWidth from "../../context/useContainerWidth";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 
 const useUserAbout = () => {
 	const { id } = useParams<{ id: string }>();

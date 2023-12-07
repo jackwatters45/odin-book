@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
 type IResult = { _id: string; fullName: string; avatarUrl: string; isFriend: boolean };
 
@@ -11,7 +11,9 @@ type FnReturnType = IResult[];
 const useSearch = () => {
 	const currentUser = useCurrentUserCached();
 
-	const { register, watch } = useForm();
+	const { register, watch } = useForm({
+		defaultValues: { search: "" },
+	});
 
 	const searchQuery = watch("search");
 

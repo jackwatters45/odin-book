@@ -36,6 +36,7 @@ const useUpdateComment = () => {
 				};
 			},
 		);
+
 		queryClient.setQueryData<IPost>(["post", postId], updatedPost);
 	};
 

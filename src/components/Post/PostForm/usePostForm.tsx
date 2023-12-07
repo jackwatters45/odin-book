@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import useFormCustom from "@/hooks/useFormCustom";
+import useFormCustom from "@/hooks/reactQuery/useFormCustom";
 import { PostFormValues } from "./types/PostFormTypes";
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 import { PhotoPreviews } from "./AddToPost/Photo/types/PhotoTypes";
 import usePostFormContext from "./context/usePostFormContext";
 import usePostFormQuery from "./hooks/usePostFormQuery";
+import { IPost } from "@/types/IPost";
 
 const usePostForm = () => {
 	// dialog
@@ -37,7 +38,7 @@ const usePostForm = () => {
 					taggedUsers: initialValues?.taggedUsers || [],
 					media: initialValues?.media || [],
 					unsavedMedia: [],
-					sharedFrom: initialValues?.sharedFrom?._id || "",
+					sharedFrom: (initialValues?.sharedFrom as IPost)?._id || "",
 					to: {
 						_id: initialValues?.to?._id,
 						fullName: initialValues?.to?.fullName,

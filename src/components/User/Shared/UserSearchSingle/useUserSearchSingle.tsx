@@ -3,7 +3,7 @@ import { UseQueryOptions } from "@tanstack/react-query";
 
 import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
-import useUserSearch from "@/hooks/useUserSearch";
+import useUserSearch from "@/hooks/misc/useUserSearch";
 import {
 	AudienceStatusOptions,
 	FormFieldsWithAudience,

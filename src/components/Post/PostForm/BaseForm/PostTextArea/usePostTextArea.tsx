@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { UseFormSetValue } from "react-hook-form";
 
 import usePostContent from "@/components/Post/Shared/usePostContent/usePostContent";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { PostFormValues } from "../../types/PostFormTypes";
 
 interface usePostTextAreaProps {

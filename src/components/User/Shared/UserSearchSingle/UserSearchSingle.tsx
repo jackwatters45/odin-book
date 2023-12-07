@@ -9,7 +9,7 @@ import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
 import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
 import UserSearchResult from "./UserSearchResult";
-import { RegisterSearchInput } from "@/hooks/useUserSearch";
+import { RegisterSearchInput } from "@/hooks/misc/useUserSearch";
 
 interface UserSearchProps extends HTMLAttributes<HTMLDivElement> {
 	registerSearchInput: RegisterSearchInput;

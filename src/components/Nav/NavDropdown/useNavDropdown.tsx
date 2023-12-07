@@ -1,4 +1,4 @@
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 
 const useNavDropdown = () => {
 	const { ref, openDialog, closeDialog, isOpen } = useDialog({

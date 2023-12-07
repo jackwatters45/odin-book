@@ -5,6 +5,7 @@ import { UserProfileSectionContainer } from "@/components/User/Shared/UserProfil
 import PostPhotos from "../PostPhotos";
 
 export const StyledSharedFromPostContainer = styled(UserProfileSectionContainer)`
+	width: unset;
 	padding: 0rem 1rem 1rem;
 	gap: 0;
 	margin-top: 1rem;

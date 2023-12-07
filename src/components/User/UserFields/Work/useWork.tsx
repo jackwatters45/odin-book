@@ -1,7 +1,7 @@
 import formatWorkData from "@/components/User/UserFields/Work/utils/formatWorkValue";
 import useUserAboutOverviewItem from "../../Shared/SingleUserProperty/useSingleUserProperty";
 import { IWork } from "./types/WorkTypes";
-import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 
 interface useWorkProps {
 	work: IWork | undefined;

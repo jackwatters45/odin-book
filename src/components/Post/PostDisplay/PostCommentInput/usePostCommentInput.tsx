@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { IUser } from "@/types/IUser";
 import useCommentQuery from "@/hooks/reactQuery/useCommentQuery";
 
@@ -17,7 +17,9 @@ const usePostCommentInput = ({ postId, commentId }: PostCommentInputProps) => {
 		? `posts/${postId}/comments/${commentId}/reply`
 		: `posts/${postId}/comments`;
 
-	const { handleSubmit, setValue, watch } = useForm();
+	const { handleSubmit, setValue, watch } = useForm({
+		defaultValues: { content: "" },
+	});
 
 	const { createCommentQuery } = useCommentQuery(postId);
 	const { mutate: createComment } = useMutateCustom({

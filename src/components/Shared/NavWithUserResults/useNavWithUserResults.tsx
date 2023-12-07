@@ -1,4 +1,4 @@
-import useWindowWidth from "@/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
 
 const useNavWithUserResults = () => {
 	const windowWidth = useWindowWidth();

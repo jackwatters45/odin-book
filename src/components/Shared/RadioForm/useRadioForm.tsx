@@ -1,4 +1,4 @@
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 import { FieldValues, Path, PathValue, UseFormSetValue } from "react-hook-form";
 import { useState } from "react";
 

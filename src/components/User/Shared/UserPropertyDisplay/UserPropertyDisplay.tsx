@@ -12,10 +12,8 @@ import MoreOptions from "../../../Shared/MoreOptions";
 import UserAboutAudience from "../UserPropertyAudience";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
-import renderTitleSegment, {
-	ITitleSegment,
-} from "@/utils/render/titleSegment/titleSegments";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
+import useUserPropertyDisplay from "./useUserPropertyDisplay";
 
 export interface UserPropertyDisplayProps {
 	icon: string;
@@ -45,7 +43,7 @@ const UserPropertyDisplay = ({
 	deleteMutation,
 	subtitle,
 }: ExtendedUserPropertyDisplayProps) => {
-	const { isOwnProfile } = useProfileStatus();
+	const { isOwnProfile, renderTitleSegment } = useUserPropertyDisplay();
 
 	return (
 		<StyledUserPropertyDisplayItem>

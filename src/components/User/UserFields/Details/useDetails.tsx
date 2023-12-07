@@ -1,4 +1,4 @@
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 import DetailsFormFields from "@/components/User/UserFields/Details/types/DetailsTypes";
 import getDefaultFormStateDetails from "@/components/User/UserFields/Details/utils/getDefaultFormFieldsDetails";
 import { IUser } from "@/types/IUser";

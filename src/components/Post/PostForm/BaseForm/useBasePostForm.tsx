@@ -1,6 +1,6 @@
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { PostFormValues, InitialOpenedState } from "../types/PostFormTypes";
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 
 interface UseBasePostFormProps {
 	formValues: PostFormValues;

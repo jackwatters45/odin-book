@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { apiBaseUrl } from "@/config/envVariables";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
 const ITEMS_PER_PAGE = 12;

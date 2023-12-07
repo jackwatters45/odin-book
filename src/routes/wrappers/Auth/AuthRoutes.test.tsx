@@ -4,7 +4,7 @@ import { describe, it, expect, vi } from "vitest";
 
 import TestEnvironmentWrapper from "../../../config/tests/Utils/setupRender";
 import AuthRoutes from "./AuthRoutes";
-import * as exports from "../../../hooks/useCurrentUser";
+import * as exports from "../../../hooks/auth/useCurrentUser";
 
 const renderProtectedRouteWithProps = () => {
 	return render(

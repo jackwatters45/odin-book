@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import useMutateCustom from "./reactQuery/useMutateCustom";
+import useMutateCustom from "../reactQuery/useMutateCustom";
 import socket from "@/config/socket";
 
 const useLogout = () => {
@@ -15,7 +15,6 @@ const useLogout = () => {
 	const logout = () => mutate({});
 
 	const handleClickLogout = () => {
-		console.log("logout");
 		navigate("/login");
 		logout();
 		socket.disconnect();

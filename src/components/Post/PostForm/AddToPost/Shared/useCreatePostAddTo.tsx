@@ -1,5 +1,5 @@
 import { InitialOpenedState, InitialOpenedStateFields } from "../../types/PostFormTypes";
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 
 interface useCreatePostAddToProps {
 	initialOpenedState: InitialOpenedState;

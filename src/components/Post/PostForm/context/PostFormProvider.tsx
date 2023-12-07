@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 
-import useDialog from "@/hooks/useDialog";
+import useDialog from "@/hooks/dialogs/useDialog";
 import PostFormContext, { PostFormInitialValues } from "./PostFormContext";
 import { InitialOpenedState } from "../types/PostFormTypes";
 
@@ -44,10 +44,7 @@ const PostFormProvider = ({ children }: PostFormProviderProps) => {
 		setTimeout(() => openPostFormDialog(), 50);
 	};
 
-	const closeDialog = () => {
-		closePostFormDialog();
-		// setIsDialogOpen(false);
-	};
+	const closeDialog = () => closePostFormDialog();
 
 	const PostFormHookValue = {
 		ref,

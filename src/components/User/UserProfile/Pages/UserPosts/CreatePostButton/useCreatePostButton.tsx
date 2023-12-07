@@ -1,5 +1,5 @@
 import useCreatePostContext from "@/components/Post/PostForm/context/usePostFormContext";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { useMatch, useParams } from "react-router";
 import useContainerWidth from "../../../context/useContainerWidth";
 

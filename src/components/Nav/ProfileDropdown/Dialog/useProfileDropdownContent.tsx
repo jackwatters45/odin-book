@@ -1,6 +1,6 @@
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
-import useLogout from "@/hooks/useLogout";
+import useLogout from "@/hooks/auth/useLogout";
 
 const useProfileDropdownContent = () => {
 	const userId = useCurrentUserCached()?._id;

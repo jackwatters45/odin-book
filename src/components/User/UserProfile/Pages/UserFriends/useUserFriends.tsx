@@ -5,7 +5,7 @@ import useFriendPageType from "./useFriendPageType";
 import getHometownFriends from "./utils/getHometownFriends";
 import getCurrentCityFriends from "./utils/getCurrentCityFriends";
 import getCollegeFriends from "./utils/getCollegeFriends";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { useState } from "react";
 
 interface UseUserFriendsProps {

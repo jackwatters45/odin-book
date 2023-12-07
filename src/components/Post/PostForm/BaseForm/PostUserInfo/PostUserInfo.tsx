@@ -5,7 +5,7 @@ import { ImageCircle } from "@/components/Nav/Nav.styles";
 import CreatePostAudience from "./PostAudience";
 import { PostFormValues } from "../../types/PostFormTypes";
 import { StyledFullName, StyledUserInfo } from "./PostUserInfo.styles";
-import renderTitleSegment from "@/utils/render/titleSegment/titleSegments";
+import useRenderTitleSegments from "@/utils/render/titleSegment/useRenderTitleSegments";
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 import usePostTitle from "@/components/Post/PostForm/hooks/usePostTitle";
 
@@ -27,10 +27,12 @@ const PostUserInfo = ({
 	formValues,
 }: PostUserInfoProps) => {
 	const postTitleSegments = usePostTitle({
-		post: formValues,
+		post: { ...formValues, sharedFrom: undefined },
 		authorFullName: fullName,
 		authorId: userId,
 	});
+
+	const renderTitleSegments = useRenderTitleSegments();
 
 	return (
 		<StyledUserInfo>
@@ -40,7 +42,7 @@ const PostUserInfo = ({
 			<div>
 				<StyledFullName>
 					{postTitleSegments.map((segment, index) => (
-						<Fragment key={index}>{renderTitleSegment(segment)}</Fragment>
+						<Fragment key={index}>{renderTitleSegments(segment)}</Fragment>
 					))}
 				</StyledFullName>
 				<div>

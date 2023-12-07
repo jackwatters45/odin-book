@@ -6,7 +6,7 @@ import {
 	StyledNavShadowXFriendsHome,
 } from "./FriendHome.styles";
 import { StyledNavShadowY } from "@/styles/SharedStyles";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
 
 const FriendHome = () => {
 	const windowWidth = useWindowWidth();

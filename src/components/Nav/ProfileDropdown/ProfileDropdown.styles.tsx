@@ -4,6 +4,7 @@ import NavDropdown from "../NavDropdown";
 
 export const StyledProfileNavDropdown = styled(NavDropdown)`
 	position: relative;
+	max-height: 40px;
 
 	dialog {
 		margin-left: -260px;

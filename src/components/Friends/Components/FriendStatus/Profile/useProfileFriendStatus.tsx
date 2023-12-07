@@ -1,6 +1,6 @@
 import useFriendStatus from "../useFriendStatus";
 import { IUser } from "@/types/IUser";
-import useCurrentUser from "@/hooks/useCurrentUser";
+import useCurrentUser from "@/hooks/auth/useCurrentUser";
 
 interface UseProfileFriendStatusProps {
 	user: IUser;

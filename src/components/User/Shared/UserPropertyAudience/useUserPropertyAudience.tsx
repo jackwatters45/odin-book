@@ -1,4 +1,4 @@
-import useFormCustom from "@/hooks/useFormCustom";
+import useFormCustom from "@/hooks/reactQuery/useFormCustom";
 import { AudienceStatusOptions, AudienceFormFields } from "@/types/AudienceSettingsTypes";
 import { FormEvent } from "react";
 import { useParams } from "react-router";

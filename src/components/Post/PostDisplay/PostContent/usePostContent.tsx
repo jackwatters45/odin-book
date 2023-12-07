@@ -1,4 +1,4 @@
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 
 interface UsePostContentProps {
 	postContent: string | undefined;

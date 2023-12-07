@@ -1,5 +1,5 @@
 import { IPost, UserPreview } from "@/types/IPost";
-import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 import formatNumberDisplay from "@/utils/format/formatNumberDisplay";
 
 const pushYou = (segments: ITitleSegment[], currentUserId: string) =>
@@ -24,8 +24,8 @@ const pushAnd = (segments: ITitleSegment[]) =>
 const pushUser = (segments: ITitleSegment[], user: UserPreview) =>
 	segments.push({
 		type: "link",
-		linkTo: `/user/${user._id}`,
-		content: `${user.fullName}`,
+		linkTo: `/user/${user?._id}`,
+		content: `${user?.fullName}`,
 	});
 
 const pushOtherUsers = (segments: ITitleSegment[], reactionCount: number) =>
@@ -36,11 +36,11 @@ const pushOtherUsers = (segments: ITitleSegment[], reactionCount: number) =>
 
 const getReactionTitleSegments = (post: IPost, currentUserId: string | undefined) => {
 	const reactions = post.reactions.filter(
-		(reaction) => reaction.user._id !== currentUserId,
+		(reaction) => reaction.user?._id !== currentUserId,
 	);
 
 	const hasCurrentUserReacted = post.reactions.some(
-		(reaction) => String(reaction.user._id) === String(currentUserId),
+		(reaction) => String(reaction.user?._id) === String(currentUserId),
 	);
 
 	const reactionCount = reactions?.length;

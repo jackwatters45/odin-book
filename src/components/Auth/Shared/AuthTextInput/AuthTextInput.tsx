@@ -6,7 +6,7 @@ import {
 	StyledShowHideButton,
 } from "./AuthTextInput.styles";
 import { InputHTMLAttributes } from "react";
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 
 interface AuthTextInputProps<T extends FieldValues>
 	extends InputHTMLAttributes<HTMLInputElement> {

@@ -2,7 +2,10 @@ import { useParams } from "react-router";
 import { FormEvent } from "react";
 import { DeepPartial } from "react-hook-form";
 
-import useFormCustom, { DataMapper, DataValidator } from "@/hooks/useFormCustom";
+import useFormCustom, {
+	DataMapper,
+	DataValidator,
+} from "@/hooks/reactQuery/useFormCustom";
 import useError from "@/components/Errors/useError";
 import {
 	AudienceStatusOptions,

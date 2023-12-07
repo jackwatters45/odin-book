@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 
-import useFormCustom, { DataMapper } from "@/hooks/useFormCustom";
+import useFormCustom, { DataMapper } from "@/hooks/reactQuery/useFormCustom";
 import { IUser } from "@/types/IUser";
 
 export interface ResetPasswordProps {

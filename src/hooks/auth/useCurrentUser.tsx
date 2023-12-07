@@ -1,6 +1,6 @@
-import useQueryCustom from "./reactQuery/useQueryCustom";
-import { IUser } from "../types/IUser";
-import socket from "../config/socket";
+import useQueryCustom from "../reactQuery/useQueryCustom";
+import { IUser } from "../../types/IUser";
+import socket from "../../config/socket";
 import { useEffect } from "react";
 
 type JsonResponse = {

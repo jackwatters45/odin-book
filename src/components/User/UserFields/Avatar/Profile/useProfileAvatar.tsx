@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 
-import useFileUpload from "@/hooks/useUploadFile";
+import useFileUpload from "@/hooks/misc/useUploadFile";
 
 const useProfileAvatar = () => {
 	const { id } = useParams();

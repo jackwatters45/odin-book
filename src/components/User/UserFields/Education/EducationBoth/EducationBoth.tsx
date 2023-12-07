@@ -1,7 +1,7 @@
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import EducationUserOverviewItem from "../Education";
 import { IEducation } from "../types/EducationTypes";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 import EducationBothPlaceholder from "../Placeholder/EducationPlaceholder";
 
 interface EducationBothProps {

@@ -1,10 +1,9 @@
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
 import { IPost } from "@/types/IPost";
-import renderTitleSegment from "@/utils/render/titleSegment/titleSegments";
 import { Fragment } from "react";
 import getReactionTitleSegments from "../utils/getReactionTitleSegments";
 import { StyledReactionsTextContainer } from "./PostReactionText.styles";
 import formatNumberDisplay from "@/utils/format/formatNumberDisplay";
+import usePostReactionText from "./usePostReactionText";
 
 interface ReactionTextProps {
 	post: IPost;
@@ -12,13 +11,12 @@ interface ReactionTextProps {
 }
 
 const PostReactionText = ({ post, showReactionText }: ReactionTextProps) => {
-	const currentUserId = useCurrentUserCached()?._id;
+	const { currentUserId, renderTitleSegments } = usePostReactionText();
 
-	return null;
 	return showReactionText ? (
 		<StyledReactionsTextContainer>
 			{getReactionTitleSegments(post, currentUserId).map((segment, index) => (
-				<Fragment key={index}>{renderTitleSegment(segment)}</Fragment>
+				<Fragment key={index}>{renderTitleSegments(segment)}</Fragment>
 			))}
 		</StyledReactionsTextContainer>
 	) : (

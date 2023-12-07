@@ -1,6 +1,6 @@
 import { apiBaseUrl } from "@/config/envVariables";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
+import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";

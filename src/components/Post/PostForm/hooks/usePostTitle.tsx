@@ -1,12 +1,12 @@
 import { getFeelingEmoji } from "@/components/Post/PostForm/AddToPost/Feeling/Constants/feelingOptions";
 import { PostFormValues } from "@/components/Post/PostForm/types/PostFormTypes";
-import { IPost } from "@/types/IPost";
+import { IPostFormFields } from "@/types/IPost";
 import getSeparatorAtIndex from "@/utils/format/getSeparatorAtIndex";
-import { ITitleSegment } from "@/utils/render/titleSegment/titleSegments";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 import { mdiMenuRight } from "@mdi/js";
 
 interface UsePostTitleProps {
-	post: Partial<IPost>;
+	post: Partial<IPostFormFields>;
 	authorFullName?: string;
 	authorId?: string;
 }

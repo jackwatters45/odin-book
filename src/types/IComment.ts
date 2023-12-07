@@ -2,9 +2,10 @@ import { UserPreview } from "./IPost";
 import { IReaction, ReactionType } from "./IReaction";
 
 export interface IComment {
+	_id: string;
 	content: string;
 	author: UserPreview;
-	_id: string;
+	post: string;
 	createdAt: string;
 	updatedAt: string;
 	reactions: IReaction[];

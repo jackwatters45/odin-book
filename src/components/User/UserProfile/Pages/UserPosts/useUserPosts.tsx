@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
-import useCurrentUserCached from "@/hooks/useCurrentUserCached";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
+import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { apiBaseUrl } from "@/config/envVariables";
 import useContainerWidth from "../../context/useContainerWidth";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
 
 const ITEMS_PER_PAGE = 20;
 

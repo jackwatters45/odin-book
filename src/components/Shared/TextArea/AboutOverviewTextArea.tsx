@@ -6,7 +6,7 @@ import {
 	StyledAboutOverviewInputLabel,
 	StyledAboutOverviewTextarea,
 } from "../../User/Shared/UserForm/UserForm.styles";
-import useResponsiveTextArea from "@/hooks/useResponsiveTextArea";
+import useResponsiveTextArea from "@/hooks/dom/useResponsiveTextArea";
 
 interface AboutOverviewTextAreaProps extends HTMLAttributes<HTMLTextAreaElement> {
 	category: string;

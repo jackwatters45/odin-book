@@ -1,11 +1,11 @@
 import { useOutletContext } from "react-router";
 
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 import getCurrentCity from "@/components/User/UserFields/PlacesLived/utils/getCurrentCity";
 import getHometown from "@/components/User/UserFields/PlacesLived/utils/getHometown";
 import { IUser } from "@/types/IUser";
 import { sortArrByStartEndDates } from "@/utils/dateHelpers";
-import useAboutFieldVisibility from "@/hooks/useAboutFieldVisibility";
+import useAboutFieldVisibility from "@/hooks/misc/useAboutFieldVisibility";
 
 const useUserAboutPlacesLived = () => {
 	const { isOwnProfile } = useProfileStatus();

@@ -1,5 +1,5 @@
-import useResponsiveTextArea from "@/hooks/useResponsiveTextArea";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import useResponsiveTextArea from "@/hooks/dom/useResponsiveTextArea";
+import useWindowWidth from "@/hooks/dom/useWindowWidth";
 import { useCallback, useEffect } from "react";
 
 export interface usePostContentProps {

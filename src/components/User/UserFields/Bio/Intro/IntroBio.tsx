@@ -1,5 +1,5 @@
 import EditBioForm from "@/components/User/UserFields/Bio/EditBioForm";
-import useToggledState from "@/hooks/useToggledState";
+import useToggledState from "@/hooks/misc/useToggledState";
 import IntroSection from "../../../UserProfile/Pages/UserPosts/UserIntro/IntroSection";
 
 interface IntroBioProps {

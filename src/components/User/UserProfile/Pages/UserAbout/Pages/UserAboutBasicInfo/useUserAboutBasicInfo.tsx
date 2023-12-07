@@ -1,5 +1,5 @@
-import useAboutFieldVisibility from "@/hooks/useAboutFieldVisibility";
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useAboutFieldVisibility from "@/hooks/misc/useAboutFieldVisibility";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import { useOutletContext } from "react-router";
 

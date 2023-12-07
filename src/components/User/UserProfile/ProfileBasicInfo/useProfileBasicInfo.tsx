@@ -1,4 +1,4 @@
-import useProfileStatus from "@/hooks/useIsOwnProfile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 import { IUser } from "@/types/IUser";
 import useContainerWidth from "../context/useContainerWidth";
 
