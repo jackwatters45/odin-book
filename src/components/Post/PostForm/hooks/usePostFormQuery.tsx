@@ -6,11 +6,23 @@ import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
 type InfinitePostsResults = InfiniteData<IPost[]>;
 
-const addToPosts = (data: IPost, prevData: InfinitePostsResults | undefined) => {
+const editPostQuery = (data: IPost, prevData: InfinitePostsResults | undefined) => {
 	if (!prevData) return prevData;
 	const updatedPages = prevData.pages.map((page) =>
 		page.map((p) => (p._id === data._id ? data : p)),
 	);
+
+	return {
+		pages: updatedPages,
+		pageParams: prevData.pageParams,
+	};
+};
+
+const addToPosts = (data: IPost, prevData: InfinitePostsResults | undefined) => {
+	if (!prevData) return { pages: [[data]], pageParams: [{ 0: null }] };
+
+	const updatedFirstPage = [data, ...prevData.pages[0]];
+	const updatedPages = [updatedFirstPage, ...prevData.pages.slice(1)];
 
 	return {
 		pages: updatedPages,
@@ -35,7 +47,7 @@ const addSharedPostToSharedPostCount = (
 	};
 };
 
-const useCreatePostQuery = () => {
+const useCreatePostQuery = (type: "create" | "edit") => {
 	const { id: userId } = useParams<{ id: string }>() as { id: string };
 
 	const currentUserId = useCurrentUserCached()?._id;
@@ -43,10 +55,17 @@ const useCreatePostQuery = () => {
 	const queryClient = useQueryClient();
 
 	return (data: IPost) => {
-		queryClient.setQueryData<InfinitePostsResults>(
-			["user", userId, "posts"],
-			(prevData) => addToPosts(data, prevData),
-		);
+		if (type === "edit") {
+			queryClient.setQueryData<InfinitePostsResults>(
+				["user", userId, "posts"],
+				(prevData) => editPostQuery(data, prevData),
+			);
+		} else {
+			queryClient.setQueryData<InfinitePostsResults>(
+				["user", userId, "posts"],
+				(prevData) => addToPosts(data, prevData),
+			);
+		}
 
 		const isSharedPost = !!data.sharedFrom;
 		if (isSharedPost) {

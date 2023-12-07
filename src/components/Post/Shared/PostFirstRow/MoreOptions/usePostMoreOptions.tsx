@@ -83,6 +83,10 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 					};
 				},
 			);
+
+			queryClient.setQueryData<IPost>(["post", post._id], (prevData) => {
+				return prevData ? { ...prevData, audience: data.audience } : prevData;
+			});
 		},
 	});
 	const submitForm = handleSubmit((data) => updateAudience({ data }));

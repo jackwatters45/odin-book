@@ -24,7 +24,7 @@ const useUpdateComment = () => {
 		queryClient.setQueryData<InfinitePostsResults>(
 			["user", userId, "posts"],
 			(prevData) => {
-				if (!prevData) return { pages: [[updatedPost]], pageParams: [{ 0: null }] };
+				if (!prevData) return prevData;
 
 				const updatedPages = prevData.pages.map((page) =>
 					page.map((p) => (p._id === postId ? updatedPost : p)),

@@ -16,7 +16,7 @@ const usePostForm = () => {
 	const sharedFromData = initialValues?.sharedFrom;
 
 	// use form
-	const PostForm = usePostFormQuery();
+	const PostForm = usePostFormQuery(initialValues ? "edit" : "create");
 
 	const postId = initialValues?._id;
 	const { control, setValue, watch, mutate, handleSubmit } =
