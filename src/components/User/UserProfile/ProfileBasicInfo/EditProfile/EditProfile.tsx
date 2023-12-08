@@ -31,7 +31,7 @@ interface EditProfileProps {
 }
 
 const EditProfile = ({ user }: EditProfileProps) => {
-	const { ref, openDialog, closeDialog } = useDialog({});
+	const { ref, openDialog, closeDialog, isOpen } = useDialog({});
 
 	const { avatarUrl, coverPhotoUrl, bio, hobbies } = user;
 
@@ -43,26 +43,28 @@ const EditProfile = ({ user }: EditProfileProps) => {
 				onClick={openDialog}
 				iconSize={0.75}
 			/>
-			<Suspense>
-				<StyledEditProfileDialog ref={ref}>
-					<DialogHeader title={"Edit profile"} closeDialog={closeDialog} />
-					<StyledEditProfileContent>
-						<AvatarEditProfileSection avatarUrl={avatarUrl} />
-						<CoverEditProfileSection coverPhotoUrl={coverPhotoUrl} />
-						<BioEditProfileSection bio={bio} />
-						<IntroEditProfileSection user={user} closeParentDialog={closeDialog} />
-						<HobbiesEditProfileSection hobbies={hobbies} />
-						<BottomDiv>
-							<StyledStandardButtonFullWidth
-								text="Edit your About info"
-								to="about"
-								colorClass="light-blue"
-								onClick={closeDialog}
-							/>
-						</BottomDiv>
-					</StyledEditProfileContent>
-				</StyledEditProfileDialog>
-			</Suspense>
+			{isOpen && (
+				<Suspense>
+					<StyledEditProfileDialog ref={ref}>
+						<DialogHeader title={"Edit profile"} closeDialog={closeDialog} />
+						<StyledEditProfileContent>
+							<AvatarEditProfileSection avatarUrl={avatarUrl} />
+							<CoverEditProfileSection coverPhotoUrl={coverPhotoUrl} />
+							<BioEditProfileSection bio={bio} />
+							<IntroEditProfileSection user={user} closeParentDialog={closeDialog} />
+							<HobbiesEditProfileSection hobbies={hobbies} />
+							<BottomDiv>
+								<StyledStandardButtonFullWidth
+									text="Edit your About info"
+									to="about"
+									colorClass="light-blue"
+									onClick={closeDialog}
+								/>
+							</BottomDiv>
+						</StyledEditProfileContent>
+					</StyledEditProfileDialog>
+				</Suspense>
+			)}
 		</div>
 	);
 };

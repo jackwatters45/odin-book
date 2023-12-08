@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 import OptionBadge from "@/components/Shared/OptionBadge";
 import { hobbiesBank } from "@/config/globals";
@@ -20,7 +21,7 @@ const SelectedHobbies = ({ hobbiesValue, register }: SelectedHobbiesProps) => {
 					return (
 						<OptionBadge
 							key={name}
-							id={`selected-form-${name}`}
+							id={`selected-form-${name}-${uuid()}`}
 							name={name}
 							emoji={hobbyData?.emoji}
 							register={register}

@@ -1,6 +1,7 @@
 import { mdiMagnify } from "@mdi/js";
 import Icon from "@mdi/react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 import {
 	StyledHobbiesSearchContainer,
@@ -20,7 +21,7 @@ const HobbiesSearch = ({ register }: HobbiesSearchProps) => {
 				</span>
 				<input
 					type="text"
-					id="hobbies-search"
+					id={`hobbies-search-${uuid()}`}
 					placeholder="What do you do for fun?"
 					{...register}
 				/>
