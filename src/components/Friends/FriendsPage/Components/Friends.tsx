@@ -15,7 +15,7 @@ const Friends = ({ Nav, Content, ...props }: FriendsProps) => {
 	return windowWidth >= 768 ? (
 		<StyledFriendsContainer {...props}>
 			{Nav}
-			<StyledNavShadowY left={360} />
+			<StyledNavShadowY $left={360} />
 			<StyledFriendsContent>{Content}</StyledFriendsContent>
 		</StyledFriendsContainer>
 	) : (

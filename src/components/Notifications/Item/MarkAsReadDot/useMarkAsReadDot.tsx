@@ -28,7 +28,7 @@ const useMarkAsReadDot = (id: string) => {
 		mutationFn: fetchMarkAsRead,
 		onSuccess: () => {
 			queryClient.setQueryData<InfiniteNotificationsResults>(
-				["me", "notifications", queryKeyEnd],
+				["me", "notifications", "all"],
 				(prevNotifications) => {
 					if (!prevNotifications) return { pages: [], pageParams: [] };
 
@@ -39,6 +39,22 @@ const useMarkAsReadDot = (id: string) => {
 							}
 							return notification;
 						});
+					});
+
+					return {
+						pages: updatedPages,
+						pageParams: prevNotifications.pageParams,
+					};
+				},
+			);
+
+			queryClient.setQueryData<InfiniteNotificationsResults>(
+				["me", "notifications", "unread"],
+				(prevNotifications) => {
+					if (!prevNotifications) return { pages: [], pageParams: [] };
+
+					const updatedPages = prevNotifications.pages.map((page) => {
+						return page.filter((notification) => notification._id !== notificationId);
 					});
 
 					return {

@@ -139,11 +139,11 @@ export const StyledNavShadowX = styled.div`
 	pointer-events: none;
 `;
 
-export const StyledNavShadowY = styled.div<{ left: number }>`
+export const StyledNavShadowY = styled.div<{ $left: number }>`
 	position: absolute;
 	top: 3px;
 	bottom: 0;
-	left: ${({ left }) => left}px;
+	left: ${({ $left }) => $left}px;
 	width: 7px;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACBAMAAACapPCZAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAD29va1cB7UAAAAB3RSTlMCCwQHGBAaZf6MKAAAABJJREFUCNdjSHMVNFZiYGCA0gAUdgIjNiRPgQAAAABJRU5ErkJggg==);
 	background-size: 7px 1px;

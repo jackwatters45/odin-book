@@ -28,7 +28,7 @@ const FriendsHomeSection = ({
 			<FriendsHomeSectionHeader title={title} link={link} />
 			<div style={{ position: "relative", minHeight: "100px" }}>
 				<FriendCards users={users} setItemsPerRow={setItemsPerRow} />
-				{isLoading && (
+				{isLoading && !users && (
 					<div
 						style={{
 							position: "relative",

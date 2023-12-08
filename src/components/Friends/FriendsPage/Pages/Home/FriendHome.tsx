@@ -14,7 +14,7 @@ const FriendHome = () => {
 	return (
 		<StyledFriendsHomeContainer>
 			<HomeNav />
-			{windowWidth >= 800 ? <StyledNavShadowY left={360} /> : null}
+			{windowWidth >= 800 ? <StyledNavShadowY $left={360} /> : null}
 			<StyledFriendsContent>
 				{windowWidth < 800 ? <StyledNavShadowXFriendsHome /> : null}
 				<FriendsHomeContent />

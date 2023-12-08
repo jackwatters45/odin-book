@@ -26,7 +26,7 @@ const NotificationItemText = ({ notification }: NotificationItemTextProps) => {
 				))}
 			</StyledNotificationItemTextContent>
 			<StyledNotificationItemTextTime>
-				{formatTimeSince(notification.updatedAt)}
+				{formatTimeSince(notification.createdAt)}
 			</StyledNotificationItemTextTime>
 		</StyledNotificationItemTextContainer>
 	);

@@ -29,7 +29,7 @@ const FriendsRequestsNav = () => {
 			<StyledUserNavHr />
 			{requestsCount > 0 && (
 				<StyledSubtitle>
-					{`${requestsCount} Friend Request${requestsCount > 1 && "s"}`}
+					{`${requestsCount} Friend Request${requestsCount > 1 ? "s" : ""}`}
 				</StyledSubtitle>
 			)}
 		</NavWithFriendResults>

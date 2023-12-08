@@ -33,7 +33,7 @@ const FriendCardMutualFriends = ({
 						/>
 					)}
 				</StyledFriendCardMutualFriendsImages>
-				<span title={getListTitle({ arr: mutualFriends, field: "fullName" })}>
+				<span title={getListTitle({ arr: mutualFriends, field: "fullName", limit: 30 })}>
 					{mutualFriends?.length} mutual friend
 					{mutualFriends?.length !== 1 && "s"}
 				</span>

@@ -29,7 +29,7 @@ const useMarkAllAsRead = ({ isUnreadNotification }: UseMarkAllAsReadProps) => {
 		mutationFn: fetchMarkAllAsRead,
 		onSuccess: () => {
 			queryClient.setQueryData<InfiniteNotificationsResults>(
-				["me", "notifications", queryKeyEnd],
+				["me", "notifications", "all"],
 				(prevNotifications) => {
 					if (!prevNotifications) return { pages: [], pageParams: [] };
 
@@ -47,12 +47,18 @@ const useMarkAllAsRead = ({ isUnreadNotification }: UseMarkAllAsReadProps) => {
 				},
 			);
 
+			queryClient.setQueryData<InfiniteNotificationsResults>(
+				["me", "notifications", "unread"],
+				() => ({ pages: [], pageParams: [null] }),
+			);
+
 			queryClient.setQueryData<number>(["me", "notifications", "count"], 0);
 		},
 	});
 
 	const handleClickMarkAllAsRead = () => {
-		if (isUnreadNotification) mutate();
+		// if (isUnreadNotification) mutate();
+		mutate(); // TODO remove
 	};
 
 	return { handleClickMarkAllAsRead };
