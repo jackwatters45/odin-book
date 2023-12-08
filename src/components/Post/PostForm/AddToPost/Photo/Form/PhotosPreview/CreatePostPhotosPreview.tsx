@@ -19,6 +19,7 @@ interface CreatePostPhotosPreviewProps {
 	unsavedMedia: PhotoPreviews | undefined;
 	savedMedia: string[] | undefined;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
+	setPhotosError: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const CreatePostPhotosPreview = ({
@@ -26,12 +27,14 @@ const CreatePostPhotosPreview = ({
 	unsavedMedia,
 	savedMedia,
 	setPhotoPreviews,
+	setPhotosError,
 }: CreatePostPhotosPreviewProps) => {
 	const { addPhotos, combinedPhotos, numPhotos, showNumHiddenPhotos } =
 		useCreatePostPhotosPreview({
 			unsavedMedia,
 			savedMedia,
 			setPhotoPreviews,
+			setPhotosError,
 		});
 
 	return (

@@ -15,13 +15,15 @@ import {
 interface CreatePostPhotoFormNoPreviewsProps {
 	control: Control<PostFormValues>;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
+	setPhotosError: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const CreatePostPhotoFormNoPreviews = ({
 	control,
 	setPhotoPreviews,
+	setPhotosError,
 }: CreatePostPhotoFormNoPreviewsProps) => {
-	const addPhotos = useCreatePostPhotoForm({ setPhotoPreviews });
+	const addPhotos = useCreatePostPhotoForm({ setPhotoPreviews, setPhotosError });
 
 	return (
 		<StyledAddPhotoLabel htmlFor="add-photo-post">

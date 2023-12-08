@@ -1,17 +1,18 @@
 import { ControllerRenderProps } from "react-hook-form";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
-import useError from "@/components/Errors/useError";
 import { PhotoPreview, PhotoPreviews } from "../types/PhotoTypes";
 import { PostFormValues } from "../../../types/PostFormTypes";
 
 interface useCreatePostPhotoFormProps {
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
+	setPhotosError: Dispatch<SetStateAction<string | undefined>>;
 }
 
-const useCreatePostPhotoForm = ({ setPhotoPreviews }: useCreatePostPhotoFormProps) => {
-	const { setError } = useError();
-
+const useCreatePostPhotoForm = ({
+	setPhotoPreviews,
+	setPhotosError,
+}: useCreatePostPhotoFormProps) => {
 	const addPhotos = async (
 		e: ChangeEvent<HTMLInputElement>,
 		field: ControllerRenderProps<PostFormValues, "unsavedMedia">,
@@ -20,7 +21,7 @@ const useCreatePostPhotoForm = ({ setPhotoPreviews }: useCreatePostPhotoFormProp
 			const selectedFiles = Array.from(e.target.files);
 
 			if (selectedFiles.length + (field?.value?.length || 0) > 10) {
-				setError("You can only upload up to 10 photos.");
+				setPhotosError("You can only upload up to 10 photos.");
 			}
 
 			const previews = selectedFiles.map((file) => {

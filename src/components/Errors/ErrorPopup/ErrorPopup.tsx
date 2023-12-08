@@ -13,7 +13,7 @@ const ErrorPopup = () => {
 	const { ref, closePopup, renderErrorMessage } = useErrorPopup();
 
 	return (
-		<StyledErrorDialog open ref={ref}>
+		<StyledErrorDialog ref={ref}>
 			<StyledButton onClick={closePopup}>
 				<Icon path={mdiClose} size={0.9} color={"black"} />
 			</StyledButton>

@@ -7,13 +7,15 @@ interface UseCreatePostPhotosPreviewProps {
 	unsavedMedia: PhotoPreviews | undefined;
 	savedMedia: string[] | undefined;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
+	setPhotosError: Dispatch<SetStateAction<string | undefined>>;
 }
 const useCreatePostPhotosPreview = ({
 	unsavedMedia,
 	savedMedia,
 	setPhotoPreviews,
+	setPhotosError,
 }: UseCreatePostPhotosPreviewProps) => {
-	const addPhotos = useCreatePostPhotoForm({ setPhotoPreviews });
+	const addPhotos = useCreatePostPhotoForm({ setPhotoPreviews, setPhotosError });
 
 	const combinedPhotos = unsavedMedia
 		?.map((preview) => preview.preview)

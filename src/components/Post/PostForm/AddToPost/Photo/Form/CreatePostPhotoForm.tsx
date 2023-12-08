@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, lazy, Suspense, useState } from "react";
 import { Control, UseFormSetValue } from "react-hook-form";
 
 import CreatePostPhotosPreview from "./PhotosPreview";
@@ -7,6 +7,8 @@ import PhotoFormNoPreviews from "./PhotoFormNoPreviews";
 import CreatePostPhotoCloseButton from "./CloseButton";
 import { StyledCreatePostPhotoContainer } from "./CreatePostPhotoForm.styles";
 import { PostFormValues } from "../../../types/PostFormTypes";
+
+const PhotosError = lazy(() => import("./Error"));
 
 interface CreatePostPhotoFormProps {
 	setValue: UseFormSetValue<PostFormValues>;
@@ -23,24 +25,36 @@ const CreatePostPhotoForm = ({
 	photoPreviews,
 	setPhotoPreviews,
 }: CreatePostPhotoFormProps) => {
+	const [photosError, setPhotosError] = useState<string | undefined>("");
+
 	return (
-		<StyledCreatePostPhotoContainer>
-			<CreatePostPhotoCloseButton
-				setValue={setValue}
-				setPhotoPreviews={setPhotoPreviews}
-			/>
-			{!!(photoPreviews.length || savedMedia?.length) && (
-				<CreatePostPhotosPreview
-					control={control}
+		<>
+			<StyledCreatePostPhotoContainer>
+				<CreatePostPhotoCloseButton
+					setValue={setValue}
 					setPhotoPreviews={setPhotoPreviews}
-					unsavedMedia={photoPreviews}
-					savedMedia={savedMedia}
 				/>
-			)}
-			{!photoPreviews.length && !savedMedia?.length && (
-				<PhotoFormNoPreviews control={control} setPhotoPreviews={setPhotoPreviews} />
-			)}
-		</StyledCreatePostPhotoContainer>
+				{!!(photoPreviews.length || savedMedia?.length) && (
+					<CreatePostPhotosPreview
+						control={control}
+						setPhotoPreviews={setPhotoPreviews}
+						unsavedMedia={photoPreviews}
+						savedMedia={savedMedia}
+						setPhotosError={setPhotosError}
+					/>
+				)}
+				{!photoPreviews.length && !savedMedia?.length && (
+					<PhotoFormNoPreviews
+						control={control}
+						setPhotoPreviews={setPhotoPreviews}
+						setPhotosError={setPhotosError}
+					/>
+				)}
+			</StyledCreatePostPhotoContainer>
+			<Suspense>
+				<PhotosError photosError={photosError} setPhotosError={setPhotosError} />
+			</Suspense>
+		</>
 	);
 };
 

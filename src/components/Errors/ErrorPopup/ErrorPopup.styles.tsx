@@ -1,7 +1,7 @@
 import { keyframes, styled } from "styled-components";
 
 export const StyledErrorDialog = styled.dialog`
-	position: absolute;
+	position: fixed;
 	height: 100px;
 	width: 300px;
 	bottom: 1rem;
