@@ -57,8 +57,7 @@ const useMarkAllAsRead = ({ isUnreadNotification }: UseMarkAllAsReadProps) => {
 	});
 
 	const handleClickMarkAllAsRead = () => {
-		// if (isUnreadNotification) mutate();
-		mutate(); // TODO remove
+		if (isUnreadNotification) mutate();
 	};
 
 	return { handleClickMarkAllAsRead };

@@ -4,8 +4,8 @@
 
   - check
 
-    - notifications
     - friends
+
     - about
     - edit profile
     - cover photo + avatar

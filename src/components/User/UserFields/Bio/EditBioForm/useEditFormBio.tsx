@@ -5,12 +5,15 @@ import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 
 interface useEditFormBioProps {
 	handleCloseForm: () => void;
+	initialValue: string | undefined;
 }
 
-const useEditFormBio = ({ handleCloseForm }: useEditFormBioProps) => {
+const useEditFormBio = ({ handleCloseForm, initialValue }: useEditFormBioProps) => {
 	const { id } = useParams();
 
-	const { register, watch } = useForm();
+	const { register, watch } = useForm({
+		defaultValues: { bio: initialValue || "" },
+	});
 	const bioInput = watch("bio");
 	const bioLengthRemaining = 101 - (bioInput?.length || 0);
 

@@ -8,17 +8,17 @@ import {
 	StyledTextArea,
 	StyledTextAreaContainer,
 } from "./EditBioForm.styles";
-import DialogActions from "@/components/Shared/DialogActions";
 
 interface EditBioFormProps {
 	handleCloseForm: () => void;
-	data: string | undefined;
+	initialValue: string | undefined;
 	className?: string;
 }
 
-const EditBioForm = ({ handleCloseForm, data, className }: EditBioFormProps) => {
+const EditBioForm = ({ handleCloseForm, initialValue, className }: EditBioFormProps) => {
 	const { handleSaveBio, register, bioLengthRemaining, bioInput } = useEditFormBio({
 		handleCloseForm,
+		initialValue,
 	});
 
 	return (
@@ -27,7 +27,7 @@ const EditBioForm = ({ handleCloseForm, data, className }: EditBioFormProps) => 
 				<StyledTextArea
 					{...register("bio", { required: true })}
 					placeholder="Describe who you are"
-					defaultValue={data}
+					defaultValue={initialValue}
 				/>
 			</div>
 			<StyledCharCount>{bioLengthRemaining} characters remaining</StyledCharCount>

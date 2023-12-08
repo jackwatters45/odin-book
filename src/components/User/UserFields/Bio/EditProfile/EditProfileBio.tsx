@@ -19,7 +19,7 @@ const EditProfileBio = ({ bio }: EditProfileBioProps) => {
 			/>
 			<div>
 				{isEditing ? (
-					<EditFormBio data={bio} handleCloseForm={handleToggleForm} />
+					<EditFormBio initialValue={bio} handleCloseForm={handleToggleForm} />
 				) : (
 					<p>{bio || "Describe yourself..."}</p>
 				)}

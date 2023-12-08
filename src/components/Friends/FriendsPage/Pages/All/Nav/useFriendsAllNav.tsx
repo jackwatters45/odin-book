@@ -25,7 +25,9 @@ const useFriendsAllNav = () => {
 	const currentUser = useCurrentUserCached();
 
 	// input
-	const { register, watch } = useForm();
+	const { register, watch } = useForm({
+		defaultValues: { "friends-all-nav-search": "" },
+	});
 
 	const q = watch("friends-all-nav-search");
 
