@@ -8,6 +8,7 @@ import usePostFormContext from "./context/usePostFormContext";
 import usePostFormQuery from "./hooks/usePostFormQuery";
 import { IPost } from "@/types/IPost";
 import useError from "@/components/Errors/useError";
+import { isEqual } from "lodash";
 
 const usePostForm = () => {
 	// error popup
@@ -16,6 +17,9 @@ const usePostForm = () => {
 	// dialog
 	const { ref, closeDialog, initialOpenedState, initialValues, isEditing } =
 		usePostFormContext();
+
+	// submit state
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	// use form
 	const PostForm = usePostFormQuery(initialValues ? "edit" : "create");
@@ -51,6 +55,9 @@ const usePostForm = () => {
 		});
 
 	const submitForm = handleSubmit((data) => {
+		const isChanged = isEqual(data, initialValues);
+		if (!isChanged) return closeDialog();
+
 		const formData = new FormData();
 
 		formData.append("audience", data.audience);
@@ -62,8 +69,6 @@ const usePostForm = () => {
 
 		data.taggedUsers?.forEach((user) => formData.append("taggedUsers[]", user._id));
 
-		console.log(data);
-
 		data.media?.forEach((media) => formData.append("media[]", media));
 		data.unsavedMedia?.forEach((media) => formData.append("unsavedMedia[]", media));
 
@@ -72,6 +77,8 @@ const usePostForm = () => {
 		if (data.checkIn?.city) formData.append("checkIn.city", data.checkIn?.city);
 		if (data.checkIn?.state) formData.append("checkIn.state", data.checkIn?.state);
 		if (data.checkIn?.country) formData.append("checkIn.country", data.checkIn?.country);
+
+		setIsSubmitting(true);
 
 		mutate(
 			{ data: formData },
@@ -129,6 +136,7 @@ const usePostForm = () => {
 		initialOpenedState,
 		isEditing,
 		initialValues,
+		isSubmitting,
 		control,
 		setValue,
 		submitForm,

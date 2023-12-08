@@ -20,6 +20,7 @@ import { PostFormInitialValues } from "../context/PostFormContext";
 
 interface BasePostFormProps {
 	isEditing: boolean;
+	isSubmitting: boolean;
 	isPreviousDefault: boolean;
 	closeDialog: () => void;
 	initialValues: PostFormInitialValues | undefined;
@@ -37,6 +38,7 @@ interface BasePostFormProps {
 
 const BasePostForm = ({
 	isEditing,
+	isSubmitting,
 	initialValues,
 	isPreviousDefault,
 	closeDialog,
@@ -102,10 +104,10 @@ const BasePostForm = ({
 					/>
 				)}
 				<StandardButtonFullWidth
-					text={isEditing ? "Save" : "Post"}
+					text={isSubmitting ? "Submitting..." : isEditing ? "Save" : "Post"}
 					type="submit"
 					disabled={isSubmitDisabled}
-					colorClass={isSubmitDisabled ? undefined : "blue"}
+					colorClass={isSubmitting ? "light-blue" : isSubmitDisabled ? undefined : "blue"}
 				/>
 			</StyledBasePostForm>
 		</StyledMainFormContainer>

@@ -4,21 +4,18 @@
 
   - check
 
-    - post display
-
     - notifications
-
     - friends
     - about
-    - view post
-    - create post
+    - edit profile
+    - cover photo + avatar
+    - search
+    - auth shit
+    - lol posts scroll
 
   - issues
-    - notifications
-    - social text
-    - remove friend -> remove from friends list
-    - friend requests???
-    - post view more
+    - social text?
+    - remove friend -> remove from friends list?
 
 - publish
 
