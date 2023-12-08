@@ -26,6 +26,7 @@ const CreatePostFeelingForm = ({
 	const { filteredFeelings, handleClick, handleSearch } = useCreatePostFeelingForm({
 		closeForm,
 		setValue,
+		currentValue,
 	});
 
 	return (

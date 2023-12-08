@@ -6,14 +6,17 @@ import { PostFormValues } from "../../../types/PostFormTypes";
 interface UseCreatePostFeelingFormProps {
 	closeForm: () => void;
 	setValue: UseFormSetValue<PostFormValues>;
+	currentValue: string | undefined;
 }
 
 const useCreatePostFeelingForm = ({
 	closeForm,
 	setValue,
+	currentValue,
 }: UseCreatePostFeelingFormProps) => {
 	const handleClick = (feeling: string) => {
-		setValue("feeling", feeling);
+		if (currentValue === feeling) setValue("feeling", "");
+		else setValue("feeling", feeling);
 		closeForm();
 	};
 

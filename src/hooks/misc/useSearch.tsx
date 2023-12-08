@@ -1,11 +1,12 @@
 import { debounce } from "lodash";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 import useQueryCustom, { IQueryCustomProps } from "../reactQuery/useQueryCustom";
 import { UseQueryOptions } from "@tanstack/react-query";
 
 export interface UseSearchProps<T, U> {
 	searchQuery: string | undefined;
+	excludedUsersParam?: string;
 	queryKey: IQueryCustomProps<T, U>["queryKey"];
 	queryUrl: IQueryCustomProps<T, U>["queryUrl"];
 	transformData?: IQueryCustomProps<T, U>["transformData"];
@@ -15,6 +16,7 @@ export interface UseSearchProps<T, U> {
 
 const useSearch = <T, U>({
 	searchQuery,
+	excludedUsersParam,
 	queryKey,
 	queryUrl,
 	transformData,
@@ -25,27 +27,21 @@ const useSearch = <T, U>({
 		data: searchResults,
 		refetch,
 		isLoading,
+		...rest
 	} = useQueryCustom<T, U>({
-		queryUrl: `${queryUrl}?q=${searchQuery}`,
+		queryUrl: `${queryUrl}?q=${searchQuery}&exclude=${excludedUsersParam}`,
 		queryKey,
 		transformData,
 		options: { ...options, enabled: false },
 	});
 
-	const debouncedRefetch = debounce(() => {
-		refetch();
-	}, 300);
-
-	const refetchDebounced = useCallback(() => {
-		debouncedRefetch();
-	}, [debouncedRefetch]);
-
 	useEffect(() => {
-		if (searchQuery || includeEmpty) refetchDebounced();
+		const debouncedRefetch = debounce(() => refetch(), 300);
+		if (searchQuery || includeEmpty) debouncedRefetch();
 		return debouncedRefetch.cancel;
-	}, [searchQuery, includeEmpty, refetchDebounced, debouncedRefetch]);
+	}, [searchQuery, includeEmpty, refetch, excludedUsersParam]);
 
-	return { searchResults, isLoading };
+	return { searchResults, isLoading, ...rest };
 };
 
 export default useSearch;

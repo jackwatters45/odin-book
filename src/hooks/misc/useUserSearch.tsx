@@ -1,7 +1,8 @@
 import { UseFormRegisterReturn, useForm } from "react-hook-form";
-import useCurrentUser from "../auth/useCurrentUser";
 import useSearch from "./useSearch";
 import { UseQueryOptions } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import useCurrentUserCached from "../auth/useCurrentUserCached";
 
 export type UserSearchInput = { search: string };
 
@@ -28,36 +29,49 @@ const useUserSearch = ({
 	includeEmpty = false,
 	usersToExclude,
 }: IUseUserSearch) => {
-	const { currentUser } = useCurrentUser();
+	const currentUser = useCurrentUserCached();
 
-	const { register, watch } = useForm<UserSearchInput>();
+	const { register, watch } = useForm<UserSearchInput>({
+		defaultValues: { search: "" },
+	});
 
 	const registerSearchInput: RegisterSearchInput = register("search");
 
 	const searchQuery = watch("search");
-	const { searchResults: unfilteredSearchResults, isLoading } = useSearch<
-		SearchJsonResponse,
-		SearchResultsType
-	>({
+
+	const excludedUsersParam = usersToExclude?.map((u) => u._id).join(",");
+
+	const [searchResults, setSearchResults] = useState<SearchResultsType>([]);
+	const {
+		searchResults: searchResultsData,
+		isLoading,
+		...rest
+	} = useSearch<SearchJsonResponse, SearchResultsType>({
 		searchQuery,
-		queryKey: ["users", currentUser?._id, "search", urlEnding, searchQuery],
+		excludedUsersParam,
+		queryKey: [
+			"users",
+			currentUser?._id,
+			"search",
+			urlEnding,
+			searchQuery,
+			excludedUsersParam,
+		],
 		queryUrl: `users/search/${urlEnding}`,
 		includeEmpty,
 		options: { staleTime: 60000, cacheTime: 60000, ...options },
 	});
 
-	const searchResults =
-		usersToExclude && usersToExclude.length
-			? unfilteredSearchResults?.filter(
-					(user) => !usersToExclude?.some((u) => u._id === user._id),
-			  )
-			: unfilteredSearchResults;
+	useEffect(() => {
+		if (!isLoading && searchResultsData) setSearchResults(searchResultsData);
+	}, [searchResultsData, isLoading]);
 
 	return {
 		registerSearchInput,
 		searchQuery,
 		searchResults,
 		isLoading,
+		...rest,
 	};
 };
 

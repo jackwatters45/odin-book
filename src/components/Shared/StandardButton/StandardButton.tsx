@@ -53,7 +53,6 @@ const StandardButton = ({
 			onClick={onClick}
 			disabled={disabled}
 			type={type}
-			title={text}
 			{...props}
 		>
 			{sharedElements}

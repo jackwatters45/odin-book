@@ -13,6 +13,10 @@ export const StyledUserInfo = styled.div`
 	}
 `;
 
+export const StyledUserAvatar = styled.span`
+	align-self: flex-start;
+`;
+
 export const StyledFullName = styled.span`
 	font-size: 0.9rem;
 	line-height: 1.2rem;

@@ -56,23 +56,37 @@ const getPostTitleSegments = ({
 			content: " with ",
 		});
 
-		taggedUsers.forEach((user, index) => {
+		taggedUsers.slice(0, 3).forEach((user, index) => {
 			postTitleSegments.push({
 				type: "link",
 				content: `${user.fullName}${getSeparatorAtIndex(index, taggedUsers.length)}`,
 				linkTo: `/user/${user._id}`,
 			});
 		});
+
+		if (taggedUsers.length > 3) {
+			postTitleSegments.push({
+				type: "bold",
+				content: ` and ${taggedUsers.length - 3} other${
+					taggedUsers.length > 4 ? "s" : ""
+				}`,
+			});
+		}
 	}
 
 	if (checkIn?.city) {
 		const checkInSegment = checkIn?.location
-			? ` at ${checkIn.location}, ${checkIn.city}`
-			: ` in ${checkIn.city}`;
+			? [" at ", `${checkIn.location}, ${checkIn.city}`]
+			: [" in ", `${checkIn.city}`];
+
+		postTitleSegments.push({
+			type: "text",
+			content: checkInSegment[0],
+		});
 
 		postTitleSegments.push({
 			type: "bold",
-			content: checkInSegment,
+			content: checkInSegment[1],
 		});
 	}
 

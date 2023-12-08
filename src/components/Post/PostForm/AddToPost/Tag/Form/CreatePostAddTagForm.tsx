@@ -3,7 +3,6 @@ import { UseFormSetValue } from "react-hook-form";
 import DialogHeader from "@/components/Shared/DialogHeader";
 import { StyledOtherFormContainer } from "../../../PostForm.styles";
 import SearchInput from "@/components/Shared/SearchInput";
-import Loading from "@/components/Shared/Loading";
 import useCreatePostAddTagForm from "./useCreatePostAddTagForm";
 import TaggedUser from "./TaggedUser";
 import { TaggedUserType } from "./types/TagTypes";
@@ -33,10 +32,12 @@ const CreatePostAddTagForm = ({
 	taggedUsers,
 }: CreatePostAddTagFormProps) => {
 	const {
+		resultDisplayCount,
 		registerSearchInput,
 		searchQuery,
 		searchResults,
 		isLoading,
+		isSuccess,
 		handleAddTaggedUser,
 		handleRemoveTaggedUser,
 	} = useCreatePostAddTagForm({
@@ -79,11 +80,9 @@ const CreatePostAddTagForm = ({
 						{searchQuery ? "Search" : "Suggestions"}
 					</StyledUppercaseGreyText>
 					<StyledSearchResults>
-						{isLoading ? (
-							<Loading size={32} speed={0.5} />
-						) : searchResults?.length ? (
+						{isLoading || isSuccess || searchResults?.length ? (
 							searchResults
-								.slice(0, 10)
+								.slice(0, resultDisplayCount)
 								.map((user) => (
 									<UserSearchResult
 										key={user._id}

@@ -1,13 +1,13 @@
 import useFriendStatus from "../useFriendStatus";
 import { IUser } from "@/types/IUser";
-import useCurrentUser from "@/hooks/auth/useCurrentUser";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
 interface UseProfileFriendStatusProps {
 	user: IUser;
 }
 
 const useProfileFriendStatus = ({ user }: UseProfileFriendStatusProps) => {
-	const { currentUser } = useCurrentUser();
+	const currentUser = useCurrentUserCached();
 
 	const friendStatus = !!(currentUser?._id && user.friends.includes(currentUser?._id));
 

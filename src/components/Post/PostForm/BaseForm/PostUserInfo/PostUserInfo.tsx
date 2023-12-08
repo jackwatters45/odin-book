@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { ImageCircle } from "@/components/Nav/Nav.styles";
 import CreatePostAudience from "./PostAudience";
 import { PostFormValues } from "../../types/PostFormTypes";
-import { StyledFullName, StyledUserInfo } from "./PostUserInfo.styles";
+import { StyledFullName, StyledUserAvatar, StyledUserInfo } from "./PostUserInfo.styles";
 import useRenderTitleSegments from "@/utils/render/titleSegment/useRenderTitleSegments";
 import defaultUserAvatar from "@/components/User/UserFields/Avatar/utils/defaultUserAvatar";
 import usePostTitle from "@/components/Post/PostForm/hooks/usePostTitle";
@@ -36,9 +36,9 @@ const PostUserInfo = ({
 
 	return (
 		<StyledUserInfo>
-			<span>
+			<StyledUserAvatar>
 				<ImageCircle src={avatarUrl || defaultUserAvatar} alt="avatar" />
-			</span>
+			</StyledUserAvatar>
 			<div>
 				<StyledFullName>
 					{postTitleSegments.map((segment, index) => (
