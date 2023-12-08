@@ -9,21 +9,17 @@ import { PostFormValues } from "@/components/Post/PostForm/types/PostFormTypes";
 
 interface CreatePostPhotoCloseButtonProps {
 	setValue: UseFormSetValue<PostFormValues>;
-	toggleIsAddingPhoto: () => void;
 	setPhotoPreviews: Dispatch<SetStateAction<PhotoPreviews>>;
 }
 
 const CreatePostPhotoCloseButton = ({
 	setValue,
-	toggleIsAddingPhoto,
 	setPhotoPreviews,
 }: CreatePostPhotoCloseButtonProps) => {
 	const handleClose = () => {
 		setValue("media", []);
 		setValue("unsavedMedia", []);
-
 		setPhotoPreviews([]);
-		toggleIsAddingPhoto();
 	};
 
 	return (

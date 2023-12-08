@@ -21,7 +21,6 @@ const useCreatePostPhotoForm = ({ setPhotoPreviews }: useCreatePostPhotoFormProp
 
 			if (selectedFiles.length + (field?.value?.length || 0) > 10) {
 				setError("You can only upload up to 10 photos.");
-				return;
 			}
 
 			const previews = selectedFiles.map((file) => {
@@ -36,10 +35,10 @@ const useCreatePostPhotoForm = ({ setPhotoPreviews }: useCreatePostPhotoFormProp
 			});
 
 			Promise.all(previews).then((previewData) => {
-				setPhotoPreviews((prev) => [...prev, ...previewData]);
+				setPhotoPreviews((prev) => [...prev, ...previewData].slice(0, 10));
 			});
 
-			if (field.value) field.onChange([...field.value, ...selectedFiles]);
+			if (field.value) field.onChange([...field.value, ...selectedFiles].slice(0, 10));
 			else field.onChange(selectedFiles);
 		}
 	};

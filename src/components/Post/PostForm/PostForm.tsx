@@ -8,22 +8,15 @@ import BasePostFormForm from "./BaseForm";
 const PostForm = () => {
 	const {
 		ref,
-		closeDialog,
-		initialOpenedState,
-		isEditing,
-		sharedFromData,
 		setValue,
-		formValues,
-		isTaggingUsers,
 		toggleIsTaggingUsers,
-		isAddingFeeling,
 		toggleIsAddingFeeling,
+		isTaggingUsers,
+		isAddingFeeling,
 		isCheckingIn,
+		formValues,
 		toggleIsCheckingIn,
-		photoPreviews,
-		setPhotoPreviews,
-		isPreviousDefault,
-		...formMethods
+		...rest
 	} = usePostForm();
 
 	return (
@@ -48,19 +41,12 @@ const PostForm = () => {
 				/>
 			) : (
 				<BasePostFormForm
-					isEditing={isEditing}
-					sharedFromData={sharedFromData}
-					isPreviousDefault={isPreviousDefault}
-					initialOpenedState={initialOpenedState}
-					closeDialog={closeDialog}
 					formValues={formValues}
 					setValue={setValue}
 					toggleIsTaggingUsers={toggleIsTaggingUsers}
 					toggleIsAddingFeeling={toggleIsAddingFeeling}
 					toggleIsCheckingIn={toggleIsCheckingIn}
-					photoPreviews={photoPreviews}
-					setPhotoPreviews={setPhotoPreviews}
-					{...formMethods}
+					{...rest}
 				/>
 			)}
 		</StyledDialogPostForm>

@@ -26,7 +26,7 @@ const CreatePostPhotoFormNoPreviews = ({
 	return (
 		<StyledAddPhotoLabel htmlFor="add-photo-post">
 			<Controller
-				name="media"
+				name="unsavedMedia"
 				control={control}
 				render={({ field }) => (
 					<input

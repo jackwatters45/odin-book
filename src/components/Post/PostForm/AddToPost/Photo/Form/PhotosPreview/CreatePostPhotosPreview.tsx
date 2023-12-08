@@ -39,24 +39,30 @@ const CreatePostPhotosPreview = ({
 			<Controller
 				name="unsavedMedia"
 				control={control}
-				render={({ field }) => (
-					<StyledLabel htmlFor="add-photo-post">
-						<input
-							id="add-photo-post"
-							hidden
-							type="file"
-							accept="image/*"
-							multiple
-							onChange={async (e) => await addPhotos(e, field)}
-						/>
-						<StyledAddMorePhotosButton
-							text="Add photos"
-							icon={mdiPlusBoxMultiple}
-							colorClass="white"
-							className="add-more-photos-button"
-						/>
-					</StyledLabel>
-				)}
+				render={({ field }) => {
+					const isDisabled = field.value && field.value?.length >= 10;
+					return (
+						<StyledLabel htmlFor="add-photo-post">
+							<input
+								id="add-photo-post"
+								hidden
+								type="file"
+								accept="image/*"
+								multiple
+								disabled={isDisabled}
+								onChange={async (e) => await addPhotos(e, field)}
+							/>
+							{!isDisabled && (
+								<StyledAddMorePhotosButton
+									text="Add photos"
+									icon={mdiPlusBoxMultiple}
+									colorClass="white"
+									className="add-more-photos-button"
+								/>
+							)}
+						</StyledLabel>
+					);
+				}}
 			/>
 			<StyledPostPhotosPreview $numPhotos={numPhotos}>
 				{combinedPhotos?.slice(0, 5).map((image, index) => {

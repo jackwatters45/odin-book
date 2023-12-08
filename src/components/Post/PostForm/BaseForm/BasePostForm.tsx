@@ -16,13 +16,13 @@ import { PhotoPreviews } from "../AddToPost/Photo/types/PhotoTypes";
 import UserInfo from "./PostUserInfo";
 import ContentTextArea from "./PostTextArea";
 import PostSharedFrom from "../../Shared/PostSharedFrom/PostSharedForm";
-import { IPost } from "@/types/IPost";
+import { PostFormInitialValues } from "../context/PostFormContext";
 
 interface BasePostFormProps {
 	isEditing: boolean;
-	sharedFromData: IPost | undefined;
 	isPreviousDefault: boolean;
 	closeDialog: () => void;
+	initialValues: PostFormInitialValues | undefined;
 	formValues: PostFormValues;
 	initialOpenedState: InitialOpenedState;
 	setValue: UseFormSetValue<PostFormValues>;
@@ -37,7 +37,7 @@ interface BasePostFormProps {
 
 const BasePostForm = ({
 	isEditing,
-	sharedFromData,
+	initialValues,
 	isPreviousDefault,
 	closeDialog,
 	formValues,
@@ -53,9 +53,12 @@ const BasePostForm = ({
 		currentUser,
 		addPhotoState: [isAddingPhoto, toggleIsAddingPhoto],
 		isSubmitDisabled,
+		sharedFromData,
+		mediaData,
 	} = useBasePostForm({
 		formValues,
 		initialOpenedState,
+		initialValues,
 	});
 
 	return (
@@ -81,11 +84,10 @@ const BasePostForm = ({
 					/>
 					{(photoPreviews.length > 0 || formValues?.media?.length || isAddingPhoto) && (
 						<PhotoForm
-							toggleIsAddingPhoto={toggleIsAddingPhoto}
 							control={control}
 							setValue={setValue}
 							photoPreviews={photoPreviews}
-							savedMedia={formValues?.media}
+							savedMedia={mediaData}
 							setPhotoPreviews={setPhotoPreviews}
 						/>
 					)}

@@ -7,13 +7,15 @@ import { PhotoPreviews } from "./AddToPost/Photo/types/PhotoTypes";
 import usePostFormContext from "./context/usePostFormContext";
 import usePostFormQuery from "./hooks/usePostFormQuery";
 import { IPost } from "@/types/IPost";
+import useError from "@/components/Errors/useError";
 
 const usePostForm = () => {
+	// error popup
+	const { setError } = useError();
+
 	// dialog
 	const { ref, closeDialog, initialOpenedState, initialValues, isEditing } =
 		usePostFormContext();
-
-	const sharedFromData = initialValues?.sharedFrom;
 
 	// use form
 	const PostForm = usePostFormQuery(initialValues ? "edit" : "create");
@@ -60,6 +62,8 @@ const usePostForm = () => {
 
 		data.taggedUsers?.forEach((user) => formData.append("taggedUsers[]", user._id));
 
+		console.log(data);
+
 		data.media?.forEach((media) => formData.append("media[]", media));
 		data.unsavedMedia?.forEach((media) => formData.append("unsavedMedia[]", media));
 
@@ -69,7 +73,13 @@ const usePostForm = () => {
 		if (data.checkIn?.state) formData.append("checkIn.state", data.checkIn?.state);
 		if (data.checkIn?.country) formData.append("checkIn.country", data.checkIn?.country);
 
-		mutate({ data: formData }, { onSuccess: () => closeDialog() });
+		mutate(
+			{ data: formData },
+			{
+				onSuccess: () => closeDialog(),
+				onError: (res) => setError(res.message),
+			},
+		);
 	});
 
 	const formValues = watch();
@@ -118,7 +128,7 @@ const usePostForm = () => {
 		closeDialog,
 		initialOpenedState,
 		isEditing,
-		sharedFromData,
+		initialValues,
 		control,
 		setValue,
 		submitForm,

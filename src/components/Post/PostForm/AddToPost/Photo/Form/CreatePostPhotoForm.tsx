@@ -10,7 +10,6 @@ import { PostFormValues } from "../../../types/PostFormTypes";
 
 interface CreatePostPhotoFormProps {
 	setValue: UseFormSetValue<PostFormValues>;
-	toggleIsAddingPhoto: () => void;
 	savedMedia: string[] | undefined;
 	control: Control<PostFormValues>;
 	photoPreviews: PhotoPreviews;
@@ -19,7 +18,6 @@ interface CreatePostPhotoFormProps {
 
 const CreatePostPhotoForm = ({
 	setValue,
-	toggleIsAddingPhoto,
 	savedMedia,
 	control,
 	photoPreviews,
@@ -29,7 +27,6 @@ const CreatePostPhotoForm = ({
 		<StyledCreatePostPhotoContainer>
 			<CreatePostPhotoCloseButton
 				setValue={setValue}
-				toggleIsAddingPhoto={toggleIsAddingPhoto}
 				setPhotoPreviews={setPhotoPreviews}
 			/>
 			{!!(photoPreviews.length || savedMedia?.length) && (
