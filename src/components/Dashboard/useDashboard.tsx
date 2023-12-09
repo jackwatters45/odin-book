@@ -41,14 +41,14 @@ const useDashboard = () => {
 		fetchNextPage,
 	});
 
-	const [posts, setPosts] = useState<IPost[]>([]);
-	useEffect(() => {
-		if (unflattenedPosts) {
-			const flattenedPosts = unflattenedPosts.pages.flat();
-			setPosts(flattenedPosts);
-		}
-	}, [unflattenedPosts]);
-	// const posts = unflattenedPosts?.pages.flat() as IPost[];
+	const posts = unflattenedPosts?.pages.flat() ?? [];
+
+	// TODO test
+	console.log(posts);
+	// const [posts, setPosts] = useState<IPost[]>([]);
+	// useEffect(() => {
+	// 	if (unflattenedPosts) setPosts(unflattenedPosts.pages.flat());
+	// }, [unflattenedPosts]);
 
 	return { currentUser, posts, isLoading, ref, isFetchingNextPage, hasNextPage };
 };

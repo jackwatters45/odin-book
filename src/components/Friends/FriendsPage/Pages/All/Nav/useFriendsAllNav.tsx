@@ -3,6 +3,7 @@ import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ITEMS_PER_PAGE = 12;
@@ -52,7 +53,10 @@ const useFriendsAllNav = () => {
 		fetchNextPage,
 	});
 
-	const users = usersUnflattened?.pages.flat() as UserPreviewWithMutuals[];
+	const [users, setUsers] = useState<UserPreviewWithMutuals[]>();
+	useEffect(() => {
+		if (!isLoading && usersUnflattened) setUsers(usersUnflattened.pages.flat());
+	}, [usersUnflattened, isLoading]);
 
 	return { users, isLoading, ref, isFetchingNextPage, hasNextPage, register, q };
 };

@@ -6,16 +6,14 @@
 
     - friends
 
+    - search
+    - cover photo + avatar
+
     - about
     - edit profile
-    - cover photo + avatar
-    - search
+
     - auth shit
     - lol posts scroll
-
-  - issues
-    - social text?
-    - remove friend -> remove from friends list?
 
 - publish
 

@@ -2,7 +2,7 @@ import { IEducation } from "@/components/User/UserFields/Education/types/Educati
 import { IPlaceLived } from "@/components/User/UserFields/PlacesLived/types/PlacesLivedTypes";
 
 export type FriendDisplayFields = {
-	id: string;
+	_id: string;
 	fullName: string;
 	avatarUrl: string;
 	education: IEducation[];

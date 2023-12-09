@@ -19,8 +19,8 @@ const useUserFriends = ({ isUsingLink }: UseUserFriendsProps) => {
 	const { friends } = useFetchFriends();
 
 	const userMutualFriends = friends?.filter(
-		({ mutualFriends, id }) =>
-			mutualFriends?.length > 0 && String(id) !== String(currentUser?._id),
+		({ mutualFriends, _id }) =>
+			mutualFriends?.length > 0 && String(_id) !== String(currentUser?._id),
 	);
 
 	const friendType = useFriendPageType();

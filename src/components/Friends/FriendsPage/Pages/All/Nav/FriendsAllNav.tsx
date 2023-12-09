@@ -4,7 +4,7 @@ import useFriendsAllNav from "./useFriendsAllNav";
 import { InfiniteScrollLoadingFriendsNav } from "@/styles/SharedStyles";
 
 const FriendsAllNav = () => {
-	const { users, isLoading, ref, isFetchingNextPage, hasNextPage, register, q } =
+	const { register, isLoading, ref, isFetchingNextPage, hasNextPage, users, q } =
 		useFriendsAllNav();
 
 	return (
@@ -13,12 +13,13 @@ const FriendsAllNav = () => {
 			users={users}
 			to="all"
 			isLoading={isLoading}
+			includeLoading={false}
 			noResultsText={q ? `No friends named "${q}"` : "No friends"}
 			scrollLoader={
 				<InfiniteScrollLoadingFriendsNav
 					isFetchingNextPage={isFetchingNextPage}
 					hasNextPage={hasNextPage}
-					isLoading={isLoading}
+					isLoading={false}
 					ref={ref}
 				/>
 			}

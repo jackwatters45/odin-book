@@ -63,6 +63,7 @@ const SearchDialog = ({ closeDialog }: SearchProps) => {
 						</Link>
 					</SearchResult>
 				))}
+				{/* TODO */}
 				{/* {searchQuery && (
 					<SearchResult>
 						<Link to={`/search/top/?q=${searchQuery}`}>

@@ -2,11 +2,11 @@ import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { useParams } from "react-router";
 import { IFriendsDisplay } from "../types/FriendsTypes";
 
-const useFetchFriends = () => {
+const useFetchFriends = (limit?: number) => {
 	const { id: userId } = useParams<{ id: string }>();
 
 	const { data: friends } = useQueryCustom<IFriendsDisplay>({
-		queryUrl: `users/${userId}/friends?limit=9`,
+		queryUrl: `users/${userId}/friends${limit ? `?limit=${limit}` : ""}`,
 		queryKey: ["user", userId, "friends"],
 	});
 

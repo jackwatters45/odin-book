@@ -3,7 +3,7 @@ import FriendsPreview from "@/components/Friends/Components/Preview/FriendsPrevi
 import useFetchFriends from "@/components/Friends/hooks/useFetchFriends";
 
 const UserFriendsPreview = () => {
-	const { userId, friends } = useFetchFriends();
+	const { userId, friends } = useFetchFriends(9);
 
 	return (
 		<UserProfileSectionWithLink

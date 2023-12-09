@@ -25,12 +25,12 @@ const FriendsList = ({ friends, className }: FriendsListProps) => {
 	return (
 		<StyledFriendsContainer className={className}>
 			{friends && friends.length ? (
-				friends?.map(({ avatarUrl, id, fullName, mutualFriends, ...rest }) => {
+				friends?.map(({ avatarUrl, _id, fullName, mutualFriends, ...rest }) => {
 					const hasMutualFriends = mutualFriends?.length > 0;
-					const isCurrentUser = currentUser?._id === id;
+					const isCurrentUser = currentUser?._id === _id;
 					return (
-						<StyledFriendCard key={id} $containerWidth={containerWidth}>
-							<Link to={`/user/${id}`}>
+						<StyledFriendCard key={_id} $containerWidth={containerWidth}>
+							<Link to={`/user/${_id}`}>
 								<StyledFriendAvatar
 									$containerWidth={containerWidth}
 									src={avatarUrl || defaultUserAvatar}
@@ -39,18 +39,18 @@ const FriendsList = ({ friends, className }: FriendsListProps) => {
 							</Link>
 							<StyledUserNameMutualFriendsContainer>
 								<ExtraBoldText>
-									<Link to={`/user/${id}`}>{fullName}</Link>
+									<Link to={`/user/${_id}`}>{fullName}</Link>
 								</ExtraBoldText>
 								{hasMutualFriends && !isCurrentUser && (
 									<StyledMutualFriends>
-										<Link to={`/user/${id}/friends/mutual`}>
+										<Link to={`/user/${_id}/friends/mutual`}>
 											{mutualFriends?.length} mutual friends
 										</Link>
 									</StyledMutualFriends>
 								)}
 							</StyledUserNameMutualFriendsContainer>
 							<FriendsListMoreOptions
-								id={id}
+								id={_id}
 								isCurrentUser={isCurrentUser}
 								hasMutualFriends={hasMutualFriends}
 								{...rest}

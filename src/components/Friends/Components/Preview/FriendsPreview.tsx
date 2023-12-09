@@ -14,9 +14,9 @@ const FriendsPreview = ({ friends, className }: FriendsPreviewProps) => {
 
 	return (
 		<StyledFriendsContainer className={className}>
-			{friends?.slice(0, 9).map(({ avatarUrl, id, fullName }) => (
-				<StyledFriend key={id} $containerWidth={containerWidth}>
-					<Link to={`/user/${id}`}>
+			{friends?.slice(0, 9).map(({ avatarUrl, _id, fullName }) => (
+				<StyledFriend key={_id} $containerWidth={containerWidth}>
+					<Link to={`/user/${_id}`}>
 						<img src={avatarUrl || defaultUserAvatar} alt={"User friend"} />
 						<span>{fullName}</span>
 					</Link>

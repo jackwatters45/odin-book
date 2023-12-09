@@ -25,6 +25,7 @@ interface NavWithUserResultsProps {
 	children?: ReactNode;
 	scrollLoader?: ReactNode;
 	isLoading?: boolean;
+	includeLoading?: boolean;
 	noResultsText?: string;
 }
 
@@ -35,6 +36,7 @@ const NavWithUserResults = ({
 	children,
 	scrollLoader,
 	isLoading,
+	includeLoading,
 	noResultsText,
 }: NavWithUserResultsProps) => {
 	const { isPreview } = useNavWithUserResults();
@@ -52,7 +54,7 @@ const NavWithUserResults = ({
 			</StyledNavUserHeader>
 			{children}
 			<StyledNavUserCardContainer $isPreview={isPreview}>
-				{isLoading ? (
+				{isLoading && includeLoading ? (
 					<StyledLoadingPosition>
 						<Loading />
 					</StyledLoadingPosition>

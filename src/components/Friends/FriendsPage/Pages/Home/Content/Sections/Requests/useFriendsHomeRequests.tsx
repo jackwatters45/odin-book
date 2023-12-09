@@ -8,6 +8,8 @@ import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 const DEFAULT_ITEMS_PER_PAGE = 16;
 
 const fetchFriendRequests = async (limit: number) => {
+	if (!limit) return [];
+
 	const res = await fetch(`${apiBaseUrl}/users/me/friend-requests?limit=${limit}`, {
 		method: "GET",
 		credentials: "include",
