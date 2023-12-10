@@ -58,7 +58,7 @@ const NavWithUserResults = ({
 					<StyledLoadingPosition>
 						<Loading />
 					</StyledLoadingPosition>
-				) : !users?.length && noResultsText ? (
+				) : !isLoading && !users?.length && noResultsText ? (
 					<StyledNoResultsText>{noResultsText}</StyledNoResultsText>
 				) : (
 					users?.map((user) => (

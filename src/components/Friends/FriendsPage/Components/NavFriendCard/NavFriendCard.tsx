@@ -26,6 +26,9 @@ const NavFriendCard = ({
 }: NavFriendCardProps) => {
 	const { buttonOptions } = useFriendCard(_id);
 
+	// TODO
+	if (_id === "6529cae2fca18c43f66a3679") console.log("mutualFriends", mutualFriends);
+
 	return (
 		<StyledNavFriendCardLink to={isPreview ? `/friends/${to}/${_id}` : `/user/${_id}/`}>
 			<ImageCircle src={avatarUrl || defaultUserAvatar} size={60} />

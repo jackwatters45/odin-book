@@ -4,13 +4,13 @@
 
   - check
 
-    - friends
-
-    - search
     - cover photo + avatar
 
-    - about
+    - friends
+
     - edit profile
+
+    - about
 
     - auth shit
     - lol posts scroll

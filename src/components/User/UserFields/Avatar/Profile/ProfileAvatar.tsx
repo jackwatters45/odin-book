@@ -5,7 +5,6 @@ import useProfileAvatar from "./useProfileAvatar";
 import {
 	StyledAvatarContainer,
 	StyledAvatarImageBackground,
-	StyledHoverableDiv,
 	StyledAvatarImage,
 	StyledAvatarEditButton,
 } from "./ProfileAvatar.styles";
@@ -16,30 +15,31 @@ interface ProfileAvatarProps {
 }
 
 const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
-	const { fileInputRef, handleUploadClick, handleFileChange } = useProfileAvatar();
+	const { fileInputRef, handleUploadClick, handleFileChange, isOwnProfile } =
+		useProfileAvatar();
 
 	return (
 		<StyledAvatarContainer>
 			<StyledAvatarImageBackground>
-				<StyledHoverableDiv>
-					<StyledAvatarImage src={avatarUrl || defaultUserAvatar} alt="User Profile" />
-				</StyledHoverableDiv>
-				<StyledAvatarEditButton onClick={handleUploadClick}>
-					<input
-						type="file"
-						accept="image/*"
-						id="file-input"
-						ref={fileInputRef}
-						onChange={handleFileChange}
-						hidden
-					/>
-					<IconCircleBackground
-						path={mdiCamera}
-						size={1.5}
-						color={"black"}
-						background={"#e4e6eb"}
-					/>
-				</StyledAvatarEditButton>
+				<StyledAvatarImage src={avatarUrl || defaultUserAvatar} alt="User Profile" />
+				{isOwnProfile && (
+					<StyledAvatarEditButton onClick={handleUploadClick}>
+						<input
+							type="file"
+							accept="image/*"
+							id="file-input"
+							ref={fileInputRef}
+							onChange={handleFileChange}
+							hidden
+						/>
+						<IconCircleBackground
+							path={mdiCamera}
+							size={1.5}
+							color={"black"}
+							background={"#e4e6eb"}
+						/>
+					</StyledAvatarEditButton>
+				)}
 			</StyledAvatarImageBackground>
 		</StyledAvatarContainer>
 	);

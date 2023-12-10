@@ -95,7 +95,7 @@ export const StyledDialog = styled.dialog`
 
 export const StyledTextInputSharedCss = css`
 	width: 100%;
-	height: 42px;
+	min-height: 42px;
 	border-radius: 1.5rem;
 	background-color: #f0f2f5;
 	display: flex;

@@ -1,25 +1,23 @@
-import { useParams } from "react-router";
-
 import useWindowWidth from "@/hooks/dom/useWindowWidth";
 import useFileUpload from "@/hooks/misc/useUploadFile";
+import useProfileStatus from "@/hooks/auth/useIsOwnProfile";
 
 const useCoverPhoto = () => {
 	const windowWidth = useWindowWidth();
 
-	const { id } = useParams();
+	const { fileInputRef, handleUploadClick, handleFileChange } = useFileUpload(
+		"cover-photo",
+		"coverPhotoUrl",
+	);
 
-	const { fileInputRef, handleUploadClick, handleFileChange } = useFileUpload({
-		queryUrl: `users/${id}/cover-photo`,
-		method: "PATCH",
-		queryKey: ["user", id as string],
-		updateDataKey: "user",
-	});
+	const { isOwnProfile } = useProfileStatus();
 
 	return {
 		showText: windowWidth > 899,
 		fileInputRef,
 		handleUploadClick,
 		handleFileChange,
+		isOwnProfile,
 	};
 };
 

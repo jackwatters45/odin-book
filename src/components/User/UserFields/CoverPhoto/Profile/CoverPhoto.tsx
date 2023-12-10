@@ -13,7 +13,8 @@ interface CoverPhotoProps {
 }
 
 const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
-	const { showText, fileInputRef, handleFileChange, handleUploadClick } = useCoverPhoto();
+	const { showText, fileInputRef, handleFileChange, handleUploadClick, isOwnProfile } =
+		useCoverPhoto();
 
 	return (
 		<StyledContainer>
@@ -27,15 +28,17 @@ const CoverPhoto = ({ userCoverUrl }: CoverPhotoProps) => {
 					onChange={handleFileChange}
 					hidden
 				/>
-				<StyledEditCoverPhotoButton
-					text="Add Cover Photo"
-					showText={showText}
-					icon={mdiCamera}
-					iconSize={0.8}
-					iconColor="white"
-					colorClass="overlay"
-					onClick={handleUploadClick}
-				/>
+				{isOwnProfile && (
+					<StyledEditCoverPhotoButton
+						text="Add Cover Photo"
+						showText={showText}
+						icon={mdiCamera}
+						iconSize={0.8}
+						iconColor="white"
+						colorClass="overlay"
+						onClick={handleUploadClick}
+					/>
+				)}
 			</StyledDiv>
 		</StyledContainer>
 	);
