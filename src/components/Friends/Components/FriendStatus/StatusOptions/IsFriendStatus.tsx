@@ -14,7 +14,7 @@ const IsFriendStatus = ({
 	includeButton,
 	toggleIsUserFriend,
 }: IsFriendStatusProps) => {
-	const unfriendUser = useUnfriendUser({ id });
+	const unfriendUser = useUnfriendUser(id);
 	const handleUnfriendUser = () => {
 		unfriendUser();
 		toggleIsUserFriend();

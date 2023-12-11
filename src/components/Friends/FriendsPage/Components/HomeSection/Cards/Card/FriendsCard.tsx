@@ -14,9 +14,9 @@ interface FriendCardProps {
 }
 
 const FriendCard = ({
-	user: { _id, avatarUrl, fullName, mutualFriends },
+	user: { _id, avatarUrl, fullName, mutualFriends, status },
 }: FriendCardProps) => {
-	const { buttonOptions } = useFriendCard(_id);
+	const { buttonOptions } = useFriendCard(_id, status);
 
 	return (
 		<StyledFriendCard>

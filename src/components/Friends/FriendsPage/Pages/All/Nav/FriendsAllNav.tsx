@@ -13,13 +13,11 @@ const FriendsAllNav = () => {
 			users={users}
 			to="all"
 			isLoading={isLoading}
-			includeLoading={false}
 			noResultsText={q ? `No friends named "${q}"` : "No friends"}
 			scrollLoader={
 				<InfiniteScrollLoadingFriendsNav
 					isFetchingNextPage={isFetchingNextPage}
 					hasNextPage={hasNextPage}
-					isLoading={false}
 					ref={ref}
 				/>
 			}

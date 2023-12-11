@@ -28,7 +28,7 @@ const useFriendsRequestsNav = () => {
 		isFetchingNextPage,
 		hasNextPage,
 	} = useInfiniteQuery<UserPreviewWithMutuals[]>({
-		queryKey: [currentUser?._id as string, "friends", "requests", "infinite"],
+		queryKey: [currentUser?._id as string, "friends", "requests"],
 		queryFn: ({ pageParam }) => fetchFriendsRequests({ pageParam }),
 		getNextPageParam: (lastPage, pages) =>
 			lastPage.length < ITEMS_PER_PAGE ? undefined : pages.length,

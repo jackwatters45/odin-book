@@ -1,114 +1,83 @@
-import { useEffect, useState } from "react";
-
 import useAcceptFriendRequest from "@/components/Friends/hooks/useAcceptFriendRequest";
 import useRejectFriendRequest from "@/components/Friends/hooks/useRejectFriendRequest";
-import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import useSendFriendRequest from "@/components/Friends/hooks/useSendFriendRequest";
 import useRemoveSuggestedFriend from "@/components/Friends/hooks/useRemoveSuggestedFriend";
 import useCancelFriendRequest from "@/components/Friends/hooks/useCancelFriendRequest";
-import { buttonOptions, ResponseState } from "./types/FriendCardTypes";
+import { buttonOptions } from "./types/FriendCardTypes";
+import { UserStatusType } from "@/types/UserStatusType";
 
-const useFriendCard = (userId: string) => {
-	const currentUser = useCurrentUserCached();
-
-	// friend state
-	const isFriend = currentUser?.friends.some(
-		(friend) => String(friend) === String(userId),
-	);
-
-	// non-friend state
-	const [requestSent, setRequestSent] = useState(false);
-
-	const addFriend = useSendFriendRequest({ id: userId });
-	const handleClickAddFriend = () => {
-		addFriend();
-		setRequestSent(true);
-	};
+const useFriendCard = (userId: string, userStatus: UserStatusType) => {
+	const addFriend = useSendFriendRequest(userId);
+	const handleClickAddFriend = () => addFriend();
 
 	const remove = useRemoveSuggestedFriend(userId);
 	const handleClickRemove = () => remove();
 
-	const cancelRequest = useCancelFriendRequest({ id: userId });
-	const handleClickCancelRequest = () => {
-		cancelRequest();
-		setRequestSent(false);
-	};
+	const cancelRequest = useCancelFriendRequest(userId);
+	const handleClickCancelRequest = () => cancelRequest();
 
-	// request received state
-	const [responseState, setResponseState] = useState<ResponseState>(undefined);
-	const isFriendRequestReceived = currentUser?.friendRequestsReceived.some(
-		(request) => String(request) === String(userId),
-	);
+	// TODO
+	const acceptRequest = useAcceptFriendRequest(userId);
+	const handleClickAccept = () => acceptRequest();
 
-	useEffect(() => {
-		if (isFriendRequestReceived) setResponseState("pending");
-	}, [isFriendRequestReceived]);
+	// TODO
+	const declineRequest = useRejectFriendRequest(userId);
+	const handleClickDecline = () => declineRequest();
 
-	const acceptRequest = useAcceptFriendRequest({ id: userId });
-	const handleClickAccept = () => {
-		acceptRequest();
-		setResponseState("accepted");
-	};
-
-	const declineRequest = useRejectFriendRequest({ id: userId });
-	const handleClickDecline = () => {
-		declineRequest();
-		setResponseState("declined");
-	};
-
-	const buttonOptions: buttonOptions = isFriend
-		? []
-		: responseState === "pending"
-		? [
-				{
-					text: "Accept",
-					colorClass: "blue",
-					onClick: handleClickAccept,
-				},
-				{
-					text: "Delete",
-					colorClass: "standard",
-					onClick: handleClickDecline,
-				},
-		  ]
-		: responseState === "accepted"
-		? [
-				{
-					text: "Request accepted",
-					colorClass: "standard",
-					onClick: undefined,
-					disabled: true,
-				},
-		  ]
-		: responseState === "declined"
-		? [
-				{
-					text: "Request declined",
-					colorClass: "standard",
-					onClick: undefined,
-					disabled: true,
-				},
-		  ]
-		: requestSent
-		? [
-				{
-					text: "Cancel",
-					colorClass: "standard",
-					onClick: handleClickCancelRequest,
-				},
-		  ]
-		: [
-				{
-					text: "Add friend",
-					colorClass: "light-blue",
-					onClick: handleClickAddFriend,
-				},
-				{
-					text: "Remove",
-					colorClass: "standard",
-					onClick: handleClickRemove,
-				},
-		  ];
+	const buttonOptions: buttonOptions =
+		userStatus === "friend"
+			? []
+			: userStatus === "request received"
+			? [
+					{
+						text: "Accept",
+						colorClass: "blue",
+						onClick: handleClickAccept,
+					},
+					{
+						text: "Delete",
+						colorClass: "standard",
+						onClick: handleClickDecline,
+					},
+			  ]
+			: userStatus === "request accepted"
+			? [
+					{
+						text: "Request accepted",
+						colorClass: "standard",
+						onClick: undefined,
+						disabled: true,
+					},
+			  ]
+			: userStatus === "request declined"
+			? [
+					{
+						text: "Request declined",
+						colorClass: "standard",
+						onClick: undefined,
+						disabled: true,
+					},
+			  ]
+			: userStatus === "request sent"
+			? [
+					{
+						text: "Cancel",
+						colorClass: "standard",
+						onClick: handleClickCancelRequest,
+					},
+			  ]
+			: [
+					{
+						text: "Add friend",
+						colorClass: "light-blue",
+						onClick: handleClickAddFriend,
+					},
+					{
+						text: "Remove",
+						colorClass: "standard",
+						onClick: handleClickRemove,
+					},
+			  ];
 
 	return { buttonOptions };
 };

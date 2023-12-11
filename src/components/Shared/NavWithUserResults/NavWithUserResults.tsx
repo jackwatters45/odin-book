@@ -4,7 +4,6 @@ import Icon from "@mdi/react";
 import { mdiArrowLeftThin } from "@mdi/js";
 import {
 	StyledBackLink,
-	StyledLoadingPosition,
 	StyledNavHeaderH2,
 	StyledNavUserCardContainer,
 	StyledNavUserHeader,
@@ -12,7 +11,6 @@ import {
 	StyledNoResultsText,
 	StyledUserNavPadding,
 } from "./NavWithUserResults.styles";
-import Loading from "@/components/Shared/Loading";
 
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 import NavFriendCard from "../../Friends/FriendsPage/Components/NavFriendCard";
@@ -25,7 +23,6 @@ interface NavWithUserResultsProps {
 	children?: ReactNode;
 	scrollLoader?: ReactNode;
 	isLoading?: boolean;
-	includeLoading?: boolean;
 	noResultsText?: string;
 }
 
@@ -36,7 +33,6 @@ const NavWithUserResults = ({
 	children,
 	scrollLoader,
 	isLoading,
-	includeLoading,
 	noResultsText,
 }: NavWithUserResultsProps) => {
 	const { isPreview } = useNavWithUserResults();
@@ -54,11 +50,7 @@ const NavWithUserResults = ({
 			</StyledNavUserHeader>
 			{children}
 			<StyledNavUserCardContainer $isPreview={isPreview}>
-				{isLoading && includeLoading ? (
-					<StyledLoadingPosition>
-						<Loading />
-					</StyledLoadingPosition>
-				) : !isLoading && !users?.length && noResultsText ? (
+				{!isLoading && users && !users.length && noResultsText ? (
 					<StyledNoResultsText>{noResultsText}</StyledNoResultsText>
 				) : (
 					users?.map((user) => (

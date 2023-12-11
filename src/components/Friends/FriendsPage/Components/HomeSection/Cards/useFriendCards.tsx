@@ -31,9 +31,7 @@ const useFriendCards = ({ setItemsPerRow }: UseFriendCardsProps) => {
 		const handleResize = () => {
 			const itemsPerRow = calculateItemsPerRow(ref);
 
-			if (itemsPerRow && setItemsPerRow) {
-				setItemsPerRow(itemsPerRow);
-			}
+			if (itemsPerRow && setItemsPerRow) setItemsPerRow(itemsPerRow);
 		};
 
 		handleResize();

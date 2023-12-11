@@ -4,12 +4,8 @@
 
   - check
 
-    - cover photo + avatar
-
     - friends
-
     - edit profile
-
     - about
 
     - auth shit

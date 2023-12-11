@@ -20,14 +20,11 @@ interface NavFriendCardProps {
 }
 
 const NavFriendCard = ({
-	user: { _id, avatarUrl, fullName, mutualFriends },
+	user: { _id, avatarUrl, fullName, mutualFriends, status },
 	to,
 	isPreview,
 }: NavFriendCardProps) => {
-	const { buttonOptions } = useFriendCard(_id);
-
-	// TODO
-	if (_id === "6529cae2fca18c43f66a3679") console.log("mutualFriends", mutualFriends);
+	const { buttonOptions } = useFriendCard(_id, status);
 
 	return (
 		<StyledNavFriendCardLink to={isPreview ? `/friends/${to}/${_id}` : `/user/${_id}/`}>

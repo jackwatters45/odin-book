@@ -1,13 +1,33 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 import { IUser } from "@/types/IUser";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
-interface UseRejectFriendRequest {
-	id: string;
-}
+const rejectFriendCachedUser = (
+	prevData: InfiniteData<IUser[]> | undefined,
+	newFriendId: string,
+) => {
+	return prevData
+		? {
+				...prevData,
+				pages: prevData.pages.map((page) => {
+					return page.map((user) =>
+						user._id === newFriendId
+							? {
+									...user,
+									status: "request declined" as const,
+							  }
+							: user,
+					);
+				}),
+		  }
+		: prevData;
+};
 
-const useRejectFriendRequest = ({ id }: UseRejectFriendRequest) => {
+const useRejectFriendRequest = (id: string) => {
+	const currentUserId = useCurrentUserCached()?._id as string;
+
 	const queryClient = useQueryClient();
 
 	const { mutate: reject } = useMutateCustom({
@@ -24,6 +44,16 @@ const useRejectFriendRequest = ({ id }: UseRejectFriendRequest) => {
 					  }
 					: prevData;
 			});
+
+			queryClient.setQueryData<InfiniteData<IUser[]>>(
+				[currentUserId, "friends", "suggestions"],
+				(prevData) => rejectFriendCachedUser(prevData, id),
+			);
+
+			queryClient.setQueryData<InfiniteData<IUser[]>>(
+				[currentUserId, "friends", "requests"],
+				(prevData) => rejectFriendCachedUser(prevData, id),
+			);
 		},
 	});
 	return () => reject({});

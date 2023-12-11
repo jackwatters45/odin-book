@@ -28,9 +28,6 @@ const useFileUpload = (queryEnd: string, fieldToUpdate: string) => {
 		mutationKey: ["user", userId],
 		mutationFn: (formData: FormData) => fileUploadFetch(formData, userId, queryEnd),
 		onSuccess: (url: string) => {
-			console.log("data", url);
-			console.log("fieldToUpdate", fieldToUpdate);
-
 			queryClient.setQueryData<IUser>(["user", userId], (prev) =>
 				prev ? { ...prev, [fieldToUpdate]: url } : prev,
 			);

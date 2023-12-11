@@ -5,14 +5,17 @@ import { StyledLoadingContainer, StyledNoMoreText } from "./InfiniteScrollLoadin
 interface InfiniteScrollLoadingProps {
 	isFetchingNextPage: boolean;
 	hasNextPage: boolean | undefined;
-	isLoading: boolean;
+	isLoading?: boolean;
 	noMoreText?: string;
 	ref: RefObject<HTMLDivElement>;
 	className?: string;
 }
 
 const InfiniteScrollLoading = forwardRef<HTMLDivElement, InfiniteScrollLoadingProps>(
-	({ isFetchingNextPage, hasNextPage, isLoading, noMoreText, className }, ref) => {
+	(
+		{ isFetchingNextPage, hasNextPage, isLoading = false, noMoreText, className },
+		ref,
+	) => {
 		return isFetchingNextPage ? (
 			<StyledLoadingContainer>
 				<Loading />

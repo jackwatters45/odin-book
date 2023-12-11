@@ -11,6 +11,7 @@ import { ISocialLinks } from "@/components/User/UserFields/SocialLinks/types/Soc
 import { IntroData } from "./IntroTypes";
 import { PronounsType } from "@/components/User/UserFields/Pronouns/types/PronounsTypes";
 import { UserPreview } from "./IPost";
+import { UserStatusType } from "./UserStatusType";
 
 // Basic User Info
 export interface BasicUserInfo {
@@ -108,4 +109,5 @@ export interface IUser
 		UserSystemData,
 		UserAboutData {
 	_id: string;
+	status?: UserStatusType;
 }

@@ -1,13 +1,12 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { InfiniteData, useQueryClient } from "@tanstack/react-query";
 
 import useMutateCustom from "@/hooks/reactQuery/useMutateCustom";
 import { IUser } from "@/types/IUser";
+import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
-interface UseSendFriendRequest {
-	id: string;
-}
+const useUnfriendUser = (id: string) => {
+	const currentUserId = useCurrentUserCached()?._id as string;
 
-const useUnfriendUser = ({ id }: UseSendFriendRequest) => {
 	const queryClient = useQueryClient();
 
 	const { mutate } = useMutateCustom({
@@ -22,6 +21,23 @@ const useUnfriendUser = ({ id }: UseSendFriendRequest) => {
 					  }
 					: prevData;
 			});
+
+			const allQueries = queryClient
+				.getQueryCache()
+				.findAll([currentUserId, "friends", "all"]);
+
+			for (const query of allQueries) {
+				queryClient.setQueryData<InfiniteData<IUser[]>>(query.queryKey, (prevData) => {
+					return prevData
+						? {
+								pageParams: prevData.pageParams,
+								pages: prevData.pages.map((page) => {
+									return page.filter((user) => user._id !== id);
+								}),
+						  }
+						: prevData;
+				});
+			}
 		},
 	});
 

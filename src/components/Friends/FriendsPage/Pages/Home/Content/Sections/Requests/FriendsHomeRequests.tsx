@@ -1,6 +1,7 @@
 import FriendsHomeSection from "../../../../../Components/HomeSection/FriendsHomeSection";
 import useFriendsHomeRequests from "./useFriendsHomeRequests";
 import {
+	InfiniteScrollLoadingUserPreviewCardRequests,
 	StyledPlaceholderDiv,
 	StyledStandardButtonFullWidth,
 } from "./FriendsHomeRequests.styles";
@@ -8,6 +9,10 @@ import {
 const FriendsHomeRequests = () => {
 	const {
 		users,
+		itemsToShow,
+		ref,
+		isFetchingNextPage,
+		hasNextPage,
 		isLoading,
 		isViewMore,
 		showViewMore,
@@ -19,11 +24,21 @@ const FriendsHomeRequests = () => {
 		<FriendsHomeSection
 			title="Friend Requests"
 			link="/friends/requests"
-			users={users}
+			users={isViewMore ? users : users.slice(0, itemsToShow)}
 			isLoading={isLoading}
 			setItemsPerRow={setItemsPerRow}
 		>
-			{isViewMore && <StyledPlaceholderDiv />}
+			{isViewMore && (
+				<>
+					<InfiniteScrollLoadingUserPreviewCardRequests
+						isFetchingNextPage={isFetchingNextPage}
+						hasNextPage={hasNextPage}
+						isLoading={isLoading}
+						ref={ref}
+					/>
+					<StyledPlaceholderDiv />
+				</>
+			)}
 			{showViewMore && (
 				<StyledStandardButtonFullWidth
 					text="View More"

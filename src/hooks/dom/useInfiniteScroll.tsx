@@ -14,6 +14,8 @@ const useInfiniteScroll = <T extends any[]>({
 }: IUseInfiniteScroll<T>) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const [isLoadMore, setIsLoadMore] = useState(false);
+	const triggerLoadMore = () => setIsLoadMore(true);
+
 	useEffect(() => {
 		const currentRef = ref.current;
 
@@ -33,11 +35,12 @@ const useInfiniteScroll = <T extends any[]>({
 
 	useEffect(() => {
 		if (!hasNextPage || !isLoadMore) return;
+
 		fetchNextPage();
 		setIsLoadMore(false);
 	}, [isLoadMore, fetchNextPage, hasNextPage]);
 
-	return { ref };
+	return { ref, triggerLoadMore };
 };
 
 export default useInfiniteScroll;
