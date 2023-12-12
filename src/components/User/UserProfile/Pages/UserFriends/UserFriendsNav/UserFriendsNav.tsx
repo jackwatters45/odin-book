@@ -1,21 +1,31 @@
+import { Dispatch, SetStateAction } from "react";
+
+import { FriendsQueryEndType } from "@/components/Friends/types/FriendsTypes";
 import UserNavLink from "@/components/User/Shared/UserNavLink";
 import { StyledProfileSectionNav } from "@/styles/SharedStyles";
-import { Dispatch, SetStateAction } from "react";
+import useUserFriendsNav from "./useUserFriendsNav";
 
 interface UserFriendsNavLinksProps {
 	isUsingLink: boolean;
-	setSelectedTab: Dispatch<SetStateAction<string>>;
+	setSelectedTab: Dispatch<SetStateAction<FriendsQueryEndType>>;
 	activeTabSelector: string;
 }
 
 const UserFriendsNav = (props: UserFriendsNavLinksProps) => {
+	const { showMutualFriends, showCollege, showCurrentCity, showHometown } =
+		useUserFriendsNav();
+
 	return (
 		<StyledProfileSectionNav>
 			<UserNavLink value="all" text="All friends" {...props} />
-			<UserNavLink value="mutual" text="Mutual friends" {...props} />
-			<UserNavLink value="college" text="College" {...props} />
-			<UserNavLink value="current-city" text="Current city" {...props} />
-			<UserNavLink value="hometown" text="Hometown" {...props} />
+			{showMutualFriends && (
+				<UserNavLink value="mutual" text="Mutual friends" {...props} />
+			)}
+			{showCollege && <UserNavLink value="college" text="College" {...props} />}
+			{showCurrentCity && (
+				<UserNavLink value="current-city" text="Current city" {...props} />
+			)}
+			{showHometown && <UserNavLink value="hometown" text="Hometown" {...props} />}
 		</StyledProfileSectionNav>
 	);
 };

@@ -63,22 +63,6 @@ const SearchDialog = ({ closeDialog }: SearchProps) => {
 						</Link>
 					</SearchResult>
 				))}
-				{/* TODO */}
-				{/* {searchQuery && (
-					<SearchResult>
-						<Link to={`/search/top/?q=${searchQuery}`}>
-							<IconCircleBackground
-								path={mdiMagnify}
-								size={1.5}
-								background="#1b74e4"
-								color={"white"}
-							/>
-							<StyledSearchForText>
-								Search for <strong>{searchQuery}</strong>
-							</StyledSearchForText>
-						</Link>
-					</SearchResult>
-				)} */}
 			</div>
 		</div>
 	);

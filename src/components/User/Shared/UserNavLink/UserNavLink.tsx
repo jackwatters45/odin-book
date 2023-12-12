@@ -1,21 +1,21 @@
 import { Dispatch, SetStateAction } from "react";
 import { StyledProfileLink } from "../../UserProfile/ProfileNav/ProfileNav.styles";
 
-interface UserNavLinkProps {
+interface UserNavLinkProps<T> {
 	isUsingLink: boolean;
-	setSelectedTab: Dispatch<SetStateAction<string>>;
-	value: string;
+	setSelectedTab: Dispatch<SetStateAction<T>>;
+	value: T & string;
 	text: string;
 	activeTabSelector: string;
 }
 
-const UserNavLink = ({
+const UserNavLink = <T,>({
 	value,
 	text,
 	isUsingLink,
 	setSelectedTab,
 	activeTabSelector,
-}: UserNavLinkProps) => {
+}: UserNavLinkProps<T>) => {
 	return (
 		<StyledProfileLink
 			to={value}

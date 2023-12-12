@@ -33,11 +33,11 @@ const usePostComments = ({ postId }: UsePostCommentsProps) => {
 		return sort === "Most relevant"
 			? comments?.sort((a, b) => {
 					//reactions (most first)
-					const reactionsDiff = b.reactions.length - a.reactions.length;
+					const reactionsDiff = b.reactions?.length - a.reactions?.length;
 					if (reactionsDiff !== 0) return reactionsDiff;
 
 					// replies (most first)
-					const repliesDiff = b.replies.length - a.replies.length;
+					const repliesDiff = b.replies?.length - a.replies?.length;
 					if (repliesDiff !== 0) return repliesDiff;
 
 					// created at (newest first)

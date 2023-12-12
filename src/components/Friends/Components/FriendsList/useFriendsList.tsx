@@ -2,10 +2,10 @@ import useContainerWidth from "@/components/User/UserProfile/context/useContaine
 import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 
 const useFriendsList = () => {
-	const currentUser = useCurrentUserCached();
+	const currentUserId = useCurrentUserCached()?._id;
 	const containerWidth = useContainerWidth();
 
-	return { currentUser, containerWidth };
+	return { currentUserId, containerWidth };
 };
 
 export default useFriendsList;

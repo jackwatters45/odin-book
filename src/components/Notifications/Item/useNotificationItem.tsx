@@ -15,13 +15,13 @@ const useNotificationItem = ({ notification }: NotificationItemProps) => {
 	const [responseState, setResponseState] =
 		useState<NotificationResponseState>("pending");
 
-	const acceptRequest = useAcceptFriendRequest({ id: userId });
+	const acceptRequest = useAcceptFriendRequest(userId);
 	const handleClickAccept = () => {
 		acceptRequest();
 		setResponseState("accepted");
 	};
 
-	const declineRequest = useRejectFriendRequest({ id: userId });
+	const declineRequest = useRejectFriendRequest(userId);
 	const handleClickDecline = () => {
 		declineRequest();
 		setResponseState("declined");

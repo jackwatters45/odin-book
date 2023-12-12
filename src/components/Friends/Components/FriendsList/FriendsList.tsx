@@ -11,23 +11,24 @@ import {
 	StyledUserNameMutualFriendsContainer,
 } from "./FriendsList.styles";
 import FriendsListMoreOptions from "../FriendStatus/MoreOptions/FriendStatusMoreOptions";
-import { IFriendsDisplay } from "../../types/FriendsTypes";
 import useFriendsList from "./useFriendsList";
+import { IFriendListDisplayFields } from "../../types/FriendsTypes";
 
 export interface FriendsListProps {
-	friends: IFriendsDisplay | undefined;
+	friends: IFriendListDisplayFields[] | undefined;
 	className?: string;
 }
 
 const FriendsList = ({ friends, className }: FriendsListProps) => {
-	const { currentUser, containerWidth } = useFriendsList();
+	const { currentUserId, containerWidth } = useFriendsList();
 
 	return (
 		<StyledFriendsContainer className={className}>
 			{friends && friends.length ? (
 				friends?.map(({ avatarUrl, _id, fullName, mutualFriends, ...rest }) => {
 					const hasMutualFriends = mutualFriends?.length > 0;
-					const isCurrentUser = currentUser?._id === _id;
+					const isCurrentUser = currentUserId === _id;
+
 					return (
 						<StyledFriendCard key={_id} $containerWidth={containerWidth}>
 							<Link to={`/user/${_id}`}>

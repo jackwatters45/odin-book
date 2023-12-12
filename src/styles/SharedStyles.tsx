@@ -219,10 +219,7 @@ export const InfiniteScrollLoadingFriendsNav = styled(InfiniteScrollLoading)`
 
 export const InfiniteScrollLoadingPosts = styled(InfiniteScrollLoading)`
 	position: absolute;
-	bottom: 40vh;
-	width: 100%;
-	height: 100px;
-	background: black;
+	bottom: 40vh; // TODO
 `;
 
 export const StyledCenteredContainer = styled.div`

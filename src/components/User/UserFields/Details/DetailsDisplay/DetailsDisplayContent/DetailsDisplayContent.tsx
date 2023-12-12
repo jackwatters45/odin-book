@@ -20,6 +20,7 @@ import { StyledLink } from "../DetailsDisplay.styles";
 import getPlatformUrl from "../../../SocialLinks/utils/getPlatformUrl";
 import getSocialLinkImage from "../../../SocialLinks/utils/socialLinkImages";
 import formatRelationshipStatus from "../../../RelationshipStatus/utils/formatRelationshipStatus";
+import { StyledUserDetailWordBreak } from "./DetailsDisplayContent.styles";
 
 interface DetailsDisplayContentProps {
 	user: IUser;
@@ -115,7 +116,7 @@ const DetailsDisplayContent = ({
 				websites &&
 				websites?.map((website) => {
 					return (
-						<UserDetail
+						<StyledUserDetailWordBreak
 							key={website}
 							icon={mdiWeb}
 							textComponent={
@@ -131,7 +132,7 @@ const DetailsDisplayContent = ({
 				socialLinks?.map(({ platform, username }) => {
 					const url = getPlatformUrl(platform);
 					return (
-						<UserDetail
+						<StyledUserDetailWordBreak
 							key={`${platform}-${username}`}
 							icon={getSocialLinkImage(platform)}
 							textComponent={

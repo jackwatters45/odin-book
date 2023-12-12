@@ -16,4 +16,10 @@ export const StyledNotificationsCount = styled.span`
 	color: #fff;
 	background-color: #ef4444;
 	border-radius: 50%;
+
+	@media (max-width: 500px) {
+		top: 100%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 `;

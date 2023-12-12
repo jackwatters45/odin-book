@@ -9,21 +9,20 @@ interface UseUserPhotosProps {
 }
 
 const useUserPhotos = ({ isUsingLink = true }: UseUserPhotosProps) => {
-	const { user } = useOutletContext<{ user: IUser }>();
-	const userFirstName = user?.firstName as string;
+	const userFirstName = useOutletContext<{ user: IUser }>()?.user?.firstName;
 
 	const { isOwnProfile } = useProfileStatus();
 
-	const isYourPhotos = !!useMatch("/user/:username/photos/by");
+	const isYourPhotosRoot = !!useMatch("/user/:username/photos/by");
+	const isYourPhotosNested = !!useMatch("/friends/:type/:username/photos/by");
+	const isYourPhotos = isYourPhotosRoot || isYourPhotosNested;
 
 	const { photos } = UseFetchPhotos({
 		photosType: isYourPhotos ? "photos-by" : "photos-of",
 	});
 
 	const currentPath = isYourPhotos ? "by" : "of";
-
 	const [selectedTab, setSelectedTab] = useState(currentPath);
-
 	const activeTabSelector = isUsingLink ? currentPath : selectedTab;
 
 	return {

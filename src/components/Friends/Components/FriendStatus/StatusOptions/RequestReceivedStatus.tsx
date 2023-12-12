@@ -6,29 +6,15 @@ import RespondButtonWithIcon from "./Buttons/RespondButtonWithIcon";
 
 interface RequestReceivedStatusProps {
 	id: string;
-	toggleIsRequestReceived: () => void;
-	toggleIsUserFriend: () => void;
 	includeIcon: boolean;
 }
 
-const RequestReceivedStatus = ({
-	id,
-	toggleIsRequestReceived,
-	toggleIsUserFriend,
-	includeIcon,
-}: RequestReceivedStatusProps) => {
-	const rejectRequest = useRejectFriendRequest({ id });
-	const handleRejectRequest = () => {
-		rejectRequest();
-		toggleIsRequestReceived();
-	};
+const RequestReceivedStatus = ({ id, includeIcon }: RequestReceivedStatusProps) => {
+	const rejectRequest = useRejectFriendRequest(id);
+	const handleRejectRequest = () => rejectRequest();
 
-	const acceptRequest = useAcceptFriendRequest({ id });
-	const handleAcceptRequest = () => {
-		acceptRequest();
-		toggleIsRequestReceived();
-		toggleIsUserFriend();
-	};
+	const acceptRequest = useAcceptFriendRequest(id);
+	const handleAcceptRequest = () => acceptRequest();
 
 	return (
 		<StyledFriendStatusMoreOptions

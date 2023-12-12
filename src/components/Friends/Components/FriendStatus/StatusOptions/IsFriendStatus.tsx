@@ -6,19 +6,11 @@ import useUnfriendUser from "../../../hooks/useUnfriendUser";
 interface IsFriendStatusProps {
 	id: string;
 	includeButton: boolean;
-	toggleIsUserFriend: () => void;
 }
 
-const IsFriendStatus = ({
-	id,
-	includeButton,
-	toggleIsUserFriend,
-}: IsFriendStatusProps) => {
+const IsFriendStatus = ({ id, includeButton }: IsFriendStatusProps) => {
 	const unfriendUser = useUnfriendUser(id);
-	const handleUnfriendUser = () => {
-		unfriendUser();
-		toggleIsUserFriend();
-	};
+	const handleUnfriendUser = () => unfriendUser();
 
 	return (
 		<StyledFriendStatusMoreOptions

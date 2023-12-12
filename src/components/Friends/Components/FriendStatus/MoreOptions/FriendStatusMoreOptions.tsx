@@ -1,62 +1,32 @@
-import useFriendsStatus from "../useFriendStatus";
 import {
 	NotFriendStatus,
 	IsFriendStatus,
 	RequestReceivedStatus,
 	PendingFriendStatus,
 } from "../StatusOptions";
+import { UserStatusType } from "@/types/UserStatusType";
 
 interface FriendsListMoreOptionsProps {
 	id: string;
 	isCurrentUser: boolean;
-	isFriend: boolean;
-	requestSent: boolean;
-	requestReceived: boolean;
 	hasMutualFriends: boolean;
+	status: UserStatusType;
 }
 
 const FriendsListMoreOptions = ({
 	id,
 	isCurrentUser,
-	isFriend,
-	requestSent,
-	requestReceived,
 	hasMutualFriends,
+	status,
 }: FriendsListMoreOptionsProps) => {
-	const {
-		isUserFriend,
-		isRequestSent,
-		isRequestReceived,
-		toggleIsUserFriend,
-		toggleIsRequestSent,
-		toggleIsRequestReceived,
-	} = useFriendsStatus({ requestSent, requestReceived, isFriend });
-
-	return isUserFriend ? (
-		<IsFriendStatus
-			id={id}
-			toggleIsUserFriend={toggleIsUserFriend}
-			includeButton={false}
-		/>
-	) : isRequestSent ? (
-		<PendingFriendStatus
-			id={id}
-			toggleIsRequestSent={toggleIsRequestSent}
-			includeIcon={false}
-		/>
-	) : isRequestReceived ? (
-		<RequestReceivedStatus
-			id={id}
-			toggleIsRequestReceived={toggleIsRequestReceived}
-			toggleIsUserFriend={toggleIsUserFriend}
-			includeIcon={false}
-		/>
-	) : hasMutualFriends && !isCurrentUser ? (
-		<NotFriendStatus
-			id={id}
-			toggleIsRequestSent={toggleIsRequestSent}
-			includeIcon={false}
-		/>
+	return isCurrentUser ? null : status === "friend" ? (
+		<IsFriendStatus id={id} includeButton={false} />
+	) : status === "request sent" ? (
+		<PendingFriendStatus id={id} includeIcon={false} />
+	) : status === "request received" ? (
+		<RequestReceivedStatus id={id} includeIcon={false} />
+	) : hasMutualFriends ? (
+		<NotFriendStatus id={id} includeIcon={false} />
 	) : null;
 };
 

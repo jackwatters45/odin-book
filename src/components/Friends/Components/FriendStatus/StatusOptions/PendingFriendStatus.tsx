@@ -4,21 +4,13 @@ import { mdiAccountCancel } from "@mdi/js";
 
 interface PendingFriendStatusProps {
 	id: string;
-	toggleIsRequestSent: () => void;
 	includeIcon: boolean;
 }
 
-const PendingFriendStatus = ({
-	id,
-	toggleIsRequestSent,
-	includeIcon,
-}: PendingFriendStatusProps) => {
-	const cancelFriendRequest = useCancelFriendRequest({ id });
+const PendingFriendStatus = ({ id, includeIcon }: PendingFriendStatusProps) => {
+	const cancelFriendRequest = useCancelFriendRequest(id);
 
-	const handleCancelFriendRequest = () => {
-		cancelFriendRequest();
-		toggleIsRequestSent();
-	};
+	const handleCancelFriendRequest = () => cancelFriendRequest();
 
 	return (
 		<StandardButton

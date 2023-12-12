@@ -16,11 +16,9 @@ const useFriendCard = (userId: string, userStatus: UserStatusType) => {
 	const cancelRequest = useCancelFriendRequest(userId);
 	const handleClickCancelRequest = () => cancelRequest();
 
-	// TODO
 	const acceptRequest = useAcceptFriendRequest(userId);
 	const handleClickAccept = () => acceptRequest();
 
-	// TODO
 	const declineRequest = useRejectFriendRequest(userId);
 	const handleClickDecline = () => declineRequest();
 

@@ -5,11 +5,11 @@ import {
 	StyledPhotoPlaceholder,
 	StyledPhotosContainer,
 } from "./PhotosDisplay.styles";
-import { IPhotosDisplay } from "../types/PhotosTypes";
 import useContainerWidth from "@/components/User/UserProfile/context/useContainerWidth";
+import { PhotoDisplayFields } from "../types/PhotosTypes";
 
 export interface PhotosDisplayProps {
-	photos: IPhotosDisplay | undefined;
+	photos: PhotoDisplayFields[] | undefined;
 	className?: string;
 }
 

@@ -7,8 +7,8 @@ import {
 	StyledUserPostsLeftColumn,
 	StyledPostsContainer,
 } from "./UserPosts.styles";
-import UserPhotos from "./PhotosPreview";
-import UserFriends from "./FriendsPreview";
+import PhotosPreview from "./PhotosPreview";
+import FriendsPreview from "./FriendsPreview";
 import Loading from "@/components/Shared/Loading";
 import UserPostDisplay from "@/components/Post/PostDisplay";
 import { InfiniteScrollLoadingPosts } from "@/styles/SharedStyles";
@@ -35,8 +35,8 @@ const UserPosts = () => {
 				$containerWidth={containerWidth}
 			>
 				<UserIntro user={user} />
-				<UserPhotos />
-				<UserFriends />
+				<PhotosPreview />
+				<FriendsPreview />
 			</StyledUserPostsLeftColumn>
 			<StyledUserPostsRightColumn>
 				<CreatePostButton

@@ -12,22 +12,27 @@ export const StyledProfileBasicInfo = styled.div<ContainerWidth>`
 	transform: translateY(-80px);
 	margin-bottom: -80px;
 
-	// @media (min-width: 900px) {
-	// 	flex-direction: row;
-	// 	align-items: flex-end;
-	// 	justify-content: flex-start;
-
-	// }
-
 	${({ $containerWidth }) => {
 		if ($containerWidth >= 900) {
 			return `
 			flex-direction: row;
-			align-items: flex-end;
 			justify-content: flex-start;
+
+			> div:last-child {
+				flex-direction: row;
+				margin-top: 6rem;
+			}
 			`;
 		}
 	}}
+`;
+
+export const StyledProfileRightColumn = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+	margin-top: 1rem;
 `;
 
 export const StyledNameFriendsContainer = styled.div`
@@ -38,7 +43,7 @@ export const StyledNameFriendsContainer = styled.div`
 	@media (min-width: 900px) {
 		display: block;
 		margin: 0 2rem 0.75rem;
-		flex-grow: 1;
+		flex: 1;
 	}
 `;
 

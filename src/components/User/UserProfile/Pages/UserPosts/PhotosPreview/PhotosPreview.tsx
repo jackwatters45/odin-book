@@ -3,7 +3,7 @@ import PhotosDisplayPreview from "@/components/User/UserFields/Photos/PhotosDisp
 import UseFetchPhotos from "@/components/User/UserFields/Photos/UseFetchPhotos";
 
 const PhotosPreview = () => {
-	const { userId, photos } = UseFetchPhotos({ photosType: "photos-of" });
+	const { userId, photos } = UseFetchPhotos({ photosType: "photos-of", limit: 9 });
 
 	return (
 		<UserProfileSectionWithLink

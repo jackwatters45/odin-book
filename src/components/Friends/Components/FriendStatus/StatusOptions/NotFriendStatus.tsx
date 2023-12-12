@@ -4,20 +4,13 @@ import { mdiAccountPlus } from "@mdi/js";
 
 interface NotFriendStatusProps {
 	id: string;
-	toggleIsRequestSent: () => void;
 	includeIcon: boolean;
 }
 
-const NotFriendStatus = ({
-	id,
-	toggleIsRequestSent,
-	includeIcon,
-}: NotFriendStatusProps) => {
-	const sendFriendRequest = useSendFriendRequest({ id });
-	const handleSendFriendRequest = () => {
-		sendFriendRequest();
-		toggleIsRequestSent();
-	};
+const NotFriendStatus = ({ id, includeIcon }: NotFriendStatusProps) => {
+	const sendFriendRequest = useSendFriendRequest(id);
+	const handleSendFriendRequest = () => sendFriendRequest();
+
 	return (
 		<StandardButton
 			colorClass="blue"

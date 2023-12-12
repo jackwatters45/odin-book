@@ -1,16 +1,15 @@
 import { IEducation } from "@/components/User/UserFields/Education/types/EducationTypes";
 import { IPlaceLived } from "@/components/User/UserFields/PlacesLived/types/PlacesLivedTypes";
+import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
 
-export type FriendDisplayFields = {
-	_id: string;
-	fullName: string;
-	avatarUrl: string;
+export interface IFriendListDisplayFields extends UserPreviewWithMutuals {
 	education: IEducation[];
 	placesLived: IPlaceLived[];
-	mutualFriends: string[];
-	isFriend: boolean;
-	requestSent: boolean;
-	requestReceived: boolean;
-};
+}
 
-export type IFriendsDisplay = FriendDisplayFields[];
+export type FriendsQueryEndType =
+	| "all"
+	| "mutual"
+	| "college"
+	| "current-city"
+	| "hometown";

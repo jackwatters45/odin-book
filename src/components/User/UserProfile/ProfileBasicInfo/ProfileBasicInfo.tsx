@@ -9,6 +9,7 @@ import {
 	StyledNameFriendsContainer,
 	StyledProfileBasicInfo,
 	StyledProfileButtonContainer,
+	StyledProfileRightColumn,
 } from "./ProfileBasicInfo.styles";
 import ProfileFriendStatus from "../../../Friends/Components/FriendStatus/Profile";
 import useProfileBasicInfo from "./useProfileBasicInfo";
@@ -28,23 +29,25 @@ const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
 			<CoverPhoto userCoverUrl={user.coverPhotoUrl} />
 			<StyledProfileBasicInfo $containerWidth={containerWidth}>
 				<ProfileAvatar avatarUrl={user.avatarUrl} />
-				<StyledNameFriendsContainer>
-					<h1>{user.fullName}</h1>
-					<StyledFriends>
-						<Link to="friends">{user.friends.length} friends</Link>
-						{showMutual && " • "}
-						<Link to="friends/mutual">
-							{showMutual && `${mutualFriendsLength} mutual`}
-						</Link>
-					</StyledFriends>
-				</StyledNameFriendsContainer>
-				<StyledProfileButtonContainer>
-					{isOwnProfile ? (
-						<EditProfile user={user} />
-					) : (
-						<ProfileFriendStatus user={user} />
-					)}
-				</StyledProfileButtonContainer>
+				<StyledProfileRightColumn>
+					<StyledNameFriendsContainer>
+						<h1>{user.fullName}</h1>
+						<StyledFriends>
+							<Link to="friends">{user.friends.length} friends</Link>
+							{showMutual && " • "}
+							<Link to="friends/mutual">
+								{showMutual && `${mutualFriendsLength} mutual`}
+							</Link>
+						</StyledFriends>
+					</StyledNameFriendsContainer>
+					<StyledProfileButtonContainer>
+						{isOwnProfile ? (
+							<EditProfile user={user} />
+						) : (
+							<ProfileFriendStatus id={user._id} status={user.status} />
+						)}
+					</StyledProfileButtonContainer>
+				</StyledProfileRightColumn>
 			</StyledProfileBasicInfo>
 		</>
 	);

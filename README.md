@@ -4,9 +4,8 @@
 
   - check
 
-    - friends
     - edit profile
-    - about
+    - profile
 
     - auth shit
     - lol posts scroll
