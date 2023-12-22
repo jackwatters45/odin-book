@@ -1,5 +1,17 @@
 import { styled } from "styled-components";
 import { ContainerWidth } from "../context/ContainerWidthType";
+import { MaxWidthContainer } from "../UserProfile.styles";
+
+export const ProfileBottomBorder = styled.div`
+	position: relative;
+	${({ theme }) => theme.sectionShadow}
+	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+`;
+
+export const StyledProfileMaxWidthContainer = styled(MaxWidthContainer)`
+	margin-bottom: -80px;
+	background-color: transparent;
+`;
 
 export const StyledProfileBasicInfo = styled.div<ContainerWidth>`
 	display: flex;
@@ -9,8 +21,6 @@ export const StyledProfileBasicInfo = styled.div<ContainerWidth>`
 	padding-bottom: 1rem;
 	border-bottom: 1px solid #dddfe2;
 	margin: 0 1rem;
-	transform: translateY(-80px);
-	margin-bottom: -80px;
 
 	${({ $containerWidth }) => {
 		if ($containerWidth >= 900) {
@@ -25,6 +35,10 @@ export const StyledProfileBasicInfo = styled.div<ContainerWidth>`
 			`;
 		}
 	}}
+`;
+
+export const StyledTranslatedSection = styled.div`
+	transform: translateY(-80px);
 `;
 
 export const StyledProfileRightColumn = styled.div`

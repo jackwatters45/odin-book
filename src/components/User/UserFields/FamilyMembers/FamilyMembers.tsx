@@ -22,7 +22,7 @@ const FamilyMembers = ({ familyMember, audience }: FamilyMembersProps) => {
 			categoryDisplayName="family members"
 			subtitle={familyMember ? familyMember.relationship : null}
 			audience={audience}
-			icon={familyMember?.user.avatarUrl || defaultUserAvatar}
+			icon={familyMember?.user?.avatarUrl || defaultUserAvatar}
 			iconType={"image"}
 			addText={"Add familyMembers to profile"}
 			isEditing={isEditing}

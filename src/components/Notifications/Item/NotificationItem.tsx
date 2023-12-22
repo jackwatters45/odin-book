@@ -19,7 +19,7 @@ const NotificationItem = ({ notification }: NotificationItemProps) => {
 		useNotificationItem({ notification });
 
 	return (
-		<NotificationItemContainer notification={notification}>
+		<NotificationItemContainer notification={notification} responseState={responseState}>
 			<StyledNotificationItemContent>
 				<NotificationItemIcons type={notification.type} from={notification.from?.[0]} />
 				<StyledNotificationItemMiddleRow className={notification.isRead ? "read" : ""}>

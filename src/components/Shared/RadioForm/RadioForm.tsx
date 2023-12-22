@@ -7,6 +7,7 @@ import useRadioForm from "./useRadioForm";
 import RadioFormDialogContent from "./DialogContent/RadioFormDialogContent";
 import RadioFormController from "./RadioFormController";
 import { StandardButtonProps } from "../StandardButton/StandardButton";
+import Loading from "../Loading";
 
 const DialogActions = lazy(() => import("../DialogActions"));
 const ModalHeader = lazy(() => import("../DialogHeader"));
@@ -27,6 +28,7 @@ export interface RadioFormCoreFormProps<T extends FieldValues> {
 	submitsForm: boolean;
 	submitButtonText?: string;
 	className?: string;
+	valueIsObject?: boolean;
 
 	ControllerComponent?: FC<{
 		formField: Path<T> & string;
@@ -55,6 +57,7 @@ const RadioForm = <T extends FieldValues>({
 	setValue,
 	buttonOptions,
 	className,
+	valueIsObject = false,
 	submitsForm = true,
 	submitButtonText,
 	ControllerComponent = RadioFormController,
@@ -64,6 +67,7 @@ const RadioForm = <T extends FieldValues>({
 			setValue,
 			formField,
 			initial,
+			valueIsObject,
 		});
 
 	return (
@@ -75,8 +79,8 @@ const RadioForm = <T extends FieldValues>({
 				options={options}
 				buttonOptions={buttonOptions}
 			/>
-			<Suspense>
-				<StyledRadioFormDialog ref={ref} id={formField} className={className}>
+			<StyledRadioFormDialog ref={ref} id={formField} className={className}>
+				<Suspense fallback={<Loading />}>
 					<ModalHeader title={title} closeDialog={handleCancel} />
 					<RadioFormDialogContent<T>
 						options={options}
@@ -92,8 +96,8 @@ const RadioForm = <T extends FieldValues>({
 						submitsForm={submitsForm}
 						submitButtonText={submitButtonText}
 					/>
-				</StyledRadioFormDialog>
-			</Suspense>
+				</Suspense>
+			</StyledRadioFormDialog>
 		</>
 	);
 };

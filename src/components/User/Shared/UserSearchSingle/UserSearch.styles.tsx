@@ -22,10 +22,14 @@ export const StyledDialogSearchResultsDialog = styled(StyledDialog)`
 	> * {
 		font-size: 0.95rem;
 		font-weight: 600;
-		display: block;
 	}
 
 	> span {
 		padding: 0.75rem 0.5rem;
 	}
+`;
+
+export const StyledNoResultsText = styled.span`
+	display: block;
+	padding: 0.5rem 0;
 `;

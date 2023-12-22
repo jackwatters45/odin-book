@@ -34,7 +34,9 @@ const AddToPostButtons = ({
 				<PhotoButton
 					toggleIsAddingPhoto={toggleIsAddingPhoto}
 					isAddingPhoto={isAddingPhoto}
-					currentValue={formValues?.media}
+					isCurrentValue={
+						!!formValues?.media?.length || !!formValues?.unsavedMedia?.length
+					}
 				/>
 				<TagButton
 					openForm={toggleIsTaggingUsers}

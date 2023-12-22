@@ -29,7 +29,7 @@ const useSearch = <T, U>({
 		isLoading,
 		...rest
 	} = useQueryCustom<T, U>({
-		queryUrl: `${queryUrl}?q=${searchQuery}&exclude=${excludedUsersParam}`,
+		queryUrl: `${queryUrl}?q=${searchQuery}&exclude=${excludedUsersParam ?? ""}`,
 		queryKey,
 		transformData,
 		options: { ...options, enabled: false },

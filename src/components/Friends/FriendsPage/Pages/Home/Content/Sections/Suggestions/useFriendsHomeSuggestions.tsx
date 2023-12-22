@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { apiBaseUrl } from "@/config/envVariables";
 import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
@@ -49,7 +49,9 @@ const useFriendsHomeSuggestions = () => {
 		fetchNextPage,
 	});
 
-	const users = usersUnflattened?.pages.flat() as UserPreviewWithMutuals[];
+	const users = useMemo(() => {
+		return usersUnflattened?.pages.flat() ?? [];
+	}, [usersUnflattened]) as UserPreviewWithMutuals[];
 
 	return { users, isLoading, ref, isFetchingNextPage, hasNextPage, setItemsPerRow };
 };

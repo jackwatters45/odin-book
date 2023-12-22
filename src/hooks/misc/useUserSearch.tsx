@@ -21,6 +21,7 @@ interface IUseUserSearch {
 	options?: UseQueryOptions<SearchResultsType>;
 	includeEmpty?: boolean;
 	usersToExclude?: { _id: string }[];
+	initialSearchValue?: string;
 }
 
 const useUserSearch = ({
@@ -28,11 +29,16 @@ const useUserSearch = ({
 	options,
 	includeEmpty = false,
 	usersToExclude,
+	initialSearchValue = "",
 }: IUseUserSearch) => {
 	const currentUser = useCurrentUserCached();
 
-	const { register, watch } = useForm<UserSearchInput>({
-		defaultValues: { search: "" },
+	const {
+		register,
+		watch,
+		setValue: setSearchValue,
+	} = useForm<UserSearchInput>({
+		defaultValues: { search: initialSearchValue },
 	});
 
 	const registerSearchInput: RegisterSearchInput = register("search");
@@ -68,6 +74,7 @@ const useUserSearch = ({
 
 	return {
 		registerSearchInput,
+		setSearchValue,
 		searchQuery,
 		searchResults,
 		isLoading,

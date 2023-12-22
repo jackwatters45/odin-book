@@ -1,7 +1,6 @@
 import { FieldValues, UseFormRegister } from "react-hook-form";
 import { mdiMagnify } from "@mdi/js";
 import Icon from "@mdi/react";
-import { v4 as uuid } from "uuid";
 
 import { defaultHobbies } from "@/config/globals";
 import OptionBadge from "@/components/Shared/OptionBadge";
@@ -26,13 +25,7 @@ const RecommendedHobbies = ({
 			<StyledRecommendedText>RECOMMENDED HOBBIES</StyledRecommendedText>
 			<StyledDefaultHobbiesContainer>
 				{defaultHobbies.map(({ name, emoji }) => (
-					<OptionBadge
-						key={name}
-						id={`${name}-${uuid()}`}
-						name={name}
-						emoji={emoji}
-						register={register}
-					/>
+					<OptionBadge key={name} id={name} emoji={emoji} register={register} />
 				))}
 			</StyledDefaultHobbiesContainer>
 			<div>

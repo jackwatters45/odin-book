@@ -59,8 +59,13 @@ const getPostTitleSegments = ({
 		taggedUsers.slice(0, 3).forEach((user, index) => {
 			postTitleSegments.push({
 				type: "link",
-				content: `${user.fullName}${getSeparatorAtIndex(index, taggedUsers.length)}`,
+				content: `${user.fullName}`,
 				linkTo: `/user/${user._id}`,
+			});
+
+			postTitleSegments.push({
+				type: "text",
+				content: getSeparatorAtIndex(index, taggedUsers.length),
 			});
 		});
 

@@ -17,7 +17,7 @@ const useUserPhotos = ({ isUsingLink = true }: UseUserPhotosProps) => {
 	const isYourPhotosNested = !!useMatch("/friends/:type/:username/photos/by");
 	const isYourPhotos = isYourPhotosRoot || isYourPhotosNested;
 
-	const { photos } = UseFetchPhotos({
+	const { photos, ...rest } = UseFetchPhotos({
 		photosType: isYourPhotos ? "photos-by" : "photos-of",
 	});
 
@@ -31,6 +31,7 @@ const useUserPhotos = ({ isUsingLink = true }: UseUserPhotosProps) => {
 		photos,
 		activeTabSelector,
 		setSelectedTab,
+		...rest,
 	};
 };
 

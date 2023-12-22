@@ -6,12 +6,14 @@ interface UseRadioFormProps<T extends FieldValues> {
 	formField: Path<T>;
 	initial: (PathValue<T, Path<T>> & string) | undefined;
 	setValue: UseFormSetValue<T>;
+	valueIsObject?: boolean;
 }
 
 const useRadioForm = <T extends FieldValues>({
 	formField,
 	initial,
 	setValue,
+	valueIsObject,
 }: UseRadioFormProps<T>) => {
 	const [popupValue, setPopupValue] = useState<PathValue<T, Path<T>> | undefined>(
 		initial,
@@ -26,7 +28,7 @@ const useRadioForm = <T extends FieldValues>({
 	};
 
 	const handleConfirm = () => {
-		const value = popupValue?.[formField] || popupValue;
+		const value = valueIsObject ? popupValue : popupValue?.[formField] || popupValue;
 
 		if (value) setValue(formField, value);
 

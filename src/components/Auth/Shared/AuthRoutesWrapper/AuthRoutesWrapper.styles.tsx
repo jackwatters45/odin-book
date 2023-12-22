@@ -37,7 +37,7 @@ export const StyledHeadingColumn = styled.div`
 
 export const StyledAuthForm = styled.div`
 	min-width: 400px;
-	max-width: 600px;
+	max-width: 400px;
 	height: fit-content;
 	display: flex;
 	flex-direction: column;

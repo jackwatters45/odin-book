@@ -20,11 +20,10 @@ const HobbiesDisplay = ({ hobbiesValue, register }: HobbiesDisplayProps) => {
 						return (
 							<OptionBadge
 								key={name}
-								id={`display-${name}`}
-								name={name}
+								id={name}
 								emoji={hobbyData?.emoji}
 								register={register}
-								isLink={true}
+								disabled={true}
 							/>
 						);
 					})}

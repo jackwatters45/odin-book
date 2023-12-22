@@ -1,9 +1,9 @@
-import useQueryCustom from "@/hooks/reactQuery/useQueryCustom";
 import { useParams } from "react-router";
 import { apiBaseUrl } from "@/config/envVariables";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { PhotoDisplayFields } from "./types/PhotosTypes";
+import { useMemo } from "react";
 
 interface IFetchPhotos {
 	queryEnd: "photos-of" | "photos-by";
@@ -16,7 +16,7 @@ const DEFAULT_ITEMS_PER_PAGE = 12;
 
 const fetchPhotos = async ({ queryEnd, userId, limit, pageParam = 0 }: IFetchPhotos) => {
 	const res = await fetch(
-		`${apiBaseUrl}/users/${userId}/friends/${queryEnd}/?page=${pageParam}
+		`${apiBaseUrl}/users/${userId}/${queryEnd}?page=${pageParam}
 				${limit ? `&limit=${limit}` : ""}`,
 		{
 			method: "GET",
@@ -44,14 +44,16 @@ const UseFetchPhotos = ({ photosType: queryEnd, limit }: UseFetchPhotosProps) =>
 		isFetchingNextPage,
 		hasNextPage,
 	} = useInfiniteQuery<PhotoDisplayFields[]>({
-		queryKey: ["user", userId, "friends", queryEnd, limit],
+		queryKey: ["user", userId, queryEnd, limit],
 		queryFn: ({ pageParam }) => fetchPhotos({ queryEnd, userId, limit, pageParam }),
 		getNextPageParam: (lastPage, pages) => {
 			return lastPage?.length < DEFAULT_ITEMS_PER_PAGE ? undefined : pages?.length;
 		},
 	});
 
-	const photos = unflattenedPhotos?.pages.flat() ?? [];
+	const photos = useMemo(() => {
+		return unflattenedPhotos?.pages.flat() ?? [];
+	}, [unflattenedPhotos]);
 
 	const { ref } = useInfiniteScroll<PhotoDisplayFields[]>({
 		data: unflattenedPhotos,

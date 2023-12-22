@@ -27,8 +27,8 @@ export const StyledBasePostForm = styled.form`
 `;
 
 export const StyledBaseFormScrollContainer = styled.div`
-	max-height: 70vh;
-	overflow-y: auto;
+	// max-height: 70vh;
+	// overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;

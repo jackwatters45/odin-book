@@ -1,8 +1,4 @@
-import {
-	AudienceStatusOptions,
-	FormFieldsWithAudience,
-} from "@/types/AudienceSettingsTypes";
-import StandardUserOverviewForm from "../../../Shared/UserForm";
+import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 import useRelationshipForm from "./useRelationshipForm";
 import {
@@ -17,6 +13,8 @@ import {
 import capitalizeFirstLetterString from "@/utils/format/capitalizeFirstLetterString";
 import { UseFormSetValue } from "react-hook-form";
 import { DefaultUserSearch } from "@/components/User/Shared/UserSearchSingle/types/DefaultUserSearch";
+import AudienceRadio from "@/components/Shared/AudienceRadio";
+import { StyledAboutOverviewDialogActions } from "@/components/User/Shared/UserForm/UserForm.styles";
 
 interface RelationshipFormProps {
 	audience: AudienceStatusOptions;
@@ -30,7 +28,7 @@ const RelationshipForm = ({
 	initialValues,
 }: RelationshipFormProps) => {
 	const {
-		handleSubmit,
+		submitForm,
 		control,
 		setValue,
 		register,
@@ -40,24 +38,16 @@ const RelationshipForm = ({
 		searchQuery,
 		searchResults,
 		isLoading,
+		setSearchValue,
 		isValid,
 		showSearch,
 	} = useRelationshipForm({ audience, initialValues, handleCloseForm });
 
 	return (
-		<StandardUserOverviewForm
-			handleCloseForm={handleCloseForm}
-			audience={audience}
-			initial={defaultValues}
-			formValues={formValues}
-			handleSave={handleSubmit}
-			control={control}
-			setValue={setValue}
-			disableSave={!isValid}
-		>
+		<form onSubmit={submitForm}>
 			<FullWidthStandardSelect
 				id="status"
-				register={{ ...register("values.status"), required: true }}
+				register={{ ...register("status"), required: true }}
 				options={[
 					<option value="" key="default">
 						Status
@@ -73,11 +63,8 @@ const RelationshipForm = ({
 				<>
 					<UserSearch
 						registerSearchInput={registerSearchInput}
-						setValue={
-							setValue as unknown as UseFormSetValue<
-								FormFieldsWithAudience<DefaultUserSearch>
-							>
-						}
+						setValue={setValue as unknown as UseFormSetValue<DefaultUserSearch>}
+						setSearchValue={setSearchValue}
 						searchResults={searchResults}
 						searchQuery={searchQuery}
 						isLoading={isLoading}
@@ -87,18 +74,36 @@ const RelationshipForm = ({
 						title="Since"
 						checked={undefined}
 						selectedValues={{
-							startYear: formValues.values?.startYear,
-							startMonth: formValues.values?.startMonth,
+							startYear: formValues.startYear,
+							startMonth: formValues.startMonth,
 						}}
 						inputs={{
-							startYear: register("values.startYear"),
-							startMonth: register("values.startMonth"),
-							startDay: register("values.startDay"),
+							startYear: register("startYear"),
+							startMonth: register("startMonth"),
+							startDay: register("startDay"),
 						}}
 					/>
 				</>
 			)}
-		</StandardUserOverviewForm>
+			<StyledAboutOverviewDialogActions
+				handleCancel={handleCloseForm}
+				handleSave={undefined}
+				initial={defaultValues}
+				unsavedValue={formValues}
+				disableSave={!isValid}
+				unchangedBehavior="disable"
+				leftColumn={
+					<AudienceRadio
+						formField={"audience"}
+						initial={audience}
+						control={control}
+						setValue={setValue}
+						submitsForm={false}
+						submitButtonText={"Done"}
+					/>
+				}
+			/>
+		</form>
 	);
 };
 

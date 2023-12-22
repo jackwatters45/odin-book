@@ -5,13 +5,13 @@ import CreatePostAddButton from "../../Shared/Button";
 interface CreatePostPhotoButtonProps {
 	isAddingPhoto: boolean;
 	toggleIsAddingPhoto: () => void;
-	currentValue: (string | File)[] | undefined;
+	isCurrentValue: boolean;
 }
 
 const CreatePostPhotoButton = ({
 	isAddingPhoto,
 	toggleIsAddingPhoto,
-	currentValue,
+	isCurrentValue,
 }: CreatePostPhotoButtonProps) => {
 	return (
 		<CreatePostAddButton
@@ -19,7 +19,7 @@ const CreatePostPhotoButton = ({
 			isFormOpen={isAddingPhoto}
 			openForm={toggleIsAddingPhoto}
 			iconProps={{ path: mdiImageMultiple, size: 1.2, color: "#22c55e" }}
-			isValue={!!currentValue?.length}
+			isValue={isCurrentValue}
 			activeColor="#E4F0D5"
 		/>
 	);

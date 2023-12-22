@@ -6,7 +6,7 @@ export const StyledFriendCard = styled.div`
 	background: ${({ theme }) => theme.colors.backgroundPrimary};
 	${({ theme }) => theme.sectionShadow};
 
-	min-width: 150px;
+	min-width: 200px;
 	max-width: 250px;
 
 	display: flex;
@@ -19,6 +19,12 @@ export const StyledFriendCardTextContent = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	flex-grow: 1;
+
+	> div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 `;
 
 export const StyledFriendCardUserName = styled(Link)`

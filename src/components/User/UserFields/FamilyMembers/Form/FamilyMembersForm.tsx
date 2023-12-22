@@ -1,9 +1,12 @@
-import StandardUserOverviewForm from "@/components/User/Shared/UserForm";
 import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 import useFamilyMembersForm from "./useFamilyMembersForm";
 import { FullWidthStandardSelect } from "@/styles/SharedStyles";
 import UserSearch from "../../../Shared/UserSearchSingle";
 import { FamilyMember, FamilyRelationshipOptions } from "../types/FamilyMembersTypes";
+import AudienceRadio from "@/components/Shared/AudienceRadio";
+import { StyledAboutOverviewDialogActions } from "@/components/User/Shared/UserForm/UserForm.styles";
+import { UseFormSetValue } from "react-hook-form";
+import { DefaultUserSearch } from "@/components/User/Shared/UserSearchSingle/types/DefaultUserSearch";
 
 export interface FamilyMembersFormProps {
 	audience: AudienceStatusOptions;
@@ -17,7 +20,7 @@ const FamilyMembersForm = ({
 	initialValues,
 }: FamilyMembersFormProps) => {
 	const {
-		handleSubmit,
+		submitForm,
 		register,
 		control,
 		setValue,
@@ -28,6 +31,7 @@ const FamilyMembersForm = ({
 		searchResults,
 		isLoading,
 		searchQuery,
+		setSearchValue,
 	} = useFamilyMembersForm({
 		audience,
 		initialValues,
@@ -35,19 +39,11 @@ const FamilyMembersForm = ({
 	});
 
 	return (
-		<StandardUserOverviewForm
-			handleCloseForm={handleCloseForm}
-			audience={audience}
-			initial={defaultValues}
-			formValues={formValues}
-			handleSave={handleSubmit}
-			control={control}
-			setValue={setValue}
-			disableSave={!isValid}
-		>
+		<form onSubmit={submitForm}>
 			<UserSearch
 				registerSearchInput={registerSearchInput}
-				setValue={setValue}
+				setValue={setValue as unknown as UseFormSetValue<DefaultUserSearch>}
+				setSearchValue={setSearchValue}
 				searchResults={searchResults}
 				searchQuery={searchQuery}
 				isLoading={isLoading}
@@ -55,7 +51,7 @@ const FamilyMembersForm = ({
 			/>
 			<FullWidthStandardSelect
 				id="relationship"
-				register={{ ...register("values.relationship"), required: true }}
+				register={{ ...register("relationship"), required: true }}
 				options={[
 					<option value="" key="default">
 						Relationship
@@ -67,7 +63,25 @@ const FamilyMembersForm = ({
 					)),
 				]}
 			/>
-		</StandardUserOverviewForm>
+			<StyledAboutOverviewDialogActions
+				handleCancel={handleCloseForm}
+				handleSave={undefined}
+				initial={defaultValues}
+				unsavedValue={formValues}
+				disableSave={!isValid}
+				unchangedBehavior="disable"
+				leftColumn={
+					<AudienceRadio
+						formField={"audience"}
+						initial={audience}
+						control={control}
+						setValue={setValue}
+						submitsForm={false}
+						submitButtonText={"Done"}
+					/>
+				}
+			/>
+		</form>
 	);
 };
 

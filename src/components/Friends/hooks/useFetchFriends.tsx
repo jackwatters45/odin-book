@@ -3,6 +3,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { apiBaseUrl } from "@/config/envVariables";
 import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { FriendsQueryEndType, IFriendListDisplayFields } from "../types/FriendsTypes";
+import { useMemo } from "react";
 
 interface IFetchFriends {
 	queryEnd: FriendsQueryEndType;
@@ -55,7 +56,9 @@ const useFetchFriends = ({ queryEnd = "all", limit }: UseFetchFriendsProps = {})
 		},
 	});
 
-	const friends = unflattenedFriends?.pages.flat() ?? [];
+	const friends = useMemo(() => {
+		return unflattenedFriends?.pages.flat() ?? [];
+	}, [unflattenedFriends]);
 
 	const { ref } = useInfiniteScroll<IFriendListDisplayFields[]>({
 		data: unflattenedFriends,

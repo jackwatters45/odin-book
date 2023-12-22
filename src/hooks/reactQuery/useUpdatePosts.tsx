@@ -38,7 +38,10 @@ const useUpdatePosts = () => {
 
 		queryClient.setQueryData<InfinitePostsResults>(
 			["posts", currentUser?._id],
-			(prevData) => updatePostData(data, fieldsToUpdate, prevData),
+			(prevData) => {
+				console.log(data, fieldsToUpdate, prevData);
+				return updatePostData(data, fieldsToUpdate, prevData);
+			},
 		);
 
 		queryClient.setQueryData<InfinitePostsResults>(

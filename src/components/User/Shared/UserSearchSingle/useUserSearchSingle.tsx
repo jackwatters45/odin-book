@@ -4,15 +4,13 @@ import { UseQueryOptions } from "@tanstack/react-query";
 import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
 import useUserSearch from "@/hooks/misc/useUserSearch";
-import {
-	AudienceStatusOptions,
-	FormFieldsWithAudience,
-} from "@/types/AudienceSettingsTypes";
+import { AudienceStatusOptions } from "@/types/AudienceSettingsTypes";
 
 interface IUseUserSearch<T> {
 	audience: AudienceStatusOptions;
 	initialValues: T | undefined;
-	formValues: FormFieldsWithAudience<DefaultUserSearch>;
+	initialSearchValue: string | undefined;
+	formValues: DefaultUserSearch;
 	urlEnding: "friends" | "all" | "friends-not-family";
 	options?: UseQueryOptions<SearchResultsType>;
 }
@@ -20,29 +18,25 @@ interface IUseUserSearch<T> {
 const useUserSearchSingle = <T,>({
 	audience,
 	initialValues,
+	initialSearchValue,
 	formValues,
 	urlEnding,
 	options,
 }: IUseUserSearch<T>) => {
-	const { registerSearchInput, searchQuery, searchResults, isLoading } = useUserSearch({
+	const useUserSearchFuncs = useUserSearch({
 		urlEnding,
 		options,
+		initialSearchValue,
 	});
 
 	const isChanged =
-		!isEqual(formValues.values, initialValues) || audience !== formValues.audience;
+		!isEqual(formValues, initialValues) || audience !== formValues.audience;
 
-	const searchFieldsExist = !!formValues.values?.search && !!formValues.values?.user;
+	const searchFieldsExist = !!formValues.search && !!formValues.user;
 
 	const isSearchValid = isChanged && searchFieldsExist;
 
-	return {
-		registerSearchInput,
-		searchResults,
-		searchQuery,
-		isLoading,
-		isSearchValid,
-	};
+	return { ...useUserSearchFuncs, isSearchValid };
 };
 
 export default useUserSearchSingle;

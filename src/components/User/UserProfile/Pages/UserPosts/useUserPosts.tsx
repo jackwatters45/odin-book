@@ -1,5 +1,5 @@
 import { useOutletContext, useParams } from "react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
@@ -55,7 +55,9 @@ const useUserPosts = () => {
 			lastPage.length < ITEMS_PER_PAGE ? undefined : pages.length,
 	});
 
-	const posts = unflattenedPosts?.pages.flat() ?? [];
+	const posts = useMemo(() => {
+		return unflattenedPosts?.pages.flat() ?? [];
+	}, [unflattenedPosts]);
 
 	// infinite scroll ui
 	const { ref } = useInfiniteScroll<IPost[]>({

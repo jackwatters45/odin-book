@@ -7,15 +7,14 @@ import useAcceptFriendRequest from "@/components/Friends/hooks/useAcceptFriendRe
 export type NotificationResponseState = "accepted" | "declined" | "pending";
 
 const useNotificationItem = ({ notification }: NotificationItemProps) => {
-	// friend request
 	const isRequest = notification.type === "request received";
 
-	const userId = notification.from[0]._id;
+	const userId = notification.from?.[0]?._id;
 
 	const [responseState, setResponseState] =
 		useState<NotificationResponseState>("pending");
 
-	const acceptRequest = useAcceptFriendRequest(userId);
+	const acceptRequest = useAcceptFriendRequest(userId, notification.from?.[0]);
 	const handleClickAccept = () => {
 		acceptRequest();
 		setResponseState("accepted");

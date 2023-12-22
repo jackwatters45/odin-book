@@ -5,14 +5,18 @@ import CoverPhoto from "../../UserFields/CoverPhoto/Profile/CoverPhoto";
 import ProfileAvatar from "../../UserFields/Avatar/Profile";
 import EditProfile from "./EditProfile";
 import {
+	ProfileBottomBorder,
 	StyledFriends,
 	StyledNameFriendsContainer,
 	StyledProfileBasicInfo,
 	StyledProfileButtonContainer,
+	StyledProfileMaxWidthContainer,
 	StyledProfileRightColumn,
+	StyledTranslatedSection,
 } from "./ProfileBasicInfo.styles";
 import ProfileFriendStatus from "../../../Friends/Components/FriendStatus/Profile";
 import useProfileBasicInfo from "./useProfileBasicInfo";
+import ProfileNav from "../ProfileNav";
 
 interface ProfileBasicInfoProps {
 	user: IUser;
@@ -25,31 +29,36 @@ const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
 		});
 
 	return (
-		<>
-			<CoverPhoto userCoverUrl={user.coverPhotoUrl} />
-			<StyledProfileBasicInfo $containerWidth={containerWidth}>
-				<ProfileAvatar avatarUrl={user.avatarUrl} />
-				<StyledProfileRightColumn>
-					<StyledNameFriendsContainer>
-						<h1>{user.fullName}</h1>
-						<StyledFriends>
-							<Link to="friends">{user.friends.length} friends</Link>
-							{showMutual && " • "}
-							<Link to="friends/mutual">
-								{showMutual && `${mutualFriendsLength} mutual`}
-							</Link>
-						</StyledFriends>
-					</StyledNameFriendsContainer>
-					<StyledProfileButtonContainer>
-						{isOwnProfile ? (
-							<EditProfile user={user} />
-						) : (
-							<ProfileFriendStatus id={user._id} status={user.status} />
-						)}
-					</StyledProfileButtonContainer>
-				</StyledProfileRightColumn>
-			</StyledProfileBasicInfo>
-		</>
+		<ProfileBottomBorder>
+			<StyledProfileMaxWidthContainer>
+				<CoverPhoto userCoverUrl={user.coverPhotoUrl} />
+				<StyledTranslatedSection>
+					<StyledProfileBasicInfo $containerWidth={containerWidth}>
+						<ProfileAvatar avatarUrl={user.avatarUrl} />
+						<StyledProfileRightColumn>
+							<StyledNameFriendsContainer>
+								<h1>{user.fullName}</h1>
+								<StyledFriends>
+									<Link to="friends">{user.friends.length} friends</Link>
+									{showMutual && " • "}
+									<Link to="friends/mutual">
+										{showMutual && `${mutualFriendsLength} mutual`}
+									</Link>
+								</StyledFriends>
+							</StyledNameFriendsContainer>
+							<StyledProfileButtonContainer>
+								{isOwnProfile ? (
+									<EditProfile user={user} />
+								) : (
+									<ProfileFriendStatus id={user._id} status={user.status} />
+								)}
+							</StyledProfileButtonContainer>
+						</StyledProfileRightColumn>
+					</StyledProfileBasicInfo>
+					<ProfileNav />
+				</StyledTranslatedSection>
+			</StyledProfileMaxWidthContainer>
+		</ProfileBottomBorder>
 	);
 };
 

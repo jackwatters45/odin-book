@@ -5,6 +5,7 @@ import { apiBaseUrl } from "@/config/envVariables";
 import { INotification } from "./types/NotificationType";
 import splitArrayByDate from "./utils/splitArrayByDate";
 import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
+import { useMemo } from "react";
 
 const ITEMS_PER_PAGE = 20;
 interface FetchNotificationsParams {
@@ -54,10 +55,13 @@ const useNotifications = () => {
 	});
 
 	// notifications split by date
-	const notifications = unflattenedNotifications?.pages.flat() ?? [];
+	const notifications = useMemo(() => {
+		return unflattenedNotifications?.pages.flat() ?? [];
+	}, [unflattenedNotifications]);
 
-	const isUnreadNotification =
-		notifications?.some((notification) => !notification.isRead) ?? false;
+	const isUnreadNotification = useMemo(() => {
+		return notifications?.some((notification) => !notification.isRead) ?? false;
+	}, [notifications]);
 
 	const [newNotifications, earlierNotifications] = splitArrayByDate(notifications ?? []);
 

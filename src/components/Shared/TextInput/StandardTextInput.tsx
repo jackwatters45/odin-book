@@ -34,8 +34,8 @@ const StandardTextInput = ({
 				id={category}
 				className={isAutofilled || isSelectedValue ? "content" : "placeholder"}
 				autoComplete={autoComplete}
-				{...register}
 				{...props}
+				{...register}
 			/>
 			<StyledAboutOverviewInputLabel htmlFor={category}>
 				{labelText}

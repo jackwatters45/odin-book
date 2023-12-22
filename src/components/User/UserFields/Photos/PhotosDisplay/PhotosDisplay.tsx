@@ -21,7 +21,7 @@ const PhotosDisplay = ({ photos, className }: PhotosDisplayProps) => {
 			{photos && photos.length ? (
 				photos?.map(({ media, postId }, index) => (
 					<StyledPhoto key={`${media}-${postId}-${index}`}>
-						<Link to={`/post/${postId}`}>
+						<Link to={`/post/${postId}/photos`}>
 							<img src={media} alt={"User photos"} />
 						</Link>
 					</StyledPhoto>

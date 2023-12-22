@@ -80,6 +80,7 @@ const usePostComment = ({ comment, postId, sort }: UsePostCommentProps) => {
 		reset();
 	};
 
+	// TODO
 	// edit comment query
 	const { mutate: editComment } = useMutateCustom({
 		queryUrl: `posts/${postId}/comments/${comment._id}`,

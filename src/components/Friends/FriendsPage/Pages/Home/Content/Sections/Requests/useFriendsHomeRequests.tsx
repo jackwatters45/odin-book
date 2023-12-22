@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { apiBaseUrl } from "@/config/envVariables";
 import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
@@ -46,7 +46,9 @@ const useFriendsHomeRequests = () => {
 		},
 	});
 
-	const users = usersUnflattened?.pages?.flat() ?? [];
+	const users = useMemo(() => {
+		return usersUnflattened?.pages?.flat() ?? [];
+	}, [usersUnflattened]);
 
 	// infinite scroll ui
 	const { ref, triggerLoadMore } = useInfiniteScroll<UserPreviewWithMutuals[]>({

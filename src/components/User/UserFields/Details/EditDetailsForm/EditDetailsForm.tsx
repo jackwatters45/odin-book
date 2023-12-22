@@ -113,7 +113,6 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 								to={"about/work_and_education"}
 							/>
 						</SectionContainer>
-
 						<SectionContainer>
 							<SectionTitle title="Current city" />
 							{currentCity ? (
@@ -226,6 +225,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 											setValue={setValue}
 											submitsForm={false}
 											submitButtonText="Done"
+											valueIsObject={true}
 										/>
 									)
 								}
@@ -268,6 +268,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 											setValue={setValue}
 											submitsForm={false}
 											submitButtonText="Done"
+											valueIsObject={true}
 										/>
 									)
 								}

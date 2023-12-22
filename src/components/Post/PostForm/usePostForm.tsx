@@ -55,7 +55,7 @@ const usePostForm = () => {
 		});
 
 	const submitForm = handleSubmit((data) => {
-		const isChanged = isEqual(data, initialValues);
+		const isChanged = !isEqual(data, initialValues);
 		if (!isChanged) return closeDialog();
 
 		const formData = new FormData();

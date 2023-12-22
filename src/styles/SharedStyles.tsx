@@ -131,7 +131,8 @@ export const StyledNavShadowX = styled.div`
 	position: absolute;
 	bottom: -7px;
 	height: 7px;
-	width: 100%;
+	width: 100vw;
+	left: 0;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAOBAMAAAD3WtBsAAAAFVBMVEUAAAAAAAAAAAAAAAAAAAAAAAD29va1cB7UAAAAB3RSTlMCCwQHGBAaZf6MKAAAABpJREFUCNdjSGNIY3BhCGUQBEJjIFQCQigAACyJAjLNW4w5AAAAAElFTkSuQmCC);
 	background-size: 1px 7px;
 	background-repeat: repeat-x;
@@ -241,4 +242,8 @@ export const StyledCenteredContainerContent = styled.div`
 	align-items: center;
 
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};
+`;
+
+export const InfiniteScrollLoadingRelative = styled(InfiniteScrollLoading)`
+	position: relative;
 `;

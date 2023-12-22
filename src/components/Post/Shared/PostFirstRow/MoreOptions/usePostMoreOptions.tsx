@@ -9,6 +9,8 @@ import { IPost } from "@/types/IPost";
 import { IUser } from "@/types/IUser";
 import { AudienceFormValues } from "./EditAudienceForm/types/EditAudienceTypes";
 import useViewPostContext from "@/components/Post/ViewPost/context/useViewPostContext";
+import useDialogsContext from "@/hooks/dialogs/useDialogsContext";
+import { INotification } from "@/components/Notifications/types/NotificationType";
 
 interface usePostMoreOptionsProps {
 	post: IPost;
@@ -16,9 +18,24 @@ interface usePostMoreOptionsProps {
 
 type InfinitePostsResults = InfiniteData<IPost[]>;
 
+const removeNotificationsRelatedToPost = (
+	prevData: InfiniteData<INotification[]> | undefined,
+	postToDeleteId: string,
+) =>
+	prevData
+		? {
+				pages: prevData.pages.map((page) =>
+					page.filter((n) => n.postId !== postToDeleteId),
+				),
+				pageParams: prevData.pageParams,
+		  }
+		: prevData;
+
 const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 	const currentUser = useCurrentUserCached();
 	const queryClient = useQueryClient();
+
+	const { closeAllDialogs } = useDialogsContext();
 
 	// basic checks
 	const isOwnPost = currentUser?._id === post.author._id;
@@ -96,6 +113,10 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 		queryUrl: `posts/${post._id}`,
 		method: "DELETE",
 		onSuccessFn: () => {
+			// close form
+			closeAllDialogs();
+
+			// query updates
 			queryClient.setQueryData<InfinitePostsResults>(
 				["user", post.author._id, "posts"],
 				(prev) => {
@@ -109,6 +130,26 @@ const usePostMoreOptions = ({ post }: usePostMoreOptionsProps) => {
 						pageParams: prev?.pageParams,
 					};
 				},
+			);
+
+			const hasMedia = !!post?.media?.length;
+			if (hasMedia) {
+				queryClient.invalidateQueries<InfinitePostsResults>([
+					"user",
+					post.author._id,
+					"photos-of",
+					9,
+				]);
+			}
+
+			queryClient.setQueryData<InfiniteData<INotification[]>>(
+				["me", "notifications", "all"],
+				(prevData) => removeNotificationsRelatedToPost(prevData, post._id),
+			);
+
+			queryClient.setQueryData<InfiniteData<INotification[]>>(
+				["me", "notifications", "unread"],
+				(prevData) => removeNotificationsRelatedToPost(prevData, post._id),
 			);
 
 			// if post is shared, update shared post count in original post

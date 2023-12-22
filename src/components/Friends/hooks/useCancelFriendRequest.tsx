@@ -15,6 +15,22 @@ const cancelFriendRequestCurrentUser = (
 				friendRequestsSent: prevData.friendRequestsSent.filter(
 					(friendRequestId) => friendRequestId !== userBeingUnrequestedId,
 				),
+				status: "non-friend" as const,
+		  }
+		: prevData;
+};
+
+const cancelFriendRequestOtherUser = (
+	prevData: IUser | undefined,
+	userRequestingId: string,
+) => {
+	return prevData
+		? {
+				...prevData,
+				friendRequestsReceived: prevData.friendRequestsReceived.filter(
+					(friendRequestId) => friendRequestId !== userRequestingId,
+				),
+				status: "non-friend" as const,
 		  }
 		: prevData;
 };
@@ -64,6 +80,10 @@ const useCancelFriendRequest = (id: string) => {
 			);
 
 			if (userPageId) {
+				queryClient.setQueryData<IUser>(["user", id], (prevData) =>
+					cancelFriendRequestOtherUser(prevData, currentUserId),
+				);
+
 				const allUserFriendsQueries = queryClient
 					.getQueryCache()
 					.findAll(["user", userPageId, "friends"]);

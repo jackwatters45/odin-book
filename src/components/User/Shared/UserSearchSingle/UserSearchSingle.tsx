@@ -3,27 +3,30 @@ import { HTMLAttributes } from "react";
 
 import StandardTextInput from "@/components/Shared/TextInput/StandardTextInput";
 import useUserSearchResults from "./useUserSearchResults";
-import { StyledDialogSearchResultsDialog } from "./UserSearch.styles";
+import {
+	StyledDialogSearchResultsDialog,
+	StyledNoResultsText,
+} from "./UserSearch.styles";
 import Loading from "@/components/Shared/Loading";
 import { SearchResultsType } from "./types/SearchResults";
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
-import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
 import UserSearchResult from "./UserSearchResult";
-import { RegisterSearchInput } from "@/hooks/misc/useUserSearch";
+import { RegisterSearchInput, UserSearchInput } from "@/hooks/misc/useUserSearch";
 
 interface UserSearchProps extends HTMLAttributes<HTMLDivElement> {
 	registerSearchInput: RegisterSearchInput;
-	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;
+	setValue: UseFormSetValue<DefaultUserSearch>;
+	setSearchValue: UseFormSetValue<UserSearchInput>;
 	searchResults: SearchResultsType | undefined;
 	searchQuery: string | undefined;
 	isLoading: boolean;
-
 	labelText: string;
 }
 
 const UserSearchSingle = ({
 	registerSearchInput,
 	setValue,
+	setSearchValue,
 	searchResults,
 	searchQuery,
 	isLoading,
@@ -32,21 +35,22 @@ const UserSearchSingle = ({
 }: UserSearchProps) => {
 	const { handleResultClick, isActive, containerRef } = useUserSearchResults({
 		setValue,
+		setSearchValue,
 	});
 
 	return (
 		<div ref={containerRef} {...props}>
 			<StandardTextInput
-				category="values.user.name"
+				category="user.name"
 				isSelectedValue={!!searchQuery}
 				register={registerSearchInput}
 				labelText={labelText}
-				onInput={() => setValue("values.user", undefined)}
+				onInput={() => setValue("user", undefined)}
 				autoComplete="off"
 			/>
 			<StyledDialogSearchResultsDialog open={isActive}>
 				{!searchQuery ? (
-					<span>Type something to get started</span>
+					<StyledNoResultsText>Type something to get started</StyledNoResultsText>
 				) : isLoading ? (
 					<Loading size={32} speed={0.5} />
 				) : searchResults?.length ? (
@@ -60,7 +64,7 @@ const UserSearchSingle = ({
 							/>
 						))
 				) : (
-					<span>No people found</span>
+					<StyledNoResultsText>No people found</StyledNoResultsText>
 				)}
 			</StyledDialogSearchResultsDialog>
 		</div>

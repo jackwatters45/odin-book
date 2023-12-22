@@ -13,11 +13,11 @@ const useFamilyMembers = ({ familyMember }: useFamilyMembersParams) => {
 			param: familyMember?._id,
 		});
 
-	const title = familyMember?.user.fullName
+	const title = familyMember?.user?.fullName
 		? [
 				{
 					type: "link",
-					content: familyMember?.user.fullName,
+					content: familyMember?.user?.fullName,
 					linkTo: `/user/${familyMember?.user._id}`,
 				} as ITitleSegment,
 		  ]

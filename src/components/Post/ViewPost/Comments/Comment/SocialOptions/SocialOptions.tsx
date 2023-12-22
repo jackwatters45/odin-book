@@ -12,8 +12,12 @@ interface SocialOptionsProps {
 const SocialOptions = ({ comment, postId, handleClickReply }: SocialOptionsProps) => {
 	return (
 		<StyledSocialOptionsContainer>
-			<CommentReaction comment={comment} postId={postId} />
-			<button onClick={handleClickReply}>Reply</button>
+			{!comment.isDeleted && (
+				<>
+					<CommentReaction comment={comment} postId={postId} />
+					<button onClick={handleClickReply}>Reply</button>
+				</>
+			)}
 			<span title={comment.createdAt}>{formatTimeSince(comment.createdAt)}</span>
 		</StyledSocialOptionsContainer>
 	);

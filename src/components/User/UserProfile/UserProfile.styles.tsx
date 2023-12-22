@@ -6,10 +6,6 @@ export const ProfileContainer = styled.div`
 	min-height: calc(100vh - 60px);
 `;
 
-export const ProfileBottomBorder = styled.div`
-	${({ theme }) => theme.sectionShadow}
-`;
-
 export const MaxWidthContainer = styled.div`
 	margin: 0 auto;
 	max-width: 1250px;
@@ -24,7 +20,7 @@ export const OutletWrapper = styled.div`
 export const StyledUserProfileContentContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 1rem 1rem 0;
+	padding: 1rem;
 	gap: 1rem;
 	align-items: center;
 	background-color: ${({ theme }) => theme.colors.backgroundSecondary};

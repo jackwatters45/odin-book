@@ -19,11 +19,11 @@ const NotificationItemIcons = ({ type, from }: NotificationItemIconsProps) => {
 	return (
 		<StyledNotificationIconsContainer>
 			{isLink ? (
-				<Link to={`/user/${from._id}`} onClick={(e) => e.stopPropagation()}>
-					<ImageCircle src={from.avatarUrl} alt={from.fullName} size={56} />
+				<Link to={`/user/${from?._id}`} onClick={(e) => e.stopPropagation()}>
+					<ImageCircle src={from?.avatarUrl} alt={from?.fullName} size={56} />
 				</Link>
 			) : (
-				<ImageCircle src={from.avatarUrl} alt={from.fullName} size={56} />
+				<ImageCircle src={from?.avatarUrl} alt={from?.fullName} size={56} />
 			)}
 			<StyledNotificationTypeIcon
 				path={typeIcon}

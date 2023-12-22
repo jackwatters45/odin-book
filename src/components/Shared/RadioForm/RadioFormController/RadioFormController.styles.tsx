@@ -4,6 +4,7 @@ import StandardButton from "../../StandardButton";
 export const StyledRadioFormButton = styled(StandardButton)`
 	gap: 0.25rem;
 	background-color: ${({ theme }) => theme.colors.primaryButton};
+	min-width: fit-content;
 
 	span {
 		font-size: 0.9rem;

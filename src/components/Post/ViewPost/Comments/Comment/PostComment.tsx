@@ -118,14 +118,16 @@ const PostComment = ({ comment, postId, sort, nestedCount = 0 }: PostComment) =>
 							nestedCount={(nestedCount || 0) + 1}
 						/>
 					))}
-					<StyledReplyInputContainer $nestedCount={nestedCount + 1}>
-						<CommentInputBorder nestedCount={nestedCount} />
-						<PostCommentInput
-							ref={replyInputRef}
-							postId={postId}
-							commentId={comment._id}
-						/>
-					</StyledReplyInputContainer>
+					{!comment.isDeleted && (
+						<StyledReplyInputContainer $nestedCount={nestedCount + 1}>
+							<CommentInputBorder nestedCount={nestedCount} />
+							<PostCommentInput
+								ref={replyInputRef}
+								postId={postId}
+								commentId={comment._id}
+							/>
+						</StyledReplyInputContainer>
+					)}
 				</>
 			)}
 		</>

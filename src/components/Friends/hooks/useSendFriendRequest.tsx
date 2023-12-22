@@ -15,6 +15,22 @@ const sendFriendRequestCurrentUser = (
 				friendRequestsSent: prevData.friendRequestsSent
 					? [...prevData.friendRequestsSent, userBeingRequestedId]
 					: [userBeingRequestedId],
+				status: "request sent" as const,
+		  }
+		: prevData;
+};
+
+const sendFriendRequestOtherUser = (
+	prevData: IUser | undefined,
+	userRequestingId: string,
+) => {
+	return prevData
+		? {
+				...prevData,
+				friendRequestsReceived: prevData.friendRequestsReceived
+					? [...prevData.friendRequestsReceived, userRequestingId]
+					: [userRequestingId],
+				status: "request sent" as const,
 		  }
 		: prevData;
 };
@@ -64,6 +80,10 @@ const useSendFriendRequest = (id: string) => {
 			);
 
 			if (userPageId) {
+				queryClient.setQueryData<IUser>(["user", id], (prevData) =>
+					sendFriendRequestOtherUser(prevData, currentUserId),
+				);
+
 				const allUserFriendsQueries = queryClient
 					.getQueryCache()
 					.findAll(["user", userPageId, "friends"]);

@@ -10,6 +10,7 @@ import {
 	StyledStandardButton,
 	StyledStandardButtonFullWidth,
 } from "./EditProfile.styles";
+import Loading from "@/components/Shared/Loading";
 
 const DialogHeader = lazy(() => import("@/components/Shared/DialogHeader/DialogHeader"));
 const AvatarEditProfileSection = lazy(
@@ -44,8 +45,8 @@ const EditProfile = ({ user }: EditProfileProps) => {
 				iconSize={0.75}
 			/>
 			{isOpen && (
-				<Suspense>
-					<StyledEditProfileDialog ref={ref}>
+				<StyledEditProfileDialog ref={ref}>
+					<Suspense fallback={<Loading />}>
 						<DialogHeader title={"Edit profile"} closeDialog={closeDialog} />
 						<StyledEditProfileContent>
 							<AvatarEditProfileSection avatarUrl={avatarUrl} />
@@ -62,8 +63,8 @@ const EditProfile = ({ user }: EditProfileProps) => {
 								/>
 							</BottomDiv>
 						</StyledEditProfileContent>
-					</StyledEditProfileDialog>
-				</Suspense>
+					</Suspense>
+				</StyledEditProfileDialog>
 			)}
 		</div>
 	);

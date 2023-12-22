@@ -3,7 +3,7 @@ import FriendsList from "@/components/Friends/Components/FriendsList";
 import useUserFriends from "./useUserFriends";
 import UserFriendsNav from "./UserFriendsNav";
 import UserPhotos from "../UserPhotos";
-import { InfiniteScrollLoadingFriends } from "./UserFriends.styles";
+import { InfiniteScrollLoadingRelative } from "@/styles/SharedStyles";
 
 interface UserFriendsProps {
 	isUsingLink?: boolean;
@@ -23,7 +23,7 @@ const UserFriends = ({ isUsingLink = true }: UserFriendsProps) => {
 					activeTabSelector={activeTabSelector}
 				/>
 				<FriendsList friends={friends} />
-				<InfiniteScrollLoadingFriends {...rest} />
+				<InfiniteScrollLoadingRelative {...rest} />
 			</UserProfileSection>
 			<UserPhotos isUsingLink={false} />
 		</>

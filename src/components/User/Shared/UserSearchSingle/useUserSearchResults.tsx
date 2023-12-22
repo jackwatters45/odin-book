@@ -2,13 +2,17 @@ import { UseFormSetValue } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 
 import { DefaultUserSearch } from "./types/DefaultUserSearch";
-import { FormFieldsWithAudience } from "@/types/AudienceSettingsTypes";
+import { UserSearchInput } from "@/hooks/misc/useUserSearch";
 
 interface useUserSearchResultsParams {
-	setValue: UseFormSetValue<FormFieldsWithAudience<DefaultUserSearch>>;
+	setValue: UseFormSetValue<DefaultUserSearch>;
+	setSearchValue: UseFormSetValue<UserSearchInput>;
 }
 
-const useUserSearchResults = ({ setValue }: useUserSearchResultsParams) => {
+const useUserSearchResults = ({
+	setValue,
+	setSearchValue,
+}: useUserSearchResultsParams) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const [isActive, setIsActive] = useState(false);
@@ -32,8 +36,9 @@ const useUserSearchResults = ({ setValue }: useUserSearchResultsParams) => {
 	}, []);
 
 	const handleResultClick = (userId: string, name: string) => {
-		setValue("values.user", userId);
-		setValue("values.search", name);
+		setSearchValue("search", name);
+		setValue("search", name);
+		setValue("user", userId);
 
 		setIsActive(false);
 	};

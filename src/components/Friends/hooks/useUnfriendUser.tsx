@@ -10,6 +10,17 @@ const unfriendUserCurrentUser = (prevData: IUser | undefined, id: string) => {
 		? {
 				...prevData,
 				friends: prevData.friends.filter((friend) => friend !== id),
+				status: "non-friend" as const,
+		  }
+		: prevData;
+};
+
+const unfriendUserOtherUser = (prevData: IUser | undefined, currentUserId: string) => {
+	return prevData
+		? {
+				...prevData,
+				friends: prevData.friends.filter((friend) => friend !== currentUserId),
+				status: "non-friend" as const,
 		  }
 		: prevData;
 };
@@ -68,6 +79,10 @@ const useUnfriendUser = (id: string) => {
 			);
 
 			if (userPageId) {
+				queryClient.setQueryData<IUser>(["user", id], (prevData) =>
+					unfriendUserOtherUser(prevData, currentUserId),
+				);
+
 				const allUserFriendsQueries = queryClient
 					.getQueryCache()
 					.findAll(["user", userPageId, "friends"]);

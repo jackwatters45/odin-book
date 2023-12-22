@@ -6,38 +6,59 @@ import { IPost } from "@/types/IPost";
 
 type InfinitePostsResults = InfiniteData<IPost[]>;
 
+const updatePostComments = (prevData: IComment[] | undefined, updatedComment: IComment) =>
+	prevData
+		? prevData.map((c) => {
+				return c._id === updatedComment._id ? updatedComment : c;
+		  })
+		: prevData;
+
+const updatePosts = (
+	postId: string,
+	updatedComment: IComment,
+	prevData: InfinitePostsResults | undefined,
+) =>
+	prevData
+		? {
+				pages: prevData.pages.map((page) =>
+					page.map((p) =>
+						p._id === postId
+							? {
+									...p,
+									comments: p.comments.map((c) =>
+										c._id === updatedComment._id ? updatedComment : c,
+									),
+							  }
+							: p,
+					),
+				),
+				pageParams: prevData.pageParams,
+		  }
+		: prevData;
+
 const useUpdateComment = () => {
 	const { id: userId } = useParams<{ id: string }>() as { id: string };
 
 	const queryClient = useQueryClient();
 
 	const updateComment = (postId: string, updatedComment: IComment) => {
-		const currentPost = queryClient.getQueryData(["post", postId]) as IPost;
+		console.log(updatedComment.parentComment);
+		if (updatedComment.parentComment) {
+			queryClient.setQueryData<IComment[]>(
+				["post", postId, "comment", updatedComment.parentComment, "replies"],
+				(prevData) => updatePostComments(prevData, updatedComment),
+			);
+			return;
+		}
 
-		const updatedPost = {
-			...currentPost,
-			comments: currentPost.comments.map((c) =>
-				c._id === updatedComment._id ? updatedComment : c,
-			),
-		};
+		queryClient.setQueryData<IComment[]>(["post", postId, "comments"], (prevData) =>
+			updatePostComments(prevData, updatedComment),
+		);
 
 		queryClient.setQueryData<InfinitePostsResults>(
 			["user", userId, "posts"],
-			(prevData) => {
-				if (!prevData) return prevData;
-
-				const updatedPages = prevData.pages.map((page) =>
-					page.map((p) => (p._id === postId ? updatedPost : p)),
-				);
-
-				return {
-					pages: updatedPages,
-					pageParams: prevData.pageParams,
-				};
-			},
+			(prevData) => updatePosts(postId, updatedComment, prevData),
 		);
-
-		queryClient.setQueryData<IPost>(["post", postId], updatedPost);
 	};
 
 	return updateComment;

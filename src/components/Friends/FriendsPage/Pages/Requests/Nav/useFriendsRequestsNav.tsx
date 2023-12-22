@@ -4,6 +4,7 @@ import useCurrentUserCached from "@/hooks/auth/useCurrentUserCached";
 import { apiBaseUrl } from "@/config/envVariables";
 import useInfiniteScroll from "@/hooks/dom/useInfiniteScroll";
 import { UserPreviewWithMutuals } from "@/types/UserPreviewWithMutuals";
+import { useMemo } from "react";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -41,7 +42,9 @@ const useFriendsRequestsNav = () => {
 		fetchNextPage,
 	});
 
-	const users = usersUnflattened?.pages?.flat() ?? [];
+	const users = useMemo(() => {
+		return usersUnflattened?.pages?.flat() ?? [];
+	}, [usersUnflattened]);
 
 	const requestsCount = currentUser?.friendRequestsReceived.length ?? 0;
 

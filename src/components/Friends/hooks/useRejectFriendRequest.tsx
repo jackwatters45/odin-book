@@ -12,6 +12,19 @@ const rejectFriendCurrentUser = (prevData: IUser | undefined, newFriendId: strin
 				friendRequestsReceived: prevData.friendRequestsReceived.filter(
 					(friendRequestId) => friendRequestId !== newFriendId,
 				),
+				status: "request declined" as const,
+		  }
+		: prevData;
+};
+
+const rejectFriendOtherUser = (prevData: IUser | undefined, currentUserId: string) => {
+	return prevData
+		? {
+				...prevData,
+				friendRequestsSent: prevData.friendRequestsSent.filter(
+					(friendRequestId) => friendRequestId !== currentUserId,
+				),
+				status: "request declined" as const,
 		  }
 		: prevData;
 };
@@ -62,6 +75,10 @@ const useRejectFriendRequest = (id: string) => {
 			);
 
 			if (userPageId) {
+				queryClient.setQueryData<IUser>(["user", id], (prevData) =>
+					rejectFriendOtherUser(prevData, currentUserId),
+				);
+
 				const allUserFriendsQueries = queryClient
 					.getQueryCache()
 					.findAll(["user", userPageId, "friends"]);

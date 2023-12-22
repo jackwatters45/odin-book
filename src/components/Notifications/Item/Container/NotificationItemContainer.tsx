@@ -8,17 +8,23 @@ import {
 	StyledNotificationItemContainerButton,
 	StyledNotificationItemContainerLink,
 } from "./NotificationItemContainer.styles";
+import { NotificationResponseState } from "../useNotificationItem";
 
 interface NotificationItemContainerProps {
 	notification: INotification;
+	responseState: NotificationResponseState;
 	children: ReactNode;
 }
 
 const NotificationItemContainer = ({
 	notification,
+	responseState,
 	children,
 }: NotificationItemContainerProps) => {
-	const { to, handleOpenViewPost } = useNotificationItemContainer(notification);
+	const { to, handleOpenViewPost } = useNotificationItemContainer(
+		notification,
+		responseState,
+	);
 
 	return to ? (
 		<StyledNotificationItemContainer>
