@@ -1,7 +1,7 @@
 import useUserAboutOverviewItem from "@/components/User/Shared/SingleUserProperty/useSingleUserProperty";
-import { IPlaceLived } from "@/types/IUser";
 import formatCity from "./utils/formatCity";
-import { TitleSegment } from "@/components/User/Shared/SingleUserProperty/SingleUserProperty";
+import { IPlaceLived } from "./types/PlacesLivedTypes";
+import { ITitleSegment } from "@/utils/render/titleSegment/useRenderTitleSegments";
 
 interface usePlacesLivedProps {
 	categoryUrl: string;
@@ -17,13 +17,13 @@ const usePlacesLived = ({
 	const { isEditing, handleOpenForm, handleCloseForm, deleteMutation } =
 		useUserAboutOverviewItem({ categoryUrl, param: placeLived?._id });
 
-	const title: TitleSegment[] | null = placeLived?._id
+	const title: ITitleSegment[] | null = placeLived?._id
 		? [
-				...(titlePrefix ? [{ type: "text", content: titlePrefix } as TitleSegment] : []),
+				...(titlePrefix ? [{ type: "text", content: titlePrefix } as ITitleSegment] : []),
 				{
 					type: "bold",
 					content: formatCity(placeLived.city, placeLived.state),
-				} as TitleSegment,
+				} as ITitleSegment,
 		  ]
 		: null;
 

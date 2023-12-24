@@ -1,4 +1,3 @@
-import { ValidSocialPlatformsType } from "@/types/IUser";
 import {
 	mdiGithub,
 	mdiInstagram,
@@ -9,6 +8,7 @@ import {
 	mdiWhatsapp,
 	mdiYoutube,
 } from "@mdi/js";
+import { ValidSocialPlatformsType } from "../types/SocialLinksTypes";
 
 const socialLinkImages: Record<ValidSocialPlatformsType, string> = {
 	twitter: mdiTwitter,

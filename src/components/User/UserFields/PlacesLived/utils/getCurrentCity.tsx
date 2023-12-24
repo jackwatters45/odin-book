@@ -1,4 +1,4 @@
-import { IPlaceLived } from "@/types/IUser";
+import { IPlaceLived } from "../types/PlacesLivedTypes";
 
 const getCurrentCity = (
 	placesLived: IPlaceLived[] | undefined,

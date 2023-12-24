@@ -1,4 +1,4 @@
-import { ValidSocialPlatformsType } from "@/types/IUser";
+import { ValidSocialPlatformsType } from "../types/SocialLinksTypes";
 
 const platformUrls = {
 	twitter: "twitter.com/",

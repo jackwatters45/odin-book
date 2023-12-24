@@ -1,4 +1,4 @@
-import { IPlaceLived } from "@/types/IUser";
+import { IPlaceLived } from "../types/PlacesLivedTypes";
 
 const getHometown = (placesLived: IPlaceLived[] | undefined) =>
 	placesLived?.find((place) => place.type === "hometown");

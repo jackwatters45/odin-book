@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import defaultUserAvatar from "../../../User/UserFields/Avatar/utils/defaultUserAvatar";
 import { StyledFriend, StyledFriendsContainer } from "./FriendsPreview.styles";
-import { IFriendsDisplay } from "../../types/FriendsTypes";
 import useContainerWidth from "@/components/User/UserProfile/context/useContainerWidth";
+import { UserPreview } from "@/types/IPost";
 
 export interface FriendsPreviewProps {
-	friends: IFriendsDisplay | undefined;
+	friends: UserPreview[] | undefined;
 	className?: string;
 }
 
