@@ -6,7 +6,7 @@ import NavDropdown from "./NavDropdown";
 
 export const StyledNavContainer = styled.div`
 	position: fixed;
-	width: 100%;
+	width: 100vw;
 	background-color: ${({ theme }) => theme.colors.backgroundPrimary};
 	z-index: 999;
 `;

@@ -17,6 +17,7 @@ import {
 import ProfileFriendStatus from "../../../Friends/Components/FriendStatus/Profile";
 import useProfileBasicInfo from "./useProfileBasicInfo";
 import ProfileNav from "../ProfileNav";
+import { StyledNavShadowX } from "@/styles/SharedStyles";
 
 interface ProfileBasicInfoProps {
 	user: IUser;
@@ -57,6 +58,7 @@ const ProfileBasicInfo = ({ user }: ProfileBasicInfoProps) => {
 					</StyledProfileBasicInfo>
 					<ProfileNav />
 				</StyledTranslatedSection>
+				<StyledNavShadowX />
 			</StyledProfileMaxWidthContainer>
 		</ProfileBottomBorder>
 	);

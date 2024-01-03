@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "styled-components";
 
 import "./styles/reset.css";
@@ -25,7 +24,6 @@ function App() {
 							<ContainerWidthProvider>
 								<RoutesComponent />
 								<GlobalStyle />
-								<ReactQueryDevtools initialIsOpen={true} />
 							</ContainerWidthProvider>
 						</ViewPostProvider>
 					</PostFormProvider>

@@ -28,7 +28,7 @@ const ContainerWidthProvider = ({ children }: ContainerWidthProviderProps) => {
 
 	return (
 		<ContainerWidthContext.Provider value={containerWidth}>
-			<div ref={containerRef} id="containerWidthProvider">
+			<div style={{}} ref={containerRef} id="containerWidthProvider">
 				{children}
 			</div>
 		</ContainerWidthContext.Provider>
