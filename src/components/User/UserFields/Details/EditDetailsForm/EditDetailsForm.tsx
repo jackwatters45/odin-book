@@ -245,7 +245,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 							) : (
 								<AddDetailLink
 									text={"Add a website"}
-									to={"about/details"}
+									to={"about/contact_and_basic_info"}
 									onClick={closeAllDialogs}
 								/>
 							)}
@@ -296,7 +296,7 @@ const EditDetailsForm = forwardRef<HTMLDialogElement, EditDetailsFormProps>(
 							) : (
 								<AddDetailLink
 									text={"Add a social link"}
-									to={"about/details"}
+									to={"about/contact_and_basic_info"}
 									onClick={closeAllDialogs}
 								/>
 							)}

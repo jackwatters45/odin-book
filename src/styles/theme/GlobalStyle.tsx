@@ -58,8 +58,9 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     overflow-y: auto;
+    width:100vw;
 
-     color: ${({ theme }) => theme.colors.textPrimary};
+    color: ${({ theme }) => theme.colors.textPrimary};
     background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   }
 
