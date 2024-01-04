@@ -1,5 +1,9 @@
 # Odin Book
 
+## Live Project
+
+<https://odin-book.jackwatters.dev/>
+
 ## Introduction
 
 This is the frontend for "Odinbook", a facebook clone that implements its basic profile and social features. This is my final project as a part of the Odin Project Full-stack Javascript curriculum.
@@ -20,6 +24,31 @@ This project turned out to be quite a challenge, mainly the scope was quite larg
 - RedisDb
 - Vitest (fronted)
 - SuperTest (Jest)
+
+## Preview
+
+![Preview](https://res.cloudinary.com/drheg5d7j/image/upload/v1704265614/odin-book.jackwatters.dev_user_6591f3a62e76436d6db8732c_5_cjvt8e.webp)
+
+## Local Install
+
+```zsh
+git clone https://github.com/jackwatters45/odin-book.git
+
+npm run dev
+```
+
+## Contribute
+
+- Issue Tracker: <https://github.com/jackwatters45/odin-book/issues>
+- Source Code: <https://github.com/jackwatters45/odin-book/tree/main/src>
+
+## Support
+
+If you are having issues, please let me know at: <jack.watters@me.com>
+
+## License
+
+The project is licensed under the MIT license.
 
 ## Features
 
